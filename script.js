@@ -9,6 +9,10 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 const ctaButton = document.getElementById('cta-button');
 const formRow = document.getElementById('form-row');
 const waitlistForm = document.getElementById('waitlist-form');
+const rolesToggle = document.getElementById('roles-toggle');
+const rolesPanel = document.getElementById('roles-panel');
+const rolesChips = document.getElementById('roles-chips');
+const rolesContainer = rolesChips ? rolesChips.closest('.roles') : null;
 const emailInput = document.getElementById('email-input');
 const sendButton = document.getElementById('send-button');
 const feedbackEl = document.getElementById('feedback');
@@ -39,6 +43,7 @@ function isValidEmail(email) {
 
 async function submitEmail() {
   const email = emailInput.value.trim().toLowerCase();
+  const roles = Array.from(waitlistForm.querySelectorAll('.role-option[aria-selected="true"]')).map(i => i.getAttribute('data-value'));
   if (!isValidEmail(email)) {
     setFeedback('Enter a valid email address.', 'error');
     return;
@@ -48,16 +53,23 @@ async function submitEmail() {
   sendButton.disabled = true;
   sendButton.textContent = 'Joining…';
   try {
-    const { error } = await supabase.from('waitlist').insert([{ email }], { onConflict: 'email', ignoreDuplicates: true });
+    const { error } = await supabase.from('waitlist').insert([{ email, roles }], { onConflict: 'email', ignoreDuplicates: true });
     if (error) throw error;
     setFeedback('You are on the waitlist. We will be in touch soon.', 'success');
     sendButton.textContent = 'Joined';
   } catch (e) {
-    console.error(e);
-    setFeedback(e.message || 'Could not join right now. Try again later.', 'error');
-    emailInput.disabled = false;
-    sendButton.disabled = false;
-    sendButton.textContent = 'Join';
+    const msg = e && e.message ? String(e.message) : '';
+    const isDuplicate = (e && e.code === '23505') || /duplicate key value/i.test(msg) || /unique constraint/i.test(msg);
+    if (isDuplicate) {
+      setFeedback('You are already on the waitlist.', 'success');
+      sendButton.textContent = 'Joined';
+    } else {
+      console.error(e);
+      setFeedback(msg || 'Could not join right now. Try again later.', 'error');
+      emailInput.disabled = false;
+      sendButton.disabled = false;
+      sendButton.textContent = 'Join';
+    }
   }
 }
 
@@ -144,6 +156,56 @@ if (waitlistForm) {
   waitlistForm.addEventListener('submit', (e) => {
     e.preventDefault();
     submitEmail();
+  });
+}
+
+function updateChips() {
+  const selected = Array.from(waitlistForm.querySelectorAll('.role-option[aria-selected="true"]')).map(i => i.getAttribute('data-value'));
+  rolesChips.innerHTML = '';
+  selected.forEach((value) => {
+    const chip = document.createElement('span');
+    chip.className = 'roles-chip';
+    chip.textContent = value.replace(/\b\w/g, c => c.toUpperCase());
+    const x = document.createElement('button');
+    x.type = 'button';
+    x.setAttribute('aria-label', 'Remove ' + value);
+    x.textContent = '✕';
+    x.addEventListener('click', () => {
+      const btn = waitlistForm.querySelector('.role-option[data-value="' + value + '"]');
+      if (btn) btn.setAttribute('aria-selected', 'false');
+      updateChips();
+    });
+    chip.appendChild(x);
+    rolesChips.appendChild(chip);
+  });
+  if (rolesContainer) {
+    if (selected.length > 0) rolesContainer.classList.add('has-chips');
+    else rolesContainer.classList.remove('has-chips');
+  }
+}
+
+if (rolesToggle && rolesPanel) {
+  rolesToggle.addEventListener('click', () => {
+    const expanded = rolesToggle.getAttribute('aria-expanded') === 'true';
+    rolesToggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+    rolesPanel.classList.toggle('open', !expanded);
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!rolesPanel.classList.contains('open')) return;
+    if (!rolesPanel.contains(e.target) && e.target !== rolesToggle) {
+      rolesToggle.setAttribute('aria-expanded', 'false');
+      rolesPanel.classList.remove('open');
+    }
+  });
+
+  rolesPanel.addEventListener('click', (e) => {
+    const btn = e.target.closest('.role-option');
+    if (!btn) return;
+    const value = btn.getAttribute('data-value');
+    const selected = btn.getAttribute('aria-selected') === 'true';
+    btn.setAttribute('aria-selected', selected ? 'false' : 'true');
+    updateChips();
   });
 }
 

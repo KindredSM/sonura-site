@@ -50,8 +50,22 @@
       <div class="cta" id="signup">
         <button id="cta-button" class="button primary">Sign up for the waitlist</button>
         <form id="waitlist-form" class="form-row hidden" novalidate>
+          <div class="roles">
+            <button id="roles-toggle" class="roles-toggle" type="button" aria-expanded="false" aria-controls="roles-panel">What are you?</button>
+            <div id="roles-panel" class="roles-panel">
+              <div class="roles-options" role="group" aria-label="Select roles">
+                <button type="button" class="role-option" data-value="independent artist" aria-selected="false">Independent artist</button>
+                <button type="button" class="role-option" data-value="producer" aria-selected="false">Producer</button>
+                <button type="button" class="role-option" data-value="label" aria-selected="false">Label</button>
+                <button type="button" class="role-option" data-value="dj" aria-selected="false">DJ</button>
+                <button type="button" class="role-option" data-value="songwriter" aria-selected="false">Songwriter</button>
+                <button type="button" class="role-option" data-value="vocalist" aria-selected="false">Vocalist</button>
+              </div>
+            </div>
+            <div id="roles-chips" class="roles-chips" aria-live="polite"></div>
+          </div>
           <input id="email-input" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" class="input" aria-label="Email address" aria-describedby="feedback" required/>
-          <button id="send-button" class="button" type="submit">Join</button>
+          <button id="send-button" class="button primary" type="submit">Join</button>
         </form>
         <div id="feedback" class="feedback" role="status" aria-live="polite"></div>
       </div>
