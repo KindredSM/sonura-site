@@ -11,6 +11,7 @@ const formRow = document.getElementById('form-row');
 const emailInput = document.getElementById('email-input');
 const sendButton = document.getElementById('send-button');
 const feedbackEl = document.getElementById('feedback');
+const navCta = document.querySelector('.nav-cta');
 
 function setFeedback(message, type) {
   feedbackEl.textContent = message || '';
@@ -63,5 +64,20 @@ sendButton.addEventListener('click', submitEmail);
 emailInput.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') submitEmail();
 });
+
+if (navCta) {
+  navCta.addEventListener('click', (e) => {
+    e.preventDefault();
+    const signup = document.getElementById('signup');
+    if (signup && signup.scrollIntoView) {
+      signup.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    if (ctaButton.classList.contains('hidden')) {
+      emailInput.focus();
+    } else {
+      toggleToForm();
+    }
+  });
+}
 
 
