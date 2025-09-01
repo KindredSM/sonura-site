@@ -82,6 +82,64 @@ if (navCta) {
   });
 }
 
+const faqDetails = document.querySelectorAll('.faq details');
+faqDetails.forEach((el) => {
+  const summary = el.querySelector('summary');
+  const contents = [];
+  el.childNodes.forEach((n) => {
+    if (n.nodeType === 1 && n.tagName !== 'SUMMARY') contents.push(n);
+  });
+  const wrapper = document.createElement('div');
+  while (contents.length) wrapper.appendChild(contents.shift());
+  el.appendChild(wrapper);
+
+  function openDetails() {
+    el.open = true;
+    wrapper.style.height = 'auto';
+    const h = wrapper.scrollHeight;
+    wrapper.style.height = '0px';
+    wrapper.getBoundingClientRect();
+    wrapper.style.height = h + 'px';
+    wrapper.addEventListener('transitionend', function handler(e) {
+      if (e.propertyName === 'height') {
+        wrapper.style.height = 'auto';
+        wrapper.removeEventListener('transitionend', handler);
+      }
+    });
+  }
+
+  function closeDetails() {
+    const h = wrapper.scrollHeight;
+    wrapper.style.height = h + 'px';
+    wrapper.getBoundingClientRect();
+    wrapper.style.height = '0px';
+    wrapper.addEventListener('transitionend', function handler(e) {
+      if (e.propertyName === 'height') {
+        el.open = false;
+        wrapper.removeEventListener('transitionend', handler);
+      }
+    });
+  }
+
+  if (el.open) {
+    wrapper.style.height = 'auto';
+  } else {
+    wrapper.style.height = '0px';
+  }
+
+  if (summary) {
+    summary.addEventListener('click', (e) => {
+      if (el.open) {
+        e.preventDefault();
+        closeDetails();
+      } else {
+        e.preventDefault();
+        openDetails();
+      }
+    });
+  }
+});
+
 if (waitlistForm) {
   waitlistForm.addEventListener('submit', (e) => {
     e.preventDefault();

@@ -17,6 +17,7 @@ body {
   background: radial-gradient(1200px 600px at 70% -10%, rgba(124,58,237,0.25), transparent 60%),
               radial-gradient(800px 400px at -10% 20%, rgba(34,197,94,0.15), transparent 55%),
               var(--bg);
+  background-attachment: fixed;
 }
 
 .page { min-height: 100%; display: flex; flex-direction: column; }
@@ -25,7 +26,7 @@ body {
 .nav-cta { color: var(--fg); text-decoration: none; opacity: 0.9; }
 .nav-cta:hover { opacity: 1; }
 
-.hero { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 32px 24px 64px; gap: 20px; }
+.hero { flex: 1; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 32px 24px 64px; gap: 20px; }
 .headline { font-size: clamp(36px, 6vw, 64px); line-height: 1.05; margin: 0; letter-spacing: -0.02em; }
 .subhead { margin: 0; font-size: clamp(16px, 2.2vw, 20px); color: var(--muted); }
 
@@ -75,5 +76,17 @@ body {
 @media (max-width: 520px) {
   .form-row { grid-template-columns: 1fr; }
 }
+
+.faq { padding: 32px 24px 64px; }
+.faq-inner { max-width: 800px; margin: 0 auto; }
+.faq-title { margin: 0 0 16px; text-align: center; letter-spacing: -0.01em; }
+.faq-list { display: grid; gap: 12px; }
+.faq details { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 12px 14px; overflow: hidden; }
+.faq details > p { margin: 0; }
+.faq details > div { overflow: hidden; height: 0; opacity: 0; transition: height .28s ease, opacity .28s ease; }
+.faq details[open] > div { opacity: 1; }
+.faq summary { cursor: pointer; font-weight: 600; outline: none; }
+.faq details[open] { background: rgba(255,255,255,0.07); }
+.faq p { margin: 10px 2px 2px; color: var(--muted); }
 
 
