@@ -8,6 +8,7 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 const ctaButton = document.getElementById('cta-button');
 const formRow = document.getElementById('form-row');
+const waitlistForm = document.getElementById('waitlist-form');
 const emailInput = document.getElementById('email-input');
 const sendButton = document.getElementById('send-button');
 const feedbackEl = document.getElementById('feedback');
@@ -17,6 +18,7 @@ function setFeedback(message, type) {
   feedbackEl.textContent = message || '';
   feedbackEl.classList.remove('success', 'error');
   if (type) feedbackEl.classList.add(type);
+  emailInput.setAttribute('aria-invalid', type === 'error' ? 'true' : 'false');
 }
 
 if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
@@ -27,7 +29,7 @@ if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
 
 function toggleToForm() {
   ctaButton.classList.add('hidden');
-  formRow.classList.remove('hidden');
+  (waitlistForm || formRow).classList.remove('hidden');
   emailInput.focus();
 }
 
@@ -77,6 +79,13 @@ if (navCta) {
     } else {
       toggleToForm();
     }
+  });
+}
+
+if (waitlistForm) {
+  waitlistForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    submitEmail();
   });
 }
 
