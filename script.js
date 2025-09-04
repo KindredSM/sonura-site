@@ -17,6 +17,7 @@ const emailInput = document.getElementById('email-input');
 const sendButton = document.getElementById('send-button');
 const feedbackEl = document.getElementById('feedback');
 const navCta = document.querySelector('.nav-cta');
+const brandLink = document.querySelector('.brand');
 
 // Final CTA elements
 const finalCtaButton = document.getElementById('final-cta-button');
@@ -130,6 +131,13 @@ if (navCta) {
     } else {
       toggleToForm();
     }
+  });
+}
+
+if (brandLink) {
+  brandLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 }
 
