@@ -282,5 +282,10 @@ if (playBtn) {
 if (backBtn) backBtn.addEventListener('click', () => { audio.currentTime = Math.max(0, audio.currentTime - 10); });
 if (fwdBtn) fwdBtn.addEventListener('click', () => { audio.currentTime = Math.min(audio.duration || 0, audio.currentTime + 10); });
 if (seek) seek.addEventListener('input', () => { audio.currentTime = Number(seek.value); });
-if (vol) vol.addEventListener('input', () => { audio.volume = Number(vol.value); });
+if (vol && audio) {
+  vol.addEventListener('input', () => { 
+    audio.volume = Number(vol.value);
+  });
+  audio.volume = Number(vol.value);
+}
 
