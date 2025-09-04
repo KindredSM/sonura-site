@@ -111,6 +111,7 @@ body {
 
 @media (max-width: 768px) {
   .hero { justify-content: flex-start; padding-top: 25vh; }
+  .scroll-indicator { display: none; }
 }
 
 @media (max-width: 520px) {
