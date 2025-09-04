@@ -34,7 +34,7 @@ body {
 .nav .button.primary { padding: 10px 14px; border-radius: 10px; font-size: 14px; transition: transform .2s ease, box-shadow .2s ease, filter .2s ease; }
 .nav .button.primary:hover { transform: translateY(-1px) scale(1.02); box-shadow: 0 6px 20px rgba(124, 58, 237, 0.3); filter: brightness(1.1); background: linear-gradient(135deg, var(--primary), var(--primary-600)) !important; }
 
-.hero { flex: 1; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 32px 24px 64px; gap: 20px; }
+.hero { flex: 1; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 32px 24px 200px; gap: 20px; }
 .headline { font-size: clamp(36px, 6vw, 64px); line-height: 1.05; margin: 0; letter-spacing: -0.02em; }
 .subhead { margin: 0; font-size: clamp(16px, 2.2vw, 20px); color: var(--muted); }
 
