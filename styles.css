@@ -25,7 +25,8 @@ body {
 .brand { font-weight: 800; letter-spacing: 0.5px; }
 .nav-cta { color: var(--fg); text-decoration: none; opacity: 0.9; }
 .nav-cta:hover { opacity: 1; }
-.nav .button.primary { padding: 10px 14px; border-radius: 10px; font-size: 14px; }
+.nav .button.primary { padding: 10px 14px; border-radius: 10px; font-size: 14px; transition: transform .2s ease, box-shadow .2s ease, filter .2s ease; }
+.nav .button.primary:hover { transform: translateY(-1px) scale(1.02); box-shadow: 0 6px 20px rgba(124, 58, 237, 0.3); filter: brightness(1.1); background: linear-gradient(135deg, var(--primary), var(--primary-600)) !important; }
 
 .hero { flex: 1; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 32px 24px 64px; gap: 20px; }
 .headline { font-size: clamp(36px, 6vw, 64px); line-height: 1.05; margin: 0; letter-spacing: -0.02em; }
@@ -35,6 +36,8 @@ body {
 .reveal.in-view { opacity: 1; transform: none; }
 
 .cta { margin-top: 12px; display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 560px; }
+.cta .button.primary { font-size: 18px; padding: 16px 24px; transition: transform .2s ease, box-shadow .2s ease, filter .2s ease; }
+.cta .button.primary:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4); filter: brightness(1.1); background: linear-gradient(135deg, var(--primary), var(--primary-600)) !important; }
 .form-row { display: grid; grid-template-columns: 1fr; gap: 10px; align-items: center; }
 .hidden { display: none; }
 
