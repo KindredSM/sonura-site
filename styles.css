@@ -113,6 +113,9 @@ body {
 .rights-card, .trust-card { display: grid; grid-template-columns: auto 1fr; align-items: start; gap: 10px; padding: 16px; border-radius: 14px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); }
 .rights-icon, .trust-icon { width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center; background: linear-gradient(135deg, var(--primary), var(--primary-600)); font-weight: 800; }
 .rights-line, .trust-line { margin: 0; font-size: clamp(14px, 1.8vw, 16px); }
+.rights-text { display: grid; gap: 4px; }
+.rights-title { margin: 0; font-size: clamp(18px, 2.2vw, 22px); letter-spacing: -0.02em; }
+.rights-subtitle { margin: 0; color: var(--muted); }
 .visually-hidden { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
 
 @media (max-width: 720px) {
