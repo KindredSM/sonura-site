@@ -24,7 +24,7 @@ body {
 .nav { position: sticky; top: 0; z-index: 100; width: 100%; transition: background-color 0.3s ease, backdrop-filter 0.3s ease; }
 .nav.scrolled { background: rgba(10, 10, 10, 0.3); backdrop-filter: blur(12px); }
 .nav-inner { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; max-width: 1120px; margin: 0 auto; width: 100%; }
-.brand { font-weight: 800; letter-spacing: 0.5px; color: var(--fg); text-decoration: none; cursor: pointer; transition: opacity 0.2s ease; }
+.brand { font-weight: 800; letter-spacing: 0.5px; color: #ffffff; text-decoration: none; cursor: pointer; transition: opacity 0.2s ease; }
 .brand:hover { opacity: 0.8; }
 .nav-cta { color: var(--fg); text-decoration: none; opacity: 0.9; }
 .nav-cta:hover { opacity: 1; }
