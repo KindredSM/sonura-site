@@ -82,6 +82,16 @@ body {
 .trust { display: flex; gap: 10px; justify-content: center; align-items: center; flex-wrap: wrap; margin-top: 8px; opacity: 0.9; }
 .pill { padding: 6px 10px; border-radius: 999px; background: rgba(255,255,255,0.06); font-size: 12px; color: var(--muted); }
 
+.scroll-indicator { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); z-index: 10; }
+.scroll-arrow { width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); display: grid; place-items: center; cursor: pointer; animation: pulse-bounce 2s infinite ease-in-out; transition: all 0.3s ease; }
+.scroll-arrow:hover { background: rgba(255,255,255,0.15); transform: translateY(-2px); }
+.scroll-arrow svg { width: 20px; height: 20px; color: rgba(255,255,255,0.8); }
+
+@keyframes pulse-bounce {
+  0%, 100% { transform: translateY(0px); opacity: 0.7; }
+  50% { transform: translateY(-8px); opacity: 1; }
+}
+
 .roles { position: relative; display: grid; gap: 0; }
 .roles.has-chips { gap: 8px; }
 .roles:has(.roles-chips:not(:empty)) { gap: 8px; }

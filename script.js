@@ -336,6 +336,17 @@ if (window.lucide && window.lucide.createIcons) {
   window.lucide.createIcons();
 }
 
+// Scroll indicator functionality
+const scrollArrow = document.querySelector('.scroll-arrow');
+if (scrollArrow) {
+  scrollArrow.addEventListener('click', () => {
+    const demoSection = document.querySelector('.demo');
+    if (demoSection) {
+      demoSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+}
+
 // Handle nav scroll behavior
 const nav = document.querySelector('.nav');
 
