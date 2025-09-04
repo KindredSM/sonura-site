@@ -209,4 +209,29 @@ if (rolesToggle && rolesPanel) {
   });
 }
 
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!prefersReducedMotion) {
+  const observer = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      const target = entry.target;
+      if (entry.isIntersecting) {
+        const delay = target.getAttribute('data-reveal-delay');
+        if (delay) target.style.transitionDelay = delay;
+        target.classList.add('in-view');
+        observer.unobserve(target);
+      }
+    }
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  let velocity = 0;
+  let lastScrollY = window.scrollY;
+  function onScroll() {
+    const current = window.scrollY;
+    velocity = current - lastScrollY;
+    lastScrollY = current;
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+}
 
