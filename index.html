@@ -41,8 +41,10 @@
 <body>
   <main class="page">
     <nav class="nav">
-      <div class="brand">Sonura</div>
-      <a class="nav-cta button primary" href="#signup">Sign up</a>
+      <div class="nav-inner">
+        <div class="brand">Sonura</div>
+        <a class="nav-cta button primary" href="#signup">Sign up</a>
+      </div>
     </nav>
     <section class="hero">
       <h1 class="headline reveal">Instant Beats for Solo Artists</h1>
@@ -223,6 +225,34 @@
             <summary>Do I own the beats I export?</summary>
             <p>Yes, you can use the exported instrumentals in your projects. Licensing terms will be published at launch.</p>
           </details>
+        </div>
+      </div>
+    </section>
+    <section class="final-cta" aria-labelledby="final-cta-title">
+      <div class="final-cta-inner">
+        <h2 id="final-cta-title" class="final-cta-title reveal">Ready to create your next hit?</h2>
+        <p class="final-cta-subtitle reveal" data-reveal-delay="0.06s">Be among the first to unlock your creative potential with Sonura.</p>
+        <div class="final-cta-form reveal" data-reveal-delay="0.12s">
+          <button id="final-cta-button" class="button primary large">Join waitlist</button>
+          <form id="final-waitlist-form" class="form-row hidden" novalidate>
+            <div class="roles">
+              <button id="final-roles-toggle" class="roles-toggle" type="button" aria-expanded="false" aria-controls="final-roles-panel">Who are you?</button>
+              <div id="final-roles-panel" class="roles-panel">
+                <div class="roles-options" role="group" aria-label="Select roles">
+                  <button type="button" class="role-option" data-value="independent artist" aria-selected="false">Independent artist</button>
+                  <button type="button" class="role-option" data-value="producer" aria-selected="false">Producer</button>
+                  <button type="button" class="role-option" data-value="label" aria-selected="false">Label</button>
+                  <button type="button" class="role-option" data-value="dj" aria-selected="false">DJ</button>
+                  <button type="button" class="role-option" data-value="songwriter" aria-selected="false">Songwriter</button>
+                  <button type="button" class="role-option" data-value="vocalist" aria-selected="false">Vocalist</button>
+                </div>
+              </div>
+              <div id="final-roles-chips" class="roles-chips" aria-live="polite"></div>
+            </div>
+            <input id="final-email-input" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" class="input" aria-label="Email address" aria-describedby="final-feedback" required/>
+            <button id="final-send-button" class="button primary" type="submit">Join</button>
+          </form>
+          <div id="final-feedback" class="feedback" role="status" aria-live="polite"></div>
         </div>
       </div>
     </section>

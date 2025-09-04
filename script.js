@@ -18,57 +18,83 @@ const sendButton = document.getElementById('send-button');
 const feedbackEl = document.getElementById('feedback');
 const navCta = document.querySelector('.nav-cta');
 
-function setFeedback(message, type) {
-  feedbackEl.textContent = message || '';
-  feedbackEl.classList.remove('success', 'error');
-  if (type) feedbackEl.classList.add(type);
-  emailInput.setAttribute('aria-invalid', type === 'error' ? 'true' : 'false');
+// Final CTA elements
+const finalCtaButton = document.getElementById('final-cta-button');
+const finalWaitlistForm = document.getElementById('final-waitlist-form');
+const finalRolesToggle = document.getElementById('final-roles-toggle');
+const finalRolesPanel = document.getElementById('final-roles-panel');
+const finalRolesChips = document.getElementById('final-roles-chips');
+const finalRolesContainer = finalRolesChips ? finalRolesChips.closest('.roles') : null;
+const finalEmailInput = document.getElementById('final-email-input');
+const finalSendButton = document.getElementById('final-send-button');
+const finalFeedbackEl = document.getElementById('final-feedback');
+
+function setFeedback(message, type, isFinal = false) {
+  const feedback = isFinal ? finalFeedbackEl : feedbackEl;
+  const input = isFinal ? finalEmailInput : emailInput;
+  feedback.textContent = message || '';
+  feedback.classList.remove('success', 'error');
+  if (type) feedback.classList.add(type);
+  input.setAttribute('aria-invalid', type === 'error' ? 'true' : 'false');
 }
 
 if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
   setFeedback('Missing Supabase configuration.', 'error');
+  setFeedback('Missing Supabase configuration.', 'error', true);
   ctaButton.disabled = true;
   sendButton.disabled = true;
+  if (finalCtaButton) finalCtaButton.disabled = true;
+  if (finalSendButton) finalSendButton.disabled = true;
 }
 
-function toggleToForm() {
-  ctaButton.classList.add('hidden');
-  (waitlistForm || formRow).classList.remove('hidden');
-  emailInput.focus();
+function toggleToForm(isFinal = false) {
+  if (isFinal) {
+    finalCtaButton.classList.add('hidden');
+    finalWaitlistForm.classList.remove('hidden');
+    finalEmailInput.focus();
+  } else {
+    ctaButton.classList.add('hidden');
+    (waitlistForm || formRow).classList.remove('hidden');
+    emailInput.focus();
+  }
 }
 
 function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-async function submitEmail() {
-  const email = emailInput.value.trim().toLowerCase();
-  const roles = Array.from(waitlistForm.querySelectorAll('.role-option[aria-selected="true"]')).map(i => i.getAttribute('data-value'));
+async function submitEmail(isFinal = false) {
+  const email = isFinal ? finalEmailInput.value.trim().toLowerCase() : emailInput.value.trim().toLowerCase();
+  const form = isFinal ? finalWaitlistForm : waitlistForm;
+  const roles = Array.from(form.querySelectorAll('.role-option[aria-selected="true"]')).map(i => i.getAttribute('data-value'));
+  const input = isFinal ? finalEmailInput : emailInput;
+  const button = isFinal ? finalSendButton : sendButton;
+  
   if (!isValidEmail(email)) {
-    setFeedback('Enter a valid email address.', 'error');
+    setFeedback('Enter a valid email address.', 'error', isFinal);
     return;
   }
-  setFeedback('');
-  emailInput.disabled = true;
-  sendButton.disabled = true;
-  sendButton.textContent = 'Joining…';
+  setFeedback('', '', isFinal);
+  input.disabled = true;
+  button.disabled = true;
+  button.textContent = 'Joining…';
   try {
     const { error } = await supabase.from('waitlist').insert([{ email, roles }], { onConflict: 'email', ignoreDuplicates: true });
     if (error) throw error;
-    setFeedback('You are on the waitlist. We will be in touch soon.', 'success');
-    sendButton.textContent = 'Joined';
+    setFeedback('You are on the waitlist. We will be in touch soon.', 'success', isFinal);
+    button.textContent = 'Joined';
   } catch (e) {
     const msg = e && e.message ? String(e.message) : '';
     const isDuplicate = (e && e.code === '23505') || /duplicate key value/i.test(msg) || /unique constraint/i.test(msg);
     if (isDuplicate) {
-      setFeedback('You are already on the waitlist.', 'success');
-      sendButton.textContent = 'Joined';
+      setFeedback('You are already on the waitlist.', 'success', isFinal);
+      button.textContent = 'Joined';
     } else {
       console.error(e);
-      setFeedback(msg || 'Could not join right now. Try again later.', 'error');
-      emailInput.disabled = false;
-      sendButton.disabled = false;
-      sendButton.textContent = 'Join';
+      setFeedback(msg || 'Could not join right now. Try again later.', 'error', isFinal);
+      input.disabled = false;
+      button.disabled = false;
+      button.textContent = 'Join';
     }
   }
 }
@@ -78,6 +104,15 @@ sendButton.addEventListener('click', submitEmail);
 emailInput.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') submitEmail();
 });
+
+// Final CTA event listeners
+if (finalCtaButton) finalCtaButton.addEventListener('click', () => toggleToForm(true));
+if (finalSendButton) finalSendButton.addEventListener('click', () => submitEmail(true));
+if (finalEmailInput) {
+  finalEmailInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') submitEmail(true);
+  });
+}
 
 if (navCta) {
   navCta.addEventListener('click', (e) => {
@@ -209,6 +244,64 @@ if (rolesToggle && rolesPanel) {
   });
 }
 
+// Final CTA roles functionality
+function updateFinalChips() {
+  const selected = Array.from(finalWaitlistForm.querySelectorAll('.role-option[aria-selected="true"]')).map(i => i.getAttribute('data-value'));
+  finalRolesChips.innerHTML = '';
+  selected.forEach((value) => {
+    const chip = document.createElement('span');
+    chip.className = 'roles-chip';
+    chip.textContent = value.replace(/\b\w/g, c => c.toUpperCase());
+    const x = document.createElement('button');
+    x.type = 'button';
+    x.setAttribute('aria-label', 'Remove ' + value);
+    x.textContent = '✕';
+    x.addEventListener('click', () => {
+      const btn = finalWaitlistForm.querySelector('.role-option[data-value="' + value + '"]');
+      if (btn) btn.setAttribute('aria-selected', 'false');
+      updateFinalChips();
+    });
+    chip.appendChild(x);
+    finalRolesChips.appendChild(chip);
+  });
+  if (finalRolesContainer) {
+    if (selected.length > 0) finalRolesContainer.classList.add('has-chips');
+    else finalRolesContainer.classList.remove('has-chips');
+  }
+}
+
+if (finalRolesToggle && finalRolesPanel) {
+  finalRolesToggle.addEventListener('click', () => {
+    const expanded = finalRolesToggle.getAttribute('aria-expanded') === 'true';
+    finalRolesToggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+    finalRolesPanel.classList.toggle('open', !expanded);
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!finalRolesPanel.classList.contains('open')) return;
+    if (!finalRolesPanel.contains(e.target) && e.target !== finalRolesToggle) {
+      finalRolesToggle.setAttribute('aria-expanded', 'false');
+      finalRolesPanel.classList.remove('open');
+    }
+  });
+
+  finalRolesPanel.addEventListener('click', (e) => {
+    const btn = e.target.closest('.role-option');
+    if (!btn) return;
+    const value = btn.getAttribute('data-value');
+    const selected = btn.getAttribute('aria-selected') === 'true';
+    btn.setAttribute('aria-selected', selected ? 'false' : 'true');
+    updateFinalChips();
+  });
+}
+
+if (finalWaitlistForm) {
+  finalWaitlistForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    submitEmail(true);
+  });
+}
+
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 if (!prefersReducedMotion) {
   const observer = new IntersectionObserver((entries) => {
@@ -238,6 +331,22 @@ if (!prefersReducedMotion) {
 if (window.lucide && window.lucide.createIcons) {
   window.lucide.createIcons();
 }
+
+// Handle nav scroll behavior
+const nav = document.querySelector('.nav');
+
+function handleNavScroll() {
+  const currentScrollY = window.scrollY;
+  
+  if (currentScrollY > 50) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+}
+
+window.addEventListener('scroll', handleNavScroll, { passive: true });
+
 
 function fmt(t) {
   if (!isFinite(t)) return '0:00';
