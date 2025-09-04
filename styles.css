@@ -25,6 +25,7 @@ body {
 .brand { font-weight: 800; letter-spacing: 0.5px; }
 .nav-cta { color: var(--fg); text-decoration: none; opacity: 0.9; }
 .nav-cta:hover { opacity: 1; }
+.nav .button.primary { padding: 10px 14px; border-radius: 10px; font-size: 14px; }
 
 .hero { flex: 1; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 32px 24px 64px; gap: 20px; }
 .headline { font-size: clamp(36px, 6vw, 64px); line-height: 1.05; margin: 0; letter-spacing: -0.02em; }
@@ -114,7 +115,8 @@ body {
 .rights-inner { max-width: 1100px; margin: 0 auto; }
 .rights-grid { display: flex; flex-direction: column; gap: 20px; }
 .rights-card, .trust-card { display: flex; align-items: center; gap: 18px; padding: clamp(18px, 4vw, 28px); border-radius: 18px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); }
-.rights-icon, .trust-icon { width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center; background: linear-gradient(135deg, var(--primary), var(--primary-600)); font-weight: 800; }
+.rights-icon, .trust-icon { width: 34px; height: 34px; border-radius: 8px; display: grid; place-items: center; background: linear-gradient(135deg, var(--primary), var(--primary-600)); }
+.rights-icon svg, .trust-icon svg { width: 18px; height: 18px; }
 .rights-text { display: flex; flex-direction: column; }
 .rights-title { font-size: clamp(28px, 6vw, 44px); margin: 0; letter-spacing: -0.02em; }
 .rights-subtitle { font-size: clamp(16px, 2.5vw, 20px); margin: 0; color: var(--muted); }

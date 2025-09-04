@@ -235,3 +235,7 @@ if (!prefersReducedMotion) {
   window.addEventListener('scroll', onScroll, { passive: true });
 }
 
+if (window.lucide && window.lucide.createIcons) {
+  window.lucide.createIcons();
+}
+

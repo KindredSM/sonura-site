@@ -42,7 +42,7 @@
   <main class="page">
     <nav class="nav">
       <div class="brand">Sonura</div>
-      <a class="nav-cta" href="#signup">Sign up</a>
+      <a class="nav-cta button primary" href="#signup">Sign up</a>
     </nav>
     <section class="hero">
       <h1 class="headline reveal">Instant Beats for Solo Artists</h1>
@@ -80,28 +80,28 @@
         <h2 id="rights-title" class="visually-hidden">Rights and Trust</h2>
         <div class="rights-grid">
           <div class="rights-card reveal">
-            <div class="rights-icon">✓</div>
+            <div class="rights-icon" aria-hidden="true"><i data-lucide="check-circle"></i></div>
             <div class="rights-text">
               <h3 class="rights-title">You own it all</h3>
               <p class="rights-subtitle">All instrumentals are 100% yours to use commercially. No takedowns, no surprises.</p>
             </div>
           </div>
           <div class="rights-card reveal" data-reveal-delay="0.05s">
-            <div class="rights-icon">⟲</div>
+            <div class="rights-icon" aria-hidden="true"><i data-lucide="refresh-cw"></i></div>
             <div class="rights-text">
               <h3 class="rights-title">Unlimited ideas, fast</h3>
               <p class="rights-subtitle">Iterate in seconds with prompts and presets.</p>
             </div>
           </div>
           <div class="trust-card reveal" data-reveal-delay="0.1s">
-            <div class="trust-icon">⫸</div>
+            <div class="trust-icon" aria-hidden="true"><i data-lucide="sliders-horizontal"></i></div>
             <div class="rights-text">
               <h3 class="rights-title">DAW ready exports</h3>
               <p class="rights-subtitle">WAV, stems, BPM and key for instant workflows.</p>
             </div>
           </div>
           <div class="rights-card reveal" data-reveal-delay="0.15s">
-            <div class="rights-icon">♪</div>
+            <div class="rights-icon" aria-hidden="true"><i data-lucide="music-2"></i></div>
             <div class="rights-text">
               <h3 class="rights-title">Pro quality across genres</h3>
               <p class="rights-subtitle">From trap to jazz to electronic.</p>
@@ -131,6 +131,7 @@
     </section>
   </main>
   <script type="module" src="./script.js"></script>
+  <script src="https://unpkg.com/lucide@0.471.0/dist/umd/lucide.js"></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is Sonura?","acceptedAnswer":{"@type":"Answer","text":"Sonura is an AI beat maker that helps solo artists create high quality instrumentals fast."}},{"@type":"Question","name":"How much does it cost?","acceptedAnswer":{"@type":"Answer","text":"We’ll announce pricing at launch. Join the waitlist for early access."}},{"@type":"Question","name":"Do I own the beats I export?","acceptedAnswer":{"@type":"Answer","text":"Yes, you can use the exported instrumentals in your projects. Licensing terms will be published at launch."}}]}</script>
 </body>
 </html>
