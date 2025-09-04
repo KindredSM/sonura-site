@@ -109,6 +109,10 @@ body {
 .role-option:active { transform: scale(0.98); }
 .role-option[aria-selected="true"] { border-color: var(--primary); background: linear-gradient(135deg, rgba(124,58,237,0.18), rgba(109,40,217,0.18)); }
 
+@media (max-width: 768px) {
+  .hero { justify-content: flex-start; padding-top: 25vh; }
+}
+
 @media (max-width: 520px) {
   .form-row { grid-template-columns: 1fr; }
 }
