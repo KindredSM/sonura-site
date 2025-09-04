@@ -99,7 +99,11 @@ async function submitEmail(isFinal = false) {
   }
 }
 
-ctaButton.addEventListener('click', toggleToForm);
+ctaButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  toggleToForm();
+});
 sendButton.addEventListener('click', submitEmail);
 emailInput.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') submitEmail();
