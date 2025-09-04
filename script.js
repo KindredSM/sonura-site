@@ -1,5 +1,13 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
+// Ensure page always starts at top on reload
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+window.addEventListener('beforeunload', () => {
+  window.scrollTo(0, 0);
+});
+
 const supabaseUrlMeta = document.querySelector('meta[name="supabase-url"]');
 const supabaseAnonMeta = document.querySelector('meta[name="supabase-anon-key"]');
 const SUPABASE_URL = supabaseUrlMeta ? supabaseUrlMeta.content : '';
