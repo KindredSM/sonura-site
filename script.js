@@ -239,15 +239,6 @@ if (window.lucide && window.lucide.createIcons) {
   window.lucide.createIcons();
 }
 
-const audio = document.getElementById('player-audio');
-const playBtn = document.getElementById('player-play');
-const backBtn = document.getElementById('player-back');
-const fwdBtn = document.getElementById('player-forward');
-const seek = document.getElementById('player-seek');
-const cur = document.getElementById('player-current');
-const dur = document.getElementById('player-duration');
-const vol = document.getElementById('player-volume');
-
 function fmt(t) {
   if (!isFinite(t)) return '0:00';
   const m = Math.floor(t / 60);
@@ -255,37 +246,87 @@ function fmt(t) {
   return m + ':' + String(s).padStart(2, '0');
 }
 
-if (audio) {
-  audio.addEventListener('loadedmetadata', () => {
-    seek.max = String(Math.floor(audio.duration));
-    dur.textContent = fmt(audio.duration);
-  });
-  audio.addEventListener('timeupdate', () => {
-    seek.value = String(Math.floor(audio.currentTime));
-    cur.textContent = fmt(audio.currentTime);
-  });
-}
+let currentlyPlaying = null;
 
-if (playBtn) {
-  playBtn.addEventListener('click', () => {
-    if (audio.paused) {
-      audio.play();
-      playBtn.innerHTML = '<i data-lucide="pause"></i>';
-    } else {
+function pauseAllPlayers() {
+  document.querySelectorAll('.player-audio').forEach(audio => {
+    if (!audio.paused) {
       audio.pause();
+      const player = audio.closest('.player');
+      const playBtn = player.querySelector('.player-play');
       playBtn.innerHTML = '<i data-lucide="play"></i>';
     }
-    if (window.lucide && window.lucide.createIcons) window.lucide.createIcons();
   });
+  currentlyPlaying = null;
 }
 
-if (backBtn) backBtn.addEventListener('click', () => { audio.currentTime = Math.max(0, audio.currentTime - 10); });
-if (fwdBtn) fwdBtn.addEventListener('click', () => { audio.currentTime = Math.min(audio.duration || 0, audio.currentTime + 10); });
-if (seek) seek.addEventListener('input', () => { audio.currentTime = Number(seek.value); });
-if (vol && audio) {
-  vol.addEventListener('input', () => { 
+document.querySelectorAll('.player').forEach((player) => {
+  const audio = player.querySelector('.player-audio');
+  const playBtn = player.querySelector('.player-play');
+  const backBtn = player.querySelector('.player-back');
+  const fwdBtn = player.querySelector('.player-forward');
+  const seek = player.querySelector('.player-seek');
+  const cur = player.querySelector('.player-current');
+  const dur = player.querySelector('.player-duration');
+  const vol = player.querySelector('.player-volume');
+
+  if (audio) {
+    audio.addEventListener('loadedmetadata', () => {
+      seek.max = String(Math.floor(audio.duration));
+      dur.textContent = fmt(audio.duration);
+    });
+    
+    audio.addEventListener('timeupdate', () => {
+      seek.value = String(Math.floor(audio.currentTime));
+      cur.textContent = fmt(audio.currentTime);
+    });
+
+    audio.addEventListener('ended', () => {
+      playBtn.innerHTML = '<i data-lucide="play"></i>';
+      currentlyPlaying = null;
+      if (window.lucide && window.lucide.createIcons) window.lucide.createIcons();
+    });
+  }
+
+  if (playBtn) {
+    playBtn.addEventListener('click', () => {
+      if (audio.paused) {
+        pauseAllPlayers();
+        audio.play();
+        playBtn.innerHTML = '<i data-lucide="pause"></i>';
+        currentlyPlaying = audio;
+      } else {
+        audio.pause();
+        playBtn.innerHTML = '<i data-lucide="play"></i>';
+        currentlyPlaying = null;
+      }
+      if (window.lucide && window.lucide.createIcons) window.lucide.createIcons();
+    });
+  }
+
+  if (backBtn) {
+    backBtn.addEventListener('click', () => {
+      audio.currentTime = Math.max(0, audio.currentTime - 10);
+    });
+  }
+
+  if (fwdBtn) {
+    fwdBtn.addEventListener('click', () => {
+      audio.currentTime = Math.min(audio.duration || 0, audio.currentTime + 10);
+    });
+  }
+
+  if (seek) {
+    seek.addEventListener('input', () => {
+      audio.currentTime = Number(seek.value);
+    });
+  }
+
+  if (vol && audio) {
+    vol.addEventListener('input', () => {
+      audio.volume = Number(vol.value);
+    });
     audio.volume = Number(vol.value);
-  });
-  audio.volume = Number(vol.value);
-}
+  }
+});
 
