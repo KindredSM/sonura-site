@@ -188,8 +188,5 @@ body {
 .footer-brand { font-weight: 800; letter-spacing: 0.5px; color: var(--muted); }
 .footer-contact { padding: 10px 16px; border-radius: 10px; font-size: 14px; text-decoration: none; }
 
-@media (max-width: 480px) {
-  .footer { padding: 24px 16px; }
-  .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
-}
+
 
