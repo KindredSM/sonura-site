@@ -174,7 +174,7 @@ body {
 }
 
 @media (max-width: 480px) {
-  .demo { padding: 24px 16px 48px; }
+  .demo { padding: 24px 24px 48px; }
   .player { padding: 16px; gap: 12px; }
   .player-art { width: 72px; height: 72px; }
   .button.circle { width: 48px; height: 48px; }
