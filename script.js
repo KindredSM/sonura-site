@@ -342,7 +342,9 @@ if (scrollArrow) {
   scrollArrow.addEventListener('click', () => {
     const demoSection = document.querySelector('.demo');
     if (demoSection) {
-      demoSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const rect = demoSection.getBoundingClientRect();
+      const offset = window.pageYOffset + rect.top - 80; // 80px offset from top
+      window.scrollTo({ top: offset, behavior: 'smooth' });
     }
   });
 }
