@@ -211,7 +211,8 @@ body {
 .final-cta-title { margin: 0 0 24px; font-size: clamp(32px, 5vw, 48px); letter-spacing: -0.02em; }
 .final-cta-subtitle { margin: 0 0 48px; font-size: clamp(18px, 2.5vw, 22px); color: var(--muted); }
 .final-cta-form { margin-top: 12px; display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 560px; }
-.button.large { font-size: 20px; padding: 18px 32px; }
+.button.large { font-size: 20px; padding: 18px 32px; transition: transform .2s ease, box-shadow .2s ease, filter .2s ease; }
+.button.large:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4); filter: brightness(1.1); background: linear-gradient(135deg, var(--primary), var(--primary-600)) !important; }
 
 @media (max-width: 768px) {
   .final-cta { padding: 64px 24px 80px; }
