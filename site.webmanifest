@@ -9,9 +9,9 @@
   "description": "Sonura is the all-in-one music studio for producers, artists, and sound designers. Generate loops, melodies, vocals, FX, one-shots, and full tracks instantly.",
   "icons": [
     {
-      "src": "/favicon.svg",
+      "src": "/logo.jpg",
       "sizes": "any",
-      "type": "image/svg+xml"
+      "type": "image/jpeg"
     },
     {
       "src": "/apple-touch-icon.png",
@@ -19,7 +19,7 @@
       "type": "image/png"
     },
     {
-      "src": "/favicon.ico",
+      "src": "/logo.jpg",
       "sizes": "32x32 48x48 64x64",
       "type": "image/x-icon"
     }
