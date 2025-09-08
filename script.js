@@ -16,7 +16,7 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 const ctaButton = document.getElementById('cta-button');
 const formRow = document.getElementById('form-row');
-const waitlistForm = document.getElementById('waitlist-form');
+const earlyAccessForm = document.getElementById('early-access-form');
 const rolesToggle = document.getElementById('roles-toggle');
 const rolesPanel = document.getElementById('roles-panel');
 const rolesChips = document.getElementById('roles-chips');
@@ -29,7 +29,7 @@ const brandLink = document.querySelector('.brand');
 
 // Final CTA elements
 const finalCtaButton = document.getElementById('final-cta-button');
-const finalWaitlistForm = document.getElementById('final-waitlist-form');
+const finalEarlyAccessForm = document.getElementById('final-early-access-form');
 const finalRolesToggle = document.getElementById('final-roles-toggle');
 const finalRolesPanel = document.getElementById('final-roles-panel');
 const finalRolesChips = document.getElementById('final-roles-chips');
@@ -59,11 +59,11 @@ if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
 function toggleToForm(isFinal = false) {
   if (isFinal) {
     finalCtaButton.classList.add('hidden');
-    finalWaitlistForm.classList.remove('hidden');
+    finalEarlyAccessForm.classList.remove('hidden');
     finalEmailInput.focus();
   } else {
     ctaButton.classList.add('hidden');
-    (waitlistForm || formRow).classList.remove('hidden');
+    (earlyAccessForm || formRow).classList.remove('hidden');
     emailInput.focus();
   }
 }
@@ -74,7 +74,7 @@ function isValidEmail(email) {
 
 async function submitEmail(isFinal = false) {
   const email = isFinal ? finalEmailInput.value.trim().toLowerCase() : emailInput.value.trim().toLowerCase();
-  const form = isFinal ? finalWaitlistForm : waitlistForm;
+  const form = isFinal ? finalEarlyAccessForm : earlyAccessForm;
   const roles = Array.from(form.querySelectorAll('.role-option[aria-selected="true"]')).map(i => i.getAttribute('data-value'));
   const input = isFinal ? finalEmailInput : emailInput;
   const button = isFinal ? finalSendButton : sendButton;
@@ -86,24 +86,24 @@ async function submitEmail(isFinal = false) {
   setFeedback('', '', isFinal);
   input.disabled = true;
   button.disabled = true;
-  button.textContent = 'Joining…';
+  button.textContent = 'Getting early access…';
   try {
     const { error } = await supabase.from('waitlist').insert([{ email, roles }], { onConflict: 'email', ignoreDuplicates: true });
     if (error) throw error;
-    setFeedback('You are on the waitlist. We will be in touch soon.', 'success', isFinal);
+    setFeedback('You have early access! We will be in touch soon.', 'success', isFinal);
     button.textContent = 'Joined';
   } catch (e) {
     const msg = e && e.message ? String(e.message) : '';
     const isDuplicate = (e && e.code === '23505') || /duplicate key value/i.test(msg) || /unique constraint/i.test(msg);
     if (isDuplicate) {
-      setFeedback('You are already on the waitlist.', 'success', isFinal);
+      setFeedback('You already have early access.', 'success', isFinal);
       button.textContent = 'Joined';
     } else {
       console.error(e);
       setFeedback(msg || 'Could not join right now. Try again later.', 'error', isFinal);
       input.disabled = false;
       button.disabled = false;
-      button.textContent = 'Join';
+      button.textContent = 'Get early access';
     }
   }
 }
@@ -207,15 +207,15 @@ faqDetails.forEach((el) => {
   }
 });
 
-if (waitlistForm) {
-  waitlistForm.addEventListener('submit', (e) => {
+if (earlyAccessForm) {
+  earlyAccessForm.addEventListener('submit', (e) => {
     e.preventDefault();
     submitEmail();
   });
 }
 
 function updateChips() {
-  const selected = Array.from(waitlistForm.querySelectorAll('.role-option[aria-selected="true"]')).map(i => i.getAttribute('data-value'));
+  const selected = Array.from(earlyAccessForm.querySelectorAll('.role-option[aria-selected="true"]')).map(i => i.getAttribute('data-value'));
   rolesChips.innerHTML = '';
   selected.forEach((value) => {
     const chip = document.createElement('span');
@@ -226,7 +226,7 @@ function updateChips() {
     x.setAttribute('aria-label', 'Remove ' + value);
     x.textContent = '✕';
     x.addEventListener('click', () => {
-      const btn = waitlistForm.querySelector('.role-option[data-value="' + value + '"]');
+      const btn = earlyAccessForm.querySelector('.role-option[data-value="' + value + '"]');
       if (btn) btn.setAttribute('aria-selected', 'false');
       updateChips();
     });
@@ -266,7 +266,7 @@ if (rolesToggle && rolesPanel) {
 
 // Final CTA roles functionality
 function updateFinalChips() {
-  const selected = Array.from(finalWaitlistForm.querySelectorAll('.role-option[aria-selected="true"]')).map(i => i.getAttribute('data-value'));
+  const selected = Array.from(finalEarlyAccessForm.querySelectorAll('.role-option[aria-selected="true"]')).map(i => i.getAttribute('data-value'));
   finalRolesChips.innerHTML = '';
   selected.forEach((value) => {
     const chip = document.createElement('span');
@@ -277,7 +277,7 @@ function updateFinalChips() {
     x.setAttribute('aria-label', 'Remove ' + value);
     x.textContent = '✕';
     x.addEventListener('click', () => {
-      const btn = finalWaitlistForm.querySelector('.role-option[data-value="' + value + '"]');
+      const btn = finalEarlyAccessForm.querySelector('.role-option[data-value="' + value + '"]');
       if (btn) btn.setAttribute('aria-selected', 'false');
       updateFinalChips();
     });
@@ -315,8 +315,8 @@ if (finalRolesToggle && finalRolesPanel) {
   });
 }
 
-if (finalWaitlistForm) {
-  finalWaitlistForm.addEventListener('submit', (e) => {
+if (finalEarlyAccessForm) {
+  finalEarlyAccessForm.addEventListener('submit', (e) => {
     e.preventDefault();
     submitEmail(true);
   });
