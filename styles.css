@@ -83,8 +83,8 @@ body {
 .feedback.success { color: #34d399; }
 .feedback.error { color: #f87171; }
 
-.trust { display: flex; gap: 10px; justify-content: center; align-items: center; flex-wrap: wrap; margin-top: 8px; opacity: 0.9; }
-.pill { padding: 6px 10px; border-radius: 999px; background: rgba(255,255,255,0.06); font-size: 12px; color: var(--muted); }
+.trust { display: flex; gap: 12px; justify-content: center; align-items: center; flex-wrap: wrap; margin-top: 12px; opacity: 0.7; }
+.pill { padding: 8px 14px; border-radius: 999px; background: rgba(255,255,255,0.08); font-size: 14px; color: var(--fg); font-weight: 500; border: 1px solid rgba(255,255,255,0.1); }
 
 .scroll-indicator { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); z-index: 10; }
 .scroll-arrow { width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); display: grid; place-items: center; cursor: pointer; animation: pulse-bounce 2s infinite ease-in-out; transition: all 0.3s ease; }
