@@ -223,11 +223,12 @@ body {
 
 @media (max-width: 768px) {
   .hero { justify-content: flex-start; padding-top: 15vh; margin-bottom: 75px; }
-  .hero-content { padding-top: 40px; }
+  .hero-content { padding-top: 80px; }
   .hero-video { margin: 20px auto 0; }
   .hero-beta-link { font-size: 13px; }
   .video-play-button { width: 60px; height: 60px; }
   .video-play-button svg { width: 20px; height: 20px; }
+  .trust { display: none; }
 }
 
 @media (max-width: 520px) {
