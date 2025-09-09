@@ -234,7 +234,7 @@ body {
   .form-row { grid-template-columns: 1fr; }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 768px) {
   .hero-video { margin: 60px auto 60px; }
 }
 
