@@ -10,62 +10,12 @@ window.addEventListener('beforeunload', () => {
 
 // Fullscreen video function
 window.openVideoFullscreen = function() {
-  const videoSrc = './videos/Kindred Salway\'s Video - Sep 9, 2025-VEED (2).mp4';
-  
-  // Create video element
   const video = document.createElement('video');
-  video.src = videoSrc;
+  video.src = './videos/Kindred Salway\'s Video - Sep 9, 2025-VEED (2).mp4';
   video.controls = true;
   video.autoplay = true;
-  video.style.cssText = `
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: black;
-    z-index: 10000;
-    object-fit: contain;
-  `;
-  
-  const closeModal = () => {
-    if (document.fullscreenElement) {
-      document.exitFullscreen();
-    }
-    if (document.body.contains(video)) {
-      document.body.removeChild(video);
-    }
-    document.body.style.overflow = '';
-    // Clean up event listeners
-    document.removeEventListener('keydown', handleKeydown);
-    document.removeEventListener('fullscreenchange', handleFullscreenChange);
-  };
-  
-  // Handle escape key
-  const handleKeydown = (e) => {
-    if (e.key === 'Escape') {
-      closeModal();
-    }
-  };
-  
-  // Handle fullscreen change events (when user uses video controls or presses ESC)
-  const handleFullscreenChange = () => {
-    if (!document.fullscreenElement && document.body.contains(video)) {
-      // User exited fullscreen, clean up the video
-      if (document.body.contains(video)) {
-        document.body.removeChild(video);
-      }
-      document.body.style.overflow = '';
-      document.removeEventListener('keydown', handleKeydown);
-      document.removeEventListener('fullscreenchange', handleFullscreenChange);
-    }
-  };
-  
-  document.addEventListener('keydown', handleKeydown);
-  document.addEventListener('fullscreenchange', handleFullscreenChange);
   
   document.body.appendChild(video);
-  document.body.style.overflow = 'hidden';
   
   // Request fullscreen on the video element
   if (video.requestFullscreen) {
@@ -77,6 +27,16 @@ window.openVideoFullscreen = function() {
   } else if (video.msRequestFullscreen) {
     video.msRequestFullscreen();
   }
+  
+  // Clean up when fullscreen ends
+  const handleFullscreenChange = () => {
+    if (!document.fullscreenElement && document.body.contains(video)) {
+      document.body.removeChild(video);
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+    }
+  };
+  
+  document.addEventListener('fullscreenchange', handleFullscreenChange);
 };
 
 const supabaseUrlMeta = document.querySelector('meta[name="supabase-url"]');
