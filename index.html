@@ -50,40 +50,57 @@
       </div>
     </nav>
     <section class="hero">
-      <h1 class="headline reveal">From Idea to Release in Seconds</h1>
-      <p class="subhead reveal" data-reveal-delay="0.06s">Create royalty-free loops, melodies, vocals, FX, one-shots and full tracks ready to drop.</p>
-      <div class="cta" id="signup">          
-        <button id="cta-button" class="button primary">Get early access</button>
-        <a class="hero-beta-link" href="https://app.sonurastudio.com" target="_blank">Already enrolled? Go to app →</a>
-        <form id="early-access-form" class="form-row hidden" novalidate>
-          <div class="roles">
-            <button id="roles-toggle" class="roles-toggle" type="button" aria-expanded="false" aria-controls="roles-panel">Who are you?</button>
-            <div id="roles-panel" class="roles-panel">
-              <div class="roles-options" role="group" aria-label="Select roles">
-                <button type="button" class="role-option" data-value="independent artist" aria-selected="false">Independent artist</button>
-                <button type="button" class="role-option" data-value="producer" aria-selected="false">Producer</button>
-                <button type="button" class="role-option" data-value="label" aria-selected="false">Label</button>
-                <button type="button" class="role-option" data-value="dj" aria-selected="false">DJ</button>
-                <button type="button" class="role-option" data-value="songwriter" aria-selected="false">Songwriter</button>
-                <button type="button" class="role-option" data-value="vocalist" aria-selected="false">Vocalist</button>
-                <button type="button" class="role-option" data-value="hobbyist" aria-selected="false">Hobbyist</button>
+      <div class="hero-background">
+        <div class="hero-gradient"></div>
+        <div class="hero-noise"></div>
+      </div>
+      <div class="hero-content">
+        <h1 class="headline reveal">From Idea to Release in Seconds</h1>
+        <p class="subhead reveal" data-reveal-delay="0.06s">Create royalty-free loops, melodies, vocals, FX, one-shots and full tracks ready to drop.</p>
+        <div class="cta" id="signup">          
+          <button id="cta-button" class="button primary">Get early access</button>
+          <a class="hero-beta-link" href="https://app.sonurastudio.com" target="_blank">Already enrolled? Go to app →</a>
+          <form id="early-access-form" class="form-row hidden" novalidate>
+            <div class="roles">
+              <button id="roles-toggle" class="roles-toggle" type="button" aria-expanded="false" aria-controls="roles-panel">Who are you?</button>
+              <div id="roles-panel" class="roles-panel">
+                <div class="roles-options" role="group" aria-label="Select roles">
+                  <button type="button" class="role-option" data-value="independent artist" aria-selected="false">Independent artist</button>
+                  <button type="button" class="role-option" data-value="producer" aria-selected="false">Producer</button>
+                  <button type="button" class="role-option" data-value="label" aria-selected="false">Label</button>
+                  <button type="button" class="role-option" data-value="dj" aria-selected="false">DJ</button>
+                  <button type="button" class="role-option" data-value="songwriter" aria-selected="false">Songwriter</button>
+                  <button type="button" class="role-option" data-value="vocalist" aria-selected="false">Vocalist</button>
+                  <button type="button" class="role-option" data-value="hobbyist" aria-selected="false">Hobbyist</button>
+                </div>
               </div>
+              <div id="roles-chips" class="roles-chips" aria-live="polite"></div>
             </div>
-            <div id="roles-chips" class="roles-chips" aria-live="polite"></div>
+            <input id="email-input" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" class="input" aria-label="Email address" aria-describedby="feedback" required/>
+            <button id="send-button" class="button primary" type="submit">Get early access</button>
+          </form>
+          <div id="feedback" class="feedback" role="status" aria-live="polite"></div>
+        </div>
+        <div class="trust">
+          <div class="pill">No spam</div>
+          <div class="pill">Cancel anytime</div>
+          <div class="pill">Early access</div>
+        </div>
+      </div>
+      <div class="hero-video" onclick="openVideoFullscreen()">
+        <video 
+          muted 
+          loop 
+          playsinline
+          class="hero-video-element"
+          poster="./videos/video-thumbnail.jpg"
+        >
+          <source src="./videos/Kindred Salway's Video - Sep 9, 2025-VEED (2).mp4" type="video/mp4">
+        </video>
+        <div class="hero-video-overlay">
+          <div class="video-play-button">
+            <i data-lucide="play"></i>
           </div>
-          <input id="email-input" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" class="input" aria-label="Email address" aria-describedby="feedback" required/>
-          <button id="send-button" class="button primary" type="submit">Get early access</button>
-        </form>
-        <div id="feedback" class="feedback" role="status" aria-live="polite"></div>
-      </div>
-      <div class="trust">
-        <div class="pill">No spam</div>
-        <div class="pill">Cancel anytime</div>
-        <div class="pill">Early access</div>
-      </div>
-      <div class="scroll-indicator">
-        <div class="scroll-arrow">
-          <i data-lucide="chevron-down"></i>
         </div>
       </div>
     </section>

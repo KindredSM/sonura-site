@@ -8,6 +8,85 @@ window.addEventListener('beforeunload', () => {
   window.scrollTo(0, 0);
 });
 
+// Fullscreen video function
+window.openVideoFullscreen = function() {
+  const videoSrc = './videos/Kindred Salway\'s Video - Sep 9, 2025-VEED (2).mp4';
+  
+  // Create fullscreen video modal
+  const modal = document.createElement('div');
+  modal.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+  `;
+  
+  const video = document.createElement('video');
+  video.src = videoSrc;
+  video.controls = true;
+  video.autoplay = true;
+  video.style.cssText = `
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  `;
+  
+  const closeButton = document.createElement('button');
+  closeButton.innerHTML = '×';
+  closeButton.style.cssText = `
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    font-size: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+  `;
+  
+  closeButton.addEventListener('mouseover', () => {
+    closeButton.style.background = 'rgba(255, 255, 255, 0.3)';
+    closeButton.style.transform = 'scale(1.1)';
+  });
+  
+  closeButton.addEventListener('mouseout', () => {
+    closeButton.style.background = 'rgba(255, 255, 255, 0.2)';
+    closeButton.style.transform = 'scale(1)';
+  });
+  
+  const closeModal = () => {
+    document.body.removeChild(modal);
+    document.body.style.overflow = '';
+  };
+  
+  closeButton.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+  
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+  
+  modal.appendChild(video);
+  modal.appendChild(closeButton);
+  document.body.appendChild(modal);
+  document.body.style.overflow = 'hidden';
+};
+
 const supabaseUrlMeta = document.querySelector('meta[name="supabase-url"]');
 const supabaseAnonMeta = document.querySelector('meta[name="supabase-anon-key"]');
 const SUPABASE_URL = supabaseUrlMeta ? supabaseUrlMeta.content : '';
