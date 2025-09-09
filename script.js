@@ -15,7 +15,45 @@ window.openVideoFullscreen = function() {
   video.controls = true;
   video.autoplay = true;
   
+  // Style the video to be invisible until fullscreen
+  video.style.cssText = `
+    position: fixed;
+    top: -9999px;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+  `;
+  
   document.body.appendChild(video);
+  
+  // Clean up function
+  const cleanup = () => {
+    if (document.body.contains(video)) {
+      document.body.removeChild(video);
+    }
+    document.removeEventListener('fullscreenchange', handleFullscreenChange);
+    document.removeEventListener('webkitfullscreenchange', handleFullscreenChange);
+    document.removeEventListener('mozfullscreenchange', handleFullscreenChange);
+    document.removeEventListener('MSFullscreenChange', handleFullscreenChange);
+  };
+  
+  // Handle fullscreen change events (cross-browser)
+  const handleFullscreenChange = () => {
+    const isFullscreen = !!(document.fullscreenElement || document.webkitFullscreenElement || 
+                           document.mozFullScreenElement || document.msFullscreenElement);
+    
+    if (!isFullscreen) {
+      cleanup();
+    }
+  };
+  
+  // Add event listeners for all browsers
+  document.addEventListener('fullscreenchange', handleFullscreenChange);
+  document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+  document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+  document.addEventListener('MSFullscreenChange', handleFullscreenChange);
   
   // Request fullscreen on the video element
   if (video.requestFullscreen) {
@@ -27,16 +65,6 @@ window.openVideoFullscreen = function() {
   } else if (video.msRequestFullscreen) {
     video.msRequestFullscreen();
   }
-  
-  // Clean up when fullscreen ends
-  const handleFullscreenChange = () => {
-    if (!document.fullscreenElement && document.body.contains(video)) {
-      document.body.removeChild(video);
-      document.removeEventListener('fullscreenchange', handleFullscreenChange);
-    }
-  };
-  
-  document.addEventListener('fullscreenchange', handleFullscreenChange);
 };
 
 const supabaseUrlMeta = document.querySelector('meta[name="supabase-url"]');
