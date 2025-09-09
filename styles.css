@@ -45,6 +45,21 @@ body {
 .cta { margin-top: 12px; display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 560px; }
 .cta .button.primary { font-size: 18px; padding: 16px 24px; transition: transform .2s ease, box-shadow .2s ease, filter .2s ease; }
 .cta .button.primary:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4); filter: brightness(1.1); background: linear-gradient(135deg, var(--primary), var(--primary-600)) !important; }
+.hero-beta-link { 
+  color: var(--muted); 
+  text-decoration: none; 
+  font-size: 14px; 
+  color: var(--muted);
+  transition: opacity 0.2s ease, color 0.2s ease; 
+  font-weight: 500;
+  margin-top: 8px;
+  align-self: center;
+}
+.hero-beta-link:hover { 
+  opacity: 1; 
+  color: var(--fg); 
+  text-decoration: none; 
+}
 .form-row { display: grid; grid-template-columns: 1fr; gap: 10px; align-items: center; }
 .hidden { display: none; }
 
@@ -117,6 +132,7 @@ body {
 @media (max-width: 768px) {
   .hero { justify-content: flex-start; padding-top: 25vh; }
   .scroll-indicator { display: none; }
+  .hero-beta-link { font-size: 13px; }
 }
 
 @media (max-width: 520px) {
