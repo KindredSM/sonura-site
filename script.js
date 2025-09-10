@@ -13,17 +13,18 @@ window.openVideoFullscreen = function() {
   const video = document.createElement('video');
   video.src = './videos/Kindred Salway\'s Video - Sep 9, 2025-VEED (2).mp4';
   video.controls = true;
-  video.autoplay = true;
   
-  // Style the video to be invisible until fullscreen
+  // Style the video to be ready for fullscreen
   video.style.cssText = `
     position: fixed;
-    top: -9999px;
-    left: -9999px;
-    width: 1px;
-    height: 1px;
-    opacity: 0;
-    pointer-events: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
+    background: #000;
+    z-index: 9999;
   `;
   
   document.body.appendChild(video);
@@ -55,16 +56,25 @@ window.openVideoFullscreen = function() {
   document.addEventListener('mozfullscreenchange', handleFullscreenChange);
   document.addEventListener('MSFullscreenChange', handleFullscreenChange);
   
-  // Request fullscreen on the video element
-  if (video.requestFullscreen) {
-    video.requestFullscreen();
-  } else if (video.webkitRequestFullscreen) {
-    video.webkitRequestFullscreen();
-  } else if (video.mozRequestFullScreen) {
-    video.mozRequestFullScreen();
-  } else if (video.msRequestFullscreen) {
-    video.msRequestFullscreen();
-  }
+  // Add ended event listener to cleanup when video finishes
+  video.addEventListener('ended', cleanup);
+  
+  // Wait for the video to load before requesting fullscreen
+  video.addEventListener('loadeddata', () => {
+    // Request fullscreen on the video element
+    if (video.requestFullscreen) {
+      video.requestFullscreen();
+    } else if (video.webkitRequestFullscreen) {
+      video.webkitRequestFullscreen();
+    } else if (video.mozRequestFullScreen) {
+      video.mozRequestFullScreen();
+    } else if (video.msRequestFullscreen) {
+      video.msRequestFullscreen();
+    }
+  });
+  
+  // Load the video
+  video.load();
 };
 
 const supabaseUrlMeta = document.querySelector('meta[name="supabase-url"]');
