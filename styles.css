@@ -21,6 +21,10 @@ body {
 .nav { position: sticky; top: 0; z-index: 100; width: 100%; background: transparent; transition: background-color 0.3s ease, backdrop-filter 0.3s ease; }
 .nav.scrolled { background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(12px); }
 .nav-inner { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; max-width: 1120px; margin: 0 auto; width: 100%; }
+.nav-actions { display: flex; align-items: center; gap: 10px; }
+.nav-icon { display: inline-flex; align-items: center; justify-content: center; padding: 6px; color: var(--fg); text-decoration: none; opacity: 0.85; transition: transform .18s ease, opacity .18s ease; line-height: 0; }
+.nav-icon:hover { transform: translateY(-1px); opacity: 1; }
+.fab { font-size: 24px; }
 .brand { font-weight: 800; letter-spacing: 0.5px; color: var(--fg) !important; text-decoration: none !important; cursor: pointer; transition: opacity 0.2s ease; border: none; outline: none; background: none; display: flex; align-items: center;  }
 .brand p { font-size: 16px; }
 .brand:hover { opacity: 0.8; color: var(--fg) !important; text-decoration: none !important; }
