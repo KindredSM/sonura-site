@@ -8,75 +8,100 @@ window.addEventListener('beforeunload', () => {
   window.scrollTo(0, 0);
 });
 
-// Fullscreen video function
+// Video modal function
 window.openVideoFullscreen = function() {
+  // Create modal backdrop
+  const modal = document.createElement('div');
+  modal.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+  `;
+  
+  // Create video element
   const video = document.createElement('video');
   video.src = './videos/Kindred Salway\'s Video - Sep 9, 2025-VEED (2).mp4';
   video.controls = true;
-  
-  // Style the video to be ready for fullscreen
+  video.autoplay = true;
   video.style.cssText = `
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100vw;
-    height: 100vh;
-    object-fit: contain;
-    background: #000;
-    z-index: 9999;
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
   `;
   
-  document.body.appendChild(video);
+  // Create close button
+  const closeBtn = document.createElement('button');
+  closeBtn.innerHTML = '×';
+  closeBtn.style.cssText = `
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    font-size: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+    z-index: 10000;
+  `;
+  
+  closeBtn.addEventListener('mouseenter', () => {
+    closeBtn.style.background = 'rgba(255, 255, 255, 0.3)';
+    closeBtn.style.transform = 'scale(1.1)';
+  });
+  
+  closeBtn.addEventListener('mouseleave', () => {
+    closeBtn.style.background = 'rgba(255, 255, 255, 0.2)';
+    closeBtn.style.transform = 'scale(1)';
+  });
   
   // Clean up function
   const cleanup = () => {
-    if (document.body.contains(video)) {
-      document.body.removeChild(video);
+    if (document.body.contains(modal)) {
+      document.body.removeChild(modal);
     }
-    document.removeEventListener('fullscreenchange', handleFullscreenChange);
-    document.removeEventListener('webkitfullscreenchange', handleFullscreenChange);
-    document.removeEventListener('mozfullscreenchange', handleFullscreenChange);
-    document.removeEventListener('MSFullscreenChange', handleFullscreenChange);
+    document.removeEventListener('keydown', handleKeydown);
   };
   
-  // Handle fullscreen change events (cross-browser)
-  const handleFullscreenChange = () => {
-    const isFullscreen = !!(document.fullscreenElement || document.webkitFullscreenElement || 
-                           document.mozFullScreenElement || document.msFullscreenElement);
-    
-    if (!isFullscreen) {
+  // Handle escape key
+  const handleKeydown = (e) => {
+    if (e.key === 'Escape') {
       cleanup();
     }
   };
   
-  // Add event listeners for all browsers
-  document.addEventListener('fullscreenchange', handleFullscreenChange);
-  document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
-  document.addEventListener('mozfullscreenchange', handleFullscreenChange);
-  document.addEventListener('MSFullscreenChange', handleFullscreenChange);
+  // Close modal function
+  const closeModal = () => {
+    cleanup();
+  };
   
-  // Add ended event listener to cleanup when video finishes
-  video.addEventListener('ended', cleanup);
-  
-  // Wait for the video to load before requesting fullscreen
-  video.addEventListener('loadeddata', () => {
-    // Play the video and request fullscreen
-    video.play();
-    
-    if (video.requestFullscreen) {
-      video.requestFullscreen();
-    } else if (video.webkitRequestFullscreen) {
-      video.webkitRequestFullscreen();
-    } else if (video.mozRequestFullScreen) {
-      video.mozRequestFullScreen();
-    } else if (video.msRequestFullscreen) {
-      video.msRequestFullscreen();
+  // Add event listeners
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
     }
   });
+  video.addEventListener('ended', cleanup);
+  document.addEventListener('keydown', handleKeydown);
   
-  // Load the video
-  video.load();
+  // Append elements
+  modal.appendChild(video);
+  modal.appendChild(closeBtn);
+  document.body.appendChild(modal);
 };
 
 const supabaseUrlMeta = document.querySelector('meta[name="supabase-url"]');
