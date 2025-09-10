@@ -61,7 +61,9 @@ window.openVideoFullscreen = function() {
   
   // Wait for the video to load before requesting fullscreen
   video.addEventListener('loadeddata', () => {
-    // Request fullscreen on the video element
+    // Play the video and request fullscreen
+    video.play();
+    
     if (video.requestFullscreen) {
       video.requestFullscreen();
     } else if (video.webkitRequestFullscreen) {
