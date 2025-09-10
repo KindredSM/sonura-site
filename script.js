@@ -30,7 +30,7 @@ window.openVideoFullscreen = function() {
   const video = document.createElement('video');
   video.src = './videos/Kindred Salway\'s Video - Sep 9, 2025-VEED (2).mp4';
   video.controls = true;
-  video.autoplay = true;
+  video.preload = 'metadata';
   video.style.cssText = `
     max-width: 90vw;
     max-height: 90vh;
@@ -48,14 +48,19 @@ window.openVideoFullscreen = function() {
     background: rgba(255, 255, 255, 0.2);
     border: none;
     color: white;
-    font-size: 30px;
-    width: 50px;
-    height: 50px;
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 1;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     cursor: pointer;
     backdrop-filter: blur(10px);
     transition: 0.3s;
     z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   `;
   
   closeBtn.addEventListener('mouseenter', () => {
@@ -96,6 +101,9 @@ window.openVideoFullscreen = function() {
     }
   });
   video.addEventListener('ended', cleanup);
+  video.addEventListener('loadeddata', () => {
+    video.play();
+  });
   document.addEventListener('keydown', handleKeydown);
   
   // Append elements
