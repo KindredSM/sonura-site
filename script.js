@@ -1,5 +1,3 @@
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
-
 // Ensure page always starts at top on reload
 if ('scrollRestoration' in history) {
   history.scrollRestoration = 'manual';
@@ -112,139 +110,9 @@ window.openVideoFullscreen = function() {
   document.body.appendChild(modal);
 };
 
-const supabaseUrlMeta = document.querySelector('meta[name="supabase-url"]');
-const supabaseAnonMeta = document.querySelector('meta[name="supabase-anon-key"]');
-const SUPABASE_URL = supabaseUrlMeta ? supabaseUrlMeta.content : '';
-const SUPABASE_ANON_KEY = supabaseAnonMeta ? supabaseAnonMeta.content : '';
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-const ctaButton = document.getElementById('cta-button');
-const formRow = document.getElementById('form-row');
-const earlyAccessForm = document.getElementById('early-access-form');
-const rolesToggle = document.getElementById('roles-toggle');
-const rolesPanel = document.getElementById('roles-panel');
-const rolesChips = document.getElementById('roles-chips');
-const rolesContainer = rolesChips ? rolesChips.closest('.roles') : null;
-const emailInput = document.getElementById('email-input');
-const sendButton = document.getElementById('send-button');
-const feedbackEl = document.getElementById('feedback');
-const navCta = document.querySelector('.nav-cta');
 const brandLink = document.querySelector('.brand');
 
-// Final CTA elements
-const finalCtaButton = document.getElementById('final-cta-button');
-const finalEarlyAccessForm = document.getElementById('final-early-access-form');
-const finalRolesToggle = document.getElementById('final-roles-toggle');
-const finalRolesPanel = document.getElementById('final-roles-panel');
-const finalRolesChips = document.getElementById('final-roles-chips');
-const finalRolesContainer = finalRolesChips ? finalRolesChips.closest('.roles') : null;
-const finalEmailInput = document.getElementById('final-email-input');
-const finalSendButton = document.getElementById('final-send-button');
-const finalFeedbackEl = document.getElementById('final-feedback');
-
-function setFeedback(message, type, isFinal = false) {
-  const feedback = isFinal ? finalFeedbackEl : feedbackEl;
-  const input = isFinal ? finalEmailInput : emailInput;
-  feedback.textContent = message || '';
-  feedback.classList.remove('success', 'error');
-  if (type) feedback.classList.add(type);
-  input.setAttribute('aria-invalid', type === 'error' ? 'true' : 'false');
-}
-
-if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
-  setFeedback('Missing Supabase configuration.', 'error');
-  setFeedback('Missing Supabase configuration.', 'error', true);
-  ctaButton.disabled = true;
-  sendButton.disabled = true;
-  if (finalCtaButton) finalCtaButton.disabled = true;
-  if (finalSendButton) finalSendButton.disabled = true;
-}
-
-function toggleToForm(isFinal = false) {
-  if (isFinal) {
-    finalCtaButton.classList.add('hidden');
-    finalEarlyAccessForm.classList.remove('hidden');
-    finalEmailInput.focus();
-  } else {
-    ctaButton.classList.add('hidden');
-    (earlyAccessForm || formRow).classList.remove('hidden');
-    emailInput.focus();
-  }
-}
-
-function isValidEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
-async function submitEmail(isFinal = false) {
-  const email = isFinal ? finalEmailInput.value.trim().toLowerCase() : emailInput.value.trim().toLowerCase();
-  const form = isFinal ? finalEarlyAccessForm : earlyAccessForm;
-  const roles = Array.from(form.querySelectorAll('.role-option[aria-selected="true"]')).map(i => i.getAttribute('data-value'));
-  const input = isFinal ? finalEmailInput : emailInput;
-  const button = isFinal ? finalSendButton : sendButton;
-  
-  if (!isValidEmail(email)) {
-    setFeedback('Enter a valid email address.', 'error', isFinal);
-    return;
-  }
-  setFeedback('', '', isFinal);
-  input.disabled = true;
-  button.disabled = true;
-  button.textContent = 'Getting early access…';
-  try {
-    const { error } = await supabase.from('waitlist').insert([{ email, roles }], { onConflict: 'email', ignoreDuplicates: true });
-    if (error) throw error;
-    setFeedback('You have early access! We will be in touch soon.', 'success', isFinal);
-    button.textContent = 'Joined';
-  } catch (e) {
-    const msg = e && e.message ? String(e.message) : '';
-    const isDuplicate = (e && e.code === '23505') || /duplicate key value/i.test(msg) || /unique constraint/i.test(msg);
-    if (isDuplicate) {
-      setFeedback('You already have early access.', 'success', isFinal);
-      button.textContent = 'Joined';
-    } else {
-      console.error(e);
-      setFeedback(msg || 'Could not join right now. Try again later.', 'error', isFinal);
-      input.disabled = false;
-      button.disabled = false;
-      button.textContent = 'Get early access';
-    }
-  }
-}
-
-ctaButton.addEventListener('click', (e) => {
-  e.preventDefault();
-  e.stopPropagation();
-  toggleToForm();
-});
-sendButton.addEventListener('click', submitEmail);
-emailInput.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') submitEmail();
-});
-
-// Final CTA event listeners
-if (finalCtaButton) finalCtaButton.addEventListener('click', () => toggleToForm(true));
-if (finalSendButton) finalSendButton.addEventListener('click', () => submitEmail(true));
-if (finalEmailInput) {
-  finalEmailInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') submitEmail(true);
-  });
-}
-
-if (navCta) {
-  navCta.addEventListener('click', (e) => {
-    e.preventDefault();
-    const signup = document.getElementById('signup');
-    if (signup && signup.scrollIntoView) {
-      signup.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-    if (ctaButton.classList.contains('hidden')) {
-      emailInput.focus();
-    } else {
-      toggleToForm();
-    }
-  });
-}
+ 
 
 if (brandLink) {
   brandLink.addEventListener('click', (e) => {
@@ -311,120 +179,13 @@ faqDetails.forEach((el) => {
   }
 });
 
-if (earlyAccessForm) {
-  earlyAccessForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    submitEmail();
-  });
-}
+ 
 
-function updateChips() {
-  const selected = Array.from(earlyAccessForm.querySelectorAll('.role-option[aria-selected="true"]')).map(i => i.getAttribute('data-value'));
-  rolesChips.innerHTML = '';
-  selected.forEach((value) => {
-    const chip = document.createElement('span');
-    chip.className = 'roles-chip';
-    chip.textContent = value.replace(/\b\w/g, c => c.toUpperCase());
-    const x = document.createElement('button');
-    x.type = 'button';
-    x.setAttribute('aria-label', 'Remove ' + value);
-    x.textContent = '✕';
-    x.addEventListener('click', () => {
-      const btn = earlyAccessForm.querySelector('.role-option[data-value="' + value + '"]');
-      if (btn) btn.setAttribute('aria-selected', 'false');
-      updateChips();
-    });
-    chip.appendChild(x);
-    rolesChips.appendChild(chip);
-  });
-  if (rolesContainer) {
-    if (selected.length > 0) rolesContainer.classList.add('has-chips');
-    else rolesContainer.classList.remove('has-chips');
-  }
-}
+ 
 
-if (rolesToggle && rolesPanel) {
-  rolesToggle.addEventListener('click', () => {
-    const expanded = rolesToggle.getAttribute('aria-expanded') === 'true';
-    rolesToggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-    rolesPanel.classList.toggle('open', !expanded);
-  });
+ 
 
-  document.addEventListener('click', (e) => {
-    if (!rolesPanel.classList.contains('open')) return;
-    if (!rolesPanel.contains(e.target) && e.target !== rolesToggle) {
-      rolesToggle.setAttribute('aria-expanded', 'false');
-      rolesPanel.classList.remove('open');
-    }
-  });
-
-  rolesPanel.addEventListener('click', (e) => {
-    const btn = e.target.closest('.role-option');
-    if (!btn) return;
-    const value = btn.getAttribute('data-value');
-    const selected = btn.getAttribute('aria-selected') === 'true';
-    btn.setAttribute('aria-selected', selected ? 'false' : 'true');
-    updateChips();
-  });
-}
-
-// Final CTA roles functionality
-function updateFinalChips() {
-  const selected = Array.from(finalEarlyAccessForm.querySelectorAll('.role-option[aria-selected="true"]')).map(i => i.getAttribute('data-value'));
-  finalRolesChips.innerHTML = '';
-  selected.forEach((value) => {
-    const chip = document.createElement('span');
-    chip.className = 'roles-chip';
-    chip.textContent = value.replace(/\b\w/g, c => c.toUpperCase());
-    const x = document.createElement('button');
-    x.type = 'button';
-    x.setAttribute('aria-label', 'Remove ' + value);
-    x.textContent = '✕';
-    x.addEventListener('click', () => {
-      const btn = finalEarlyAccessForm.querySelector('.role-option[data-value="' + value + '"]');
-      if (btn) btn.setAttribute('aria-selected', 'false');
-      updateFinalChips();
-    });
-    chip.appendChild(x);
-    finalRolesChips.appendChild(chip);
-  });
-  if (finalRolesContainer) {
-    if (selected.length > 0) finalRolesContainer.classList.add('has-chips');
-    else finalRolesContainer.classList.remove('has-chips');
-  }
-}
-
-if (finalRolesToggle && finalRolesPanel) {
-  finalRolesToggle.addEventListener('click', () => {
-    const expanded = finalRolesToggle.getAttribute('aria-expanded') === 'true';
-    finalRolesToggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-    finalRolesPanel.classList.toggle('open', !expanded);
-  });
-
-  document.addEventListener('click', (e) => {
-    if (!finalRolesPanel.classList.contains('open')) return;
-    if (!finalRolesPanel.contains(e.target) && e.target !== finalRolesToggle) {
-      finalRolesToggle.setAttribute('aria-expanded', 'false');
-      finalRolesPanel.classList.remove('open');
-    }
-  });
-
-  finalRolesPanel.addEventListener('click', (e) => {
-    const btn = e.target.closest('.role-option');
-    if (!btn) return;
-    const value = btn.getAttribute('data-value');
-    const selected = btn.getAttribute('aria-selected') === 'true';
-    btn.setAttribute('aria-selected', selected ? 'false' : 'true');
-    updateFinalChips();
-  });
-}
-
-if (finalEarlyAccessForm) {
-  finalEarlyAccessForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    submitEmail(true);
-  });
-}
+ 
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 if (!prefersReducedMotion) {
