@@ -26,7 +26,7 @@ window.openVideoFullscreen = function() {
   
   // Create video element
   const video = document.createElement('video');
-  video.src = './videos/Kindred Salway\'s Video - Sep 9, 2025-VEED (2).mp4';
+  video.src = './videos/sonura desktop ad.mp4';
   video.controls = true;
   video.preload = 'metadata';
   video.style.cssText = `
