@@ -352,7 +352,7 @@ body {
 }
 
 .faq { padding: 80px 24px 120px; background: linear-gradient(180deg, rgba(20,20,20,1) 0%, rgba(12,12,12,1) 100%); }
-.faq-inner { max-width: 800px; margin: 0 auto; }
+.faq-inner { max-width: 1100px; margin: 0 auto; }
 .faq-title { margin: 0 0 48px; text-align: center; letter-spacing: -0.02em; font-size: clamp(28px, 4vw, 36px); }
 .faq-list { display: grid; gap: 16px; }
 .faq details { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 12px 14px; overflow: hidden; }
