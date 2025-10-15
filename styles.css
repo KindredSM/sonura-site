@@ -15,19 +15,19 @@
 *::-webkit-scrollbar {
   display: none;
 }
-html, body { height: 100%; }
 html { 
   scroll-behavior: smooth;
+  min-height: 100%;
 }
 body {
   margin: 0;
+  min-height: 100vh;
   font-family: Poppins, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
   color: var(--fg);
-  background: linear-gradient(180deg, rgba(10,10,10,1) 0%, rgba(12,12,15,1) 15%, rgba(15,15,18,1) 30%, rgba(18,18,20,1) 50%, rgba(16,16,18,1) 65%, rgba(14,14,16,1) 80%, rgba(10,10,12,1) 95%, rgba(8,8,10,1) 100%);
-  background-attachment: fixed;
+  background: rgba(11,11,11,1);
 }
 
-.page { min-height: 100%; display: flex; flex-direction: column; }
+.page { min-height: 100vh; display: flex; flex-direction: column; }
 .nav { position: sticky; top: 0; z-index: 100; width: 100%; background: transparent; transition: background-color 0.3s ease, backdrop-filter 0.3s ease; }
 .nav.scrolled { background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(12px); }
 .nav-inner { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; max-width: 1200px; margin: 0 auto; width: 100%; }
@@ -162,10 +162,10 @@ body {
   z-index: 5;
   width: 100%;
   max-width: 1200px;
-  margin: 80px auto 60px;
+  margin: 80px auto 80px;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 20px 80px rgba(0,0,0,0.5);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
   cursor: pointer;
 }
 
@@ -440,8 +440,7 @@ body {
   .volume input[type="range"] { width: 120px; }
 }
 
-.workflow { padding: 100px 24px; background: transparent; position: relative; overflow: hidden; }
-.workflow::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 80%; height: 300px; background: radial-gradient(ellipse at top, rgba(124,58,237,0.15), transparent 70%); pointer-events: none; }
+.workflow { padding: 100px 24px; background: transparent; position: relative; }
 .workflow-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; }
 .workflow-title { margin: 0 0 80px; text-align: center; font-size: clamp(32px, 5vw, 48px); letter-spacing: -0.02em; }
 .workflow-grid { display: flex; flex-direction: column; gap: 80px; }
