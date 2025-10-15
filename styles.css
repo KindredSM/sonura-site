@@ -23,7 +23,8 @@ body {
   margin: 0;
   font-family: Poppins, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
   color: var(--fg);
-  background: var(--bg);
+  background: linear-gradient(180deg, rgba(10,10,10,1) 0%, rgba(12,12,15,1) 15%, rgba(15,15,18,1) 30%, rgba(18,18,20,1) 50%, rgba(16,16,18,1) 65%, rgba(14,14,16,1) 80%, rgba(10,10,12,1) 95%, rgba(8,8,10,1) 100%);
+  background-attachment: fixed;
 }
 
 .page { min-height: 100%; display: flex; flex-direction: column; }
@@ -58,28 +59,22 @@ body {
   margin-top: -100px;
   padding-top: 132px;
   overflow: hidden;
+  background: transparent;
 }
 
 .hero-background {
   position: absolute;
   inset: 0;
   z-index: 1;
+  pointer-events: none;
 }
 
 .hero-gradient {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(1400px 600px at 50% -10%, rgba(124,58,237,0.3), transparent 60%),
-              radial-gradient(800px 400px at 20% 30%, rgba(34,197,94,0.2), transparent 55%),
-              radial-gradient(600px 300px at 80% 70%, rgba(236,72,153,0.15), transparent 50%);
+  display: none;
 }
 
 .hero-noise {
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
-  background-size: 125px 125px;
-  mix-blend-mode: soft-light;
+  display: none;
 }
 
 .hero-content {
@@ -351,7 +346,7 @@ body {
   .hero-video { margin: 60px auto 60px; }
 }
 
-.faq { padding: 80px 24px 120px; background: linear-gradient(180deg, rgba(20,20,20,1) 0%, rgba(12,12,12,1) 100%); }
+.faq { padding: 80px 24px 120px; background: transparent; }
 .faq-inner { max-width: 1100px; margin: 0 auto; }
 .faq-title { margin: 0 0 48px; text-align: center; letter-spacing: -0.02em; font-size: clamp(28px, 4vw, 36px); }
 .faq-list { display: grid; gap: 16px; }
@@ -392,7 +387,7 @@ body {
   .rights-card > .rights-icon, .trust-card > .trust-icon { display: none; }
 }
 
-.demo { padding: 120px 24px 120px; background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(15,15,15,0.8) 50%, rgba(20,20,20,1) 100%); }
+.demo { padding: 120px 24px 120px; background: transparent; }
 .demo-inner { max-width: 1100px; margin: 0 auto; }
 .demo-header { margin-bottom: 64px; text-align: center; }
 .demo-title { margin: 0 0 12px; font-size: clamp(28px, 4vw, 42px); letter-spacing: -0.02em; }
@@ -445,7 +440,7 @@ body {
   .volume input[type="range"] { width: 120px; }
 }
 
-.workflow { padding: 100px 24px; background: linear-gradient(180deg, rgba(10,10,10,1) 0%, rgba(15,15,20,1) 100%); position: relative; overflow: hidden; }
+.workflow { padding: 100px 24px; background: transparent; position: relative; overflow: hidden; }
 .workflow::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 80%; height: 300px; background: radial-gradient(ellipse at top, rgba(124,58,237,0.15), transparent 70%); pointer-events: none; }
 .workflow-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; }
 .workflow-title { margin: 0 0 80px; text-align: center; font-size: clamp(32px, 5vw, 48px); letter-spacing: -0.02em; }
@@ -458,7 +453,7 @@ body {
 .workflow-content { flex: 1; display: flex; flex-direction: column; gap: 16px; }
 .workflow-item-title { margin: 0; font-size: clamp(24px, 3vw, 32px); font-weight: 700; letter-spacing: -0.02em; background: linear-gradient(135deg, var(--fg), rgba(255,255,255,0.8)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .workflow-item-description { margin: 0; font-size: clamp(15px, 2vw, 17px); color: var(--muted); line-height: 1.7; }
-.workflow-cta { text-align: center; margin-top: 64px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+.workflow-cta { text-align: center; margin-top: 100px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
 .workflow-cta-text { margin: 0; font-size: clamp(16px, 2vw, 18px); color: var(--muted); }
 .workflow-cta .button.primary { font-size: 16px; padding: 14px 24px; transition: transform .2s ease, box-shadow .2s ease, filter .2s ease, background .2s ease; }
 .workflow-cta .button.primary:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4); filter: brightness(1.1); background: linear-gradient(135deg, var(--primary), var(--primary-600)) !important; }
@@ -475,7 +470,7 @@ body {
   .workflow-grid { gap: 48px; }
 }
 
-.use-cases { padding: 100px 24px; background: linear-gradient(180deg, rgba(10,10,10,1) 0%, rgba(15,15,15,1) 100%); }
+.use-cases { padding: 100px 24px; background: transparent; }
 .use-cases-inner { max-width: 1100px; margin: 0 auto; }
 .use-cases-title { margin: 0 0 64px; text-align: center; font-size: clamp(32px, 5vw, 48px); letter-spacing: -0.02em; }
 .use-cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
@@ -515,7 +510,7 @@ body {
   .footer { padding: 32px 24px 48px; }
 }
 
-.final-cta { padding: 80px 24px 120px; background: linear-gradient(180deg, rgba(12,12,12,1) 0%, rgba(8,8,8,1) 100%);  }
+.final-cta { padding: 80px 24px 120px; background: transparent;  }
 .final-cta-inner { max-width: 800px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
 .final-cta-title { margin: 0 0 24px; font-size: clamp(32px, 5vw, 52px); letter-spacing: -0.02em; }
 .final-cta-subtitle { margin: 0 0 48px; font-size: clamp(16px, 2.5vw, 20px); color: var(--muted); line-height: 1.5; }
@@ -539,7 +534,7 @@ body {
   .button.large { font-size: 18px; padding: 16px 24px; }
 }
 
-.footer { padding: 64px 0; border-top: 1px solid rgba(255,255,255,0.1); background: linear-gradient(180deg, rgba(8,8,8,1) 0%, rgba(5,5,5,1) 100%); }
+.footer { padding: 64px 0; border-top: 1px solid rgba(255,255,255,0.1); background: transparent; }
 .footer-inner { max-width: 1120px; margin: 0 auto; width: 100%; padding: 0 24px; }
 .footer-content { display: flex; justify-content: space-between; align-items: center; gap: 40px; }
 .footer-brand { flex: 1; }
