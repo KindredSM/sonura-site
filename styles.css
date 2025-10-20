@@ -361,6 +361,16 @@ body {
 
 @media (max-width: 768px) {
   .hero-video { margin: 60px auto 60px; }
+  
+  /* remove margin: 80px auto from blog pages on mobile */
+  div[style*="margin: 80px auto"] {
+    margin: 0 auto !important;
+  }
+  
+  /* remove top padding from blog index page on mobile */
+  section[style*="padding: 60px 24px 80px"] {
+    padding: 0 24px 80px !important;
+  }
 }
 
 .faq { padding: 80px 24px 120px; background: transparent; }
