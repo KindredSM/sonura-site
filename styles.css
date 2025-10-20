@@ -89,6 +89,12 @@ body {
   padding-top: 120px;
 }
 
+.workflow + .demo ~ .faq .hero-content,
+.workflow ~ .demo .hero-content,
+body:has(.workflow) .hero-content {
+  padding-top: 0px;
+}
+
 .hero-badge {
   display: inline-flex;
   align-items: center;
