@@ -78,10 +78,52 @@
     .plugin-box .plugin-platform {
       color: var(--muted);
     }
+    .blog-post .plugin-box .plugin-meta {
+      flex-wrap: wrap;
+    }
+    .blog-post .plugin-box a {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+    @media (max-width: 1024px) {
+      .blog-post .blog-layout {
+        gap: 24px !important;
+      }
+    }
+    @media (max-width: 900px) {
+      .blog-post .blog-layout {
+        flex-direction: column;
+        margin: 0 auto !important;
+        padding: 0 20px !important;
+      }
+      .blog-post .blog-article header h1 {
+        font-size: 32px !important;
+      }
+      .blog-post .blog-article h2 {
+        font-size: 24px !important;
+      }
+      .blog-post .blog-article h3 {
+        font-size: 20px !important;
+      }
+      .blog-post .plugin-box {
+        padding: 16px;
+      }
+    }
+    @media (max-width: 480px) {
+      .blog-post .blog-article header h1 {
+        font-size: 28px !important;
+      }
+      .blog-post .blog-layout {
+        gap: 16px !important;
+      }
+      .blog-post .plugin-box {
+        padding: 14px;
+      }
+    }
   </style>
 </head>
 <body>
-  <main class="page">
+  <main class="page blog-post">
     <nav class="nav">
       <div class="nav-inner">
         <a href="/" class="brand">
@@ -118,8 +160,8 @@
       </div>
     </nav>
 
-    <div style="display: flex; max-width: 1280px; margin: 80px auto; padding: 0 24px; gap: 48px;">
-      <article style="flex: 1; min-width: 0; color: var(--fg); line-height: 1.8;">
+    <div class="blog-layout" style="display: flex; max-width: 1280px; margin: 80px auto; padding: 0 24px; gap: 48px;">
+      <article class="blog-article" style="flex: 1; min-width: 0; color: var(--fg); line-height: 1.8;">
         <header style="margin-bottom: 48px;">
           <h1 style="font-size: 42px; font-weight: 800; margin-bottom: 16px; line-height: 1.2;">Best Free VST Plugins for Music Production in 2025</h1>
           <div style="color: var(--muted); font-size: 14px; margin-bottom: 24px;">
