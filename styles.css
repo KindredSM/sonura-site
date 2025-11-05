@@ -424,8 +424,8 @@ body {
 .demo-title { margin: 0 0 12px; font-size: clamp(28px, 4vw, 42px); letter-spacing: -0.02em; }
 .demo-subtitle { margin: 0; font-size: clamp(16px, 2vw, 18px); color: var(--muted); }
 .demo-tracks { display: grid; gap: 24px; }
-.player { display: flex; flex-direction: column; gap: 16px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: clamp(20px, 3vw, 24px); transition: all 0.3s ease; }
-.player:hover { background: rgba(255,255,255,0.08); border-color: rgba(124,58,237,0.3); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+.player { display: flex; flex-direction: column; gap: 16px; background: transparent; border: none; border-radius: 18px; padding: clamp(20px, 3vw, 24px); transition: all 0.3s ease; }
+.player:hover { background: transparent; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
 .player-header { display: flex; gap: 16px; align-items: flex-start; }
 .player-art { position: relative; width: 80px; height: 80px; border-radius: 12px; background: linear-gradient(135deg, rgba(124,58,237,0.3), rgba(109,40,217,0.3)); overflow: hidden; flex-shrink: 0; }
 .player-art img { width: 100%; height: 100%; object-fit: cover; display: block; }
