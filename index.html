@@ -214,7 +214,12 @@
     
     <section class="testimonials" aria-labelledby="testimonials-title">
       <div class="testimonials-inner">
-        <h2 id="testimonials-title" class="testimonials-title reveal">Loved by Creators</h2>
+        <h2 id="testimonials-title" class="testimonials-title reveal">
+          <span class="love-icon-wrapper" aria-hidden="true">
+            <i data-lucide="heart" class="love-icon"></i>
+          </span>
+          Loved by Creators
+        </h2>
         <div class="testimonials-grid">
           <div class="testimonial-card reveal" data-reveal-delay="0.04s">
             <div class="testimonial-content">
@@ -349,49 +354,6 @@
   <script type="module" src="./script.js"></script>
   <script src="https://unpkg.com/lucide@0.471.0/dist/umd/lucide.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <script type="module">
-    import { annotate } from 'https://unpkg.com/rough-notation?module';
-    
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        const communityLink = document.querySelector('.community-link');
-        if (communityLink) {
-          const annotation = annotate(communityLink, { 
-            type: 'underline',
-            color: '#7c3aed',
-            strokeWidth: 2,
-            padding: [6, 8, 6, 8],
-            iterations: 2,
-            animationDuration: 800,
-            roughness: 1.5
-          });
-          annotation.show();
-          
-          communityLink.addEventListener('mouseenter', () => {
-            annotation.hide();
-            const hoverAnnotation = annotate(communityLink, { 
-              type: 'underline',
-              color: '#a78bfa',
-              strokeWidth: 3,
-              padding: [6, 8, 6, 8],
-              iterations: 2,
-              animationDuration: 300,
-              roughness: 1.5
-            });
-            hoverAnnotation.show();
-            communityLink._hoverAnnotation = hoverAnnotation;
-          });
-          
-          communityLink.addEventListener('mouseleave', () => {
-            if (communityLink._hoverAnnotation) {
-              communityLink._hoverAnnotation.hide();
-            }
-            annotation.show();
-          });
-        }
-      }, 100);
-    });
-  </script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is Sonura's AI music generator?","acceptedAnswer":{"@type":"Answer","text":"Sonura is an AI music generator that creates professional-quality beats, loops, and full tracks from text descriptions. Simply type what you want (like 'trap beat 140bpm dark melody'), and our AI music maker generates it in seconds. You can regenerate unlimited times, export stems, and use everything commercially with full ownership."}},{"@type":"Question","name":"Is this AI music generator really free?","acceptedAnswer":{"@type":"Answer","text":"Yes! Sonura offers free credits to start creating immediately. No credit card required to try the AI music generator. You can generate beats, loops, and tracks for free and experience the full quality before choosing a plan."}},{"@type":"Question","name":"Do I own the music I create?","acceptedAnswer":{"@type":"Answer","text":"Yes! You own 100% of everything you create with Sonura, with full commercial rights. Release on Spotify, YouTube, TikTok, sell as beats, use in client work - it's all yours. No royalty splits, no attribution required."}},{"@type":"Question","name":"What genres and styles can Sonura create?","acceptedAnswer":{"@type":"Answer","text":"Sonura supports virtually every genre: trap, house, techno, pop, rock, jazz, lo-fi, drill, R&B, country, metal, ambient, and more. It understands specific sub-genres and style descriptors, so you can get exactly the vibe you want."}},{"@type":"Question","name":"Do I need music production experience?","acceptedAnswer":{"@type":"Answer","text":"Not at all. Sonura is built for everyone - from complete beginners to professional producers. If you can describe what you want, Sonura can create it. No DAW knowledge, music theory, or technical skills required (though it integrates perfectly if you have them)."}},{"@type":"Question","name":"How fast is the generation process?","acceptedAnswer":{"@type":"Answer","text":"Average generation time is under 10 seconds. Create loops in 5-8 seconds, full tracks in 8-12 seconds. No waiting, no rendering - just instant creativity at the speed of thought."}},{"@type":"Question","name":"Can I export stems for mixing?","acceptedAnswer":{"@type":"Answer","text":"Yes! Export individual stems (drums, bass, melody, FX, vocals) or the full mix. Perfect for custom mixing, remixing, or integrating with your existing DAW workflow. Works with Ableton, FL Studio, Logic, Pro Tools, and any DAW."}},{"@type":"Question","name":"Is there a free trial?","acceptedAnswer":{"@type":"Answer","text":"Yes! You can start creating immediately with free credits. No credit card required to try. Experience the full power of Sonura before committing to a plan."}},{"@type":"Question","name":"How is Sonura different from sample packs?","acceptedAnswer":{"@type":"Answer","text":"Sample packs are pre-made and overused by thousands of producers. Sonura's AI music generator creates completely original music tailored to your exact specifications. Every creation is unique, fresh, and perfectly matched to your vision - not generic loops everyone else is using."}},{"@type":"Question","name":"What makes Sonura the best AI music generator?","acceptedAnswer":{"@type":"Answer","text":"Sonura combines speed (under 10 seconds), quality (studio-grade output), flexibility (any genre), and ownership (100% royalty-free). Unlike other AI music generators, you get unlimited generations, multi-track stem exports, and can use everything commercially. Plus it's free to start with no credit card required."}}]}</script>
 </body>
 </html>
