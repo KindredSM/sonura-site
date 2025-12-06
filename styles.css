@@ -22,7 +22,7 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: Poppins, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
+  font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
   color: var(--fg);
   background: rgba(11,11,11,1);
 }
@@ -424,6 +424,19 @@ body {
 .demo-title { margin: 0 0 12px; font-size: clamp(28px, 4vw, 42px); letter-spacing: -0.02em; }
 .demo-subtitle { margin: 0; font-size: clamp(16px, 2vw, 18px); color: var(--muted); }
 .demo-tracks { display: grid; gap: 24px; }
+.demo-embeds { display: flex; flex-direction: column; gap: 24px; width: 100%; }
+.embed-container { width: 100%; }
+.community-link { 
+  color: var(--fg); 
+  text-decoration: none; 
+  position: relative; 
+  display: inline-block;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+.community-link:hover {
+  color: #a78bfa;
+}
 .player { display: flex; flex-direction: column; gap: 16px; background: transparent; border: none; border-radius: 18px; padding: clamp(20px, 3vw, 24px); transition: all 0.3s ease; }
 .player:hover { background: transparent; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
 .player-header { display: flex; gap: 16px; align-items: flex-start; }
@@ -500,24 +513,30 @@ body {
   .workflow-grid { gap: 48px; }
 }
 
-.use-cases { padding: 100px 24px; background: transparent; }
-.use-cases-inner { max-width: 1280px; margin: 0 auto; }
-.use-cases-title { margin: 0 0 64px; text-align: center; font-size: clamp(32px, 5vw, 48px); letter-spacing: -0.02em; }
-.use-cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.testimonials { padding: 100px 24px; background: transparent; }
+.testimonials-inner { max-width: 1280px; margin: 0 auto; }
+.testimonials-title { margin: 0 0 64px; text-align: center; font-size: clamp(32px, 5vw, 48px); letter-spacing: -0.02em; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 
 @media (max-width: 900px) {
-  .use-cases-grid { grid-template-columns: 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
 }
-.use-case-card { display: flex; flex-direction: column; gap: 16px; padding: 32px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; transition: all 0.3s ease; }
-.use-case-card:hover { background: rgba(255,255,255,0.06); border-color: rgba(124,58,237,0.3); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
-.use-case-header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
-.use-case-icon { width: 44px; height: 44px; border-radius: 10px; background: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(109,40,217,0.2)); border: 1px solid rgba(124,58,237,0.3); display: grid; place-items: center; }
-.use-case-icon svg { width: 20px; height: 20px; }
-.use-case-title { margin: 0; font-size: clamp(20px, 2.5vw, 24px); font-weight: 700; letter-spacing: -0.01em; }
-.use-case-description { margin: 0; font-size: clamp(14px, 1.8vw, 15px); color: var(--muted); line-height: 1.6; }
+.testimonial-card { display: flex; flex-direction: column; gap: 24px; padding: 32px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; }
+.testimonial-content { flex: 1; }
+.testimonial-text { 
+  margin: 0; 
+  font-size: clamp(15px, 1.8vw, 17px); 
+  color: var(--fg); 
+  line-height: 1.7; 
+  font-weight: 400; 
+}
+.testimonial-author { display: flex; align-items: center; gap: 12px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.08); }
+.author-info { display: flex; flex-direction: column; gap: 4px; }
+.author-name { margin: 0; font-size: 15px; font-weight: 600; color: var(--fg); }
+.author-handle { margin: 0; font-size: 14px; color: var(--muted); }
 
 @media (max-width: 768px) {
-  .use-cases { padding: 64px 24px; }
+  .testimonials { padding: 64px 24px; }
   .demo { padding: 64px 24px 80px; }
   .demo-title { margin: 0 0 48px; font-size: clamp(24px, 5vw, 32px); }
   .faq { padding: 64px 24px 80px; }
@@ -529,6 +548,7 @@ body {
   .demo { padding: 48px 24px 64px; }
   .demo-title { margin: 0 0 32px; }
   .demo-tracks { gap: 16px; }
+  .demo-embeds { gap: 16px; }
   .player { padding: 16px; gap: 12px; }
   .player-art { width: 72px; height: 72px; }
   .button.circle { width: 48px; height: 48px; }
