@@ -47,7 +47,7 @@ body {
 .nav-actions { display: flex; align-items: center; gap: 16px; }
 .nav-links { display: flex; align-items: center; gap: 8px; }
 .nav-link { display: inline-flex; align-items: center; gap: 10px; padding: 8px 12px; color: var(--fg); text-decoration: none; font-weight: 500; font-size: 15px; opacity: 0.7; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border-radius: 8px; }
-.nav-link:hover { opacity: 1; background: rgba(255, 255, 255, 0.04); color: var(--accent); }
+.nav-link:hover { opacity: 1; background: rgba(255, 255, 255, 0.04); color: #fff; }
 .nav-link i { width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .nav-link .fab { font-size: 18px; width: 18px; height: 18px; }
 .nav-separator { width: 1px; height: 24px; background: var(--border); }
@@ -120,7 +120,7 @@ body {
 .brand:focus { color: var(--fg) !important; text-decoration: none !important; outline: none; }
 .nav-cta { color: var(--fg); text-decoration: none; opacity: 0.9; }
 .nav-cta:hover { opacity: 1; }
-.nav .button.primary { padding: 10px 14px; border-radius: 8px; font-size: 14px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid rgba(124, 58, 237, 0.2); background: rgba(124, 58, 237, 0.1); }
+.nav .button.primary { padding: 10px 14px; border-radius: 8px; font-size: 14px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid rgba(255, 255, 255, 0.1); background: rgba(255, 255, 255, 0.05); }
 .nav .button.primary:hover { transform: translateY(-1px); box-shadow: 0 0 20px rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.3); background: rgba(255, 255, 255, 0.1); }
 
 .hero { 
@@ -163,7 +163,7 @@ body {
   gap: 20px;
   flex: 1;
   justify-content: center;
-  padding-top: 120px;
+  padding-top: 220px;
 }
 
 .genre-page .hero-content {
@@ -244,7 +244,12 @@ body {
   .stat-value { font-size: 20px; }
   .stat-label { font-size: 11px; }
   .stat-divider { height: 24px; }
+
+.hero-content {
+  padding-top: 1%;
 }
+}
+
 
 .hero-video {
   position: relative;
@@ -535,7 +540,7 @@ body {
 .embed-container:hover { border-color: var(--border-light); transform: translateY(-2px); }
 
 .community-link { 
-  color: var(--accent); 
+  color: #fff; 
   text-decoration: none; 
   position: relative; 
   display: inline-block;
@@ -551,7 +556,7 @@ body {
   bottom: 0px;
   width: 100%;
   height: 2px;
-  background: var(--accent);
+  background: #fff;
   opacity: 0.5;
   transition: opacity 0.2s;
 }
@@ -561,7 +566,7 @@ body {
 }
 .community-link:hover::after {
   opacity: 1;
-  box-shadow: 0 0 15px var(--primary-glow);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
 }
 
 
