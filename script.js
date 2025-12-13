@@ -22,6 +22,8 @@ window.openVideoFullscreen = function() {
     align-items: center;
     justify-content: center;
     backdrop-filter: blur(10px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
   `;
   
   // Create video element
@@ -34,6 +36,8 @@ window.openVideoFullscreen = function() {
     max-height: 90vh;
     border-radius: 12px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
   `;
   
   // Create close button
@@ -43,7 +47,7 @@ window.openVideoFullscreen = function() {
     position: absolute;
     top: 20px;
     right: 20px;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
     border: none;
     color: white;
     font-size: 24px;
@@ -62,20 +66,24 @@ window.openVideoFullscreen = function() {
   `;
   
   closeBtn.addEventListener('mouseenter', () => {
-    closeBtn.style.background = 'rgba(255, 255, 255, 0.3)';
+    closeBtn.style.background = 'rgba(255, 255, 255, 0.2)';
     closeBtn.style.transform = 'scale(1.1)';
   });
   
   closeBtn.addEventListener('mouseleave', () => {
-    closeBtn.style.background = 'rgba(255, 255, 255, 0.2)';
+    closeBtn.style.background = 'rgba(255, 255, 255, 0.1)';
     closeBtn.style.transform = 'scale(1)';
   });
   
   // Clean up function
   const cleanup = () => {
-    if (document.body.contains(modal)) {
-      document.body.removeChild(modal);
-    }
+    modal.style.opacity = '0';
+    video.style.transform = 'scale(0.95)';
+    setTimeout(() => {
+      if (document.body.contains(modal)) {
+        document.body.removeChild(modal);
+      }
+    }, 300);
     document.removeEventListener('keydown', handleKeydown);
   };
   
@@ -108,11 +116,15 @@ window.openVideoFullscreen = function() {
   modal.appendChild(video);
   modal.appendChild(closeBtn);
   document.body.appendChild(modal);
+
+  // Animate in
+  requestAnimationFrame(() => {
+    modal.style.opacity = '1';
+    video.style.transform = 'scale(1)';
+  });
 };
 
 const brandLink = document.querySelector('.brand');
-
- 
 
 if (brandLink) {
   brandLink.addEventListener('click', (e) => {
@@ -123,6 +135,7 @@ if (brandLink) {
   });
 }
 
+// FAQ Logic
 const faqDetails = document.querySelectorAll('.faq details');
 faqDetails.forEach((el) => {
   const summary = el.querySelector('summary');
@@ -139,7 +152,7 @@ faqDetails.forEach((el) => {
     wrapper.style.height = 'auto';
     const h = wrapper.scrollHeight;
     wrapper.style.height = '0px';
-    wrapper.getBoundingClientRect();
+    wrapper.getBoundingClientRect(); // force reflow
     wrapper.style.height = h + 'px';
     wrapper.addEventListener('transitionend', function handler(e) {
       if (e.propertyName === 'height') {
@@ -152,7 +165,7 @@ faqDetails.forEach((el) => {
   function closeDetails() {
     const h = wrapper.scrollHeight;
     wrapper.style.height = h + 'px';
-    wrapper.getBoundingClientRect();
+    wrapper.getBoundingClientRect(); // force reflow
     wrapper.style.height = '0px';
     wrapper.addEventListener('transitionend', function handler(e) {
       if (e.propertyName === 'height') {
@@ -181,72 +194,90 @@ faqDetails.forEach((el) => {
   }
 });
 
- 
+// GSAP Animations
+document.addEventListener("DOMContentLoaded", (event) => {
+  gsap.registerPlugin(ScrollTrigger);
 
- 
+  // Reveal Animations
+  const reveals = document.querySelectorAll('.reveal');
+  reveals.forEach((element) => {
+    // Check if it has a custom delay
+    const delay = element.getAttribute('data-reveal-delay') 
+      ? parseFloat(element.getAttribute('data-reveal-delay')) 
+      : 0;
 
- 
-
- 
-
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-if (!prefersReducedMotion) {
-  const observer = new IntersectionObserver((entries) => {
-    for (const entry of entries) {
-      const target = entry.target;
-      if (entry.isIntersecting) {
-        const delay = target.getAttribute('data-reveal-delay');
-        if (delay) target.style.transitionDelay = delay;
-        target.classList.add('in-view');
-        observer.unobserve(target);
+    gsap.fromTo(element, 
+      { 
+        y: 30, 
+        opacity: 0 
+      },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        ease: "power3.out",
+        delay: delay,
+        scrollTrigger: {
+          trigger: element,
+          start: "top 90%", // Start when top of element hits 90% of viewport
+          toggleActions: "play none none reverse",
+          toggleClass: "in-view"
+        }
       }
-    }
-  }, { threshold: 0.1 });
+    );
+  });
 
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  // Cable Drawing Animation
+  const cables = document.querySelectorAll('.cable-path');
+  cables.forEach((cable) => {
+    const length = cable.getTotalLength();
+    
+    // Set initial state
+    gsap.set(cable, {
+      strokeDasharray: length,
+      strokeDashoffset: length,
+      opacity: 0.6
+    });
 
-  let velocity = 0;
-  let lastScrollY = window.scrollY;
-  function onScroll() {
-    const current = window.scrollY;
-    velocity = current - lastScrollY;
-    lastScrollY = current;
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-}
+    gsap.to(cable, {
+      strokeDashoffset: 0,
+      duration: 2,
+      ease: "power2.inOut",
+      scrollTrigger: {
+        trigger: cable.closest('section'),
+        start: "top 70%"
+      }
+    });
+
+    // Add a gentle pulse/glow loop after drawing
+    gsap.to(cable, {
+      opacity: 1,
+      duration: 1.5,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+      delay: 2
+    });
+  });
+});
 
 if (window.lucide && window.lucide.createIcons) {
   window.lucide.createIcons();
 }
 
-// Scroll indicator functionality
-const scrollArrow = document.querySelector('.scroll-arrow');
-if (scrollArrow) {
-  scrollArrow.addEventListener('click', () => {
-    const demoSection = document.querySelector('.demo');
-    if (demoSection) {
-      const rect = demoSection.getBoundingClientRect();
-      const offset = window.pageYOffset + rect.top - 80; // 80px offset from top
-      window.scrollTo({ top: offset, behavior: 'smooth' });
-    }
-  });
-}
-
-// Handle nav scroll behavior
+// Nav Scroll
 const nav = document.querySelector('.nav');
-
 function handleNavScroll() {
   const currentScrollY = window.scrollY;
-  
   if (currentScrollY > 50) {
     nav.classList.add('scrolled');
   } else {
     nav.classList.remove('scrolled');
   }
 }
-
 window.addEventListener('scroll', handleNavScroll, { passive: true });
 
+// Mobile Menu
 const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 const mobileMenu = document.querySelector('.mobile-menu');
 
@@ -269,7 +300,6 @@ if (mobileMenuBtn && mobileMenu) {
   });
 }
 
-
 function fmt(t) {
   if (!isFinite(t)) return '0:00';
   const m = Math.floor(t / 60);
@@ -277,6 +307,7 @@ function fmt(t) {
   return m + ':' + String(s).padStart(2, '0');
 }
 
+// Audio Players
 let currentlyPlaying = null;
 
 function pauseAllPlayers() {
@@ -335,30 +366,12 @@ document.querySelectorAll('.player').forEach((player) => {
     });
   }
 
-  if (backBtn) {
-    backBtn.addEventListener('click', () => {
-      audio.currentTime = Math.max(0, audio.currentTime - 10);
-    });
-  }
-
-  if (fwdBtn) {
-    fwdBtn.addEventListener('click', () => {
-      audio.currentTime = Math.min(audio.duration || 0, audio.currentTime + 10);
-    });
-  }
-
-  if (seek) {
-    seek.addEventListener('input', () => {
-      audio.currentTime = Number(seek.value);
-    });
-  }
-
+  // Simplified event listeners for other controls
+  if (backBtn) backBtn.addEventListener('click', () => audio.currentTime = Math.max(0, audio.currentTime - 10));
+  if (fwdBtn) fwdBtn.addEventListener('click', () => audio.currentTime = Math.min(audio.duration || 0, audio.currentTime + 10));
+  if (seek) seek.addEventListener('input', () => audio.currentTime = Number(seek.value));
   if (vol && audio) {
-    vol.addEventListener('input', () => {
-      audio.volume = Number(vol.value);
-    });
+    vol.addEventListener('input', () => audio.volume = Number(vol.value));
     audio.volume = Number(vol.value);
   }
 });
-
-/* cache buster */

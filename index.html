@@ -51,6 +51,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <link rel="stylesheet" href="./styles.css">
   <link rel="icon" type="image/png" sizes="512x512" href="./google-icon.png">
   <link rel="icon" type="image/png" sizes="192x192" href="./google-icon.png">
@@ -115,16 +117,39 @@
       <div class="hero-background">
         <div class="hero-gradient"></div>
         <div class="hero-noise"></div>
+        <!-- Clean Tech Cables SVG -->
+        <svg class="cable-svg" style="z-index: 1;">
+          <defs>
+            <linearGradient id="cableGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:0.2" />
+              <stop offset="50%" style="stop-color:#a78bfa;stop-opacity:0.6" />
+              <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:0.2" />
+            </linearGradient>
+            <linearGradient id="cableGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#5b21b6;stop-opacity:0.2" />
+              <stop offset="50%" style="stop-color:#7c3aed;stop-opacity:0.5" />
+              <stop offset="100%" style="stop-color:#5b21b6;stop-opacity:0.2" />
+            </linearGradient>
+          </defs>
+          <path d="M -50 100 C 100 500 400 200 800 50" stroke="url(#cableGradient1)" class="cable-path" fill="none" />
+          <path d="M 1400 300 C 1000 700 800 500 400 900" stroke="url(#cableGradient2)" class="cable-path" fill="none" />
+        </svg>
       </div>
       <div class="hero-content">
-        <h1 class="headline reveal">Create Studio-Quality Music in Seconds</h1>
+        <h1 class="headline reveal" data-reveal-delay="0.04s">Create Studio-Quality Music in Seconds</h1>
         <p class="subhead reveal" data-reveal-delay="0.06s">Royalty-free loops, melodies, vocals, FX, one-shots and full tracks ready to drop.</p>
-        <div class="cta" id="signup">
+        <div class="cta reveal" data-reveal-delay="0.08s" id="signup">
           <a id="cta-button" class="button primary" href="https://app.sonurastudio.com" target="_blank" rel="noopener">Try for Free</a>
           <a class="hero-beta-link" href="https://app.sonurastudio.com/sketches" target="_blank" rel="noopener">Explore Music →</a>
         </div>
       </div>
       <div class="hero-video reveal" data-reveal-delay="0.16s" onclick="openVideoFullscreen()">
+        <!-- Subtle Screw Heads -->
+        <div class="screw tl"></div>
+        <div class="screw tr"></div>
+        <div class="screw bl"></div>
+        <div class="screw br"></div>
+        
         <video 
           muted 
           loop 
@@ -143,11 +168,25 @@
     </section>
     
     <section class="workflow" aria-labelledby="workflow-title">
+      <!-- Background Patch Cable -->
+      <svg class="cable-svg" style="z-index: 0; pointer-events: none; opacity: 0.2;">
+         <path d="M 0 100 C 300 100 300 800 600 800 S 900 100 1200 100" stroke="#7c3aed" stroke-width="1" fill="none" />
+      </svg>
       <div class="workflow-inner">
-        <h2 id="workflow-title" class="workflow-title reveal">How Sonura helps you</h2>
+        <h2 id="workflow-title" class="workflow-title reveal">
+          <span style="display: inline-flex; align-items: center; gap: 16px;">
+            <div class="patch-point"></div>
+            How Sonura helps you
+            <div class="patch-point"></div>
+          </span>
+        </h2>
         <div class="workflow-grid">
           <div class="workflow-item reveal" data-reveal-delay="0.04s">
-            <div class="workflow-image">
+            <div class="workflow-image synth-panel">
+              <div class="screw tl"></div>
+              <div class="screw tr"></div>
+              <div class="screw bl"></div>
+              <div class="screw br"></div>
               <img src="./images/design.jpg" alt="Design unique sounds in Sonura" loading="lazy">
             </div>
             <div class="workflow-content">
@@ -156,7 +195,11 @@
             </div>
           </div>
           <div class="workflow-item workflow-item-reverse reveal" data-reveal-delay="0.08s">
-            <div class="workflow-image">
+            <div class="workflow-image synth-panel">
+              <div class="screw tl"></div>
+              <div class="screw tr"></div>
+              <div class="screw bl"></div>
+              <div class="screw br"></div>
               <img src="./images/compose.jpg" alt="Compose and stack tracks in Sonura" loading="lazy">
             </div>
             <div class="workflow-content">
@@ -165,7 +208,11 @@
             </div>
           </div>
           <div class="workflow-item reveal" data-reveal-delay="0.12s">
-            <div class="workflow-image">
+            <div class="workflow-image synth-panel">
+              <div class="screw tl"></div>
+              <div class="screw tr"></div>
+              <div class="screw bl"></div>
+              <div class="screw br"></div>
               <img src="./images/remix.jpg" alt="Remix your music in Sonura" loading="lazy">
             </div>
             <div class="workflow-content">
@@ -174,7 +221,11 @@
             </div>
           </div>
           <div class="workflow-item workflow-item-reverse reveal" data-reveal-delay="0.16s">
-            <div class="workflow-image">
+            <div class="workflow-image synth-panel">
+              <div class="screw tl"></div>
+              <div class="screw tr"></div>
+              <div class="screw bl"></div>
+              <div class="screw br"></div>
               <img src="./images/share.jpg" alt="Share your music with the world" loading="lazy">
             </div>
             <div class="workflow-content">
