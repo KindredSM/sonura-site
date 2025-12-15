@@ -36,8 +36,6 @@ body {
   font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
   color: var(--fg);
   background: var(--bg);
-  /* Subtle noise texture */
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
 }
 
 .page { min-height: 100vh; display: flex; flex-direction: column; }
@@ -120,8 +118,8 @@ body {
 .brand:focus { color: var(--fg) !important; text-decoration: none !important; outline: none; }
 .nav-cta { color: var(--fg); text-decoration: none; opacity: 0.9; }
 .nav-cta:hover { opacity: 1; }
-.nav .button.primary { padding: 10px 14px; border-radius: 8px; font-size: 14px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid rgba(255, 255, 255, 0.1); background: rgba(255, 255, 255, 0.05); }
-.nav .button.primary:hover { transform: translateY(-1px); box-shadow: 0 0 20px rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.3); background: rgba(255, 255, 255, 0.1); }
+.nav .button.primary { padding: 10px 14px; border-radius: 8px; font-size: 14px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid rgba(255, 255, 255, 0.1); background: var(--primary); color: #fff; }
+.nav .button.primary:hover { transform: translateY(-1px); box-shadow: 0 0 20px var(--primary-glow); border-color: rgba(255, 255, 255, 0.3); background: var(--primary); filter: brightness(1.1); }
 
 .hero { 
   flex: 1; 
@@ -421,7 +419,7 @@ body {
   color: white;
   background: rgba(255,255,255,0.08);
   cursor: pointer;
-  transition: transform .04s ease, background .2s ease, opacity .2s ease, box-shadow 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   font-family: 'Space Grotesk', sans-serif;
   letter-spacing: 0.01em;
 }
@@ -756,14 +754,14 @@ body {
 .footer-partner { flex: 1; display: flex; justify-content: flex-end; }
 .footer-brand { display: flex; align-items: center; gap: 24px; }
 .footer-social { display: flex; gap: 12px; }
-.footer-social-link { min-width: 40px; height: 40px; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; gap: 8px; color: var(--fg); text-decoration: none; transition: all 0.2s ease; padding: 0 12px; }
+.footer-social-link { min-width: 40px; height: 40px; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; gap: 8px; color: var(--fg); text-decoration: none; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); padding: 0 12px; }
 .footer-social-link:hover { background: rgba(255,255,255,0.1); border-color: var(--primary); transform: translateY(-2px); color: var(--primary); }
 .footer-social-link .fab { font-size: 18px; }
 .footer-social-link span { font-size: 13px; color: var(--muted); }
 .footer-copyright { color: var(--muted); font-size: 14px; white-space: nowrap; font-family: monospace; }
 .footer-copyright p { margin: 0; }
 .footer-actions { display: flex; gap: 12px; align-items: center; }
-.footer-button { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 24px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.2s ease; white-space: nowrap; }
+.footer-button { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 24px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); white-space: nowrap; }
 .footer-button.primary { background: var(--primary); color: #fff; border: 1px solid transparent; }
 .footer-button.primary:hover { transform: translateY(-2px); box-shadow: 0 0 20px var(--primary-glow); filter: brightness(1.1); }
 .footer-button.secondary { background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--fg); }
