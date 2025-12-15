@@ -241,22 +241,13 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     gsap.to(cable, {
       strokeDashoffset: 0,
+      opacity: 1,
       duration: 2,
       ease: "power2.inOut",
       scrollTrigger: {
         trigger: cable.closest('section'),
         start: "top 70%"
       }
-    });
-
-    // Add a gentle pulse/glow loop after drawing
-    gsap.to(cable, {
-      opacity: 1,
-      duration: 1.5,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-      delay: 2
     });
   });
 });
