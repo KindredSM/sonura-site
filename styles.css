@@ -118,8 +118,8 @@ body {
 .brand:focus { color: var(--fg) !important; text-decoration: none !important; outline: none; }
 .nav-cta { color: var(--fg); text-decoration: none; opacity: 0.9; }
 .nav-cta:hover { opacity: 1; }
-.nav .button.primary { padding: 10px 14px; border-radius: 8px; font-size: 14px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid rgba(255, 255, 255, 0.1); background: var(--primary); color: #fff; }
-.nav .button.primary:hover { transform: translateY(-1px); box-shadow: 0 0 20px var(--primary-glow); border-color: rgba(255, 255, 255, 0.3); background: var(--primary); filter: brightness(1.1); }
+.nav .button.primary { padding: 10px 14px; border-radius: 8px; font-size: 14px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid rgba(255, 255, 255, 0.12); background: rgba(255, 255, 255, 0.08); color: #fff; }
+.nav .button.primary:hover { transform: translateY(-1px); border-color: rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.12); }
 
 .hero { 
   flex: 1; 
