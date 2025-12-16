@@ -123,23 +123,19 @@
           <a class="hero-beta-link" href="https://app.sonurastudio.com/sketches" target="_blank" rel="noopener">Explore Music →</a>
         </div>
       </div>
-      <div class="hero-video reveal" data-reveal-delay="0.16s" onclick="openVideoFullscreen()">
-        <!-- Subtle Screw Heads -->
+      <div class="hero-video reveal" data-reveal-delay="0.16s" id="hero-video-container">
         <div class="screw tl"></div>
         <div class="screw tr"></div>
         <div class="screw bl"></div>
         <div class="screw br"></div>
         
-        <video 
-          muted 
-          loop 
-          playsinline
-          class="hero-video-element"
-          poster="./videos/video-thumbnail.jpg"
+        <img 
+          src="./images/new-thumbnail.png" 
+          alt="Sonura AI Music Generator Demo" 
+          class="hero-video-element hero-video-thumbnail"
+          id="video-thumbnail"
         >
-          <source src="./videos/sonura desktop ad.mp4" type="video/mp4">
-        </video>
-        <div class="hero-video-overlay">
+        <div class="hero-video-overlay" id="video-overlay" onclick="playHeroVideo()">
           <div class="video-play-button">
             <i data-lucide="play"></i>
           </div>

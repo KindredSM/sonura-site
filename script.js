@@ -6,7 +6,26 @@ window.addEventListener('beforeunload', () => {
   window.scrollTo(0, 0);
 });
 
-// Video modal function
+window.playHeroVideo = function() {
+  const container = document.getElementById('hero-video-container');
+  const thumbnail = document.getElementById('video-thumbnail');
+  const overlay = document.getElementById('video-overlay');
+  
+  if (!container || !thumbnail) return;
+  
+  const iframe = document.createElement('iframe');
+  iframe.className = 'hero-video-element';
+  iframe.src = 'https://www.youtube.com/embed/xUuqIAWetXk?rel=0&modestbranding=1&autoplay=1';
+  iframe.title = 'Sonura AI Music Generator Demo';
+  iframe.frameBorder = '0';
+  iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+  iframe.allowFullscreen = true;
+  
+  thumbnail.remove();
+  if (overlay) overlay.remove();
+  container.appendChild(iframe);
+};
+
 window.openVideoFullscreen = function() {
   // Create modal backdrop
   const modal = document.createElement('div');
