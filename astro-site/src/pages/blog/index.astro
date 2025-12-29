@@ -4,53 +4,74 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 // Define all blog posts here - single source of truth
 const blogPosts = [
   {
-    slug: 'ai-music-generator-guide',
-    title: 'AI Music Generators: Complete Guide 2025',
-    description: 'Comprehensive guide to AI music generators comparing features, pricing, quality, and commercial use rights.',
-    date: '2025-10-20',
-    readTime: '12 min'
+    slug: 'ai-music-genjam-sonura-studio',
+    title: 'AI Music GenJam - Sonura Studio',
+    description: 'Join the first-ever AI Music GenJam by Sonura Studio in San Francisco. Collaborate, create, and compete for prizes in this hands-on AI music event.',
+    date: '2025-12-10', // Assuming date from content
+    readTime: '3 min read',
+    tag: 'Event',
+    tagColor: 'rgba(124,58,237,0.2)',
+    tagTextColor: '#c4b5fd'
   },
   {
     slug: 'how-to-make-trap-beats',
-    title: 'How to Make Trap Beats: Complete Guide',
-    description: 'Learn the fundamentals of trap beat production including 808s, hi-hats, and arrangement.',
+    title: 'How to Make Trap Beats: Complete Guide for Beginners',
+    description: 'Learn how to make professional trap beats from scratch. Complete guide covering 808s, hi-hats, melodies, mixing, and modern production techniques.',
     date: '2025-10-15',
-    readTime: '10 min'
+    readTime: '8 min read',
+    tag: 'Tutorial',
+    tagColor: 'rgba(124,58,237,0.2)',
+    tagTextColor: '#c4b5fd'
+  },
+  {
+    slug: 'ai-music-generator-guide',
+    title: 'AI Music Generators: Complete Guide 2025',
+    description: 'Comprehensive guide to AI music generators. Compare features, pricing, quality, and commercial use rights to choose the best tool for your needs.',
+    date: '2025-10-20',
+    readTime: '12 min read',
+    tag: 'Guide',
+    tagColor: 'rgba(124,58,237,0.2)',
+    tagTextColor: '#c4b5fd'
   },
   {
     slug: 'royalty-free-music-explained',
-    title: 'Royalty-Free Music Explained',
-    description: 'Everything you need to know about royalty-free music licensing and commercial use.',
+    title: 'Royalty-Free Music Explained: Complete Guide',
+    description: 'Learn what royalty-free means, licensing types, YouTube copyright rules, and how to use music commercially without legal issues.',
     date: '2025-10-10',
-    readTime: '8 min'
-  },
-  {
-    slug: 'music-production-for-beginners',
-    title: 'Music Production for Beginners',
-    description: 'Getting started with music production - essential concepts, tools, and tips.',
-    date: '2025-10-05',
-    readTime: '15 min'
-  },
-  {
-    slug: 'best-free-vst-plugins',
-    title: 'Best Free VST Plugins 2025',
-    description: 'Top free VST plugins for music production across synths, effects, and instruments.',
-    date: '2025-09-28',
-    readTime: '10 min'
+    readTime: '10 min read',
+    tag: 'Education',
+    tagColor: 'rgba(124,58,237,0.2)',
+    tagTextColor: '#c4b5fd'
   },
   {
     slug: 'how-to-release-music-on-spotify',
-    title: 'How to Release Music on Spotify',
-    description: 'Step-by-step guide to releasing your music on Spotify and other streaming platforms.',
+    title: 'How to Release Music on Spotify: Complete Guide',
+    description: 'Step-by-step guide to releasing music on Spotify as an independent artist. Distribution, playlisting, and maximizing streams.',
     date: '2025-09-20',
-    readTime: '8 min'
+    readTime: '15 min read',
+    tag: 'Release Strategy',
+    tagColor: 'rgba(124,58,237,0.2)',
+    tagTextColor: '#c4b5fd'
   },
   {
-    slug: 'ai-music-genjam-sonura-studio',
-    title: 'AI Music Generation with Sonura Studio',
-    description: 'Deep dive into creating music with AI using Sonura Studio.',
-    date: '2025-09-15',
-    readTime: '7 min'
+    slug: 'music-production-for-beginners',
+    title: 'Music Production for Beginners: Complete Guide',
+    description: 'Start making music from scratch. Equipment, DAWs, music theory basics, and modern production techniques to launch your journey.',
+    date: '2025-10-05',
+    readTime: '18 min read',
+    tag: 'Beginner Guide',
+    tagColor: 'rgba(124,58,237,0.2)',
+    tagTextColor: '#c4b5fd'
+  },
+  {
+    slug: 'best-free-vst-plugins',
+    title: 'Best Free VST Plugins for Music Production 2025',
+    description: '30+ professional free VST plugins including synths, effects, drums, and mixing tools. Save thousands on your production setup.',
+    date: '2025-09-28',
+    readTime: '14 min read',
+    tag: 'Resource Guide',
+    tagColor: 'rgba(124,58,237,0.2)',
+    tagTextColor: '#c4b5fd'
   }
 ];
 
@@ -73,32 +94,61 @@ const jsonLd = [
   ogTitle="Sonura Blog | Music Production Tips & Guides"
   jsonLd={jsonLd}
 >
+  <style>
+    .blog-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 32px;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      height: 100%;
+    }
+    .blog-card:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(124,58,237,0.3);
+      transform: translateY(-4px);
+    }
+    /* Grid layout */
+    .blog-grid {
+      display: grid; 
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+      gap: 32px;
+    }
+  </style>
+
   <section style="padding: 60px 24px 80px; max-width: 1280px; margin: 0 auto;">
     <header style="text-align: center; margin-bottom: 48px;">
       <h1 style="font-size: 48px; font-weight: 800; margin-bottom: 16px; color: var(--fg); letter-spacing: -0.02em;">Sonura Blog</h1>
       <p style="font-size: 20px; color: var(--muted); max-width: 600px; margin: 0 auto;">Guides, tutorials, and tips for music production, AI music generation, and releasing your tracks.</p>
     </header>
 
-    <div style="display: grid; gap: 24px; max-width: 900px; margin: 0 auto;">
+    <div class="blog-grid">
       {blogPosts.map((post) => (
-        <a href={`/blog/${post.slug}/`} style="display: block; padding: 32px; background: var(--panel-bg); border: 1px solid var(--border); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
-          <article>
+        <a href={`/blog/${post.slug}/`} style="text-decoration: none; color: inherit; display: block;">
+          <article class="blog-card">
+            <div style="margin-bottom: 16px;">
+              <span style={`display: inline-block; padding: 4px 12px; background: ${post.tagColor}; color: ${post.tagTextColor}; border-radius: 6px; font-size: 12px; font-weight: 600;`}>{post.tag}</span>
+            </div>
             <h2 style="font-size: 24px; font-weight: 700; margin-bottom: 12px; color: var(--fg);">{post.title}</h2>
-            <p style="color: var(--muted); margin-bottom: 16px; line-height: 1.6;">{post.description}</p>
-            <div style="font-size: 14px; color: var(--muted); opacity: 0.7;">
-              {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })} • {post.readTime}
+            <p style="color: var(--muted); margin-bottom: 20px; line-height: 1.6; flex-grow: 1;">{post.description}</p>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 13px; color: var(--muted);">{post.readTime}</span>
+              <span style="color: var(--primary); text-decoration: none; font-weight: 600; font-size: 14px;">Read more →</span>
             </div>
           </article>
         </a>
       ))}
     </div>
   </section>
+
+  <section style="background: rgba(124, 58, 237, 0.1); border-top: 1px solid rgba(124, 58, 237, 0.2); border-bottom: 1px solid rgba(124, 58, 237, 0.2); padding: 64px 24px; margin-top: 80px;">
+    <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+      <h2 style="font-size: 36px; font-weight: 700; margin-bottom: 24px; color: var(--fg);">Ready to Start Creating?</h2>
+      <p style="font-size: 18px; color: var(--muted); margin-bottom: 32px;">Generate professional music in seconds with Sonura's AI music generator.</p>
+      <a href="https://app.sonurastudio.com" class="button primary large" style="display: inline-block; padding: 18px 40px; background: var(--primary); color: white; text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 18px;">Try Sonura Free</a>
+    </div>
+  </section>
 </BaseLayout>
-
-<style>
-  a:hover {
-    border-color: var(--primary) !important;
-    transform: translateY(-2px);
-  }
-</style>
-

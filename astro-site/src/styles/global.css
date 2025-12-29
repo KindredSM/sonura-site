@@ -23,6 +23,12 @@
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
+
+/* Ensure consistent font across all elements */
+button, input, optgroup, select, textarea, .button {
+  font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
+}
+
 *::-webkit-scrollbar {
   display: none;
 }
