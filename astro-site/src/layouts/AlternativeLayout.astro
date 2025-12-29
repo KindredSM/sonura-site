@@ -1,0 +1,135 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  competitor: string;
+  competitorSlug: string;
+  title: string;
+  description: string;
+  keywords: string;
+  headline: string;
+  subhead: string;
+  comparisons: { feature: string; competitor: string; sonura: string }[];
+  advantages: { title: string; description: string }[];
+  faqs: { question: string; answer: string }[];
+}
+
+const {
+  competitor,
+  competitorSlug,
+  title,
+  description,
+  keywords,
+  headline,
+  subhead,
+  comparisons,
+  advantages,
+  faqs,
+} = Astro.props;
+
+const canonical = `https://sonurastudio.com/alternatives/${competitorSlug}/`;
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": title,
+    "description": description,
+    "url": canonical
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sonurastudio.com/" },
+      { "@type": "ListItem", "position": 2, "name": `${competitor} Alternative`, "item": canonical }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  keywords={keywords}
+  canonical={canonical}
+  ogTitle={`Best ${competitor} Alternative 2025`}
+  ogDescription={`Faster AI music generation with better stem export and full commercial rights.`}
+  jsonLd={jsonLd}
+>
+  <section class="hero" style="min-height: auto; padding: 120px 24px 80px;">
+    <div class="hero-content" style="padding-top: 0;">
+      <h1 class="headline reveal" style="font-size: clamp(32px, 5vw, 56px);">{headline}</h1>
+      <p class="subhead reveal" data-reveal-delay="0.06s">{subhead}</p>
+      <div class="cta reveal" data-reveal-delay="0.08s">
+        <a class="button primary" href="https://app.sonurastudio.com" target="_blank" rel="noopener">Try Sonura Free</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section style="padding: 60px 24px 80px; max-width: 900px; margin: 0 auto;">
+    <h2 class="workflow-title reveal" style="margin-bottom: 48px;">Sonura vs {competitor}</h2>
+    <div style="overflow-x: auto;">
+      <table style="width: 100%; border-collapse: collapse; background: var(--panel-bg); border-radius: 12px; overflow: hidden;">
+        <thead>
+          <tr style="background: rgba(255,255,255,0.05);">
+            <th style="text-align: left; padding: 16px 20px; color: var(--fg); font-weight: 600;">Feature</th>
+            <th style="text-align: center; padding: 16px 20px; color: var(--muted);">{competitor}</th>
+            <th style="text-align: center; padding: 16px 20px; color: var(--primary); font-weight: 600;">Sonura</th>
+          </tr>
+        </thead>
+        <tbody>
+          {comparisons.map((row) => (
+            <tr style="border-top: 1px solid var(--border);">
+              <td style="padding: 16px 20px; color: var(--fg);">{row.feature}</td>
+              <td style="padding: 16px 20px; text-align: center; color: var(--muted);">{row.competitor}</td>
+              <td style="padding: 16px 20px; text-align: center; color: var(--fg); font-weight: 500;">{row.sonura}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Advantages -->
+  <section class="workflow" style="padding: 60px 24px 80px;">
+    <div class="workflow-inner">
+      <h2 class="workflow-title reveal">Why Switch to Sonura?</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 48px;">
+        {advantages.map((adv, i) => (
+          <div class="testimonial-card reveal" data-reveal-delay={`${i * 0.04}s`}>
+            <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; color: var(--fg);">{adv.title}</h3>
+            <p style="color: var(--muted); line-height: 1.6;">{adv.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" style="padding: 60px 24px 80px;">
+    <div class="faq-inner">
+      <h2 class="faq-title">{competitor} Alternative FAQ</h2>
+      <div class="faq-list">
+        {faqs.map((faq, i) => (
+          <details class="reveal" data-reveal-delay={`${i * 0.03}s`}>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <div class="final-cta-inner">
+      <h2 class="final-cta-title reveal">Ready to Switch?</h2>
+      <p class="final-cta-subtitle reveal" data-reveal-delay="0.06s">Try Sonura free. No credit card required.</p>
+      <div class="final-cta-form reveal" data-reveal-delay="0.12s">
+        <a class="button primary large" href="https://app.sonurastudio.com" target="_blank" rel="noopener">Start Creating Free</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+

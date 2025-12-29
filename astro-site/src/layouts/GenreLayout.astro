@@ -1,0 +1,146 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface WorkflowItem {
+  image: string;
+  imageAlt: string;
+  title: string;
+  description: string;
+}
+
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  genre: string;
+  genreSlug: string;
+  title: string;
+  description: string;
+  keywords: string;
+  headline: string;
+  subhead: string;
+  ctaText: string;
+  workflowTitle: string;
+  workflowItems: WorkflowItem[];
+  faqs: FAQ[];
+}
+
+const {
+  genre,
+  genreSlug,
+  title,
+  description,
+  keywords,
+  headline,
+  subhead,
+  ctaText,
+  workflowTitle,
+  workflowItems,
+  faqs,
+} = Astro.props;
+
+const canonical = `https://sonurastudio.com/genre/${genreSlug}/`;
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": `Sonura ${genre} Beat Maker`,
+    "url": canonical,
+    "applicationCategory": "MultimediaApplication",
+    "genre": genre,
+    "description": description
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sonurastudio.com/" },
+      { "@type": "ListItem", "position": 2, "name": `${genre} Beat Maker`, "item": canonical }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  }
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  keywords={keywords}
+  canonical={canonical}
+  ogTitle={title}
+  ogDescription={description}
+  jsonLd={jsonLd}
+  bodyClass="genre-page"
+>
+  <section class="hero">
+    <div class="hero-background">
+      <div class="hero-gradient"></div>
+      <div class="hero-noise"></div>
+    </div>
+    <div class="hero-content">
+      <h1 class="headline reveal">{headline}</h1>
+      <p class="subhead reveal" data-reveal-delay="0.06s" style="max-width: 70vw; margin-left: auto; margin-right: auto;">{subhead}</p>
+      <div class="cta">
+        <a class="button primary" href="https://app.sonurastudio.com" target="_blank" rel="noopener">{ctaText}</a>
+        <a class="hero-beta-link" href="/">Explore all genres →</a>
+      </div>
+    </div>
+  </section>
+  
+  <section class="workflow" aria-labelledby="workflow-title">
+    <div class="workflow-inner">
+      <h2 id="workflow-title" class="workflow-title reveal">{workflowTitle}</h2>
+      <div class="workflow-grid">
+        {workflowItems.map((item, index) => (
+          <div class={`workflow-item ${index % 2 === 1 ? 'workflow-item-reverse' : ''} reveal`} data-reveal-delay={`${0.04 * (index + 1)}s`}>
+            <div class="workflow-image">
+              <img src={item.image} alt={item.imageAlt} loading="lazy">
+            </div>
+            <div class="workflow-content">
+              <h3 class="workflow-item-title">{item.title}</h3>
+              <p class="workflow-item-description">{item.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <section class="faq" id="faq" aria-labelledby="faq-title">
+    <div class="faq-inner">
+      <h2 id="faq-title" class="faq-title">{genre} Beat Maker FAQ</h2>
+      <div class="faq-list">
+        {faqs.map((faq, index) => (
+          <details class="reveal" data-reveal-delay={`${0.03 * index}s`}>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <section class="final-cta" aria-labelledby="final-cta-title">
+    <div class="final-cta-inner">
+      <h2 id="final-cta-title" class="final-cta-title reveal">Start Making {genre} Music Now</h2>
+      <p class="final-cta-subtitle reveal" data-reveal-delay="0.06s">free to start. no credit card required.</p>
+      <div class="final-cta-form reveal" data-reveal-delay="0.12s">
+        <a class="button primary large" href="https://app.sonurastudio.com" target="_blank" rel="noopener">create {genre.toLowerCase()} music free</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

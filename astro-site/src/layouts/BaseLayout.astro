@@ -1,0 +1,122 @@
+---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  keywords?: string;
+  canonical?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+  ogType?: string;
+  publishedTime?: string;
+  jsonLd?: object[];
+  bodyClass?: string;
+}
+
+const {
+  title,
+  description,
+  keywords = '',
+  canonical = 'https://sonurastudio.com/',
+  ogTitle,
+  ogDescription,
+  ogImage = 'https://sonurastudio.com/demo-image.jpeg',
+  ogType = 'website',
+  publishedTime,
+  jsonLd = [],
+  bodyClass = '',
+} = Astro.props;
+
+const siteUrl = 'https://sonurastudio.com';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CV0TGZFNX"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8CV0TGZFNX');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  {keywords && <meta name="keywords" content={keywords}>}
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href={canonical}>
+  <meta name="theme-color" content="#0a0a0a">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content={ogType}>
+  <meta property="og:site_name" content="Sonura">
+  <meta property="og:title" content={ogTitle || title}>
+  <meta property="og:description" content={ogDescription || description}>
+  <meta property="og:url" content={canonical}>
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content={ogImage}>
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Sonura AI music generator interface">
+  {publishedTime && <meta property="article:published_time" content={publishedTime}>}
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={ogTitle || title}>
+  <meta name="twitter:description" content={ogDescription || description}>
+  <meta name="twitter:image" content={ogImage}>
+  <meta name="twitter:image:alt" content="Sonura AI music generator interface">
+  <meta name="twitter:creator" content="@sonurastudio">
+  <meta name="twitter:site" content="@sonurastudio">
+  
+  <!-- Mobile -->
+  <meta name="format-detection" content="telephone=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Sonura">
+  <meta name="application-name" content="Sonura">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link rel="icon" type="image/png" sizes="512x512" href="/google-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/google-icon.png">
+  <link rel="shortcut icon" type="image/png" href="/google-icon.png">
+  <link rel="apple-touch-icon" href="/google-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/google-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/google-icon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/google-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#7c3aed">
+  <meta name="msapplication-TileColor" content="#0a0a0a">
+  
+  <!-- JSON-LD -->
+  {jsonLd.map((schema) => (
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  ))}
+  
+  <slot name="head" />
+</head>
+<body class={bodyClass}>
+  <main class="page">
+    <Nav />
+    <slot />
+  </main>
+  <Footer />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://unpkg.com/lucide@0.471.0/dist/umd/lucide.js" defer></script>
+  <script src="/script.js" defer></script>
+</body>
+</html>
+

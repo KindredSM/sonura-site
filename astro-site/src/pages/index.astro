@@ -1,0 +1,441 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Sonura",
+    "url": "https://sonurastudio.com/",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "category": "Music Production" },
+    "description": "Free AI music generator that creates studio-quality beats, loops, vocals, and full tracks from text. Generate royalty-free music in seconds for producers, artists, and sound designers.",
+    "image": "https://sonurastudio.com/demo-image.jpeg",
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "ratingCount": "1247" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Sonura",
+    "url": "https://sonurastudio.com/",
+    "logo": "https://sonurastudio.com/demo-image.jpeg",
+    "sameAs": ["https://twitter.com/sonurastudio", "https://discord.gg/Yk8RD3Nmyh"],
+    "contactPoint": { "@type": "ContactPoint", "email": "kindred@sonurastudio.com", "contactType": "Customer Support" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Sonura",
+    "applicationCategory": "MusicApplication",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "operatingSystem": "Web Browser",
+    "description": "AI music generator that creates professional beats, loops, vocals, and full tracks from text prompts. Free AI music maker for any genre."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Sonura's AI music generator?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sonura is an AI music generator that creates professional-quality beats, loops, and full tracks from text descriptions. Simply type what you want (like 'trap beat 140bpm dark melody'), and our AI music maker generates it in seconds."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this AI music generator really free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! Sonura offers free credits to start creating immediately. No credit card required to try."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I own the music I create?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! You own 100% of everything you create with Sonura, with full commercial rights."
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Sonura | AI Music Creation Studio - Generate Professional Tracks in Seconds"
+  description="AI music generator for studio-quality beats, loops, and tracks. Create royalty-free music instantly from text prompts. Used by producers, artists, and creators worldwide."
+  keywords="ai music generator, ai music generator free, free ai music generator, music generator ai, ai music maker, ai beat generator, text to music ai, ai song generator, beat maker, loop creator, music production software, royalty free music"
+  canonical="https://sonurastudio.com/"
+  ogTitle="Sonura — AI Music Creation Studio"
+  ogDescription="Generate professional loops, beats, vocals, and full tracks in seconds. Royalty-free. Studio-quality. Any genre."
+  jsonLd={[...jsonLd, faqSchema]}
+>
+  <section class="hero">
+    <div class="hero-background">
+      <div class="hero-gradient"></div>
+      <div class="hero-noise"></div>
+      <svg class="cable-svg" style="z-index: 1;">
+        <defs>
+          <linearGradient id="cableGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:0.2" />
+            <stop offset="50%" style="stop-color:#a78bfa;stop-opacity:0.6" />
+            <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:0.2" />
+          </linearGradient>
+          <linearGradient id="cableGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#5b21b6;stop-opacity:0.2" />
+            <stop offset="50%" style="stop-color:#7c3aed;stop-opacity:0.5" />
+            <stop offset="100%" style="stop-color:#5b21b6;stop-opacity:0.2" />
+          </linearGradient>
+        </defs>
+        <path d="M -50 100 C 100 500 400 200 800 50" stroke="url(#cableGradient1)" class="cable-path" fill="none" />
+        <path d="M 1400 300 C 1000 700 800 500 400 900" stroke="url(#cableGradient2)" class="cable-path" fill="none" />
+      </svg>
+    </div>
+    <div class="hero-content">
+      <h1 class="headline reveal" data-reveal-delay="0.04s">Create Studio-Quality Music in Seconds</h1>
+      <p class="subhead reveal" data-reveal-delay="0.06s">Royalty-free loops, melodies, vocals, FX, one-shots and full tracks ready to drop.</p>
+      <div class="cta reveal" data-reveal-delay="0.08s" id="signup">
+        <a id="cta-button" class="button primary" href="https://app.sonurastudio.com" target="_blank" rel="noopener">Try for Free</a>
+        <a class="hero-beta-link" href="https://app.sonurastudio.com/sketches" target="_blank" rel="noopener">Explore Music →</a>
+      </div>
+    </div>
+    <div class="hero-video reveal" data-reveal-delay="0.16s" id="hero-video-container">
+      <div class="screw tl"></div>
+      <div class="screw tr"></div>
+      <div class="screw bl"></div>
+      <div class="screw br"></div>
+      <img 
+        src="/images/new-thumbnail.jpg" 
+        alt="Sonura AI Music Generator Demo" 
+        class="hero-video-element hero-video-thumbnail"
+        id="video-thumbnail"
+      >
+      <div class="hero-video-overlay" id="video-overlay">
+        <div class="video-play-button">
+          <i data-lucide="play"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="workflow" aria-labelledby="workflow-title">
+    <svg class="cable-svg" style="z-index: 0; pointer-events: none; opacity: 0.2;">
+       <path d="M 0 100 C 300 100 300 800 600 800 S 900 100 1200 100" stroke="#7c3aed" stroke-width="1" fill="none" />
+    </svg>
+    <div class="workflow-inner">
+      <h2 id="workflow-title" class="workflow-title reveal">
+        <span style="display: inline-flex; align-items: center; gap: 16px;">
+          <div class="patch-point"></div>
+          How Sonura helps you
+          <div class="patch-point"></div>
+        </span>
+      </h2>
+      <div class="workflow-grid">
+        <div class="workflow-item reveal" data-reveal-delay="0.04s">
+          <div class="workflow-image synth-panel">
+            <div class="screw tl"></div>
+            <div class="screw tr"></div>
+            <div class="screw bl"></div>
+            <div class="screw br"></div>
+            <img src="/images/design.jpg" alt="Design unique sounds in Sonura" loading="lazy">
+          </div>
+          <div class="workflow-content">
+            <h3 class="workflow-item-title">Design unique sounds</h3>
+            <p class="workflow-item-description">Generate one-shots, vocals, loops, and FX tailored to your exact vision. Every sound is unique and production-ready.</p>
+          </div>
+        </div>
+        <div class="workflow-item workflow-item-reverse reveal" data-reveal-delay="0.08s">
+          <div class="workflow-image synth-panel">
+            <div class="screw tl"></div>
+            <div class="screw tr"></div>
+            <div class="screw bl"></div>
+            <div class="screw br"></div>
+            <img src="/images/compose.jpg" alt="Compose and stack tracks in Sonura" loading="lazy">
+          </div>
+          <div class="workflow-content">
+            <h3 class="workflow-item-title">Compose and stack</h3>
+            <p class="workflow-item-description">Layer multiple tracks together. Build complex arrangements with drums, bass, melody, and vocals in perfect harmony.</p>
+          </div>
+        </div>
+        <div class="workflow-item reveal" data-reveal-delay="0.12s">
+          <div class="workflow-image synth-panel">
+            <div class="screw tl"></div>
+            <div class="screw tr"></div>
+            <div class="screw bl"></div>
+            <div class="screw br"></div>
+            <img src="/images/remix.jpg" alt="Remix your music in Sonura" loading="lazy">
+          </div>
+          <div class="workflow-content">
+            <h3 class="workflow-item-title">Remix your music</h3>
+            <p class="workflow-item-description">Rearrange, edit, and transform your tracks. Export individual stems to take full control in your DAW. Share links so other users can remix your tracks and stems directly in Sonura.</p>
+          </div>
+        </div>
+        <div class="workflow-item workflow-item-reverse reveal" data-reveal-delay="0.16s">
+          <div class="workflow-image synth-panel">
+            <div class="screw tl"></div>
+            <div class="screw tr"></div>
+            <div class="screw bl"></div>
+            <div class="screw br"></div>
+            <img src="/images/share.jpg" alt="Share your music with the world" loading="lazy">
+          </div>
+          <div class="workflow-content">
+            <h3 class="workflow-item-title">Share with the world</h3>
+            <p class="workflow-item-description">Export and publish anywhere. Spotify, YouTube, SoundCloud. 100% royalty-free. 100% yours.</p>
+          </div>
+        </div>
+      </div>
+      <div class="workflow-cta reveal" data-reveal-delay="0.24s">
+        <p class="workflow-cta-text">Sonura handles the heavy lifting, so you can focus on releasing your music.</p>
+        <a class="button primary" href="https://app.sonurastudio.com" target="_blank" rel="noopener">Start Creating for Free</a>
+      </div>
+    </div>
+  </section>
+  
+  <section class="demo" aria-labelledby="demo-title">
+    <div class="demo-inner">
+      <div class="demo-header">
+        <div class="demo-header-content">
+          <h2 id="demo-title" class="demo-title">Hear what's possible</h2>
+          <p class="demo-subtitle">Tracks created by the <a href="https://app.sonurastudio.com/sketches" target="_blank" rel="noopener" class="community-link">community</a> on Sonura</p>
+        </div>
+      </div>
+      <div class="demo-embeds">
+        <div class="embed-container reveal">
+          <iframe src="https://app.sonurastudio.com/embed/c81f44ff-0ad2-4c7f-be77-c3474e2bd86d" width="100%" height="120" frameborder="0" allow="autoplay; encrypted-media" style="border-radius: 8px;" loading="lazy"></iframe>
+        </div>
+        <div class="embed-container reveal" data-reveal-delay="0.06s">
+          <iframe src="https://app.sonurastudio.com/embed/4d529add-2408-4dde-bf6c-dda4ea19830d" width="100%" height="120" frameborder="0" allow="autoplay; encrypted-media" style="border-radius: 8px;" loading="lazy"></iframe>
+        </div>
+        <div class="embed-container reveal" data-reveal-delay="0.12s">
+          <iframe src="https://app.sonurastudio.com/embed/e34a7fb3-c865-4f92-90f9-9280be85aac1" width="100%" height="120" frameborder="0" allow="autoplay; encrypted-media" style="border-radius: 8px;" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="testimonials" aria-labelledby="testimonials-title">
+    <div class="testimonials-inner">
+      <h2 id="testimonials-title" class="testimonials-title reveal">
+        <span class="love-icon-wrapper" aria-hidden="true">
+          <i data-lucide="heart" class="love-icon"></i>
+        </span>
+        Loved by creators
+      </h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal" data-reveal-delay="0.04s">
+          <div class="testimonial-content">
+            <p class="testimonial-text">"Just came across Sonura on Product Hunt and I am completely jazzed by this product! I have numerous projects where I've been dreading doing sound engineering and this has completely flipped the script!"</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-info">
+              <p class="author-name">Erik Wesslen</p>
+              <p class="author-handle">Engineer</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card reveal" data-reveal-delay="0.08s">
+          <div class="testimonial-content">
+            <p class="testimonial-text">"Love the app. Easy to use. I'm using it for video background music and my sets, it makes my videos totally unique."</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-info">
+              <p class="author-name">Steve B</p>
+              <p class="author-handle">DJ</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card reveal" data-reveal-delay="0.12s">
+          <div class="testimonial-content">
+            <p class="testimonial-text">"The perfect balance between complexity and ease of use. I could go from zero to a complete song with almost no learning curve. A real wow moment for me."</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-info">
+              <p class="author-name">António Ferreira</p>
+              <p class="author-handle">Producer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing" id="pricing" aria-labelledby="pricing-title">
+    <div class="pricing-inner">
+      <div class="pricing-header-section reveal">
+        <h2 id="pricing-title" class="pricing-title">Choose your plan</h2>
+        <p class="pricing-subtitle">Upgrade or cancel anytime</p>
+        
+        <div class="pricing-trust">
+          <div class="pricing-trust-item"><i data-lucide="check"></i> <span>You own 100% of music you create</span></div>
+          <div class="pricing-trust-item"><i data-lucide="check"></i> <span>Release anywhere, keep all royalties</span></div>
+          <div class="pricing-trust-item"><i data-lucide="check"></i> <span>No hidden fees or contracts</span></div>
+        </div>
+      </div>
+  
+      <div class="pricing-grid">
+        <div class="pricing-card reveal" data-reveal-delay="0.16s">
+          <div class="pricing-card-header">
+            <div class="plan-header-top">
+              <h3 class="plan-name">Starter</h3>
+              <span class="discount-badge">50% OFF</span>
+            </div>
+            <div class="price-container">
+              <span class="old-price">$19.99</span>
+              <div class="plan-price">$9.99<span class="period">/mo</span></div>
+            </div>
+            <p class="plan-desc">For hobbyists and beginners.</p>
+          </div>
+          <ul class="plan-features">
+            <li><i data-lucide="check"></i> <span>200 Generations / mo</span></li>
+            <li><i data-lucide="check"></i> <span>High Quality Downloads</span></li>
+            <li><i data-lucide="check"></i> <span>Commercial Rights</span></li>
+            <li><i data-lucide="check"></i> <span>Stem Export</span></li>
+          </ul>
+          <div class="pricing-cta">
+            <a href="https://app.sonurastudio.com" class="button secondary full-width">Get Started</a>
+          </div>
+        </div>
+  
+        <div class="pricing-card featured reveal" data-reveal-delay="0.2s">
+          <div class="popular-badge">Most Popular</div>
+          <div class="pricing-card-header">
+            <div class="plan-header-top">
+              <h3 class="plan-name">Pro</h3>
+              <span class="discount-badge">50% OFF</span>
+            </div>
+            <div class="price-container">
+              <span class="old-price">$39.99</span>
+              <div class="plan-price">$19.99<span class="period">/mo</span></div>
+            </div>
+            <p class="plan-desc">For independent artists.</p>
+          </div>
+          <ul class="plan-features">
+            <li><i data-lucide="check"></i> <span>500 Generations / mo</span></li>
+            <li><i data-lucide="check"></i> <span>High Quality WAV Downloads</span></li>
+            <li><i data-lucide="check"></i> <span>Commercial Rights</span></li>
+            <li><i data-lucide="check"></i> <span>Stem Export</span></li>
+            <li><i data-lucide="check"></i> <span>Early Access to New Features</span></li>
+            <li><i data-lucide="check"></i> <span>24/7 Support</span></li>
+          </ul>
+          <div class="pricing-cta">
+            <a href="https://app.sonurastudio.com" class="button primary full-width">Get Started</a>
+          </div>
+        </div>
+  
+        <div class="pricing-card reveal" data-reveal-delay="0.24s">
+          <div class="pricing-card-header">
+            <div class="plan-header-top">
+              <h3 class="plan-name">Studio</h3>
+              <span class="discount-badge">50% OFF</span>
+            </div>
+            <div class="price-container">
+              <span class="old-price">$89.99</span>
+              <div class="plan-price">$44.99<span class="period">/mo</span></div>
+            </div>
+            <p class="plan-desc">For studios and professional producers.</p>
+          </div>
+          <ul class="plan-features">
+            <li><i data-lucide="check"></i> <span>Everything in Pro</span></li>
+            <li><i data-lucide="check"></i> <span>2000 Generations / mo</span></li>
+            <li><i data-lucide="check"></i> <span>One-to-one Support Calls</span></li>
+            <li><i data-lucide="check"></i> <span>Custom Features</span></li>
+          </ul>
+          <div class="pricing-cta">
+            <a href="https://app.sonurastudio.com" class="button secondary full-width">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="faq" id="faq" aria-labelledby="faq-title">
+    <div class="faq-inner">
+      <h2 id="faq-title" class="faq-title">Frequently asked questions</h2>
+      <div class="faq-list">
+        <details class="reveal">
+          <summary>What is Sonura's AI music generator?</summary>
+          <p>Sonura is an AI music generator that creates professional-quality beats, loops, and full tracks from text descriptions. Simply type what you want (like "trap beat 140bpm dark melody"), and our AI music maker generates it in seconds. You can regenerate unlimited times, export stems, and use everything commercially with full ownership.</p>
+        </details>
+        <details class="reveal" data-reveal-delay="0.03s">
+          <summary>Is this AI music generator really free?</summary>
+          <p>Yes! Sonura offers free credits to start creating immediately. No credit card required to try the AI music generator. You can generate beats, loops, and tracks for free and experience the full quality before choosing a plan.</p>
+        </details>
+        <details class="reveal" data-reveal-delay="0.06s">
+          <summary>Do I own the music I create?</summary>
+          <p>Yes! You own 100% of everything you create with Sonura, with full commercial rights. Release on Spotify, YouTube, TikTok, sell as beats, use in client work - it's all yours. No royalty splits, no attribution required.</p>
+        </details>
+        <details class="reveal" data-reveal-delay="0.12s">
+          <summary>What genres and styles can Sonura create?</summary>
+          <p>Sonura supports virtually every genre: trap, house, techno, pop, rock, jazz, lo-fi, drill, R&B, country, metal, ambient, and more. It understands specific sub-genres and style descriptors, so you can get exactly the vibe you want.</p>
+        </details>
+        <details class="reveal" data-reveal-delay="0.18s">
+          <summary>Do I need music production experience?</summary>
+          <p>Not at all. Sonura is built for everyone - from complete beginners to professional producers. If you can describe what you want, Sonura can create it. No DAW knowledge, music theory, or technical skills required (though it integrates perfectly if you have them).</p>
+        </details>
+        <details class="reveal" data-reveal-delay="0.24s">
+          <summary>How fast is the generation process?</summary>
+          <p>Average generation time is under 10 seconds. Create loops in 5-8 seconds, full tracks in 8-12 seconds. No waiting, no rendering - just instant creativity at the speed of thought.</p>
+        </details>
+        <details class="reveal" data-reveal-delay="0.3s">
+          <summary>Can I export stems for mixing?</summary>
+          <p>Yes! Export individual stems (drums, bass, melody, FX, vocals) or the full mix. Perfect for custom mixing, remixing, or integrating with your existing DAW workflow. Works with Ableton, FL Studio, Logic, Pro Tools, and any DAW.</p>
+        </details>
+        <details class="reveal" data-reveal-delay="0.36s">
+          <summary>Is there a free trial?</summary>
+          <p>Yes! You can start creating immediately with free credits. No credit card required to try. Experience the full power of Sonura before committing to a plan.</p>
+        </details>
+        <details class="reveal" data-reveal-delay="0.42s">
+          <summary>How is Sonura different from sample packs?</summary>
+          <p>Sample packs are pre-made and overused by thousands of producers. Sonura's AI music generator creates completely original music tailored to your exact specifications. Every creation is unique, fresh, and perfectly matched to your vision - not generic loops everyone else is using.</p>
+        </details>
+        <details class="reveal" data-reveal-delay="0.48s">
+          <summary>What makes Sonura the best AI music generator?</summary>
+          <p>Sonura combines speed (under 10 seconds), quality (studio-grade output), flexibility (any genre), and ownership (100% royalty-free). Unlike other AI music generators, you get unlimited generations, multi-track stem exports, and can use everything commercially. Plus it's free to start with no credit card required.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="final-cta" aria-labelledby="final-cta-title">
+    <div class="final-cta-inner">
+      <h2 id="final-cta-title" class="final-cta-title reveal">Turn your ideas into music.</h2>
+      <p class="final-cta-subtitle reveal" data-reveal-delay="0.06s">Free to start. No credit card required.</p>
+      <div class="final-cta-form reveal" data-reveal-delay="0.12s">
+        <a class="button primary large" href="https://app.sonurastudio.com" target="_blank" rel="noopener">Start Creating for Free</a>
+      </div>
+      <div class="final-cta-trust reveal" data-reveal-delay="0.18s">
+        <div class="trust-item"><i data-lucide="check"></i> <span>No credit card required</span></div>
+        <div class="trust-item"><i data-lucide="check"></i> <span>Cancel anytime</span></div>
+        <div class="trust-item"><i data-lucide="check"></i> <span>100% yours</span></div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  // Video play functionality
+  document.getElementById('video-overlay')?.addEventListener('click', () => {
+    const container = document.getElementById('hero-video-container');
+    const thumbnail = document.getElementById('video-thumbnail');
+    const overlay = document.getElementById('video-overlay');
+    
+    if (container && thumbnail && overlay) {
+      const video = document.createElement('video');
+      video.src = '/videos/sonura desktop ad.mp4';
+      video.className = 'hero-video-element';
+      video.autoplay = true;
+      video.controls = true;
+      video.muted = false;
+      
+      thumbnail.replaceWith(video);
+      overlay.style.display = 'none';
+    }
+  });
+</script>

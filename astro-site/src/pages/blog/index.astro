@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// Define all blog posts here - single source of truth
+const blogPosts = [
+  {
+    slug: 'ai-music-generator-guide',
+    title: 'AI Music Generators: Complete Guide 2025',
+    description: 'Comprehensive guide to AI music generators comparing features, pricing, quality, and commercial use rights.',
+    date: '2025-10-20',
+    readTime: '12 min'
+  },
+  {
+    slug: 'how-to-make-trap-beats',
+    title: 'How to Make Trap Beats: Complete Guide',
+    description: 'Learn the fundamentals of trap beat production including 808s, hi-hats, and arrangement.',
+    date: '2025-10-15',
+    readTime: '10 min'
+  },
+  {
+    slug: 'royalty-free-music-explained',
+    title: 'Royalty-Free Music Explained',
+    description: 'Everything you need to know about royalty-free music licensing and commercial use.',
+    date: '2025-10-10',
+    readTime: '8 min'
+  },
+  {
+    slug: 'music-production-for-beginners',
+    title: 'Music Production for Beginners',
+    description: 'Getting started with music production - essential concepts, tools, and tips.',
+    date: '2025-10-05',
+    readTime: '15 min'
+  },
+  {
+    slug: 'best-free-vst-plugins',
+    title: 'Best Free VST Plugins 2025',
+    description: 'Top free VST plugins for music production across synths, effects, and instruments.',
+    date: '2025-09-28',
+    readTime: '10 min'
+  },
+  {
+    slug: 'how-to-release-music-on-spotify',
+    title: 'How to Release Music on Spotify',
+    description: 'Step-by-step guide to releasing your music on Spotify and other streaming platforms.',
+    date: '2025-09-20',
+    readTime: '8 min'
+  },
+  {
+    slug: 'ai-music-genjam-sonura-studio',
+    title: 'AI Music Generation with Sonura Studio',
+    description: 'Deep dive into creating music with AI using Sonura Studio.',
+    date: '2025-09-15',
+    readTime: '7 min'
+  }
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Sonura Blog",
+    "description": "Music production tips, AI music tutorials, and guides from Sonura.",
+    "url": "https://sonurastudio.com/blog/"
+  }
+];
+---
+
+<BaseLayout
+  title="Sonura Blog | Music Production Tips, Guides & AI Music Tutorials"
+  description="Learn music production, AI music generation, beat making, and release strategies. Expert guides, tutorials, and tips from Sonura."
+  keywords="music production blog, ai music tutorials, beat making guide, music production tips, how to make beats"
+  canonical="https://sonurastudio.com/blog/"
+  ogTitle="Sonura Blog | Music Production Tips & Guides"
+  jsonLd={jsonLd}
+>
+  <section style="padding: 60px 24px 80px; max-width: 1280px; margin: 0 auto;">
+    <header style="text-align: center; margin-bottom: 48px;">
+      <h1 style="font-size: 48px; font-weight: 800; margin-bottom: 16px; color: var(--fg); letter-spacing: -0.02em;">Sonura Blog</h1>
+      <p style="font-size: 20px; color: var(--muted); max-width: 600px; margin: 0 auto;">Guides, tutorials, and tips for music production, AI music generation, and releasing your tracks.</p>
+    </header>
+
+    <div style="display: grid; gap: 24px; max-width: 900px; margin: 0 auto;">
+      {blogPosts.map((post) => (
+        <a href={`/blog/${post.slug}/`} style="display: block; padding: 32px; background: var(--panel-bg); border: 1px solid var(--border); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
+          <article>
+            <h2 style="font-size: 24px; font-weight: 700; margin-bottom: 12px; color: var(--fg);">{post.title}</h2>
+            <p style="color: var(--muted); margin-bottom: 16px; line-height: 1.6;">{post.description}</p>
+            <div style="font-size: 14px; color: var(--muted); opacity: 0.7;">
+              {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })} • {post.readTime}
+            </div>
+          </article>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  a:hover {
+    border-color: var(--primary) !important;
+    transform: translateY(-2px);
+  }
+</style>
+

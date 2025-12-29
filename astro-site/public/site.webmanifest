@@ -1,0 +1,24 @@
+{
+  "name": "Sonura",
+  "short_name": "Sonura",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "description": "Sonura is the all-in-one music studio for producers, artists, and sound designers. Generate loops, melodies, vocals, FX, one-shots, and full tracks instantly.",
+  "icons": [
+    {
+      "src": "/google-icon.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png"  
+    },
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
+
+
