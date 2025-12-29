@@ -23,6 +23,11 @@
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
+
+/* Ensure consistent font across all elements */
+button, input, select, textarea {
+  font-family: 'Space Grotesk', sans-serif;
+}
 *::-webkit-scrollbar {
   display: none;
 }
@@ -392,6 +397,7 @@ body {
   padding: 14px 18px;
   border-radius: 8px;
   font-weight: 600;
+  font-family: 'Space Grotesk', sans-serif;
   color: white;
   background: rgba(255,255,255,0.08);
   cursor: pointer;
