@@ -1,5 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import newThumbnail from '../assets/images/new-thumbnail.jpg';
+import designImg from '../assets/images/design.jpg';
+import composeImg from '../assets/images/compose.jpg';
+import remixImg from '../assets/images/remix.jpg';
+import shareImg from '../assets/images/share.jpg';
 
 const jsonLd = [
   {
@@ -103,6 +109,7 @@ const faqSchema = {
     <div class="hero-content">
       <h1 class="headline reveal" data-reveal-delay="0.04s">Create Studio-Quality Music in Seconds</h1>
       <p class="subhead reveal" data-reveal-delay="0.06s">Royalty-free loops, melodies, vocals, FX, one-shots and full tracks ready to drop.</p>
+
       <div class="cta reveal" data-reveal-delay="0.08s" id="signup">
         <a id="cta-button" class="button primary" href="https://app.sonurastudio.com" target="_blank" rel="noopener">Try for Free</a>
         <a class="hero-beta-link" href="https://app.sonurastudio.com/sketches" target="_blank" rel="noopener">Explore Music →</a>
@@ -113,12 +120,12 @@ const faqSchema = {
       <div class="screw tr"></div>
       <div class="screw bl"></div>
       <div class="screw br"></div>
-      <img 
-        src="/images/new-thumbnail.jpg" 
+      <Image 
+        src={newThumbnail}
         alt="Sonura AI Music Generator Demo" 
         class="hero-video-element hero-video-thumbnail"
         id="video-thumbnail"
-      >
+      />
       <div class="hero-video-overlay" id="video-overlay">
         <div class="video-play-button">
           <i data-lucide="play"></i>
@@ -146,7 +153,7 @@ const faqSchema = {
             <div class="screw tr"></div>
             <div class="screw bl"></div>
             <div class="screw br"></div>
-            <img src="/images/design.jpg" alt="Design unique sounds in Sonura" loading="lazy">
+            <Image src={designImg} alt="Design unique sounds in Sonura" />
           </div>
           <div class="workflow-content">
             <h3 class="workflow-item-title">Design unique sounds</h3>
@@ -159,7 +166,7 @@ const faqSchema = {
             <div class="screw tr"></div>
             <div class="screw bl"></div>
             <div class="screw br"></div>
-            <img src="/images/compose.jpg" alt="Compose and stack tracks in Sonura" loading="lazy">
+            <Image src={composeImg} alt="Compose and stack tracks in Sonura" />
           </div>
           <div class="workflow-content">
             <h3 class="workflow-item-title">Compose and stack</h3>
@@ -172,7 +179,7 @@ const faqSchema = {
             <div class="screw tr"></div>
             <div class="screw bl"></div>
             <div class="screw br"></div>
-            <img src="/images/remix.jpg" alt="Remix your music in Sonura" loading="lazy">
+            <Image src={remixImg} alt="Remix your music in Sonura" />
           </div>
           <div class="workflow-content">
             <h3 class="workflow-item-title">Remix your music</h3>
@@ -185,7 +192,7 @@ const faqSchema = {
             <div class="screw tr"></div>
             <div class="screw bl"></div>
             <div class="screw br"></div>
-            <img src="/images/share.jpg" alt="Share your music with the world" loading="lazy">
+            <Image src={shareImg} alt="Share your music with the world" />
           </div>
           <div class="workflow-content">
             <h3 class="workflow-item-title">Share with the world</h3>
@@ -443,3 +450,9 @@ const faqSchema = {
     }
   });
 </script>
+
+<style>
+  .hero-content {
+    padding-top: 120px !important;
+  }
+</style>

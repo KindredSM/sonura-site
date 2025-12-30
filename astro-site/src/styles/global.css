@@ -167,6 +167,12 @@ body {
   gap: 20px;
   flex: 1;
   justify-content: center;
+  padding-top: 0px; /* Default to 0 for most pages */
+}
+
+/* Add padding back specifically for the home page if it has a unique class, 
+   or we can handle it by adding a class to the home page hero */
+.home-page .hero-content {
   padding-top: 120px;
 }
 

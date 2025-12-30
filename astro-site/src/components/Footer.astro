@@ -1,11 +1,21 @@
 ---
 // Footer component - shared across all pages
+const currentYear = new Date().getFullYear();
 ---
 
 <footer class="footer">
   <div class="footer-inner">
-    <div class="footer-content">
-      <div class="footer-brand">
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <a href="/" class="brand-link">
+          <div class="brand-logo">
+            <img src="/icon.svg" alt="Sonura Logo" width="32" height="32" />
+          </div>
+          <span class="brand-name">Sonura</span>
+        </a>
+        <p class="brand-desc">
+          Professional AI music generator for producers, artists, and creators. Create royalty-free beats, loops, and vocals in seconds.
+        </p>
         <div class="footer-social">
           <a class="footer-social-link" href="https://discord.gg/Yk8RD3Nmyh" target="_blank" rel="noopener" aria-label="Discord">
             <i class="fab fa-discord"></i>
@@ -17,11 +27,48 @@
             <i data-lucide="mail"></i>      
           </a>
         </div>
-        <div class="footer-copyright">
-          <p>&copy; {new Date().getFullYear()} Sonura. All rights reserved.</p>
-        </div>
       </div>
-      
+
+      <div class="footer-col">
+        <h3 class="footer-heading">Features</h3>
+        <ul class="footer-links">
+          <li><a href="/features/ai-beats/">AI Beat Generator</a></li>
+          <li><a href="/features/ai-loops/">AI Loop Maker</a></li>
+          <li><a href="/features/ai-vocals/">AI Vocals</a></li>
+          <li><a href="/features/stem-export/">Stem Export</a></li>
+          <li><a href="/features/text-to-music/">Text to Music</a></li>
+          <li><a href="/#pricing">Pricing</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3 class="footer-heading">Use Cases</h3>
+        <ul class="footer-links">
+          <li><a href="/use-cases/type-beats/">Type Beats</a></li>
+          <li><a href="/use-cases/youtube-music/">YouTube Music</a></li>
+          <li><a href="/use-cases/podcast-music/">Podcast Intros</a></li>
+          <li><a href="/use-cases/game-music/">Game Music</a></li>
+          <li><a href="/use-cases/film-scoring/">Film Scoring</a></li>
+          <li><a href="/genre/trap/">Trap Beat Maker</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3 class="footer-heading">Compare</h3>
+        <ul class="footer-links">
+          <li><a href="/alternatives/suno-alternative/">Suno Alternative</a></li>
+          <li><a href="/alternatives/udio-alternative/">Udio Alternative</a></li>
+          <li><a href="/alternatives/soundraw-alternative/">Soundraw Alternative</a></li>
+          <li><a href="/alternatives/boomy-alternative/">Boomy Alternative</a></li>
+          <li><a href="/alternatives/aiva-alternative/">Aiva Alternative</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="footer-copyright">
+        <p>&copy; {currentYear} Sonura Studio. All rights reserved.</p>
+      </div>
       <div class="footer-partner">
         <a href="https://elevenlabs.io/startup-grants" target="_blank" rel="noopener">
           <img src="https://eleven-public-cdn.elevenlabs.io/payloadcms/cy7rxce8uki-IIElevenLabsGrants%201.webp" alt="ElevenLabs Startup Program" class="footer-badge">
@@ -31,3 +78,186 @@
   </div>
 </footer>
 
+<style>
+  .footer {
+    padding: 80px 0 40px;
+    border-top: 1px solid var(--border);
+    background: #000;
+  }
+
+  .footer-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 64px;
+    margin-bottom: 80px;
+  }
+
+  .footer-brand-col {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .brand-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--fg);
+  }
+
+  .brand-logo {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .brand-name {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .brand-desc {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 320px;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 12px;
+  }
+
+  .footer-social-link {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .footer-social-link:hover {
+    background: rgba(255,255,255,0.1);
+    color: var(--fg);
+    border-color: var(--border-light);
+    transform: translateY(-2px);
+  }
+
+  .footer-social-link i, 
+  .footer-social-link :global(svg) {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+  }
+
+  .footer-heading {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--fg);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0 0 24px 0;
+  }
+
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .footer-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s ease;
+  }
+
+  .footer-links a:hover {
+    color: var(--fg);
+  }
+
+  .footer-bottom {
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-copyright {
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .footer-copyright p {
+    margin: 0;
+  }
+
+  .footer-badge {
+    height: 20px;
+    width: auto;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+    filter: grayscale(100%);
+  }
+
+  .footer-badge:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+  }
+
+  @media (max-width: 1024px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+    
+    .footer-brand-col {
+      grid-column: span 2;
+      margin-bottom: 24px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .footer {
+      padding: 64px 0 32px;
+    }
+
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      margin-bottom: 64px;
+    }
+
+    .footer-brand-col {
+      grid-column: span 1;
+    }
+
+    .footer-bottom {
+      flex-direction: column-reverse;
+      gap: 24px;
+      align-items: center;
+      text-align: center;
+    }
+  }
+</style>
