@@ -1,0 +1,55 @@
+---
+import UseCaseLayout from '../../../layouts/UseCaseLayout.astro';
+
+const benefits = [
+  { title: 'Seamless Loops', description: 'Generate perfectly loopable tracks for game environments. Ambient themes that play indefinitely without jarring transitions.' },
+  { title: 'Adaptive Elements', description: 'Create stems and layers that can be mixed dynamically. Build adaptive music systems with AI-generated components.' },
+  { title: 'Full Commercial Rights', description: '100% royalty-free for commercial games. Ship on Steam, console, mobile, or any platform. No revenue share.' },
+  { title: 'Rapid Prototyping', description: 'Generate placeholder music in seconds during development. Replace with final assets or keep what works.' },
+  { title: 'Genre Versatility', description: 'From 8-bit chiptune to epic orchestral, ambient exploration to intense combat. Any style your game needs.' },
+  { title: 'Stem Export for Implementation', description: 'Export individual layers for adaptive audio systems. Implement dynamic music that responds to gameplay.' },
+];
+
+const examples = [
+  { prompt: 'fantasy rpg exploration ambient orchestral peaceful', description: 'Serene background music for exploring peaceful game areas. Perfect for villages, forests, and safe zones.' },
+  { prompt: 'intense combat music fast drums epic', description: 'High-energy battle themes that match the intensity of combat. Driving percussion and urgent melodies.' },
+  { prompt: 'retro 8bit chiptune platformer upbeat', description: 'Classic chiptune vibes for retro-style games. Nostalgic and energetic.' },
+  { prompt: 'horror game ambient dark tension drones', description: 'Unsettling atmospheric music for horror games. Builds dread without overwhelming.' },
+  { prompt: 'sci-fi menu music futuristic electronic calm', description: 'Sleek electronic themes for main menus and UI. Modern and immersive.' },
+  { prompt: 'victory fanfare triumphant short celebration', description: 'Brief celebratory music for achievements and wins. Rewarding player moments.' },
+];
+
+const faqs = [
+  { question: 'Can I use this music in commercial games?', answer: 'Yes! Full commercial rights on all tiers. Ship your game on Steam, consoles, mobile, or any platform. No royalties, no revenue share.' },
+  { question: 'Are the loops truly seamless?', answer: 'Yes, Sonura generates tracks designed to loop cleanly. Perfect for background music that needs to play indefinitely.' },
+  { question: 'Can I create adaptive music?', answer: 'Yes! Export stems and use them in adaptive audio systems. Layer elements dynamically based on gameplay state.' },
+  { question: 'What genres work best for games?', answer: 'All genres: orchestral, electronic, ambient, chiptune, rock, cinematic - whatever your game needs. Describe the style and context.' },
+  { question: 'Can I use this during development and ship it?', answer: 'Yes! Many developers prototype with Sonura and end up shipping the generated music. Quality is production-ready.' },
+  { question: 'What about sound effects?', answer: 'Sonura also generates sound effects - impacts, UI sounds, ambient effects. Full sound design capabilities.' },
+];
+
+const trustItems = ['Ship on any platform', 'No revenue share', 'Seamless loops'];
+---
+
+<UseCaseLayout
+  useCase="Game Music"
+  useCaseSlug="game-music"
+  title="AI Game Music Generator | Soundtracks & Loops - Sonura"
+  description="Generate game music and soundtracks with AI - exploration themes, combat music, ambient loops, and more. Royalty-free with full commercial rights for game development."
+  keywords="game music generator, ai game soundtrack, video game music ai, game ambient music, game combat music, royalty free game music, indie game music"
+  headline="AI Game Music"
+  subhead="Generate soundtracks, ambient loops, combat themes, and more. Perfect for indie developers and game studios. Full commercial rights included."
+  ctaText="Generate Game Music"
+  problemTitle="The Game Music Challenge"
+  problemDescription="Custom composers are expensive and slow. Stock music sounds generic and is used in other games. You need unique, high-quality music that fits your game perfectly without breaking the budget or timeline."
+  solutionTitle="The Sonura Solution"
+  solutionDescription="Generate custom game music in seconds. Exploration themes, combat tracks, ambient loops, UI sounds - any style your game needs. Seamless loops, stem export for adaptive systems, full commercial rights. Ship your game with original music."
+  benefits={benefits}
+  examplesTitle="Example Prompts for Games"
+  examples={examples}
+  faqs={faqs}
+  trustItems={trustItems}
+  finalCtaTitle="Score Your Game with AI"
+  finalCtaButtonText="Generate Game Music Free"
+/>
+

@@ -1,0 +1,280 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Benefit {
+  title: string;
+  description: string;
+}
+
+interface Example {
+  prompt: string;
+  description: string;
+}
+
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  useCase: string;
+  useCaseSlug: string;
+  title: string;
+  description: string;
+  keywords: string;
+  headline: string;
+  subhead: string;
+  ctaText: string;
+  problemTitle: string;
+  problemDescription: string;
+  solutionTitle: string;
+  solutionDescription: string;
+  benefits: Benefit[];
+  examplesTitle?: string;
+  examples: Example[];
+  faqs: FAQ[];
+  trustItems?: string[];
+  finalCtaTitle?: string;
+  finalCtaButtonText?: string;
+}
+
+const {
+  useCase,
+  useCaseSlug,
+  title,
+  description,
+  keywords,
+  headline,
+  subhead,
+  ctaText,
+  problemTitle,
+  problemDescription,
+  solutionTitle,
+  solutionDescription,
+  benefits,
+  examplesTitle,
+  examples,
+  faqs,
+  trustItems = [],
+  finalCtaTitle,
+  finalCtaButtonText,
+} = Astro.props;
+
+const canonical = `https://sonurastudio.com/use-cases/${useCaseSlug}/`;
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": title,
+    "url": canonical,
+    "description": description
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sonurastudio.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Use Cases", "item": "https://sonurastudio.com/use-cases/" },
+      { "@type": "ListItem", "position": 3, "name": useCase, "item": canonical }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  }
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  keywords={keywords}
+  canonical={canonical}
+  ogTitle={title}
+  ogDescription={description}
+  jsonLd={jsonLd}
+  bodyClass="usecase-page"
+>
+  <style>
+    .benefit-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+    .example-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    
+    @media (min-width: 640px) {
+      .benefit-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    
+    @media (min-width: 1024px) {
+      .benefit-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .problem-solution {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    @media (min-width: 768px) {
+      .problem-solution {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .problem-card {
+      padding: 40px;
+      background: rgba(239, 68, 68, 0.05);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      border-radius: 16px;
+    }
+
+    .solution-card {
+      padding: 40px;
+      background: rgba(34, 197, 94, 0.05);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+      border-radius: 16px;
+    }
+
+    .benefit-card {
+      padding: 28px;
+      background: rgba(255,255,255,0.02);
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: border-color 0.2s;
+    }
+
+    .benefit-card:hover {
+      border-color: var(--primary);
+    }
+
+    .example-card {
+      padding: 24px;
+      background: rgba(124, 58, 237, 0.05);
+      border-radius: 12px;
+      border-left: 3px solid var(--primary);
+    }
+
+    .example-prompt {
+      font-family: monospace;
+      background: rgba(0,0,0,0.3);
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      color: var(--primary);
+    }
+  </style>
+
+  <section class="hero">
+    <div class="hero-background">
+      <div class="hero-gradient"></div>
+      <div class="hero-noise"></div>
+      <svg class="cable-svg" style="z-index: 1;">
+        <defs>
+          <linearGradient id="cableGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:0.2" />
+            <stop offset="50%" style="stop-color:#a78bfa;stop-opacity:0.6" />
+            <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:0.2" />
+          </linearGradient>
+          <linearGradient id="cableGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#5b21b6;stop-opacity:0.2" />
+            <stop offset="50%" style="stop-color:#7c3aed;stop-opacity:0.5" />
+            <stop offset="100%" style="stop-color:#5b21b6;stop-opacity:0.2" />
+          </linearGradient>
+        </defs>
+        <path d="M -50 100 C 100 500 400 200 800 50" stroke="url(#cableGradient1)" class="cable-path" fill="none" />
+        <path d="M 1400 300 C 1000 700 800 500 400 900" stroke="url(#cableGradient2)" class="cable-path" fill="none" />
+      </svg>
+    </div>
+    <div class="hero-content">
+      <h1 class="headline reveal">{headline}</h1>
+      <p class="subhead reveal" data-reveal-delay="0.06s" style="max-width: 70vw; margin-left: auto; margin-right: auto;">{subhead}</p>
+      <div class="cta">
+        <a class="button primary" href="https://app.sonurastudio.com" target="_blank" rel="noopener">{ctaText}</a>
+        <a class="hero-beta-link" href="/use-cases/">All Use Cases →</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: 80px 24px;" aria-labelledby="problem-solution-title">
+    <div style="max-width: 1000px; margin: 0 auto;">
+      <div class="problem-solution">
+        <div class="problem-card reveal">
+          <h2 style="font-size: 24px; font-weight: 700; margin-bottom: 16px; color: #ef4444;">{problemTitle}</h2>
+          <p style="color: var(--muted); line-height: 1.7;">{problemDescription}</p>
+        </div>
+        <div class="solution-card reveal" data-reveal-delay="0.1s">
+          <h2 style="font-size: 24px; font-weight: 700; margin-bottom: 16px; color: #22c55e;">{solutionTitle}</h2>
+          <p style="color: var(--muted); line-height: 1.7;">{solutionDescription}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: 80px 24px; background: rgba(0,0,0,0.2);" aria-labelledby="benefits-title">
+    <div style="max-width: 1100px; margin: 0 auto;">
+      <h2 id="benefits-title" class="workflow-title reveal" style="text-align: center; margin-bottom: 48px;">Why Sonura for {useCase}</h2>
+      <div class="benefit-grid">
+        {benefits.map((benefit, index) => (
+          <div class="benefit-card reveal" data-reveal-delay={`${0.06 * index}s`}>
+            <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 12px; color: var(--fg);">{benefit.title}</h3>
+            <p style="color: var(--muted); line-height: 1.6; font-size: 15px;">{benefit.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: 80px 24px;" aria-labelledby="examples-title">
+    <div style="max-width: 800px; margin: 0 auto;">
+      <h2 id="examples-title" class="workflow-title reveal" style="text-align: center; margin-bottom: 48px;">{examplesTitle || 'Example Prompts'}</h2>
+      <div class="example-grid">
+        {examples.map((example, index) => (
+          <div class="example-card reveal" data-reveal-delay={`${0.06 * index}s`}>
+            <div class="example-prompt">"{example.prompt}"</div>
+            <p style="color: var(--muted); font-size: 14px; line-height: 1.5;">{example.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="faq" id="faq" aria-labelledby="faq-title">
+    <div class="faq-inner">
+      <h2 id="faq-title" class="faq-title">{useCase} FAQ</h2>
+      <div class="faq-list">
+        {faqs.map((faq, index) => (
+          <details class="reveal" data-reveal-delay={`${0.03 * index}s`}>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="final-cta" aria-labelledby="final-cta-title">
+    <div class="final-cta-inner">
+      <h2 id="final-cta-title" class="final-cta-title reveal">{finalCtaTitle || `Start Creating ${useCase}`}</h2>
+      <p class="final-cta-subtitle reveal" data-reveal-delay="0.06s">free to start. no credit card required.</p>
+      <div class="final-cta-form reveal" data-reveal-delay="0.12s">
+        <a class="button primary large" href="https://app.sonurastudio.com" target="_blank" rel="noopener">{finalCtaButtonText || 'get started free'}</a>
+      </div>
+      {trustItems.length > 0 && (
+        <div class="final-cta-trust reveal" data-reveal-delay="0.18s">
+          {trustItems.map((item) => (
+            <div class="trust-item"><i data-lucide="check"></i> <span>{item}</span></div>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>
+

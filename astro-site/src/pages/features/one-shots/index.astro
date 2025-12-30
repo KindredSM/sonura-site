@@ -1,0 +1,57 @@
+---
+import FeatureLayout from '../../../layouts/FeatureLayout.astro';
+
+const howItWorksSteps = [
+  'Describe the one-shot you need: "punchy trap kick" or "bright piano chord stab"',
+  'Sonura generates unique one-shot samples matching your description',
+  'Preview, iterate, and build a collection of your favorite sounds',
+  'Export and use in your DAW, sampler, or drum machine',
+];
+
+const benefits = [
+  { title: 'Unique Drum Sounds', description: 'Generate kicks, snares, hi-hats, claps, and percussion that nobody else has. Build a signature sound palette.' },
+  { title: 'Melodic One-Shots', description: 'Create piano hits, synth stabs, guitar plucks, and chord stabs. Instant melodic elements for sampling.' },
+  { title: 'Build Sample Packs', description: 'Generate collections of one-shots to build your own custom sample packs. Sell them or keep them exclusive.' },
+  { title: 'Perfect for Sampling', description: 'One-shots are designed for use in samplers, drum machines, and DAW workflows. Clean, usable sounds.' },
+  { title: 'Genre-Specific Sounds', description: 'Get sounds tailored to your genre - punchy trap kicks, crisp house claps, lo-fi textures, and more.' },
+  { title: 'Instant Generation', description: 'No browsing through thousands of samples. Describe what you need, get it in seconds.' },
+];
+
+const useCases = [
+  { title: 'Beat Makers', description: 'Build custom drum kits with unique kicks, snares, and hi-hats. Stand out from producers using the same sample packs.' },
+  { title: 'Sample Pack Creators', description: 'Generate original one-shots for sample packs. Create products that offer sounds customers can\'t find elsewhere.' },
+  { title: 'Live Performers', description: 'Load custom one-shots into your sampler or drum machine. Perform with sounds unique to your set.' },
+  { title: 'Sound Designers', description: 'Create starting points for further sound design. Generate raw material to process and transform.' },
+];
+
+const faqs = [
+  { question: 'What types of one-shots can Sonura generate?', answer: 'Drums (kicks, snares, hi-hats, claps, toms, percussion), melodic (piano, synth, guitar, strings), and textural elements. Any single-hit sound you can describe.' },
+  { question: 'Can I use one-shots in my sampler?', answer: 'Yes! One-shots export as clean audio files ready for use in any sampler, drum machine, or DAW. Standard WAV format.' },
+  { question: 'Are the sounds truly unique?', answer: 'Yes, every one-shot is AI-generated and original. Not recycled from existing libraries. Your sounds, your signature.' },
+  { question: 'Can I sell sample packs made with Sonura?', answer: 'Yes! Full commercial rights on all tiers. Generate one-shots and sell them in sample packs. Keep 100% of your earnings.' },
+  { question: 'How do I describe the sound I want?', answer: 'Be specific: "punchy 808 kick sub-heavy", "crisp trap snare with crack", "warm analog piano chord major". The AI understands sound characteristics.' },
+  { question: 'Can I generate multiple variations?', answer: 'Yes! Regenerate the same prompt to get variations, or adjust your description for different characteristics. Build collections quickly.' },
+];
+
+const trustItems = ['Unique AI-generated sounds', 'Perfect for samplers', '100% commercial rights'];
+---
+
+<FeatureLayout
+  feature="One-Shots"
+  featureSlug="one-shots"
+  title="AI One-Shot Generator | Custom Drums & Samples - Sonura"
+  description="Generate unique one-shot samples with AI - kicks, snares, hi-hats, melodic hits, and more. Build custom sample packs and drum kits. Free with commercial rights."
+  keywords="one shot generator, ai one shots, drum one shot, sample generator, kick generator, snare generator, custom samples ai"
+  headline="AI One-Shot Generator"
+  subhead="Generate unique kicks, snares, hi-hats, and melodic one-shots. Build custom sample packs and drum kits with sounds nobody else has."
+  ctaText="Generate One-Shots"
+  howItWorksTitle="How One-Shot Generation Works"
+  howItWorksSteps={howItWorksSteps}
+  benefits={benefits}
+  useCases={useCases}
+  faqs={faqs}
+  trustItems={trustItems}
+  finalCtaTitle="Build Your Signature Sound"
+  finalCtaButtonText="Try One-Shots Free"
+/>
+

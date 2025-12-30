@@ -1,0 +1,57 @@
+---
+import FeatureLayout from '../../../layouts/FeatureLayout.astro';
+
+const howItWorksSteps = [
+  'Generate any track, beat, or loop with Sonura',
+  'Click the stem export option to separate the track into individual elements',
+  'Download separate stems: drums, bass, melody, vocals, FX',
+  'Import stems into your DAW for custom mixing, arrangement, and processing',
+];
+
+const benefits = [
+  { title: 'Full Mix Control', description: 'Adjust levels, EQ, and effects on each element separately. Create the perfect mix with complete control over every layer.' },
+  { title: 'Available on All Tiers', description: 'Stem export is included on all plans, including free. No paywall for essential producer features.' },
+  { title: 'High-Quality WAV Export', description: 'Export stems in high-quality WAV format. Professional audio quality for serious production work.' },
+  { title: 'DAW Compatible', description: 'Works with Ableton, FL Studio, Logic Pro, Pro Tools, GarageBand, Reaper, and any other DAW that accepts audio files.' },
+  { title: 'Creative Flexibility', description: 'Remove elements you don\'t like, replace with your own, or combine stems from different generations. Endless creative possibilities.' },
+  { title: 'Professional Workflow', description: 'Integrate AI generation into your existing production process. Use Sonura stems as starting points or final elements.' },
+];
+
+const useCases = [
+  { title: 'Mix Engineers', description: 'Get individual stems for proper mixing. Apply processing to each element separately. Achieve professional results with full control.' },
+  { title: 'Beat Customization', description: 'Love the melody but want different drums? Export stems and replace just the elements you want to change.' },
+  { title: 'Remix Production', description: 'Use stems to create remixes and edits. Rearrange, add effects, and transform AI-generated tracks into new creations.' },
+  { title: 'Sample Extraction', description: 'Extract specific elements to use as samples in other projects. Build a library of unique AI-generated sounds.' },
+];
+
+const faqs = [
+  { question: 'What stems can I export?', answer: 'Sonura separates tracks into drums, bass, melody, vocals (if present), and FX/atmosphere. The exact stems depend on the generated content.' },
+  { question: 'Is stem export really free?', answer: 'Yes! Stem export is available on all tiers including the free tier. No premium paywall for this essential feature.' },
+  { question: 'What format are the stems?', answer: 'Stems export as high-quality WAV files, compatible with all professional DAWs and audio software.' },
+  { question: 'Can I export stems from any generation?', answer: 'Yes, every track, beat, and loop you generate can be exported as separate stems. The feature works on all content types.' },
+  { question: 'How does stem quality compare to the full mix?', answer: 'Stems are exported at the same high quality as the full mix. No quality loss from separation.' },
+  { question: 'What DAWs work with Sonura stems?', answer: 'All DAWs: Ableton Live, FL Studio, Logic Pro, Pro Tools, GarageBand, Reaper, Cubase, Studio One, and any software that imports WAV files.' },
+];
+
+const trustItems = ['Free on all tiers', 'High-quality WAV', 'All DAWs supported'];
+---
+
+<FeatureLayout
+  feature="Stem Export"
+  featureSlug="stem-export"
+  title="Stem Export | Separate Drums, Bass, Melody & More - Sonura"
+  description="Export individual stems from AI-generated music. Get drums, bass, melody, and FX separately for mixing in your DAW. Free stem export on all tiers."
+  keywords="stem export, stem separator, ai stem export, separate drums bass melody, stem download, music stem generator, daw stems"
+  headline="Stem Export"
+  subhead="Export individual drums, bass, melody, and FX stems from any generation. Full mixing control in your DAW. Free on all tiers."
+  ctaText="Try Stem Export"
+  howItWorksTitle="How Stem Export Works"
+  howItWorksSteps={howItWorksSteps}
+  benefits={benefits}
+  useCases={useCases}
+  faqs={faqs}
+  trustItems={trustItems}
+  finalCtaTitle="Get Full Control Over Your Mix"
+  finalCtaButtonText="Try Stem Export Free"
+/>
+

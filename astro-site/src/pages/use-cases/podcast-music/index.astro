@@ -1,0 +1,55 @@
+---
+import UseCaseLayout from '../../../layouts/UseCaseLayout.astro';
+
+const benefits = [
+  { title: 'Custom Intros & Outros', description: 'Generate unique intro and outro music that matches your podcast brand. Stand out from shows using stock music.' },
+  { title: 'Background Music', description: 'Create ambient background tracks for segments, interviews, and storytelling. Set the mood without distraction.' },
+  { title: 'Transition Sounds', description: 'Generate stingers, bumpers, and transitions. Professional audio branding that ties your show together.' },
+  { title: 'Zero Licensing Hassle', description: '100% royalty-free with full commercial rights. No copyright claims, no recurring fees, no attribution required.' },
+  { title: 'Instant Generation', description: 'Get custom music in seconds. No waiting for composers, no back-and-forth revisions.' },
+  { title: 'Consistent Branding', description: 'Generate multiple tracks in the same style for consistent audio branding across episodes and segments.' },
+];
+
+const examples = [
+  { prompt: 'upbeat podcast intro energetic modern', description: 'Energetic opening music that grabs attention. Perfect for news, tech, or entertainment podcasts.' },
+  { prompt: 'calm ambient background interview', description: 'Subtle background music for interview segments. Present without being distracting.' },
+  { prompt: 'dramatic podcast transition stinger', description: 'Short, impactful transition sounds between segments. Professional audio branding.' },
+  { prompt: 'inspiring outro music hopeful ending', description: 'Uplifting outro music that leaves listeners on a positive note. Great for motivational content.' },
+  { prompt: 'mysterious true crime background dark', description: 'Atmospheric tension for true crime and mystery content. Builds mood without overwhelming narration.' },
+  { prompt: 'comedic playful bumper fun', description: 'Light, fun transition sounds for comedy podcasts. Adds energy without taking itself too seriously.' },
+];
+
+const faqs = [
+  { question: 'Can I use this music in my podcast commercially?', answer: 'Yes! All music is 100% royalty-free with full commercial rights. Use on Spotify, Apple Podcasts, YouTube, or any platform. No claims, no attribution needed.' },
+  { question: 'What makes this better than stock music?', answer: 'Stock music is used by thousands of podcasts. Sonura generates unique music that becomes your signature sound. No one else has it.' },
+  { question: 'Can I generate music that matches my existing branding?', answer: 'Yes! Describe your brand style - "modern tech podcast professional" or "warm storytelling intimate" - and generate matching music.' },
+  { question: 'How do I create transitions and stingers?', answer: 'Describe what you need: "podcast transition whoosh 2 seconds" or "news stinger dramatic short". Generate, preview, and use.' },
+  { question: 'Can I use different tracks for different segments?', answer: 'Yes! Generate as many tracks as you need. Create distinct themes for different segments while maintaining your overall brand.' },
+  { question: 'What format are the downloads?', answer: 'High-quality audio files compatible with all podcast editing software - Audacity, GarageBand, Adobe Audition, Descript, and more.' },
+];
+
+const trustItems = ['100% royalty-free', 'No attribution required', 'Unique to your show'];
+---
+
+<UseCaseLayout
+  useCase="Podcast Music"
+  useCaseSlug="podcast-music"
+  title="AI Podcast Music Generator | Intros, Outros & Background - Sonura"
+  description="Generate custom podcast music - intros, outros, background tracks, and transitions. Royalty-free with commercial rights. Unique audio branding for your show."
+  keywords="podcast music, podcast intro music, podcast outro, podcast background music, podcast transition sounds, royalty free podcast music, podcast audio branding"
+  headline="AI Podcast Music"
+  subhead="Generate custom intros, outros, background music, and transitions. Unique audio branding that makes your podcast stand out."
+  ctaText="Generate Podcast Music"
+  problemTitle="The Podcast Music Problem"
+  problemDescription="Stock music sounds generic - listeners have heard it before. Custom composers are expensive and slow. Licensing is confusing and risky. You need unique, professional music that becomes your show's signature without the hassle or cost."
+  solutionTitle="The Sonura Solution"
+  solutionDescription="Generate custom podcast music in seconds. Unique intros, outros, background tracks, and transitions that match your brand. 100% royalty-free, full commercial rights, no attribution required. Your music, your sound, instantly."
+  benefits={benefits}
+  examplesTitle="Example Prompts for Podcasts"
+  examples={examples}
+  faqs={faqs}
+  trustItems={trustItems}
+  finalCtaTitle="Brand Your Podcast with Custom Music"
+  finalCtaButtonText="Generate Podcast Music Free"
+/>
+

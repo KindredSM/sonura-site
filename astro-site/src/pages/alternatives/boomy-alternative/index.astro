@@ -1,0 +1,82 @@
+---
+import AlternativeLayout from '../../../layouts/AlternativeLayout.astro';
+
+const quickStats = [
+  { value: 'Pro', label: 'Studio-Grade Quality' },
+  { value: 'full', label: 'Stem Export Included' },
+  { value: '100%', label: 'You Own Your Music' },
+];
+
+const comparisons = [
+  { feature: 'Output Quality', sonura: 'Studio-grade, production-ready', competitor: 'Good for beginners' },
+  { feature: 'Target User', sonura: 'Producers & beat makers', competitor: 'Complete beginners' },
+  { feature: 'Stem Export', sonura: 'Yes, all tiers', competitor: 'No' },
+  { feature: 'Genre Control', sonura: 'Precise text prompts', competitor: 'Basic style selection' },
+  { feature: 'BPM Control', sonura: 'Exact BPM specification', competitor: 'Limited' },
+  { feature: 'Distribution', sonura: 'Export and distribute yourself', sonuraHighlight: false, competitor: 'Built-in distribution', competitorHighlight: true },
+  { feature: 'Commercial Rights', sonura: 'Yes, full ownership', competitor: 'Revenue share model' },
+  { feature: 'Pricing', sonura: 'From $9.99/month', sonuraHighlight: false, competitor: 'Free with revenue share', competitorHighlight: false },
+  { feature: 'DAW Integration', sonura: 'Full stem export for DAWs', competitor: 'Limited export options' },
+];
+
+const advantages = [
+  { title: 'Professional Quality', description: 'Sonura produces studio-grade music ready for professional release. Boomy is designed for beginners and produces simpler outputs. If you need production-quality beats, Sonura delivers.' },
+  { title: 'Full Stem Export', description: 'Export individual stems (drums, bass, melody, FX) for mixing in your DAW. Boomy does not offer stem separation. Essential for producers who need mixing control.' },
+  { title: 'Complete Ownership', description: "You own 100% of music created with Sonura - no revenue sharing. Boomy takes a cut of streaming royalties. Keep all your earnings with Sonura." },
+  { title: 'Precise Control', description: 'Describe exactly what you want: "dark trap beat 140 BPM with rolling hi-hats". Boomy offers basic style selection. Sonura gives producers the control they need.' },
+  { title: 'Producer Workflow', description: 'Built for beat makers and producers. Export stems, specify BPM, control genre details. Boomy is simplified for casual users who just want quick songs.' },
+  { title: 'No Revenue Sharing', description: 'Sell beats on BeatStars, release on Spotify, use in client work - keep 100% of revenue. No platform fees on your creative work.' },
+];
+
+const sonuraUseCases = [
+  { text: 'Need professional-quality beats' },
+  { text: 'Want to export stems for DAW mixing' },
+  { text: 'Sell beats and keep all revenue' },
+  { text: 'Need precise genre and BPM control' },
+  { text: 'Create type beats for artists' },
+  { text: 'Professional music production workflow' },
+];
+
+const competitorUseCases = [
+  { text: 'Complete beginner to music' },
+  { text: 'Want automatic streaming distribution' },
+  { text: 'Just want to make music for fun' },
+  { text: "Don't need stem export" },
+  { text: "Don't mind revenue sharing" },
+];
+
+const testimonials = [
+  { quote: "Boomy is fun for beginners but I needed professional quality. Sonura gives me production-ready beats I can actually sell.", author: 'Type Beat Producer' },
+  { quote: "The stem export alone makes Sonura worth it. I can't get that from Boomy. Essential for my production workflow.", author: 'Music Producer' },
+  { quote: "I was giving up 20% to Boomy on every stream. With Sonura, I own everything and keep all my royalties.", author: 'Independent Artist' },
+];
+
+const faqs = [
+  { question: 'Is Sonura better than Boomy for producers?', answer: 'Yes. Sonura is designed for producers with professional-quality output, stem export, and precise control. Boomy is simplified for complete beginners who want quick, simple songs.' },
+  { question: 'Does Sonura have automatic distribution like Boomy?', answer: 'No, Sonura focuses on creation and lets you distribute through your preferred channels (DistroKid, TuneCore, etc.). This gives you 100% ownership and no revenue sharing.' },
+  { question: 'Can I export stems with Sonura?', answer: 'Yes! Stem export is available on all tiers including free. Export drums, bass, melody, and other elements separately. Boomy does not offer stem export.' },
+  { question: 'Which is better for selling beats?', answer: 'Sonura is significantly better for selling beats. Professional quality, stem export for custom mixing, precise genre control, and you keep 100% of sales. No revenue sharing.' },
+  { question: 'Is Sonura harder to use than Boomy?', answer: 'Sonura is simple - just describe what you want in text. But it offers more control for those who want it. Boomy is more limited but slightly simpler for absolute beginners.' },
+];
+---
+
+<AlternativeLayout
+  competitor="Boomy"
+  competitorSlug="boomy-alternative"
+  title="Best Boomy Alternative 2025 | Professional AI Beat Maker"
+  description="Looking for a Boomy alternative? Compare Sonura vs Boomy: professional quality vs beginner-friendly, stem export, ownership, and pricing. Get studio-grade AI beats with full ownership."
+  keywords="boomy alternative, boomy vs sonura, better than boomy, ai beat maker, boomy competitor, ai music generator professional"
+  headline="Best Boomy Alternative 2025"
+  subhead="Looking for an alternative to Boomy? Compare professional-grade output, stem export, and full ownership. Discover why producers choose Sonura over beginner tools."
+  quickStats={quickStats}
+  comparisons={comparisons}
+  advantages={advantages}
+  sonuraUseCases={sonuraUseCases}
+  competitorUseCases={competitorUseCases}
+  testimonials={testimonials}
+  faqs={faqs}
+  finalCtaTitle="Try the Best Boomy Alternative"
+  finalCtaSubtitle="Get professional-quality beats with full stem export and 100% ownership. No revenue sharing, no compromises."
+  finalCtaFooter="No credit card required • 100% ownership • Professional quality"
+/>
+

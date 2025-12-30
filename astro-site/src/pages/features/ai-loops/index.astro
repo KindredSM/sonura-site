@@ -1,0 +1,57 @@
+---
+import FeatureLayout from '../../../layouts/FeatureLayout.astro';
+
+const howItWorksSteps = [
+  'Describe the loop you need: "dark trap melody loop 140 BPM" or "deep house bass loop 124 BPM"',
+  'Sonura generates a perfectly loopable audio file in under 10 seconds',
+  'Preview the loop, regenerate for variations, or adjust your prompt for different results',
+  'Export individual stems (drums, bass, melody) or the full loop mix for your DAW',
+];
+
+const benefits = [
+  { title: 'Perfectly Loopable', description: 'Every loop is generated to seamlessly repeat. No awkward cuts or timing issues. Drop into your DAW and loop indefinitely with perfect timing.' },
+  { title: 'Any Genre, Any Style', description: 'Generate loops for trap, house, lo-fi, drill, techno, hip-hop, and more. The AI understands genre-specific patterns and production styles.' },
+  { title: 'Stem Separation', description: 'Export individual loop stems - drums, bass, melody, FX. Layer and mix elements from different loops to create unique combinations.' },
+  { title: 'BPM Control', description: 'Specify exact BPM in your prompt. Get loops at 140 BPM for trap, 124 for house, or any tempo your project needs. Perfect sync guaranteed.' },
+  { title: 'Unique Every Time', description: 'No more overused sample pack loops. Every Sonura loop is AI-generated and unique. Your tracks will have original elements that stand out.' },
+  { title: 'Fast Iteration', description: 'Generate loops in under 10 seconds. Try dozens of variations quickly. Find the perfect loop faster than browsing sample libraries.' },
+];
+
+const useCases = [
+  { title: 'Beat Makers', description: 'Generate melodic loops to build beats around. Layer with your own drums or use Sonura drum loops. Create complete productions faster.' },
+  { title: 'DAW Producers', description: 'Export stems and arrange in Ableton, FL Studio, Logic, or any DAW. Build custom arrangements from AI-generated loop elements.' },
+  { title: 'Sample Pack Creators', description: 'Generate unique loops to include in sample packs. Stand out with AI-generated content that customers cant find elsewhere.' },
+  { title: 'Live Performers', description: 'Create custom loops for live sets and DJ performances. Unique elements that nobody else has. Perfect for standing out.' },
+];
+
+const faqs = [
+  { question: 'What types of loops can Sonura generate?', answer: 'Sonura generates drum loops, melody loops, bass loops, FX loops, and full arrangement loops. Any genre - trap, house, lo-fi, drill, techno, hip-hop, and more.' },
+  { question: 'Are the loops perfectly seamless?', answer: 'Yes! All loops are generated to seamlessly repeat without clicks, pops, or timing issues. Perfect for DAW workflows where you need infinite looping.' },
+  { question: 'Can I specify the BPM?', answer: 'Yes! Include BPM in your prompt: "trap drum loop 140 BPM" or "house bass loop 124 BPM". The AI generates loops at your exact tempo.' },
+  { question: 'Can I export individual stems from loops?', answer: 'Yes! Export drums, bass, melody, and FX as separate stems. Mix and match elements from different loops to create unique combinations in your DAW.' },
+  { question: 'How are Sonura loops different from sample packs?', answer: 'Every Sonura loop is AI-generated and unique. Sample packs have the same sounds used by thousands of producers. Sonura gives you original content that stands out.' },
+  { question: 'Can I use loops commercially?', answer: 'Yes! All loops are 100% royalty-free with full commercial rights. Use in beats you sell, streaming releases, YouTube videos, sync licensing, and client work.' },
+];
+
+const trustItems = ['Perfectly loopable', 'Stem export included', '100% commercial rights'];
+---
+
+<FeatureLayout
+  feature="AI Loops"
+  featureSlug="ai-loops"
+  title="AI Loop Maker | Generate Drum, Melody & Bass Loops - Sonura"
+  description="Generate AI loops in seconds - drum loops, melody loops, bass loops for any genre. Perfectly loopable with stem export. Free AI loop generator with commercial rights."
+  keywords="ai loop maker, ai loop generator, drum loop generator, melody loop ai, bass loop generator, loop generator free, ai loops, text to loops"
+  headline="AI Loop Maker"
+  subhead="Generate perfectly loopable drum, melody, and bass loops in seconds. Any genre, any BPM. Export stems for your DAW workflow."
+  ctaText="Generate AI Loops"
+  howItWorksTitle="How AI Loop Generation Works"
+  howItWorksSteps={howItWorksSteps}
+  benefits={benefits}
+  useCases={useCases}
+  faqs={faqs}
+  trustItems={trustItems}
+  finalCtaTitle="Start Generating AI Loops"
+  finalCtaButtonText="Try AI Loops Free"
+/>
+

@@ -1,0 +1,158 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const alternatives = [
+  {
+    name: 'Suno',
+    slug: 'suno-alternative',
+    description: 'Looking for faster beat generation and stem export? Sonura delivers 10x faster output with producer-focused features.',
+    comparison: 'Best for: Beats & instrumentals vs full songs with vocals'
+  },
+  {
+    name: 'Udio',
+    slug: 'udio-alternative',
+    description: 'Need beats and loops instead of full songs? Sonura is built for producers who want fast instrumental generation.',
+    comparison: 'Best for: Beat production vs experimental full songs'
+  },
+  {
+    name: 'Soundraw',
+    slug: 'soundraw-alternative',
+    description: 'Want true AI generation instead of templates? Sonura creates unique music from text prompts, not preset combinations.',
+    comparison: 'Best for: Unique AI creation vs template customization'
+  },
+  {
+    name: 'Boomy',
+    slug: 'boomy-alternative',
+    description: 'Need professional quality with stem export? Sonura delivers studio-grade output with full production control.',
+    comparison: 'Best for: Professional production vs beginner-friendly'
+  },
+  {
+    name: 'AIVA',
+    slug: 'aiva-alternative',
+    description: 'Making beats instead of classical? Sonura excels at modern genres - trap, hip-hop, house, drill, and more.',
+    comparison: 'Best for: Modern beats vs classical/orchestral'
+  },
+  {
+    name: 'Mubert',
+    slug: 'mubert-alternative',
+    description: 'Need discrete tracks instead of streams? Sonura generates downloadable beats with full stem export.',
+    comparison: 'Best for: Production tracks vs continuous streams'
+  }
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "AI Music Generator Alternatives",
+    "description": "Compare Sonura with other AI music generators. Find the best alternative to Suno, Udio, Soundraw, Boomy, AIVA, and Mubert.",
+    "url": "https://sonurastudio.com/alternatives/"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sonurastudio.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Alternatives", "item": "https://sonurastudio.com/alternatives/" }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="AI Music Generator Alternatives | Compare Sonura vs Competitors"
+  description="Compare Sonura with Suno, Udio, Soundraw, Boomy, AIVA, and Mubert. Find the best AI music generator for beats, loops, and instrumentals."
+  keywords="ai music generator alternatives, suno alternative, udio alternative, soundraw alternative, boomy alternative, aiva alternative, mubert alternative, best ai music generator"
+  canonical="https://sonurastudio.com/alternatives/"
+  ogTitle="AI Music Generator Alternatives"
+  ogDescription="Compare Sonura with other AI music generators and find the best tool for your needs."
+  jsonLd={jsonLd}
+>
+  <style>
+    .alt-hub-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+      .alt-hub-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .alt-card {
+      padding: 32px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      transition: border-color 0.2s, transform 0.2s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .alt-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-4px);
+    }
+
+    .alt-card-name {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--fg);
+    }
+
+    .alt-card-desc {
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .alt-card-comparison {
+      font-size: 13px;
+      color: var(--primary);
+      padding: 8px 12px;
+      background: rgba(124, 58, 237, 0.1);
+      border-radius: 8px;
+      display: inline-block;
+    }
+
+    .alt-card-arrow {
+      margin-top: 20px;
+      color: var(--primary);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  </style>
+
+  <div style="max-width: 1100px; margin: 80px auto; padding: 0 24px;">
+    <header style="text-align: center; margin-bottom: 64px;">
+      <h1 style="font-size: 48px; font-weight: 800; margin-bottom: 24px; line-height: 1.2;">AI Music Generator Alternatives</h1>
+      <p style="font-size: 20px; color: var(--muted); max-width: 700px; margin: 0 auto; line-height: 1.6;">Compare Sonura with other AI music generators. Find out which tool is best for your specific needs - beats, loops, full songs, or more.</p>
+    </header>
+
+    <div class="alt-hub-grid">
+      {alternatives.map((alt) => (
+        <a href={`/alternatives/${alt.slug}/`} class="alt-card">
+          <div class="alt-card-name">{alt.name} Alternative</div>
+          <p class="alt-card-desc">{alt.description}</p>
+          <div class="alt-card-comparison">{alt.comparison}</div>
+          <div class="alt-card-arrow">Compare Sonura vs {alt.name} →</div>
+        </a>
+      ))}
+    </div>
+
+    <div style="text-align: center; margin-top: 80px; padding: 48px; background: rgba(124, 58, 237, 0.1); border: 2px solid var(--primary); border-radius: 16px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 16px;">Not Sure Which to Choose?</h2>
+      <p style="color: var(--muted); margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto;">Try Sonura free and see if it fits your workflow. No credit card required, full features available.</p>
+      <a href="https://app.sonurastudio.com" class="button primary large" style="display: inline-block; padding: 18px 40px; background: var(--primary); color: white; text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 18px;">Try Sonura Free</a>
+    </div>
+  </div>
+</BaseLayout>
+

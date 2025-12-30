@@ -1,0 +1,82 @@
+---
+import AlternativeLayout from '../../../layouts/AlternativeLayout.astro';
+
+const quickStats = [
+  { value: '10s', label: 'Instant Generation' },
+  { value: 'all', label: 'Modern Genres' },
+  { value: '100%', label: 'Commercial Rights' },
+];
+
+const comparisons = [
+  { feature: 'Best For', sonura: 'Beats, hip-hop, electronic, modern', competitor: 'Classical, orchestral, cinematic' },
+  { feature: 'Generation Speed', sonura: 'Under 10 seconds', competitor: 'Minutes to generate' },
+  { feature: 'Output Format', sonura: 'Audio (WAV/MP3) + stems', competitor: 'MIDI + Audio' },
+  { feature: 'Genre Focus', sonura: 'Modern production genres', competitor: 'Classical & orchestral' },
+  { feature: 'Stem Export', sonura: 'Yes, all tiers', competitor: 'Limited' },
+  { feature: 'Commercial Rights', sonura: 'Yes, all tiers', competitor: 'Pro plan only' },
+  { feature: 'MIDI Export', sonura: 'No', sonuraHighlight: false, competitor: 'Yes', competitorHighlight: true },
+  { feature: 'Pricing', sonura: 'From $9.99/month', sonuraHighlight: false, competitor: 'From $15/month', competitorHighlight: false },
+  { feature: 'Learning Curve', sonura: 'Simple text prompts', competitor: 'More complex interface' },
+];
+
+const advantages = [
+  { title: 'Modern Genre Mastery', description: 'Sonura excels at trap, hip-hop, house, techno, drill, lo-fi, and modern production genres. AIVA focuses on classical and orchestral. Choose based on what you make.' },
+  { title: 'Instant Results', description: 'Get complete tracks in under 10 seconds. AIVA takes minutes to generate and compose. When inspiration strikes, Sonura keeps up with your creative flow.' },
+  { title: 'Beat-Focused Output', description: 'Sonura produces ready-to-use beats and instrumentals. No need to orchestrate or arrange - get production-ready tracks instantly. Perfect for beat makers and producers.' },
+  { title: 'Simpler Workflow', description: 'Just describe what you want in plain text. No music theory required, no complex composition tools. AIVA has a steeper learning curve for full utilization.' },
+  { title: 'Full Commercial Rights', description: 'Commercial rights on all tiers including free. AIVA requires the Pro plan ($49/month) for full commercial rights. Sonura is more accessible for creators.' },
+  { title: 'Producer-Ready Stems', description: 'Export individual stems for mixing in your DAW. Perfect for producers who want to customize and arrange. Get drums, bass, melody, and FX separately.' },
+];
+
+const sonuraUseCases = [
+  { text: 'Make beats, hip-hop, or electronic music' },
+  { text: 'Need instant generation (under 10 seconds)' },
+  { text: 'Want simple text-based prompts' },
+  { text: 'Create type beats or modern instrumentals' },
+  { text: 'Need commercial rights on free tier' },
+  { text: 'Prefer audio output over MIDI' },
+];
+
+const competitorUseCases = [
+  { text: 'Compose classical or orchestral music' },
+  { text: 'Need MIDI export for notation' },
+  { text: 'Create film scores with traditional instruments' },
+  { text: 'Want AI composition assistance' },
+  { text: 'Work with virtual orchestras' },
+];
+
+const testimonials = [
+  { quote: "AIVA is great for orchestral stuff but useless for beats. Sonura understands trap and hip-hop production perfectly.", author: 'Hip-Hop Producer' },
+  { quote: "The speed difference is huge. Sonura gives me a beat in 10 seconds. AIVA takes forever for classical pieces.", author: 'Content Creator' },
+  { quote: "I use AIVA for cinematic scores and Sonura for beats. Different tools for different jobs. Sonura is unbeatable for modern genres.", author: 'Multi-Genre Producer' },
+];
+
+const faqs = [
+  { question: 'Is Sonura or AIVA better for beat making?', answer: 'Sonura is significantly better for beat making. It specializes in trap, hip-hop, house, and modern genres. AIVA focuses on classical and orchestral composition.' },
+  { question: 'Does Sonura export MIDI like AIVA?', answer: 'No, Sonura exports audio (WAV/MP3) and stems. AIVA exports MIDI for notation and further editing. Choose based on your workflow needs.' },
+  { question: 'Which is faster?', answer: 'Sonura generates tracks in under 10 seconds. AIVA takes several minutes for composition and generation. Sonura is built for rapid iteration.' },
+  { question: 'Can I use Sonura for film scoring?', answer: 'Yes, Sonura can create cinematic and ambient tracks. However, AIVA specializes in orchestral film scoring with MIDI export. For modern cinematic, try Sonura; for classical orchestral, AIVA might be better.' },
+  { question: 'Which has better commercial rights?', answer: 'Sonura offers full commercial rights on all tiers including free. AIVA requires the Pro plan ($49/month) for full commercial rights on compositions.' },
+];
+---
+
+<AlternativeLayout
+  competitor="AIVA"
+  competitorSlug="aiva-alternative"
+  title="Best AIVA Alternative 2025 | AI Beat Maker for Modern Genres"
+  description="Looking for an AIVA alternative for modern music? Compare Sonura vs AIVA: beats vs orchestral, speed, commercial rights. Get instant AI beats for trap, hip-hop, house, and more."
+  keywords="aiva alternative, aiva vs sonura, better than aiva, ai beat maker, aiva competitor, ai music generator beats"
+  headline="Best AIVA Alternative 2025"
+  subhead="Looking for an alternative to AIVA for modern genres? Compare beat-focused generation vs orchestral composition. Discover why producers choose Sonura for trap, hip-hop, and electronic."
+  quickStats={quickStats}
+  comparisons={comparisons}
+  advantages={advantages}
+  sonuraUseCases={sonuraUseCases}
+  competitorUseCases={competitorUseCases}
+  testimonials={testimonials}
+  faqs={faqs}
+  finalCtaTitle="Try the Best AIVA Alternative for Beats"
+  finalCtaSubtitle="Get instant AI-generated beats for modern genres. Trap, hip-hop, house, techno - all in under 10 seconds."
+  finalCtaFooter="No credit card required • 100% commercial rights • Modern genres"
+/>
+

@@ -1,0 +1,183 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const useCases = [
+  {
+    name: 'YouTube Music',
+    slug: 'youtube-music',
+    description: 'Royalty-free background music for videos. No copyright claims, full commercial rights.',
+    audience: 'Content Creators'
+  },
+  {
+    name: 'Type Beats',
+    slug: 'type-beats',
+    description: 'Generate type beats to sell on BeatStars and Airbit. Full commercial rights, stem export.',
+    audience: 'Beat Producers'
+  },
+  {
+    name: 'Podcast Music',
+    slug: 'podcast-music',
+    description: 'Custom intros, outros, and background music for podcasts. Unique branding sounds.',
+    audience: 'Podcasters'
+  },
+  {
+    name: 'Game Music',
+    slug: 'game-music',
+    description: 'Adaptive soundtracks and ambient music for games. Loops and stems for implementation.',
+    audience: 'Game Developers'
+  },
+  {
+    name: 'Film Scoring',
+    slug: 'film-scoring',
+    description: 'Cinematic music and scores for video projects. Atmospheric and dramatic compositions.',
+    audience: 'Film Makers'
+  },
+  {
+    name: 'Sample Packs',
+    slug: 'sample-packs',
+    description: 'Create unique sample packs with AI-generated sounds. Stand out from generic libraries.',
+    audience: 'Sample Creators',
+    comingSoon: true
+  }
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Sonura Use Cases",
+    "description": "Discover how creators use Sonura for YouTube music, type beats, podcasts, games, and more.",
+    "url": "https://sonurastudio.com/use-cases/"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sonurastudio.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Use Cases", "item": "https://sonurastudio.com/use-cases/" }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="AI Music Use Cases | YouTube, Type Beats, Podcasts & More - Sonura"
+  description="Discover how creators use Sonura for YouTube music, type beats, podcast audio, game soundtracks, and film scoring. Real use cases for AI music generation."
+  keywords="ai music use cases, youtube music generator, type beat maker, podcast music, game music ai, film score generator, content creator music"
+  canonical="https://sonurastudio.com/use-cases/"
+  ogTitle="Sonura Use Cases"
+  ogDescription="Discover how creators use Sonura for YouTube, type beats, podcasts, games, and more."
+  jsonLd={jsonLd}
+>
+  <style>
+    .usecase-hub-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 640px) {
+      .usecase-hub-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .usecase-hub-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .usecase-card {
+      padding: 32px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      transition: border-color 0.2s, transform 0.2s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      position: relative;
+    }
+
+    .usecase-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-4px);
+    }
+
+    .usecase-card-audience {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--primary);
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .usecase-card-name {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--fg);
+    }
+
+    .usecase-card-desc {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .usecase-card-arrow {
+      margin-top: 20px;
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .coming-soon-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      font-size: 11px;
+      padding: 4px 10px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 20px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .usecase-card.coming-soon {
+      opacity: 0.7;
+      pointer-events: none;
+    }
+  </style>
+
+  <div style="max-width: 1100px; margin: 80px auto; padding: 0 24px;">
+    <header style="text-align: center; margin-bottom: 64px;">
+      <h1 style="font-size: 48px; font-weight: 800; margin-bottom: 24px; line-height: 1.2;">Use Cases</h1>
+      <p style="font-size: 20px; color: var(--muted); max-width: 700px; margin: 0 auto; line-height: 1.6;">Discover how creators, producers, and businesses use Sonura to create music for their projects.</p>
+    </header>
+
+    <div class="usecase-hub-grid">
+      {useCases.map((useCase) => (
+        <a href={useCase.comingSoon ? '#' : `/use-cases/${useCase.slug}/`} class={`usecase-card ${useCase.comingSoon ? 'coming-soon' : ''}`}>
+          {useCase.comingSoon && <span class="coming-soon-badge">Coming Soon</span>}
+          <div class="usecase-card-audience">{useCase.audience}</div>
+          <div class="usecase-card-name">{useCase.name}</div>
+          <p class="usecase-card-desc">{useCase.description}</p>
+          {!useCase.comingSoon && <div class="usecase-card-arrow">Learn more →</div>}
+        </a>
+      ))}
+    </div>
+
+    <div style="text-align: center; margin-top: 80px; padding: 48px; background: rgba(124, 58, 237, 0.1); border: 2px solid var(--primary); border-radius: 16px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 16px;">Have a Different Use Case?</h2>
+      <p style="color: var(--muted); margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto;">Sonura works for any project that needs music. Try it free and see what you can create.</p>
+      <a href="https://app.sonurastudio.com" class="button primary large" style="display: inline-block; padding: 18px 40px; background: var(--primary); color: white; text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 18px;">Start Creating Free</a>
+    </div>
+  </div>
+</BaseLayout>
+

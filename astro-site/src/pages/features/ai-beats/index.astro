@@ -1,0 +1,58 @@
+---
+import FeatureLayout from '../../../layouts/FeatureLayout.astro';
+
+const howItWorksSteps = [
+  'Describe your beat: "dark trap beat 140 BPM with heavy 808s and rolling hi-hats"',
+  'Sonura generates a complete beat with drums, bass, and melody in under 10 seconds',
+  'Preview, regenerate, or adjust your prompt to dial in the perfect sound',
+  'Export the full beat or individual stems (drums, bass, melody, FX) for mixing',
+];
+
+const benefits = [
+  { title: '10x Faster Than Manual', description: 'Generate complete beats in under 10 seconds. Iterate on ideas at the speed of thought. Create more beats in less time.' },
+  { title: 'Genre-Accurate Production', description: 'Sonura understands production terminology - 808s, hi-hat rolls, sidechain compression. Get genre-authentic beats that sound like they were made by specialists.' },
+  { title: 'Full Stem Export', description: 'Export individual stems for custom mixing. Get drums, bass, melody, and FX separately. Full control in your DAW.' },
+  { title: 'Commercial Rights', description: 'Sell beats on BeatStars, release on Spotify, use in client work. 100% royalty-free with full commercial rights on all tiers.' },
+  { title: 'Any Genre', description: 'Trap, drill, house, lo-fi, hip-hop, techno, pop, R&B, and more. The AI adapts to any genre and understands sub-genre nuances.' },
+  { title: 'Perfect for Type Beats', description: 'Generate type beats faster than ever. Specify artist styles and get production-ready beats to sell or use as starting points.' },
+];
+
+const useCases = [
+  { title: 'Type Beat Producers', description: 'Create type beats faster than ever. Generate 10 beats in the time it takes to make one manually. Sell on BeatStars, Airbit, and other platforms.' },
+  { title: 'Artists & Rappers', description: 'Get custom instrumentals for demos and releases. No need to search for beats or wait for producers. Generate exactly what you need.' },
+  { title: 'Content Creators', description: 'Custom background music that matches your content perfectly. Unique beats nobody else has. No copyright claims or licensing issues.' },
+  { title: 'Music Producers', description: 'Use AI beats as starting points or inspiration. Export stems and customize further in your DAW. Accelerate your production workflow.' },
+];
+
+const faqs = [
+  { question: 'What is an AI beat maker?', answer: 'An AI beat maker uses artificial intelligence to generate complete beats from text descriptions. Sonura creates beats with drums, bass, melody, and arrangement in under 10 seconds.' },
+  { question: 'Can I sell beats made with Sonura?', answer: 'Yes! All beats are 100% royalty-free with full commercial rights. Sell on BeatStars, Airbit, or any platform. Keep 100% of your earnings.' },
+  { question: 'What genres can Sonura make beats for?', answer: 'Sonura supports all major genres: trap, hip-hop, drill, house, techno, lo-fi, pop, R&B, jazz, rock, and more. It understands sub-genres and specific production styles.' },
+  { question: 'Can I export stems from AI beats?', answer: 'Yes! Export individual stems (drums, bass, melody, FX) for mixing in your DAW. Available on all tiers including free. Full control over your mix.' },
+  { question: 'How do I describe the beat I want?', answer: 'Use natural language with production terms: "dark trap beat 140 BPM with heavy 808s and rolling hi-hats" or "chill lo-fi beat with jazzy chords". The AI understands music terminology.' },
+  { question: 'Is this better than using sample packs?', answer: 'For many producers, yes. AI beats are unique every time - no more shared sounds. Generation is faster than browsing samples. And you get full commercial rights instantly.' },
+  { question: 'What makes Sonura the best AI beat maker?', answer: 'Sonura offers the fastest generation (under 10 seconds), stem export on all tiers, precise genre control, and full commercial rights. Built specifically for beat makers and producers.' },
+];
+
+const trustItems = ['Under 10 second generation', 'Full stem export', '100% commercial rights'];
+---
+
+<FeatureLayout
+  feature="AI Beats"
+  featureSlug="ai-beats"
+  title="AI Beat Maker | Generate Beats in Seconds - Sonura"
+  description="Generate AI beats in seconds - trap, hip-hop, drill, house, lo-fi and more. Complete beats with drums, bass, and melody. Free AI beat maker with commercial rights."
+  keywords="ai beat maker, ai beat generator, ai beats, beat generator free, text to beat, ai trap beats, ai hip hop beats, beat maker ai"
+  headline="AI Beat Maker"
+  subhead="Generate complete beats in under 10 seconds. Trap, hip-hop, drill, house, lo-fi - any genre. Full stem export and commercial rights."
+  ctaText="Generate AI Beats"
+  howItWorksTitle="How AI Beat Generation Works"
+  howItWorksSteps={howItWorksSteps}
+  benefits={benefits}
+  useCases={useCases}
+  faqs={faqs}
+  trustItems={trustItems}
+  finalCtaTitle="Start Making AI Beats"
+  finalCtaButtonText="Try AI Beats Free"
+/>
+

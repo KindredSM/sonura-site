@@ -1,0 +1,57 @@
+---
+import FeatureLayout from '../../../layouts/FeatureLayout.astro';
+
+const howItWorksSteps = [
+  'Describe the sound effect you need: "cinematic riser tension builder" or "trap drop impact"',
+  'Sonura generates the effect in seconds, tailored to your description',
+  'Preview and iterate - regenerate for variations or adjust your prompt',
+  'Export and use in your productions with full commercial rights',
+];
+
+const benefits = [
+  { title: 'Custom Sound Design', description: 'Generate unique sound effects tailored to your exact needs. No more digging through generic sample packs for the right sound.' },
+  { title: 'Risers & Drops', description: 'Create tension-building risers and hard-hitting drops. Perfect for EDM, cinematic, and any music that needs impact moments.' },
+  { title: 'Transitions & Sweeps', description: 'Generate smooth transitions, filter sweeps, and whooshes. Essential elements for professional arrangements.' },
+  { title: 'Impacts & Hits', description: 'Booming impacts, punchy hits, and dramatic stabs. Add weight and drama to your productions.' },
+  { title: 'Atmospheric Textures', description: 'Create ambient pads, atmospheric backgrounds, and textural elements. Perfect for adding depth and mood.' },
+  { title: 'Unique Every Time', description: 'Every generation is original. Build a library of sound effects that nobody else has.' },
+];
+
+const useCases = [
+  { title: 'EDM Producers', description: 'Generate risers, drops, and impacts for builds and breakdowns. Create the signature moments that define electronic tracks.' },
+  { title: 'Film & Video', description: 'Custom sound design for video projects. Whooshes, impacts, and atmospheric elements that fit your edit perfectly.' },
+  { title: 'Game Audio', description: 'Generate unique sound effects for games. UI sounds, environmental ambience, and action impacts.' },
+  { title: 'Podcast Production', description: 'Transitions, stingers, and audio branding elements. Make your podcast sound professional with custom sound design.' },
+];
+
+const faqs = [
+  { question: 'What types of sound effects can Sonura generate?', answer: 'Risers, drops, impacts, transitions, sweeps, whooshes, atmospheric pads, textures, stingers, and more. Describe what you need and the AI creates it.' },
+  { question: 'Can I use sound effects commercially?', answer: 'Yes! All sound effects are 100% royalty-free with full commercial rights. Use in any project - music, video, games, podcasts, or client work.' },
+  { question: 'How do I describe the sound I want?', answer: 'Use descriptive terms: "cinematic riser slow build 8 bars", "hard trap drop impact punchy", "ethereal pad ambient texture". The AI understands sound design terminology.' },
+  { question: 'Can I export sound effects as stems?', answer: 'Yes, sound effects can be exported individually and integrated into your projects. Full control over how you use them.' },
+  { question: 'Are the sound effects unique?', answer: 'Yes, every generation creates original sound design. No shared samples from existing libraries.' },
+  { question: 'What genres work best for FX?', answer: 'Sonura generates sound effects suitable for any genre - EDM, cinematic, hip-hop, ambient, and more. Describe the style and context for best results.' },
+];
+
+const trustItems = ['Custom sound design', '100% royalty-free', 'Unique every time'];
+---
+
+<FeatureLayout
+  feature="AI Sound Effects"
+  featureSlug="ai-sound-effects"
+  title="AI Sound Effects | Generate Risers, Drops & FX - Sonura"
+  description="Generate custom AI sound effects - risers, drops, impacts, transitions, and atmospheric textures. Unique sound design in seconds. Free with commercial rights."
+  keywords="ai sound effects, ai fx generator, riser generator, drop sound effect, impact sound ai, transition sound generator, sound design ai"
+  headline="AI Sound Effects"
+  subhead="Generate risers, drops, impacts, transitions, and atmospheric textures. Custom sound design in seconds. Unique effects nobody else has."
+  ctaText="Generate Sound Effects"
+  howItWorksTitle="How AI Sound Effects Work"
+  howItWorksSteps={howItWorksSteps}
+  benefits={benefits}
+  useCases={useCases}
+  faqs={faqs}
+  trustItems={trustItems}
+  finalCtaTitle="Create Custom Sound Design"
+  finalCtaButtonText="Try AI Sound Effects Free"
+/>
+

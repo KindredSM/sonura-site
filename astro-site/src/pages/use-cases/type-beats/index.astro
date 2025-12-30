@@ -1,0 +1,56 @@
+---
+import UseCaseLayout from '../../../layouts/UseCaseLayout.astro';
+
+const benefits = [
+  { title: '10x Faster Production', description: 'Generate complete type beats in under 10 seconds. Create 10 beats in the time it takes to make one manually. Volume is everything in the beat selling game.' },
+  { title: 'Genre-Accurate Output', description: 'Sonura understands type beat production - 808 patterns, hi-hat rolls, dark melodies, drill slides. Get authentic sounds that match artist styles.' },
+  { title: 'Full Commercial Rights', description: 'Sell beats on BeatStars, Airbit, or any platform. Keep 100% of your earnings. No royalty splits or platform fees on your creative work.' },
+  { title: 'Stem Export Included', description: 'Export drums, bass, melody, and FX separately. Customize beats before selling or include stems as premium options for buyers.' },
+  { title: 'Unique Every Time', description: 'No more competing with producers using the same sample packs. Every Sonura beat is AI-generated and original. Stand out in crowded marketplaces.' },
+  { title: 'Rapid Iteration', description: 'Not quite right? Regenerate instantly. Tweak your prompt and try again in seconds. Find the perfect beat faster than ever.' },
+];
+
+const examples = [
+  { prompt: 'dark trap beat 140 BPM heavy 808s rolling hi-hats', description: 'Classic trap type beat with bouncy 808s and intricate hi-hat patterns. Perfect for melodic rap.' },
+  { prompt: 'drill beat 140 BPM sliding 808s uk style', description: 'UK drill type beat with signature slides and dark energy. Heavy bass and minimal arrangement.' },
+  { prompt: 'lil baby type beat emotional piano melody', description: 'Melodic trap with expressive piano and atmospheric pads. Perfect for introspective rap verses.' },
+  { prompt: 'travis scott type beat dark ambient psychedelic', description: 'Spacey, atmospheric production with reverb-heavy synths and hard-hitting drums. Astroworld vibes.' },
+  { prompt: 'drake type beat 90 BPM rnb smooth', description: 'Smooth R&B-influenced beat with mellow vibes. Works for singing or softer rap flows.' },
+  { prompt: 'metro boomin type beat hard 808s dark melody', description: 'Hard-hitting production with signature dark melodies and punchy drums. Atlanta trap sound.' },
+];
+
+const faqs = [
+  { question: 'Can I sell beats made with Sonura?', answer: 'Yes! All beats are 100% royalty-free with full commercial rights. Sell on BeatStars, Airbit, your own website, or anywhere else. Keep 100% of sales.' },
+  { question: 'Are the beats good enough to sell?', answer: 'Sonura produces professional, production-ready beats. Many producers use them as-is or as starting points for customization. The quality matches what sells on major platforms.' },
+  { question: 'How do I make type beats for specific artists?', answer: 'Include artist style in your prompt: "lil baby type beat emotional piano" or "metro boomin type beat dark melody". The AI understands artist references and production styles.' },
+  { question: 'Can I customize the beats?', answer: 'Yes! Export stems and customize in your DAW. Add your own elements, change the arrangement, process the mix. Use Sonura beats as starting points or sell as-is.' },
+  { question: 'Is this considered cheating?', answer: 'AI is a tool like any other. Top producers use samples, loops, and presets. Sonura is another tool to accelerate your workflow. What matters is the final product and your creative vision.' },
+  { question: 'How many beats can I make?', answer: 'Depends on your plan. Free tier includes generous credits. Paid plans offer 200-2000+ generations per month. At 10 seconds per beat, you can create massive catalogs.' },
+  { question: 'What genres work best for type beats?', answer: 'Sonura excels at trap, drill, hip-hop, R&B, and lo-fi - the genres that dominate type beat marketplaces. But it handles any genre if you want to expand your catalog.' },
+];
+
+const trustItems = ['Sell on any platform', '100% commercial rights', 'Keep all earnings'];
+---
+
+<UseCaseLayout
+  useCase="Type Beats"
+  useCaseSlug="type-beats"
+  title="AI Type Beat Maker | Generate Beats to Sell - Sonura"
+  description="Generate type beats in seconds with AI. Create trap, drill, and hip-hop beats to sell on BeatStars. Full commercial rights, stem export included."
+  keywords="type beat maker, ai type beats, beat maker to sell beats, type beat generator, make type beats, beatstars beats, ai beat maker commercial"
+  headline="AI Type Beat Maker"
+  subhead="Generate production-ready type beats in under 10 seconds. Sell on BeatStars, Airbit, anywhere. Full commercial rights and stem export included."
+  ctaText="Generate Type Beats"
+  problemTitle="The Type Beat Grind"
+  problemDescription="Making type beats is a volume game - more beats means more sales. But production is slow. Hours per beat, competing with thousands of producers, many using the same sample packs. You need to create more, faster, while still standing out."
+  solutionTitle="The Sonura Advantage"
+  solutionDescription="Generate complete type beats in under 10 seconds. Create 10 beats in the time one used to take. Every beat is AI-generated and unique - no shared samples. Export stems for customization or sell as-is. Full commercial rights, keep 100% of earnings."
+  benefits={benefits}
+  examplesTitle="Type Beat Prompts That Work"
+  examples={examples}
+  faqs={faqs}
+  trustItems={trustItems}
+  finalCtaTitle="Start Making Type Beats"
+  finalCtaButtonText="Generate Type Beats Free"
+/>
+

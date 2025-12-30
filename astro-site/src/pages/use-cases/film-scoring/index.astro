@@ -1,0 +1,55 @@
+---
+import UseCaseLayout from '../../../layouts/UseCaseLayout.astro';
+
+const benefits = [
+  { title: 'Cinematic Quality', description: 'Generate orchestral, ambient, and dramatic music suitable for film and video. Professional sound that elevates your visuals.' },
+  { title: 'Mood Precision', description: 'Describe the emotional tone - tense, hopeful, mysterious, triumphant - and get music that matches perfectly.' },
+  { title: 'Instant Scoring', description: 'Generate score ideas in seconds. Try multiple approaches quickly without waiting for composers.' },
+  { title: 'Full Commercial Rights', description: '100% royalty-free for commercial projects. YouTube, film festivals, streaming platforms, client work - all covered.' },
+  { title: 'Stem Export', description: 'Export individual orchestral sections or layers for custom mixing. Full control over your final sound.' },
+  { title: 'Any Project Scale', description: 'From YouTube videos to short films, documentaries to commercials. Professional scoring for any budget.' },
+];
+
+const examples = [
+  { prompt: 'cinematic tension strings dark suspense building', description: 'Tense, building music for thriller and suspense scenes. Creates anticipation and unease.' },
+  { prompt: 'emotional piano sad reflective film score', description: 'Intimate, emotional piano for dramatic moments. Perfect for character scenes and reflections.' },
+  { prompt: 'epic orchestral triumphant hero theme brass', description: 'Grand, heroic music for victories and climactic moments. Full orchestral power.' },
+  { prompt: 'documentary ambient inspiring hopeful', description: 'Uplifting background music for documentaries and branded content. Inspiring without being cheesy.' },
+  { prompt: 'horror score dark drones unsettling atonal', description: 'Disturbing atmospheric music for horror content. Builds dread and discomfort.' },
+  { prompt: 'action scene fast percussion intense chase', description: 'High-energy music for action sequences. Driving percussion and urgent momentum.' },
+];
+
+const faqs = [
+  { question: 'Is this suitable for professional film projects?', answer: 'Yes! Sonura generates professional-quality cinematic music. Used by filmmakers, YouTubers, and video producers worldwide.' },
+  { question: 'Can I use this music commercially?', answer: 'Yes! Full commercial rights on all tiers. Use in YouTube videos, short films, documentaries, commercials, and client work. No royalties.' },
+  { question: 'How does this compare to hiring a composer?', answer: 'Sonura is faster and more affordable. Generate ideas in seconds, iterate quickly, and use as final score or reference for future composition.' },
+  { question: 'Can I sync music to specific scenes?', answer: 'Generate music matching your scene mood and length, then edit to picture in your video software. Export stems for precise control.' },
+  { question: 'What cinematic styles are available?', answer: 'Orchestral, ambient, electronic, hybrid, minimal, dramatic, epic, intimate - describe the style and mood for your scene.' },
+  { question: 'Can I create themes and variations?', answer: 'Yes! Generate a main theme, then create variations by adjusting your prompts. Build cohesive scores with recurring motifs.' },
+];
+
+const trustItems = ['Professional quality', 'Full commercial rights', 'Instant generation'];
+---
+
+<UseCaseLayout
+  useCase="Film Scoring"
+  useCaseSlug="film-scoring"
+  title="AI Film Score Generator | Cinematic Music for Video - Sonura"
+  description="Generate cinematic film scores with AI - orchestral, ambient, dramatic, and emotional music for video projects. Royalty-free with full commercial rights."
+  keywords="film score generator, ai film music, cinematic music ai, video score generator, movie music ai, orchestral film music, royalty free film music"
+  headline="AI Film Scoring"
+  subhead="Generate cinematic scores for films, videos, and documentaries. Orchestral, ambient, dramatic - any mood your scene needs. Full commercial rights."
+  ctaText="Generate Film Music"
+  problemTitle="The Film Scoring Challenge"
+  problemDescription="Professional composers are expensive and projects take weeks. Stock music sounds generic and appears in other films. You need original, cinematic music that elevates your visuals without the cost or timeline of traditional scoring."
+  solutionTitle="The Sonura Solution"
+  solutionDescription="Generate cinematic scores in seconds. Orchestral tension, emotional piano, epic themes - describe your scene and get matching music instantly. Iterate quickly, export stems for custom mixing, full commercial rights. Professional scoring for any budget."
+  benefits={benefits}
+  examplesTitle="Example Prompts for Film"
+  examples={examples}
+  faqs={faqs}
+  trustItems={trustItems}
+  finalCtaTitle="Score Your Film with AI"
+  finalCtaButtonText="Generate Film Music Free"
+/>
+

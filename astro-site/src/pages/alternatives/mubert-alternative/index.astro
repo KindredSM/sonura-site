@@ -1,0 +1,82 @@
+---
+import AlternativeLayout from '../../../layouts/AlternativeLayout.astro';
+
+const quickStats = [
+  { value: 'tracks', label: 'Discrete Track Generation' },
+  { value: 'stems', label: 'Full Stem Export' },
+  { value: '100%', label: 'Commercial Rights' },
+];
+
+const comparisons = [
+  { feature: 'Output Type', sonura: 'Discrete tracks & stems', competitor: 'Continuous streams' },
+  { feature: 'Best For', sonura: 'Beat making, production', competitor: 'Background music, ambience' },
+  { feature: 'Stem Export', sonura: 'Yes, all tiers', competitor: 'No' },
+  { feature: 'Genre Control', sonura: 'Precise prompts', competitor: 'Mood/style categories' },
+  { feature: 'Track Length', sonura: 'Defined tracks', competitor: 'Infinite streams' },
+  { feature: 'Commercial Rights', sonura: 'Yes, all tiers', competitor: 'Ambassador/API plans' },
+  { feature: 'API Access', sonura: 'Coming soon', sonuraHighlight: false, competitor: 'Yes', competitorHighlight: true },
+  { feature: 'Pricing', sonura: 'From $9.99/month', sonuraHighlight: false, competitor: 'From $14/month', competitorHighlight: false },
+  { feature: 'Production Quality', sonura: 'Studio-grade beats', competitor: 'Ambient/background focus' },
+];
+
+const advantages = [
+  { title: 'Discrete Track Output', description: 'Sonura generates complete, defined tracks you can download, edit, and release. Mubert generates continuous streams better suited for background ambience. Get finished songs, not endless loops.' },
+  { title: 'Full Stem Export', description: 'Export individual stems (drums, bass, melody, FX) for mixing in your DAW. Mubert does not offer stem separation. Essential for producers who need mixing control.' },
+  { title: 'Beat-Making Focus', description: 'Sonura is built for beat makers and producers. Get genre-accurate trap, hip-hop, house, and more. Mubert excels at ambient and background music, not production beats.' },
+  { title: 'Commercial Rights Included', description: 'Full commercial rights on all tiers including free. Mubert requires Ambassador or API plans for commercial use. Sonura is more accessible for creators.' },
+  { title: 'Precise Genre Control', description: 'Describe exactly what you want: "dark drill beat 140 BPM". Get accurate genre results. Mubert offers broader mood categories rather than specific production styles.' },
+  { title: 'Producer Workflow', description: 'Generate, iterate, export stems, mix in your DAW. Sonura fits into professional production workflows. Mubert is designed for streaming and ambient applications.' },
+];
+
+const sonuraUseCases = [
+  { text: 'Need discrete tracks for release' },
+  { text: 'Want to export stems for mixing' },
+  { text: 'Create beats for hip-hop, trap, house' },
+  { text: 'Sell beats commercially' },
+  { text: 'Professional production workflow' },
+  { text: 'Need specific genre accuracy' },
+];
+
+const competitorUseCases = [
+  { text: 'Need continuous background music' },
+  { text: 'Build apps with music API' },
+  { text: 'Want ambient/chill streams' },
+  { text: 'Need infinite-length generation' },
+  { text: 'Focus on mood over genre specifics' },
+];
+
+const testimonials = [
+  { quote: "Mubert is cool for ambient vibes but I needed actual beats. Sonura gives me production-ready tracks I can sell.", author: 'Beat Producer' },
+  { quote: "The stem export makes all the difference. I can't get that from Mubert. Essential for my workflow.", author: 'Music Producer' },
+  { quote: "Switched from Mubert for commercial work. Sonura's licensing is clearer and included on all plans.", author: 'Content Creator' },
+];
+
+const faqs = [
+  { question: 'What is the difference between Sonura and Mubert?', answer: 'Sonura generates discrete, downloadable tracks with stem export - perfect for beat making and production. Mubert generates continuous music streams - better for background ambience and apps.' },
+  { question: 'Which is better for beat making?', answer: 'Sonura is significantly better for beat making. It produces genre-accurate beats with stem export. Mubert focuses on ambient streams rather than production-ready tracks.' },
+  { question: 'Does Mubert have stem export?', answer: 'No, Mubert does not offer stem export. Sonura provides full stem separation on all tiers, allowing you to export drums, bass, melody, and FX separately.' },
+  { question: 'Which has better commercial rights?', answer: 'Sonura offers full commercial rights on all tiers including free. Mubert requires Ambassador or API plans for commercial use, which are more expensive.' },
+  { question: 'Can I use Sonura for streaming/background music?', answer: 'Yes, Sonura can generate tracks for background use. However, if you specifically need infinite-length continuous streams, Mubert is designed for that use case.' },
+];
+---
+
+<AlternativeLayout
+  competitor="Mubert"
+  competitorSlug="mubert-alternative"
+  title="Best Mubert Alternative 2025 | AI Beat Maker with Stem Export"
+  description="Looking for a Mubert alternative? Compare Sonura vs Mubert: discrete tracks vs streams, stem export, commercial rights. Get production-ready AI beats with full stems."
+  keywords="mubert alternative, mubert vs sonura, better than mubert, ai beat maker, mubert competitor, ai music generator stems"
+  headline="Best Mubert Alternative 2025"
+  subhead="Looking for an alternative to Mubert for beat production? Compare discrete tracks vs continuous streams, stem export, and commercial rights. Made for producers."
+  quickStats={quickStats}
+  comparisons={comparisons}
+  advantages={advantages}
+  sonuraUseCases={sonuraUseCases}
+  competitorUseCases={competitorUseCases}
+  testimonials={testimonials}
+  faqs={faqs}
+  finalCtaTitle="Try the Best Mubert Alternative"
+  finalCtaSubtitle="Get production-ready beats with full stem export. Discrete tracks, not endless streams. Made for beat makers."
+  finalCtaFooter="No credit card required • 100% commercial rights • Full stem export"
+/>
+

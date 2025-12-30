@@ -1,0 +1,57 @@
+---
+import FeatureLayout from '../../../layouts/FeatureLayout.astro';
+
+const howItWorksSteps = [
+  'Type a natural language description: "dark trap beat 140 BPM with heavy 808s and rolling hi-hats"',
+  'Sonura\'s AI interprets your prompt and generates matching music in under 10 seconds',
+  'Preview the result, tweak your description, or regenerate for variations',
+  'Export the full track or individual stems for your DAW workflow',
+];
+
+const benefits = [
+  { title: 'Natural Language Input', description: 'No menus, no sliders, no learning curve. Just describe what you want like you\'re talking to a producer. The AI understands music terminology and creative intent.' },
+  { title: 'Production Terminology', description: 'Sonura understands 808s, hi-hat rolls, sidechain, drops, risers, and more. Speak the language of production and get accurate results.' },
+  { title: 'Instant Results', description: 'From text to music in under 10 seconds. Iterate on ideas at the speed of thought. No waiting, no rendering queues.' },
+  { title: 'Genre Intelligence', description: 'Mention any genre - trap, house, lo-fi, drill, techno - and get authentic results. The AI knows what makes each genre sound right.' },
+  { title: 'Mood & Energy Control', description: 'Describe the vibe: dark, uplifting, aggressive, chill, epic. Combine mood with genre for precise creative control.' },
+  { title: 'BPM Specification', description: 'Include exact tempo in your prompt. "128 BPM house" or "140 BPM trap" - get music at the exact speed you need.' },
+];
+
+const useCases = [
+  { title: 'Beat Makers', description: 'Describe your vision and get a starting point in seconds. Iterate through ideas faster than ever. Find the perfect beat without manual construction.' },
+  { title: 'Content Creators', description: 'Need "upbeat corporate music" or "tense cinematic background"? Just type it. Get exactly what your video needs without browsing libraries.' },
+  { title: 'Songwriters', description: 'Generate backing tracks by describing the mood and style. Focus on writing while AI handles the instrumental foundation.' },
+  { title: 'Music Explorers', description: 'Try new genres without learning new tools. Want to hear what "jazz-infused lo-fi" sounds like? Just ask.' },
+];
+
+const faqs = [
+  { question: 'What can I describe in my prompt?', answer: 'Genre, mood, BPM, instruments, energy level, style references, and production elements. Examples: "dark trap 140 BPM heavy 808s", "chill lo-fi study beats jazzy chords", "epic cinematic orchestra tension builder".' },
+  { question: 'Does Sonura understand music terminology?', answer: 'Yes! Sonura understands production terms like 808s, hi-hats, sidechain, drops, risers, pads, arpeggios, and more. Speak naturally about music and get accurate results.' },
+  { question: 'How specific can my prompts be?', answer: 'Very specific. You can combine genre + mood + BPM + instruments + style. "Minimal techno 128 BPM acid bassline dark warehouse" will give you exactly that.' },
+  { question: 'What if the result isn\'t perfect?', answer: 'Regenerate for variations, or adjust your prompt. Each generation takes under 10 seconds, so iterate quickly until you find the perfect sound.' },
+  { question: 'Can I use artist names in prompts?', answer: 'You can reference artist styles: "Travis Scott type beat" or "Metro Boomin style production". The AI understands stylistic references.' },
+  { question: 'What languages are supported?', answer: 'Currently English prompts work best. The AI understands music terminology, genre names, and descriptive language in English.' },
+];
+
+const trustItems = ['Under 10 second generation', 'Understands production terms', 'Any genre or style'];
+---
+
+<FeatureLayout
+  feature="Text to Music"
+  featureSlug="text-to-music"
+  title="Text to Music AI | Generate Music from Text Prompts - Sonura"
+  description="Generate music from text descriptions in seconds. Describe what you want in natural language and get professional AI-generated tracks. Free text to music generator."
+  keywords="text to music, text to music ai, ai music from text, describe music ai, prompt to music, text to beat, natural language music generator"
+  headline="Text to Music"
+  subhead="Describe what you want in natural language. Get professional music in seconds. No menus, no sliders - just creative expression."
+  ctaText="Try Text to Music"
+  howItWorksTitle="How Text to Music Works"
+  howItWorksSteps={howItWorksSteps}
+  benefits={benefits}
+  useCases={useCases}
+  faqs={faqs}
+  trustItems={trustItems}
+  finalCtaTitle="Turn Your Words Into Music"
+  finalCtaButtonText="Try Text to Music Free"
+/>
+

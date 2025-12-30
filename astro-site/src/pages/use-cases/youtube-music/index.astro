@@ -1,0 +1,56 @@
+---
+import UseCaseLayout from '../../../layouts/UseCaseLayout.astro';
+
+const benefits = [
+  { title: 'Zero Copyright Claims', description: 'All music is 100% royalty-free. No Content ID matches, no claims, no revenue sharing. Your videos stay monetized.' },
+  { title: 'Instant Generation', description: 'Get custom music in under 10 seconds. No waiting for composers, no browsing endless libraries. Instant soundtrack for any video.' },
+  { title: 'Perfect Fit Every Time', description: 'Describe exactly what you need - mood, genre, energy level. Get music that matches your content perfectly, not generic background tracks.' },
+  { title: 'Unique Sounds', description: 'Every generation is unique. No more hearing "your" music in other channels. Stand out with original soundtracks.' },
+  { title: 'Full Commercial Rights', description: 'Use anywhere - YouTube, TikTok, Instagram, podcasts, client work. One generation, unlimited use across all platforms.' },
+  { title: 'Stem Export', description: 'Need just the drums? Or melody without bass? Export individual stems to create the perfect mix for your edit.' },
+];
+
+const examples = [
+  { prompt: 'upbeat corporate background music 120 BPM', description: 'Perfect for explainer videos, tutorials, and product demos. Professional and engaging without being distracting.' },
+  { prompt: 'cinematic epic trailer music intense', description: 'Build tension and excitement for video intros, trailers, and dramatic reveals. Orchestra-style impact.' },
+  { prompt: 'chill lo-fi beats for study vlog', description: 'Relaxed, ambient background for vlogs, study content, and lifestyle videos. Cozy vibes.' },
+  { prompt: 'energetic edm workout motivation', description: 'High-energy tracks for fitness content, sports highlights, and action sequences. Keeps viewers pumped.' },
+  { prompt: 'acoustic guitar peaceful nature documentary', description: 'Organic, warm tones for travel vlogs, nature content, and calming videos. Authentic feel.' },
+  { prompt: 'dark trap beat for gaming montage', description: 'Hard-hitting beats for gaming content, highlights, and competitive montages. Modern and edgy.' },
+];
+
+const faqs = [
+  { question: 'Will I get copyright claims on YouTube?', answer: 'No! All music generated with Sonura is 100% royalty-free. No Content ID matches, no claims, no strikes. Your videos stay fully monetized.' },
+  { question: 'Can I use the same music on multiple videos?', answer: 'Yes! Once you generate music with Sonura, you own it. Use it on unlimited videos across YouTube, TikTok, Instagram, and any other platform.' },
+  { question: 'How do I get music that fits my video?', answer: 'Describe what you need: genre, mood, energy level, BPM. "Upbeat corporate 120 BPM" or "dark cinematic tension". The AI creates music that matches your vision.' },
+  { question: 'Is this better than royalty-free music libraries?', answer: 'For many creators, yes. Libraries have overused tracks - youve probably heard them in other videos. Sonura generates unique music that makes your content stand out.' },
+  { question: 'Can I use this for client work?', answer: 'Yes! Full commercial rights means you can use Sonura music in client videos, branded content, and commercial projects. No attribution required.' },
+  { question: 'What if I need a specific length?', answer: 'Generate tracks and trim in your editor, or use loops that can extend infinitely. For precise timing, export stems and arrange in your editing software.' },
+  { question: 'Do I need to credit Sonura?', answer: 'No attribution required. Use the music as if you made it yourself. No watermarks, no credit needed.' },
+];
+
+const trustItems = ['No copyright claims', 'Full commercial rights', 'Unique every time'];
+---
+
+<UseCaseLayout
+  useCase="YouTube Music"
+  useCaseSlug="youtube-music"
+  title="Royalty-Free Music for YouTube | AI Background Music Generator - Sonura"
+  description="Generate royalty-free background music for YouTube videos in seconds. No copyright claims, full commercial rights. AI music generator for content creators."
+  keywords="royalty free music youtube, youtube background music, no copyright music, ai music for youtube, youtube music generator, content creator music, royalty free music generator"
+  headline="AI Music for YouTube Videos"
+  subhead="Generate royalty-free background music in seconds. No copyright claims, no Content ID matches. Unique soundtracks that make your videos stand out."
+  ctaText="Generate YouTube Music"
+  problemTitle="The YouTube Music Problem"
+  problemDescription="Free music libraries are overused - viewers have heard those tracks hundreds of times. Licensing is expensive and complicated. Copyright claims can demonetize your videos or get them taken down. You need unique, professional music without the legal headaches."
+  solutionTitle="The Sonura Solution"
+  solutionDescription="Generate unique, royalty-free music in seconds. Every track is AI-created and original - no one else has it. Full commercial rights on all tiers. Zero copyright claims, ever. Describe what you need, get perfect background music instantly."
+  benefits={benefits}
+  examplesTitle="Example Prompts for YouTube"
+  examples={examples}
+  faqs={faqs}
+  trustItems={trustItems}
+  finalCtaTitle="Start Creating YouTube Music"
+  finalCtaButtonText="Generate Music Free"
+/>
+

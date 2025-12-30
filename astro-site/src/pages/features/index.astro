@@ -1,0 +1,193 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const features = [
+  {
+    name: 'AI Vocals',
+    slug: 'ai-vocals',
+    description: 'Generate vocal chops, samples, ad-libs, and hooks. Add professional vocal elements to your productions.',
+    icon: 'mic'
+  },
+  {
+    name: 'AI Loops',
+    slug: 'ai-loops',
+    description: 'Create perfectly loopable drum, melody, and bass loops. Seamless for DAW workflows.',
+    icon: 'repeat'
+  },
+  {
+    name: 'AI Beats',
+    slug: 'ai-beats',
+    description: 'Generate complete beats with drums, bass, and melody. Any genre in under 10 seconds.',
+    icon: 'music'
+  },
+  {
+    name: 'Stem Export',
+    slug: 'stem-export',
+    description: 'Export individual stems for mixing. Drums, bass, melody, FX - all separately.',
+    icon: 'layers'
+  },
+  {
+    name: 'Text to Music',
+    slug: 'text-to-music',
+    description: 'Describe what you want in natural language. The AI understands production terminology.',
+    icon: 'type'
+  },
+  {
+    name: 'AI Sound Effects',
+    slug: 'ai-sound-effects',
+    description: 'Generate risers, drops, impacts, and atmospheric FX. Custom sound design.',
+    icon: 'zap'
+  },
+  {
+    name: 'One-Shots',
+    slug: 'one-shots',
+    description: 'Generate unique drum and melodic one-shots. Build custom sample packs.',
+    icon: 'circle'
+  }
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Sonura Features",
+    "description": "Explore all Sonura AI music generation features: vocals, loops, beats, stems, and more.",
+    "url": "https://sonurastudio.com/features/"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sonurastudio.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Features", "item": "https://sonurastudio.com/features/" }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="AI Music Generation Features | Vocals, Loops, Beats & More - Sonura"
+  description="Explore Sonura's AI music generation features: AI vocals, loops, beats, stem export, text-to-music, and sound effects. Everything you need for music production."
+  keywords="ai music features, ai vocals, ai loops, ai beats, stem export, text to music, ai sound effects, music generation features"
+  canonical="https://sonurastudio.com/features/"
+  ogTitle="Sonura Features"
+  ogDescription="Explore all AI music generation features: vocals, loops, beats, stems, and more."
+  jsonLd={jsonLd}
+>
+  <style>
+    .feature-hub-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 640px) {
+      .feature-hub-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .feature-hub-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .feature-card {
+      padding: 32px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      transition: border-color 0.2s, transform 0.2s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      position: relative;
+    }
+
+    .feature-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-4px);
+    }
+
+    .feature-card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(124, 58, 237, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+
+    .feature-card-name {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--fg);
+    }
+
+    .feature-card-desc {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .feature-card-arrow {
+      margin-top: 20px;
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .coming-soon-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      font-size: 11px;
+      padding: 4px 10px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 20px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .feature-card.coming-soon {
+      opacity: 0.7;
+      pointer-events: none;
+    }
+  </style>
+
+  <div style="max-width: 1100px; margin: 80px auto; padding: 0 24px;">
+    <header style="text-align: center; margin-bottom: 64px;">
+      <h1 style="font-size: 48px; font-weight: 800; margin-bottom: 24px; line-height: 1.2;">Sonura Features</h1>
+      <p style="font-size: 20px; color: var(--muted); max-width: 700px; margin: 0 auto; line-height: 1.6;">Everything you need to create professional music with AI. From vocals to full beats, loops to stems.</p>
+    </header>
+
+    <div class="feature-hub-grid">
+      {features.map((feature) => (
+        <a href={feature.comingSoon ? '#' : `/features/${feature.slug}/`} class={`feature-card ${feature.comingSoon ? 'coming-soon' : ''}`}>
+          {feature.comingSoon && <span class="coming-soon-badge">Coming Soon</span>}
+          <div class="feature-card-icon">
+            <i data-lucide={feature.icon}></i>
+          </div>
+          <div class="feature-card-name">{feature.name}</div>
+          <p class="feature-card-desc">{feature.description}</p>
+          {!feature.comingSoon && <div class="feature-card-arrow">Learn more →</div>}
+        </a>
+      ))}
+    </div>
+
+    <div style="text-align: center; margin-top: 80px; padding: 48px; background: rgba(124, 58, 237, 0.1); border: 2px solid var(--primary); border-radius: 16px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 16px;">Try All Features Free</h2>
+      <p style="color: var(--muted); margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto;">No credit card required. Full access to all features on the free tier.</p>
+      <a href="https://app.sonurastudio.com" class="button primary large" style="display: inline-block; padding: 18px 40px; background: var(--primary); color: white; text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 18px;">Start Creating Free</a>
+    </div>
+  </div>
+</BaseLayout>
+
