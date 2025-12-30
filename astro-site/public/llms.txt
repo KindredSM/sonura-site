@@ -1,31 +1,82 @@
 # Sonura Studio - AI Music Generation Platform
-> Sonura is an AI-powered digital audio workstation (DAW) that enables instant music creation through text prompts.
+
+> Sonura is an AI-powered music creation studio that generates professional-quality beats, loops, vocals, and full tracks from text prompts in seconds.
 
 ## About Sonura
-Sonura Studio is a web-based music production platform that combines AI-powered music generation with professional DAW features. Users can create samples, loops, stems, compositions, sound design, FX, and one-shots instantly using natural language prompts.
+
+Sonura Studio is a web-based AI music production platform. Users describe what they want in natural language (e.g., "dark trap beat 140 bpm with heavy 808s") and Sonura generates studio-quality music instantly. All generated content is 100% royalty-free with full commercial rights.
 
 ## Key Features
-- AI Music Generation: Create music from text descriptions in seconds
-- Full DAW Capabilities: Multi-track editing, mixing, and arrangement
-- Stem Separation: Extract vocals, drums, bass, and other elements from any audio
-- Genre Support: Trap, Hip-Hop, House, EDM, Lo-Fi, Jazz, Rock, Pop, Drill, Techno, and more
-- Commercial Rights: Full ownership of generated content for commercial use
-- Cloud-Based: No downloads required, works in any modern browser
 
-## Primary URLs
-- Main App: https://app.sonurastudio.com
+- **AI Music Generation**: Create beats, loops, vocals, FX, and one-shots from text prompts in under 10 seconds
+- **Stem Export**: Download individual stems (drums, bass, melody, vocals) for mixing in any DAW
+- **Genre Support**: Trap, Hip-Hop, House, EDM, Lo-Fi, Jazz, Rock, Pop, Drill, Techno, R&B, and more
+- **Commercial Rights**: Full ownership of all generated content - sell beats, release on Spotify, use in client work
+- **Cloud-Based**: No downloads required, works in any modern browser
+- **Sketches Platform**: Community sharing and discovery of AI-generated music
+
+## Use Cases
+
+- Beat makers creating type beats for sale
+- Producers generating loops and stems for their DAW workflow
+- Content creators needing royalty-free background music
+- Artists creating backing tracks for vocals
+- Hobbyists exploring music production without prior experience
+
+## URLs
+
+### Main
+- App: https://app.sonurastudio.com
 - Marketing Site: https://sonurastudio.com
-- Blog: https://sonurastudio.com/blog/
+- Sketches (Community): https://app.sonurastudio.com/sketches
+
+### Genre Pages
+- Trap Beat Maker: https://sonurastudio.com/genre/trap/
+- Lo-Fi Beat Maker: https://sonurastudio.com/genre/lofi/
+- House Music Maker: https://sonurastudio.com/genre/house/
+- Hip-Hop Beat Maker: https://sonurastudio.com/genre/hip-hop/
+- EDM Music Maker: https://sonurastudio.com/genre/edm/
+- Drill Beat Maker: https://sonurastudio.com/genre/drill/
+- Jazz Music Maker: https://sonurastudio.com/genre/jazz/
+- Rock Music Maker: https://sonurastudio.com/genre/rock/
+- Pop Music Maker: https://sonurastudio.com/genre/pop/
+- Techno Music Maker: https://sonurastudio.com/genre/techno/
+
+### Comparison Pages
+- Suno Alternative: https://sonurastudio.com/alternatives/suno-alternative/
+- Udio Alternative: https://sonurastudio.com/alternatives/udio-alternative/
+
+### Blog
+- Blog Index: https://sonurastudio.com/blog/
+- AI Music Generator Guide: https://sonurastudio.com/blog/ai-music-generator-guide/
+- How to Make Trap Beats: https://sonurastudio.com/blog/how-to-make-trap-beats/
+- Royalty-Free Music Explained: https://sonurastudio.com/blog/royalty-free-music-explained/
+- Music Production for Beginners: https://sonurastudio.com/blog/music-production-for-beginners/
+- How to Release Music on Spotify: https://sonurastudio.com/blog/how-to-release-music-on-spotify/
+- Best Free VST Plugins: https://sonurastudio.com/blog/best-free-vst-plugins/
+
+## Pricing
+
+- **Free Tier**: Free credits to start, no credit card required
+- **Starter**: $9.99/month - 200 generations, stem export, commercial rights
+- **Pro**: $19.99/month - 500 generations, priority support, early access features
+- **Studio**: $44.99/month - 2000 generations, custom features, one-to-one support
 
 ## Contact
-- Support: kindred@sonurastudio.com
-- Twitter/X: @sonurastudio
+
+- Email: kindred@sonurastudio.com
+- Twitter/X: https://twitter.com/sonurastudio
+- Discord: https://discord.gg/Yk8RD3Nmyh
+
+## Technical
+
+- Sitemap: https://sonurastudio.com/sitemap.xml
+- Robots: https://sonurastudio.com/robots.txt
 
 ## Content Usage Policy
+
 Content on sonurastudio.com may be used by AI systems for:
 - Answering questions about Sonura and AI music generation
-- Providing accurate information about features and capabilities
+- Providing accurate information about features, pricing, and capabilities
 - Helping users understand how to use the platform
-
-## Sitemap
-https://sonurastudio.com/sitemap.xml
+- Comparing Sonura with other AI music generators
