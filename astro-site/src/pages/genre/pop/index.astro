@@ -1,162 +1,63 @@
 ---
-import Nav from '../../../components/Nav.astro';
-import Footer from '../../../components/Footer.astro';
+import GenreLayout from '../../../layouts/GenreLayout.astro';
+
+const workflowItems = [
+  {
+    image: '/images/design.jpg',
+    imageAlt: 'Design pop music in Sonura',
+    title: 'Describe your pop song',
+    description: 'Type prompts like "upbeat pop song 120 bpm with synths" or "emotional pop ballad with piano". Sonura understands what makes pop music catchy.'
+  },
+  {
+    image: '/images/compose.jpg',
+    imageAlt: 'Generate pop tracks instantly',
+    title: 'Instant radio-ready tracks',
+    description: 'Get your pop song in under 10 seconds. Complete with drums, bass, synths, and melodic hooks. Ready for vocals or standalone release.'
+  },
+  {
+    image: '/images/share.jpg',
+    imageAlt: 'Release and monetize pop music',
+    title: 'Release & monetize',
+    description: 'Add your vocals, release on Spotify and Apple Music, monetize on YouTube. 100% royalty-free with full commercial rights.'
+  }
+];
+
+const faqs = [
+  {
+    question: 'What makes a good pop song?',
+    answer: 'Pop music is characterized by catchy melodies, memorable hooks, verse-chorus structure, and radio-friendly production. Typically 100-130 bpm with accessible lyrics and modern production techniques. Sonura understands these elements and creates authentic pop tracks.'
+  },
+  {
+    question: 'How do I create pop music with Sonura?',
+    answer: 'Describe your pop vision: "upbeat pop with catchy synths" or "emotional pop ballad". Sonura generates complete pop productions with drums, bass, chords, melodies, and modern sound design.'
+  },
+  {
+    question: 'Can I release pop songs made with Sonura?',
+    answer: 'Yes! 100% commercial rights. Release on all streaming platforms, add your vocals, sell your songs. You own everything you create with no royalty splits or attribution required.'
+  },
+  {
+    question: 'Can I add vocals to Sonura pop tracks?',
+    answer: 'Absolutely! Sonura creates the perfect instrumental backing track. Record your vocals over it and release your complete pop song. Perfect for singers and songwriters.'
+  },
+  {
+    question: 'What pop styles can Sonura create?',
+    answer: 'Sonura can generate electro pop, indie pop, pop rock, synth pop, dance pop, bedroom pop, and more. Specify your style in the prompt for tailored results.'
+  }
+];
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CV0TGZFNX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-8CV0TGZFNX');
-  </script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Pop Music Maker | AI Pop Song Generator - Sonura</title>
-  <meta name="description" content="Create catchy pop music in seconds with AI. Generate radio-ready beats, hooks, and melodies instantly. Free pop music generator with royalty-free commercial use for artists and producers.">
-  <meta name="keywords" content="pop music maker, pop song generator, ai pop music, pop beat maker, make pop music online, pop music production, indie pop generator, electro pop maker">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <link rel="canonical" href="https://sonurastudio.com/genre/pop/">
-  <meta name="theme-color" content="#0a0a0a">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Sonura">
-  <meta property="og:title" content="Free Pop Music Maker | AI Pop Song Generator">
-  <meta property="og:description" content="create catchy pop music with ai. radio-ready beats and hooks in seconds.">
-  <meta property="og:url" content="https://sonurastudio.com/genre/pop/">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:image" content="https://sonurastudio.com/demo-image.jpeg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Free Pop Music Maker | AI Pop Song Generator">
-  <meta name="twitter:description" content="create catchy pop music with ai. radio-ready beats and hooks.">
-  <meta name="twitter:image" content="https://sonurastudio.com/demo-image.jpeg">
-  <meta name="twitter:creator" content="@sonurastudio">
-  <meta name="twitter:site" content="@sonurastudio">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="icon" type="image/png" href="/google-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Sonura Pop Music Maker","url":"https://sonurastudio.com/genre/pop/","applicationCategory":"MultimediaApplication","genre":"Pop","description":"Free AI pop music generator that creates catchy pop songs with radio-ready production, hooks, and melodies. Perfect for pop artists, songwriters, and producers."}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sonurastudio.com/"},{"@type":"ListItem","position":2,"name":"Pop Music Maker","item":"https://sonurastudio.com/genre/pop/"}]}</script>
-</head>
-<body>
-  <main class="page genre-page">
-    <Nav />
-    <section class="hero">
-      <div class="hero-background">
-        <div class="hero-gradient"></div>
-        <div class="hero-noise"></div>
-        <svg class="cable-svg" style="z-index: 1;">
-          <defs>
-            <linearGradient id="cableGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:0.2" />
-              <stop offset="50%" style="stop-color:#a78bfa;stop-opacity:0.6" />
-              <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:0.2" />
-            </linearGradient>
-            <linearGradient id="cableGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" style="stop-color:#5b21b6;stop-opacity:0.2" />
-              <stop offset="50%" style="stop-color:#7c3aed;stop-opacity:0.5" />
-              <stop offset="100%" style="stop-color:#5b21b6;stop-opacity:0.2" />
-            </linearGradient>
-          </defs>
-          <path d="M -50 100 C 100 500 400 200 800 50" stroke="url(#cableGradient1)" class="cable-path" fill="none" />
-          <path d="M 1400 300 C 1000 700 800 500 400 900" stroke="url(#cableGradient2)" class="cable-path" fill="none" />
-        </svg>
-      </div>
-      <div class="hero-content">
-        <h1 class="headline reveal">Free Pop Music Maker</h1>
-        <p class="subhead reveal" data-reveal-delay="0.06s" style="max-width: 70vw; margin-left: auto; margin-right: auto;">Generate catchy pop music with radio-ready production, infectious hooks, and modern sound. AI-powered pop generator for artists and songwriters.</p>
-        <div class="cta">
-          <a class="button primary" href="https://app.sonurastudio.com" target="_blank" rel="noopener">Create Pop Music</a>
-          <a class="hero-beta-link" href="/">Explore All Genres →</a>
-        </div>
-      </div>
-    </section>
-    
-    <section class="workflow" aria-labelledby="workflow-title">
-      <div class="workflow-inner">
-        <h2 id="workflow-title" class="workflow-title reveal">How to make pop music with AI</h2>
-        <div class="workflow-grid">
-          <div class="workflow-item reveal" data-reveal-delay="0.04s">
-            <div class="workflow-image">
-              <img src="/images/design.jpg" alt="Design pop music in Sonura" loading="lazy">
-            </div>
-            <div class="workflow-content">
-              <h3 class="workflow-item-title">Describe your pop song</h3>
-              <p class="workflow-item-description">Type prompts like "upbeat pop song 120 bpm with synths" or "emotional pop ballad with piano". Sonura understands what makes pop music catchy.</p>
-            </div>
-          </div>
-          <div class="workflow-item workflow-item-reverse reveal" data-reveal-delay="0.08s">
-            <div class="workflow-image">
-              <img src="/images/compose.jpg" alt="Generate pop tracks instantly" loading="lazy">
-            </div>
-            <div class="workflow-content">
-              <h3 class="workflow-item-title">Instant radio-ready tracks</h3>
-              <p class="workflow-item-description">Get your pop song in under 10 seconds. Complete with drums, bass, synths, and melodic hooks. Ready for vocals or standalone release.</p>
-            </div>
-          </div>
-          <div class="workflow-item reveal" data-reveal-delay="0.12s">
-            <div class="workflow-image">
-              <img src="/images/share.jpg" alt="Release and monetize pop music" loading="lazy">
-            </div>
-            <div class="workflow-content">
-              <h3 class="workflow-item-title">Release & monetize</h3>
-              <p class="workflow-item-description">Add your vocals, release on Spotify and Apple Music, monetize on YouTube. 100% royalty-free with full commercial rights.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <section class="faq" id="faq" aria-labelledby="faq-title">
-      <div class="faq-inner">
-        <h2 id="faq-title" class="faq-title">Pop music maker FAQ</h2>
-        <div class="faq-list">
-          <details class="reveal">
-            <summary>what makes a good pop song?</summary>
-            <p>pop music is characterized by catchy melodies, memorable hooks, verse-chorus structure, and radio-friendly production. typically 100-130 bpm with accessible lyrics and modern production techniques. sonura understands these elements and creates authentic pop tracks.</p>
-          </details>
-          <details class="reveal" data-reveal-delay="0.03s">
-            <summary>how do i create pop music with sonura?</summary>
-            <p>describe your pop vision: "upbeat pop with catchy synths" or "emotional pop ballad". sonura generates complete pop productions with drums, bass, chords, melodies, and modern sound design.</p>
-          </details>
-          <details class="reveal" data-reveal-delay="0.06s">
-            <summary>can i release pop songs made with sonura?</summary>
-            <p>yes! 100% commercial rights. release on all streaming platforms, add your vocals, sell your songs. you own everything you create with no royalty splits or attribution required.</p>
-          </details>
-          <details class="reveal" data-reveal-delay="0.09s">
-            <summary>can i add vocals to sonura pop tracks?</summary>
-            <p>absolutely! sonura creates the perfect instrumental backing track. record your vocals over it and release your complete pop song. perfect for singers and songwriters.</p>
-          </details>
-          <details class="reveal" data-reveal-delay="0.12s">
-            <summary>what pop styles can sonura create?</summary>
-            <p>sonura can generate electro pop, indie pop, pop rock, synth pop, dance pop, bedroom pop, and more. specify your style in the prompt for tailored results.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-    
-    <section class="final-cta" aria-labelledby="final-cta-title">
-      <div class="final-cta-inner">
-        <h2 id="final-cta-title" class="final-cta-title reveal">Start making pop music now</h2>
-        <p class="final-cta-subtitle reveal" data-reveal-delay="0.06s">free to start. no credit card required.</p>
-        <div class="final-cta-form reveal" data-reveal-delay="0.12s">
-          <a class="button primary large" href="https://app.sonurastudio.com" target="_blank" rel="noopener">Create Pop Music Free</a>
-        </div>
-      </div>
-    </section>
-  </main>
-  <Footer />
-  <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script is:inline src="https://unpkg.com/lucide@0.471.0/dist/umd/lucide.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <script is:inline src="/script.js"></script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"what makes a good pop song?","acceptedAnswer":{"@type":"Answer","text":"pop music is characterized by catchy melodies, memorable hooks, verse-chorus structure, and radio-friendly production. typically 100-130 bpm with accessible lyrics and modern production techniques."}},{"@type":"Question","name":"how do i create pop music with sonura?","acceptedAnswer":{"@type":"Answer","text":"describe your pop vision: 'upbeat pop with catchy synths' or 'emotional pop ballad'. sonura generates complete pop productions with drums, bass, chords, melodies, and modern sound design."}},{"@type":"Question","name":"can i release pop songs made with sonura?","acceptedAnswer":{"@type":"Answer","text":"yes! 100% commercial rights. release on all streaming platforms, add your vocals, sell your songs. you own everything you create."}},{"@type":"Question","name":"can i add vocals to sonura pop tracks?","acceptedAnswer":{"@type":"Answer","text":"absolutely! sonura creates the perfect instrumental backing track. record your vocals over it and release your complete pop song."}},{"@type":"Question","name":"what pop styles can sonura create?","acceptedAnswer":{"@type":"Answer","text":"sonura can generate electro pop, indie pop, pop rock, synth pop, dance pop, bedroom pop, and more. specify your style in the prompt for tailored results."}}]}</script>
-</body>
-</html>
+
+<GenreLayout
+  genre="Pop"
+  genreSlug="pop"
+  title="Free Pop Music Maker | AI Pop Song Generator - Sonura"
+  description="Create catchy pop music in seconds with AI. Generate radio-ready beats, hooks, and melodies instantly. Free pop music generator with royalty-free commercial use for artists and producers."
+  keywords="pop music maker, pop song generator, ai pop music, pop beat maker, make pop music online, pop music production, indie pop generator, electro pop maker"
+  headline="Free Pop Music Maker"
+  subhead="Generate catchy pop music with radio-ready production, infectious hooks, and modern sound. AI-powered pop generator for artists and songwriters."
+  ctaText="Create Pop Music"
+  workflowTitle="How to make pop music with AI"
+  workflowItems={workflowItems}
+  faqs={faqs}
+  finalCtaTitle="Start making pop music now"
+  finalCtaButtonText="Create Pop Music Free"
+/>

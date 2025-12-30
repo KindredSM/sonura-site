@@ -1,209 +1,175 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
+import BlogLayout from '../../../layouts/BlogLayout.astro';
+
+const toc = [
+  { id: 'what-is-trap', label: 'What is trap music?' },
+  { id: 'step1', label: 'Set your tempo and key' },
+  { id: 'step2', label: 'Create the 808 bass pattern' },
+  { id: 'step3', label: 'Program trap hi-hats' },
+  { id: 'step4', label: 'Add snares and claps' },
+  { id: 'step5', label: 'Create a dark melody' },
+  { id: 'mixing', label: 'Mixing your trap beat' },
+  { id: 'ai-approach', label: 'AI-assisted trap production' },
+  { id: 'mistakes', label: 'Common mistakes to avoid' },
+  { id: 'conclusion', label: 'Conclusion' },
+];
 ---
 
-<BaseLayout
+<BlogLayout
   title="How to Make Trap Beats: Complete Guide for Beginners (2025)"
-  description="Learn how to make trap beats in 2025. Complete guide covering 808s, hi-hats, melodies, BPM, and production techniques. Perfect for beginners and producers. Includes AI tools for faster workflow."
+  description="Learn how to make professional trap beats from scratch. This guide covers everything: 808s, hi-hats, melodies, mixing, and modern production techniques."
   keywords="how to make trap beats, trap beat tutorial, making trap beats, trap production, 808 patterns, trap hi hats, trap beat guide"
-  canonicalURL="https://sonurastudio.com/blog/how-to-make-trap-beats/"
-  type="article"
-  publishedTime="2025-10-20T00:00:00Z"
+  slug="how-to-make-trap-beats"
+  publishedDate="2025-10-20"
+  readTime="8 min read"
+  toc={toc}
 >
-  <style>
-    @media (min-width: 1024px) {
-      .blog-toc {
-        display: block !important;
-      }
-    }
-    .blog-toc::-webkit-scrollbar { width: 6px; }
-    .blog-toc::-webkit-scrollbar-track { background: transparent; }
-    .blog-toc::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
-    .blog-toc::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
-  </style>
+  <section style="margin-bottom: 48px;">
+    <h2 id="what-is-trap" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">What Is Trap Music?</h2>
+    <p style="margin-bottom: 24px;">Trap music originated in Atlanta in the early 2000s and has become one of the most dominant genres in hip-hop and pop. Characterized by rolling hi-hats, heavy 808 bass, crisp snares, and dark atmospheric melodies, trap has influenced everything from mainstream rap to EDM.</p>
+    <p style="margin-bottom: 24px;">Key Characteristics of Trap Beats:</p>
+    <ul style="margin-bottom: 24px; padding-left: 24px;">
+      <li style="margin-bottom: 12px;"><strong>Tempo:</strong> Typically 130-160 BPM (most commonly 140 BPM)</li>
+      <li style="margin-bottom: 12px;"><strong>808 Bass:</strong> Deep, sustained bass notes that define the low end</li>
+      <li style="margin-bottom: 12px;"><strong>Hi-Hats:</strong> Rapid, rolling hi-hat patterns (often triplets or 32nd notes)</li>
+      <li style="margin-bottom: 12px;"><strong>Snares:</strong> Layered, snappy snares on beat 3</li>
+      <li style="margin-bottom: 12px;"><strong>Melody:</strong> Dark, atmospheric sounds (piano, strings, synths)</li>
+    </ul>
+  </section>
 
-  <div style="display: flex; max-width: 1280px; margin: 80px auto; padding: 0 24px; gap: 48px;">
-    <article style="flex: 1; min-width: 0; color: var(--fg); line-height: 1.8;">
-      <header style="margin-bottom: 48px;">
-        <h1 style="font-size: 42px; font-weight: 800; margin-bottom: 16px; line-height: 1.2;">How to Make Trap Beats: Complete Guide for Beginners (2025)</h1>
-        <div style="color: var(--muted); font-size: 14px; margin-bottom: 24px;">
-          <time datetime="2025-10-20">October 20, 2025</time> • 8 min read
-        </div>
-        <p style="font-size: 20px; color: var(--muted); line-height: 1.6;">Learn how to make professional trap beats from scratch. This guide covers everything: 808s, hi-hats, melodies, mixing, and modern production techniques.</p>
-      </header>
+  <section style="margin-bottom: 48px;">
+    <h2 id="step1" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Step 1: Set Your Tempo and Key</h2>
+    <p style="margin-bottom: 24px;">Before you start, establish your foundation:</p>
+    <p style="margin-bottom: 16px;"><strong>Tempo:</strong> Set your DAW to 140 BPM for classic trap, or experiment between 130-160 BPM. Slower tempos (130-140) give a heavier feel, while faster (150-160) adds energy.</p>
+    <p style="margin-bottom: 24px;"><strong>Key:</strong> Trap often uses minor keys for dark vibes. Popular choices: A minor, D minor, F# minor, C minor. Choose a key and stick to it for melodic elements.</p>
+  </section>
 
-      <section style="margin-bottom: 48px;">
-        <h2 id="what-is-trap" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">What Is Trap Music?</h2>
-        <p style="margin-bottom: 24px;">Trap music originated in Atlanta in the early 2000s and has become one of the most dominant genres in hip-hop and pop. Characterized by rolling hi-hats, heavy 808 bass, crisp snares, and dark atmospheric melodies, trap has influenced everything from mainstream rap to EDM.</p>
-        <p style="margin-bottom: 24px;">Key Characteristics of Trap Beats:</p>
-        <ul style="margin-bottom: 24px; padding-left: 24px;">
-          <li style="margin-bottom: 12px;"><strong>Tempo:</strong> Typically 130-160 BPM (most commonly 140 BPM)</li>
-          <li style="margin-bottom: 12px;"><strong>808 Bass:</strong> Deep, sustained bass notes that define the low end</li>
-          <li style="margin-bottom: 12px;"><strong>Hi-Hats:</strong> Rapid, rolling hi-hat patterns (often triplets or 32nd notes)</li>
-          <li style="margin-bottom: 12px;"><strong>Snares:</strong> Layered, snappy snares on beat 3</li>
-          <li style="margin-bottom: 12px;"><strong>Melody:</strong> Dark, atmospheric sounds (piano, strings, synths)</li>
-        </ul>
-      </section>
+  <section style="margin-bottom: 48px;">
+    <h2 id="step2" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Step 2: Create the 808 Bass Pattern</h2>
+    <p style="margin-bottom: 24px;">The 808 is the heart of trap music. Here's how to make it slap:</p>
+    <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 16px; margin-top: 32px;">Choosing Your 808</h3>
+    <ul style="margin-bottom: 24px; padding-left: 24px;">
+      <li style="margin-bottom: 12px;">Use a long, sustained 808 sample</li>
+      <li style="margin-bottom: 12px;">Classic choices: Roland TR-808 bass drum, Spinz 808, Zay 808</li>
+      <li style="margin-bottom: 12px;">Ensure it's tuned (most 808s are tuned to C)</li>
+    </ul>
+    <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 16px; margin-top: 32px;">808 Pattern Tips</h3>
+    <ul style="margin-bottom: 24px; padding-left: 24px;">
+      <li style="margin-bottom: 12px;"><strong>Root Notes:</strong> Place 808s on strong beats (1 and 3) or offbeats</li>
+      <li style="margin-bottom: 12px;"><strong>Slides:</strong> Use pitch glides between notes for movement</li>
+      <li style="margin-bottom: 12px;"><strong>Variation:</strong> Change patterns every 4-8 bars to keep interest</li>
+      <li style="margin-bottom: 12px;"><strong>Length:</strong> Adjust note length to control bounce (shorter = bouncier)</li>
+    </ul>
+    <p style="margin-bottom: 24px;"><strong>Pro Tip:</strong> Make sure your 808 is in key with your melody. Out-of-tune 808s are the #1 beginner mistake.</p>
+  </section>
 
-      <section style="margin-bottom: 48px;">
-        <h2 id="step1" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Step 1: Set Your Tempo and Key</h2>
-        <p style="margin-bottom: 24px;">Before you start, establish your foundation:</p>
-        <p style="margin-bottom: 16px;"><strong>Tempo:</strong> Set your DAW to 140 BPM for classic trap, or experiment between 130-160 BPM. Slower tempos (130-140) give a heavier feel, while faster (150-160) adds energy.</p>
-        <p style="margin-bottom: 24px;"><strong>Key:</strong> Trap often uses minor keys for dark vibes. Popular choices: A minor, D minor, F# minor, C minor. Choose a key and stick to it for melodic elements.</p>
-      </section>
+  <section style="margin-bottom: 48px;">
+    <h2 id="step3" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Step 3: Program Trap Hi-Hats</h2>
+    <p style="margin-bottom: 24px;">Rolling hi-hats are the signature of trap. Here's how to create them:</p>
+    <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 16px; margin-top: 32px;">Basic Hi-Hat Pattern</h3>
+    <ul style="margin-bottom: 24px; padding-left: 24px;">
+      <li style="margin-bottom: 12px;">Start with 8th or 16th note hi-hats on every beat</li>
+      <li style="margin-bottom: 12px;">Add triplet rolls (3 notes per beat) for movement</li>
+      <li style="margin-bottom: 12px;">Use 32nd notes sparingly for intense rolls</li>
+    </ul>
+    <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 16px; margin-top: 32px;">Velocity Variation</h3>
+    <p style="margin-bottom: 24px;">Vary the velocity (volume) of hi-hat hits to create groove. Generally: strong hits on downbeats, softer on offbeats and rolls.</p>
+    <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 16px; margin-top: 32px;">Layering Hi-Hats</h3>
+    <ul style="margin-bottom: 24px; padding-left: 24px;">
+      <li style="margin-bottom: 12px;">Use 2-3 different hi-hat samples for variety</li>
+      <li style="margin-bottom: 12px;">Pan some left/right for width</li>
+      <li style="margin-bottom: 12px;">Add open hats occasionally for accent</li>
+    </ul>
+  </section>
 
-      <section style="margin-bottom: 48px;">
-        <h2 id="step2" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Step 2: Create the 808 Bass Pattern</h2>
-        <p style="margin-bottom: 24px;">The 808 is the heart of trap music. Here's how to make it slap:</p>
-        <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 16px; margin-top: 32px;">Choosing Your 808</h3>
-        <ul style="margin-bottom: 24px; padding-left: 24px;">
-          <li style="margin-bottom: 12px;">Use a long, sustained 808 sample</li>
-          <li style="margin-bottom: 12px;">Classic choices: Roland TR-808 bass drum, Spinz 808, Zay 808</li>
-          <li style="margin-bottom: 12px;">Ensure it's tuned (most 808s are tuned to C)</li>
-        </ul>
-        <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 16px; margin-top: 32px;">808 Pattern Tips</h3>
-        <ul style="margin-bottom: 24px; padding-left: 24px;">
-          <li style="margin-bottom: 12px;"><strong>Root Notes:</strong> Place 808s on strong beats (1 and 3) or offbeats</li>
-          <li style="margin-bottom: 12px;"><strong>Slides:</strong> Use pitch glides between notes for movement</li>
-          <li style="margin-bottom: 12px;"><strong>Variation:</strong> Change patterns every 4-8 bars to keep interest</li>
-          <li style="margin-bottom: 12px;"><strong>Length:</strong> Adjust note length to control bounce (shorter = bouncier)</li>
-        </ul>
-        <p style="margin-bottom: 24px;"><strong>Pro Tip:</strong> Make sure your 808 is in key with your melody. Out-of-tune 808s are the #1 beginner mistake.</p>
-      </section>
+  <section style="margin-bottom: 48px;">
+    <h2 id="step4" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Step 4: Add Snares and Claps</h2>
+    <p style="margin-bottom: 24px;">Snares typically hit on beat 3 (the "3" in a 4/4 bar). Here's how to make them punch:</p>
+    <ul style="margin-bottom: 24px; padding-left: 24px;">
+      <li style="margin-bottom: 12px;"><strong>Layering:</strong> Use 2-3 snare/clap samples layered together</li>
+      <li style="margin-bottom: 12px;"><strong>Tuning:</strong> Pitch snares down slightly for weight</li>
+      <li style="margin-bottom: 12px;"><strong>Reverb:</strong> Add a short reverb (0.5-1.0s) for space</li>
+      <li style="margin-bottom: 12px;"><strong>Variation:</strong> Add ghost notes (softer hits) between main snares</li>
+    </ul>
+  </section>
 
-      <section style="margin-bottom: 48px;">
-        <h2 id="step3" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Step 3: Program Trap Hi-Hats</h2>
-        <p style="margin-bottom: 24px;">Rolling hi-hats are the signature of trap. Here's how to create them:</p>
-        <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 16px; margin-top: 32px;">Basic Hi-Hat Pattern</h3>
-        <ul style="margin-bottom: 24px; padding-left: 24px;">
-          <li style="margin-bottom: 12px;">Start with 8th or 16th note hi-hats on every beat</li>
-          <li style="margin-bottom: 12px;">Add triplet rolls (3 notes per beat) for movement</li>
-          <li style="margin-bottom: 12px;">Use 32nd notes sparingly for intense rolls</li>
-        </ul>
-        <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 16px; margin-top: 32px;">Velocity Variation</h3>
-        <p style="margin-bottom: 24px;">Vary the velocity (volume) of hi-hat hits to create groove. Generally: strong hits on downbeats, softer on offbeats and rolls.</p>
-        <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 16px; margin-top: 32px;">Layering Hi-Hats</h3>
-        <ul style="margin-bottom: 24px; padding-left: 24px;">
-          <li style="margin-bottom: 12px;">Use 2-3 different hi-hat samples for variety</li>
-          <li style="margin-bottom: 12px;">Pan some left/right for width</li>
-          <li style="margin-bottom: 12px;">Add open hats occasionally for accent</li>
-        </ul>
-      </section>
+  <section style="margin-bottom: 48px;">
+    <h2 id="step5" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Step 5: Create a Dark Melody</h2>
+    <p style="margin-bottom: 24px;">Trap melodies are atmospheric and dark. Common instruments:</p>
+    <ul style="margin-bottom: 24px; padding-left: 24px;">
+      <li style="margin-bottom: 12px;">Piano (most popular)</li>
+      <li style="margin-bottom: 12px;">Strings (violins, cellos)</li>
+      <li style="margin-bottom: 12px;">Bells and mallets</li>
+      <li style="margin-bottom: 12px;">Synth pads</li>
+    </ul>
+    <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 16px; margin-top: 32px;">Melody Writing Tips</h3>
+    <ul style="margin-bottom: 24px; padding-left: 24px;">
+      <li style="margin-bottom: 12px;">Stick to your minor scale</li>
+      <li style="margin-bottom: 12px;">Use repeating patterns (4-8 note loops)</li>
+      <li style="margin-bottom: 12px;">Add space - Trap melodies are often sparse</li>
+      <li style="margin-bottom: 12px;">Layer multiple instruments for fullness</li>
+    </ul>
+  </section>
 
-      <section style="margin-bottom: 48px;">
-        <h2 id="step4" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Step 4: Add Snares and Claps</h2>
-        <p style="margin-bottom: 24px;">Snares typically hit on beat 3 (the "3" in a 4/4 bar). Here's how to make them punch:</p>
-        <ul style="margin-bottom: 24px; padding-left: 24px;">
-          <li style="margin-bottom: 12px;"><strong>Layering:</strong> Use 2-3 snare/clap samples layered together</li>
-          <li style="margin-bottom: 12px;"><strong>Tuning:</strong> Pitch snares down slightly for weight</li>
-          <li style="margin-bottom: 12px;"><strong>Reverb:</strong> Add a short reverb (0.5-1.0s) for space</li>
-          <li style="margin-bottom: 12px;"><strong>Variation:</strong> Add ghost notes (softer hits) between main snares</li>
-        </ul>
-      </section>
+  <section style="margin-bottom: 48px;">
+    <h2 id="mixing" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Mixing Your Trap Beat</h2>
+    <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 16px; margin-top: 32px;">808 Bass</h3>
+    <ul style="margin-bottom: 24px; padding-left: 24px;">
+      <li style="margin-bottom: 12px;">Boost around 50-80 Hz for power</li>
+      <li style="margin-bottom: 12px;">Add soft clipping or distortion for punch</li>
+      <li style="margin-bottom: 12px;">Sidechain to kick for clarity</li>
+    </ul>
+    <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 16px; margin-top: 32px;">Hi-Hats</h3>
+    <ul style="margin-bottom: 24px; padding-left: 24px;">
+      <li style="margin-bottom: 12px;">High-pass filter below 8-10 kHz</li>
+      <li style="margin-bottom: 12px;">Add slight reverb for space</li>
+      <li style="margin-bottom: 12px;">Pan for stereo width</li>
+    </ul>
+    <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 16px; margin-top: 32px;">Melody</h3>
+    <ul style="margin-bottom: 24px; padding-left: 24px;">
+      <li style="margin-bottom: 12px;">EQ out muddy frequencies (200-500 Hz)</li>
+      <li style="margin-bottom: 12px;">Add reverb for atmosphere</li>
+      <li style="margin-bottom: 12px;">Compress gently for consistency</li>
+    </ul>
+  </section>
 
-      <section style="margin-bottom: 48px;">
-        <h2 id="step5" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Step 5: Create a Dark Melody</h2>
-        <p style="margin-bottom: 24px;">Trap melodies are atmospheric and dark. Common instruments:</p>
-        <ul style="margin-bottom: 24px; padding-left: 24px;">
-          <li style="margin-bottom: 12px;">Piano (most popular)</li>
-          <li style="margin-bottom: 12px;">Strings (violins, cellos)</li>
-          <li style="margin-bottom: 12px;">Bells and mallets</li>
-          <li style="margin-bottom: 12px;">Synth pads</li>
-        </ul>
-        <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 16px; margin-top: 32px;">Melody Writing Tips</h3>
-        <ul style="margin-bottom: 24px; padding-left: 24px;">
-          <li style="margin-bottom: 12px;">Stick to your minor scale</li>
-          <li style="margin-bottom: 12px;">Use repeating patterns (4-8 note loops)</li>
-          <li style="margin-bottom: 12px;">Add space - Trap melodies are often sparse</li>
-          <li style="margin-bottom: 12px;">Layer multiple instruments for fullness</li>
-        </ul>
-      </section>
+  <section style="margin-bottom: 48px;">
+    <h2 id="ai-approach" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">The Modern Approach: AI-Assisted Trap Production</h2>
+    <p style="margin-bottom: 24px;">While learning traditional trap production is valuable, modern tools can dramatically speed up your workflow. AI music generators like <a href="/genre/trap/" style="color: var(--primary); text-decoration: none;">Sonura's trap beat maker</a> can:</p>
+    <ul style="margin-bottom: 24px; padding-left: 24px;">
+      <li style="margin-bottom: 12px;">Generate complete trap beats in seconds</li>
+      <li style="margin-bottom: 12px;">Provide inspiration when you're stuck</li>
+      <li style="margin-bottom: 12px;">Create professional-quality 808 patterns and hi-hat rolls</li>
+      <li style="margin-bottom: 12px;">Export stems for further customization in your DAW</li>
+    </ul>
+    <p style="margin-bottom: 24px;">Many producers now use AI tools for initial ideas, then customize and add their own touch. This hybrid approach combines speed with creativity.</p>
+  </section>
 
-      <section style="margin-bottom: 48px;">
-        <h2 id="mixing" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Mixing Your Trap Beat</h2>
-        <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 16px; margin-top: 32px;">808 Bass</h3>
-        <ul style="margin-bottom: 24px; padding-left: 24px;">
-          <li style="margin-bottom: 12px;">Boost around 50-80 Hz for power</li>
-          <li style="margin-bottom: 12px;">Add soft clipping or distortion for punch</li>
-          <li style="margin-bottom: 12px;">Sidechain to kick for clarity</li>
-        </ul>
-        <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 16px; margin-top: 32px;">Hi-Hats</h3>
-        <ul style="margin-bottom: 24px; padding-left: 24px;">
-          <li style="margin-bottom: 12px;">High-pass filter below 8-10 kHz</li>
-          <li style="margin-bottom: 12px;">Add slight reverb for space</li>
-          <li style="margin-bottom: 12px;">Pan for stereo width</li>
-        </ul>
-        <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 16px; margin-top: 32px;">Melody</h3>
-        <ul style="margin-bottom: 24px; padding-left: 24px;">
-          <li style="margin-bottom: 12px;">EQ out muddy frequencies (200-500 Hz)</li>
-          <li style="margin-bottom: 12px;">Add reverb for atmosphere</li>
-          <li style="margin-bottom: 12px;">Compress gently for consistency</li>
-        </ul>
-      </section>
+  <section style="margin-bottom: 48px;">
+    <h2 id="mistakes" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Common Trap Beat Mistakes to Avoid</h2>
+    <ul style="margin-bottom: 24px; padding-left: 24px;">
+      <li style="margin-bottom: 12px;"><strong>Out-of-Tune 808s:</strong> Always tune your 808 to your melody's key</li>
+      <li style="margin-bottom: 12px;"><strong>Too Many Elements:</strong> Trap is about space and impact, not density</li>
+      <li style="margin-bottom: 12px;"><strong>Weak Snares:</strong> Layer and process your snares properly</li>
+      <li style="margin-bottom: 12px;"><strong>Boring Hi-Hats:</strong> Add rolls and variation, don't just loop the same pattern</li>
+      <li style="margin-bottom: 12px;"><strong>Muddy Mix:</strong> EQ properly and give each element its own space</li>
+    </ul>
+  </section>
 
-      <section style="margin-bottom: 48px;">
-        <h2 id="ai-approach" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">The Modern Approach: AI-Assisted Trap Production</h2>
-        <p style="margin-bottom: 24px;">While learning traditional trap production is valuable, modern tools can dramatically speed up your workflow. AI music generators like <a href="/genre/trap/" style="color: var(--primary); text-decoration: none;">Sonura's trap beat maker</a> can:</p>
-        <ul style="margin-bottom: 24px; padding-left: 24px;">
-          <li style="margin-bottom: 12px;">Generate complete trap beats in seconds</li>
-          <li style="margin-bottom: 12px;">Provide inspiration when you're stuck</li>
-          <li style="margin-bottom: 12px;">Create professional-quality 808 patterns and hi-hat rolls</li>
-          <li style="margin-bottom: 12px;">Export stems for further customization in your DAW</li>
-        </ul>
-        <p style="margin-bottom: 24px;">Many producers now use AI tools for initial ideas, then customize and add their own touch. This hybrid approach combines speed with creativity.</p>
-      </section>
-
-      <section style="margin-bottom: 48px;">
-        <h2 id="mistakes" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Common Trap Beat Mistakes to Avoid</h2>
-        <ul style="margin-bottom: 24px; padding-left: 24px;">
-          <li style="margin-bottom: 12px;"><strong>Out-of-Tune 808s:</strong> Always tune your 808 to your melody's key</li>
-          <li style="margin-bottom: 12px;"><strong>Too Many Elements:</strong> Trap is about space and impact, not density</li>
-          <li style="margin-bottom: 12px;"><strong>Weak Snares:</strong> Layer and process your snares properly</li>
-          <li style="margin-bottom: 12px;"><strong>Boring Hi-Hats:</strong> Add rolls and variation, don't just loop the same pattern</li>
-          <li style="margin-bottom: 12px;"><strong>Muddy Mix:</strong> EQ properly and give each element its own space</li>
-        </ul>
-      </section>
-
-      <section style="margin-bottom: 48px;">
-        <h2 id="conclusion" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Conclusion</h2>
-        <p style="margin-bottom: 24px;">Making trap beats takes practice, but with these fundamentals you can start creating professional-sounding tracks today. Remember:</p>
-        <ul style="margin-bottom: 24px; padding-left: 24px;">
-          <li style="margin-bottom: 12px;">Master the 808 - It's the foundation</li>
-          <li style="margin-bottom: 12px;">Rolling hi-hats define the genre</li>
-          <li style="margin-bottom: 12px;">Keep melodies dark and atmospheric</li>
-          <li style="margin-bottom: 12px;">Mix for clarity and punch</li>
-        </ul>
-        <p style="margin-bottom: 24px;">Whether you're producing traditionally or using modern AI tools, the key is to understand the fundamentals and develop your unique sound.</p>
-        <div style="background: rgba(124, 58, 237, 0.1); border: 1px solid var(--primary); border-radius: 12px; padding: 32px; margin-top: 48px; text-align: center;">
-          <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px;">Ready to Make Trap Beats?</h3>
-          <p style="margin-bottom: 24px; color: var(--muted);">Try Sonura's free trap beat generator and create professional beats in seconds</p>
-          <a href="https://app.sonurastudio.com" class="button primary large" style="display: inline-block; padding: 16px 32px; background: var(--primary); color: white; text-decoration: none; border-radius: 12px; font-weight: 600;">Start Creating Free</a>
-        </div>
-      </section>
-
-      <footer style="margin-top: 64px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.1);">
-        <p style="color: var(--muted); font-size: 14px;">
-          <a href="/" style="color: var(--primary); text-decoration: none;">← Back to Home</a> | 
-          <a href="/genre/trap/" style="color: var(--primary); text-decoration: none;">Trap Beat Maker</a>
-        </p>
-      </footer>
-    </article>
-
-    <nav style="position: sticky; top: 120px; width: 240px; height: fit-content; max-height: calc(100vh - 140px); overflow-y: auto; flex-shrink: 0; display: none;" class="blog-toc">
-      <div style="font-size: 14px; font-weight: 600; margin-bottom: 16px; color: var(--fg); text-transform: uppercase; letter-spacing: 0.5px;">On This Page</div>
-      <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px;">
-        <li><a href="#what-is-trap" style="color: var(--muted); text-decoration: none; font-size: 14px; line-height: 1.4; display: block;">What is trap music?</a></li>
-        <li><a href="#step1" style="color: var(--muted); text-decoration: none; font-size: 14px; line-height: 1.4; display: block;">Step 1: Set your tempo and key</a></li>
-        <li><a href="#step2" style="color: var(--muted); text-decoration: none; font-size: 14px; line-height: 1.4; display: block;">Step 2: Create the 808 bass pattern</a></li>
-        <li><a href="#step3" style="color: var(--muted); text-decoration: none; font-size: 14px; line-height: 1.4; display: block;">Step 3: Program trap hi-hats</a></li>
-        <li><a href="#step4" style="color: var(--muted); text-decoration: none; font-size: 14px; line-height: 1.4; display: block;">Step 4: Add snares and claps</a></li>
-        <li><a href="#step5" style="color: var(--muted); text-decoration: none; font-size: 14px; line-height: 1.4; display: block;">Step 5: Create a dark melody</a></li>
-        <li><a href="#mixing" style="color: var(--muted); text-decoration: none; font-size: 14px; line-height: 1.4; display: block;">Mixing your trap beat</a></li>
-        <li><a href="#ai-approach" style="color: var(--muted); text-decoration: none; font-size: 14px; line-height: 1.4; display: block;">AI-assisted trap production</a></li>
-        <li><a href="#mistakes" style="color: var(--muted); text-decoration: none; font-size: 14px; line-height: 1.4; display: block;">Common mistakes to avoid</a></li>
-        <li><a href="#conclusion" style="color: var(--muted); text-decoration: none; font-size: 14px; line-height: 1.4; display: block;">Conclusion</a></li>
-      </ul>
-    </nav>
-  </div>
-</BaseLayout>
-
+  <section style="margin-bottom: 48px;">
+    <h2 id="conclusion" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Conclusion</h2>
+    <p style="margin-bottom: 24px;">Making trap beats takes practice, but with these fundamentals you can start creating professional-sounding tracks today. Remember:</p>
+    <ul style="margin-bottom: 24px; padding-left: 24px;">
+      <li style="margin-bottom: 12px;">Master the 808 - It's the foundation</li>
+      <li style="margin-bottom: 12px;">Rolling hi-hats define the genre</li>
+      <li style="margin-bottom: 12px;">Keep melodies dark and atmospheric</li>
+      <li style="margin-bottom: 12px;">Mix for clarity and punch</li>
+    </ul>
+    <p style="margin-bottom: 24px;">Whether you're producing traditionally or using modern AI tools, the key is to understand the fundamentals and develop your unique sound.</p>
+    <div style="background: rgba(124, 58, 237, 0.1); border: 1px solid var(--primary); border-radius: 12px; padding: 32px; margin-top: 48px; text-align: center;">
+      <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px;">Ready to Make Trap Beats?</h3>
+      <p style="margin-bottom: 24px; color: var(--muted);">Try Sonura's free trap beat generator and create professional beats in seconds</p>
+      <a href="https://app.sonurastudio.com" class="button primary large" style="display: inline-block; padding: 16px 32px; background: var(--primary); color: white; text-decoration: none; border-radius: 12px; font-weight: 600;">Start Creating Free</a>
+    </div>
+  </section>
+</BlogLayout>

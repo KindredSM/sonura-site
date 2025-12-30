@@ -1,162 +1,63 @@
 ---
-import Nav from '../../../components/Nav.astro';
-import Footer from '../../../components/Footer.astro';
+import GenreLayout from '../../../layouts/GenreLayout.astro';
+
+const workflowItems = [
+  {
+    image: '/images/design.jpg',
+    imageAlt: 'Design jazz music in Sonura',
+    title: 'Describe your jazz vibe',
+    description: 'Type prompts like "smooth jazz with saxophone solo" or "bebop jazz with walking bass". Sonura understands jazz theory and improvisation.'
+  },
+  {
+    image: '/images/compose.jpg',
+    imageAlt: 'Generate jazz compositions instantly',
+    title: 'Instant jazz composition',
+    description: 'Get your jazz track in under 10 seconds. Complete with sophisticated chords, solos, bass lines, and swing feel. Cafe-ready or concert-worthy.'
+  },
+  {
+    image: '/images/share.jpg',
+    imageAlt: 'Use jazz music professionally',
+    title: 'Use professionally',
+    description: 'Perfect for restaurants, cafes, YouTube videos, film scores. 100% royalty-free with full commercial rights.'
+  }
+];
+
+const faqs = [
+  {
+    question: 'What is jazz music?',
+    answer: 'Jazz is a genre that originated in African American communities in New Orleans. Characterized by swing rhythms, improvisation, complex chords (7ths, 9ths, 11ths), and syncopation. Styles include bebop, smooth jazz, cool jazz, fusion, and more.'
+  },
+  {
+    question: 'How do I create jazz with Sonura?',
+    answer: 'Describe your jazz style: "smooth jazz with piano and saxophone" or "upbeat swing jazz". Sonura generates complete jazz compositions with authentic harmony, improvisation, and feel.'
+  },
+  {
+    question: 'Can I use Sonura jazz commercially?',
+    answer: 'Yes! 100% royalty-free with commercial rights. Perfect for cafes, restaurants, YouTube content, film scores, or background music. No licensing fees ever.'
+  },
+  {
+    question: 'Does Sonura understand jazz theory?',
+    answer: 'Yes! Sonura understands jazz harmony, chord progressions (ii-V-I), modes, and improvisation concepts. It generates authentic jazz voicings and melodic lines.'
+  },
+  {
+    question: 'Can I create different jazz styles?',
+    answer: 'Absolutely! Specify bebop, smooth jazz, cool jazz, latin jazz, fusion, or any jazz subgenre. Sonura adapts to the style you request.'
+  }
+];
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CV0TGZFNX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-8CV0TGZFNX');
-  </script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Jazz Music Maker | AI Jazz Generator - Sonura</title>
-  <meta name="description" content="Create smooth jazz music in seconds with AI. Generate jazz chords, improvised solos, and swing rhythms instantly. Free jazz music generator with royalty-free commercial use.">
-  <meta name="keywords" content="jazz music maker, jazz generator, ai jazz music, smooth jazz generator, jazz improvisation, make jazz music online, jazz composition tool, free jazz beats">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <link rel="canonical" href="https://sonurastudio.com/genre/jazz/">
-  <meta name="theme-color" content="#0a0a0a">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Sonura">
-  <meta property="og:title" content="Free Jazz Music Maker | AI Jazz Generator">
-  <meta property="og:description" content="create smooth jazz with ai. generate jazz chords and improvised solos in seconds.">
-  <meta property="og:url" content="https://sonurastudio.com/genre/jazz/">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:image" content="https://sonurastudio.com/demo-image.jpeg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Free Jazz Music Maker | AI Jazz Generator">
-  <meta name="twitter:description" content="create smooth jazz with ai. generate jazz chords and solos.">
-  <meta name="twitter:image" content="https://sonurastudio.com/demo-image.jpeg">
-  <meta name="twitter:creator" content="@sonurastudio">
-  <meta name="twitter:site" content="@sonurastudio">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="icon" type="image/png" href="/google-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Sonura Jazz Music Maker","url":"https://sonurastudio.com/genre/jazz/","applicationCategory":"MultimediaApplication","genre":"Jazz","description":"Free AI jazz music generator that creates smooth jazz with sophisticated chords, improvised solos, and swing rhythms. Perfect for cafes, restaurants, and jazz enthusiasts."}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sonurastudio.com/"},{"@type":"ListItem","position":2,"name":"Jazz Music Maker","item":"https://sonurastudio.com/genre/jazz/"}]}</script>
-</head>
-<body>
-  <main class="page genre-page">
-    <Nav />
-    <section class="hero">
-      <div class="hero-background">
-        <div class="hero-gradient"></div>
-        <div class="hero-noise"></div>
-        <svg class="cable-svg" style="z-index: 1;">
-          <defs>
-            <linearGradient id="cableGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:0.2" />
-              <stop offset="50%" style="stop-color:#a78bfa;stop-opacity:0.6" />
-              <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:0.2" />
-            </linearGradient>
-            <linearGradient id="cableGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" style="stop-color:#5b21b6;stop-opacity:0.2" />
-              <stop offset="50%" style="stop-color:#7c3aed;stop-opacity:0.5" />
-              <stop offset="100%" style="stop-color:#5b21b6;stop-opacity:0.2" />
-            </linearGradient>
-          </defs>
-          <path d="M -50 100 C 100 500 400 200 800 50" stroke="url(#cableGradient1)" class="cable-path" fill="none" />
-          <path d="M 1400 300 C 1000 700 800 500 400 900" stroke="url(#cableGradient2)" class="cable-path" fill="none" />
-        </svg>
-      </div>
-      <div class="hero-content">
-        <h1 class="headline reveal">Free Jazz Music Maker</h1>
-        <p class="subhead reveal" data-reveal-delay="0.06s" style="max-width: 70vw; margin-left: auto; margin-right: auto;">Generate smooth jazz with sophisticated chords, improvised solos, and swing rhythms. AI-powered jazz generator for composers and music lovers.</p>
-        <div class="cta">
-          <a class="button primary" href="https://app.sonurastudio.com" target="_blank" rel="noopener">Create Jazz Music</a>
-          <a class="hero-beta-link" href="/">Explore All Genres →</a>
-        </div>
-      </div>
-    </section>
-    
-    <section class="workflow" aria-labelledby="workflow-title">
-      <div class="workflow-inner">
-        <h2 id="workflow-title" class="workflow-title reveal">How to make jazz music with AI</h2>
-        <div class="workflow-grid">
-          <div class="workflow-item reveal" data-reveal-delay="0.04s">
-            <div class="workflow-image">
-              <img src="/images/design.jpg" alt="Design jazz music in Sonura" loading="lazy">
-            </div>
-            <div class="workflow-content">
-              <h3 class="workflow-item-title">Describe your jazz vibe</h3>
-              <p class="workflow-item-description">Type prompts like "smooth jazz with saxophone solo" or "bebop jazz with walking bass". Sonura understands jazz theory and improvisation.</p>
-            </div>
-          </div>
-          <div class="workflow-item workflow-item-reverse reveal" data-reveal-delay="0.08s">
-            <div class="workflow-image">
-              <img src="/images/compose.jpg" alt="Generate jazz compositions instantly" loading="lazy">
-            </div>
-            <div class="workflow-content">
-              <h3 class="workflow-item-title">Instant jazz composition</h3>
-              <p class="workflow-item-description">Get your jazz track in under 10 seconds. Complete with sophisticated chords, solos, bass lines, and swing feel. Cafe-ready or concert-worthy.</p>
-            </div>
-          </div>
-          <div class="workflow-item reveal" data-reveal-delay="0.12s">
-            <div class="workflow-image">
-              <img src="/images/share.jpg" alt="Use jazz music professionally" loading="lazy">
-            </div>
-            <div class="workflow-content">
-              <h3 class="workflow-item-title">Use professionally</h3>
-              <p class="workflow-item-description">Perfect for restaurants, cafes, YouTube videos, film scores. 100% royalty-free with full commercial rights.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <section class="faq" id="faq" aria-labelledby="faq-title">
-      <div class="faq-inner">
-        <h2 id="faq-title" class="faq-title">Jazz music maker FAQ</h2>
-        <div class="faq-list">
-          <details class="reveal">
-            <summary>what is jazz music?</summary>
-            <p>jazz is a genre that originated in african american communities in new orleans. characterized by swing rhythms, improvisation, complex chords (7ths, 9ths, 11ths), and syncopation. styles include bebop, smooth jazz, cool jazz, fusion, and more.</p>
-          </details>
-          <details class="reveal" data-reveal-delay="0.03s">
-            <summary>how do i create jazz with sonura?</summary>
-            <p>describe your jazz style: "smooth jazz with piano and saxophone" or "upbeat swing jazz". sonura generates complete jazz compositions with authentic harmony, improvisation, and feel.</p>
-          </details>
-          <details class="reveal" data-reveal-delay="0.06s">
-            <summary>can i use sonura jazz commercially?</summary>
-            <p>yes! 100% royalty-free with commercial rights. perfect for cafes, restaurants, youtube content, film scores, or background music. no licensing fees ever.</p>
-          </details>
-          <details class="reveal" data-reveal-delay="0.09s">
-            <summary>does sonura understand jazz theory?</summary>
-            <p>yes! sonura understands jazz harmony, chord progressions (ii-v-i), modes, and improvisation concepts. it generates authentic jazz voicings and melodic lines.</p>
-          </details>
-          <details class="reveal" data-reveal-delay="0.12s">
-            <summary>can i create different jazz styles?</summary>
-            <p>absolutely! specify bebop, smooth jazz, cool jazz, latin jazz, fusion, or any jazz subgenre. sonura adapts to the style you request.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-    
-    <section class="final-cta" aria-labelledby="final-cta-title">
-      <div class="final-cta-inner">
-        <h2 id="final-cta-title" class="final-cta-title reveal">Start making jazz music now</h2>
-        <p class="final-cta-subtitle reveal" data-reveal-delay="0.06s">free to start. no credit card required.</p>
-        <div class="final-cta-form reveal" data-reveal-delay="0.12s">
-          <a class="button primary large" href="https://app.sonurastudio.com" target="_blank" rel="noopener">Create Jazz Music Free</a>
-        </div>
-      </div>
-    </section>
-  </main>
-  <Footer />
-  <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script is:inline src="https://unpkg.com/lucide@0.471.0/dist/umd/lucide.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <script is:inline src="/script.js"></script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"what is jazz music?","acceptedAnswer":{"@type":"Answer","text":"jazz is a genre that originated in african american communities in new orleans. characterized by swing rhythms, improvisation, complex chords (7ths, 9ths, 11ths), and syncopation."}},{"@type":"Question","name":"how do i create jazz with sonura?","acceptedAnswer":{"@type":"Answer","text":"describe your jazz style: 'smooth jazz with piano and saxophone' or 'upbeat swing jazz'. sonura generates complete jazz compositions with authentic harmony, improvisation, and feel."}},{"@type":"Question","name":"can i use sonura jazz commercially?","acceptedAnswer":{"@type":"Answer","text":"yes! 100% royalty-free with commercial rights. perfect for cafes, restaurants, youtube content, film scores, or background music."}},{"@type":"Question","name":"does sonura understand jazz theory?","acceptedAnswer":{"@type":"Answer","text":"yes! sonura understands jazz harmony, chord progressions (ii-v-i), modes, and improvisation concepts. it generates authentic jazz voicings and melodic lines."}},{"@type":"Question","name":"can i create different jazz styles?","acceptedAnswer":{"@type":"Answer","text":"absolutely! specify bebop, smooth jazz, cool jazz, latin jazz, fusion, or any jazz subgenre. sonura adapts to the style you request."}}]}</script>
-</body>
-</html>
+
+<GenreLayout
+  genre="Jazz"
+  genreSlug="jazz"
+  title="Free Jazz Music Maker | AI Jazz Generator - Sonura"
+  description="Create smooth jazz music in seconds with AI. Generate jazz chords, improvised solos, and swing rhythms instantly. Free jazz music generator with royalty-free commercial use."
+  keywords="jazz music maker, jazz generator, ai jazz music, smooth jazz generator, jazz improvisation, make jazz music online, jazz composition tool, free jazz beats"
+  headline="Free Jazz Music Maker"
+  subhead="Generate smooth jazz with sophisticated chords, improvised solos, and swing rhythms. AI-powered jazz generator for composers and music lovers."
+  ctaText="Create Jazz Music"
+  workflowTitle="How to make jazz music with AI"
+  workflowItems={workflowItems}
+  faqs={faqs}
+  finalCtaTitle="Start making jazz music now"
+  finalCtaButtonText="Create Jazz Music Free"
+/>

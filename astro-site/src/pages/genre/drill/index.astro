@@ -1,162 +1,63 @@
 ---
-import Nav from '../../../components/Nav.astro';
-import Footer from '../../../components/Footer.astro';
+import GenreLayout from '../../../layouts/GenreLayout.astro';
+
+const workflowItems = [
+  {
+    image: '/images/design.jpg',
+    imageAlt: 'Design drill beats in Sonura',
+    title: 'Describe your drill beat',
+    description: 'Type prompts like "uk drill beat 140 bpm dark piano" or "chicago drill with sliding 808s". Sonura understands drill production perfectly.'
+  },
+  {
+    image: '/images/compose.jpg',
+    imageAlt: 'Generate drill beats instantly',
+    title: 'Instant drill energy',
+    description: 'Get your drill beat in under 10 seconds. Complete with sliding 808s, aggressive hi-hats, dark melodies, and hard-hitting drums. Street-ready.'
+  },
+  {
+    image: '/images/share.jpg',
+    imageAlt: 'Sell and release drill beats',
+    title: 'Sell & release',
+    description: 'Sell as type beats, lease to artists, release on Spotify. Export stems for custom mixing. 100% royalty-free commercial use.'
+  }
+];
+
+const faqs = [
+  {
+    question: 'What is drill music?',
+    answer: 'Drill is a subgenre of hip hop that originated in Chicago and evolved in the UK. UK drill typically features 138-145 bpm with sliding 808s, dark piano melodies, and syncopated hi-hat patterns. Chicago drill is slightly slower at 60-70 bpm (double-time 120-140) with aggressive lyrics and hard-hitting production.'
+  },
+  {
+    question: 'How do I make drill beats with Sonura?',
+    answer: 'Describe your drill beat: "uk drill 140 bpm dark piano sliding 808s" or "chicago drill hard hitting". Sonura generates complete drill beats with all elements: 808s, hi-hats, snares, piano, and dark atmosphere.'
+  },
+  {
+    question: 'Can I sell drill beats made with Sonura?',
+    answer: 'Yes! 100% commercial use. Sell as type beats on BeatStars, YouTube, or your own site. Lease to artists, sell exclusive rights. You own everything you create with full commercial rights.'
+  },
+  {
+    question: 'What BPM should drill beats be?',
+    answer: 'UK drill typically runs at 138-145 bpm. Chicago drill is around 60-70 bpm in half-time (120-140 bpm double-time). Sonura understands these tempos and can generate drill at any bpm you specify.'
+  },
+  {
+    question: 'Can I make UK drill and Chicago drill?',
+    answer: 'Yes! Sonura understands both UK drill and Chicago drill styles. Specify which style you want in your prompt, or let Sonura generate a fusion of both.'
+  }
+];
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CV0TGZFNX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-8CV0TGZFNX');
-  </script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Drill Beat Maker | AI Drill Music Generator - Sonura</title>
-  <meta name="description" content="Create hard UK drill and Chicago drill beats in seconds with AI. Generate sliding 808s, dark piano melodies, and aggressive hi-hats instantly. Free drill beat maker with royalty-free commercial use.">
-  <meta name="keywords" content="drill beat maker, drill beat generator, uk drill beats, chicago drill maker, ai drill beats, free drill beats, make drill beats online, drill music production">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <link rel="canonical" href="https://sonurastudio.com/genre/drill/">
-  <meta name="theme-color" content="#0a0a0a">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Sonura">
-  <meta property="og:title" content="Free Drill Beat Maker | AI Drill Music Generator">
-  <meta property="og:description" content="create hard drill beats with ai. sliding 808s and dark piano melodies in seconds.">
-  <meta property="og:url" content="https://sonurastudio.com/genre/drill/">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:image" content="https://sonurastudio.com/demo-image.jpeg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Free Drill Beat Maker | AI Drill Music Generator">
-  <meta name="twitter:description" content="create hard drill beats with ai. sliding 808s and dark piano melodies.">
-  <meta name="twitter:image" content="https://sonurastudio.com/demo-image.jpeg">
-  <meta name="twitter:creator" content="@sonurastudio">
-  <meta name="twitter:site" content="@sonurastudio">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="icon" type="image/png" href="/google-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Sonura Drill Beat Maker","url":"https://sonurastudio.com/genre/drill/","applicationCategory":"MultimediaApplication","genre":"Drill","description":"Free AI drill beat generator that creates UK drill and Chicago drill beats with sliding 808s, dark piano melodies, and aggressive hi-hats. Perfect for drill producers and rappers."}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sonurastudio.com/"},{"@type":"ListItem","position":2,"name":"Drill Beat Maker","item":"https://sonurastudio.com/genre/drill/"}]}</script>
-</head>
-<body>
-  <main class="page genre-page">
-    <Nav />
-    <section class="hero">
-      <div class="hero-background">
-        <div class="hero-gradient"></div>
-        <div class="hero-noise"></div>
-        <svg class="cable-svg" style="z-index: 1;">
-          <defs>
-            <linearGradient id="cableGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:0.2" />
-              <stop offset="50%" style="stop-color:#a78bfa;stop-opacity:0.6" />
-              <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:0.2" />
-            </linearGradient>
-            <linearGradient id="cableGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" style="stop-color:#5b21b6;stop-opacity:0.2" />
-              <stop offset="50%" style="stop-color:#7c3aed;stop-opacity:0.5" />
-              <stop offset="100%" style="stop-color:#5b21b6;stop-opacity:0.2" />
-            </linearGradient>
-          </defs>
-          <path d="M -50 100 C 100 500 400 200 800 50" stroke="url(#cableGradient1)" class="cable-path" fill="none" />
-          <path d="M 1400 300 C 1000 700 800 500 400 900" stroke="url(#cableGradient2)" class="cable-path" fill="none" />
-        </svg>
-      </div>
-      <div class="hero-content" >
-        <h1 class="headline reveal">Free Drill Beat Maker</h1>
-        <p class="subhead reveal" data-reveal-delay="0.06s" style="max-width: 70vw; margin-left: auto; margin-right: auto;">Generate hard drill beats with sliding 808s, dark piano melodies, and aggressive hi-hats. AI-powered drill beat generator for UK and Chicago drill production.</p>
-        <div class="cta">
-          <a class="button primary" href="https://app.sonurastudio.com" target="_blank" rel="noopener">Create Drill Beats</a>
-          <a class="hero-beta-link" href="/">Explore All Genres →</a>
-        </div>
-      </div>
-    </section>
-    
-    <section class="workflow" aria-labelledby="workflow-title">
-      <div class="workflow-inner">
-        <h2 id="workflow-title" class="workflow-title reveal">How to make drill beats with AI</h2>
-        <div class="workflow-grid">
-          <div class="workflow-item reveal" data-reveal-delay="0.04s">
-            <div class="workflow-image">
-              <img src="/images/design.jpg" alt="Design drill beats in Sonura" loading="lazy">
-            </div>
-            <div class="workflow-content">
-              <h3 class="workflow-item-title">Describe your drill beat</h3>
-              <p class="workflow-item-description">Type prompts like "uk drill beat 140 bpm dark piano" or "chicago drill with sliding 808s". Sonura understands drill production perfectly.</p>
-            </div>
-          </div>
-          <div class="workflow-item workflow-item-reverse reveal" data-reveal-delay="0.08s">
-            <div class="workflow-image">
-              <img src="/images/compose.jpg" alt="Generate drill beats instantly" loading="lazy">
-            </div>
-            <div class="workflow-content">
-              <h3 class="workflow-item-title">Instant drill energy</h3>
-              <p class="workflow-item-description">Get your drill beat in under 10 seconds. Complete with sliding 808s, aggressive hi-hats, dark melodies, and hard-hitting drums. Street-ready.</p>
-            </div>
-          </div>
-          <div class="workflow-item reveal" data-reveal-delay="0.12s">
-            <div class="workflow-image">
-              <img src="/images/share.jpg" alt="Sell and release drill beats" loading="lazy">
-            </div>
-            <div class="workflow-content">
-              <h3 class="workflow-item-title">Sell & release</h3>
-              <p class="workflow-item-description">Sell as type beats, lease to artists, release on Spotify. Export stems for custom mixing. 100% royalty-free commercial use.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <section class="faq" id="faq" aria-labelledby="faq-title">
-      <div class="faq-inner">
-        <h2 id="faq-title" class="faq-title">Drill beat maker FAQ</h2>
-        <div class="faq-list">
-          <details class="reveal">
-            <summary>what is drill music?</summary>
-            <p>drill is a subgenre of hip hop that originated in chicago and evolved in the uk. uk drill typically features 138-145 bpm with sliding 808s, dark piano melodies, and syncopated hi-hat patterns. chicago drill is slightly slower at 60-70 bpm (double-time 120-140) with aggressive lyrics and hard-hitting production.</p>
-          </details>
-          <details class="reveal" data-reveal-delay="0.03s">
-            <summary>how do i make drill beats with sonura?</summary>
-            <p>describe your drill beat: "uk drill 140 bpm dark piano sliding 808s" or "chicago drill hard hitting". sonura generates complete drill beats with all elements: 808s, hi-hats, snares, piano, and dark atmosphere.</p>
-          </details>
-          <details class="reveal" data-reveal-delay="0.06s">
-            <summary>can i sell drill beats made with sonura?</summary>
-            <p>yes! 100% commercial use. sell as type beats on beatstars, youtube, or your own site. lease to artists, sell exclusive rights. you own everything you create with full commercial rights.</p>
-          </details>
-          <details class="reveal" data-reveal-delay="0.09s">
-            <summary>what bpm should drill beats be?</summary>
-            <p>uk drill typically runs at 138-145 bpm. chicago drill is around 60-70 bpm in half-time (120-140 bpm double-time). sonura understands these tempos and can generate drill at any bpm you specify.</p>
-          </details>
-          <details class="reveal" data-reveal-delay="0.12s">
-            <summary>can i make uk drill and chicago drill?</summary>
-            <p>yes! sonura understands both uk drill and chicago drill styles. specify which style you want in your prompt, or let sonura generate a fusion of both.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-    
-    <section class="final-cta" aria-labelledby="final-cta-title">
-      <div class="final-cta-inner">
-        <h2 id="final-cta-title" class="final-cta-title reveal">Start making drill beats now</h2>
-        <p class="final-cta-subtitle reveal" data-reveal-delay="0.06s">free to start. no credit card required.</p>
-        <div class="final-cta-form reveal" data-reveal-delay="0.12s">
-          <a class="button primary large" href="https://app.sonurastudio.com" target="_blank" rel="noopener">Create Drill Beats Free</a>
-        </div>
-      </div>
-    </section>
-  </main>
-  <Footer />
-  <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script is:inline src="https://unpkg.com/lucide@0.471.0/dist/umd/lucide.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <script is:inline src="/script.js"></script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"what is drill music?","acceptedAnswer":{"@type":"Answer","text":"drill is a subgenre of hip hop that originated in chicago and evolved in the uk. uk drill typically features 138-145 bpm with sliding 808s, dark piano melodies, and syncopated hi-hat patterns."}},{"@type":"Question","name":"how do i make drill beats with sonura?","acceptedAnswer":{"@type":"Answer","text":"describe your drill beat: 'uk drill 140 bpm dark piano sliding 808s' or 'chicago drill hard hitting'. sonura generates complete drill beats with all elements: 808s, hi-hats, snares, piano, and dark atmosphere."}},{"@type":"Question","name":"can i sell drill beats made with sonura?","acceptedAnswer":{"@type":"Answer","text":"yes! 100% commercial use. sell as type beats on beatstars, youtube, or your own site. lease to artists, sell exclusive rights."}},{"@type":"Question","name":"what bpm should drill beats be?","acceptedAnswer":{"@type":"Answer","text":"uk drill typically runs at 138-145 bpm. chicago drill is around 60-70 bpm in half-time (120-140 bpm double-time)."}},{"@type":"Question","name":"can i make uk drill and chicago drill?","acceptedAnswer":{"@type":"Answer","text":"yes! sonura understands both uk drill and chicago drill styles. specify which style you want in your prompt, or let sonura generate a fusion of both."}}]}</script>
-</body>
-</html>
+
+<GenreLayout
+  genre="Drill"
+  genreSlug="drill"
+  title="Free Drill Beat Maker | AI Drill Music Generator - Sonura"
+  description="Create hard UK drill and Chicago drill beats in seconds with AI. Generate sliding 808s, dark piano melodies, and aggressive hi-hats instantly. Free drill beat maker with royalty-free commercial use."
+  keywords="drill beat maker, drill beat generator, uk drill beats, chicago drill maker, ai drill beats, free drill beats, make drill beats online, drill music production"
+  headline="Free Drill Beat Maker"
+  subhead="Generate hard drill beats with sliding 808s, dark piano melodies, and aggressive hi-hats. AI-powered drill beat generator for UK and Chicago drill production."
+  ctaText="Create Drill Beats"
+  workflowTitle="How to make drill beats with AI"
+  workflowItems={workflowItems}
+  faqs={faqs}
+  finalCtaTitle="Start making drill beats now"
+  finalCtaButtonText="Create Drill Beats Free"
+/>

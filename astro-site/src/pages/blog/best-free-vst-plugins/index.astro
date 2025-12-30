@@ -1,20 +1,25 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
+import BlogLayout from '../../../layouts/BlogLayout.astro';
+
+const toc = [
+  { id: 'synths', label: 'Best free synths' },
+  { id: 'mixing', label: 'Mixing & mastering' },
+  { id: 'effects', label: 'Effects plugins' },
+  { id: 'recommendations', label: 'Essential starter pack' },
+  { id: 'conclusion', label: 'Conclusion' },
+];
 ---
 
-<BaseLayout
+<BlogLayout
   title="Best Free VST Plugins for Music Production 2025 (Download Guide)"
   description="Discover the 30+ best free VST plugins for music production. Professional synths, effects, drums, mixing tools. Download links included. Save thousands on your setup."
   keywords="free vst plugins, best free vst, free vst synth, free vst effects, free plugins music production, free vst download, best free plugins 2025, vst plugins free"
-  canonicalURL="https://sonurastudio.com/blog/best-free-vst-plugins/"
-  type="article"
-  publishedTime="2025-10-23T00:00:00Z"
+  slug="best-free-vst-plugins"
+  publishedDate="2025-10-23"
+  readTime="14 min read"
+  toc={toc}
 >
   <style>
-    @media (min-width: 1024px) { .blog-toc { display: block !important; } }
-    .blog-toc::-webkit-scrollbar { width: 6px; }
-    .blog-toc::-webkit-scrollbar-track { background: transparent; }
-    .blog-toc::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
     .plugin-box { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 24px; margin-bottom: 24px; }
     .plugin-box h4 { font-size: 20px; font-weight: 700; margin-bottom: 12px; color: var(--fg); }
     .plugin-meta { display: flex; gap: 16px; margin-bottom: 12px; font-size: 14px; flex-wrap: wrap; }
@@ -22,123 +27,92 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
     .plugin-platform { color: var(--muted); }
   </style>
 
-  <div style="display: flex; max-width: 1280px; margin: 80px auto; padding: 0 24px; gap: 48px;">
-    <article style="flex: 1; min-width: 0; color: var(--fg); line-height: 1.8;">
-      <header style="margin-bottom: 48px;">
-        <h1 style="font-size: 42px; font-weight: 800; margin-bottom: 16px; line-height: 1.2;">Best Free VST Plugins for Music Production in 2025</h1>
-        <div style="color: var(--muted); font-size: 14px; margin-bottom: 24px;">
-          <time datetime="2025-10-23">October 23, 2025</time> • 14 min read
-        </div>
-        <p style="font-size: 20px; color: var(--muted); line-height: 1.6;">You don't need to spend thousands on plugins. This guide covers 30+ professional-grade free VST plugins that rival paid options. synths, effects, mixing tools, and drums all completely free.</p>
-      </header>
+  <section style="margin-bottom: 48px;">
+    <h2 id="synths" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Best Free Synth VST Plugins</h2>
+    
+    <div class="plugin-box">
+      <h4>Vital</h4>
+      <div class="plugin-meta"><span class="plugin-type">wavetable synth</span><span class="plugin-platform">windows / mac / linux</span></div>
+      <p style="margin-bottom: 12px;"><strong>the best free synth, period.</strong> rival to serum and phase plant. modern wavetable synthesis with visual feedback, unlimited modulation.</p>
+      <p><strong>download:</strong> <a href="https://vital.audio" target="_blank" rel="noopener" style="color: white;">vital.audio</a></p>
+    </div>
 
-      <section style="margin-bottom: 48px;">
-        <h2 id="synths" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Best Free Synth VST Plugins</h2>
-        
-        <div class="plugin-box">
-          <h4>Vital</h4>
-          <div class="plugin-meta"><span class="plugin-type">wavetable synth</span><span class="plugin-platform">windows / mac / linux</span></div>
-          <p style="margin-bottom: 12px;"><strong>the best free synth, period.</strong> rival to serum and phase plant. modern wavetable synthesis with visual feedback, unlimited modulation.</p>
-          <p><strong>download:</strong> <a href="https://vital.audio" target="_blank" rel="noopener" style="color: white;">vital.audio</a></p>
-        </div>
+    <div class="plugin-box">
+      <h4>Surge XT</h4>
+      <div class="plugin-meta"><span class="plugin-type">hybrid synth</span><span class="plugin-platform">windows / mac / linux</span></div>
+      <p style="margin-bottom: 12px;">open-source powerhouse with every synthesis type: wavetable, fm, analog modeling, granular.</p>
+      <p><strong>download:</strong> <a href="https://surge-synthesizer.github.io" target="_blank" rel="noopener" style="color: white;">surge-synthesizer.github.io</a></p>
+    </div>
 
-        <div class="plugin-box">
-          <h4>Surge XT</h4>
-          <div class="plugin-meta"><span class="plugin-type">hybrid synth</span><span class="plugin-platform">windows / mac / linux</span></div>
-          <p style="margin-bottom: 12px;">open-source powerhouse with every synthesis type: wavetable, fm, analog modeling, granular.</p>
-          <p><strong>download:</strong> <a href="https://surge-synthesizer.github.io" target="_blank" rel="noopener" style="color: white;">surge-synthesizer.github.io</a></p>
-        </div>
+    <div class="plugin-box">
+      <h4>Spitfire LABS</h4>
+      <div class="plugin-meta"><span class="plugin-type">sample library</span><span class="plugin-platform">windows / mac</span></div>
+      <p style="margin-bottom: 12px;">50+ free orchestral, ambient, and experimental instruments. recorded by spitfire audio.</p>
+      <p><strong>download:</strong> <a href="https://spitfireaudio.com/labs" target="_blank" rel="noopener" style="color: white;">spitfireaudio.com/labs</a></p>
+    </div>
+  </section>
 
-        <div class="plugin-box">
-          <h4>Spitfire LABS</h4>
-          <div class="plugin-meta"><span class="plugin-type">sample library</span><span class="plugin-platform">windows / mac</span></div>
-          <p style="margin-bottom: 12px;">50+ free orchestral, ambient, and experimental instruments. recorded by spitfire audio.</p>
-          <p><strong>download:</strong> <a href="https://spitfireaudio.com/labs" target="_blank" rel="noopener" style="color: white;">spitfireaudio.com/labs</a></p>
-        </div>
-      </section>
+  <section style="margin-bottom: 48px;">
+    <h2 id="mixing" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Best Free Mixing & Mastering Plugins</h2>
+    
+    <div class="plugin-box">
+      <h4>TDR Nova (Parallel Dynamic EQ)</h4>
+      <div class="plugin-meta"><span class="plugin-type">dynamic eq</span><span class="plugin-platform">windows / mac</span></div>
+      <p style="margin-bottom: 12px;">professional dynamic equalizer. rivals fabfilter pro-q, completely free.</p>
+      <p><strong>download:</strong> <a href="https://tokyodawn.net/tdr-nova" target="_blank" rel="noopener" style="color: white;">tokyodawn.net/tdr-nova</a></p>
+    </div>
 
-      <section style="margin-bottom: 48px;">
-        <h2 id="mixing" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Best Free Mixing & Mastering Plugins</h2>
-        
-        <div class="plugin-box">
-          <h4>TDR Nova (Parallel Dynamic EQ)</h4>
-          <div class="plugin-meta"><span class="plugin-type">dynamic eq</span><span class="plugin-platform">windows / mac</span></div>
-          <p style="margin-bottom: 12px;">professional dynamic equalizer. rivals fabfilter pro-q, completely free.</p>
-          <p><strong>download:</strong> <a href="https://tokyodawn.net/tdr-nova" target="_blank" rel="noopener" style="color: white;">tokyodawn.net/tdr-nova</a></p>
-        </div>
+    <div class="plugin-box">
+      <h4>Voxengo SPAN</h4>
+      <div class="plugin-meta"><span class="plugin-type">analyzer</span><span class="plugin-platform">windows / mac</span></div>
+      <p style="margin-bottom: 12px;">industry-standard spectrum analyzer. essential mixing tool.</p>
+      <p><strong>download:</strong> <a href="https://voxengo.com/product/span" target="_blank" rel="noopener" style="color: white;">voxengo.com/product/span</a></p>
+    </div>
+  </section>
 
-        <div class="plugin-box">
-          <h4>Voxengo SPAN</h4>
-          <div class="plugin-meta"><span class="plugin-type">analyzer</span><span class="plugin-platform">windows / mac</span></div>
-          <p style="margin-bottom: 12px;">industry-standard spectrum analyzer. essential mixing tool.</p>
-          <p><strong>download:</strong> <a href="https://voxengo.com/product/span" target="_blank" rel="noopener" style="color: white;">voxengo.com/product/span</a></p>
-        </div>
-      </section>
+  <section style="margin-bottom: 48px;">
+    <h2 id="effects" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Best Free Effects Plugins</h2>
+    
+    <div class="plugin-box">
+      <h4>Valhalla Supermassive</h4>
+      <div class="plugin-meta"><span class="plugin-type">reverb / delay</span><span class="plugin-platform">windows / mac</span></div>
+      <p style="margin-bottom: 12px;">massive reverbs and delays. huge spaces, ambient soundscapes. sounds like a $200 plugin.</p>
+      <p><strong>download:</strong> <a href="https://valhalladsp.com/shop/reverb/valhalla-supermassive" target="_blank" rel="noopener" style="color: white;">valhalladsp.com/shop/reverb/valhalla-supermassive</a></p>
+    </div>
 
-      <section style="margin-bottom: 48px;">
-        <h2 id="effects" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Best Free Effects Plugins</h2>
-        
-        <div class="plugin-box">
-          <h4>Valhalla Supermassive</h4>
-          <div class="plugin-meta"><span class="plugin-type">reverb / delay</span><span class="plugin-platform">windows / mac</span></div>
-          <p style="margin-bottom: 12px;">massive reverbs and delays. huge spaces, ambient soundscapes. sounds like a $200 plugin.</p>
-          <p><strong>download:</strong> <a href="https://valhalladsp.com/shop/reverb/valhalla-supermassive" target="_blank" rel="noopener" style="color: white;">valhalladsp.com/shop/reverb/valhalla-supermassive</a></p>
-        </div>
+    <div class="plugin-box">
+      <h4>OTT (Xfer Records)</h4>
+      <div class="plugin-meta"><span class="plugin-type">multiband compressor</span><span class="plugin-platform">windows / mac</span></div>
+      <p style="margin-bottom: 12px;">legendary aggressive multiband compressor. essential for edm and bass music.</p>
+      <p><strong>download:</strong> <a href="https://xferrecords.com/freeware" target="_blank" rel="noopener" style="color: white;">xferrecords.com/freeware</a></p>
+    </div>
+  </section>
 
-        <div class="plugin-box">
-          <h4>OTT (Xfer Records)</h4>
-          <div class="plugin-meta"><span class="plugin-type">multiband compressor</span><span class="plugin-platform">windows / mac</span></div>
-          <p style="margin-bottom: 12px;">legendary aggressive multiband compressor. essential for edm and bass music.</p>
-          <p><strong>download:</strong> <a href="https://xferrecords.com/freeware" target="_blank" rel="noopener" style="color: white;">xferrecords.com/freeware</a></p>
-        </div>
-      </section>
+  <section style="margin-bottom: 48px;">
+    <h2 id="recommendations" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Essential Starter Pack (Top 10)</h2>
+    <ol style="margin-bottom: 24px; padding-left: 24px;">
+      <li style="margin-bottom: 12px;"><strong>vital:</strong> your main synth</li>
+      <li style="margin-bottom: 12px;"><strong>spitfire labs:</strong> organic sounds</li>
+      <li style="margin-bottom: 12px;"><strong>mt power drum kit:</strong> acoustic drums</li>
+      <li style="margin-bottom: 12px;"><strong>sitala:</strong> electronic drums</li>
+      <li style="margin-bottom: 12px;"><strong>tdr nova:</strong> eq</li>
+      <li style="margin-bottom: 12px;"><strong>tdr kotelnikov:</strong> compression</li>
+      <li style="margin-bottom: 12px;"><strong>valhalla supermassive:</strong> reverb</li>
+      <li style="margin-bottom: 12px;"><strong>valhalla freqecho:</strong> delay</li>
+      <li style="margin-bottom: 12px;"><strong>ott:</strong> punch and loudness</li>
+      <li style="margin-bottom: 12px;"><strong>wider:</strong> stereo width</li>
+    </ol>
+    <p style="margin-bottom: 24px;"><strong>total cost: $0</strong></p>
+  </section>
 
-      <section style="margin-bottom: 48px;">
-        <h2 id="recommendations" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Essential Starter Pack (Top 10)</h2>
-        <ol style="margin-bottom: 24px; padding-left: 24px;">
-          <li style="margin-bottom: 12px;"><strong>vital:</strong> your main synth</li>
-          <li style="margin-bottom: 12px;"><strong>spitfire labs:</strong> organic sounds</li>
-          <li style="margin-bottom: 12px;"><strong>mt power drum kit:</strong> acoustic drums</li>
-          <li style="margin-bottom: 12px;"><strong>sitala:</strong> electronic drums</li>
-          <li style="margin-bottom: 12px;"><strong>tdr nova:</strong> eq</li>
-          <li style="margin-bottom: 12px;"><strong>tdr kotelnikov:</strong> compression</li>
-          <li style="margin-bottom: 12px;"><strong>valhalla supermassive:</strong> reverb</li>
-          <li style="margin-bottom: 12px;"><strong>valhalla freqecho:</strong> delay</li>
-          <li style="margin-bottom: 12px;"><strong>ott:</strong> punch and loudness</li>
-          <li style="margin-bottom: 12px;"><strong>wider:</strong> stereo width</li>
-        </ol>
-        <p style="margin-bottom: 24px;"><strong>total cost: $0</strong></p>
-      </section>
-
-      <section style="margin-bottom: 48px;">
-        <h2 id="conclusion" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Conclusion: You Don't Need Paid Plugins</h2>
-        <p style="margin-bottom: 24px;">you can build a completely professional, studio-grade plugin collection for $0.</p>
-        <p style="margin-bottom: 24px;">Combine free plugins with modern AI tools like <a href="/" style="color: var(--primary); text-decoration: none;">Sonura</a> for the fastest, most efficient workflow.</p>
-        <div style="background: rgba(124, 58, 237, 0.1); border: 1px solid var(--primary); border-radius: 12px; padding: 32px; margin-top: 48px; text-align: center;">
-          <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px;">skip the plugin hunt. start creating.</h3>
-          <p style="margin-bottom: 24px; color: var(--muted);">generate professional sounds instantly, export stems, process with your favorite free plugins</p>
-          <a href="https://app.sonurastudio.com" class="button primary large" style="display: inline-block; padding: 16px 32px; background: var(--primary); color: white; text-decoration: none; border-radius: 12px; font-weight: 600;">try sonura free</a>
-        </div>
-      </section>
-
-      <footer style="margin-top: 64px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.1);">
-        <p style="color: var(--muted); font-size: 14px;">
-          <a href="/" style="color: var(--primary); text-decoration: none;">← back to home</a> | 
-          <a href="/blog/music-production-for-beginners/" style="color: var(--primary); text-decoration: none;">music production for beginners</a>
-        </p>
-      </footer>
-    </article>
-
-    <nav style="position: sticky; top: 120px; width: 240px; height: fit-content; max-height: calc(100vh - 140px); overflow-y: auto; flex-shrink: 0; display: none;" class="blog-toc">
-      <div style="font-size: 14px; font-weight: 600; margin-bottom: 16px; color: var(--fg); text-transform: uppercase; letter-spacing: 0.5px;">on this page</div>
-      <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px;">
-        <li><a href="#synths" style="color: var(--muted); text-decoration: none; font-size: 14px;">best free synths</a></li>
-        <li><a href="#mixing" style="color: var(--muted); text-decoration: none; font-size: 14px;">mixing & mastering</a></li>
-        <li><a href="#effects" style="color: var(--muted); text-decoration: none; font-size: 14px;">effects plugins</a></li>
-        <li><a href="#recommendations" style="color: var(--muted); text-decoration: none; font-size: 14px;">essential starter pack</a></li>
-        <li><a href="#conclusion" style="color: var(--muted); text-decoration: none; font-size: 14px;">conclusion</a></li>
-      </ul>
-    </nav>
-  </div>
-</BaseLayout>
-
+  <section style="margin-bottom: 48px;">
+    <h2 id="conclusion" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Conclusion: You Don't Need Paid Plugins</h2>
+    <p style="margin-bottom: 24px;">you can build a completely professional, studio-grade plugin collection for $0.</p>
+    <p style="margin-bottom: 24px;">Combine free plugins with modern AI tools like <a href="/" style="color: var(--primary); text-decoration: none;">Sonura</a> for the fastest, most efficient workflow.</p>
+    <div style="background: rgba(124, 58, 237, 0.1); border: 1px solid var(--primary); border-radius: 12px; padding: 32px; margin-top: 48px; text-align: center;">
+      <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px;">skip the plugin hunt. start creating.</h3>
+      <p style="margin-bottom: 24px; color: var(--muted);">generate professional sounds instantly, export stems, process with your favorite free plugins</p>
+      <a href="https://app.sonurastudio.com" class="button primary large" style="display: inline-block; padding: 16px 32px; background: var(--primary); color: white; text-decoration: none; border-radius: 12px; font-weight: 600;">try sonura free</a>
+    </div>
+  </section>
+</BlogLayout>

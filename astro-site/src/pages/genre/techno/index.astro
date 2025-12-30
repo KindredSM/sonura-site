@@ -1,162 +1,63 @@
 ---
-import Nav from '../../../components/Nav.astro';
-import Footer from '../../../components/Footer.astro';
+import GenreLayout from '../../../layouts/GenreLayout.astro';
+
+const workflowItems = [
+  {
+    image: '/images/design.jpg',
+    imageAlt: 'Design techno tracks in Sonura',
+    title: 'Describe your sound',
+    description: 'Type prompts like "dark industrial techno 135 bpm" or "minimal techno with acid bassline". Sonura understands the techno aesthetic perfectly.'
+  },
+  {
+    image: '/images/compose.jpg',
+    imageAlt: 'Generate techno music instantly',
+    title: 'Instant warehouse energy',
+    description: 'Get your techno track in under 10 seconds. Complete with pounding kicks, hypnotic percussion, modular synths, and dark atmosphere. Rave-ready.'
+  },
+  {
+    image: '/images/share.jpg',
+    imageAlt: 'Play techno underground',
+    title: 'Play underground',
+    description: 'Use in sets, release on techno labels, remix and edit. 100% royalty-free with full commercial rights for warehouse parties and festivals.'
+  }
+];
+
+const faqs = [
+  {
+    question: 'What is techno music?',
+    answer: 'Techno is a genre of electronic dance music characterized by repetitive beats, synthesized sounds, and a focus on rhythm and atmosphere. Typically 120-150 bpm, techno emphasizes the hypnotic groove with minimal melodic elements. Subgenres include Detroit techno, industrial techno, minimal techno, and acid techno.'
+  },
+  {
+    question: 'How do I make techno with Sonura?',
+    answer: 'Describe your techno vision: "dark industrial techno 135 bpm" or "minimal techno with acid bassline". Sonura generates complete techno tracks with kicks, percussion, synths, and atmosphere instantly.'
+  },
+  {
+    question: 'Can I use Sonura techno in DJ sets?',
+    answer: 'Yes! 100% royalty-free with commercial rights. Perfect for underground parties, warehouse raves, techno festivals, or label releases. You own everything.'
+  },
+  {
+    question: 'What BPM should techno be?',
+    answer: 'Techno typically ranges from 120-150 bpm. Minimal techno sits around 125-130 bpm, while harder industrial techno can reach 140-150 bpm. Sonura can generate techno at any tempo you specify.'
+  },
+  {
+    question: 'Can I export techno stems for mixing?',
+    answer: 'Yes! Export individual stems for kicks, percussion, bass, synths, and fx. Perfect for custom mixing, live performances, or modular editing in your DAW.'
+  }
+];
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CV0TGZFNX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-8CV0TGZFNX');
-  </script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Techno Music Maker | AI Techno Beat Generator - Sonura</title>
-  <meta name="description" content="Create hypnotic techno tracks in seconds with AI. Generate driving kicks, industrial sounds, and relentless rhythms instantly. Free techno music generator with royalty-free commercial use.">
-  <meta name="keywords" content="techno music maker, techno beat generator, ai techno music, industrial techno generator, minimal techno maker, detroit techno, techno production, make techno music online">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <link rel="canonical" href="https://sonurastudio.com/genre/techno/">
-  <meta name="theme-color" content="#0a0a0a">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Sonura">
-  <meta property="og:title" content="Free Techno Music Maker | AI Techno Beat Generator">
-  <meta property="og:description" content="create hypnotic techno with ai. driving kicks and industrial sounds in seconds.">
-  <meta property="og:url" content="https://sonurastudio.com/genre/techno/">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:image" content="https://sonurastudio.com/demo-image.jpeg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Free Techno Music Maker | AI Techno Beat Generator">
-  <meta name="twitter:description" content="create hypnotic techno with ai. driving kicks and industrial sounds.">
-  <meta name="twitter:image" content="https://sonurastudio.com/demo-image.jpeg">
-  <meta name="twitter:creator" content="@sonurastudio">
-  <meta name="twitter:site" content="@sonurastudio">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="icon" type="image/png" href="/google-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Sonura Techno Music Maker","url":"https://sonurastudio.com/genre/techno/","applicationCategory":"MultimediaApplication","genre":"Techno","description":"Free AI techno music generator that creates hypnotic techno tracks with driving kicks, industrial sounds, and relentless rhythms. Perfect for underground raves and warehouse parties."}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sonurastudio.com/"},{"@type":"ListItem","position":2,"name":"Techno Music Maker","item":"https://sonurastudio.com/genre/techno/"}]}</script>
-</head>
-<body>
-  <main class="page genre-page">
-    <Nav />
-    <section class="hero">
-      <div class="hero-background">
-        <div class="hero-gradient"></div>
-        <div class="hero-noise"></div>
-        <svg class="cable-svg" style="z-index: 1;">
-          <defs>
-            <linearGradient id="cableGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:0.2" />
-              <stop offset="50%" style="stop-color:#a78bfa;stop-opacity:0.6" />
-              <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:0.2" />
-            </linearGradient>
-            <linearGradient id="cableGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" style="stop-color:#5b21b6;stop-opacity:0.2" />
-              <stop offset="50%" style="stop-color:#7c3aed;stop-opacity:0.5" />
-              <stop offset="100%" style="stop-color:#5b21b6;stop-opacity:0.2" />
-            </linearGradient>
-          </defs>
-          <path d="M -50 100 C 100 500 400 200 800 50" stroke="url(#cableGradient1)" class="cable-path" fill="none" />
-          <path d="M 1400 300 C 1000 700 800 500 400 900" stroke="url(#cableGradient2)" class="cable-path" fill="none" />
-        </svg>
-      </div>
-      <div class="hero-content">
-        <h1 class="headline reveal">Free Techno Music Maker</h1>
-        <p class="subhead reveal" data-reveal-delay="0.06s" style="max-width: 70vw; margin-left: auto; margin-right: auto;">Generate hypnotic techno with driving kicks, industrial sounds, and relentless rhythms. AI-powered techno generator for underground producers and DJs.</p>
-        <div class="cta">
-          <a class="button primary" href="https://app.sonurastudio.com" target="_blank" rel="noopener">Create Techno Music</a>
-          <a class="hero-beta-link" href="/">Explore All Genres →</a>
-        </div>
-      </div>
-    </section>
-    
-    <section class="workflow" aria-labelledby="workflow-title">
-      <div class="workflow-inner">
-        <h2 id="workflow-title" class="workflow-title reveal">How to make techno music with AI</h2>
-        <div class="workflow-grid">
-          <div class="workflow-item reveal" data-reveal-delay="0.04s">
-            <div class="workflow-image">
-              <img src="/images/design.jpg" alt="Design techno tracks in Sonura" loading="lazy">
-            </div>
-            <div class="workflow-content">
-              <h3 class="workflow-item-title">Describe your sound</h3>
-              <p class="workflow-item-description">Type prompts like "dark industrial techno 135 bpm" or "minimal techno with acid bassline". Sonura understands the techno aesthetic perfectly.</p>
-            </div>
-          </div>
-          <div class="workflow-item workflow-item-reverse reveal" data-reveal-delay="0.08s">
-            <div class="workflow-image">
-              <img src="/images/compose.jpg" alt="Generate techno music instantly" loading="lazy">
-            </div>
-            <div class="workflow-content">
-              <h3 class="workflow-item-title">Instant warehouse energy</h3>
-              <p class="workflow-item-description">Get your techno track in under 10 seconds. Complete with pounding kicks, hypnotic percussion, modular synths, and dark atmosphere. Rave-ready.</p>
-            </div>
-          </div>
-          <div class="workflow-item reveal" data-reveal-delay="0.12s">
-            <div class="workflow-image">
-              <img src="/images/share.jpg" alt="Play techno underground" loading="lazy">
-            </div>
-            <div class="workflow-content">
-              <h3 class="workflow-item-title">Play underground</h3>
-              <p class="workflow-item-description">Use in sets, release on techno labels, remix and edit. 100% royalty-free with full commercial rights for warehouse parties and festivals.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <section class="faq" id="faq" aria-labelledby="faq-title">
-      <div class="faq-inner">
-        <h2 id="faq-title" class="faq-title">Techno music maker FAQ</h2>
-        <div class="faq-list">
-          <details class="reveal">
-            <summary>what is techno music?</summary>
-            <p>techno is a genre of electronic dance music characterized by repetitive beats, synthesized sounds, and a focus on rhythm and atmosphere. typically 120-150 bpm, techno emphasizes the hypnotic groove with minimal melodic elements. subgenres include detroit techno, industrial techno, minimal techno, and acid techno.</p>
-          </details>
-          <details class="reveal" data-reveal-delay="0.03s">
-            <summary>how do i make techno with sonura?</summary>
-            <p>describe your techno vision: "dark industrial techno 135 bpm" or "minimal techno with acid bassline". sonura generates complete techno tracks with kicks, percussion, synths, and atmosphere instantly.</p>
-          </details>
-          <details class="reveal" data-reveal-delay="0.06s">
-            <summary>can i use sonura techno in dj sets?</summary>
-            <p>yes! 100% royalty-free with commercial rights. perfect for underground parties, warehouse raves, techno festivals, or label releases. you own everything.</p>
-          </details>
-          <details class="reveal" data-reveal-delay="0.09s">
-            <summary>what bpm should techno be?</summary>
-            <p>techno typically ranges from 120-150 bpm. minimal techno sits around 125-130 bpm, while harder industrial techno can reach 140-150 bpm. sonura can generate techno at any tempo you specify.</p>
-          </details>
-          <details class="reveal" data-reveal-delay="0.12s">
-            <summary>can i export techno stems for mixing?</summary>
-            <p>yes! export individual stems for kicks, percussion, bass, synths, and fx. perfect for custom mixing, live performances, or modular editing in your daw.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-    
-    <section class="final-cta" aria-labelledby="final-cta-title">
-      <div class="final-cta-inner">
-        <h2 id="final-cta-title" class="final-cta-title reveal">Start making techno now</h2>
-        <p class="final-cta-subtitle reveal" data-reveal-delay="0.06s">free to start. no credit card required.</p>
-        <div class="final-cta-form reveal" data-reveal-delay="0.12s">
-          <a class="button primary large" href="https://app.sonurastudio.com" target="_blank" rel="noopener">Create Techno Music Free</a>
-        </div>
-      </div>
-    </section>
-  </main>
-  <Footer />
-  <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script is:inline src="https://unpkg.com/lucide@0.471.0/dist/umd/lucide.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <script is:inline src="/script.js"></script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"what is techno music?","acceptedAnswer":{"@type":"Answer","text":"techno is a genre of electronic dance music characterized by repetitive beats, synthesized sounds, and a focus on rhythm and atmosphere. typically 120-150 bpm, techno emphasizes the hypnotic groove with minimal melodic elements."}},{"@type":"Question","name":"how do i make techno with sonura?","acceptedAnswer":{"@type":"Answer","text":"describe your techno vision: 'dark industrial techno 135 bpm' or 'minimal techno with acid bassline'. sonura generates complete techno tracks with kicks, percussion, synths, and atmosphere instantly."}},{"@type":"Question","name":"can i use sonura techno in dj sets?","acceptedAnswer":{"@type":"Answer","text":"yes! 100% royalty-free with commercial rights. perfect for underground parties, warehouse raves, techno festivals, or label releases."}},{"@type":"Question","name":"what bpm should techno be?","acceptedAnswer":{"@type":"Answer","text":"techno typically ranges from 120-150 bpm. minimal techno sits around 125-130 bpm, while harder industrial techno can reach 140-150 bpm."}},{"@type":"Question","name":"can i export techno stems for mixing?","acceptedAnswer":{"@type":"Answer","text":"yes! export individual stems for kicks, percussion, bass, synths, and fx. perfect for custom mixing, live performances, or modular editing in your daw."}}]}</script>
-</body>
-</html>
+
+<GenreLayout
+  genre="Techno"
+  genreSlug="techno"
+  title="Free Techno Music Maker | AI Techno Beat Generator - Sonura"
+  description="Create hypnotic techno tracks in seconds with AI. Generate driving kicks, industrial sounds, and relentless rhythms instantly. Free techno music generator with royalty-free commercial use."
+  keywords="techno music maker, techno beat generator, ai techno music, industrial techno generator, minimal techno maker, detroit techno, techno production, make techno music online"
+  headline="Free Techno Music Maker"
+  subhead="Generate hypnotic techno with driving kicks, industrial sounds, and relentless rhythms. AI-powered techno generator for underground producers and DJs."
+  ctaText="Create Techno Music"
+  workflowTitle="How to make techno music with AI"
+  workflowItems={workflowItems}
+  faqs={faqs}
+  finalCtaTitle="Start making techno now"
+  finalCtaButtonText="Create Techno Music Free"
+/>

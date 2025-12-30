@@ -1,107 +1,78 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
+import BlogLayout from '../../../layouts/BlogLayout.astro';
+
+const toc = [
+  { id: 'about', label: 'About the Event' },
+  { id: 'mission', label: 'The Mission' },
+  { id: 'prizes', label: 'Prizes' },
+  { id: 'highlights', label: 'Event Highlights' },
+  { id: 'details', label: 'Location & Details' },
+];
 ---
 
-<BaseLayout
+<BlogLayout
   title="AI Music GenJam - Sonura Studio | AI Music Hackathon San Francisco"
   description="Join the first-ever AI Music GenJam by Sonura Studio in San Francisco. Collaborate, create, and compete for prizes in this hands-on AI music event."
   keywords="AI music event, music hackathon, Sonura GenJam, San Francisco music events, AI music generation, music production jam"
-  canonicalURL="https://sonurastudio.com/blog/ai-music-genjam-sonura-studio/"
-  type="article"
-  publishedTime="2025-12-10T00:00:00Z"
+  slug="ai-music-genjam-sonura-studio"
+  publishedDate="2025-12-10"
+  readTime="3 min read"
+  toc={toc}
 >
-  <style>
-    @media (min-width: 1024px) { .blog-toc { display: block !important; } }
-    .blog-toc::-webkit-scrollbar { width: 6px; }
-    .blog-toc::-webkit-scrollbar-track { background: transparent; }
-    .blog-toc::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
-  </style>
+  <section style="margin-bottom: 48px;">
+    <h2 id="about" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Forge with The Future of Sound 🎧</h2>
+    <p style="margin-bottom: 24px;">Welcome to the first ever <strong>Sonura GenJam!</strong> This is a hands-on event where you'll fuse AI music and art into a masterpiece shared with the world. Bring your creativity, and leave with original content and a track live on the Sonura Sketches platform.</p>
+    <p style="margin-bottom: 24px;">Whether you're a seasoned producer, a visual artist, or an AI enthusiast, this is your space to experiment, collaborate, and create something unique.</p>
+  </section>
 
-  <div style="display: flex; max-width: 1280px; margin: 80px auto; padding: 0 24px; gap: 48px;">
-    <article style="flex: 1; min-width: 0; color: var(--fg); line-height: 1.8;">
-      <header style="margin-bottom: 48px;">
-        <h1 style="font-size: 42px; font-weight: 800; margin-bottom: 16px; line-height: 1.2;">AI Music GenJam - Sonura Studio</h1>
-        <div style="color: var(--muted); font-size: 14px; margin-bottom: 24px;">
-          <time datetime="2025-12-10">December 10, 2025</time> • 3 min read
-        </div>
-        <p style="font-size: 20px; color: var(--muted); line-height: 1.6;">Join us for the first-ever Sonura GenJam in San Francisco! A hands-on event to create, collaborate, and compete using the latest in AI music technology.</p>
-      </header>
+  <section style="margin-bottom: 48px;">
+    <h2 id="mission" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">The Mission: Build a 2-Minute Masterpiece</h2>
+    <p style="margin-bottom: 24px;">Form a team on the spot or fly solo for a creative sprint using <strong>Sonura Studio</strong>, the AI workstation that helps you create professional-quality music in seconds. You'll also craft iconic cover art with Sonura's state-of-the-art cover creator.</p>
+    <p style="margin-bottom: 24px;">Your goal? Create a track that captures the vibe and stands out.</p>
+  </section>
 
-      <section style="margin-bottom: 48px;">
-        <h2 id="about" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Forge with The Future of Sound 🎧</h2>
-        <p style="margin-bottom: 24px;">Welcome to the first ever <strong>Sonura GenJam!</strong> This is a hands-on event where you'll fuse AI music and art into a masterpiece shared with the world. Bring your creativity, and leave with original content and a track live on the Sonura Sketches platform.</p>
-        <p style="margin-bottom: 24px;">Whether you're a seasoned producer, a visual artist, or an AI enthusiast, this is your space to experiment, collaborate, and create something unique.</p>
-      </section>
+  <section style="margin-bottom: 48px;">
+    <h2 id="prizes" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">The Top 3 Creations Win</h2>
+    <ul style="margin-bottom: 24px; padding-left: 24px;">
+      <li style="margin-bottom: 12px;">🥇 <strong>1st Place:</strong> $150 Sonura Studio credits + featured at the top of Sonura Sketches</li>
+      <li style="margin-bottom: 12px;">🥈 <strong>2nd Place:</strong> $100 Sonura Studio credits + featured on Sonura Sketches</li>
+      <li style="margin-bottom: 12px;">🥉 <strong>3rd Place:</strong> $50 Sonura Studio credits + featured on Sonura Sketches</li>
+    </ul>
+  </section>
 
-      <section style="margin-bottom: 48px;">
-        <h2 id="mission" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">The Mission: Build a 2-Minute Masterpiece</h2>
-        <p style="margin-bottom: 24px;">Form a team on the spot or fly solo for a creative sprint using <strong>Sonura Studio</strong>, the AI workstation that helps you create professional-quality music in seconds. You'll also craft iconic cover art with Sonura's state-of-the-art cover creator.</p>
-        <p style="margin-bottom: 24px;">Your goal? Create a track that captures the vibe and stands out.</p>
-      </section>
+  <section style="margin-bottom: 48px;">
+    <h2 id="highlights" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">What Makes This Jam Special</h2>
+    <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 16px; margin-top: 32px;">🤝 Connect & Create</h3>
+    <p style="margin-bottom: 24px;">This is a hub for San Francisco's creative community. Meet fellow producers, visual artists, and AI enthusiasts. Whether you're a beginner or a pro, it's a space to experiment and collaborate.</p>
+    
+    <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 16px; margin-top: 32px;">🌐 Premier on Sonura Sketches</h3>
+    <p style="margin-bottom: 24px;">Your finished track won't just live on your laptop. We'll help you upload and share it directly to the <strong>Sonura Sketches streaming platform</strong>, where the community can listen, like, and share your work instantly.</p>
+    
+    <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 16px; margin-top: 32px;">🎬 Made for Content</h3>
+    <p style="margin-bottom: 24px;">We're bringing in video creators to capture the creative energy, your process, and the final screening. Walk away with professional b-roll and a great story for your own channels.</p>
+    
+    <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 16px; margin-top: 32px;">🍕 Food & Drinks Included</h3>
+    <p style="margin-bottom: 24px;">We've got you covered. Enjoy complimentary food and drinks to keep the creative energy high all night.</p>
+  </section>
 
-      <section style="margin-bottom: 48px;">
-        <h2 id="prizes" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">The Top 3 Creations Win</h2>
-        <ul style="margin-bottom: 24px; padding-left: 24px;">
-          <li style="margin-bottom: 12px;">🥇 <strong>1st Place:</strong> $150 Sonura Studio credits + featured at the top of Sonura Sketches</li>
-          <li style="margin-bottom: 12px;">🥈 <strong>2nd Place:</strong> $100 Sonura Studio credits + featured on Sonura Sketches</li>
-          <li style="margin-bottom: 12px;">🥉 <strong>3rd Place:</strong> $50 Sonura Studio credits + featured on Sonura Sketches</li>
-        </ul>
-      </section>
-
-      <section style="margin-bottom: 48px;">
-        <h2 id="highlights" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">What Makes This Jam Special</h2>
-        <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 16px; margin-top: 32px;">🤝 Connect & Create</h3>
-        <p style="margin-bottom: 24px;">This is a hub for San Francisco's creative community. Meet fellow producers, visual artists, and AI enthusiasts. Whether you're a beginner or a pro, it's a space to experiment and collaborate.</p>
-        
-        <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 16px; margin-top: 32px;">🌐 Premier on Sonura Sketches</h3>
-        <p style="margin-bottom: 24px;">Your finished track won't just live on your laptop. We'll help you upload and share it directly to the <strong>Sonura Sketches streaming platform</strong>, where the community can listen, like, and share your work instantly.</p>
-        
-        <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 16px; margin-top: 32px;">🎬 Made for Content</h3>
-        <p style="margin-bottom: 24px;">We're bringing in video creators to capture the creative energy, your process, and the final screening. Walk away with professional b-roll and a great story for your own channels.</p>
-        
-        <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 16px; margin-top: 32px;">🍕 Food & Drinks Included</h3>
-        <p style="margin-bottom: 24px;">We've got you covered. Enjoy complimentary food and drinks to keep the creative energy high all night.</p>
-      </section>
-
-      <section style="margin-bottom: 48px;">
-        <h2 id="details" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Event Details</h2>
-        <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
-          <ul style="margin-bottom: 0; padding-left: 24px;">
-            <li style="margin-bottom: 12px;"><strong>📅 Date:</strong> Saturday, December 13th, 2025</li>
-            <li style="margin-bottom: 12px;"><strong>⏰ Time:</strong> Doors at 6:00 PM. Onboarding starts at 6:30 PM.</li>
-            <li style="margin-bottom: 12px;"><strong>📍 Location:</strong> The Residency, 1916 Octavia Street, San Francisco, CA 94109</li>
-            <li style="margin-bottom: 12px;"><strong>🎒 What to Bring:</strong> Your laptop, headphones, and a unique idea.</li>
-          </ul>
-        </div>
-        <p style="margin-bottom: 24px;">This isn't a workshop. It's a jam. Come to connect with other Bay Area creators, get filmed by our content crew for some top-tier footage, and walk out with a finished song.</p>
-      </section>
-
-      <section style="margin-bottom: 48px;">
-        <div style="background: rgba(124, 58, 237, 0.1); border: 1px solid var(--primary); border-radius: 12px; padding: 32px; text-align: center;">
-          <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px;">Ready to Jam?</h3>
-          <p style="margin-bottom: 24px; color: var(--muted);">Space is limited. Register now to secure your spot.</p>
-          <a href="https://luma.com/o2sudf8r" target="_blank" rel="noopener" class="button primary large" style="display: inline-block; padding: 16px 32px; background: var(--primary); color: white; text-decoration: none; border-radius: 12px; font-weight: 600;">Register on Luma</a>
-        </div>
-      </section>
-
-      <footer style="margin-top: 64px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.1);">
-        <p style="color: var(--muted); font-size: 14px;">
-          <a href="/" style="color: var(--primary); text-decoration: none;">← Back to home</a> | 
-          <a href="/blog/" style="color: var(--primary); text-decoration: none;">More blog posts</a>
-        </p>
-      </footer>
-    </article>
-
-    <nav style="position: sticky; top: 120px; width: 240px; height: fit-content; max-height: calc(100vh - 140px); overflow-y: auto; flex-shrink: 0; display: none;" class="blog-toc">
-      <div style="font-size: 14px; font-weight: 600; margin-bottom: 16px; color: var(--fg); text-transform: uppercase; letter-spacing: 0.5px;">On This Page</div>
-      <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px;">
-        <li><a href="#about" style="color: var(--muted); text-decoration: none; font-size: 14px; line-height: 1.4; display: block;">About the Event</a></li>
-        <li><a href="#mission" style="color: var(--muted); text-decoration: none; font-size: 14px; line-height: 1.4; display: block;">The Mission</a></li>
-        <li><a href="#prizes" style="color: var(--muted); text-decoration: none; font-size: 14px; line-height: 1.4; display: block;">Prizes</a></li>
-        <li><a href="#highlights" style="color: var(--muted); text-decoration: none; font-size: 14px; line-height: 1.4; display: block;">Event Highlights</a></li>
-        <li><a href="#details" style="color: var(--muted); text-decoration: none; font-size: 14px; line-height: 1.4; display: block;">Location & Details</a></li>
+  <section style="margin-bottom: 48px;">
+    <h2 id="details" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Event Details</h2>
+    <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+      <ul style="margin-bottom: 0; padding-left: 24px;">
+        <li style="margin-bottom: 12px;"><strong>📅 Date:</strong> Saturday, December 13th, 2025</li>
+        <li style="margin-bottom: 12px;"><strong>⏰ Time:</strong> Doors at 6:00 PM. Onboarding starts at 6:30 PM.</li>
+        <li style="margin-bottom: 12px;"><strong>📍 Location:</strong> The Residency, 1916 Octavia Street, San Francisco, CA 94109</li>
+        <li style="margin-bottom: 12px;"><strong>🎒 What to Bring:</strong> Your laptop, headphones, and a unique idea.</li>
       </ul>
-    </nav>
-  </div>
-</BaseLayout>
+    </div>
+    <p style="margin-bottom: 24px;">This isn't a workshop. It's a jam. Come to connect with other Bay Area creators, get filmed by our content crew for some top-tier footage, and walk out with a finished song.</p>
+  </section>
 
+  <section style="margin-bottom: 48px;">
+    <div style="background: rgba(124, 58, 237, 0.1); border: 1px solid var(--primary); border-radius: 12px; padding: 32px; text-align: center;">
+      <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px;">Ready to Jam?</h3>
+      <p style="margin-bottom: 24px; color: var(--muted);">Space is limited. Register now to secure your spot.</p>
+      <a href="https://luma.com/o2sudf8r" target="_blank" rel="noopener" class="button primary large" style="display: inline-block; padding: 16px 32px; background: var(--primary); color: white; text-decoration: none; border-radius: 12px; font-weight: 600;">Register on Luma</a>
+    </div>
+  </section>
+</BlogLayout>

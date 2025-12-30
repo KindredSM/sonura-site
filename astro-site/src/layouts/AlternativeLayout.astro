@@ -1,6 +1,38 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 
+interface QuickStat {
+  value: string;
+  label: string;
+}
+
+interface ComparisonRow {
+  feature: string;
+  sonura: string;
+  sonuraHighlight?: boolean;
+  competitor: string;
+  competitorHighlight?: boolean;
+}
+
+interface Advantage {
+  title: string;
+  description: string;
+}
+
+interface UseCaseItem {
+  text: string;
+}
+
+interface Testimonial {
+  quote: string;
+  author: string;
+}
+
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
 interface Props {
   competitor: string;
   competitorSlug: string;
@@ -9,9 +41,22 @@ interface Props {
   keywords: string;
   headline: string;
   subhead: string;
-  comparisons: { feature: string; competitor: string; sonura: string }[];
-  advantages: { title: string; description: string }[];
-  faqs: { question: string; answer: string }[];
+  quickComparisonTitle?: string;
+  quickStats: QuickStat[];
+  comparisonTableTitle?: string;
+  comparisons: ComparisonRow[];
+  advantagesTitle?: string;
+  advantages: Advantage[];
+  useCasesTitle?: string;
+  sonuraUseCases: UseCaseItem[];
+  competitorUseCases: UseCaseItem[];
+  testimonialsTitle?: string;
+  testimonials?: Testimonial[];
+  faqs: FAQ[];
+  finalCtaTitle?: string;
+  finalCtaSubtitle?: string;
+  finalCtaButtonText?: string;
+  finalCtaFooter?: string;
 }
 
 const {
@@ -22,9 +67,22 @@ const {
   keywords,
   headline,
   subhead,
+  quickComparisonTitle,
+  quickStats,
+  comparisonTableTitle,
   comparisons,
+  advantagesTitle,
   advantages,
+  useCasesTitle,
+  sonuraUseCases,
+  competitorUseCases,
+  testimonialsTitle,
+  testimonials = [],
   faqs,
+  finalCtaTitle,
+  finalCtaSubtitle,
+  finalCtaButtonText,
+  finalCtaFooter,
 } = Astro.props;
 
 const canonical = `https://sonurastudio.com/alternatives/${competitorSlug}/`;
@@ -54,82 +112,163 @@ const jsonLd = [
   keywords={keywords}
   canonical={canonical}
   ogTitle={`Best ${competitor} Alternative 2025`}
-  ogDescription={`Faster AI music generation with better stem export and full commercial rights.`}
+  ogDescription={description}
   jsonLd={jsonLd}
 >
-  <section class="hero" style="min-height: auto; padding: 120px 24px 80px;">
-    <div class="hero-content" style="padding-top: 0;">
-      <h1 class="headline reveal" style="font-size: clamp(32px, 5vw, 56px);">{headline}</h1>
-      <p class="subhead reveal" data-reveal-delay="0.06s">{subhead}</p>
-      <div class="cta reveal" data-reveal-delay="0.08s">
-        <a class="button primary" href="https://app.sonurastudio.com" target="_blank" rel="noopener">Try Sonura Free</a>
-      </div>
-    </div>
-  </section>
+  <style>
+    .responsive-grid-3 { display: grid; grid-template-columns: 1fr; gap: 32px; }
+    .responsive-grid-2 { display: grid; grid-template-columns: 1fr; gap: 32px; }
+    .responsive-grid-stats { display: grid; grid-template-columns: 1fr; gap: 32px; }
+    .responsive-grid-testimonials { display: grid; grid-template-columns: 1fr; gap: 24px; }
 
-  <!-- Comparison Table -->
-  <section style="padding: 60px 24px 80px; max-width: 900px; margin: 0 auto;">
-    <h2 class="workflow-title reveal" style="margin-bottom: 48px;">Sonura vs {competitor}</h2>
-    <div style="overflow-x: auto;">
-      <table style="width: 100%; border-collapse: collapse; background: var(--panel-bg); border-radius: 12px; overflow: hidden;">
-        <thead>
-          <tr style="background: rgba(255,255,255,0.05);">
-            <th style="text-align: left; padding: 16px 20px; color: var(--fg); font-weight: 600;">Feature</th>
-            <th style="text-align: center; padding: 16px 20px; color: var(--muted);">{competitor}</th>
-            <th style="text-align: center; padding: 16px 20px; color: var(--primary); font-weight: 600;">Sonura</th>
-          </tr>
-        </thead>
-        <tbody>
-          {comparisons.map((row) => (
-            <tr style="border-top: 1px solid var(--border);">
-              <td style="padding: 16px 20px; color: var(--fg);">{row.feature}</td>
-              <td style="padding: 16px 20px; text-align: center; color: var(--muted);">{row.competitor}</td>
-              <td style="padding: 16px 20px; text-align: center; color: var(--fg); font-weight: 500;">{row.sonura}</td>
-            </tr>
+    @media (max-width: 640px) {
+      .alt-section { margin-bottom: 48px !important; }
+      .alt-h1 { font-size: 32px !important; }
+      .alt-h2 { font-size: 24px !important; }
+      .alt-h3 { font-size: 20px !important; }
+      .responsive-grid-3 > div, .responsive-grid-2 > div { padding: 24px !important; }
+    }
+
+    @media (min-width: 640px) {
+      .responsive-grid-stats { grid-template-columns: repeat(3, 1fr); }
+      .responsive-grid-2 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 768px) {
+      .responsive-grid-3 { grid-template-columns: repeat(2, 1fr); }
+      .responsive-grid-testimonials { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 1024px) {
+      .responsive-grid-3 { grid-template-columns: repeat(3, 1fr); }
+      .responsive-grid-testimonials { grid-template-columns: repeat(3, 1fr); }
+    }
+  </style>
+
+  <div style="max-width: 1100px; margin: 80px auto; padding: 0 24px; color: var(--fg);">
+    <!-- Header -->
+    <header style="text-align: center; margin-bottom: 64px;">
+      <h1 class="alt-h1" style="font-size: 48px; font-weight: 800; margin-bottom: 24px; line-height: 1.2;">{headline}</h1>
+      <p style="font-size: 22px; color: var(--muted); max-width: 700px; margin: 0 auto; line-height: 1.6;">{subhead}</p>
+    </header>
+
+    <!-- Quick Stats Section -->
+    <section class="alt-section" style="margin-bottom: 80px;">
+      <div style="background: rgba(124, 58, 237, 0.1); border: 2px solid var(--primary); border-radius: 16px; padding: 48px; text-align: center;">
+        <h2 class="alt-h2" style="font-size: 32px; font-weight: 700; margin-bottom: 24px;">{quickComparisonTitle || `Sonura vs ${competitor}: Quick Comparison`}</h2>
+        <div class="responsive-grid-stats" style="margin-top: 40px;">
+          {quickStats.map((stat) => (
+            <div>
+              <div style="font-size: 48px; font-weight: 800; color: var(--primary); margin-bottom: 8px;">{stat.value}</div>
+              <div style="color: var(--muted);">{stat.label}</div>
+            </div>
           ))}
-        </tbody>
-      </table>
-    </div>
-  </section>
+        </div>
+        <a href="https://app.sonurastudio.com" class="button primary large" style="display: inline-block; margin-top: 40px; padding: 18px 40px; background: var(--primary); color: white; text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 18px;">Try Sonura Free</a>
+      </div>
+    </section>
 
-  <!-- Advantages -->
-  <section class="workflow" style="padding: 60px 24px 80px;">
-    <div class="workflow-inner">
-      <h2 class="workflow-title reveal">Why Switch to Sonura?</h2>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 48px;">
-        {advantages.map((adv, i) => (
-          <div class="testimonial-card reveal" data-reveal-delay={`${i * 0.04}s`}>
-            <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; color: var(--fg);">{adv.title}</h3>
+    <!-- Comparison Table -->
+    <section class="alt-section" style="margin-bottom: 80px;">
+      <h2 class="alt-h2" style="font-size: 36px; font-weight: 700; margin-bottom: 40px; text-align: center;">{comparisonTableTitle || 'Detailed Comparison Table'}</h2>
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; background: rgba(255,255,255,0.02); border-radius: 12px; overflow: hidden;">
+          <thead>
+            <tr style="background: rgba(124, 58, 237, 0.1);">
+              <th style="padding: 20px; text-align: left; font-weight: 700;">Feature</th>
+              <th style="padding: 20px; text-align: center; font-weight: 700; color: var(--primary);">Sonura</th>
+              <th style="padding: 20px; text-align: center; font-weight: 700;">{competitor}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparisons.map((row) => (
+              <tr style="border-top: 1px solid rgba(255,255,255,0.1);">
+                <td style="padding: 20px; font-weight: 600;">{row.feature}</td>
+                <td style={`padding: 20px; text-align: center; ${row.sonuraHighlight !== false ? 'color: #4ade80;' : ''}`}>{row.sonura}</td>
+                <td style={`padding: 20px; text-align: center; ${row.competitorHighlight ? 'color: #4ade80;' : 'color: var(--muted);'}`}>{row.competitor}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Advantages Section -->
+    <section class="alt-section" style="margin-bottom: 80px;">
+      <h2 class="alt-h2" style="font-size: 36px; font-weight: 700; margin-bottom: 40px;">{advantagesTitle || `Why Choose Sonura Over ${competitor}?`}</h2>
+      <div class="responsive-grid-3">
+        {advantages.map((adv) => (
+          <div style="padding: 32px; background: rgba(255,255,255,0.02); border-radius: 12px;">
+            <h3 class="alt-h3" style="font-size: 24px; font-weight: 700; margin-bottom: 16px;">{adv.title}</h3>
             <p style="color: var(--muted); line-height: 1.6;">{adv.description}</p>
           </div>
         ))}
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FAQ -->
-  <section class="faq" style="padding: 60px 24px 80px;">
-    <div class="faq-inner">
-      <h2 class="faq-title">{competitor} Alternative FAQ</h2>
-      <div class="faq-list">
-        {faqs.map((faq, i) => (
-          <details class="reveal" data-reveal-delay={`${i * 0.03}s`}>
-            <summary>{faq.question}</summary>
-            <p>{faq.answer}</p>
+    <!-- Use Cases Section -->
+    <section class="alt-section" style="margin-bottom: 80px;">
+      <h2 class="alt-h2" style="font-size: 36px; font-weight: 700; margin-bottom: 40px;">{useCasesTitle || `When to Use ${competitor} vs Sonura`}</h2>
+      <div class="responsive-grid-2">
+        <div style="padding: 40px; background: rgba(124, 58, 237, 0.1); border: 1px solid var(--primary); border-radius: 12px;">
+          <h3 class="alt-h3" style="font-size: 28px; font-weight: 700; margin-bottom: 24px; color: var(--primary);">Choose Sonura If You:</h3>
+          <ul style="list-style: none; padding: 0;">
+            {sonuraUseCases.map((item) => (
+              <li style="margin-bottom: 16px; padding-left: 32px; position: relative;">
+                <span style="position: absolute; left: 0; color: var(--primary);">✓</span>
+                {item.text}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div style="padding: 40px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+          <h3 class="alt-h3" style="font-size: 28px; font-weight: 700; margin-bottom: 24px;">Choose {competitor} If You:</h3>
+          <ul style="list-style: none; padding: 0; color: var(--muted);">
+            {competitorUseCases.map((item) => (
+              <li style="margin-bottom: 16px; padding-left: 32px; position: relative;">
+                <span style="position: absolute; left: 0;">•</span>
+                {item.text}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    {testimonials.length > 0 && (
+      <section class="alt-section" style="margin-bottom: 80px;">
+        <h2 class="alt-h2" style="font-size: 36px; font-weight: 700; margin-bottom: 40px; text-align: center;">{testimonialsTitle || 'What Users Are Saying'}</h2>
+        <div class="responsive-grid-testimonials">
+          {testimonials.map((t) => (
+            <div style="padding: 32px; background: rgba(255,255,255,0.02); border-radius: 12px; border-left: 3px solid var(--primary);">
+              <p style="font-style: italic; margin-bottom: 16px; line-height: 1.6;">"{t.quote}"</p>
+              <p style="color: var(--muted); font-size: 14px;">— {t.author}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- FAQ Section -->
+    <section class="alt-section" style="margin-bottom: 80px;">
+      <h2 class="alt-h2" style="font-size: 36px; font-weight: 700; margin-bottom: 40px;">Frequently Asked Questions</h2>
+      <div>
+        {faqs.map((faq) => (
+          <details style="padding: 24px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 16px;">
+            <summary style="font-weight: 700; font-size: 18px; margin-bottom: 12px;">{faq.question}</summary>
+            <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">{faq.answer}</p>
           </details>
         ))}
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="final-cta">
-    <div class="final-cta-inner">
-      <h2 class="final-cta-title reveal">Ready to Switch?</h2>
-      <p class="final-cta-subtitle reveal" data-reveal-delay="0.06s">Try Sonura free. No credit card required.</p>
-      <div class="final-cta-form reveal" data-reveal-delay="0.12s">
-        <a class="button primary large" href="https://app.sonurastudio.com" target="_blank" rel="noopener">Start Creating Free</a>
-      </div>
-    </div>
-  </section>
+    <!-- Final CTA -->
+    <section style="background: rgba(124, 58, 237, 0.1); border: 2px solid var(--primary); border-radius: 16px; padding: 64px; text-align: center;">
+      <h2 class="alt-h2" style="font-size: 36px; font-weight: 700; margin-bottom: 24px;">{finalCtaTitle || `Try the Best ${competitor} Alternative`}</h2>
+      <p style="font-size: 20px; color: var(--muted); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">{finalCtaSubtitle || 'Free to start, no credit card required.'}</p>
+      <a href="https://app.sonurastudio.com" class="button primary large" style="display: inline-block; padding: 20px 48px; background: var(--primary); color: white; text-decoration: none; border-radius: 12px; font-weight: 700; font-size: 20px;">{finalCtaButtonText || 'Start Creating Free'}</a>
+      {finalCtaFooter && <p style="margin-top: 24px; color: var(--muted); font-size: 14px;">{finalCtaFooter}</p>}
+    </section>
+  </div>
 </BaseLayout>
-

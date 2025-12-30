@@ -1,310 +1,86 @@
 ---
-import Nav from '../../../components/Nav.astro';
-import Footer from '../../../components/Footer.astro';
+import AlternativeLayout from '../../../layouts/AlternativeLayout.astro';
+
+const quickStats = [
+  { value: '5x', label: 'Faster Generation' },
+  { value: 'more', label: 'Consistent Quality' },
+  { value: 'built', label: 'For Producers' },
+];
+
+const comparisons = [
+  { feature: 'Generation Speed', sonura: 'Under 10 seconds', competitor: '30-60 seconds' },
+  { feature: 'Output Consistency', sonura: 'Highly consistent', competitor: 'Variable quality' },
+  { feature: 'Best For', sonura: 'Beats, instrumentals, loops', sonuraHighlight: false, competitor: 'Experimental full songs', competitorHighlight: false },
+  { feature: 'Genre Specialization', sonura: 'Modern production (trap, EDM, house)', competitor: 'Experimental & artistic' },
+  { feature: 'Stem Export', sonura: 'Yes, all tiers', competitor: 'Yes, paid tiers', competitorHighlight: true },
+  { feature: 'Commercial Rights', sonura: 'Yes, all tiers', competitor: 'Yes, with credits' },
+  { feature: 'Free Tier Availability', sonura: 'Generous', competitor: 'Limited generations' },
+  { feature: 'Interface', sonura: 'Clean, producer-focused', competitor: 'Modern, feature-rich', competitorHighlight: true },
+  { feature: 'Audio Quality', sonura: 'Studio-grade', competitor: 'High quality', competitorHighlight: true },
+];
+
+const advantages = [
+  { title: 'Consistent, Reliable Output', description: "Udio's quality varies significantly between generations. Sonura delivers consistently professional results every time. No more wasting credits on unusable outputs." },
+  { title: '5x Faster Generation', description: "Under 10 seconds vs 30-60 seconds. When you're producing multiple beats or iterating ideas, speed compounds. Create more music in less time." },
+  { title: 'Optimized for Beats', description: 'Sonura specializes in what producers need: trap beats, house tracks, EDM drops, hip hop instrumentals. Udio is more experimental and artistic.' },
+  { title: 'Clean Instrumentals', description: 'No unexpected vocal artifacts or experimental elements. Pure instrumentals perfect for beat sales, type beats, or adding your own vocals.' },
+  { title: 'Production-Focused Controls', description: 'Precise BPM, key, and genre control. Speaks the language of producers. No ambiguous prompts needed.' },
+  { title: 'Better for Commercial Use', description: 'Full commercial rights on all tiers, including free. Sell beats, use in client work, monetize everywhere without worrying about licensing.' },
+];
+
+const sonuraUseCases = [
+  { text: 'Need reliable, consistent quality' },
+  { text: 'Produce beats professionally' },
+  { text: 'Value speed (under 10 seconds)' },
+  { text: 'Want clean instrumentals' },
+  { text: 'Focus on trap, house, EDM, hip hop' },
+  { text: 'Sell beats or use commercially' },
+];
+
+const competitorUseCases = [
+  { text: 'Want experimental, artistic music' },
+  { text: 'Need complete songs with vocals' },
+  { text: 'Enjoy unpredictable creative outputs' },
+  { text: "Don't mind inconsistent quality" },
+  { text: 'Explore unusual genre combinations' },
+];
+
+const testimonials = [
+  { quote: "Udio's quality was too hit or miss for professional work. Sonura gives me consistent results I can actually use.", author: 'Beat maker on Reddit' },
+  { quote: 'The speed difference is game-changing. I can test 20 beat ideas in the time Udio does 3.', author: 'Type beat producer' },
+  { quote: 'Switched from Udio to Sonura for trap production. The understanding of 808 patterns is night and day.', author: 'Trap producer on Twitter' },
+];
+
+const faqs = [
+  { question: 'Is Sonura better than Udio for beat making?', answer: 'Yes. Sonura is specifically optimized for beat production with faster generation, more consistent quality, and better understanding of production genres like trap, house, and hip hop.' },
+  { question: 'Can I use both Udio and Sonura?', answer: 'Absolutely! Use Sonura for professional beats and instrumentals where you need consistency and speed. Use Udio for experimental full songs where artistic exploration matters more than reliability.' },
+  { question: 'Why is Sonura more consistent than Udio?', answer: "Sonura's AI is trained specifically on production music and beats, leading to more predictable, usable outputs. Udio's broader artistic focus results in more experimental (but less consistent) results." },
+  { question: 'Which has better stem export?', answer: "Both offer quality stem export. Sonura includes it on all tiers (even free), while Udio requires paid plans. For instrumentals, Sonura's stem separation is cleaner due to no vocal elements." },
+  { question: 'Is Sonura cheaper than Udio?', answer: "Pricing is similar, but Sonura's faster generation means you get more music per dollar. Plus, commercial rights and stem export are included on all tiers." },
+];
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CV0TGZFNX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-8CV0TGZFNX');
-  </script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Best Udio Alternative 2025 | Faster & More Consistent AI Music</title>
-  <meta name="description" content="Looking for a Udio alternative? Compare Sonura vs Udio: generation speed, consistency, pricing, and features. Get reliable AI music generation optimized for beats and instrumentals.">
-  <meta name="keywords" content="udio alternative, udio ai alternative, better than udio, udio vs sonura, udio competitor, ai music generator alternative">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <link rel="canonical" href="https://sonurastudio.com/alternatives/udio-alternative/">
-  <meta name="theme-color" content="#0a0a0a">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Sonura">
-  <meta property="og:title" content="Best Udio Alternative 2025">
-  <meta property="og:description" content="faster, more consistent ai music generation for producers and beat makers">
-  <meta property="og:url" content="https://sonurastudio.com/alternatives/udio-alternative/">
-  <meta property="og:image" content="https://sonurastudio.com/demo-image.jpeg">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="icon" type="image/png" href="/google-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Best Udio Alternative 2025","description":"Compare Sonura vs Udio for AI music generation. Faster speed, better consistency, optimized for producers.","url":"https://sonurastudio.com/alternatives/udio-alternative/"}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sonurastudio.com/"},{"@type":"ListItem","position":2,"name":"Udio Alternative","item":"https://sonurastudio.com/alternatives/udio-alternative/"}]}</script>
-  <style>
-    .responsive-grid-3 { display: grid; grid-template-columns: 1fr; gap: 32px; }
-    .responsive-grid-2 { display: grid; grid-template-columns: 1fr; gap: 32px; }
-    .responsive-grid-stats { display: grid; grid-template-columns: 1fr; gap: 32px; }
-    .responsive-grid-testimonials { display: grid; grid-template-columns: 1fr; gap: 24px; }
-    
-    @media (max-width: 640px) {
-      section { margin-bottom: 48px !important; }
-      h1 { font-size: 32px !important; }
-      h2 { font-size: 24px !important; }
-      h3 { font-size: 20px !important; }
-      .responsive-grid-3 > div, .responsive-grid-2 > div { padding: 24px !important; }
-    }
-    
-    @media (min-width: 640px) {
-      .responsive-grid-stats { grid-template-columns: repeat(3, 1fr); }
-      .responsive-grid-2 { grid-template-columns: repeat(2, 1fr); }
-    }
-    
-    @media (min-width: 768px) {
-      .responsive-grid-3 { grid-template-columns: repeat(2, 1fr); }
-      .responsive-grid-testimonials { grid-template-columns: repeat(2, 1fr); }
-    }
-    
-    @media (min-width: 1024px) {
-      .responsive-grid-3 { grid-template-columns: repeat(3, 1fr); }
-      .responsive-grid-testimonials { grid-template-columns: repeat(3, 1fr); }
-    }
-  </style>
-</head>
-<body>
-  <main class="page">
-    <Nav />
 
-    <div style="max-width: 1100px; margin: 80px auto; padding: 0 24px; color: var(--fg);">
-      <header style="text-align: center; margin-bottom: 64px;">
-        <h1 style="font-size: 48px; font-weight: 800; margin-bottom: 24px; line-height: 1.2;">Best Udio Alternative 2025</h1>
-        <p style="font-size: 22px; color: var(--muted); max-width: 700px; margin: 0 auto; line-height: 1.6;">Looking for an alternative to Udio? Compare generation speed, consistency, and features. Discover why producers choose Sonura for reliable, professional beats and instrumentals.</p>
-      </header>
-
-      <section style="margin-bottom: 80px;">
-        <div style="background: rgba(124, 58, 237, 0.1); border: 2px solid var(--primary); border-radius: 16px; padding: 48px; text-align: center;">
-          <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px;">Sonura vs Udio: Key Differences</h2>
-          <div class="responsive-grid-stats" style="margin-top: 40px;">
-            <div>
-              <div style="font-size: 48px; font-weight: 800; color: var(--primary); margin-bottom: 8px;">5x</div>
-              <div style="color: var(--muted);">Faster Generation</div>
-            </div>
-            <div>
-              <div style="font-size: 48px; font-weight: 800; color: var(--primary); margin-bottom: 8px;">more</div>
-              <div style="color: var(--muted);">Consistent Quality</div>
-            </div>
-            <div>
-              <div style="font-size: 48px; font-weight: 800; color: var(--primary); margin-bottom: 8px;">built</div>
-              <div style="color: var(--muted);">For Producers</div>
-            </div>
-          </div>
-          <a href="https://app.sonurastudio.com" class="button primary large" style="display: inline-block; margin-top: 40px; padding: 18px 40px; background: var(--primary); color: white; text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 18px;">Try Sonura Free</a>
-        </div>
-      </section>
-
-      <section style="margin-bottom: 80px;">
-        <h2 style="font-size: 36px; font-weight: 700; margin-bottom: 40px; text-align: center;">Detailed Comparison</h2>
-        <div style="overflow-x: auto;">
-          <table style="width: 100%; border-collapse: collapse; background: rgba(255,255,255,0.02); border-radius: 12px; overflow: hidden;">
-            <thead>
-              <tr style="background: rgba(124, 58, 237, 0.1);">
-                <th style="padding: 20px; text-align: left; font-weight: 700;">Feature</th>
-                <th style="padding: 20px; text-align: center; font-weight: 700; color: var(--primary);">Sonura</th>
-                <th style="padding: 20px; text-align: center; font-weight: 700;">Udio</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr style="border-top: 1px solid rgba(255,255,255,0.1);">
-                <td style="padding: 20px; font-weight: 600;">Generation Speed</td>
-                <td style="padding: 20px; text-align: center; color: #4ade80;">Under 10 seconds</td>
-                <td style="padding: 20px; text-align: center; color: var(--muted);">30-60 seconds</td>
-              </tr>
-              <tr style="border-top: 1px solid rgba(255,255,255,0.1);">
-                <td style="padding: 20px; font-weight: 600;">Output Consistency</td>
-                <td style="padding: 20px; text-align: center; color: #4ade80;">Highly consistent</td>
-                <td style="padding: 20px; text-align: center; color: var(--muted);">Variable quality</td>
-              </tr>
-              <tr style="border-top: 1px solid rgba(255,255,255,0.1);">
-                <td style="padding: 20px; font-weight: 600;">Best For</td>
-                <td style="padding: 20px; text-align: center;">Beats, instrumentals, loops</td>
-                <td style="padding: 20px; text-align: center; color: var(--muted);">Experimental full songs</td>
-              </tr>
-              <tr style="border-top: 1px solid rgba(255,255,255,0.1);">
-                <td style="padding: 20px; font-weight: 600;">Genre Specialization</td>
-                <td style="padding: 20px; text-align: center; color: #4ade80;">Modern production (trap, EDM, house)</td>
-                <td style="padding: 20px; text-align: center; color: var(--muted);">Experimental & artistic</td>
-              </tr>
-              <tr style="border-top: 1px solid rgba(255,255,255,0.1);">
-                <td style="padding: 20px; font-weight: 600;">Stem Export</td>
-                <td style="padding: 20px; text-align: center; color: #4ade80;">Yes, all tiers</td>
-                <td style="padding: 20px; text-align: center; color: #4ade80;">Yes, paid tiers</td>
-              </tr>
-              <tr style="border-top: 1px solid rgba(255,255,255,0.1);">
-                <td style="padding: 20px; font-weight: 600;">Commercial Rights</td>
-                <td style="padding: 20px; text-align: center; color: #4ade80;">Yes, all tiers</td>
-                <td style="padding: 20px; text-align: center; color: var(--muted);">Yes, with credits</td>
-              </tr>
-              <tr style="border-top: 1px solid rgba(255,255,255,0.1);">
-                <td style="padding: 20px; font-weight: 600;">Free Tier Availability</td>
-                <td style="padding: 20px; text-align: center; color: #4ade80;">Generous</td>
-                <td style="padding: 20px; text-align: center; color: var(--muted);">Limited generations</td>
-              </tr>
-              <tr style="border-top: 1px solid rgba(255,255,255,0.1);">
-                <td style="padding: 20px; font-weight: 600;">Interface</td>
-                <td style="padding: 20px; text-align: center; color: #4ade80;">Clean, producer-focused</td>
-                <td style="padding: 20px; text-align: center; color: #4ade80;">Modern, feature-rich</td>
-              </tr>
-              <tr style="border-top: 1px solid rgba(255,255,255,0.1);">
-                <td style="padding: 20px; font-weight: 600;">Audio Quality</td>
-                <td style="padding: 20px; text-align: center; color: #4ade80;">Studio-grade</td>
-                <td style="padding: 20px; text-align: center; color: #4ade80;">High quality</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section style="margin-bottom: 80px;">
-        <h2 style="font-size: 36px; font-weight: 700; margin-bottom: 40px;">Why Producers Choose Sonura Over Udio</h2>
-        <div class="responsive-grid-3">
-          <div style="padding: 32px; background: rgba(255,255,255,0.02); border-radius: 12px;">
-            <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px;">Consistent, Reliable Output</h3>
-            <p style="color: var(--muted); line-height: 1.6;">Udio's quality varies significantly between generations. Sonura delivers consistently professional results every time. No more wasting credits on unusable outputs.</p>
-          </div>
-          <div style="padding: 32px; background: rgba(255,255,255,0.02); border-radius: 12px;">
-            <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px;">5x Faster Generation</h3>
-            <p style="color: var(--muted); line-height: 1.6;">Under 10 seconds vs 30-60 seconds. When you're producing multiple beats or iterating ideas, speed compounds. Create more music in less time.</p>
-          </div>
-          <div style="padding: 32px; background: rgba(255,255,255,0.02); border-radius: 12px;">
-            <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px;">Optimized for Beats</h3>
-            <p style="color: var(--muted); line-height: 1.6;">Sonura specializes in what producers need: trap beats, house tracks, EDM drops, hip hop instrumentals. Udio is more experimental and artistic.</p>
-          </div>
-          <div style="padding: 32px; background: rgba(255,255,255,0.02); border-radius: 12px;">
-            <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px;">Clean Instrumentals</h3>
-            <p style="color: var(--muted); line-height: 1.6;">No unexpected vocal artifacts or experimental elements. Pure instrumentals perfect for beat sales, type beats, or adding your own vocals.</p>
-          </div>
-          <div style="padding: 32px; background: rgba(255,255,255,0.02); border-radius: 12px;">
-            <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px;">Production-Focused Controls</h3>
-            <p style="color: var(--muted); line-height: 1.6;">Precise BPM, key, and genre control. Speaks the language of producers. No ambiguous prompts needed.</p>
-          </div>
-          <div style="padding: 32px; background: rgba(255,255,255,0.02); border-radius: 12px;">
-            <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px;">Better for Commercial Use</h3>
-            <p style="color: var(--muted); line-height: 1.6;">Full commercial rights on all tiers, including free. Sell beats, use in client work, monetize everywhere without worrying about licensing.</p>
-          </div>
-        </div>
-      </section>
-
-      <section style="margin-bottom: 80px;">
-        <h2 style="font-size: 36px; font-weight: 700; margin-bottom: 40px;">When to Use Udio vs Sonura</h2>
-        <div class="responsive-grid-2">
-          <div style="padding: 40px; background: rgba(124, 58, 237, 0.1); border: 1px solid var(--primary); border-radius: 12px;">
-            <h3 style="font-size: 28px; font-weight: 700; margin-bottom: 24px; color: var(--primary);">Choose Sonura If You:</h3>
-            <ul style="list-style: none; padding: 0;">
-              <li style="margin-bottom: 16px; padding-left: 32px; position: relative;">
-                <span style="position: absolute; left: 0; color: var(--primary);">✓</span>
-                Need reliable, consistent quality
-              </li>
-              <li style="margin-bottom: 16px; padding-left: 32px; position: relative;">
-                <span style="position: absolute; left: 0; color: var(--primary);">✓</span>
-                Produce beats professionally
-              </li>
-              <li style="margin-bottom: 16px; padding-left: 32px; position: relative;">
-                <span style="position: absolute; left: 0; color: var(--primary);">✓</span>
-                Value speed (under 10 seconds)
-              </li>
-              <li style="margin-bottom: 16px; padding-left: 32px; position: relative;">
-                <span style="position: absolute; left: 0; color: var(--primary);">✓</span>
-                Want clean instrumentals
-              </li>
-              <li style="margin-bottom: 16px; padding-left: 32px; position: relative;">
-                <span style="position: absolute; left: 0; color: var(--primary);">✓</span>
-                Focus on trap, house, EDM, hip hop
-              </li>
-              <li style="margin-bottom: 16px; padding-left: 32px; position: relative;">
-                <span style="position: absolute; left: 0; color: var(--primary);">✓</span>
-                Sell beats or use commercially
-              </li>
-            </ul>
-          </div>
-          <div style="padding: 40px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
-            <h3 style="font-size: 28px; font-weight: 700; margin-bottom: 24px;">Choose Udio If You:</h3>
-            <ul style="list-style: none; padding: 0; color: var(--muted);">
-              <li style="margin-bottom: 16px; padding-left: 32px; position: relative;">
-                <span style="position: absolute; left: 0;">•</span>
-                Want experimental, artistic music
-              </li>
-              <li style="margin-bottom: 16px; padding-left: 32px; position: relative;">
-                <span style="position: absolute; left: 0;">•</span>
-                Need complete songs with vocals
-              </li>
-              <li style="margin-bottom: 16px; padding-left: 32px; position: relative;">
-                <span style="position: absolute; left: 0;">•</span>
-                Enjoy unpredictable creative outputs
-              </li>
-              <li style="margin-bottom: 16px; padding-left: 32px; position: relative;">
-                <span style="position: absolute; left: 0;">•</span>
-                Don't mind inconsistent quality
-              </li>
-              <li style="margin-bottom: 16px; padding-left: 32px; position: relative;">
-                <span style="position: absolute; left: 0;">•</span>
-                Explore unusual genre combinations
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section style="margin-bottom: 80px;">
-        <h2 style="font-size: 36px; font-weight: 700; margin-bottom: 40px; text-align: center;">What Producers Are Saying</h2>
-        <div class="responsive-grid-testimonials">
-          <div style="padding: 32px; background: rgba(255,255,255,0.02); border-radius: 12px; border-left: 3px solid var(--primary);">
-            <p style="font-style: italic; margin-bottom: 16px; line-height: 1.6;">"Udio's quality was too hit or miss for professional work. Sonura gives me consistent results I can actually use."</p>
-            <p style="color: var(--muted); font-size: 14px;">— Beat maker on Reddit</p>
-          </div>
-          <div style="padding: 32px; background: rgba(255,255,255,0.02); border-radius: 12px; border-left: 3px solid var(--primary);">
-            <p style="font-style: italic; margin-bottom: 16px; line-height: 1.6;">"The speed difference is game-changing. I can test 20 beat ideas in the time Udio does 3."</p>
-            <p style="color: var(--muted); font-size: 14px;">— Type beat producer</p>
-          </div>
-          <div style="padding: 32px; background: rgba(255,255,255,0.02); border-radius: 12px; border-left: 3px solid var(--primary);">
-            <p style="font-style: italic; margin-bottom: 16px; line-height: 1.6;">"Switched from Udio to Sonura for trap production. The understanding of 808 patterns is night and day."</p>
-            <p style="color: var(--muted); font-size: 14px;">— Trap producer on Twitter</p>
-          </div>
-        </div>
-      </section>
-
-      <section style="margin-bottom: 80px;">
-        <h2 style="font-size: 36px; font-weight: 700; margin-bottom: 40px;">Frequently Asked Questions</h2>
-        <div>
-          <details style="padding: 24px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 16px;">
-            <summary style="font-weight: 700; font-size: 18px; margin-bottom: 12px;">Is Sonura better than Udio for beat making?</summary>
-            <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">Yes. Sonura is specifically optimized for beat production with faster generation, more consistent quality, and better understanding of production genres like trap, house, and hip hop.</p>
-          </details>
-          <details style="padding: 24px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 16px;">
-            <summary style="font-weight: 700; font-size: 18px; margin-bottom: 12px;">Can I use both Udio and Sonura?</summary>
-            <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">Absolutely! Use Sonura for professional beats and instrumentals where you need consistency and speed. Use Udio for experimental full songs where artistic exploration matters more than reliability.</p>
-          </details>
-          <details style="padding: 24px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 16px;">
-            <summary style="font-weight: 700; font-size: 18px; margin-bottom: 12px;">Why is Sonura more consistent than Udio?</summary>
-            <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">Sonura's AI is trained specifically on production music and beats, leading to more predictable, usable outputs. Udio's broader artistic focus results in more experimental (but less consistent) results.</p>
-          </details>
-          <details style="padding: 24px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 16px;">
-            <summary style="font-weight: 700; font-size: 18px; margin-bottom: 12px;">Which has better stem export?</summary>
-            <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">Both offer quality stem export. Sonura includes it on all tiers (even free), while Udio requires paid plans. For instrumentals, Sonura's stem separation is cleaner due to no vocal elements.</p>
-          </details>
-          <details style="padding: 24px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 16px;">
-            <summary style="font-weight: 700; font-size: 18px; margin-bottom: 12px;">Is Sonura cheaper than Udio?</summary>
-            <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">Pricing is similar, but Sonura's faster generation means you get more music per dollar. Plus, commercial rights and stem export are included on all tiers.</p>
-          </details>
-        </div>
-      </section>
-
-      <section style="background: rgba(124, 58, 237, 0.1); border: 2px solid var(--primary); border-radius: 16px; padding: 64px; text-align: center;">
-        <h2 style="font-size: 36px; font-weight: 700; margin-bottom: 24px;">Try the Best Udio Alternative for Producers</h2>
-        <p style="font-size: 20px; color: var(--muted); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">Experience consistent quality, lightning-fast generation, and professional-grade beats. Free to start, no credit card required.</p>
-        <a href="https://app.sonurastudio.com" class="button primary large" style="display: inline-block; padding: 20px 48px; background: var(--primary); color: white; text-decoration: none; border-radius: 12px; font-weight: 700; font-size: 20px;">Start Creating Free</a>
-        <p style="margin-top: 24px; color: var(--muted); font-size: 14px;">No credit card required • 100% commercial rights • Consistent quality guaranteed</p>
-      </section>
-
-    </div>
-
-  </main>
-  <Footer />
-  <script is:inline type="module" src="/script.js"></script>
-  <script is:inline src="https://unpkg.com/lucide@0.471.0/dist/umd/lucide.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</body>
-</html>
+<AlternativeLayout
+  competitor="Udio"
+  competitorSlug="udio-alternative"
+  title="Best Udio Alternative 2025 | Faster & More Consistent AI Music"
+  description="Looking for a Udio alternative? Compare Sonura vs Udio: generation speed, consistency, pricing, and features. Get reliable AI music generation optimized for beats and instrumentals."
+  keywords="udio alternative, udio ai alternative, better than udio, udio vs sonura, udio competitor, ai music generator alternative"
+  headline="Best Udio Alternative 2025"
+  subhead="Looking for an alternative to Udio? Compare generation speed, consistency, and features. Discover why producers choose Sonura for reliable, professional beats and instrumentals."
+  quickComparisonTitle="Sonura vs Udio: Key Differences"
+  quickStats={quickStats}
+  comparisonTableTitle="Detailed Comparison"
+  comparisons={comparisons}
+  advantagesTitle="Why Producers Choose Sonura Over Udio"
+  advantages={advantages}
+  useCasesTitle="When to Use Udio vs Sonura"
+  sonuraUseCases={sonuraUseCases}
+  competitorUseCases={competitorUseCases}
+  testimonialsTitle="What Producers Are Saying"
+  testimonials={testimonials}
+  faqs={faqs}
+  finalCtaTitle="Try the Best Udio Alternative for Producers"
+  finalCtaSubtitle="Experience consistent quality, lightning-fast generation, and professional-grade beats. Free to start, no credit card required."
+  finalCtaFooter="No credit card required • 100% commercial rights • Consistent quality guaranteed"
+/>

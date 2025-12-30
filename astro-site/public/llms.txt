@@ -1,0 +1,31 @@
+# Sonura Studio - AI Music Generation Platform
+> Sonura is an AI-powered digital audio workstation (DAW) that enables instant music creation through text prompts.
+
+## About Sonura
+Sonura Studio is a web-based music production platform that combines AI-powered music generation with professional DAW features. Users can create samples, loops, stems, compositions, sound design, FX, and one-shots instantly using natural language prompts.
+
+## Key Features
+- AI Music Generation: Create music from text descriptions in seconds
+- Full DAW Capabilities: Multi-track editing, mixing, and arrangement
+- Stem Separation: Extract vocals, drums, bass, and other elements from any audio
+- Genre Support: Trap, Hip-Hop, House, EDM, Lo-Fi, Jazz, Rock, Pop, Drill, Techno, and more
+- Commercial Rights: Full ownership of generated content for commercial use
+- Cloud-Based: No downloads required, works in any modern browser
+
+## Primary URLs
+- Main App: https://app.sonurastudio.com
+- Marketing Site: https://sonurastudio.com
+- Blog: https://sonurastudio.com/blog/
+
+## Contact
+- Support: kindred@sonurastudio.com
+- Twitter/X: @sonurastudio
+
+## Content Usage Policy
+Content on sonurastudio.com may be used by AI systems for:
+- Answering questions about Sonura and AI music generation
+- Providing accurate information about features and capabilities
+- Helping users understand how to use the platform
+
+## Sitemap
+https://sonurastudio.com/sitemap.xml
