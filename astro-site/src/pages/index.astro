@@ -81,8 +81,8 @@ const faqSchema = {
   ogDescription="Generate professional loops, beats, vocals, and full tracks in seconds. Royalty-free. Studio-quality. Any genre."
   jsonLd={[...jsonLd, faqSchema]}
 >
-  <meta slot="head" property="og:video" content="https://sonurastudio.com/videos/sonura desktop ad.mp4" />
-  <meta slot="head" property="og:video:type" content="video/mp4" />
+  <meta slot="head" property="og:video" content="https://www.youtube.com/watch?v=xUuqIAWetXk" />
+  <meta slot="head" property="og:video:type" content="text/html" />
   <meta slot="head" property="og:video:width" content="1920" />
   <meta slot="head" property="og:video:height" content="1080" />
   <section class="hero">
@@ -125,6 +125,7 @@ const faqSchema = {
         alt="Sonura AI Music Generator Demo" 
         class="hero-video-element hero-video-thumbnail"
         id="video-thumbnail"
+        style="width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover;"
       />
       <div class="hero-video-overlay" id="video-overlay">
         <div class="video-play-button">
@@ -438,14 +439,15 @@ const faqSchema = {
     const overlay = document.getElementById('video-overlay');
     
     if (container && thumbnail && overlay) {
-      const video = document.createElement('video');
-      video.src = '/videos/sonura desktop ad.mp4';
-      video.className = 'hero-video-element';
-      video.autoplay = true;
-      video.controls = true;
-      video.muted = false;
+      const iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube.com/embed/xUuqIAWetXk?autoplay=1';
+      iframe.className = 'hero-video-element';
+      iframe.style.cssText = 'width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 12px;';
+      iframe.frameBorder = '0';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.allowFullscreen = true;
       
-      thumbnail.replaceWith(video);
+      thumbnail.replaceWith(iframe);
       overlay.style.display = 'none';
     }
   });
