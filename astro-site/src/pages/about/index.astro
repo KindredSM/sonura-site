@@ -1,0 +1,716 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import newThumbnail from '../../assets/images/new-thumbnail.jpg';
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Sonura",
+    "url": "https://sonurastudio.com/",
+    "logo": "https://sonurastudio.com/demo-image.jpeg",
+    "description": "Sonura is an AI music creation studio that empowers creators to produce professional-quality music without traditional barriers.",
+    "founder": {
+      "@type": "Person",
+      "name": "Kindred Salway",
+      "jobTitle": "Founder",
+      "sameAs": "https://www.linkedin.com/in/kindred-salway-8a05b6240/"
+    },
+    "sameAs": [
+      "https://twitter.com/sonurastudio",
+      "https://discord.gg/Yk8RD3Nmyh",
+      "https://www.linkedin.com/in/kindred-salway-8a05b6240/"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "kindred@sonurastudio.com",
+      "contactType": "Customer Support"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About Sonura",
+    "description": "Learn about Sonura's mission to democratize music creation through AI technology.",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Sonura"
+    }
+  }
+];
+---
+
+<BaseLayout
+  title="About Sonura | Professional AI Music Creation"
+  description="Sonura is an AI music creation studio founded by Kindred Salway. We're removing friction in music production, empowering professionals to create studio-quality tracks in seconds."
+  keywords="sonura about, ai music company, music production startup, kindred salway, ai music generator company"
+  canonical="https://sonurastudio.com/about/"
+  ogTitle="About Sonura — Professional AI Music Creation"
+  ogDescription="Meet the team behind Sonura and learn how we're removing friction in music production through AI technology."
+  jsonLd={jsonLd}
+>
+  <section class="about-hero">
+    <div class="about-hero-inner">
+      <h1 class="about-headline reveal">Removing the friction from music production</h1>
+      <p class="about-subhead reveal" data-reveal-delay="0.04s">Sonura is an AI-powered music creation studio that eliminates technical bottlenecks, allowing creators to produce studio-quality assets at the speed of thought.</p>
+    </div>
+  </section>
+
+  <section class="about-section mission-section">
+    <div class="about-section-inner">
+      <div class="mission-grid">
+        <div class="mission-content reveal">
+          <h2 class="section-title">The Problem We're Solving</h2>
+          <p class="section-text">Traditional music production has always been gatekept by expensive equipment, years of technical training, and complex software that takes months to learn. Independent artists, content creators, and game developers have been forced to either pay premium rates for custom music or settle for generic, overused stock tracks.</p>
+          <p class="section-text">This creates a massive barrier for the millions of creators who need original music but lack the resources or expertise to produce it themselves.</p>
+        </div>
+        <div class="mission-visual synth-panel reveal" data-reveal-delay="0.08s">
+          <div class="mission-stats">
+            <div class="mission-stat">
+              <span class="stat-number">10s</span>
+              <span class="stat-label">avg generation time</span>
+            </div>
+            <div class="mission-stat">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">royalty-free ownership</span>
+            </div>
+            <div class="mission-stat">
+              <span class="stat-number">∞</span>
+              <span class="stat-label">unique creations</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section solution-section">
+    <div class="about-section-inner">
+      <div class="solution-grid">
+        <div class="solution-content reveal">
+          <h2 class="section-title">Our Solution</h2>
+          <p class="section-text">Sonura harnesses the power of AI to accelerate creative workflows. Our platform transforms text descriptions into studio-quality beats, loops, vocals, and full tracks, enabling rapid iteration and concept development.</p>
+          <p class="section-text">Whether you're a game developer needing dynamic soundscapes, a content creator requiring royalty-free assets, or a producer looking for unique samples, Sonura delivers professional-grade audio without the traditional overhead.</p>
+          
+          <div class="target-audience">
+            <h3 class="audience-title">Built for professionals</h3>
+            <div class="audience-text">
+              <p>Music Producers · Content Creators · Independent Artists · Game Developers · Podcasters · Filmmakers</p>
+            </div>
+          </div>
+        </div>
+        <div class="solution-visual reveal" data-reveal-delay="0.08s">
+          <div class="industry-context synth-panel">
+            <div class="context-content">
+              <h3 class="context-title">Market Context</h3>
+              <p class="context-text">The demand for original audio content is exploding across every industry. As production timelines shorten and content requirements scale, traditional workflows can no longer keep pace.</p>
+              <p class="context-text">Sonura isn't just lowering the barrier to entry - we're expanding what's possible for professionals, providing tools that meet the insatiable market demand for high-quality, unique audio assets.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section product-section">
+    <div class="about-section-inner">
+      <div class="product-header reveal">
+        <h2 class="section-title">Our Product</h2>
+        <div class="product-stage">
+          <span class="stage-text">Fully Launched & Live</span>
+        </div>
+      </div>
+      
+      <div class="product-grid">
+        <div class="product-image synth-panel reveal" data-reveal-delay="0.04s">
+          <Image 
+            src={newThumbnail}
+            alt="Sonura AI Music Generator Interface" 
+            style="width: 100%; height: auto; display: block;"
+          />
+        </div>
+        
+        <div class="product-features reveal" data-reveal-delay="0.08s">
+          <div class="feature-item">
+            <div class="feature-content">
+              <h4>Text-to-Music Generation</h4>
+              <p>Describe what you want and get professional tracks in seconds</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-content">
+              <h4>Stem Export</h4>
+              <p>Download individual stems for full control in your DAW</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-content">
+              <h4>AI Vocals & Sounds</h4>
+              <p>Generate unique vocals, one-shots, and sound effects</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-content">
+              <h4>Remix & Share</h4>
+              <p>Collaborate and share remixable tracks with the community</p>
+            </div>
+          </div>
+          <a href="/features/" class="features-link">Explore all features →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section team-section">
+    <div class="about-section-inner">
+      <h2 class="section-title center reveal">Meet the Founder</h2>
+      
+      <div class="team-grid">
+        <div class="founder-card reveal" data-reveal-delay="0.04s">
+          <div class="founder-content">
+            <div class="founder-image">
+              <img src="/images/kindred.jpg" alt="Kindred Salway - Founder of Sonura" />
+            </div>
+            <div class="founder-info">
+              <h3 class="founder-name">Kindred Salway</h3>
+              <span class="founder-role">Founder</span>
+              
+              <div class="founder-bio">
+                <p>I've been making music since the day I could walk. My career has spanned working with international artists, sound engineering for major projects, and building profitable startups from the ground up.</p>
+                <p>Sonura was born from this intersection of deep musical experience and technical innovation. I understand the creative process because I've lived it, and I've engineered Sonura to be the tool I always wished existed - one that removes technical barriers without sacrificing quality or artistic control.</p>
+              </div>
+              
+              <div class="founder-links">
+                <a href="https://x.com/kindredsalway" target="_blank" rel="noopener" class="linkedin-link">
+                  Follow on X (Twitter) →
+                </a>
+                <span class="separator">·</span>
+                <a href="https://www.linkedin.com/in/kindred-salway-8a05b6240/" target="_blank" rel="noopener" class="linkedin-link">
+                  Connect on LinkedIn →
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section contact-section">
+    <div class="about-section-inner">
+      <div class="contact-card reveal">
+        <h2 class="contact-title">Get in Touch</h2>
+        <p class="contact-text">Have questions about Sonura or interested in partnerships? We'd love to hear from you.</p>
+        <div class="contact-actions">
+          <a href="mailto:kindred@sonurastudio.com" class="text-link">kindred@sonurastudio.com</a>
+          <span class="separator">·</span>
+          <a href="https://discord.gg/Yk8RD3Nmyh" target="_blank" rel="noopener" class="text-link">Join our Discord</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about-hero {
+    padding: 180px 24px 120px;
+    text-align: center;
+    position: relative;
+  }
+
+  .about-hero-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .about-headline {
+    font-size: clamp(42px, 7vw, 72px);
+    line-height: 1.05;
+    margin: 0 0 32px;
+    letter-spacing: -0.04em;
+    font-weight: 700;
+    color: var(--fg);
+    text-align: center;
+  }
+
+  .about-subhead {
+    font-size: clamp(18px, 2.5vw, 24px);
+    color: var(--muted);
+    line-height: 1.6;
+    margin: 0 auto;
+    max-width: 720px;
+    font-weight: 400;
+    text-align: center;
+  }
+
+  .about-section {
+    padding: 100px 24px;
+  }
+
+  .about-section-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-size: clamp(32px, 5vw, 42px);
+    letter-spacing: -0.03em;
+    margin: 0 0 32px;
+    font-weight: 700;
+    color: var(--fg);
+  }
+
+  .section-title.center {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .section-text {
+    font-size: clamp(16px, 2vw, 18px);
+    color: var(--muted);
+    line-height: 1.8;
+    margin: 0 0 24px;
+  }
+
+  .section-text:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .mission-grid,
+  .solution-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .mission-visual,
+  .solution-visual {
+    padding: 64px;
+    background: var(--panel-bg);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    box-shadow: 0 20px 40px -20px rgba(0,0,0,0.5);
+    position: relative;
+  }
+
+  /* Refined corner accents instead of screws for text panels */
+  .mission-visual::before,
+  .solution-visual::before,
+  .product-image::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 20px;
+    height: 20px;
+    border-top: 2px solid var(--border-light);
+    border-left: 2px solid var(--border-light);
+    opacity: 0.5;
+  }
+
+  .mission-visual::after,
+  .solution-visual::after,
+  .product-image::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    width: 20px;
+    height: 20px;
+    border-bottom: 2px solid var(--border-light);
+    border-right: 2px solid var(--border-light);
+    opacity: 0.5;
+  }
+  
+  /* Hide the purple screws */
+  .screw { display: none; }
+
+  .mission-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .mission-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .stat-number {
+    font-size: clamp(48px, 6vw, 64px);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    color: var(--fg);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 13px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    opacity: 0.7;
+  }
+
+  .target-audience {
+    margin-top: 48px;
+    padding-top: 48px;
+    border-top: 1px solid var(--border);
+  }
+
+  .audience-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 16px;
+    color: var(--fg);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .audience-text p {
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  .industry-context {
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+
+  .industry-context::before, .industry-context::after {
+    display: none;
+  }
+
+  .context-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 24px;
+    color: var(--fg);
+    letter-spacing: -0.02em;
+  }
+
+  .context-text {
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin: 0 0 16px;
+  }
+
+  .product-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 64px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 24px;
+  }
+
+  .product-stage {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .stage-text {
+    font-size: 14px;
+    color: var(--fg); /* Changed from accent to fg */
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    opacity: 0.8;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 0.8fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .product-image {
+    position: relative;
+    background: var(--panel-bg);
+    border: 1px solid var(--border);
+    padding: 12px; /* Inner frame padding */
+  }
+
+  .product-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: contrast(1.05);
+    transition: filter 0.5s ease;
+  }
+  
+  .product-image:hover img {
+    filter: contrast(1.05);
+  }
+
+  .product-features {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding-top: 24px;
+  }
+
+  .feature-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .feature-content h4 {
+    margin: 0 0 8px;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--fg);
+    letter-spacing: -0.01em;
+  }
+
+  .feature-content p {
+    margin: 0;
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .features-link {
+    display: inline-block;
+    color: var(--fg);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 16px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+    align-self: flex-start;
+    transition: all 0.2s;
+  }
+
+  .features-link:hover {
+    color: #fff;
+    border-color: #fff;
+  }
+
+  .team-grid {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .founder-card {
+    background: transparent; /* Removed panel bg */
+    padding: 0; /* Removed padding */
+  }
+
+  .founder-content {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .founder-image {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 2px;
+    overflow: hidden;
+    filter: grayscale(100%);
+    transition: filter 0.5s ease;
+  }
+  
+  .founder-image:hover {
+    filter: grayscale(0%);
+  }
+
+  .founder-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .founder-info {
+    padding-top: 12px;
+  }
+
+  .founder-name {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0 0 4px;
+    letter-spacing: -0.03em;
+    color: var(--fg);
+  }
+
+  .founder-role {
+    display: block;
+    font-size: 14px;
+    color: var(--muted); /* Changed from accent */
+    margin-bottom: 32px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    opacity: 0.8;
+  }
+
+  .founder-bio {
+    text-align: left;
+  }
+
+  .founder-bio p {
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin: 0 0 24px;
+  }
+
+  .founder-bio p:last-child {
+    margin-bottom: 0;
+  }
+
+  .founder-links {
+    margin-top: 32px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .linkedin-link {
+    display: inline-block;
+    color: var(--fg);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+    border-bottom: 1px solid transparent;
+  }
+
+  .linkedin-link:hover {
+    color: #fff;
+    border-bottom-color: #fff;
+  }
+
+  .contact-section {
+    padding-bottom: 160px;
+  }
+
+  .contact-card {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0;
+    background: transparent;
+    border: none;
+  }
+
+  .contact-title {
+    font-size: clamp(32px, 5vw, 48px);
+    margin: 0 0 24px;
+    letter-spacing: -0.03em;
+    font-weight: 700;
+  }
+
+  .contact-text {
+    font-size: 18px;
+    color: var(--muted);
+    margin: 0 0 48px;
+    line-height: 1.6;
+  }
+
+  .contact-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+  }
+
+  .text-link {
+    color: var(--fg);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  
+  .text-link:hover {
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  
+  .separator {
+    color: var(--border);
+  }
+
+  @media (max-width: 900px) {
+    .mission-grid,
+    .solution-grid,
+    .product-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    
+    .product-grid {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+
+    .founder-content {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .founder-image {
+      width: 200px;
+      margin: 0 auto;
+    }
+    
+    .founder-info {
+      text-align: center;
+    }
+
+    .founder-bio {
+      text-align: left;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .about-hero {
+      padding: 140px 24px 80px;
+    }
+
+    .about-section {
+      padding: 64px 24px;
+    }
+
+    .mission-visual,
+    .solution-visual {
+      padding: 32px;
+    }
+
+    .product-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    
+    .contact-actions {
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .founder-links {
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .separator { display: none; }
+  }
+</style>

@@ -381,7 +381,7 @@ body {
 }
 .hero-beta-link:hover { 
   opacity: 1; 
-  color: var(--accent); 
+  color: var(--fg);
 }
 .form-row { display: grid; grid-template-columns: 1fr; gap: 10px; align-items: center; }
 .hidden { display: none; }
@@ -748,7 +748,7 @@ body {
 .footer-brand { display: flex; align-items: center; gap: 24px; }
 .footer-social { display: flex; gap: 12px; }
 .footer-social-link { min-width: 40px; height: 40px; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; gap: 8px; color: var(--fg); text-decoration: none; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); padding: 0 12px; }
-.footer-social-link:hover { background: rgba(255,255,255,0.1); border-color: var(--primary); transform: translateY(-2px); color: var(--primary); }
+.footer-social-link:hover { background: rgba(255,255,255,0.1); border-color: var(--border-light); transform: translateY(-2px); color: #fff; }
 .footer-social-link .fab { font-size: 18px; }
 .footer-social-link span { font-size: 13px; color: var(--muted); }
 .footer-copyright { color: var(--muted); font-size: 14px; }
