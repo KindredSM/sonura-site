@@ -27,8 +27,10 @@ window.playHeroVideo = function() {
 };
 
 window.openVideoFullscreen = function() {
-  // Create modal backdrop
+  if (document.getElementById('video-modal')) return;
+  
   const modal = document.createElement('div');
+  modal.id = 'video-modal';
   modal.style.cssText = `
     position: fixed;
     top: 0;
@@ -45,7 +47,6 @@ window.openVideoFullscreen = function() {
     transition: opacity 0.3s ease;
   `;
   
-  // Create video element
   const video = document.createElement('video');
   video.src = './videos/sonura desktop ad.mp4';
   video.controls = true;
@@ -59,7 +60,6 @@ window.openVideoFullscreen = function() {
     transition: transform 0.3s ease;
   `;
   
-  // Create close button
   const closeBtn = document.createElement('button');
   closeBtn.innerHTML = '×';
   closeBtn.style.cssText = `
@@ -84,59 +84,77 @@ window.openVideoFullscreen = function() {
     justify-content: center;
   `;
   
-  closeBtn.addEventListener('mouseenter', () => {
+  let isCleaningUp = false;
+  
+  const handleMouseEnter = () => {
+    if (isCleaningUp) return;
     closeBtn.style.background = 'rgba(255, 255, 255, 0.2)';
     closeBtn.style.transform = 'scale(1.1)';
-  });
+  };
   
-  closeBtn.addEventListener('mouseleave', () => {
+  const handleMouseLeave = () => {
+    if (isCleaningUp) return;
     closeBtn.style.background = 'rgba(255, 255, 255, 0.1)';
     closeBtn.style.transform = 'scale(1)';
-  });
+  };
   
-  // Clean up function
+  closeBtn.addEventListener('mouseenter', handleMouseEnter);
+  closeBtn.addEventListener('mouseleave', handleMouseLeave);
+  
+  const handleKeydown = (e) => {
+    if (e.key === 'Escape' && !isCleaningUp) {
+      cleanup();
+    }
+  };
+  
+  const handleModalClick = (e) => {
+    if (e.target === modal && !isCleaningUp) {
+      cleanup();
+    }
+  };
+  
+  const handleVideoEnded = () => {
+    if (!isCleaningUp) cleanup();
+  };
+  
+  const handleVideoLoaded = () => {
+    if (!isCleaningUp) video.play();
+  };
+  
   const cleanup = () => {
+    if (isCleaningUp) return;
+    isCleaningUp = true;
+    
     modal.style.opacity = '0';
     video.style.transform = 'scale(0.95)';
+    video.pause();
+    video.src = '';
+    
+    closeBtn.removeEventListener('mouseenter', handleMouseEnter);
+    closeBtn.removeEventListener('mouseleave', handleMouseLeave);
+    closeBtn.removeEventListener('click', cleanup);
+    modal.removeEventListener('click', handleModalClick);
+    video.removeEventListener('ended', handleVideoEnded);
+    video.removeEventListener('loadeddata', handleVideoLoaded);
+    document.removeEventListener('keydown', handleKeydown);
+    
     setTimeout(() => {
       if (document.body.contains(modal)) {
         document.body.removeChild(modal);
       }
     }, 300);
-    document.removeEventListener('keydown', handleKeydown);
   };
   
-  // Handle escape key
-  const handleKeydown = (e) => {
-    if (e.key === 'Escape') {
-      cleanup();
-    }
-  };
-  
-  // Close modal function
-  const closeModal = () => {
-    cleanup();
-  };
-  
-  // Add event listeners
-  closeBtn.addEventListener('click', closeModal);
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      closeModal();
-    }
-  });
-  video.addEventListener('ended', cleanup);
-  video.addEventListener('loadeddata', () => {
-    video.play();
-  });
+  closeBtn.addEventListener('click', cleanup);
+  modal.addEventListener('click', handleModalClick);
+  video.addEventListener('ended', handleVideoEnded);
+  video.addEventListener('loadeddata', handleVideoLoaded);
   document.addEventListener('keydown', handleKeydown);
   
-  // Append elements
   modal.appendChild(video);
   modal.appendChild(closeBtn);
   document.body.appendChild(modal);
 
-  // Animate in
   requestAnimationFrame(() => {
     modal.style.opacity = '1';
     video.style.transform = 'scale(1)';
@@ -166,32 +184,48 @@ faqDetails.forEach((el) => {
   while (contents.length) wrapper.appendChild(contents.shift());
   el.appendChild(wrapper);
 
+  let transitionHandler = null;
+  
   function openDetails() {
+    if (transitionHandler) {
+      wrapper.removeEventListener('transitionend', transitionHandler);
+      transitionHandler = null;
+    }
+    
     el.open = true;
     wrapper.style.height = 'auto';
     const h = wrapper.scrollHeight;
     wrapper.style.height = '0px';
-    wrapper.getBoundingClientRect(); // force reflow
+    wrapper.getBoundingClientRect();
     wrapper.style.height = h + 'px';
-    wrapper.addEventListener('transitionend', function handler(e) {
-      if (e.propertyName === 'height') {
+    
+    transitionHandler = function handler(e) {
+      if (e.propertyName === 'height' && e.target === wrapper) {
         wrapper.style.height = 'auto';
-        wrapper.removeEventListener('transitionend', handler);
+        transitionHandler = null;
       }
-    });
+    };
+    wrapper.addEventListener('transitionend', transitionHandler, { once: true });
   }
 
   function closeDetails() {
+    if (transitionHandler) {
+      wrapper.removeEventListener('transitionend', transitionHandler);
+      transitionHandler = null;
+    }
+    
     const h = wrapper.scrollHeight;
     wrapper.style.height = h + 'px';
-    wrapper.getBoundingClientRect(); // force reflow
+    wrapper.getBoundingClientRect();
     wrapper.style.height = '0px';
-    wrapper.addEventListener('transitionend', function handler(e) {
-      if (e.propertyName === 'height') {
+    
+    transitionHandler = function handler(e) {
+      if (e.propertyName === 'height' && e.target === wrapper) {
         el.open = false;
-        wrapper.removeEventListener('transitionend', handler);
+        transitionHandler = null;
       }
-    });
+    };
+    wrapper.addEventListener('transitionend', transitionHandler, { once: true });
   }
 
   if (el.open) {
@@ -214,18 +248,31 @@ faqDetails.forEach((el) => {
 });
 
 // GSAP Animations
-document.addEventListener("DOMContentLoaded", (event) => {
-  gsap.registerPlugin(ScrollTrigger);
+let scrollTriggers = [];
 
-  // Reveal Animations
+function initGSAPAnimations() {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+    return;
+  }
+  
+  gsap.registerPlugin(ScrollTrigger);
+  
+  if (typeof ScrollTrigger.getAll === 'function') {
+    ScrollTrigger.getAll().forEach(trigger => {
+      if (trigger && typeof trigger.kill === 'function') {
+        trigger.kill();
+      }
+    });
+  }
+  scrollTriggers = [];
+
   const reveals = document.querySelectorAll('.reveal');
   reveals.forEach((element) => {
-    // Check if it has a custom delay
     const delay = element.getAttribute('data-reveal-delay') 
       ? parseFloat(element.getAttribute('data-reveal-delay')) 
       : 0;
 
-    gsap.fromTo(element, 
+    const animation = gsap.fromTo(element, 
       { 
         y: 30, 
         opacity: 0 
@@ -238,27 +285,29 @@ document.addEventListener("DOMContentLoaded", (event) => {
         delay: delay,
         scrollTrigger: {
           trigger: element,
-          start: "top 90%", // Start when top of element hits 90% of viewport
+          start: "top 90%",
           toggleActions: "play none none reverse",
           toggleClass: "in-view"
         }
       }
     );
+    
+    if (animation.scrollTrigger) {
+      scrollTriggers.push(animation.scrollTrigger);
+    }
   });
 
-  // Cable Drawing Animation
   const cables = document.querySelectorAll('.cable-path');
   cables.forEach((cable) => {
     const length = cable.getTotalLength();
     
-    // Set initial state
     gsap.set(cable, {
       strokeDasharray: length,
       strokeDashoffset: length,
       opacity: 0.6
     });
 
-    gsap.to(cable, {
+    const animation = gsap.to(cable, {
       strokeDashoffset: 0,
       opacity: 1,
       duration: 2,
@@ -268,8 +317,37 @@ document.addEventListener("DOMContentLoaded", (event) => {
         start: "top 70%"
       }
     });
+    
+    if (animation.scrollTrigger) {
+      scrollTriggers.push(animation.scrollTrigger);
+    }
   });
-});
+}
+
+function cleanupGSAPAnimations() {
+  scrollTriggers.forEach(trigger => {
+    if (trigger && typeof trigger.kill === 'function') {
+      trigger.kill();
+    }
+  });
+  scrollTriggers = [];
+  
+  if (typeof ScrollTrigger !== 'undefined' && typeof ScrollTrigger.getAll === 'function') {
+    ScrollTrigger.getAll().forEach(trigger => {
+      if (trigger && typeof trigger.kill === 'function') {
+        trigger.kill();
+      }
+    });
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener("DOMContentLoaded", initGSAPAnimations);
+} else {
+  initGSAPAnimations();
+}
+
+window.addEventListener('beforeunload', cleanupGSAPAnimations);
 
 if (window.lucide && window.lucide.createIcons) {
   window.lucide.createIcons();
@@ -277,13 +355,18 @@ if (window.lucide && window.lucide.createIcons) {
 
 // Nav Scroll
 const nav = document.querySelector('.nav');
+let scrollTimeout = null;
 function handleNavScroll() {
-  const currentScrollY = window.scrollY;
-  if (currentScrollY > 50) {
-    nav.classList.add('scrolled');
-  } else {
-    nav.classList.remove('scrolled');
-  }
+  if (scrollTimeout) return;
+  scrollTimeout = requestAnimationFrame(() => {
+    const currentScrollY = window.scrollY;
+    if (currentScrollY > 50) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+    scrollTimeout = null;
+  });
 }
 window.addEventListener('scroll', handleNavScroll, { passive: true });
 
@@ -343,14 +426,20 @@ document.querySelectorAll('.player').forEach((player) => {
   const vol = player.querySelector('.player-volume');
 
   if (audio) {
+    let timeUpdateTimeout = null;
+    
     audio.addEventListener('loadedmetadata', () => {
       seek.max = String(Math.floor(audio.duration));
       dur.textContent = fmt(audio.duration);
     });
     
     audio.addEventListener('timeupdate', () => {
-      seek.value = String(Math.floor(audio.currentTime));
-      cur.textContent = fmt(audio.currentTime);
+      if (timeUpdateTimeout) return;
+      timeUpdateTimeout = requestAnimationFrame(() => {
+        seek.value = String(Math.floor(audio.currentTime));
+        cur.textContent = fmt(audio.currentTime);
+        timeUpdateTimeout = null;
+      });
     });
 
     audio.addEventListener('ended', () => {
