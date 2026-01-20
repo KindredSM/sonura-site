@@ -33,11 +33,16 @@ const useCases = [
     audience: 'Film Makers'
   },
   {
+    name: 'AI Vocals',
+    slug: 'ai-vocals',
+    description: 'Create vocal chops, ad-libs, hooks, and samples. Add professional vocal elements without hiring vocalists.',
+    audience: 'Music Producers'
+  },
+  {
     name: 'Sample Packs',
     slug: 'sample-packs',
     description: 'Create unique sample packs with AI-generated sounds. Stand out from generic libraries.',
-    audience: 'Sample Creators',
-    comingSoon: true
+    audience: 'Sample Creators'
   }
 ];
 
@@ -103,7 +108,7 @@ const jsonLd = [
     }
 
     .usecase-card:hover {
-      border-color: var(--primary);
+      border-color: rgba(124, 58, 237, 0.4);
       transform: translateY(-4px);
     }
 
@@ -155,7 +160,7 @@ const jsonLd = [
     }
   </style>
 
-  <div style="max-width: 1100px; margin: 80px auto; padding: 0 24px;">
+  <div style="max-width: 1600px; margin: 80px auto; padding: 0 24px;">
     <header style="text-align: center; margin-bottom: 64px;">
       <h1 style="font-size: 48px; font-weight: 800; margin-bottom: 24px; line-height: 1.2;">Use Cases</h1>
       <p style="font-size: 20px; color: var(--muted); max-width: 700px; margin: 0 auto; line-height: 1.6;">Discover how creators, producers, and businesses use Sonura to create music for their projects.</p>
@@ -173,7 +178,7 @@ const jsonLd = [
       ))}
     </div>
 
-    <div style="text-align: center; margin-top: 80px; padding: 48px; background: rgba(124, 58, 237, 0.1); border: 2px solid var(--primary); border-radius: 16px;">
+    <div style="text-align: center; margin-top: 80px; padding: 48px; background: rgba(124, 58, 237, 0.05); border: 1px solid rgba(124, 58, 237, 0.2); border-radius: 16px;">
       <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 16px;">Have a Different Use Case?</h2>
       <p style="color: var(--muted); margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto;">Sonura works for any project that needs music. Try it free and see what you can create.</p>
       <a href="https://app.sonurastudio.com" class="button primary large" style="display: inline-block; padding: 18px 40px; background: var(--primary); color: white; text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 18px;">Start Creating Free</a>

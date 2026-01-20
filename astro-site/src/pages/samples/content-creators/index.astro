@@ -1,0 +1,61 @@
+---
+import UseCaseLayout from '../../../layouts/UseCaseLayout.astro';
+
+const benefits = [
+  { title: 'Royalty-Free Samples', description: 'All samples are 100% royalty-free with full commercial rights. Use in YouTube videos, podcasts, streams, and any content. No copyright claims, no attribution required.' },
+  { title: 'Unique Background Music', description: 'Generate unique loops and tracks for intros, outros, and background music. No more using the same royalty-free tracks as everyone else.' },
+  { title: 'Instant Generation', description: 'Get samples in under 10 seconds. Need music for a video? Describe it and generate instantly. No browsing through massive libraries.' },
+  { title: 'Custom Sound Design', description: 'Generate sound effects, transitions, and atmospheric elements. Create custom audio branding that matches your content style.' },
+  { title: 'Stem Export Included', description: 'Export individual stems for mixing and customization. Perfect for creating custom intros, outros, and background music.' },
+  { title: 'Any Genre or Style', description: 'Generate samples for any content type - gaming, vlogs, tutorials, podcasts, and more. The AI adapts to your creative vision.' },
+];
+
+const examples = [
+  { prompt: 'upbeat background music loop energetic', description: 'Energetic upbeat background music loop. Perfect for vlogs, gaming content, and positive videos.' },
+  { prompt: 'ambient pad atmospheric chill', description: 'Chill atmospheric ambient pad. Great for intros, outros, and background music in calm content.' },
+  { prompt: 'transition fx whoosh impact', description: 'Whoosh transition FX for scene changes. Perfect for adding polish to video edits.' },
+  { prompt: 'gaming music loop intense action', description: 'Intense action gaming music loop. Perfect for gaming content, montages, and high-energy videos.' },
+  { prompt: 'podcast intro music professional', description: 'Professional podcast intro music. Great for creating branded intros and outros.' },
+  { prompt: 'lo fi hip hop loop chill background', description: 'Chill lo-fi hip-hop loop. Perfect for study content, chill vlogs, and relaxed atmosphere.' },
+];
+
+const faqs = [
+  { question: 'Can I use these samples in YouTube videos?', answer: 'Yes! All samples are 100% royalty-free with full commercial rights. Use in YouTube videos, monetized content, and any platform. No copyright claims, no attribution required.' },
+  { question: 'Are the samples copyright-free?', answer: 'Yes! All samples are AI-generated and come with full commercial rights. You own what you create. No copyright issues, no licensing fees.' },
+  { question: 'Can I use samples in monetized content?', answer: 'Yes! All samples can be used in monetized content on YouTube, Twitch, TikTok, or any platform. Full commercial rights included.' },
+  { question: 'What types of samples work best for content?', answer: 'Background music loops, ambient pads, transition FX, intro/outro music, and sound effects. Perfect for videos, podcasts, streams, and any content.' },
+  { question: 'Can I customize the samples?', answer: 'Yes! Export stems and customize in your DAW or video editor. Layer, process, and arrange samples exactly how you want.' },
+  { question: 'How fast is sample generation?', answer: 'Average generation time is under 10 seconds. Get samples instantly when you need them. No waiting, no browsing.' },
+  { question: 'Can I generate samples for specific content types?', answer: 'Absolutely! Specify your content type in the prompt: "gaming music", "podcast intro", "vlog background". The AI understands and delivers appropriate samples.' },
+];
+
+const trustItems = ['100% royalty-free', 'No copyright claims', 'Export stems included'];
+---
+
+<UseCaseLayout
+  useCase="AI Samples for Content Creators"
+  useCaseSlug="content-creators"
+  title="AI Sample Generator for Content Creators | Royalty-Free Music & FX - Sonura"
+  description="Create unique AI samples for content creation. Make royalty-free background music, sound effects, and transitions for YouTube, podcasts, and streams. No copyright claims."
+  keywords="royalty free samples, youtube music, content creator samples, background music generator, podcast music, stream music, copyright free samples"
+  headline="AI Sample Generator for Content Creators"
+  subhead="Create unique royalty-free samples for your content. Make background music, sound effects, and transitions in seconds. No copyright claims, full commercial rights."
+  ctaText="Create AI Samples"
+  problemTitle="The Royalty-Free Music Problem"
+  problemDescription="Finding good royalty-free music is hard. Most libraries have the same tracks everyone uses. Your content sounds generic. You spend hours browsing, only to find the perfect track has been used in thousands of videos. You need unique music that stands out and won't get copyright claims."
+  solutionTitle="AI-Generated Royalty-Free Samples"
+  solutionDescription="Describe the music or sound you need and get it in seconds. Every sample is AI-generated and unique. No shared libraries, no overused tracks. Create custom background music, intros, outros, and sound effects that match your content style. 100% royalty-free, no copyright claims, full commercial rights."
+  benefits={benefits}
+  examplesTitle="Content Creator Sample Prompts"
+  examples={examples}
+  faqs={faqs}
+  trustItems={trustItems}
+  finalCtaTitle="Start Generating Royalty-Free Samples"
+  finalCtaButtonText="Create AI Samples Free"
+/>
+
+<script>
+  document.querySelectorAll('a[href="https://app.sonurastudio.com"]').forEach(link => {
+    link.href = 'https://app.sonurastudio.com/samples';
+  });
+</script>

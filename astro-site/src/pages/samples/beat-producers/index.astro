@@ -1,0 +1,61 @@
+---
+import UseCaseLayout from '../../../layouts/UseCaseLayout.astro';
+
+const benefits = [
+  { title: 'Unique Samples Every Time', description: 'No more competing with producers using the same sample packs. Every loop, one-shot, and vocal sample is AI-generated and original. Stand out in crowded marketplaces.' },
+  { title: 'Generate On-Demand', description: 'Need a specific sound? Describe it and get it in seconds. No browsing through thousands of samples. No settling for "close enough" - get exactly what you need.' },
+  { title: 'Perfect for Type Beats', description: 'Generate trap loops, drill one-shots, and hip-hop vocal chops tailored to your style. Build beats faster with unique samples that match your vision.' },
+  { title: 'Full Commercial Rights', description: 'All samples are 100% royalty-free with full commercial rights. Use in beats you sell, release on streaming platforms, or client work. No attribution required.' },
+  { title: 'Stem Export Included', description: 'Export individual stems for each sample. Layer, process, and arrange samples exactly how you want in your DAW. Full production control.' },
+  { title: 'Instant Generation', description: 'Get samples in under 10 seconds. Iterate quickly, try different variations, build your library faster than ever before.' },
+];
+
+const examples = [
+  { prompt: 'trap drum loop 140 bpm rolling hi-hats', description: 'Classic trap drum loop with intricate hi-hat patterns. Perfect for type beats and hip-hop production.' },
+  { prompt: 'dark 808 one-shot sub bass', description: 'Heavy 808 one-shot with deep sub frequencies. Essential for trap and drill beats.' },
+  { prompt: 'melodic piano loop emotional minor key', description: 'Emotional piano loop in minor key. Great for melodic trap and R&B beats.' },
+  { prompt: 'vocal chop hook r&b style female', description: 'R&B-style female vocal chop perfect for hooks. Add professional vocal elements instantly.' },
+  { prompt: 'drill snare one-shot punchy', description: 'Punchy drill snare one-shot with aggressive attack. Essential for UK drill production.' },
+  { prompt: 'trap riser fx build up tension', description: 'Tension-building riser FX for transitions. Perfect for adding energy to your beats.' },
+];
+
+const faqs = [
+  { question: 'Can I use these samples in beats I sell?', answer: 'Yes! All samples are 100% royalty-free with full commercial rights. Sell beats on BeatStars, Airbit, or anywhere else. Keep 100% of your earnings.' },
+  { question: 'How is this different from sample packs?', answer: 'Sample packs are pre-made and overused by thousands of producers. Sonura generates completely original samples on-demand. Every sample is unique and tailored to your exact specifications.' },
+  { question: 'What types of samples can I generate?', answer: 'Generate loops (drums, melodies, bass), one-shots (kicks, snares, hi-hats, stabs), vocal chops and samples, and sound effects (risers, drops, impacts). Any sample you can describe.' },
+  { question: 'Can I export stems for individual samples?', answer: 'Yes! Export individual stems for each sample. Perfect for mixing, layering, and customizing samples in your DAW workflow.' },
+  { question: 'How fast is sample generation?', answer: 'Average generation time is under 10 seconds. Get loops, one-shots, vocals, and FX instantly. No waiting, no browsing.' },
+  { question: 'Are the samples production-ready?', answer: 'Yes! All samples are studio-quality and production-ready. Use them as-is or process them further in your DAW. Professional-grade output.' },
+  { question: 'Can I generate samples in specific genres?', answer: 'Absolutely! Specify genre, BPM, mood, and style in your prompt. The AI understands production terminology and delivers genre-accurate samples.' },
+];
+
+const trustItems = ['100% commercial rights', 'Unique AI-generated samples', 'Export stems included'];
+---
+
+<UseCaseLayout
+  useCase="AI Samples for Beat Producers"
+  useCaseSlug="beat-producers"
+  title="AI Sample Generator for Beat Producers | Unique Loops & One-Shots - Sonura"
+  description="Create unique AI samples for beat production. Make loops, one-shots, vocals, and FX on-demand. No more overused sample packs. Full commercial rights included."
+  keywords="ai samples, sample generator, beat samples, trap loops, hip hop samples, ai loops, one shots generator, vocal chops ai, beat producer samples"
+  headline="AI Sample Generator for Beat Producers"
+  subhead="Create unique loops, one-shots, vocals, and FX on-demand. No more browsing sample packs. Get exactly what you need in seconds."
+  ctaText="Create AI Samples"
+  problemTitle="The Sample Pack Problem"
+  problemDescription="Traditional sample packs are overused. Thousands of producers use the same loops, one-shots, and vocal samples. Your beats sound generic. You spend hours browsing libraries looking for the right sound, only to find it's been used everywhere. You need unique samples that stand out."
+  solutionTitle="AI-Generated Samples On-Demand"
+  solutionDescription="Describe the sample you need and get it in seconds. Every loop, one-shot, and vocal sample is AI-generated and unique. No shared libraries, no overused sounds. Build beats with original samples that match your exact vision. Full commercial rights, stem export included."
+  benefits={benefits}
+  examplesTitle="Sample Generation Prompts"
+  examples={examples}
+  faqs={faqs}
+  trustItems={trustItems}
+  finalCtaTitle="Start Generating Unique Samples"
+  finalCtaButtonText="Create AI Samples Free"
+/>
+
+<script>
+  document.querySelectorAll('a[href="https://app.sonurastudio.com"]').forEach(link => {
+    link.href = 'https://app.sonurastudio.com/samples';
+  });
+</script>

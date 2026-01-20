@@ -345,7 +345,8 @@ body {
 .reveal { opacity: 0; transform: translateY(20px); will-change: transform, opacity; }
 /* GSAP will handle the animation, keeping this class for selection */
 
-.cta { margin-top: 16px; display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: 560px; }
+.cta { margin-top: 16px; display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: 560px; align-items: center; }
+.cta-buttons { display: flex; flex-direction: row; gap: 16px; width: 100%; padding-top: 16px; }
 .cta .button.primary { 
   font-size: 16px; 
   padding: 18px 32px; 
@@ -359,6 +360,24 @@ body {
   font-weight: 600; 
   letter-spacing: -0.01em; 
   box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);
+  flex: 1;
+}
+.cta .button.secondary {
+  font-size: 16px;
+  padding: 18px 32px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 12px;
+  background: rgba(255,255,255,0.08);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  flex: 1;
+}
+.cta .button.secondary:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.2);
+  transform: translateY(-2px);
 }
 
 
@@ -693,6 +712,8 @@ body {
 .author-handle { margin: 0; font-size: 14px; color: var(--muted); }
 
 @media (max-width: 768px) {
+  .cta-buttons { flex-direction: column; }
+  .cta .button.primary, .cta .button.secondary { width: 100%; }
   .testimonials { padding: 64px 24px; }
   .demo { padding: 64px 24px 80px; }
   .demo-title { margin: 0 0 48px; font-size: clamp(24px, 5vw, 32px); }

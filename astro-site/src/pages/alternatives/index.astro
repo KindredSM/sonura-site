@@ -37,6 +37,12 @@ const alternatives = [
     slug: 'mubert-alternative',
     description: 'Need discrete tracks instead of streams? Sonura generates downloadable beats with full stem export.',
     comparison: 'Best for: Production tracks vs continuous streams'
+  },
+  {
+    name: 'Splice',
+    slug: 'splice-alternative',
+    description: 'Want unique AI-generated samples instead of shared libraries? Sonura creates original samples on-demand in seconds.',
+    comparison: 'Best for: Unique AI samples vs browsing shared libraries'
   }
 ];
 
@@ -45,7 +51,7 @@ const jsonLd = [
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "AI Music Generator Alternatives",
-    "description": "Compare Sonura with other AI music generators. Find the best alternative to Suno, Udio, Soundraw, Boomy, AIVA, and Mubert.",
+    "description": "Compare Sonura with other AI music generators and music creation tools. Find the best alternative to Suno, Udio, Soundraw, Boomy, AIVA, Mubert, and Splice.",
     "url": "https://sonurastudio.com/alternatives/"
   },
   {
@@ -61,8 +67,8 @@ const jsonLd = [
 
 <BaseLayout
   title="AI Music Generator Alternatives | Compare Sonura vs Competitors"
-  description="Compare Sonura with Suno, Udio, Soundraw, Boomy, AIVA, and Mubert. Find the best AI music generator for beats, loops, vocals, and full tracks."
-  keywords="ai music generator alternatives, suno alternative, udio alternative, soundraw alternative, boomy alternative, aiva alternative, mubert alternative, best ai music generator"
+  description="Compare Sonura with other AI music generators and music creation tools. Find the best alternative for beats, loops, samples, vocals, and full tracks."
+  keywords="ai music generator alternatives, suno alternative, udio alternative, soundraw alternative, boomy alternative, aiva alternative, mubert alternative, splice alternative, best ai music generator"
   canonical="https://sonurastudio.com/alternatives/"
   ogTitle="AI Music Generator Alternatives"
   ogDescription="Compare Sonura with other AI music generators and find the best tool for your needs."
@@ -95,7 +101,7 @@ const jsonLd = [
     }
 
     .alt-card:hover {
-      border-color: var(--primary);
+      border-color: rgba(124, 58, 237, 0.3);
       transform: translateY(-4px);
     }
 
@@ -131,10 +137,10 @@ const jsonLd = [
     }
   </style>
 
-  <div style="max-width: 1100px; margin: 80px auto; padding: 0 24px;">
+  <div style="max-width: 1600px; margin: 80px auto; padding: 0 24px;">
     <header style="text-align: center; margin-bottom: 64px;">
       <h1 style="font-size: 48px; font-weight: 800; margin-bottom: 24px; line-height: 1.2;">AI Music Generator Alternatives</h1>
-      <p style="font-size: 20px; color: var(--muted); max-width: 700px; margin: 0 auto; line-height: 1.6;">Compare Sonura with other AI music generators. Find out which tool is best for your specific needs - beats, loops, full songs, or more.</p>
+      <p style="font-size: 20px; color: var(--muted); max-width: 700px; margin: 0 auto; line-height: 1.6;">Compare Sonura with other AI music generators and music creation tools. Find out which tool is best for your specific needs - beats, loops, samples, or more.</p>
     </header>
 
     <div class="alt-hub-grid">
@@ -148,7 +154,7 @@ const jsonLd = [
       ))}
     </div>
 
-    <div style="text-align: center; margin-top: 80px; padding: 48px; background: rgba(124, 58, 237, 0.1); border: 2px solid var(--primary); border-radius: 16px;">
+    <div style="text-align: center; margin-top: 80px; padding: 48px; background: rgba(124, 58, 237, 0.05); border: 1px solid rgba(124, 58, 237, 0.2); border-radius: 16px;">
       <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 16px;">Not Sure Which to Choose?</h2>
       <p style="color: var(--muted); margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto;">Try Sonura free and see if it fits your workflow. No credit card required, full features available.</p>
       <a href="https://app.sonurastudio.com" class="button primary large" style="display: inline-block; padding: 18px 40px; background: var(--primary); color: white; text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 18px;">Try Sonura Free</a>

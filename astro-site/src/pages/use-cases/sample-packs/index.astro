@@ -1,0 +1,61 @@
+---
+import UseCaseLayout from '../../../layouts/UseCaseLayout.astro';
+
+const benefits = [
+  { title: 'Unique Samples Every Time', description: 'Create completely original samples that nobody else has. Every loop, one-shot, and vocal sample is AI-created and unique. Stand out from generic sample packs.' },
+  { title: 'On-Demand Generation', description: 'Need specific sounds? Describe them and create instantly. No browsing through thousands of samples. Build your sample pack with exactly what you need.' },
+  { title: 'Full Commercial Rights', description: 'All samples are 100% royalty-free with full commercial rights. Sell your sample packs, include in products, or use commercially. No attribution required.' },
+  { title: 'Stem Export Included', description: 'Export individual stems for each sample. Perfect for creating professional sample packs with separate elements for mixing and customization.' },
+  { title: 'Any Genre or Style', description: 'Create samples for any genre - trap, house, techno, lo-fi, hip-hop, and more. Build themed sample packs or mixed collections.' },
+  { title: 'Instant Creation', description: 'Create samples in under 10 seconds. Build complete sample packs faster than ever. Generate hundreds of unique sounds in minutes.' },
+];
+
+const examples = [
+  { prompt: 'trap drum loop 140 bpm rolling hi-hats', description: 'Classic trap drum loop perfect for trap sample packs. Essential for beat makers and producers.' },
+  { prompt: 'house kick one-shot punchy 128 bpm', description: 'Punchy house kick one-shot. Perfect for electronic music sample packs and drum kits.' },
+  { prompt: 'vocal chop r&b style hook female', description: 'R&B vocal chop for adding professional vocal elements to sample packs. Stands out from generic vocal samples.' },
+  { prompt: 'lo-fi piano loop jazzy chords', description: 'Jazzy lo-fi piano loop. Great for lo-fi hip-hop sample packs and chill production.' },
+  { prompt: 'techno synth stab dark industrial', description: 'Dark industrial techno synth stab. Perfect for electronic and techno sample packs.' },
+  { prompt: 'trap 808 one-shot sub bass heavy', description: 'Heavy trap 808 one-shot. Essential for hip-hop and trap sample packs.' },
+];
+
+const faqs = [
+  { question: 'Can I sell sample packs made with Sonura?', answer: 'Yes! All samples created with Sonura are 100% royalty-free with full commercial rights. You can sell them as sample packs, include in products, or use commercially. No restrictions.' },
+  { question: 'How is this different from traditional sample packs?', answer: 'Traditional sample packs are pre-made and shared by thousands of producers. Sonura creates completely original samples on-demand. Every sample is unique and tailored to your exact specifications.' },
+  { question: 'What types of samples can I create for sample packs?', answer: 'Create loops (drums, melodies, bass), one-shots (kicks, snares, hi-hats, stabs), vocal chops and samples, and sound effects (risers, drops, impacts). Any sample type you can describe.' },
+  { question: 'Can I create themed sample packs?', answer: 'Absolutely! Specify genre, mood, and style in your prompts to create cohesive themed sample packs. For example, "dark trap samples" or "uplifting house samples".' },
+  { question: 'Do I get stem exports for sample pack creation?', answer: 'Yes! Export individual stems for each sample. Perfect for creating professional sample packs where buyers can customize and mix elements.' },
+  { question: 'How fast can I create a sample pack?', answer: 'With Sonura generating samples in under 10 seconds, you can create a complete sample pack with 50+ unique samples in under 10 minutes. Much faster than traditional methods.' },
+  { question: 'Are the samples production-ready?', answer: 'Yes! All samples are studio-quality and production-ready. Use them as-is in your sample packs or process them further. Professional-grade output.' },
+];
+
+const trustItems = ['100% commercial rights', 'Unique AI-created samples', 'Export stems included'];
+---
+
+<UseCaseLayout
+  useCase="Sample Packs"
+  useCaseSlug="sample-packs"
+  title="AI Sample Pack Creator | Create Unique Sample Packs - Sonura"
+  description="Create unique sample packs with AI-generated sounds. Build original loops, one-shots, vocals, and FX on-demand. Stand out from generic sample libraries. Full commercial rights."
+  keywords="sample pack creator, ai sample packs, create sample packs, unique samples, sample pack maker, ai loops sample pack, royalty free samples"
+  headline="AI Sample Pack Creator"
+  subhead="Create unique sample packs with AI-generated sounds. Build original loops, one-shots, vocals, and FX on-demand. Stand out from generic sample libraries."
+  ctaText="Create Sample Packs"
+  problemTitle="The Generic Sample Pack Problem"
+  problemDescription="Traditional sample packs are overused. Thousands of producers use the same loops, one-shots, and vocal samples. Your sample packs sound generic. You spend hours curating from existing libraries, only to find the sounds have been used everywhere. You need unique samples that stand out."
+  solutionTitle="AI-Created Sample Packs On-Demand"
+  solutionDescription="Create completely original sample packs with AI-generated sounds. Describe what you need and get unique samples in seconds. Every loop, one-shot, and vocal is AI-created and original. No shared libraries, no overused sounds. Build sample packs that stand out with full commercial rights and stem export included."
+  benefits={benefits}
+  examplesTitle="Sample Pack Creation Prompts"
+  examples={examples}
+  faqs={faqs}
+  trustItems={trustItems}
+  finalCtaTitle="Start Creating Sample Packs"
+  finalCtaButtonText="Create Sample Packs Free"
+/>
+
+<script>
+  document.querySelectorAll('a[href="https://app.sonurastudio.com"]').forEach(link => {
+    link.href = 'https://app.sonurastudio.com/samples';
+  });
+</script>

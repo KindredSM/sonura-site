@@ -1,0 +1,61 @@
+---
+import UseCaseLayout from '../../../layouts/UseCaseLayout.astro';
+
+const benefits = [
+  { title: 'Hip-Hop Specific Samples', description: 'Generate trap loops, drill one-shots, boom bap drums, and hip-hop vocal chops. Get samples tailored specifically for hip-hop production.' },
+  { title: 'Unique Every Time', description: 'No more competing with producers using the same sample packs. Every loop, one-shot, and vocal sample is AI-generated and original. Stand out in the hip-hop scene.' },
+  { title: 'Instant Generation', description: 'Get samples in under 10 seconds. Need a specific sound? Describe it and generate instantly. No browsing through massive sample libraries.' },
+  { title: 'Full Commercial Rights', description: '100% royalty-free with full commercial rights. Use samples in beats you sell, release on streaming platforms, or client work. No attribution required.' },
+  { title: 'Stem Export Included', description: 'Export individual stems for each sample. Perfect for mixing, layering, and building complex arrangements in your DAW.' },
+  { title: 'Genre-Specific Sounds', description: 'Generate samples for trap, drill, boom bap, lo-fi hip-hop, and more. The AI understands hip-hop production terminology and styles.' },
+];
+
+const examples = [
+  { prompt: 'trap drum loop 140 bpm rolling hi-hats', description: 'Classic trap drum loop with rolling hi-hat patterns. Essential for trap and modern hip-hop production.' },
+  { prompt: 'drill 808 one-shot sliding sub bass', description: 'UK drill-style 808 one-shot with signature slides. Perfect for drill and aggressive hip-hop beats.' },
+  { prompt: 'boom bap drum loop 90 bpm classic', description: 'Classic boom bap drum loop with that signature swing. Perfect for old-school hip-hop vibes.' },
+  { prompt: 'hip hop vocal chop hook r&b style', description: 'R&B-style hip-hop vocal chop perfect for hooks. Add professional vocal elements instantly.' },
+  { prompt: 'trap snare one-shot punchy crisp', description: 'Punchy, crisp trap snare one-shot. Essential for modern trap production.' },
+  { prompt: 'lo fi hip hop piano loop chill', description: 'Chill lo-fi hip-hop piano loop with laid-back vibes. Perfect for lo-fi beats and chill production.' },
+];
+
+const faqs = [
+  { question: 'What hip-hop genres does Sonura support?', answer: 'Sonura supports all hip-hop genres: trap, drill, boom bap, lo-fi hip-hop, R&B, and more. Just specify the genre in your prompt.' },
+  { question: 'Can I use these samples in beats I sell?', answer: 'Yes! All samples are 100% royalty-free with full commercial rights. Sell on BeatStars, Airbit, or anywhere else. Keep 100% of your earnings.' },
+  { question: 'How is this different from hip-hop sample packs?', answer: 'Sample packs are pre-made and overused by thousands of producers. Sonura generates completely original samples on-demand. Every sample is unique and tailored to your exact specifications.' },
+  { question: 'Can I generate specific BPM samples?', answer: 'Yes! Specify BPM in your prompt: "trap loop 140 bpm" or "boom bap beat 90 bpm". The AI will match the tempo you need.' },
+  { question: 'What types of hip-hop samples can I generate?', answer: 'Generate loops (drums, melodies, bass), one-shots (kicks, snares, hi-hats, 808s), vocal chops and samples, and FX (risers, drops, impacts). Any sample you can describe.' },
+  { question: 'Can I export stems for mixing?', answer: 'Yes! Export individual stems for each sample. Perfect for mixing, layering, and building complex arrangements in FL Studio, Ableton, or any DAW.' },
+  { question: 'Are the samples production-ready?', answer: 'Yes! All samples are studio-quality and production-ready. Use them as-is or process them further with effects and mixing. Professional-grade output.' },
+];
+
+const trustItems = ['100% commercial rights', 'Unique AI-generated samples', 'Export stems included'];
+---
+
+<UseCaseLayout
+  useCase="AI Samples for Hip-Hop Producers"
+  useCaseSlug="hip-hop-producers"
+  title="AI Sample Generator for Hip-Hop | Trap, Drill & Boom Bap - Sonura"
+  description="Create unique AI samples for hip-hop production. Make trap loops, drill one-shots, boom bap drums, and vocal chops on-demand. Full commercial rights included."
+  keywords="hip hop samples, trap samples, drill samples, boom bap loops, ai hip hop, trap loops, drill one shots, hip hop sample generator"
+  headline="AI Sample Generator for Hip-Hop Producers"
+  subhead="Create unique loops, one-shots, vocals, and FX for trap, drill, boom bap, and more. Get exactly what you need in seconds."
+  ctaText="Create AI Samples"
+  problemTitle="The Hip-Hop Sample Pack Problem"
+  problemDescription="Hip-hop sample packs are everywhere, but they're all the same. Thousands of producers use identical loops, one-shots, and vocal samples. Your beats sound generic. You spend hours browsing libraries, only to find the perfect sound has been used in hundreds of tracks already. You need unique samples that stand out."
+  solutionTitle="AI-Generated Hip-Hop Samples"
+  solutionDescription="Describe the hip-hop sample you need and get it in seconds. Every loop, one-shot, and vocal sample is AI-generated and unique. No shared libraries, no overused sounds. Build beats with original samples tailored to trap, drill, boom bap, or any hip-hop style. Full commercial rights, stem export included."
+  benefits={benefits}
+  examplesTitle="Hip-Hop Sample Prompts"
+  examples={examples}
+  faqs={faqs}
+  trustItems={trustItems}
+  finalCtaTitle="Start Generating Hip-Hop Samples"
+  finalCtaButtonText="Create AI Samples Free"
+/>
+
+<script>
+  document.querySelectorAll('a[href="https://app.sonurastudio.com"]').forEach(link => {
+    link.href = 'https://app.sonurastudio.com/samples';
+  });
+</script>

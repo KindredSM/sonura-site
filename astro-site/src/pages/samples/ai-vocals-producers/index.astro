@@ -1,0 +1,61 @@
+---
+import UseCaseLayout from '../../../layouts/UseCaseLayout.astro';
+
+const benefits = [
+  { title: 'Instant Vocal Elements', description: 'Generate vocal chops, samples, ad-libs, and hooks in under 10 seconds. No booking sessions, no waiting for vocalists. Get professional vocal elements whenever inspiration strikes.' },
+  { title: 'Unique Vocal Samples', description: 'Every vocal sample is AI-generated and original. No more using the same vocal chops everyone else has. Stand out with unique vocal elements.' },
+  { title: 'Perfect for Production', description: 'Generate vocal chops for electronic music, ad-libs for hip-hop, hooks for pop, and atmospheric vocals for ambient tracks. Tailored to your genre and style.' },
+  { title: 'Full Commercial Rights', description: '100% royalty-free with full commercial rights. Use AI vocals in beats you sell, release on streaming platforms, or client work. No attribution required.' },
+  { title: 'Stem Export Included', description: 'Export vocal stems separately for precise mixing control. Layer, process, and arrange vocal elements exactly how you want in your DAW.' },
+  { title: 'Unlimited Styles', description: 'Generate vocals in any style - from soulful R&B to aggressive trap, ethereal ambient to energetic EDM. The AI adapts to your creative vision.' },
+];
+
+const examples = [
+  { prompt: 'female vocal chop r&b style hook', description: 'Soulful R&B female vocal chop perfect for hooks and choruses. Add professional vocal elements instantly.' },
+  { prompt: 'male rap ad-libs aggressive trap', description: 'Aggressive trap-style male rap ad-libs. Perfect for adding energy and hype to your beats.' },
+  { prompt: 'vocal pad ethereal ambient texture', description: 'Ethereal vocal pad with atmospheric texture. Great for ambient, chill, and electronic tracks.' },
+  { prompt: 'vocal chop house music energetic', description: 'Energetic house-style vocal chop. Perfect for electronic and dance music production.' },
+  { prompt: 'vocal sample lo-fi hip hop chill', description: 'Chill lo-fi hip-hop vocal sample with laid-back vibes. Ideal for lo-fi beats and chill production.' },
+  { prompt: 'vocal hook pop catchy melodic', description: 'Catchy pop-style vocal hook with melodic elements. Perfect for commercial and mainstream production.' },
+];
+
+const faqs = [
+  { question: 'What types of AI vocals can I generate?', answer: 'Generate vocal chops, samples, ad-libs, hooks, harmonies, and atmospheric vocal textures. Perfect for adding professional vocal elements to instrumentals without hiring vocalists.' },
+  { question: 'Can I use AI vocals commercially?', answer: 'Yes! All AI vocals generated with Sonura are 100% royalty-free with full commercial rights. Use them in beats you sell, streaming releases, YouTube videos, or client work.' },
+  { question: 'Can I export vocal stems separately?', answer: 'Yes! Export vocals as separate stems for mixing in your DAW. Available on all tiers including free. Layer, process, and arrange vocals with full control.' },
+  { question: 'How do I describe the vocals I want?', answer: 'Use natural language: "female vocal chops house style", "male rap ad-libs hype", "ethereal vocal pads ambient". The AI understands genre, mood, and style descriptors.' },
+  { question: 'Are the AI vocals unique?', answer: 'Yes! Every generation creates unique vocal content. No two outputs are the same, so your tracks will have original vocal elements that stand out from sample pack sounds.' },
+  { question: 'Can Sonura generate full sung vocals with lyrics?', answer: 'Sonura focuses on instrumental vocal elements - chops, samples, ad-libs, and hooks. For full songs with AI-generated singing and lyrics, tools like Suno or Udio are better suited.' },
+  { question: 'What genres work best for AI vocals?', answer: 'AI vocals work great for electronic, hip-hop, R&B, pop, house, techno, and ambient music. The AI adapts to any genre you specify in your prompt.' },
+];
+
+const trustItems = ['100% commercial rights', 'Unique AI-generated vocals', 'Stem export included'];
+---
+
+<UseCaseLayout
+  useCase="AI Vocals for Music Producers"
+  useCaseSlug="ai-vocals-producers"
+  title="AI Vocal Samples for Producers | Generate Vocal Chops & Hooks - Sonura"
+  description="Create AI vocal samples for your productions. Make vocal chops, ad-libs, hooks, and samples in seconds. No hiring vocalists needed. Full commercial rights."
+  keywords="ai vocals, vocal samples, vocal chops, ai vocal generator, vocal hooks, rap ad libs, vocal samples for beats, ai voice samples"
+  headline="AI Vocal Samples for Music Producers"
+  subhead="Create vocal chops, ad-libs, hooks, and samples in seconds. Add professional vocal elements to your productions without hiring vocalists."
+  ctaText="Create AI Vocals"
+  problemTitle="The Vocalist Problem"
+  problemDescription="Hiring vocalists is expensive and time-consuming. Booking sessions, waiting for takes, revisions - it kills your creative flow. Sample packs have the same vocal chops everyone uses. You need unique vocal elements that match your vision, available instantly."
+  solutionTitle="AI-Generated Vocals On-Demand"
+  solutionDescription="Describe the vocal element you need and get it in seconds. Generate vocal chops, ad-libs, hooks, and samples tailored to your genre and style. Every vocal is AI-generated and unique. No shared samples, no overused sounds. Full commercial rights, stem export included."
+  benefits={benefits}
+  examplesTitle="Vocal Generation Prompts"
+  examples={examples}
+  faqs={faqs}
+  trustItems={trustItems}
+  finalCtaTitle="Start Generating AI Vocals"
+  finalCtaButtonText="Create AI Vocals Free"
+/>
+
+<script>
+  document.querySelectorAll('a[href="https://app.sonurastudio.com"]').forEach(link => {
+    link.href = 'https://app.sonurastudio.com/samples';
+  });
+</script>

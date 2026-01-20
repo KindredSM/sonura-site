@@ -1,0 +1,61 @@
+---
+import UseCaseLayout from '../../../layouts/UseCaseLayout.astro';
+
+const benefits = [
+  { title: 'Electronic Music Samples', description: 'Generate house loops, techno one-shots, EDM risers, and trance pads. Get samples tailored specifically for electronic music production.' },
+  { title: 'Unique Every Time', description: 'No more using the same samples as every other producer. Every loop, one-shot, and FX is AI-generated and original. Stand out in the electronic music scene.' },
+  { title: 'Instant Generation', description: 'Get samples in under 10 seconds. Need a specific sound? Describe it and generate instantly. No browsing through massive sample libraries.' },
+  { title: 'Full Commercial Rights', description: '100% royalty-free with full commercial rights. Use samples in tracks you release, DJ sets, or client work. No attribution required.' },
+  { title: 'Stem Export Included', description: 'Export individual stems for each sample. Perfect for mixing, layering, and building complex arrangements in your DAW.' },
+  { title: 'Genre-Specific Sounds', description: 'Generate samples for house, techno, trance, dubstep, future bass, and more. The AI understands electronic music production terminology.' },
+];
+
+const examples = [
+  { prompt: 'house drum loop 128 bpm four on the floor', description: 'Classic house drum loop with four-on-the-floor kick pattern. Essential for house music production.' },
+  { prompt: 'techno synth stab dark industrial', description: 'Dark industrial techno synth stab. Perfect for adding energy and tension to techno tracks.' },
+  { prompt: 'edm riser fx build up tension', description: 'Tension-building EDM riser for drops and builds. Essential for creating energy in electronic tracks.' },
+  { prompt: 'trance pad ethereal atmospheric', description: 'Ethereal trance pad with atmospheric texture. Great for breakdowns and ambient sections.' },
+  { prompt: 'dubstep wobble bass one-shot', description: 'Classic dubstep wobble bass one-shot. Perfect for adding that signature dubstep sound.' },
+  { prompt: 'house vocal chop disco style', description: 'Disco-style house vocal chop. Perfect for adding classic house vibes to your tracks.' },
+];
+
+const faqs = [
+  { question: 'What electronic music genres does Sonura support?', answer: 'Sonura supports all electronic genres: house, techno, trance, dubstep, future bass, progressive house, deep house, tech house, and more. Just specify the genre in your prompt.' },
+  { question: 'Can I use these samples in tracks I release?', answer: 'Yes! All samples are 100% royalty-free with full commercial rights. Release on Spotify, SoundCloud, Beatport, or anywhere else. Keep 100% of your royalties.' },
+  { question: 'How is this different from electronic sample packs?', answer: 'Sample packs are pre-made and overused by thousands of producers. Sonura generates completely original samples on-demand. Every sample is unique and tailored to your exact specifications.' },
+  { question: 'Can I generate specific BPM samples?', answer: 'Yes! Specify BPM in your prompt: "house loop 128 bpm" or "techno beat 140 bpm". The AI will match the tempo you need.' },
+  { question: 'What types of electronic samples can I generate?', answer: 'Generate loops (drums, synths, bass), one-shots (kicks, snares, claps, stabs), FX (risers, drops, impacts, sweeps), and vocal chops. Any sample you can describe.' },
+  { question: 'Can I export stems for mixing?', answer: 'Yes! Export individual stems for each sample. Perfect for mixing, layering, and building complex arrangements in Ableton, FL Studio, or any DAW.' },
+  { question: 'Are the samples production-ready?', answer: 'Yes! All samples are studio-quality and production-ready. Use them as-is or process them further with effects and mixing. Professional-grade output.' },
+];
+
+const trustItems = ['100% commercial rights', 'Unique AI-generated samples', 'Export stems included'];
+---
+
+<UseCaseLayout
+  useCase="AI Samples for Electronic Producers"
+  useCaseSlug="electronic-producers"
+  title="AI Sample Generator for Electronic Music | House, Techno & EDM - Sonura"
+  description="Create unique AI samples for electronic music production. Make house loops, techno one-shots, EDM FX, and more on-demand. Full commercial rights included."
+  keywords="electronic samples, house loops, techno samples, edm samples, ai electronic music, house music samples, techno loops, edm sound effects"
+  headline="AI Sample Generator for Electronic Producers"
+  subhead="Create unique loops, one-shots, FX, and vocal chops for house, techno, EDM, and more. Get exactly what you need in seconds."
+  ctaText="Create AI Samples"
+  problemTitle="The Electronic Sample Pack Problem"
+  problemDescription="Electronic music sample packs are everywhere, but they're all the same. Thousands of producers use identical loops, one-shots, and FX. Your tracks sound generic. You spend hours browsing libraries, only to find the perfect sound has been used in hundreds of tracks already. You need unique samples that stand out."
+  solutionTitle="AI-Generated Electronic Samples"
+  solutionDescription="Describe the electronic sample you need and get it in seconds. Every loop, one-shot, and FX is AI-generated and unique. No shared libraries, no overused sounds. Build tracks with original samples tailored to house, techno, EDM, or any electronic genre. Full commercial rights, stem export included."
+  benefits={benefits}
+  examplesTitle="Electronic Sample Prompts"
+  examples={examples}
+  faqs={faqs}
+  trustItems={trustItems}
+  finalCtaTitle="Start Generating Electronic Samples"
+  finalCtaButtonText="Create AI Samples Free"
+/>
+
+<script>
+  document.querySelectorAll('a[href="https://app.sonurastudio.com"]').forEach(link => {
+    link.href = 'https://app.sonurastudio.com/samples';
+  });
+</script>
