@@ -34,6 +34,21 @@ const jsonLd = [
         "@type": "Question",
         "name": "What formats are supported?",
         "acceptedAnswer": { "@type": "Answer", "text": "The stem separator supports WAV and MP3 input files. You can export your separated stems as either WAV (lossless) or MP3 (compressed) format." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is stem separation free?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sonura offers free stem separation with limited credits. You can separate several tracks for free each month. For unlimited separations and advanced features, check out our premium plans." }
+      },
+      {
+        "@type": "Question",
+        "name": "How accurate is AI stem separation?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Modern AI stem separation is highly accurate, typically achieving 95%+ separation quality on well-mixed tracks. The accuracy depends on the source material quality and how distinct each element is in the mix." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use separated stems commercially?",
+        "acceptedAnswer": { "@type": "Answer", "text": "You can use our stem separation tool commercially, but you must own the rights to the original audio file or have permission from the copyright holder. Separating copyrighted music does not grant you rights to use the stems commercially." }
       }
     ]
   }
@@ -200,7 +215,7 @@ const appUrl = 'https://app.sonurastudio.com?tool=stem-separator';
   <div class="stem-tool">
     <div class="tool-header">
       <h1 class="tool-title">AI Stem Separator</h1>
-      <p class="tool-description">Separate any audio file into individual stems using AI</p>
+      <p class="tool-description">Separate any audio file into individual stems</p>
     </div>
 
     <a href={appUrl} class="upload-cta">
@@ -240,6 +255,28 @@ const appUrl = 'https://app.sonurastudio.com?tool=stem-separator';
       </div>
     </div>
 
+    <div class="info-section">
+      <h2 class="info-title">Who Uses Stem Separation?</h2>
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="info-card-title">Music Producers</div>
+          <p class="info-card-text">Analyze production techniques, create remixes, or sample specific elements from reference tracks for your own productions.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-title">DJs</div>
+          <p class="info-card-text">Create custom mashups, extend intros/outros, or isolate acapellas and instrumentals for live performances and DJ sets.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-title">Musicians & Learners</div>
+          <p class="info-card-text">Remove vocals to practice along with backing tracks, isolate instruments to learn parts, or create karaoke versions of songs.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-title">Content Creators</div>
+          <p class="info-card-text">Extract instrumentals for background music, remove vocals for podcasts, or isolate specific elements for video editing.</p>
+        </div>
+      </div>
+    </div>
+
     <div class="sonura-cta">
       <h2 style="font-size: 28px; font-weight: 700; margin-bottom: 12px;">Create Your Own Music</h2>
       <p style="color: var(--muted); margin-bottom: 24px;">Generate AI beats, vocals, and instrumentals in under 10 seconds. Free to start.</p>
@@ -263,6 +300,22 @@ const appUrl = 'https://app.sonurastudio.com?tool=stem-separator';
       <details style="padding: 20px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 12px;">
         <summary style="font-weight: 700;">How long does separation take?</summary>
         <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">Processing time depends on the length and complexity of your audio file. Most tracks are separated in 30-90 seconds. Longer tracks or 6-stem separation may take a few minutes.</p>
+      </details>
+      <details style="padding: 20px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 12px;">
+        <summary style="font-weight: 700;">Is stem separation free?</summary>
+        <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">Sonura offers free stem separation with limited credits. You can separate several tracks for free each month. For unlimited separations and advanced features, check out our premium plans.</p>
+      </details>
+      <details style="padding: 20px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 12px;">
+        <summary style="font-weight: 700;">How accurate is AI stem separation?</summary>
+        <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">Modern AI stem separation is highly accurate, typically achieving 95%+ separation quality on well-mixed tracks. The accuracy depends on the source material quality and how distinct each element is in the mix. Our AI uses state-of-the-art models trained on millions of tracks.</p>
+      </details>
+      <details style="padding: 20px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 12px;">
+        <summary style="font-weight: 700;">Can I use separated stems commercially?</summary>
+        <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">You can use our stem separation tool commercially, but you must own the rights to the original audio file or have permission from the copyright holder. Separating copyrighted music does not grant you rights to use the stems commercially.</p>
+      </details>
+      <details style="padding: 20px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 12px;">
+        <summary style="font-weight: 700;">What's the best stem separator?</summary>
+        <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">Sonura's stem separator uses advanced AI models comparable to industry-leading tools. We offer both 2-stem (vocals/instrumental) and 6-stem (vocals, drums, bass, guitar, piano, other) separation with high accuracy, fast processing, and support for WAV and MP3 formats.</p>
       </details>
     </section>
   </div>
