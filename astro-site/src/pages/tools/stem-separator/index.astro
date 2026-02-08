@@ -1,0 +1,269 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "AI Stem Separator Tool",
+    "url": "https://sonurastudio.com/tools/stem-separator/",
+    "applicationCategory": "MusicApplication",
+    "operatingSystem": "Web Browser",
+    "description": "Free AI stem separator tool. Separate vocals, drums, bass, and instruments from any audio file. Extract stems in seconds with advanced AI.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sonurastudio.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://sonurastudio.com/tools/stem-separator/" },
+      { "@type": "ListItem", "position": 3, "name": "Stem Separator", "item": "https://sonurastudio.com/tools/stem-separator/" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is stem separation?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Stem separation is the process of using AI to split a mixed audio track into individual components like vocals, drums, bass, guitar, piano, and other instruments. This allows you to isolate, remix, or remove specific elements from a song." }
+      },
+      {
+        "@type": "Question",
+        "name": "What formats are supported?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The stem separator supports WAV and MP3 input files. You can export your separated stems as either WAV (lossless) or MP3 (compressed) format." }
+      }
+    ]
+  }
+];
+
+const appUrl = 'https://app.sonurastudio.com?tool=stem-separator';
+---
+
+<BaseLayout
+  title="AI Stem Separator | Extract Vocals & Instruments - Sonura"
+  description="Free AI stem separator tool. Extract vocals, drums, bass, and instruments from any audio file. Separate stems in seconds with advanced AI technology."
+  keywords="stem separator, vocal remover, isolate vocals, extract instrumentals, ai stem separation, music stem splitter, separate tracks, acapella extractor, backing track remover"
+  canonical="https://sonurastudio.com/tools/stem-separator/"
+  ogTitle="AI Stem Separator Tool - Sonura"
+  ogDescription="Free AI stem separator. Extract vocals and instruments from any audio file."
+  jsonLd={jsonLd}
+>
+  <style>
+    .stem-tool {
+      max-width: 800px;
+      margin: 80px auto;
+      padding: 0 24px;
+    }
+
+    .tool-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .tool-title {
+      font-size: 40px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .tool-description {
+      color: var(--muted);
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .upload-cta {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 2px dashed rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 64px 32px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.02);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-bottom: 32px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .upload-cta:hover {
+      border-color: var(--primary);
+      background: rgba(124, 58, 237, 0.05);
+      transform: translateY(-2px);
+    }
+
+    .upload-icon {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 20px;
+      color: var(--primary);
+      opacity: 0.8;
+    }
+
+    .upload-text {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--fg);
+    }
+
+    .upload-hint {
+      font-size: 14px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .stems-preview {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 48px;
+    }
+
+    .stem-tag {
+      padding: 14px 16px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .info-section {
+      margin-top: 64px;
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+    }
+
+    .info-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+    }
+
+    .info-card {
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 12px;
+    }
+
+    .info-card-title {
+      font-weight: 600;
+      font-size: 16px;
+      margin-bottom: 8px;
+      color: var(--primary);
+    }
+
+    .info-card-text {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .sonura-cta {
+      margin-top: 64px;
+      padding: 48px;
+      background: rgba(124, 58, 237, 0.05);
+      border: 1px solid rgba(124, 58, 237, 0.2);
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .upload-cta {
+        padding: 48px 24px;
+      }
+
+      .stems-preview {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+
+  <div class="stem-tool">
+    <div class="tool-header">
+      <h1 class="tool-title">AI Stem Separator</h1>
+      <p class="tool-description">Separate any audio file into individual stems using AI</p>
+    </div>
+
+    <a href={appUrl} class="upload-cta">
+      <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="17 8 12 3 7 8"></polyline>
+        <line x1="12" y1="3" x2="12" y2="15"></line>
+      </svg>
+      <div class="upload-text">Click to drop your file in the app</div>
+      <p class="upload-hint">Supports MP3, WAV — opens Sonura Stem Separator</p>
+    </a>
+
+    <div class="stems-preview">
+      <div class="stem-tag">Vocals</div>
+      <div class="stem-tag">Drums</div>
+      <div class="stem-tag">Bass</div>
+      <div class="stem-tag">Guitar</div>
+      <div class="stem-tag">Piano</div>
+      <div class="stem-tag">Other</div>
+    </div>
+
+    <div class="info-section">
+      <h2 class="info-title">What is Stem Separation?</h2>
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="info-card-title">Isolate Elements</div>
+          <p class="info-card-text">Extract individual components like vocals, drums, bass, and instruments from any mixed audio track.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-title">AI-Powered</div>
+          <p class="info-card-text">Uses advanced machine learning to accurately separate stems while preserving audio quality.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-title">Multiple Formats</div>
+          <p class="info-card-text">Export your separated stems as WAV for maximum quality or MP3 for smaller file sizes.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sonura-cta">
+      <h2 style="font-size: 28px; font-weight: 700; margin-bottom: 12px;">Create Your Own Music</h2>
+      <p style="color: var(--muted); margin-bottom: 24px;">Generate AI beats, vocals, and instrumentals in under 10 seconds. Free to start.</p>
+      <a href="https://app.sonurastudio.com" style="display: inline-block; padding: 14px 32px; background: var(--primary); color: white; text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 16px;">Try Sonura Free</a>
+    </div>
+
+    <section style="margin-top: 64px;">
+      <h2 style="font-size: 24px; font-weight: 700; margin-bottom: 24px; text-align: center;">Stem Separator FAQ</h2>
+      <details style="padding: 20px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 12px;">
+        <summary style="font-weight: 700;">What is stem separation?</summary>
+        <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">Stem separation is the process of using AI to split a mixed audio track into individual components like vocals, drums, bass, guitar, piano, and other instruments. This allows you to isolate, remix, or remove specific elements from a song.</p>
+      </details>
+      <details style="padding: 20px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 12px;">
+        <summary style="font-weight: 700;">What formats are supported?</summary>
+        <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">The stem separator supports MP3 and WAV input files up to 50MB. You can export your separated stems as either WAV (lossless, higher quality) or MP3 (compressed, smaller file size).</p>
+      </details>
+      <details style="padding: 20px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 12px;">
+        <summary style="font-weight: 700;">What's the difference between 2 stems and 6 stems?</summary>
+        <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">2 stems separates your audio into vocals and instrumental (everything else). 6 stems provides more detailed separation: vocals, drums, bass, guitar, piano, and other instruments. Use 2 stems for simple vocal removal or 6 stems for detailed remixing.</p>
+      </details>
+      <details style="padding: 20px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 12px;">
+        <summary style="font-weight: 700;">How long does separation take?</summary>
+        <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">Processing time depends on the length and complexity of your audio file. Most tracks are separated in 30-90 seconds. Longer tracks or 6-stem separation may take a few minutes.</p>
+      </details>
+    </section>
+  </div>
+</BaseLayout>
