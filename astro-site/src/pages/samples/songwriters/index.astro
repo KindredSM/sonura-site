@@ -1,0 +1,62 @@
+---
+import UseCaseLayout from '../../../layouts/UseCaseLayout.astro';
+
+const benefits = [
+  { title: 'Instant Inspiration', description: 'Beat writer\'s block by generating fresh instrumentals in seconds. New chords, new grooves, new ideas. Keep the creative momentum going.' },
+  { title: 'Chord Progression Ideas', description: 'Generate harmonic foundations to write melodies over. Explore progressions you wouldn\'t normally play. AI handles the chords, you write the topline.' },
+  { title: 'Multi-Genre Exploration', description: 'Try your lyrics over pop, country, R&B, rock, hip-hop, and more without learning new instruments. Sonura generates genre-accurate instrumentals instantly.' },
+  { title: 'Quick Demo Production', description: 'Record vocals over AI-generated beats and share polished demos in minutes. No producer wait times, no studio costs for initial ideas.' },
+  { title: 'Full Publishing Rights', description: 'Own 100% of your songs. No co-writer credits for the AI, no producer splits on the instrumental. Register with your PRO and collect full royalties.' },
+  { title: 'Arrangement Building Blocks', description: 'Export stems and rearrange: strip drums for the verse, add layers for the chorus, create builds and drops. Shape the song structure in your DAW.' },
+];
+
+const examples = [
+  { prompt: 'pop chord progression piano 118 bpm verse chorus', description: 'Clean pop piano progression for topline writing. Clear harmonic movement for verse and chorus melodies.' },
+  { prompt: 'acoustic guitar folk 100 bpm fingerpicking Em', description: 'Gentle folk fingerpicking pattern in E minor. Warm acoustic foundation for lyric-driven songwriting.' },
+  { prompt: 'r&b neo soul rhodes 85 bpm jazzy chords', description: 'Jazzy neo-soul Rhodes progression for R&B songwriting. Rich chords for melodic exploration.' },
+  { prompt: 'country strumming pattern 110 bpm G major upbeat', description: 'Upbeat country strumming in G major for storytelling and feel-good songwriting.' },
+  { prompt: 'dark trap melody loop 140 bpm minor key', description: 'Atmospheric trap melody loop for hip-hop songwriting. Dark textures for emotional lyric writing.' },
+  { prompt: 'indie rock guitars reverb 125 bpm dreamy', description: 'Dreamy indie rock guitar loops for alternative songwriting. Reverb-soaked textures for building atmospheric songs.' },
+];
+
+const faqs = [
+  { question: 'Do I own songs written over Sonura instrumentals?', answer: 'Yes! You own 100% of the composition and the instrumental. No AI co-writer credits. Register with ASCAP, BMI, or SESAC and collect full publishing royalties.' },
+  { question: 'Can I pitch songs to artists and labels?', answer: 'Yes! Full commercial rights. Pitch to artists, submit to labels, place in sync libraries, or release yourself. No restrictions on how you use the music.' },
+  { question: 'Is this good for toplining?', answer: 'Perfect for topliners. Generate fresh beats in any genre on-demand. Write melodies and lyrics over them. No waiting for producers to send tracks.' },
+  { question: 'Can I use this in co-writing sessions?', answer: 'Absolutely! Generate beats in real-time during sessions. Try different genres and tempos until the room finds the right vibe. Keeps the session moving.' },
+  { question: 'What if I want live instruments on the final version?', answer: 'Many songwriters use Sonura for demos, then re-produce with live musicians for the final release. The demo captures the song idea cheaply and quickly.' },
+  { question: 'Can I generate just chord progressions?', answer: 'Yes! Request simple harmonic patterns and Sonura generates clean chord progressions. Perfect as a writing foundation without the distraction of full production.' },
+];
+
+const trustItems = ['100% publishing rights', 'Instant inspiration', 'Demo-ready output'];
+---
+
+<UseCaseLayout
+  useCase="AI Samples for Songwriters"
+  useCaseSlug="songwriters"
+  title="AI Instrumentals & Samples for Songwriters | Writing Tools - Sonura"
+  description="Generate chord progressions, backing tracks, and demo instrumentals for songwriting. Beat writer's block with AI. Full publishing rights, any genre instantly."
+  keywords="songwriting samples, ai for songwriters, chord progression generator, songwriting instrumentals, demo beat maker, topline beats, songwriting backing tracks, ai songwriting tools"
+  headline="AI Samples & Instrumentals for Songwriters"
+  subhead="Fresh chord progressions, genre-accurate instrumentals, and demo-ready beats on-demand. Beat writer's block and own 100% of your songs."
+  ctaText="Create Songwriting Samples"
+  problemTitle="The Songwriter's Problem"
+  problemDescription="Writer's block is real. Waiting for producer beats kills momentum. Buying instrumentals means licensing headaches and shared royalties. You need a constant stream of fresh musical ideas on your terms."
+  solutionTitle="AI-Powered Songwriting Samples"
+  solutionDescription="Generate instrumentals in any genre in seconds. Try your lyrics over different beats, find the right chord progressions, and demo songs in minutes. Full publishing rights - no splits, no restrictions."
+  benefits={benefits}
+  examplesTitle="Sample Prompts for Songwriters"
+  examples={examples}
+  faqs={faqs}
+  trustItems={trustItems}
+  finalCtaTitle="Start Writing Over AI Instrumentals"
+  finalCtaButtonText="Create Samples Free"
+/>
+
+<script>
+  document.querySelectorAll('a[href="https://app.sonurastudio.com"]').forEach(link => {
+    if (link instanceof HTMLAnchorElement) {
+      link.href = 'https://app.sonurastudio.com/samples';
+    }
+  });
+</script>

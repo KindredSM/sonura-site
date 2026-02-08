@@ -1,0 +1,68 @@
+---
+import GenreLayout from '../../../layouts/GenreLayout.astro';
+
+const workflowItems = [
+  {
+    image: '/images/design.jpg',
+    imageAlt: 'Design country music in Sonura',
+    title: 'Describe your country sound',
+    description: 'Type what you want: "country acoustic guitar 110 bpm upbeat" or "modern country pop drums 120 bpm Nashville". Sonura understands country music from traditional to modern country-pop.'
+  },
+  {
+    image: '/images/compose.jpg',
+    imageAlt: 'Generate country music instantly',
+    title: 'Instant generation',
+    description: 'Get your country instrumental in under 10 seconds. Acoustic guitars, steel elements, warm bass, and authentic drum patterns. Production-ready for vocals.'
+  },
+  {
+    image: '/images/share.jpg',
+    imageAlt: 'Export country music stems',
+    title: 'Export stems & record',
+    description: 'Download individual stems (guitar, bass, drums, keys) or the full mix. Record vocals, demo songs, or release directly. 100% royalty-free.'
+  }
+];
+
+const faqs = [
+  {
+    question: 'What defines country music production?',
+    answer: 'Country music features acoustic and electric guitars, fiddle, steel guitar, warm bass, and clear drum patterns. Modern country blends with pop and rock elements. Tempo ranges from 80-140 BPM. Nashville production style emphasizes clarity, warmth, and vocal-forward mixing.'
+  },
+  {
+    question: 'How do I make country music with Sonura?',
+    answer: 'Describe your sound: "country acoustic guitar 110 bpm upbeat" or "country ballad 80 bpm emotional piano". Sonura generates country instrumentals with authentic guitar tones, warm production, and genre-appropriate arrangements.'
+  },
+  {
+    question: 'Can I release country songs with Sonura beats?',
+    answer: 'Yes! Full commercial rights on all tiers. Release on Spotify, Apple Music, or any platform. Perfect for independent country artists and Nashville songwriters.'
+  },
+  {
+    question: 'Can Sonura make modern country-pop?',
+    answer: 'Yes! Describe "modern country pop 118 bpm drums radio" for contemporary country-pop production. Sonura blends country elements with modern pop production techniques.'
+  },
+  {
+    question: 'Is this useful for country songwriting?',
+    answer: 'Absolutely! Generate backing tracks in any country sub-style for writing sessions. Try different tempos and feels until you find the right vibe for your lyrics. Demo songs in minutes.'
+  },
+  {
+    question: 'Can I export stems for a Nashville session?',
+    answer: 'Yes! Export individual stems and bring them to your session. Replace AI elements with live instruments selectively, or use stems as a demo reference for session musicians.'
+  }
+];
+---
+
+<GenreLayout
+  genre="Country"
+  genreSlug="country"
+  title="Free Country Music Maker | AI Country Beat Generator - Sonura"
+  description="Create country music instrumentals in seconds with AI. Generate acoustic guitar tracks, country-pop beats, and Nashville-style production. Free country music maker."
+  keywords="country music maker, country beat generator, ai country music, free country beats, country instrumental maker, nashville beat maker, country pop beat generator, acoustic country maker"
+  headline="Free Country Music Maker"
+  subhead="Create country instrumentals with authentic acoustic guitars, warm bass, and Nashville production. AI-powered country music maker for artists and songwriters."
+  ctaText="Create Country Music"
+  workflowTitle="How to make country music with AI"
+  workflowItems={workflowItems}
+  faqs={faqs}
+  finalCtaTitle="Start making country music now"
+  finalCtaButtonText="Create Country Music Free"
+  trustItems={['Authentic guitars', 'Export stems', 'Commercial use']}
+/>

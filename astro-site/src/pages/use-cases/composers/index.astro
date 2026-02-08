@@ -1,0 +1,55 @@
+---
+import UseCaseLayout from '../../../layouts/UseCaseLayout.astro';
+
+const benefits = [
+  { title: 'Rapid Sketching', description: 'Sketch musical ideas in seconds. Generate orchestral textures, harmonic beds, and rhythmic foundations to build compositions on top of.' },
+  { title: 'Genre Exploration', description: 'Instantly generate references in cinematic, ambient, electronic, jazz, classical, and hybrid styles. Explore sonic palettes without learning new instruments.' },
+  { title: 'Stem-Based Workflow', description: 'Export individual stems and import into your DAW or notation software. Use AI-generated layers as a starting point, then compose original material around them.' },
+  { title: 'Client Demos Fast', description: 'Generate quick music sketches to share with directors, producers, or clients before committing to full orchestration. Get creative direction locked in early.' },
+  { title: 'Sound Design Elements', description: 'Create atmospheric textures, ambient beds, risers, and impacts for film, TV, and game scores. Layer with live instruments for hybrid compositions.' },
+  { title: 'Full Commercial Rights', description: 'Use in film, TV, games, ads, and any commercial project. No sync licensing complications, no royalties owed on the AI-generated elements.' },
+];
+
+const examples = [
+  { prompt: 'cinematic orchestra epic 100 bpm brass strings percussion', description: 'Epic orchestral cue with brass, strings, and percussion. Great for trailer music and dramatic film moments.' },
+  { prompt: 'ambient atmospheric pad drone evolving texture', description: 'Evolving ambient texture for underscore and atmospheric scenes. Subtle and non-intrusive background composition.' },
+  { prompt: 'minimalist piano score emotional 60 bpm sparse', description: 'Sparse, emotional piano score for intimate scenes. Minimalist composition with space and dynamics.' },
+  { prompt: 'electronic hybrid orchestra modern trailer 130 bpm', description: 'Hybrid electronic-orchestral sound for modern trailers and action sequences. Combines synths with orchestral hits.' },
+  { prompt: 'dark suspense tension strings low 70 bpm', description: 'Tense, suspenseful string arrangement for thriller and horror scoring. Builds unease through dissonance and dynamics.' },
+  { prompt: 'world music ethnic percussion rhythmic 120 bpm', description: 'World music percussion patterns for documentary and travel content. Authentic rhythmic foundations.' },
+];
+
+const faqs = [
+  { question: 'Can I use this for professional film scoring?', answer: 'Yes. Many composers use AI tools for sketching and sound design elements. Generate ideas quickly, then develop and orchestrate the best ones. Full commercial rights for any project.' },
+  { question: 'Does this replace traditional composition?', answer: 'No. Sonura is a tool that accelerates your workflow. Use it for sketching ideas, generating reference tracks, creating sound design elements, and building demos. The creative decisions are still yours.' },
+  { question: 'Can I import stems into Logic Pro / Pro Tools / Cubase?', answer: 'Yes! Export stems as high-quality WAV files compatible with all major DAWs and notation software. Import, arrange, and build your composition around them.' },
+  { question: 'Is this useful for sync licensing?', answer: 'Absolutely. Generate music for sync libraries with full commercial rights. No clearance issues, no co-writers to split with on the AI-generated elements.' },
+  { question: 'What about orchestral and classical styles?', answer: 'Sonura can generate orchestral textures, string arrangements, piano compositions, and cinematic elements. Use as a starting point and enhance with virtual instruments or live players.' },
+  { question: 'Can I use this for game audio?', answer: 'Yes! Generate loops, atmospheric beds, stingers, and transitions for adaptive game audio. Export stems for implementation in game engines like Unity or Unreal.' },
+  { question: 'How does this fit into a professional scoring workflow?', answer: 'Use Sonura for rapid prototyping - generate sketches to show clients, explore sonic directions, and create sound design layers. Then compose, orchestrate, and produce the final score using your traditional tools.' },
+];
+
+const trustItems = ['Full sync rights', 'Stem export for DAW', 'Any genre or style'];
+---
+
+<UseCaseLayout
+  useCase="Composers"
+  useCaseSlug="composers"
+  title="AI Tools for Composers | Sketch Ideas Instantly - Sonura"
+  description="Accelerate your composition workflow with AI-generated sketches, sound design, and reference tracks. Export stems for DAW integration. Full commercial and sync rights."
+  keywords="ai for composers, ai composition tools, film scoring ai, ai orchestration, music composition ai, ai music sketch, cinematic music generator, soundtrack generator, ai scoring tools"
+  headline="AI Composition Tools for Composers"
+  subhead="Sketch musical ideas in seconds. Generate orchestral textures, atmospheric beds, and rhythmic foundations. Export stems and build compositions in your DAW."
+  ctaText="Start Composing"
+  problemTitle="The Composer's Challenge"
+  problemDescription="Deadlines are tight. Clients want options fast. Sketching ideas by hand takes time. Exploring new sonic directions means learning new tools. You need a way to prototype musical ideas quickly without sacrificing creative control."
+  solutionTitle="The Sonura Solution"
+  solutionDescription="Generate musical sketches in any style in under 10 seconds. Create atmospheric textures, rhythmic beds, and harmonic foundations. Export stems and build your composition in your DAW. Full commercial and sync rights included."
+  benefits={benefits}
+  examplesTitle="Prompts for Composers"
+  examples={examples}
+  faqs={faqs}
+  trustItems={trustItems}
+  finalCtaTitle="Accelerate Your Composition Workflow"
+  finalCtaButtonText="Try Free"
+/>

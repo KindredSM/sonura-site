@@ -1,0 +1,276 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "BPM Tap Tempo Tool",
+    "url": "https://sonurastudio.com/tools/bpm-tap/",
+    "applicationCategory": "MusicApplication",
+    "operatingSystem": "Web Browser",
+    "description": "Free BPM tap tempo tool. Tap to find the BPM of any song. Works on desktop and mobile.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sonurastudio.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://sonurastudio.com/tools/bpm-tap/" },
+      { "@type": "ListItem", "position": 3, "name": "BPM Tap Tempo", "item": "https://sonurastudio.com/tools/bpm-tap/" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I find the BPM of a song?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Play the song and tap the button or press any key in time with the beat. After several taps, the tool calculates the average BPM. More taps = more accurate results." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is BPM?",
+        "acceptedAnswer": { "@type": "Answer", "text": "BPM stands for Beats Per Minute. It measures the tempo of music. Common BPMs: Hip-hop 80-100, House 120-130, Trap 130-160, Drum & Bass 160-180." }
+      }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="BPM Tap Tempo Tool | Find the BPM of Any Song - Sonura"
+  description="Free BPM tap tempo tool. Tap to find the beats per minute of any song instantly. Works on desktop and mobile. No download required."
+  keywords="bpm tap, tap tempo, find bpm, bpm counter, bpm finder, beats per minute, tempo finder, bpm tapper, tap bpm online, song bpm finder"
+  canonical="https://sonurastudio.com/tools/bpm-tap/"
+  ogTitle="BPM Tap Tempo Tool - Sonura"
+  ogDescription="Free BPM tap tempo tool. Find the tempo of any song instantly."
+  jsonLd={jsonLd}
+>
+  <style>
+    .bpm-tool {
+      max-width: 600px;
+      margin: 80px auto;
+      padding: 0 24px;
+      text-align: center;
+    }
+
+    .bpm-display {
+      font-size: 120px;
+      font-weight: 800;
+      color: var(--fg);
+      line-height: 1;
+      margin: 40px 0 8px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .bpm-label {
+      font-size: 24px;
+      color: var(--muted);
+      margin-bottom: 40px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .tap-button {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      border: none;
+      font-size: 24px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.1s, box-shadow 0.1s;
+      box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.4);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .tap-button:active {
+      transform: scale(0.95);
+    }
+
+    .tap-button.pulse {
+      box-shadow: 0 0 0 20px rgba(124, 58, 237, 0);
+      animation: tapPulse 0.3s ease-out;
+    }
+
+    @keyframes tapPulse {
+      0% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.5); }
+      100% { box-shadow: 0 0 0 30px rgba(124, 58, 237, 0); }
+    }
+
+    .bpm-info {
+      margin-top: 32px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .reset-btn {
+      background: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--muted);
+      padding: 10px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-top: 24px;
+      transition: border-color 0.2s;
+    }
+
+    .reset-btn:hover { border-color: var(--primary); color: var(--fg); }
+
+    .genre-bpm {
+      margin-top: 64px;
+      padding: 40px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      text-align: left;
+    }
+
+    .genre-bpm h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .genre-bpm-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    @media (min-width: 480px) {
+      .genre-bpm-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .genre-bpm-item {
+      padding: 12px;
+      background: rgba(255,255,255,0.02);
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .genre-bpm-name { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+    .genre-bpm-range { color: var(--muted); font-size: 13px; }
+
+    .sonura-cta {
+      margin-top: 64px;
+      padding: 48px;
+      background: rgba(124, 58, 237, 0.05);
+      border: 1px solid rgba(124, 58, 237, 0.2);
+      border-radius: 16px;
+      text-align: center;
+    }
+  </style>
+
+  <div class="bpm-tool">
+    <h1 style="font-size: 40px; font-weight: 800; margin-bottom: 8px;">BPM Tap Tempo</h1>
+    <p style="color: var(--muted); font-size: 18px;">Tap the button or press any key to find the BPM</p>
+
+    <div class="bpm-display" id="bpmDisplay">0</div>
+    <div class="bpm-label">BPM</div>
+
+    <button class="tap-button" id="tapButton">TAP</button>
+
+    <div class="bpm-info" id="bpmInfo">tap at least 3 times for an accurate reading</div>
+    <button class="reset-btn" id="resetBtn">Reset</button>
+
+    <div class="genre-bpm">
+      <h2>Common BPM Ranges by Genre</h2>
+      <div class="genre-bpm-grid">
+        <div class="genre-bpm-item"><div class="genre-bpm-name">Hip-Hop</div><div class="genre-bpm-range">80-100</div></div>
+        <div class="genre-bpm-item"><div class="genre-bpm-name">R&B</div><div class="genre-bpm-range">65-90</div></div>
+        <div class="genre-bpm-item"><div class="genre-bpm-name">Lo-Fi</div><div class="genre-bpm-range">70-90</div></div>
+        <div class="genre-bpm-item"><div class="genre-bpm-name">Pop</div><div class="genre-bpm-range">100-130</div></div>
+        <div class="genre-bpm-item"><div class="genre-bpm-name">House</div><div class="genre-bpm-range">120-130</div></div>
+        <div class="genre-bpm-item"><div class="genre-bpm-name">Techno</div><div class="genre-bpm-range">125-150</div></div>
+        <div class="genre-bpm-item"><div class="genre-bpm-name">Trap</div><div class="genre-bpm-range">130-160</div></div>
+        <div class="genre-bpm-item"><div class="genre-bpm-name">Drill</div><div class="genre-bpm-range">140-150</div></div>
+        <div class="genre-bpm-item"><div class="genre-bpm-name">Drum & Bass</div><div class="genre-bpm-range">160-180</div></div>
+        <div class="genre-bpm-item"><div class="genre-bpm-name">Reggaeton</div><div class="genre-bpm-range">85-100</div></div>
+        <div class="genre-bpm-item"><div class="genre-bpm-name">Afrobeats</div><div class="genre-bpm-range">100-120</div></div>
+        <div class="genre-bpm-item"><div class="genre-bpm-name">Country</div><div class="genre-bpm-range">90-130</div></div>
+      </div>
+    </div>
+
+    <div class="sonura-cta">
+      <h2 style="font-size: 28px; font-weight: 700; margin-bottom: 12px;">Know Your BPM? Create a Beat</h2>
+      <p style="color: var(--muted); margin-bottom: 24px;">Generate AI beats at any tempo in under 10 seconds. Free to start.</p>
+      <a href="https://app.sonurastudio.com" style="display: inline-block; padding: 14px 32px; background: var(--primary); color: white; text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 16px;">Create a Beat Free</a>
+    </div>
+
+    <section style="margin-top: 64px; text-align: left;">
+      <h2 style="font-size: 24px; font-weight: 700; margin-bottom: 24px; text-align: center;">BPM Tap FAQ</h2>
+      <details style="padding: 20px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 12px;">
+        <summary style="font-weight: 700;">How do I find the BPM of a song?</summary>
+        <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">Play the song and tap the button (or press any key) in time with the beat. After several taps, the tool averages your timing to calculate the BPM. More taps = more accurate.</p>
+      </details>
+      <details style="padding: 20px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 12px;">
+        <summary style="font-weight: 700;">What is BPM?</summary>
+        <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">BPM stands for Beats Per Minute. It measures the tempo or speed of music. A higher BPM means faster music. Most popular music falls between 60-180 BPM.</p>
+      </details>
+      <details style="padding: 20px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 12px;">
+        <summary style="font-weight: 700;">Why do I need to know the BPM?</summary>
+        <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">Knowing the BPM helps with DJing (matching tempos), music production (setting your DAW tempo), remixing, sampling, and syncing music to video. It's essential for any music workflow.</p>
+      </details>
+    </section>
+  </div>
+
+  <script>
+    const taps = [];
+    const display = document.getElementById('bpmDisplay');
+    const info = document.getElementById('bpmInfo');
+    const tapBtn = document.getElementById('tapButton');
+    const resetBtn = document.getElementById('resetBtn');
+
+    function handleTap() {
+      const now = Date.now();
+      if (taps.length > 0 && now - taps[taps.length - 1] > 3000) {
+        taps.length = 0;
+      }
+      taps.push(now);
+      if (taps.length > 32) taps.shift();
+
+      tapBtn.classList.remove('pulse');
+      void tapBtn.offsetWidth;
+      tapBtn.classList.add('pulse');
+
+      if (taps.length >= 2) {
+        const intervals = [];
+        for (let i = 1; i < taps.length; i++) {
+          intervals.push(taps[i] - taps[i - 1]);
+        }
+        const avg = intervals.reduce((a, b) => a + b, 0) / intervals.length;
+        const bpm = Math.round(60000 / avg);
+        display.textContent = bpm;
+        info.textContent = `${taps.length} taps recorded`;
+      }
+    }
+
+    function reset() {
+      taps.length = 0;
+      display.textContent = '0';
+      info.textContent = 'tap at least 3 times for an accurate reading';
+    }
+
+    tapBtn.addEventListener('click', handleTap);
+    tapBtn.addEventListener('touchstart', (e) => { e.preventDefault(); handleTap(); });
+    resetBtn.addEventListener('click', reset);
+    document.addEventListener('keydown', (e) => {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      if (e.key === 'Escape') { reset(); return; }
+      handleTap();
+    });
+  </script>
+</BaseLayout>

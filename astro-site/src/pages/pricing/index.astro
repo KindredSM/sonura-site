@@ -1,0 +1,353 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Sonura Pricing",
+    "url": "https://sonurastudio.com/pricing/",
+    "description": "Sonura pricing plans for AI music generation. Free tier with commercial rights. Starter, Pro, and Studio plans for producers, artists, and creators."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sonurastudio.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Pricing", "item": "https://sonurastudio.com/pricing/" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Sonura",
+    "applicationCategory": "MusicApplication",
+    "operatingSystem": "Web Browser",
+    "offers": [
+      { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "USD", "description": "Free credits, commercial rights, stem export" },
+      { "@type": "Offer", "name": "Starter", "price": "9.99", "priceCurrency": "USD", "billingIncrement": "P1M", "description": "200 generations/month" },
+      { "@type": "Offer", "name": "Pro", "price": "19.99", "priceCurrency": "USD", "billingIncrement": "P1M", "description": "500 generations/month" },
+      { "@type": "Offer", "name": "Studio", "price": "44.99", "priceCurrency": "USD", "billingIncrement": "P1M", "description": "2000 generations/month" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is Sonura free?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes! Sonura offers free credits to get started with no credit card required. The free tier includes full commercial rights and stem export." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I cancel anytime?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. All plans are month-to-month with no contracts. Cancel anytime from your account settings." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I own the music I create?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. You own 100% of music you generate with Sonura. Full commercial rights on all tiers including free. Release on Spotify, sell beats, use in client work." }
+      },
+      {
+        "@type": "Question",
+        "name": "What payment methods do you accept?",
+        "acceptedAnswer": { "@type": "Answer", "text": "We accept all major credit cards, debit cards, and payment methods through our secure payment processor." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is stem export included on all plans?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes! Stem export is included on all tiers, including the free tier. Export drums, bass, melody, vocals, and FX separately." }
+      }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="Sonura Pricing | AI Music Generator Plans - Free, Starter, Pro, Studio"
+  description="Sonura pricing for AI music generation. Start free with commercial rights and stem export. Plans from $9.99/month. No contracts, cancel anytime."
+  keywords="sonura pricing, ai music generator pricing, ai beat maker pricing, sonura plans, sonura cost, ai music generator free, sonura free tier"
+  canonical="https://sonurastudio.com/pricing/"
+  ogTitle="Sonura Pricing - AI Music Generator Plans"
+  ogDescription="Start free with commercial rights. Plans from $9.99/month for producers, artists, and creators."
+  jsonLd={jsonLd}
+>
+  <style>
+    .pricing-page-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 640px) {
+      .pricing-page-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 1024px) {
+      .pricing-page-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .p-card {
+      padding: 32px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      position: relative;
+      transition: border-color 0.2s;
+    }
+
+    .p-card:hover { border-color: rgba(124, 58, 237, 0.3); }
+
+    .p-card.featured {
+      border-color: var(--primary);
+      background: rgba(124, 58, 237, 0.05);
+    }
+
+    .p-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--primary);
+      color: white;
+      padding: 4px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+
+    .p-plan-name {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .p-price {
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .p-price .period { font-size: 18px; font-weight: 400; color: var(--muted); }
+    .p-price .old { font-size: 20px; text-decoration: line-through; color: var(--muted); font-weight: 400; margin-right: 8px; }
+
+    .p-desc {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    .p-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 32px;
+    }
+
+    .p-features li {
+      padding: 8px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .p-features li i { color: var(--primary); width: 16px; height: 16px; flex-shrink: 0; }
+
+    .p-cta a {
+      display: block;
+      text-align: center;
+      padding: 14px 24px;
+      border-radius: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 16px;
+      transition: opacity 0.2s;
+    }
+
+    .p-cta a:hover { opacity: 0.9; }
+
+    .p-cta-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .p-cta-secondary {
+      background: rgba(255,255,255,0.1);
+      color: var(--fg);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 48px;
+    }
+
+    .compare-table th, .compare-table td {
+      padding: 16px 20px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .compare-table th {
+      font-weight: 700;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+    }
+
+    .compare-table td { font-size: 15px; }
+    .compare-table td:not(:first-child) { text-align: center; }
+    .compare-table th:not(:first-child) { text-align: center; }
+
+    @media (max-width: 640px) {
+      .compare-table { font-size: 13px; }
+      .compare-table th, .compare-table td { padding: 10px 8px; }
+    }
+  </style>
+
+  <div style="max-width: 1600px; margin: 80px auto; padding: 0 24px;">
+    <header style="text-align: center; margin-bottom: 64px;">
+      <h1 style="font-size: 48px; font-weight: 800; margin-bottom: 16px; line-height: 1.2;">Simple, Transparent Pricing</h1>
+      <p style="font-size: 20px; color: var(--muted); max-width: 600px; margin: 0 auto; line-height: 1.6;">Start free. Upgrade when you need more. Cancel anytime.</p>
+      <div style="display: flex; justify-content: center; gap: 32px; margin-top: 32px; flex-wrap: wrap;">
+        <div style="display: flex; align-items: center; gap: 8px; color: var(--muted);"><i data-lucide="check" style="color: var(--primary); width: 18px; height: 18px;"></i> You own 100% of music you create</div>
+        <div style="display: flex; align-items: center; gap: 8px; color: var(--muted);"><i data-lucide="check" style="color: var(--primary); width: 18px; height: 18px;"></i> Release anywhere, keep all royalties</div>
+        <div style="display: flex; align-items: center; gap: 8px; color: var(--muted);"><i data-lucide="check" style="color: var(--primary); width: 18px; height: 18px;"></i> No hidden fees or contracts</div>
+      </div>
+    </header>
+
+    <div class="pricing-page-grid">
+      <div class="p-card">
+        <div class="p-plan-name">Free</div>
+        <div class="p-price">$0<span class="period">/mo</span></div>
+        <p class="p-desc">Try Sonura with free credits. No credit card required.</p>
+        <ul class="p-features">
+          <li><i data-lucide="check"></i> <span>Free credits to start</span></li>
+          <li><i data-lucide="check"></i> <span>Full commercial rights</span></li>
+          <li><i data-lucide="check"></i> <span>Stem export</span></li>
+          <li><i data-lucide="check"></i> <span>All genres & features</span></li>
+          <li><i data-lucide="check"></i> <span>No credit card required</span></li>
+        </ul>
+        <div class="p-cta"><a href="https://app.sonurastudio.com" class="p-cta-secondary">Get Started Free</a></div>
+      </div>
+
+      <div class="p-card">
+        <div class="p-plan-name">Starter</div>
+        <div class="p-price"><span class="old">$19.99</span>$9.99<span class="period">/mo</span></div>
+        <p class="p-desc">For hobbyists and beginners.</p>
+        <ul class="p-features">
+          <li><i data-lucide="check"></i> <span>200 generations / month</span></li>
+          <li><i data-lucide="check"></i> <span>High quality downloads</span></li>
+          <li><i data-lucide="check"></i> <span>Full commercial rights</span></li>
+          <li><i data-lucide="check"></i> <span>Stem export</span></li>
+          <li><i data-lucide="check"></i> <span>All genres & features</span></li>
+        </ul>
+        <div class="p-cta"><a href="https://app.sonurastudio.com" class="p-cta-secondary">Get Started</a></div>
+      </div>
+
+      <div class="p-card featured">
+        <div class="p-badge">Most Popular</div>
+        <div class="p-plan-name">Pro</div>
+        <div class="p-price"><span class="old">$39.99</span>$19.99<span class="period">/mo</span></div>
+        <p class="p-desc">For independent artists.</p>
+        <ul class="p-features">
+          <li><i data-lucide="check"></i> <span>500 generations / month</span></li>
+          <li><i data-lucide="check"></i> <span>High quality WAV downloads</span></li>
+          <li><i data-lucide="check"></i> <span>Full commercial rights</span></li>
+          <li><i data-lucide="check"></i> <span>Stem export</span></li>
+          <li><i data-lucide="check"></i> <span>Priority support</span></li>
+          <li><i data-lucide="check"></i> <span>Early access to new features</span></li>
+        </ul>
+        <div class="p-cta"><a href="https://app.sonurastudio.com" class="p-cta-primary">Get Started</a></div>
+      </div>
+
+      <div class="p-card">
+        <div class="p-plan-name">Studio</div>
+        <div class="p-price"><span class="old">$89.99</span>$44.99<span class="period">/mo</span></div>
+        <p class="p-desc">For professionals and teams.</p>
+        <ul class="p-features">
+          <li><i data-lucide="check"></i> <span>2000 generations / month</span></li>
+          <li><i data-lucide="check"></i> <span>High quality WAV downloads</span></li>
+          <li><i data-lucide="check"></i> <span>Full commercial rights</span></li>
+          <li><i data-lucide="check"></i> <span>Stem export</span></li>
+          <li><i data-lucide="check"></i> <span>1-on-1 support</span></li>
+          <li><i data-lucide="check"></i> <span>Priority queue</span></li>
+          <li><i data-lucide="check"></i> <span>Custom features</span></li>
+        </ul>
+        <div class="p-cta"><a href="https://app.sonurastudio.com" class="p-cta-secondary">Get Started</a></div>
+      </div>
+    </div>
+
+    <div style="max-width: 900px; margin: 80px auto 0; overflow-x: auto;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 8px; text-align: center;">Compare Plans</h2>
+      <p style="text-align: center; color: var(--muted); margin-bottom: 32px;">All plans include commercial rights and stem export.</p>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Free</th>
+            <th>Starter</th>
+            <th>Pro</th>
+            <th>Studio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Generations</td><td>Free credits</td><td>200/mo</td><td>500/mo</td><td>2000/mo</td></tr>
+          <tr><td>Commercial Rights</td><td style="color: #4ade80;">Yes</td><td style="color: #4ade80;">Yes</td><td style="color: #4ade80;">Yes</td><td style="color: #4ade80;">Yes</td></tr>
+          <tr><td>Stem Export</td><td style="color: #4ade80;">Yes</td><td style="color: #4ade80;">Yes</td><td style="color: #4ade80;">Yes</td><td style="color: #4ade80;">Yes</td></tr>
+          <tr><td>All Genres</td><td style="color: #4ade80;">Yes</td><td style="color: #4ade80;">Yes</td><td style="color: #4ade80;">Yes</td><td style="color: #4ade80;">Yes</td></tr>
+          <tr><td>Download Quality</td><td>Standard</td><td>High Quality</td><td>WAV</td><td>WAV</td></tr>
+          <tr><td>Priority Support</td><td>-</td><td>-</td><td style="color: #4ade80;">Yes</td><td style="color: #4ade80;">Yes</td></tr>
+          <tr><td>Early Access</td><td>-</td><td>-</td><td style="color: #4ade80;">Yes</td><td style="color: #4ade80;">Yes</td></tr>
+          <tr><td>1-on-1 Support</td><td>-</td><td>-</td><td>-</td><td style="color: #4ade80;">Yes</td></tr>
+          <tr><td>Priority Queue</td><td>-</td><td>-</td><td>-</td><td style="color: #4ade80;">Yes</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <section style="max-width: 800px; margin: 80px auto 0;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 32px; text-align: center;">Pricing FAQ</h2>
+      <div>
+        <details style="padding: 24px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 16px;">
+          <summary style="font-weight: 700; font-size: 18px;">Is Sonura really free to start?</summary>
+          <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">Yes! Sign up with no credit card and get free credits to create beats, loops, vocals, and more. Full commercial rights and stem export included on the free tier.</p>
+        </details>
+        <details style="padding: 24px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 16px;">
+          <summary style="font-weight: 700; font-size: 18px;">Can I cancel anytime?</summary>
+          <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">Yes. All plans are month-to-month with no contracts or commitments. Cancel from your account settings at any time.</p>
+        </details>
+        <details style="padding: 24px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 16px;">
+          <summary style="font-weight: 700; font-size: 18px;">Do I own the music I create?</summary>
+          <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">Yes. You own 100% of all music generated with Sonura. Full commercial rights on all tiers including free. Release on Spotify, sell beats, use in client work, sync to video - no restrictions.</p>
+        </details>
+        <details style="padding: 24px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 16px;">
+          <summary style="font-weight: 700; font-size: 18px;">Is stem export included on all plans?</summary>
+          <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">Yes! Stem export is available on all tiers including free. Export individual drums, bass, melody, vocals, and FX stems in high quality.</p>
+        </details>
+        <details style="padding: 24px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 16px;">
+          <summary style="font-weight: 700; font-size: 18px;">What payment methods do you accept?</summary>
+          <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">We accept all major credit cards and debit cards through our secure payment processor.</p>
+        </details>
+        <details style="padding: 24px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 16px;">
+          <summary style="font-weight: 700; font-size: 18px;">How does Sonura pricing compare to competitors?</summary>
+          <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">Sonura offers more value per dollar than most competitors. Unlike Splice, Suno, and others, Sonura includes full commercial rights and stem export on the free tier. Paid plans start at just $9.99/month.</p>
+        </details>
+      </div>
+    </section>
+
+    <div style="text-align: center; margin-top: 80px; padding: 64px; background: rgba(124, 58, 237, 0.1); border: 2px solid var(--primary); border-radius: 16px;">
+      <h2 style="font-size: 36px; font-weight: 700; margin-bottom: 16px;">Start Creating for Free</h2>
+      <p style="color: var(--muted); margin-bottom: 32px; font-size: 18px;">No credit card required. Full commercial rights from day one.</p>
+      <a href="https://app.sonurastudio.com" style="display: inline-block; padding: 18px 48px; background: var(--primary); color: white; text-decoration: none; border-radius: 12px; font-weight: 700; font-size: 20px;">Get Started Free</a>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,68 @@
+---
+import GenreLayout from '../../../layouts/GenreLayout.astro';
+
+const workflowItems = [
+  {
+    image: '/images/design.jpg',
+    imageAlt: 'Design ambient music in Sonura',
+    title: 'Describe your ambient sound',
+    description: 'Type what you want: "ambient atmospheric pad evolving texture 70 bpm" or "dark ambient drone space cinematic". Sonura creates immersive ambient soundscapes from text.'
+  },
+  {
+    image: '/images/compose.jpg',
+    imageAlt: 'Generate ambient music instantly',
+    title: 'Instant generation',
+    description: 'Get ambient textures in under 10 seconds. Evolving pads, atmospheric drones, spatial effects, and organic textures. Perfect for underscore, meditation, and sound design.'
+  },
+  {
+    image: '/images/share.jpg',
+    imageAlt: 'Export ambient stems',
+    title: 'Export stems & layer',
+    description: 'Download individual layers (pads, textures, effects, bass) and stack them in your DAW. Build complex ambient soundscapes from AI-generated building blocks.'
+  }
+];
+
+const faqs = [
+  {
+    question: 'What is ambient music?',
+    answer: 'Ambient music emphasizes texture and atmosphere over rhythm and melody. It features evolving pads, drones, spatial effects, and organic sounds. Used for relaxation, focus, meditation, film underscore, and game environments.'
+  },
+  {
+    question: 'How do I make ambient music with Sonura?',
+    answer: 'Describe the atmosphere: "dark ambient drone evolving" or "peaceful ambient pads nature sounds 60 bpm". Sonura generates immersive ambient textures, soundscapes, and atmospheric compositions.'
+  },
+  {
+    question: 'Can I use ambient music from Sonura commercially?',
+    answer: 'Yes! Full commercial rights on all tiers. Use for meditation apps, YouTube videos, podcasts, games, film scores, sleep playlists, and any commercial project.'
+  },
+  {
+    question: 'Is Sonura good for sound design?',
+    answer: 'Yes! Generate atmospheric textures, evolving drones, transition effects, and ambient beds for film, TV, games, and installations. Export stems to layer and manipulate in your DAW.'
+  },
+  {
+    question: 'Can I make lo-fi ambient with Sonura?',
+    answer: 'Absolutely. Describe "lo-fi ambient warm tape texture vinyl crackle" for vintage-style ambient music. Combine with lo-fi elements for study beats and chill background music.'
+  },
+  {
+    question: 'What tempo should ambient music be?',
+    answer: 'Ambient music is often tempo-free or very slow (40-80 BPM). For rhythmic ambient, 60-90 BPM works well. Many ambient tracks focus on texture rather than beat, so tempo is often secondary.'
+  }
+];
+---
+
+<GenreLayout
+  genre="Ambient"
+  genreSlug="ambient"
+  title="Free Ambient Music Maker | AI Ambient Generator - Sonura"
+  description="Create ambient music and soundscapes in seconds with AI. Generate atmospheric pads, drones, and textures instantly. Free ambient music maker with commercial rights."
+  keywords="ambient music maker, ambient music generator, ai ambient music, free ambient music, ambient soundscape generator, atmospheric music maker, drone generator, ambient pad generator"
+  headline="Free Ambient Music Maker"
+  subhead="Create immersive ambient soundscapes, atmospheric pads, and evolving textures. AI-powered ambient music generator for creators, composers, and sound designers."
+  ctaText="Create Ambient Music"
+  workflowTitle="How to make ambient music with AI"
+  workflowItems={workflowItems}
+  faqs={faqs}
+  finalCtaTitle="Start creating ambient music now"
+  finalCtaButtonText="Create Ambient Music Free"
+  trustItems={['Atmospheric textures', 'Export stems', 'Commercial use']}
+/>

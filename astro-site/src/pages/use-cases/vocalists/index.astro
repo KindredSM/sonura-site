@@ -1,0 +1,55 @@
+---
+import UseCaseLayout from '../../../layouts/UseCaseLayout.astro';
+
+const benefits = [
+  { title: 'Instant Backing Tracks', description: 'Generate custom instrumentals in any key, tempo, and genre in under 10 seconds. No waiting for producers or browsing generic karaoke tracks.' },
+  { title: 'Practice Any Style', description: 'Create backing tracks in R&B, pop, jazz, soul, rock, and any genre. Explore new vocal styles with purpose-built instrumentals.' },
+  { title: 'Demo Your Ideas Fast', description: 'Turn songwriting ideas into full demos without hiring a producer. Sing over AI-generated beats and share with collaborators instantly.' },
+  { title: 'Stem Export for Mixing', description: 'Export individual instrument stems to adjust levels, remove conflicting frequencies, or create the perfect vocal mix in your DAW.' },
+  { title: 'Full Commercial Rights', description: 'Release covers, originals, and performances using Sonura instrumentals. Full commercial rights on all tiers, no royalties owed.' },
+  { title: 'Vocal Warm-Up Tracks', description: 'Generate simple chord progressions and loops for vocal warm-ups, practice sessions, and scale exercises. Customize key and tempo to your range.' },
+];
+
+const examples = [
+  { prompt: 'r&b instrumental smooth 90 bpm female vocal key', description: 'Smooth R&B backing track perfect for vocal recording sessions. Clean, spacious mix with room for vocals.' },
+  { prompt: 'pop acoustic guitar backing track 120 bpm major key upbeat', description: 'Bright acoustic pop instrumental for singer-songwriter demos. Open arrangement leaves space for vocals.' },
+  { prompt: 'jazz piano trio backing track swing 130 bpm', description: 'Classic jazz trio feel for vocal jazz practice. Piano, bass, and drums with standard swing feel.' },
+  { prompt: 'soul gospel choir backing track powerful 100 bpm', description: 'Powerful soul-gospel instrumental for vocalists who want to belt. Rich harmonies and driving rhythm section.' },
+  { prompt: 'lo-fi chill vocal beat 85 bpm minor key atmospheric', description: 'Atmospheric lo-fi beat designed for intimate vocal performances. Warm textures with space for layered vocals.' },
+  { prompt: 'rock power ballad instrumental emotional 70 bpm', description: 'Emotional rock ballad backing track building from quiet verse to powerful chorus. Perfect for dynamic vocal performances.' },
+];
+
+const faqs = [
+  { question: 'Can I release songs using Sonura backing tracks?', answer: 'Yes! All Sonura instrumentals come with full commercial rights. Release on Spotify, Apple Music, YouTube, or any platform. No royalties, no attribution required.' },
+  { question: 'Can I specify the key for my vocal range?', answer: 'Yes, describe the key, mood, and tempo in your prompt. Sonura understands music terminology and will generate instrumentals that fit your vocal range.' },
+  { question: 'Is this good for vocal practice?', answer: 'Absolutely. Generate backing tracks in any genre, key, and tempo for warm-ups, scale practice, and performance rehearsal. Create unlimited variations to keep practice fresh.' },
+  { question: 'How do I get instrumentals without competing frequencies?', answer: 'Use stem export to isolate instruments, then adjust levels in your DAW. Remove or lower mid-range elements that compete with your vocal frequency range.' },
+  { question: 'Can I use this for live performances?', answer: 'Yes! Generate backing tracks, export high-quality WAV files, and use them for live shows, open mics, and performances. Full commercial rights included.' },
+  { question: 'Is this better than hiring a producer for demos?', answer: 'For quick demos and initial ideas, Sonura is faster and more affordable. Generate ideas in seconds, then work with a producer to refine the ones that stick.' },
+  { question: 'What genres work best for vocal backing tracks?', answer: 'All genres work well. Pop, R&B, soul, jazz, rock, country, lo-fi, gospel, and more. Describe the style and Sonura delivers genre-accurate instrumentals.' },
+];
+
+const trustItems = ['Full commercial rights', 'Any key and tempo', 'Stem export included'];
+---
+
+<UseCaseLayout
+  useCase="Vocalists"
+  useCaseSlug="vocalists"
+  title="AI Backing Tracks for Vocalists | Instant Instrumentals - Sonura"
+  description="Create custom backing tracks and instrumentals for vocal practice, demos, and performances. Any genre, key, and tempo in seconds. Full commercial rights included."
+  keywords="backing tracks for singers, ai instrumentals for vocalists, vocal backing tracks, ai music for vocalists, karaoke track generator, instrumental generator, singer backing track maker, vocal practice tracks"
+  headline="AI Backing Tracks for Vocalists"
+  subhead="Generate custom instrumentals in any genre, key, and tempo in seconds. Practice, demo, perform, and release with studio-quality backing tracks."
+  ctaText="Create Backing Tracks"
+  problemTitle="The Vocalist's Problem"
+  problemDescription="Finding the right backing track is a nightmare. Karaoke tracks sound cheap. Hiring producers is expensive and slow. Generic instrumentals don't match your key or style. You spend more time searching for music than actually singing."
+  solutionTitle="The Sonura Solution"
+  solutionDescription="Describe the backing track you need - genre, key, tempo, mood - and get a custom instrumental in under 10 seconds. Export stems to mix around your vocals. Full commercial rights to release anywhere. Practice, perform, and record with tracks built for your voice."
+  benefits={benefits}
+  examplesTitle="Prompts for Vocalists"
+  examples={examples}
+  faqs={faqs}
+  trustItems={trustItems}
+  finalCtaTitle="Start Creating Backing Tracks"
+  finalCtaButtonText="Try Free"
+/>

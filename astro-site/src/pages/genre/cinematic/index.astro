@@ -1,0 +1,68 @@
+---
+import GenreLayout from '../../../layouts/GenreLayout.astro';
+
+const workflowItems = [
+  {
+    image: '/images/design.jpg',
+    imageAlt: 'Design cinematic music in Sonura',
+    title: 'Describe your cinematic sound',
+    description: 'Type what you want: "epic cinematic orchestra trailer 100 bpm" or "dark suspense tension strings". Sonura understands cinematic scoring terminology and creates film-ready compositions.'
+  },
+  {
+    image: '/images/compose.jpg',
+    imageAlt: 'Generate cinematic music instantly',
+    title: 'Instant generation',
+    description: 'Get cinematic music in under 10 seconds. Orchestral hits, string arrangements, atmospheric textures, and dramatic builds. Score-ready production quality.'
+  },
+  {
+    image: '/images/share.jpg',
+    imageAlt: 'Export cinematic stems',
+    title: 'Export stems & score',
+    description: 'Download individual stems (strings, brass, percussion, pads) and arrange in your DAW. Layer with live instruments, sync to picture, release commercially.'
+  }
+];
+
+const faqs = [
+  {
+    question: 'What is cinematic music?',
+    answer: 'Cinematic music encompasses orchestral scores, trailer music, atmospheric underscore, and dramatic compositions used in film, TV, ads, and games. Features include large orchestral arrangements, percussion builds, emotional string lines, and atmospheric textures.'
+  },
+  {
+    question: 'How do I make cinematic music with Sonura?',
+    answer: 'Describe the mood and style: "epic trailer orchestral 90 bpm brass" or "quiet emotional piano score intimate". Sonura generates cinematic compositions matching your exact brief in seconds.'
+  },
+  {
+    question: 'Can I use this for film and video scoring?',
+    answer: 'Yes! Full commercial rights for film, TV, ads, trailers, documentaries, and any visual media. No sync licensing fees, no clearance needed. Use directly in your projects.'
+  },
+  {
+    question: 'Is this good for trailer music?',
+    answer: 'Absolutely! Generate epic builds, percussive hits, tension cues, and dramatic reveals. Perfect for trailers, teasers, and promotional content. Export stems for precise editing to picture.'
+  },
+  {
+    question: 'Can I layer AI-generated stems with live orchestra?',
+    answer: 'Yes! Export individual stems and layer with live recordings, virtual instruments, or sample libraries. Many composers use AI-generated layers as a foundation and add live elements on top.'
+  },
+  {
+    question: 'What styles of cinematic music can Sonura make?',
+    answer: 'Epic orchestral, dark suspense, emotional drama, action, sci-fi, fantasy, documentary, horror, romantic, minimalist, and hybrid electronic-orchestral. Describe any cinematic style and Sonura delivers.'
+  }
+];
+---
+
+<GenreLayout
+  genre="Cinematic"
+  genreSlug="cinematic"
+  title="Free Cinematic Music Maker | AI Film Score Generator - Sonura"
+  description="Create cinematic music and film scores in seconds with AI. Generate orchestral cues, trailer music, and atmospheric underscore. Free cinematic music maker."
+  keywords="cinematic music maker, film score generator, ai cinematic music, trailer music maker, orchestral music generator, film music ai, cinematic score maker, epic music generator, soundtrack maker"
+  headline="Free Cinematic Music Maker"
+  subhead="Create epic orchestral scores, atmospheric underscore, and trailer music. AI-powered cinematic music generator for filmmakers, composers, and content creators."
+  ctaText="Create Cinematic Music"
+  workflowTitle="How to make cinematic music with AI"
+  workflowItems={workflowItems}
+  faqs={faqs}
+  finalCtaTitle="Start creating cinematic music now"
+  finalCtaButtonText="Create Cinematic Music Free"
+  trustItems={['Orchestral quality', 'Export stems', 'Full sync rights']}
+/>

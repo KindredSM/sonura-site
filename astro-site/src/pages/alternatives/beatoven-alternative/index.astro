@@ -1,0 +1,82 @@
+---
+import AlternativeLayout from '../../../layouts/AlternativeLayout.astro';
+
+const quickStats = [
+  { value: '<10s', label: 'Generation Speed vs Minutes' },
+  { value: 'Full', label: 'Stem Export on All Tiers' },
+  { value: '100%', label: 'Commercial Rights Included' },
+];
+
+const comparisons = [
+  { feature: 'Generation Speed', sonura: 'Under 10 seconds', competitor: '1-3 minutes', competitorHighlight: false },
+  { feature: 'Music Types', sonura: 'Beats, loops, vocals, FX, one-shots', competitor: 'Background music tracks', competitorHighlight: false },
+  { feature: 'Stem Export', sonura: 'Yes, all tiers including free', competitor: 'Paid plans only', competitorHighlight: false },
+  { feature: 'Genre Range', sonura: 'All genres (trap, hip-hop, EDM, etc.)', competitor: 'Mostly ambient/corporate', competitorHighlight: false },
+  { feature: 'Commercial Rights (Free)', sonura: 'Yes, full rights', competitor: 'Limited', competitorHighlight: false },
+  { feature: 'One-Shots & Samples', sonura: 'Yes, on-demand generation', competitor: 'No', competitorHighlight: false },
+  { feature: 'AI Vocals', sonura: 'Yes, vocal chops and samples', competitor: 'No', competitorHighlight: false },
+  { feature: 'Video Scoring Focus', sonura: 'Yes, plus beats and production', sonuraHighlight: true, competitor: 'Yes, primary focus', competitorHighlight: true },
+  { feature: 'Mood/Scene Control', sonura: 'Text prompt based', competitor: 'Scene-based timeline', competitorHighlight: true },
+];
+
+const advantages = [
+  { title: 'Faster Generation', description: 'Sonura generates music in under 10 seconds. Beatoven.ai takes 1-3 minutes per generation. When deadlines are tight, speed matters.' },
+  { title: 'More Than Background Music', description: 'Beatoven focuses on background music for videos. Sonura generates beats, loops, vocals, one-shots, and full tracks. A complete music creation toolkit, not just underscore.' },
+  { title: 'Stem Export on Free Tier', description: 'Sonura includes stem export on all tiers including free. Export drums, bass, melody, and vocals separately. Beatoven locks this behind paid plans.' },
+  { title: 'Genre Diversity', description: 'Beatoven focuses on corporate, ambient, and cinematic styles. Sonura covers every genre - trap, hip-hop, EDM, rock, jazz, lo-fi, drill, and more. No genre limits.' },
+  { title: 'AI Vocals & One-Shots', description: 'Generate vocal chops, ad-libs, and one-shot samples on-demand. Beatoven only generates instrumental tracks. Sonura gives you a full production toolkit.' },
+  { title: 'Producer-Grade Output', description: 'Sonura is built for music producers who need mix-ready output. Beats with proper 808s, genre-accurate drums, and professional arrangements. Not just background filler.' },
+];
+
+const sonuraUseCases = [
+  { text: 'Need beats, loops, and samples for music production' },
+  { text: 'Want stem export on all tiers including free' },
+  { text: 'Need fast generation (under 10 seconds)' },
+  { text: 'Work across multiple genres (trap, hip-hop, EDM, etc.)' },
+  { text: 'Want AI vocals, one-shots, and sound effects' },
+  { text: 'Need commercial rights on the free tier' },
+];
+
+const competitorUseCases = [
+  { text: 'Only need background music for video content' },
+  { text: 'Prefer scene-based timeline editing' },
+  { text: 'Primarily work with corporate and ambient styles' },
+  { text: 'Want mood-based automatic scoring' },
+  { text: 'Need basic background tracks for presentations' },
+];
+
+const testimonials = [
+  { quote: 'Switched from Beatoven to Sonura when I realized I needed actual beats, not just background music. The speed and quality difference is massive.', author: 'Music producer' },
+  { quote: 'Beatoven was fine for corporate videos, but Sonura handles everything - from trap beats to cinematic scores. Way more versatile.', author: 'Content creator' },
+  { quote: 'The stem export on the free tier sealed it for me. I can actually mix the AI-generated music properly in my DAW.', author: 'Independent artist' },
+];
+
+const faqs = [
+  { question: 'Is Sonura better than Beatoven.ai?', answer: 'For music production, beats, and diverse genre needs - yes. Sonura is faster (under 10 seconds vs minutes), supports more music types (beats, loops, vocals, one-shots), and includes stem export on all tiers. Beatoven is focused on background music for videos.' },
+  { question: 'Can I switch from Beatoven to Sonura?', answer: 'Yes! If you need more than background music - beats, loops, vocals, samples - Sonura is the upgrade. Free to start with full commercial rights.' },
+  { question: 'Does Sonura work for video scoring like Beatoven?', answer: 'Yes! Generate background music, cinematic scores, transitions, and sound effects for video projects. Plus get beats, loops, and vocals that Beatoven cannot create.' },
+  { question: 'How does pricing compare?', answer: 'Sonura starts at $9.99/month with a generous free tier. Both offer commercial rights on paid plans, but Sonura includes full commercial rights and stem export even on the free tier.' },
+  { question: 'Can I use both Beatoven and Sonura?', answer: 'Yes! Use Beatoven for scene-based video scoring and Sonura for everything else - beats, production, samples, and vocals. Many creators use both tools.' },
+];
+---
+
+<AlternativeLayout
+  competitor="Beatoven.ai"
+  competitorSlug="beatoven-alternative"
+  title="Best Beatoven.ai Alternative 2025 | AI Music Generator - Sonura"
+  description="Looking for a Beatoven.ai alternative? Sonura generates beats, loops, vocals, and full tracks in under 10 seconds. Compare features, pricing, and capabilities."
+  keywords="beatoven alternative, beatoven.ai alternative, beatoven vs sonura, ai music generator, beatoven competitor, background music generator alternative"
+  headline="Best Beatoven.ai Alternative 2025"
+  subhead="Need more than background music? Sonura generates beats, loops, vocals, one-shots, and full tracks in under 10 seconds. Stem export on all tiers. Full commercial rights."
+  quickStats={quickStats}
+  comparisons={comparisons}
+  advantages={advantages}
+  sonuraUseCases={sonuraUseCases}
+  competitorUseCases={competitorUseCases}
+  testimonials={testimonials}
+  faqs={faqs}
+  finalCtaTitle="Try the Best Beatoven Alternative"
+  finalCtaSubtitle="Faster generation, more music types, stem export on all tiers. Free to start."
+  finalCtaButtonText="Start Creating Free"
+  finalCtaFooter="No credit card required • Full commercial rights • Stem export included"
+/>

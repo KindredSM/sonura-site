@@ -1,0 +1,68 @@
+---
+import GenreLayout from '../../../layouts/GenreLayout.astro';
+
+const workflowItems = [
+  {
+    image: '/images/design.jpg',
+    imageAlt: 'Design R&B beats in Sonura',
+    title: 'Describe your R&B beat',
+    description: 'Type what you want: "smooth r&b 90 bpm neo soul rhodes" or "modern r&b with 808s and atmospheric pads". Sonura understands R&B production styles from classic to contemporary.'
+  },
+  {
+    image: '/images/compose.jpg',
+    imageAlt: 'Generate R&B beats instantly',
+    title: 'Instant generation',
+    description: 'Get your R&B beat in under 10 seconds. Warm keys, smooth basslines, crisp drums, and lush harmonies. Studio-quality production ready for vocals.'
+  },
+  {
+    image: '/images/share.jpg',
+    imageAlt: 'Export R&B beat stems',
+    title: 'Export stems & release',
+    description: 'Download individual stems (keys, bass, drums, pads) or the full mix. Record vocals, mix in your DAW, release on Spotify. 100% royalty-free.'
+  }
+];
+
+const faqs = [
+  {
+    question: 'What makes a good R&B beat?',
+    answer: 'R&B beats feature smooth chord progressions, warm keys (Rhodes, Wurlitzer), deep basslines, crisp snares, and lush pads. Tempo typically ranges from 65-100 BPM. Modern R&B blends with trap, lo-fi, and alternative elements.'
+  },
+  {
+    question: 'How do I make R&B beats with Sonura?',
+    answer: 'Describe your R&B beat: "smooth r&b 90 bpm neo soul" or "dark r&b 75 bpm with 808s". Sonura generates complete R&B instrumentals with proper chord voicings, groove, and texture in seconds.'
+  },
+  {
+    question: 'Can I use these R&B beats commercially?',
+    answer: 'Yes! Full commercial rights on all tiers. Release on Spotify, sell as type beats, use for artist demos, or license to other creators. No royalties, no attribution required.'
+  },
+  {
+    question: 'What BPM should R&B beats be?',
+    answer: 'Classic R&B ranges from 65-90 BPM. Modern R&B and PBR&B can go up to 100+ BPM. Slow jams sit around 60-75 BPM. Specify your preferred tempo in the prompt.'
+  },
+  {
+    question: 'Can Sonura make neo-soul beats?',
+    answer: 'Yes! Describe "neo soul rhodes warm chords 85 bpm" and Sonura generates beats with characteristic Rhodes piano, jazzy chord progressions, and organic drum patterns.'
+  },
+  {
+    question: 'Can I export stems for vocal mixing?',
+    answer: 'Yes! Export individual stems to create space for vocals. Lower the keys during verses, remove bass during harmonies, or isolate drums for breakdown sections.'
+  }
+];
+---
+
+<GenreLayout
+  genre="R&B"
+  genreSlug="rnb"
+  title="Free R&B Beat Maker | AI R&B Music Generator - Sonura"
+  description="Create smooth R&B beats in seconds with AI. Make neo-soul, PBR&B, and modern R&B instrumentals instantly. Free R&B beat maker with full commercial rights."
+  keywords="r&b beat maker, rnb beat generator, ai r&b beats, free r&b beats, neo soul beat maker, r&b music generator, smooth beats, r&b instrumental maker, rnb type beat maker"
+  headline="Free R&B Beat Maker"
+  subhead="Create smooth R&B beats with warm keys, deep bass, and lush harmonies. AI-powered R&B music maker for producers, artists, and songwriters."
+  ctaText="Create R&B Beats"
+  workflowTitle="How to make R&B beats with AI"
+  workflowItems={workflowItems}
+  faqs={faqs}
+  finalCtaTitle="Start making R&B beats now"
+  finalCtaButtonText="Create R&B Beats Free"
+  trustItems={['Smooth production', 'Export stems', 'Commercial use']}
+/>

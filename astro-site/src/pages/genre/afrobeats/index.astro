@@ -1,0 +1,68 @@
+---
+import GenreLayout from '../../../layouts/GenreLayout.astro';
+
+const workflowItems = [
+  {
+    image: '/images/design.jpg',
+    imageAlt: 'Design Afrobeats in Sonura',
+    title: 'Describe your Afrobeats sound',
+    description: 'Type what you want: "afrobeats 105 bpm danceable log drums" or "amapiano deep bass shaker 110 bpm". Sonura understands Afrobeats, Afropop, and Amapiano production styles.'
+  },
+  {
+    image: '/images/compose.jpg',
+    imageAlt: 'Generate Afrobeats instantly',
+    title: 'Instant generation',
+    description: 'Get your Afrobeats instrumental in under 10 seconds. Authentic percussion, infectious grooves, melodic hooks, and danceable rhythms. Radio-ready quality.'
+  },
+  {
+    image: '/images/share.jpg',
+    imageAlt: 'Export Afrobeats stems',
+    title: 'Export stems & release',
+    description: 'Download individual stems (percussion, bass, melody, pads) or the full mix. Record vocals, release worldwide, or sell beats. 100% royalty-free.'
+  }
+];
+
+const faqs = [
+  {
+    question: 'What is Afrobeats?',
+    answer: 'Afrobeats is a genre originating from West Africa, characterized by complex percussion patterns, log drums, infectious melodies, and danceable grooves. It blends elements of highlife, juju, and modern pop. Tempo typically ranges from 100-120 BPM. Related styles include Amapiano, Afropop, and Afro-fusion.'
+  },
+  {
+    question: 'How do I make Afrobeats with Sonura?',
+    answer: 'Describe your beat: "afrobeats 108 bpm danceable percussion" or "amapiano log drums deep bass 112 bpm". Sonura generates authentic Afrobeats instrumentals with proper percussion patterns, basslines, and melodic hooks.'
+  },
+  {
+    question: 'Can I sell Afrobeats made with Sonura?',
+    answer: 'Yes! Full commercial rights on all tiers. Sell beats, release on streaming platforms, license for sync, or use in content creation. No royalties owed, no attribution required.'
+  },
+  {
+    question: 'What BPM is Afrobeats?',
+    answer: 'Afrobeats typically ranges from 100-120 BPM. Amapiano sits around 110-115 BPM. Afropop can be slightly faster at 110-125 BPM. Specify your preferred tempo in the prompt.'
+  },
+  {
+    question: 'Can Sonura make Amapiano beats?',
+    answer: 'Yes! Describe "amapiano log drums deep bass shaker 112 bpm" for authentic Amapiano production with characteristic log drum patterns, deep basslines, and rhythmic shakers.'
+  },
+  {
+    question: 'Can I export stems from Afrobeats instrumentals?',
+    answer: 'Yes! Export percussion, bass, melody, and pads separately. Perfect for mixing with vocals, rearranging sections, or layering additional instrumentation in your DAW.'
+  }
+];
+---
+
+<GenreLayout
+  genre="Afrobeats"
+  genreSlug="afrobeats"
+  title="Free Afrobeats Maker | AI Afrobeats Generator - Sonura"
+  description="Create Afrobeats and Amapiano instrumentals in seconds with AI. Generate authentic percussion, log drums, and danceable grooves. Free Afrobeats beat maker."
+  keywords="afrobeats beat maker, afrobeats generator, ai afrobeats, free afrobeats beats, amapiano beat maker, afropop beat maker, afrobeats music generator, afrobeats instrumental maker"
+  headline="Free Afrobeats Beat Maker"
+  subhead="Create authentic Afrobeats and Amapiano instrumentals with infectious percussion, log drums, and danceable grooves. AI-powered beat maker for the global sound."
+  ctaText="Create Afrobeats"
+  workflowTitle="How to make Afrobeats with AI"
+  workflowItems={workflowItems}
+  faqs={faqs}
+  finalCtaTitle="Start making Afrobeats now"
+  finalCtaButtonText="Create Afrobeats Free"
+  trustItems={['Authentic rhythms', 'Export stems', 'Commercial use']}
+/>

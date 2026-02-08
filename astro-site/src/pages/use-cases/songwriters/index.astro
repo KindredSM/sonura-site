@@ -1,0 +1,55 @@
+---
+import UseCaseLayout from '../../../layouts/UseCaseLayout.astro';
+
+const benefits = [
+  { title: 'Beat Writer\'s Block', description: 'Generate fresh instrumentals and chord progressions in seconds. When lyrics stall, new music sparks new ideas. Iterate until something clicks.' },
+  { title: 'Demo Without a Producer', description: 'Turn melodies and lyrics into full demo recordings. Sing or rap over AI-generated beats and share polished demos with labels, collaborators, or publishers.' },
+  { title: 'Explore Any Genre', description: 'Write across pop, R&B, country, rock, hip-hop, and more without needing genre-specific production skills. Sonura handles the instrumental, you handle the writing.' },
+  { title: 'Stem Export for Arrangement', description: 'Export individual stems to rearrange, extend, or strip down sections. Build verse, chorus, and bridge arrangements in your DAW.' },
+  { title: 'Full Ownership', description: '100% royalty-free with full commercial rights. Pitch songs to artists, publish with PROs, or release yourself. No splits, no royalties owed on the instrumental.' },
+  { title: 'Rapid Iteration', description: 'Generate 10 different beats in under 2 minutes. Try your lyrics over trap, pop, lo-fi, and R&B until you find the perfect match. Speed up the creative process.' },
+];
+
+const examples = [
+  { prompt: 'pop ballad piano 72 bpm emotional verse chorus structure', description: 'Classic pop ballad structure with piano-driven arrangement. Space for verse melodies and big chorus hooks.' },
+  { prompt: 'country acoustic guitar 110 bpm storytelling folk', description: 'Warm acoustic country instrumental for narrative songwriting. Authentic feel with room for vocal storytelling.' },
+  { prompt: 'r&b smooth 95 bpm rhodes keys neo soul', description: 'Neo-soul R&B with warm Rhodes keys. Perfect foundation for melodic songwriting and vocal runs.' },
+  { prompt: 'hip hop boom bap 90 bpm sample chops old school', description: 'Classic boom-bap production for rap songwriting. Chopped samples and boom-bap drums for lyric-focused writing.' },
+  { prompt: 'indie rock dreamy guitars 128 bpm reverb', description: 'Dreamy indie rock with reverb-soaked guitars. Great for alternative and indie songwriting sessions.' },
+  { prompt: 'trap melodic 140 bpm dark minor key atmospheric', description: 'Atmospheric melodic trap for modern hip-hop songwriting. Dark textures with space for melodic rap and singing.' },
+];
+
+const faqs = [
+  { question: 'Can I pitch songs written over Sonura beats?', answer: 'Yes! You own full commercial rights to all generated music. Pitch to artists, labels, publishers, or sync libraries. No royalties or splits owed on the instrumental.' },
+  { question: 'Is this good for co-writing sessions?', answer: 'Perfect for co-writes. Generate beats in real-time during sessions. Try different genres and tempos until the room agrees. No waiting for producers to send beats.' },
+  { question: 'Can I register songs with a PRO?', answer: 'Yes. You own 100% of the instrumental. Register compositions with your PRO (ASCAP, BMI, SESAC) and collect full publishing royalties.' },
+  { question: 'How do I demo a song with Sonura?', answer: 'Generate an instrumental that fits your song idea, export it, record vocals over it in your DAW or phone, and share the demo. The whole process takes minutes, not weeks.' },
+  { question: 'Can I modify the arrangement?', answer: 'Yes! Export stems and rearrange in your DAW. Remove instruments for verses, add layers for choruses, extend or shorten sections. Full production control.' },
+  { question: 'Is this useful for toplining?', answer: 'Absolutely. Generate instrumentals in any genre, then write melodies and lyrics on top. Perfect for topline writers who need fresh beats constantly.' },
+  { question: 'What if I want to replace the AI beat later?', answer: 'Many songwriters use Sonura for demos, then hire producers for the final version. The demo captures the song idea, and you can re-produce with live instruments later.' },
+];
+
+const trustItems = ['Full publishing rights', 'Any genre instantly', 'Demo-ready in minutes'];
+---
+
+<UseCaseLayout
+  useCase="Songwriters"
+  useCaseSlug="songwriters"
+  title="AI Music for Songwriters | Beat Writer's Block Instantly - Sonura"
+  description="Generate custom instrumentals for songwriting sessions, demos, and toplines. Beat writer's block with AI-created beats in any genre. Full commercial and publishing rights."
+  keywords="ai for songwriters, songwriting tools, beat writers block, demo instrumentals, ai beat maker for songwriters, topline beats, songwriting beats, songwriting instrumentals, ai songwriting"
+  headline="AI-Powered Songwriting Tools"
+  subhead="Generate custom instrumentals for writing sessions, demos, and toplines in seconds. Beat writer's block with fresh beats in any genre. Full publishing rights included."
+  ctaText="Start Writing Songs"
+  problemTitle="The Songwriting Problem"
+  problemDescription="Writer's block kills momentum. Waiting days for producer beats slows down your output. Buying beats gets expensive, and you're stuck with whatever's available. You need fresh instrumentals on-demand to keep the creative flow going."
+  solutionTitle="The Sonura Solution"
+  solutionDescription="Generate instrumentals in any genre in under 10 seconds. Try your lyrics over different beats until something clicks. Demo songs in minutes, not weeks. Full commercial and publishing rights - pitch to anyone, release anywhere."
+  benefits={benefits}
+  examplesTitle="Prompts for Songwriting Sessions"
+  examples={examples}
+  faqs={faqs}
+  trustItems={trustItems}
+  finalCtaTitle="Start Writing Over AI Beats"
+  finalCtaButtonText="Try Free"
+/>

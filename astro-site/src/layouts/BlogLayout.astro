@@ -97,10 +97,27 @@ const formattedDate = new Date(publishedDate).toLocaleDateString('en-US', {
       <slot />
 
       <footer style="margin-top: 64px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.1);">
+        <div style="margin-bottom: 32px;">
+          <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px;">Explore Sonura</h3>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <a href="/features/ai-beats/" style="padding: 6px 14px; background: rgba(255,255,255,0.05); border-radius: 20px; color: var(--muted); text-decoration: none; font-size: 13px;">AI Beats</a>
+            <a href="/features/ai-loops/" style="padding: 6px 14px; background: rgba(255,255,255,0.05); border-radius: 20px; color: var(--muted); text-decoration: none; font-size: 13px;">AI Loops</a>
+            <a href="/features/ai-vocals/" style="padding: 6px 14px; background: rgba(255,255,255,0.05); border-radius: 20px; color: var(--muted); text-decoration: none; font-size: 13px;">AI Vocals</a>
+            <a href="/features/stem-export/" style="padding: 6px 14px; background: rgba(255,255,255,0.05); border-radius: 20px; color: var(--muted); text-decoration: none; font-size: 13px;">Stem Export</a>
+            <a href="/use-cases/vocalists/" style="padding: 6px 14px; background: rgba(255,255,255,0.05); border-radius: 20px; color: var(--muted); text-decoration: none; font-size: 13px;">For Vocalists</a>
+            <a href="/use-cases/songwriters/" style="padding: 6px 14px; background: rgba(255,255,255,0.05); border-radius: 20px; color: var(--muted); text-decoration: none; font-size: 13px;">For Songwriters</a>
+            <a href="/use-cases/video-editors/" style="padding: 6px 14px; background: rgba(255,255,255,0.05); border-radius: 20px; color: var(--muted); text-decoration: none; font-size: 13px;">For Video Editors</a>
+            <a href="/use-cases/composers/" style="padding: 6px 14px; background: rgba(255,255,255,0.05); border-radius: 20px; color: var(--muted); text-decoration: none; font-size: 13px;">For Composers</a>
+            <a href="/genre/trap/" style="padding: 6px 14px; background: rgba(255,255,255,0.05); border-radius: 20px; color: var(--muted); text-decoration: none; font-size: 13px;">Trap Beats</a>
+            <a href="/genre/lofi/" style="padding: 6px 14px; background: rgba(255,255,255,0.05); border-radius: 20px; color: var(--muted); text-decoration: none; font-size: 13px;">Lo-Fi Beats</a>
+            <a href="/genre/rnb/" style="padding: 6px 14px; background: rgba(255,255,255,0.05); border-radius: 20px; color: var(--muted); text-decoration: none; font-size: 13px;">R&B Beats</a>
+            <a href="/tools/bpm-tap/" style="padding: 6px 14px; background: rgba(255,255,255,0.05); border-radius: 20px; color: var(--muted); text-decoration: none; font-size: 13px;">BPM Tap Tool</a>
+            <a href="/tools/key-finder/" style="padding: 6px 14px; background: rgba(255,255,255,0.05); border-radius: 20px; color: var(--muted); text-decoration: none; font-size: 13px;">Key Finder</a>
+            <a href="/pricing/" style="padding: 6px 14px; background: rgba(255,255,255,0.05); border-radius: 20px; color: var(--muted); text-decoration: none; font-size: 13px;">Pricing</a>
+          </div>
+        </div>
         <p style="color: var(--muted); font-size: 14px;">
-          <a href="/" style="color: var(--primary); text-decoration: none;">← Back to home</a> | 
-          <a href="/genre/trap/" style="color: var(--primary); text-decoration: none;">Try trap beats</a> |
-          <a href="/genre/lofi/" style="color: var(--primary); text-decoration: none;">Try lo-fi beats</a>
+          <a href="/blog/" style="color: var(--primary); text-decoration: none;">← All blog posts</a>
         </p>
       </footer>
     </article>

@@ -1,0 +1,55 @@
+---
+import UseCaseLayout from '../../../layouts/UseCaseLayout.astro';
+
+const benefits = [
+  { title: 'No Copyright Strikes', description: 'Every track is 100% royalty-free. No Content ID matches, no DMCA takedowns, no demonetization. Your edits stay online and monetized.' },
+  { title: 'Music That Fits the Cut', description: 'Describe the mood, energy, and tempo you need. Get music that matches your edit perfectly instead of forcing your edit to fit generic library tracks.' },
+  { title: 'Instant Turnaround', description: 'Generate background music in under 10 seconds. No more spending hours browsing music libraries. Hit a deadline with custom music on demand.' },
+  { title: 'Transitions and SFX', description: 'Generate risers, drops, whooshes, impacts, and stingers for transitions. Add professional audio polish to cuts without buying sound effect packs.' },
+  { title: 'Consistent Style Across Projects', description: 'Generate music in the same style for a series or brand. Maintain audio consistency across episodes, campaigns, and content series.' },
+  { title: 'Stem Export for Precise Editing', description: 'Export individual stems to duck music under dialogue, remove drums during quiet moments, or isolate melody for emotional beats. Full mixing control.' },
+];
+
+const examples = [
+  { prompt: 'corporate upbeat background music 120 bpm positive', description: 'Clean, professional background music for corporate videos, product demos, and explainer content.' },
+  { prompt: 'cinematic trailer epic build tension 90 bpm', description: 'Dramatic cinematic music that builds tension. Perfect for trailers, teasers, and video intros.' },
+  { prompt: 'vlog casual acoustic happy 110 bpm', description: 'Light, casual acoustic music for vlogs, lifestyle content, and day-in-the-life videos.' },
+  { prompt: 'dark moody electronic 100 bpm documentary', description: 'Atmospheric electronic music for documentaries, true crime content, and investigative pieces.' },
+  { prompt: 'high energy edm workout sports 140 bpm', description: 'Pumping EDM for sports highlights, workout videos, and action-packed edits.' },
+  { prompt: 'riser transition whoosh impact cinematic', description: 'Transition sound effects - risers, whooshes, and impacts. Polish your cuts with professional audio transitions.' },
+];
+
+const faqs = [
+  { question: 'Will clients get copyright claims on videos I edit?', answer: 'No. All Sonura music is royalty-free with full commercial rights. Use in client work, branded content, ads, and social media. Zero copyright risk.' },
+  { question: 'Can I use this for client work and commercial projects?', answer: 'Yes! Full commercial rights on all tiers. Use in brand videos, ads, corporate content, wedding videos, real estate tours, and any commercial project.' },
+  { question: 'How do I match music to my edit?', answer: 'Describe the mood, energy level, genre, and BPM you need. For example: "upbeat corporate 120 bpm positive" or "dark cinematic tension 80 bpm". The AI generates music that fits.' },
+  { question: 'Can I generate transition sounds and SFX?', answer: 'Yes! Generate risers, drops, whooshes, impacts, stingers, and atmospheric textures. Perfect for adding professional polish to cuts and transitions.' },
+  { question: 'Is this better than stock music libraries?', answer: 'For many editors, yes. Libraries require browsing, licensing fees, and often result in generic-sounding edits. Sonura generates unique music instantly that matches your specific needs.' },
+  { question: 'What video editing software does this work with?', answer: 'Export WAV or MP3 files and import into any NLE - Premiere Pro, Final Cut Pro, DaVinci Resolve, After Effects, CapCut, or any editor that supports audio import.' },
+  { question: 'Can I adjust the music length to match my edit?', answer: 'Generate tracks and trim in your editor, use loops for seamless extension, or export stems to arrange sections. Full control over timing and structure.' },
+];
+
+const trustItems = ['Zero copyright risk', 'Full commercial rights', 'Works with any NLE'];
+---
+
+<UseCaseLayout
+  useCase="Video Editors"
+  useCaseSlug="video-editors"
+  title="Royalty-Free Music for Video Editors | AI Background Music - Sonura"
+  description="Generate royalty-free background music for video editing in seconds. No copyright claims, works with Premiere Pro, Final Cut, DaVinci Resolve. Full commercial rights."
+  keywords="music for video editing, royalty free music video editors, background music for edits, ai music for video, premiere pro music, final cut pro music, no copyright music video, video editor music generator"
+  headline="AI Music for Video Editors"
+  subhead="Generate royalty-free background music, transitions, and sound effects in seconds. No copyright claims, no licensing fees. Music that fits your edit, not the other way around."
+  ctaText="Generate Music for Edits"
+  problemTitle="The Video Editor's Problem"
+  problemDescription="Browsing stock music libraries takes hours. Licensing is confusing and expensive. Generic tracks make every video sound the same. Copyright claims can destroy a client's channel. You need unique, safe music that matches your edit - fast."
+  solutionTitle="The Sonura Solution"
+  solutionDescription="Describe the mood and energy of your edit, get custom music in under 10 seconds. Every track is unique and royalty-free. Export stems to mix around dialogue. Generate transitions and SFX for professional polish. Full commercial rights for any project."
+  benefits={benefits}
+  examplesTitle="Prompts for Video Editors"
+  examples={examples}
+  faqs={faqs}
+  trustItems={trustItems}
+  finalCtaTitle="Start Creating Music for Your Edits"
+  finalCtaButtonText="Try Free"
+/>

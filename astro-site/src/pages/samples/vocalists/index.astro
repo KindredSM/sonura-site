@@ -1,0 +1,60 @@
+---
+import UseCaseLayout from '../../../layouts/UseCaseLayout.astro';
+
+const benefits = [
+  { title: 'Custom Backing Tracks', description: 'Generate instrumental backing tracks tailored to your voice. Specify key, tempo, genre, and mood. No more settling for generic karaoke versions.' },
+  { title: 'Vocal Practice Loops', description: 'Create loopable chord progressions and instrumental sections for vocal warm-ups, scale practice, and technique work. Fresh material every session.' },
+  { title: 'Harmony References', description: 'Generate instrumental harmonic beds to practice harmonizing over. Hear the chords clearly, find your part, and build confidence with complex harmony.' },
+  { title: 'Demo-Ready Instrumentals', description: 'Record demos over AI-generated beats without waiting for a producer. Share polished demos with labels, managers, and collaborators in minutes.' },
+  { title: 'Any Genre, Any Key', description: 'Pop, R&B, soul, jazz, rock, country, gospel - in any key. No transposing, no hunting for the right track. Get exactly what you need instantly.' },
+  { title: 'Stem Export for Vocal Mixing', description: 'Export stems to create space for your voice in the mix. Lower competing frequencies, duck instruments during phrases, build the perfect vocal arrangement.' },
+];
+
+const examples = [
+  { prompt: 'r&b backing track Bb major 88 bpm smooth', description: 'Smooth R&B instrumental in Bb major. Open mid-range for vocal presence with warm keys and bass.' },
+  { prompt: 'jazz standard backing piano trio A minor swing', description: 'Jazz trio feel for vocal jazz practice. Piano comping, walking bass, and brushes.' },
+  { prompt: 'pop vocal warm up chords C major simple 100 bpm', description: 'Simple pop chord progression for vocal warm-ups. Clean, uncluttered arrangement in an accessible key.' },
+  { prompt: 'gospel choir backing track powerful G major 95 bpm', description: 'Powerful gospel instrumental for vocalists who want to practice runs and belt notes.' },
+  { prompt: 'acoustic folk backing track fingerpicking D major 90 bpm', description: 'Gentle acoustic folk instrumental. Fingerpicked guitar with space for storytelling vocals.' },
+  { prompt: 'soul vocal sample chops female ad-libs', description: 'Soul-style vocal chops and ad-libs to layer with your own recordings.' },
+];
+
+const faqs = [
+  { question: 'Can I use these backing tracks for live performances?', answer: 'Yes! Full commercial rights. Export WAV files and use for live shows, open mics, concerts, and performances. No licensing fees.' },
+  { question: 'Can I specify the exact key I need?', answer: 'Yes! Include the key in your prompt (e.g., "Bb major" or "E minor"). Sonura generates in your specified key so it matches your vocal range perfectly.' },
+  { question: 'Are these good enough for recording demos?', answer: 'Yes! Studio-quality instrumentals ready for vocal recording. Many vocalists record demos directly over Sonura tracks and share with industry professionals.' },
+  { question: 'Can I get just chord progressions for practice?', answer: 'Yes! Ask for simple chord progressions or loopable harmonic patterns. Perfect for scale practice, improvisation, and vocal technique work.' },
+  { question: 'Can I generate vocal samples and chops?', answer: 'Yes! Sonura generates AI vocal chops, ad-libs, and samples. Layer them with your own vocals or use as production elements.' },
+  { question: 'What export formats are available?', answer: 'Export as high-quality WAV files. Individual stems available on all tiers including free. Compatible with all DAWs and recording setups.' },
+];
+
+const trustItems = ['Any key and genre', 'Full performance rights', 'Stem export included'];
+---
+
+<UseCaseLayout
+  useCase="AI Samples for Vocalists"
+  useCaseSlug="vocalists"
+  title="AI Backing Tracks & Samples for Vocalists | Practice & Demo - Sonura"
+  description="Generate custom backing tracks, vocal practice loops, and demo instrumentals for singers. Any genre, key, and tempo. Full commercial and performance rights."
+  keywords="backing tracks for singers, vocal backing tracks, ai backing tracks, singer practice tracks, demo instrumentals vocalists, karaoke track maker, vocal warmup tracks, ai instrumentals singers"
+  headline="AI Samples & Backing Tracks for Vocalists"
+  subhead="Custom backing tracks in any key, tempo, and genre. Practice, demo, and perform with instrumentals built for your voice."
+  ctaText="Create Backing Tracks"
+  problemTitle="The Vocalist's Problem"
+  problemDescription="Karaoke tracks sound cheap and are in the wrong key. Hiring accompanists is expensive. Finding the right backing track takes hours. You need custom instrumentals that match your voice, your style, and your songs - on demand."
+  solutionTitle="AI-Generated Backing Tracks"
+  solutionDescription="Describe what you need - genre, key, tempo, mood - and get a custom instrumental in seconds. Export stems to mix around your vocals. Generate practice loops, demo tracks, and performance-ready instrumentals instantly."
+  benefits={benefits}
+  examplesTitle="Sample Prompts for Vocalists"
+  examples={examples}
+  faqs={faqs}
+  trustItems={trustItems}
+  finalCtaTitle="Start Creating Vocal Backing Tracks"
+  finalCtaButtonText="Create Samples Free"
+/>
+
+<script>
+  document.querySelectorAll('a[href="https://app.sonurastudio.com"]').forEach(link => {
+    link.href = 'https://app.sonurastudio.com/samples';
+  });
+</script>

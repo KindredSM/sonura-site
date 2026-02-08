@@ -1,0 +1,68 @@
+---
+import GenreLayout from '../../../layouts/GenreLayout.astro';
+
+const workflowItems = [
+  {
+    image: '/images/design.jpg',
+    imageAlt: 'Design reggaeton beats in Sonura',
+    title: 'Describe your reggaeton beat',
+    description: 'Type what you want: "reggaeton dembow 95 bpm perreo" or "modern reggaeton latin trap 808s". Sonura understands reggaeton rhythms, dembow patterns, and Latin music production.'
+  },
+  {
+    image: '/images/compose.jpg',
+    imageAlt: 'Generate reggaeton beats instantly',
+    title: 'Instant generation',
+    description: 'Get your reggaeton beat in under 10 seconds. Authentic dembow drums, heavy 808s, Latin melodies, and danceable grooves. Radio-ready production quality.'
+  },
+  {
+    image: '/images/share.jpg',
+    imageAlt: 'Export reggaeton beat stems',
+    title: 'Export stems & release',
+    description: 'Download individual stems (drums, 808, melody, percussion) or the full mix. Record vocals, sell beats, release on Spotify. 100% royalty-free.'
+  }
+];
+
+const faqs = [
+  {
+    question: 'What is a reggaeton beat?',
+    answer: 'Reggaeton beats are built on the "dembow" rhythm pattern - a syncopated kick-snare pattern that drives the genre. Features include heavy 808 bass, Latin percussion, melodic hooks, and tempos around 85-100 BPM. Originated in Puerto Rico and now dominates global pop charts.'
+  },
+  {
+    question: 'How do I make reggaeton beats with Sonura?',
+    answer: 'Describe your beat: "reggaeton dembow 95 bpm" or "latin trap reggaeton dark 808s". Sonura generates authentic reggaeton beats with proper dembow patterns, 808 bass, and Latin-influenced melodies.'
+  },
+  {
+    question: 'Can I sell reggaeton beats made with Sonura?',
+    answer: 'Yes! Full commercial rights on all tiers. Sell on BeatStars, lease to artists, release on Spotify, or use for client work. No royalties, no attribution required.'
+  },
+  {
+    question: 'What BPM is reggaeton?',
+    answer: 'Traditional reggaeton is 85-100 BPM. Modern reggaeton and Latin trap often sits around 90-95 BPM. Perreo and old-school styles tend toward 95-100 BPM. Specify your tempo in the prompt.'
+  },
+  {
+    question: 'Can Sonura make Latin trap beats?',
+    answer: 'Yes! Latin trap blends reggaeton dembow rhythms with trap 808s and hi-hats. Describe "latin trap dark 140 bpm 808s" for trap-influenced Latin beats.'
+  },
+  {
+    question: 'Can I export stems from reggaeton beats?',
+    answer: 'Yes! Export drums, 808 bass, melody, and percussion separately. Mix in your DAW, record vocals with clean stems, or rearrange sections for your release.'
+  }
+];
+---
+
+<GenreLayout
+  genre="Reggaeton"
+  genreSlug="reggaeton"
+  title="Free Reggaeton Beat Maker | AI Reggaeton Generator - Sonura"
+  description="Create reggaeton beats with dembow rhythms in seconds. Make Latin trap, perreo, and modern reggaeton instrumentals with AI. Free reggaeton beat maker."
+  keywords="reggaeton beat maker, reggaeton beat generator, ai reggaeton beats, free reggaeton beats, dembow beat maker, latin trap beat maker, reggaeton music generator, perreo beat maker"
+  headline="Free Reggaeton Beat Maker"
+  subhead="Create authentic reggaeton beats with dembow rhythms, heavy 808s, and Latin melodies. AI-powered reggaeton generator for producers and artists."
+  ctaText="Create Reggaeton Beats"
+  workflowTitle="How to make reggaeton beats with AI"
+  workflowItems={workflowItems}
+  faqs={faqs}
+  finalCtaTitle="Start making reggaeton beats now"
+  finalCtaButtonText="Create Reggaeton Beats Free"
+  trustItems={['Authentic dembow', 'Export stems', 'Commercial use']}
+/>

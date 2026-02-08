@@ -1,0 +1,60 @@
+---
+import UseCaseLayout from '../../../layouts/UseCaseLayout.astro';
+
+const benefits = [
+  { title: 'Copyright-Safe Music', description: 'Every sample and track is 100% royalty-free. No Content ID flags, no DMCA takedowns, no client headaches. Safe for YouTube, social media, and commercial projects.' },
+  { title: 'Transition SFX On-Demand', description: 'Generate risers, whooshes, impacts, stingers, and drops in seconds. Professional transition sounds without buying expensive SFX packs.' },
+  { title: 'Music That Matches the Edit', description: 'Describe the mood and energy of your timeline. Get background music that fits your cut instead of re-editing to match generic library tracks.' },
+  { title: 'Loops for Any Length', description: 'Generate seamless loops that extend to any duration. No awkward music endings mid-scene. Perfect for long-form content and timeline flexibility.' },
+  { title: 'Consistent Audio Branding', description: 'Generate music in the same style across all videos for a series or client. Maintain audio consistency without reusing the same track.' },
+  { title: 'Stems for Audio Ducking', description: 'Export individual stems to duck music under dialogue, remove drums during quiet moments, or isolate melody for emotional beats. Mix like a pro.' },
+];
+
+const examples = [
+  { prompt: 'cinematic riser tension build whoosh', description: 'Tension-building riser and whoosh effect. Perfect for scene transitions and dramatic reveals.' },
+  { prompt: 'corporate upbeat loop background 120 bpm clean', description: 'Clean corporate background loop for product videos, explainers, and presentations.' },
+  { prompt: 'impact hit bass drop dramatic transition', description: 'Heavy impact hit for dramatic transitions, title reveals, and scene changes.' },
+  { prompt: 'lo-fi chill vlog loop background 85 bpm', description: 'Relaxed lo-fi loop for vlogs, lifestyle content, and casual videos.' },
+  { prompt: 'epic drums cinematic percussion build', description: 'Building cinematic percussion for trailers, intros, and high-energy sequences.' },
+  { prompt: 'stinger notification alert short musical cue', description: 'Short musical stinger for notifications, alerts, segment transitions, and lower thirds.' },
+];
+
+const faqs = [
+  { question: 'Will my clients get copyright claims?', answer: 'No. All Sonura music is royalty-free. No Content ID matches on YouTube, no copyright claims on social media. Safe for all commercial use.' },
+  { question: 'Can I use this for paid client work?', answer: 'Yes! Full commercial rights on all tiers. Use in brand videos, ads, corporate content, wedding films, real estate videos, and any commercial project.' },
+  { question: 'What editing software does this work with?', answer: 'Export WAV or MP3 and import into Premiere Pro, Final Cut Pro, DaVinci Resolve, After Effects, CapCut, iMovie, or any NLE.' },
+  { question: 'Can I generate just sound effects?', answer: 'Yes! Generate risers, impacts, whooshes, stingers, drops, and atmospheric effects on-demand. No need to buy SFX packs.' },
+  { question: 'How do I get music that matches my timeline?', answer: 'Describe the mood, energy, and tempo: "upbeat corporate 120 bpm" or "dramatic tension dark slow". Generate, preview, and drop into your timeline.' },
+  { question: 'Can I create loops that extend to any length?', answer: 'Yes! Generate seamless loops and extend in your editor. Perfect for background music that needs to run the full length of your video.' },
+];
+
+const trustItems = ['Zero copyright risk', 'Works with any NLE', 'Transitions & SFX included'];
+---
+
+<UseCaseLayout
+  useCase="AI Samples for Video Editors"
+  useCaseSlug="video-editors"
+  title="AI Music & SFX Samples for Video Editors | Copyright-Free - Sonura"
+  description="Generate royalty-free music samples, transitions, and sound effects for video editing. No copyright claims. Works with Premiere Pro, Final Cut, DaVinci Resolve."
+  keywords="music samples video editors, royalty free samples editing, sfx for video editing, transition sounds video, background music loops editors, copyright free music samples, premiere pro music, video editing music"
+  headline="AI Music & SFX for Video Editors"
+  subhead="Generate copyright-free background music, transition sounds, and SFX on-demand. Made for Premiere, Final Cut, DaVinci, and any NLE."
+  ctaText="Create Editing Samples"
+  problemTitle="The Video Editor's Audio Problem"
+  problemDescription="Stock music libraries are expensive and overused. SFX packs cost hundreds. Copyright claims ruin client relationships. You need unique, safe audio that matches your edit - and you need it now, not after hours of browsing."
+  solutionTitle="AI-Generated Audio On-Demand"
+  solutionDescription="Describe what your edit needs and get it in seconds. Background loops, transitions, impacts, stingers, and atmospheric textures. Every sound is unique and copyright-free. Export stems for precise mixing with dialogue."
+  benefits={benefits}
+  examplesTitle="Sample Prompts for Video Editors"
+  examples={examples}
+  faqs={faqs}
+  trustItems={trustItems}
+  finalCtaTitle="Start Creating Editing Samples"
+  finalCtaButtonText="Create Samples Free"
+/>
+
+<script>
+  document.querySelectorAll('a[href="https://app.sonurastudio.com"]').forEach(link => {
+    link.href = 'https://app.sonurastudio.com/samples';
+  });
+</script>
