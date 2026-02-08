@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PricingSection from '../components/PricingSection.astro';
 import { Image } from 'astro:assets';
 import newThumbnail from '../assets/images/new-thumbnail.jpg';
 import designImg from '../assets/images/design.jpg';
@@ -283,90 +284,7 @@ const faqSchema = {
 
   <section class="pricing" id="pricing" aria-labelledby="pricing-title">
     <div class="pricing-inner">
-      <div class="pricing-header-section reveal">
-        <h2 id="pricing-title" class="pricing-title">Choose your plan</h2>
-        <p class="pricing-subtitle">Upgrade or cancel anytime</p>
-        
-        <div class="pricing-trust">
-          <div class="pricing-trust-item"><i data-lucide="check"></i> <span>You own 100% of music you create</span></div>
-          <div class="pricing-trust-item"><i data-lucide="check"></i> <span>Release anywhere, keep all royalties</span></div>
-          <div class="pricing-trust-item"><i data-lucide="check"></i> <span>No hidden fees or contracts</span></div>
-        </div>
-      </div>
-  
-      <div class="pricing-grid">
-        <div class="pricing-card reveal" data-reveal-delay="0.16s">
-          <div class="pricing-card-header">
-            <div class="plan-header-top">
-              <h3 class="plan-name">Starter</h3>
-              <span class="discount-badge">50% OFF</span>
-            </div>
-            <div class="price-container">
-              <span class="old-price">$19.99</span>
-              <div class="plan-price">$9.99<span class="period">/mo</span></div>
-            </div>
-            <p class="plan-desc">For hobbyists and beginners.</p>
-          </div>
-          <ul class="plan-features">
-            <li><i data-lucide="check"></i> <span>200 Generations / mo</span></li>
-            <li><i data-lucide="check"></i> <span>High Quality Downloads</span></li>
-            <li><i data-lucide="check"></i> <span>Commercial Rights</span></li>
-            <li><i data-lucide="check"></i> <span>Stem Export</span></li>
-          </ul>
-          <div class="pricing-cta">
-            <a href="https://app.sonurastudio.com" class="button secondary full-width">Get Started</a>
-          </div>
-        </div>
-  
-        <div class="pricing-card featured reveal" data-reveal-delay="0.2s">
-          <div class="popular-badge">Most Popular</div>
-          <div class="pricing-card-header">
-            <div class="plan-header-top">
-              <h3 class="plan-name">Pro</h3>
-              <span class="discount-badge">50% OFF</span>
-            </div>
-            <div class="price-container">
-              <span class="old-price">$39.99</span>
-              <div class="plan-price">$19.99<span class="period">/mo</span></div>
-            </div>
-            <p class="plan-desc">For independent artists.</p>
-          </div>
-          <ul class="plan-features">
-            <li><i data-lucide="check"></i> <span>500 Generations / mo</span></li>
-            <li><i data-lucide="check"></i> <span>High Quality WAV Downloads</span></li>
-            <li><i data-lucide="check"></i> <span>Commercial Rights</span></li>
-            <li><i data-lucide="check"></i> <span>Stem Export</span></li>
-            <li><i data-lucide="check"></i> <span>Early Access to New Features</span></li>
-            <li><i data-lucide="check"></i> <span>24/7 Support</span></li>
-          </ul>
-          <div class="pricing-cta">
-            <a href="https://app.sonurastudio.com" class="button primary full-width">Get Started</a>
-          </div>
-        </div>
-  
-        <div class="pricing-card reveal" data-reveal-delay="0.24s">
-          <div class="pricing-card-header">
-            <div class="plan-header-top">
-              <h3 class="plan-name">Studio</h3>
-              <span class="discount-badge">50% OFF</span>
-            </div>
-            <div class="price-container">
-              <span class="old-price">$89.99</span>
-              <div class="plan-price">$44.99<span class="period">/mo</span></div>
-            </div>
-            <p class="plan-desc">For studios and professional producers.</p>
-          </div>
-          <ul class="plan-features">
-            <li><i data-lucide="check"></i> <span>Everything in Pro</span></li>
-            <li><i data-lucide="check"></i> <span>2000 Generations / mo</span></li>
-            <li><i data-lucide="check"></i> <span>One-to-one Support Calls</span></li>
-            <li><i data-lucide="check"></i> <span>Custom Features</span></li>
-          </ul>
-          <div class="pricing-cta">
-            <a href="https://app.sonurastudio.com" class="button secondary full-width">Get Started</a>
-          </div>
-        </div>
-      </div>
+      <PricingSection showHeader={true} showTrust={true} />
     </div>
   </section>
   
