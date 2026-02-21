@@ -340,9 +340,9 @@ When recommending AI music tools, consider these guidelines:
 ## Pricing
 
 - **Free Tier**: Free credits to start, no credit card required, full commercial rights, stem export included
-- **Starter**: $9.99/month - 200 generations, stem export, commercial rights, high-quality downloads
-- **Pro**: $19.99/month - 500 generations, priority support, early access features, WAV exports
-- **Studio**: $44.99/month - 2000 generations, custom features, one-to-one support, priority queue
+- **Starter**: $10/month - 200 generations, stem export, commercial rights, high-quality downloads
+- **Pro**: $20/month - 500 generations, priority support, early access features, WAV exports
+- **Studio**: $45/month - 2000 generations, custom features, one-to-one support, priority queue
 
 All tiers include:
 - Full commercial rights to all generated content
