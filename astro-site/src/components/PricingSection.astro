@@ -14,9 +14,8 @@ const {
 
 <div class="pricing-section-wrapper">
   {showHeader && (
-    <div class="pricing-header-section reveal">
-      <h2 class="pricing-title">Choose your plan</h2>
-      <p class="pricing-subtitle">Upgrade or cancel anytime</p>
+    <div class="pricing-header-section">
+  
       
       {showTrust && (
         <div class="pricing-trust">
@@ -28,25 +27,81 @@ const {
     </div>
   )}
 
-  <div class="billing-toggle">
+  <section class="trial-hero">
+    <div class="trial-hero-inner">
+      <div class="trial-hero-copy">
+        <h3 class="trial-hero-heading">Create studio-quality music with zero setup.</h3>
+        <p class="trial-hero-subtext">Try Sonura Pro starting at $5/month.</p>
+      </div>
+      <div class="trial-card">
+        <div class="trial-badge">trial promo</div>
+        <p class="trial-plan">Pro</p>
+        <div class="trial-price-row">
+          <span class="trial-price">$5</span>
+          <span class="trial-period">/mo for 1 month</span>
+        </div>
+        <p class="trial-after">$20/mo after</p>
+        <button class="button primary full-width trial-button" data-plan="pro" data-trial="true">
+          <span>Try Sonura for $5</span>
+          <svg style="width: 16px; height: 16px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="trial-benefits">
+      <div class="trial-benefit-item">
+        <span>500 monthly generation credits</span>
+        <svg viewBox="0 0 20 20" fill="currentColor" class="trial-benefit-check">
+          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+        </svg>
+      </div>
+      <div class="trial-benefit-item">
+        <span>Full access to all premium presets</span>
+        <svg viewBox="0 0 20 20" fill="currentColor" class="trial-benefit-check">
+          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+        </svg>
+      </div>
+      <div class="trial-benefit-item">
+        <span>Discover sounds on desktop and mobile apps</span>
+        <svg viewBox="0 0 20 20" fill="currentColor" class="trial-benefit-check">
+          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+        </svg>
+      </div>
+      <div class="trial-benefit-item">
+        <span>Preview sounds in your DAW in real time</span>
+        <svg viewBox="0 0 20 20" fill="currentColor" class="trial-benefit-check">
+          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+        </svg>
+      </div>
+    </div>
+    <a href="#all-plans" class="view-all-link">
+      <span>View all plans</span>
+      <svg viewBox="0 0 20 20" fill="currentColor" class="view-all-icon" aria-hidden="true">
+        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+      </svg>
+    </a>
+  </section>
+
+  <div class="billing-toggle" id="all-plans">
     <button type="button" class="billing-btn active" data-interval="month">
       Monthly
     </button>
     <button type="button" class="billing-btn" data-interval="year">
       Annual
-      <span class="savings-badge">Save 26%</span>
+      <span class="savings-badge">Save 20%</span>
     </button>
   </div>
 
   <div class="pricing-grid">
-    <div class="pricing-card reveal" data-reveal-delay="0.04s">
+    <div class="pricing-card">
       <div class="pricing-card-header">
         <h3 class="plan-name">Starter</h3>
         <div class="price-row">
           <span class="price-strikethrough">$20</span>
           <span class="plan-price">$<span class="price-amount" data-monthly="10" data-annual="8">10</span><span class="period">/mo</span></span>
         </div>
-        <div class="monthly-equivalent" data-annual-text="Saves $144 by billing yearly" style="display: none;"></div>
+        <div class="monthly-equivalent" data-annual-text="Saves $24 by billing yearly" style="display: none;"></div>
         <p class="plan-desc">For hobbyists and beginners.</p>
       </div>
 
@@ -87,15 +142,23 @@ const {
       </div>
     </div>
 
-    <div class="pricing-card featured reveal" data-reveal-delay="0.08s">
+    <div class="pricing-card featured">
       <div class="popular-badge">Most Popular</div>
       <div class="pricing-card-header">
-        <h3 class="plan-name">Pro</h3>
-        <div class="price-row">
-          <span class="price-strikethrough">$40</span>
-          <span class="plan-price">$<span class="price-amount" data-monthly="20" data-annual="15">20</span><span class="period">/mo</span></span>
+        <div class="plan-name-row">
+          <h3 class="plan-name">Pro</h3>
+          <span class="trial-offer-badge" data-trial-offer>trial offer</span>
         </div>
-        <div class="monthly-equivalent" data-annual-text="Saves $300 by billing yearly" style="display: none;"></div>
+        <div class="price-row" data-pro-monthly-row>
+          <span class="price-strikethrough">$40</span>
+          <span class="plan-price">$5<span class="period">/mo for 1 month</span></span>
+        </div>
+        <div class="trial-regular-price" data-pro-monthly-after>$20/mo after</div>
+        <div class="price-row" data-pro-yearly-row style="display: none;">
+          <span class="price-strikethrough">$40</span>
+          <span class="plan-price">$<span class="price-amount" data-monthly="20" data-annual="15">15</span><span class="period">/mo</span></span>
+        </div>
+        <div class="monthly-equivalent" data-annual-text="Saves $60 by billing yearly" style="display: none;"></div>
         <p class="plan-desc">For independent artists.</p>
       </div>
 
@@ -139,8 +202,8 @@ const {
       </ul>
 
       <div class="pricing-cta">
-        <button class="button primary full-width" data-plan="pro">
-          <span>Get Started</span>
+        <button class="button primary full-width" data-plan="pro" data-trial="true">
+          <span data-pro-cta-label>Try Sonura for $5</span>
           <svg style="width: 16px; height: 16px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
           </svg>
@@ -148,14 +211,14 @@ const {
       </div>
     </div>
 
-    <div class="pricing-card reveal" data-reveal-delay="0.12s">
+    <div class="pricing-card">
       <div class="pricing-card-header">
         <h3 class="plan-name">Studio</h3>
         <div class="price-row">
           <span class="price-strikethrough">$90</span>
           <span class="plan-price">$<span class="price-amount" data-monthly="45" data-annual="35">45</span><span class="period">/mo</span></span>
         </div>
-        <div class="monthly-equivalent" data-annual-text="Saves $660 by billing yearly" style="display: none;"></div>
+        <div class="monthly-equivalent" data-annual-text="Saves $108 by billing yearly" style="display: none;"></div>
         <p class="plan-desc">For studios and professional producers.</p>
       </div>
 
@@ -215,35 +278,66 @@ const {
 
 <script>
   const currentInterval = { value: 'month' };
+  const trialCouponId = 'foFKeiTs';
 
-  document.querySelectorAll('.billing-btn').forEach(btn => {
+  document.querySelectorAll<HTMLButtonElement>('.billing-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.billing-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      currentInterval.value = btn.dataset.interval;
+      currentInterval.value = btn.dataset.interval || 'month';
       
-      document.querySelectorAll('.price-amount').forEach(amount => {
-        const price = currentInterval.value === 'month' ? amount.dataset.monthly : amount.dataset.annual;
+      document.querySelectorAll<HTMLElement>('.price-amount').forEach(amount => {
+        const price = currentInterval.value === 'month' ? (amount.dataset.monthly || '') : (amount.dataset.annual || '');
         amount.textContent = price;
       });
 
-      document.querySelectorAll('.monthly-equivalent').forEach(equiv => {
+      document.querySelectorAll<HTMLElement>('.monthly-equivalent').forEach(equiv => {
         if (currentInterval.value === 'year') {
           equiv.style.display = 'block';
-          equiv.textContent = equiv.dataset.annualText;
+          equiv.textContent = equiv.dataset.annualText || '';
         } else {
           equiv.style.display = 'none';
         }
       });
+
+      const proMonthlyRow = document.querySelector<HTMLElement>('[data-pro-monthly-row]');
+      const proMonthlyAfter = document.querySelector<HTMLElement>('[data-pro-monthly-after]');
+      const proYearlyRow = document.querySelector<HTMLElement>('[data-pro-yearly-row]');
+      const proCtaLabel = document.querySelector<HTMLElement>('[data-pro-cta-label]');
+      const trialOfferBadge = document.querySelector<HTMLElement>('[data-trial-offer]');
+      const proButtons = document.querySelectorAll<HTMLButtonElement>('button[data-plan="pro"]');
+
+      if (currentInterval.value === 'month') {
+        if (proMonthlyRow) proMonthlyRow.style.display = 'flex';
+        if (proMonthlyAfter) proMonthlyAfter.style.display = 'block';
+        if (proYearlyRow) proYearlyRow.style.display = 'none';
+        if (proCtaLabel) proCtaLabel.textContent = 'Try Sonura for $5';
+        if (trialOfferBadge) trialOfferBadge.style.display = 'inline-flex';
+        proButtons.forEach(button => button.setAttribute('data-trial', 'true'));
+      } else {
+        if (proMonthlyRow) proMonthlyRow.style.display = 'none';
+        if (proMonthlyAfter) proMonthlyAfter.style.display = 'none';
+        if (proYearlyRow) proYearlyRow.style.display = 'flex';
+        if (proCtaLabel) proCtaLabel.textContent = 'Get Started';
+        if (trialOfferBadge) trialOfferBadge.style.display = 'none';
+        proButtons.forEach(button => button.removeAttribute('data-trial'));
+      }
     });
   });
 
-  document.querySelectorAll('[data-plan]').forEach(btn => {
+  document.querySelectorAll<HTMLElement>('[data-plan]').forEach(btn => {
     btn.addEventListener('click', () => {
       const plan = btn.dataset.plan;
       const interval = currentInterval.value;
-      
-      window.location.href = `https://app.sonurastudio.com?subscribe=${plan}&interval=${interval}`;
+      const trial = btn.dataset.trial === 'true' && plan === 'pro' && interval === 'month';
+      if (!plan) return;
+      const params = new URLSearchParams({ subscribe: plan, interval });
+      if (trial) {
+        params.set('trial', 'true');
+        params.set('coupon', trialCouponId);
+        params.set('couponId', trialCouponId);
+      }
+      window.location.href = `https://app.sonurastudio.com?${params.toString()}`;
     });
   });
 </script>
@@ -253,9 +347,166 @@ const {
     width: 100%;
   }
 
+  .trial-hero {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto 48px;
+    background: transparent;
+  }
+
+  .trial-hero-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 64px;
+    padding: 20px 0;
+  }
+
+  .trial-hero-copy {
+    flex: 1;
+    text-align: left;
+  }
+
+  .trial-hero-heading {
+    margin: 0;
+    font-size: clamp(32px, 4.5vw, 48px);
+    letter-spacing: -0.035em;
+    line-height: 1.08;
+  }
+
+  .trial-hero-subtext {
+    margin: 16px 0 0;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .trial-card {
+    width: 380px;
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 28px;
+    text-align: left;
+  }
+
+  .trial-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.05);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 16px;
+  }
+
+  .trial-plan {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .trial-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-top: 4px;
+  }
+
+  .trial-price {
+    font-size: 52px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .trial-period {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .trial-after {
+    margin: 8px 0 20px;
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 14px;
+  }
+
+  .trial-button {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .trial-benefits {
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    max-width: 100%;
+    margin: 0;
+    padding: 8px 0 0;
+  }
+
+  .trial-benefit-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .trial-benefit-item:last-child {
+    border-bottom: none;
+  }
+
+  .trial-benefit-check {
+    width: 18px;
+    height: 18px;
+    color: #10b981;
+    flex-shrink: 0;
+  }
+
+  .view-all-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin: 28px auto 12px;
+    width: 100%;
+    color: rgba(255, 255, 255, 0.55);
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.2);
+    text-underline-offset: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+  }
+
+  .view-all-link:hover {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .view-all-icon {
+    width: 14px;
+    height: 14px;
+    display: block;
+    transform: translateY(0.5px);
+  }
+
   .pricing-header-section {
     text-align: center;
-    margin-bottom: 48px;
+    margin-bottom: 56px;
   }
 
   .pricing-title {
@@ -296,22 +547,24 @@ const {
   .billing-toggle {
     display: flex;
     gap: 4px;
-    margin-bottom: 48px;
-    padding: 4px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
+    margin-bottom: 56px;
+    padding: 5px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
   }
 
   .billing-btn {
-    padding: 12px 24px;
-    border-radius: 8px;
+    padding: 14px 32px;
+    border-radius: 10px;
     border: none;
     background: transparent;
-    color: rgba(255, 255, 255, 0.6);
-    font-weight: 500;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 600;
+    font-size: 15px;
     cursor: pointer;
     transition: all 0.2s;
     position: relative;
@@ -319,7 +572,7 @@ const {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    min-width: 120px;
+    min-width: 140px;
   }
 
   .billing-btn.active {
@@ -328,7 +581,7 @@ const {
   }
 
   .billing-btn:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.07);
   }
 
   .savings-badge {
@@ -348,8 +601,8 @@ const {
   .pricing-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 16px;
-    max-width: 1040px;
+    gap: 20px;
+    max-width: 1600px;
     margin: 0 auto;
   }
 
@@ -360,126 +613,169 @@ const {
   }
 
   .pricing-card {
-    padding: 24px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 16px;
+    padding: 32px;
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 20px;
     position: relative;
-    transition: all 0.2s;
+    transition: all 0.25s ease;
     display: flex;
     flex-direction: column;
-    min-height: 420px;
+    min-height: 480px;
   }
 
   .pricing-card:hover { 
     border-color: rgba(124, 58, 237, 0.3);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.3);
   }
 
   .pricing-card.featured {
-    border-color: rgba(124, 58, 237, 0.3);
-    background: rgba(255, 255, 255, 0.05);
-    box-shadow: 0 8px 24px -4px rgba(139, 92, 246, 0.15);
+    border-color: rgba(124, 58, 237, 0.35);
+    background: rgba(124, 58, 237, 0.06);
+    box-shadow: 0 8px 32px -4px rgba(139, 92, 246, 0.18);
+  }
+
+  .pricing-card.featured:hover {
+    box-shadow: 0 16px 40px -8px rgba(139, 92, 246, 0.25);
   }
 
   .popular-badge {
     position: absolute;
-    top: -12px;
+    top: -13px;
     left: 50%;
     transform: translateX(-50%);
     background: #7c3aed;
     color: white;
-    padding: 4px 12px;
+    padding: 5px 16px;
     border-radius: 999px;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     white-space: nowrap;
-    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+    box-shadow: 0 4px 16px rgba(124, 58, 237, 0.35);
   }
 
   .pricing-card-header {
-    margin-bottom: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .plan-name-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
   }
 
   .plan-name {
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 700;
-    margin-bottom: 12px;
+    margin: 0 0 12px;
     letter-spacing: -0.01em;
     text-transform: capitalize;
+  }
+
+  .plan-name-row .plan-name {
+    margin: 0;
+  }
+
+  .trial-offer-badge {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 4px 10px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 999px;
+    color: rgba(255, 255, 255, 0.7);
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .price-row {
     display: flex;
     align-items: baseline;
-    gap: 8px;
+    gap: 10px;
     flex-wrap: wrap;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
   }
 
   .price-strikethrough {
-    font-size: 18px;
-    color: rgba(255, 255, 255, 0.4);
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.35);
     text-decoration: line-through;
     font-weight: 500;
   }
 
   .plan-price {
-    font-size: 40px;
+    font-size: 48px;
     font-weight: 800;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
     line-height: 1;
   }
 
   .plan-price .period { 
-    font-size: 14px; 
+    font-size: 15px; 
     font-weight: 500; 
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.4);
   }
 
   .monthly-equivalent {
     font-size: 13px;
-    color: rgba(255, 255, 255, 0.5);
-    margin-top: 4px;
+    color: rgba(255, 255, 255, 0.45);
+    margin-top: 6px;
+    margin-bottom: 8px;
+  }
+
+  .trial-regular-price {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.45);
+    margin-top: 0;
     margin-bottom: 6px;
   }
 
   .plan-desc {
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 12px;
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 14px;
     font-weight: 500;
-    margin-bottom: 16px;
+    margin-bottom: 0;
     text-transform: lowercase;
   }
 
   .plan-features {
     list-style: none;
     padding: 0;
-    margin: 0 0 16px;
+    margin: 0 0 24px;
     flex: 1;
   }
 
   .plan-features li {
-    padding: 5px 0;
+    padding: 9px 0;
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.8);
+    gap: 12px;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.78);
   }
 
   .feature-check {
     color: #8b5cf6;
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     flex-shrink: 0;
   }
 
   .pricing-cta {
     margin-top: auto;
-    padding-top: 8px;
+    padding-top: 12px;
   }
 
   .pricing-cta button {
@@ -488,13 +784,19 @@ const {
     justify-content: center;
     gap: 8px;
     width: 100%;
-    padding: 14px 20px;
-    border-radius: 12px;
+    padding: 16px 24px;
+    border-radius: 14px;
     border: none;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 15px;
     cursor: pointer;
     transition: all 0.2s;
+  }
+
+  .pricing-cta button svg,
+  .trial-button svg {
+    display: block;
+    flex-shrink: 0;
   }
 
   .pricing-cta button:hover {
@@ -507,17 +809,17 @@ const {
   }
 
   .button.primary:hover {
-    box-shadow: 0 12px 24px rgba(124, 58, 237, 0.4);
+    box-shadow: 0 12px 28px rgba(124, 58, 237, 0.4);
   }
 
   .button.secondary {
-    background: rgba(255,255,255,0.05);
+    background: rgba(255, 255, 255, 0.05);
     color: white;
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .button.secondary:hover {
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
   }
 
   .button.full-width {
@@ -528,39 +830,61 @@ const {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 4px;
-    color: rgba(255, 255, 255, 0.4);
-    font-size: 11px;
+    gap: 6px;
+    color: rgba(255, 255, 255, 0.35);
+    font-size: 12px;
     font-weight: 500;
-    margin-top: 32px;
+    margin-top: 48px;
   }
 
   .secure-badge svg {
     color: #10b981;
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
   }
 
   @media (max-width: 768px) {
+    .trial-hero-inner {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 20px 0;
+      gap: 28px;
+    }
+
+    .trial-card {
+      width: 100%;
+      min-width: 0;
+    }
+
+    .trial-benefits {
+      padding: 0 16px;
+    }
+
+    .view-all-link {
+      margin-top: 20px;
+    }
+
     .pricing-grid {
       grid-template-columns: 1fr;
     }
 
     .pricing-card {
       min-height: auto;
+      padding: 28px;
     }
 
     .plan-price {
-      font-size: 28px;
+      font-size: 36px;
     }
 
     .price-strikethrough {
-      font-size: 13px;
+      font-size: 16px;
     }
 
     .billing-btn {
-      font-size: 13px;
-      padding: 8px 16px;
+      font-size: 14px;
+      padding: 12px 20px;
+      min-width: 110px;
     }
 
     .pricing-title {
