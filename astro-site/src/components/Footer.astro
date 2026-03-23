@@ -1,5 +1,4 @@
 ---
-// Footer component - shared across all pages
 const currentYear = new Date().getFullYear();
 ---
 
@@ -42,6 +41,18 @@ const currentYear = new Date().getFullYear();
         </div>
 
       <div class="footer-col">
+        <h3 class="footer-heading">Free tools</h3>
+        <ul class="footer-links">
+          <li><a href="/tools/">All tools</a></li>
+          <li><a href="/tools/ai-beat-maker/">Beat maker</a></li>
+          <li><a href="/tools/ai-vocal-generator/">Vocal generator</a></li>
+          <li><a href="/tools/stem-separator/">Stem separator</a></li>
+          <li><a href="/tools/text-to-music/">Text to music</a></li>
+          <li><a href="/tools/bpm-tap/">BPM tap</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
         <h3 class="footer-heading">Use Cases</h3>
         <ul class="footer-links">
           <li><a href="/use-cases/">All Use Cases</a></li>
@@ -50,7 +61,6 @@ const currentYear = new Date().getFullYear();
           <li><a href="/use-cases/songwriters/">For Songwriters</a></li>
           <li><a href="/use-cases/video-editors/">For Video Editors</a></li>
           <li><a href="/use-cases/music-artists/">For Artists</a></li>
-          <li><a href="/tools/bpm-tap/">BPM Tap Tool</a></li>
         </ul>
       </div>
       
@@ -106,8 +116,8 @@ const currentYear = new Date().getFullYear();
 
   .footer-grid {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
-    gap: 48px;
+    grid-template-columns: 1.5fr repeat(5, 1fr);
+    gap: 40px;
     margin-bottom: 80px;
   }
 
@@ -242,8 +252,11 @@ const currentYear = new Date().getFullYear();
 
   @media (max-width: 1200px) {
     .footer-grid {
-      grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 32px;
+    }
+    .footer-brand-col {
+      grid-column: 1 / -1;
     }
   }
 

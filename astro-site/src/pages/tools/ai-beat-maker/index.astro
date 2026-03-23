@@ -1,0 +1,65 @@
+---
+import ToolLayout from '../../../layouts/ToolLayout.astro';
+
+const features = [
+  { title: 'Full instrumentals from a prompt', description: 'Drums, bass, melody, and FX generated together as a cohesive beat. Not random loops stitched together.' },
+  { title: 'Any genre, any tempo', description: 'Trap, hip-hop, house, drill, lo-fi, techno, pop, R&B. Specify BPM and sub-genre for precise results.' },
+  { title: 'Individual stem export', description: 'Download drums, bass, melody, and FX separately. Mix and re-arrange each element in your DAW.' },
+  { title: 'Fast iteration', description: 'Tweak the prompt, regenerate, compare takes. 10 ideas in the time it takes to program one kick pattern.' },
+  { title: 'Commercial licensing', description: 'Paid plans include royalty-free licensing. Sell on BeatStars, release on Spotify, use in client work.' },
+  { title: 'Production-ready output', description: 'Mixed and balanced from the start. Use as-is or polish further in your DAW.' },
+];
+
+const howItWorksSteps = [
+  'Describe the beat you want: genre, tempo, mood, and production details.',
+  'Sonura generates a full instrumental with drums, bass, and melodic elements.',
+  'Preview, refine your prompt, or export stems for mixing in your DAW.',
+];
+
+const useCases = [
+  { title: 'Beat sellers', description: 'Ship more type beats faster. Every output is unique, so no shared sounds with other producers.' },
+  { title: 'Artists and rappers', description: 'Custom instrumentals for demos and releases. No waiting on producers or searching marketplaces.' },
+  { title: 'Content creators', description: 'Original background music that matches your edit. No copyright claims, no licensing headaches.' },
+  { title: 'Producers', description: 'Use generations as starting points. Export stems and layer with your own sounds in the DAW.' },
+];
+
+const faqs = [
+  { question: 'What can I make with this?', answer: 'Full instrumentals with drums, bass, melody, and arrangement. Works for trap, hip-hop, house, lo-fi, drill, and most production styles.' },
+  { question: 'Can I sell beats I make here?', answer: 'Paid plans include royalty-free commercial licensing. Check the pricing page for your tier.' },
+  { question: 'Can I export stems?', answer: 'Yes. Get drums, bass, melody, and other layers separately so you can mix in your DAW.' },
+  { question: 'How fast is generation?', answer: 'Most beats generate in seconds. Iterate quickly by adjusting your prompt and regenerating.' },
+  { question: 'Do I need music theory?', answer: 'No. Describe what you want in plain language. The tool handles the theory, you guide the vibe.' },
+];
+
+const relatedTools = [
+  { title: 'Loop Maker', href: '/tools/ai-loop-maker/', description: 'Short loopable phrases for hooks and sections.' },
+  { title: 'Drum Maker', href: '/tools/ai-drum-maker/', description: 'Drum patterns and kits for your tempo and genre.' },
+  { title: 'Sample Generator', href: '/tools/ai-sample-generator/', description: 'One-shots and textures to layer into beats.' },
+];
+
+const relatedBlogPosts = [
+  { title: 'How to make trap beats: complete guide', href: '/blog/how-to-make-trap-beats/' },
+  { title: 'Choosing an AI music generator', href: '/blog/ai-music-generator-guide/' },
+];
+---
+
+<ToolLayout
+  toolName="Beat Maker"
+  toolSlug="ai-beat-maker"
+  title="Beat Maker Online | Generate Full Instrumentals Free - Sonura"
+  description="Make beats online free. Describe trap, hip-hop, house, or lo-fi beats and generate full instrumentals with stem export in Sonura."
+  keywords="beat maker online, make beats online, beat generator free, trap beat maker, hip hop beat maker, lo-fi beat maker"
+  headline="Make beats from a description"
+  subhead="Describe the genre, tempo, and mood. Get a full instrumental with drums, bass, and melody. Export stems for your DAW."
+  features={features}
+  howItWorksTitle="How it works"
+  howItWorksSteps={howItWorksSteps}
+  useCases={useCases}
+  faqs={faqs}
+  appUrl="https://app.sonurastudio.com/songs"
+  ctaPrimaryText="Make a beat free"
+  finalCtaTitle="Start making beats"
+  finalCtaButtonText="Try it free"
+  relatedTools={relatedTools}
+  relatedBlogPosts={relatedBlogPosts}
+/>

@@ -1,0 +1,64 @@
+---
+import ToolLayout from '../../../layouts/ToolLayout.astro';
+
+const features = [
+  { title: 'Plain language input', description: 'Describe genre, tempo, mood, instruments, and structure in everyday words. No music theory required.' },
+  { title: 'Full musical output', description: 'Get back a complete musical idea with multiple elements and arrangement, not just a single loop.' },
+  { title: 'Any genre or style', description: 'Cinematic orchestral to bedroom lo-fi. The tool adapts to your description.' },
+  { title: 'Iterate and refine', description: 'Tweak the prompt, regenerate, compare takes. Shape the output until it matches your vision.' },
+  { title: 'Stems for mixing', description: 'Export individual stems to your DAW for deeper editing, mixing, and mastering.' },
+  { title: 'From idea to track', description: 'Use this as a starting point, then build out the arrangement inside Sonura or in your DAW.' },
+];
+
+const howItWorksSteps = [
+  'Write what you want: genre, tempo, mood, instrumentation, and structure.',
+  'Sonura turns the text into a musical idea you can preview immediately.',
+  'Iterate on the prompt, export stems, or build out the arrangement.',
+];
+
+const useCases = [
+  { title: 'Beginners', description: 'Start making music before learning DAW workflows. Describe what you hear in your head and get audio.' },
+  { title: 'Professionals', description: 'Fast sketches to react to. Creative kindling for arrangement, mix, and production decisions.' },
+  { title: 'Content creators', description: 'Custom background music when stock libraries do not fit. Original and cleared for your project.' },
+  { title: 'Educators', description: 'Demonstrate how textual descriptions map to musical output. Great for teaching composition.' },
+];
+
+const faqs = [
+  { question: 'How does text to music work?', answer: 'You describe music in words and the tool generates audio that matches: genre, mood, tempo, instruments.' },
+  { question: 'How specific should prompts be?', answer: 'More detail yields more targeted results. Include genre, BPM range, mood, instruments, and energy level.' },
+  { question: 'Is this the same as a beat maker?', answer: 'Beat making focuses on rhythm-forward instrumentals. Text to music covers broader ideas including melody, harmony, and texture.' },
+  { question: 'Can I edit the result?', answer: 'Yes. Iterate with prompts in Sonura or export stems to your DAW for deeper editing.' },
+];
+
+const relatedTools = [
+  { title: 'Beat Maker', href: '/tools/ai-beat-maker/', description: 'Beat-focused generation for instrumentals.' },
+  { title: 'Vocal Generator', href: '/tools/ai-vocal-generator/', description: 'Add vocal ideas to your generated music.' },
+  { title: 'Sample Generator', href: '/tools/ai-sample-generator/', description: 'One-shots and textures to layer in.' },
+];
+
+const relatedBlogPosts = [
+  { title: 'Choosing an AI music generator', href: '/blog/ai-music-generator-guide/' },
+  { title: 'GenJam and Sonura Studio', href: '/blog/ai-music-genjam-sonura-studio/' },
+];
+---
+
+<ToolLayout
+  toolName="Text to Music"
+  toolSlug="text-to-music"
+  title="Text to Music | Turn Words Into Music Online - Sonura"
+  description="Describe genre, mood, and instruments in plain text. Get a full musical idea back in Sonura. Free to start."
+  keywords="text to music, music from text, describe a song, prompt to music, text to music free"
+  headline="Turn a description into music"
+  subhead="Write the genre, mood, tempo, and instruments. Get a full musical idea back with stems. No theory or DAW experience needed to start."
+  features={features}
+  howItWorksTitle="How it works"
+  howItWorksSteps={howItWorksSteps}
+  useCases={useCases}
+  faqs={faqs}
+  appUrl="https://app.sonurastudio.com/songs"
+  ctaPrimaryText="Try text to music free"
+  finalCtaTitle="Turn words into music"
+  finalCtaButtonText="Try it free"
+  relatedTools={relatedTools}
+  relatedBlogPosts={relatedBlogPosts}
+/>

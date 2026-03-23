@@ -1,0 +1,63 @@
+---
+import ToolLayout from '../../../layouts/ToolLayout.astro';
+
+const features = [
+  { title: 'Seamless loops', description: 'Generated phrases repeat cleanly with no clicks, pops, or awkward transitions at the loop point.' },
+  { title: 'Genre-aware output', description: 'Trap, house, lo-fi, ambient, techno. Loops that sound native to the style you describe.' },
+  { title: 'Tempo and key control', description: 'Set BPM and key in your prompt so loops drop straight into your session without time-stretching.' },
+  { title: 'Melodic, harmonic, percussive', description: 'Generate melodic loops, chord progressions, drum patterns, or bass lines. All loopable.' },
+  { title: 'Stem export', description: 'Download individual stems to chop, layer, and process in your DAW.' },
+  { title: 'Extend into full tracks', description: 'Start from a loop and build out a full arrangement inside Sonura or export for your DAW.' },
+];
+
+const howItWorksSteps = [
+  'Describe the loop: genre, BPM, key, mood, and what should repeat.',
+  'Sonura generates short phrases designed to loop cleanly.',
+  'Preview, tweak, or export stems to build a full track.',
+];
+
+const useCases = [
+  { title: 'Beat makers', description: 'Start tracks from tight loops instead of blank sessions. Faster than scrolling sample packs.' },
+  { title: 'Sample-based producers', description: 'Create original loopable material without clearing third-party samples.' },
+  { title: 'Sync and games', description: 'Loopable beds for menus, levels, trailers, and interactive media.' },
+  { title: 'Live performance', description: 'Generate ideas you can trigger, layer, and manipulate in a live set.' },
+];
+
+const faqs = [
+  { question: 'What kind of loops can I make?', answer: 'Melodic, harmonic, percussive, or full mix loops. Short musical phrases that repeat smoothly.' },
+  { question: 'How is this different from a full beat?', answer: 'Loops focus on a single repeating phrase. You can extend or layer multiple loops into a full beat inside Sonura.' },
+  { question: 'Can I set a specific BPM?', answer: 'Include tempo in your prompt. For post-generation adjustment, time-stretch in your DAW.' },
+  { question: 'Are loops royalty-free?', answer: 'Check your Sonura plan for commercial licensing terms on generated audio.' },
+];
+
+const relatedTools = [
+  { title: 'Beat Maker', href: '/tools/ai-beat-maker/', description: 'Full beats from a single description.' },
+  { title: 'Drum Maker', href: '/tools/ai-drum-maker/', description: 'Drum patterns and rhythms for your loops.' },
+  { title: 'Melody Maker', href: '/tools/ai-melody-maker/', description: 'Top-line melodic ideas over your drum loops.' },
+];
+
+const relatedBlogPosts = [
+  { title: 'Why generated samples beat sample packs', href: '/blog/ai-sample-generator-unique-samples/' },
+];
+---
+
+<ToolLayout
+  toolName="Loop Maker"
+  toolSlug="ai-loop-maker"
+  title="Loop Maker Online | Generate Seamless Loops Free - Sonura"
+  description="Generate seamless, loopable phrases for any genre in Sonura. Melodic, harmonic, or percussive loops with stem export."
+  keywords="loop maker, loop generator, music loops online, make loops free, sample loop generator"
+  headline="Generate loops that repeat cleanly"
+  subhead="Describe the genre, BPM, and key. Get back a phrase that loops seamlessly. Melodic, harmonic, or percussive."
+  features={features}
+  howItWorksTitle="How it works"
+  howItWorksSteps={howItWorksSteps}
+  useCases={useCases}
+  faqs={faqs}
+  appUrl="https://app.sonurastudio.com/samples"
+  ctaPrimaryText="Make loops free"
+  finalCtaTitle="Start making loops"
+  finalCtaButtonText="Try it free"
+  relatedTools={relatedTools}
+  relatedBlogPosts={relatedBlogPosts}
+/>

@@ -1,0 +1,63 @@
+---
+import ToolLayout from '../../../layouts/ToolLayout.astro';
+
+const features = [
+  { title: 'Unique every time', description: 'Every generation is original. No more shared sounds with thousands of producers using the same pack.' },
+  { title: 'One-shots and phrases', description: 'Drum hits, melodic stabs, vocal chops, bass plucks, textural hits. Any type of sample.' },
+  { title: 'Describe what you need', description: 'Instead of browsing folders, write the sound: instrument, tone, length, and character.' },
+  { title: 'Chop and flip', description: 'Generated samples are designed to be processed. Resample, pitch, reverse, granularize.' },
+  { title: 'Build custom kits', description: 'Generate a dozen samples, keep the best, and assemble a unique kit for your session.' },
+  { title: 'No clearing needed', description: 'Generated material does not carry sample clearance issues. Check plan terms for commercial use.' },
+];
+
+const howItWorksSteps = [
+  'Describe the sample: instrument, tone, length, and processing style.',
+  'Generate one-shots or short phrases you can chop, flip, and resample.',
+  'Load into your sampler or keep generating until you find the right sound.',
+];
+
+const useCases = [
+  { title: 'Beat makers', description: 'Original material for kits and chops without digging through packs everyone else uses.' },
+  { title: 'Sound designers', description: 'Unusual textures, hits, and experimental material for electronic music and post-production.' },
+  { title: 'Hip-hop and trap', description: 'Melodic and drum samples that feel fresh. Layer and process for your signature sound.' },
+  { title: 'Experimental artists', description: 'Happy accidents for resampling, granular processing, and creative sound manipulation.' },
+];
+
+const faqs = [
+  { question: 'What can I generate?', answer: 'One-shots, drum hits, melodic stabs, vocal chops, textural hits. Describe the sound and get audio back.' },
+  { question: 'Are generated samples unique?', answer: 'Yes. Each generation is new. Process and combine them like any other source material.' },
+  { question: 'Can I sell beats using these?', answer: 'Check Sonura terms for your plan. Commercial licensing rules apply to generated audio.' },
+  { question: 'How is this different from loops?', answer: 'Samples are typically one-shots or short hits. Loops are longer phrases designed to repeat. See the loop maker.' },
+];
+
+const relatedTools = [
+  { title: 'Loop Maker', href: '/tools/ai-loop-maker/', description: 'Longer looping phrases instead of one-shots.' },
+  { title: 'Beat Maker', href: '/tools/ai-beat-maker/', description: 'Full beats when you want structure, not just samples.' },
+  { title: 'Sound Effects', href: '/tools/ai-sound-effects/', description: 'Short SFX for non-musical hits and transitions.' },
+];
+
+const relatedBlogPosts = [
+  { title: 'Why generated samples beat sample packs', href: '/blog/ai-sample-generator-unique-samples/' },
+];
+---
+
+<ToolLayout
+  toolName="Sample Generator"
+  toolSlug="ai-sample-generator"
+  title="Sample Generator | Create Unique One-Shots Online - Sonura"
+  description="Generate unique one-shots, drum hits, and textures from text. Build custom sample kits on demand in Sonura."
+  keywords="sample generator, one shot generator, unique samples, sample maker online, custom sample kits"
+  headline="Generate unique samples on demand"
+  subhead="One-shots, drum hits, melodic stabs, textures. Describe what you need and build custom kits. No packs, no sharing sounds."
+  features={features}
+  howItWorksTitle="How it works"
+  howItWorksSteps={howItWorksSteps}
+  useCases={useCases}
+  faqs={faqs}
+  appUrl="https://app.sonurastudio.com/samples"
+  ctaPrimaryText="Generate samples free"
+  finalCtaTitle="Start generating samples"
+  finalCtaButtonText="Try it free"
+  relatedTools={relatedTools}
+  relatedBlogPosts={relatedBlogPosts}
+/>

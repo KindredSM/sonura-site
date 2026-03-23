@@ -1,0 +1,174 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Free Music Tools — Sonura',
+    url: 'https://sonurastudio.com/tools/',
+    description:
+      'Free music production tools: beat maker, loops, vocals, stems, drums, samples, and more.',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://sonurastudio.com/' },
+      { '@type': 'ListItem', position: 2, name: 'Tools', item: 'https://sonurastudio.com/tools/' },
+    ],
+  },
+];
+
+const tools = [
+  {
+    title: 'Beat Maker',
+    href: '/tools/ai-beat-maker/',
+    description: 'Full instrumentals from text. Drums, bass, and melody for trap, house, lo-fi, and more.',
+  },
+  {
+    title: 'Loop Maker',
+    href: '/tools/ai-loop-maker/',
+    description: 'Seamless loopable phrases for hooks, beds, and production starting points.',
+  },
+  {
+    title: 'Vocal Generator',
+    href: '/tools/ai-vocal-generator/',
+    description: 'Vocal hooks, melodies, and ad-libs for demos and creative exploration.',
+  },
+  {
+    title: 'Vocal Remover',
+    href: '/tools/vocal-remover/',
+    description: 'Split vocals from instrumentals. Isolate acapellas for remixes and karaoke.',
+  },
+  {
+    title: 'Drum Maker',
+    href: '/tools/ai-drum-maker/',
+    description: 'Genre-specific drum patterns. Trap rolls, house kicks, boom-bap swing.',
+  },
+  {
+    title: 'Sound Effects',
+    href: '/tools/ai-sound-effects/',
+    description: 'Whooshes, impacts, UI sounds, risers, and ambient beds from a description.',
+  },
+  {
+    title: 'Melody Maker',
+    href: '/tools/ai-melody-maker/',
+    description: 'Hooks, motifs, and lead lines. Set key and scale for precise results.',
+  },
+  {
+    title: 'Sample Generator',
+    href: '/tools/ai-sample-generator/',
+    description: 'Unique one-shots, drum hits, and textures. Build custom kits on demand.',
+  },
+  {
+    title: 'Text to Music',
+    href: '/tools/text-to-music/',
+    description: 'Describe a vibe and get a full musical idea. No theory or DAW needed to start.',
+  },
+  {
+    title: 'Stem Separator',
+    href: '/tools/stem-separator/',
+    description: 'Split any track into vocals, drums, bass, guitar, piano, and more.',
+  },
+  {
+    title: 'BPM Tap Tempo',
+    href: '/tools/bpm-tap/',
+    description: 'Tap to find the BPM of any song. Runs in your browser, no upload needed.',
+  },
+];
+---
+
+<BaseLayout
+  title="Free Music Production Tools | Beats, Loops, Vocals & Stems - Sonura"
+  description="Free music production tools online: beat maker, loop maker, vocal generator, stem separator, drums, samples, and more. Create in Sonura."
+  keywords="free music production tools online, music tools, beat maker online, stem separator free, vocal generator, music tools free"
+  canonical="https://sonurastudio.com/tools/"
+  ogTitle="Free Music Tools — Sonura"
+  ogDescription="Beats, loops, vocals, stems, drums, and samples. Create in Sonura."
+  jsonLd={jsonLd}
+  bodyClass="tools-index-page"
+>
+  <style>
+    .ti-hero {
+      padding: 160px 24px 80px;
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .ti-hero h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin: 0 0 20px;
+      line-height: 1.1;
+      color: var(--fg);
+    }
+    .ti-hero p {
+      color: var(--muted);
+      font-size: clamp(15px, 1.8vw, 17px);
+      line-height: 1.6;
+      margin: 0;
+    }
+    .ti-grid-wrap {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 60px 24px 120px;
+    }
+    .ti-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    @media (max-width: 768px) {
+      .ti-grid { grid-template-columns: 1fr; }
+    }
+    .ti-card {
+      display: flex;
+      flex-direction: column;
+      padding: 28px;
+      background: var(--bg);
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.15s;
+    }
+    .ti-card:hover {
+      background: rgba(255,255,255,0.03);
+    }
+    .ti-card h2 {
+      margin: 0 0 8px;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--fg);
+    }
+    .ti-card p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.55;
+      flex: 1;
+    }
+  </style>
+
+  <div class="ti-hero">
+    <h1>Free music production tools</h1>
+    <p>
+      Generate beats, loops, vocals, drums, samples, melodies, and sound effects, or separate stems from any track.
+    </p>
+  </div>
+
+  <div class="ti-grid-wrap">
+    <div class="ti-grid">
+      {tools.map((t) => (
+        <a class="ti-card" href={t.href}>
+          <h2>{t.title}</h2>
+          <p>{t.description}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

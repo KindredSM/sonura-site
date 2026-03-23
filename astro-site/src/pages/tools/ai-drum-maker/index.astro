@@ -1,0 +1,63 @@
+---
+import ToolLayout from '../../../layouts/ToolLayout.astro';
+
+const features = [
+  { title: 'Genre-specific patterns', description: 'Trap rolls, house four-on-the-floor, boom-bap swing, drill slides. Describe the groove and get it.' },
+  { title: 'Full drum kits', description: 'Kick, snare, hi-hats, percussion, and FX generated together as a cohesive rhythm section.' },
+  { title: 'Tempo and swing control', description: 'Set BPM and swing feel in your prompt for patterns that slot right into your session.' },
+  { title: 'Stem export', description: 'Download individual drum elements to mix, process, and layer in your DAW.' },
+  { title: 'Layer with other tools', description: 'Combine with beats, loops, or melodies from Sonura for a complete production.' },
+  { title: 'Break creative blocks', description: 'Generate unexpected patterns and variations you would not have programmed yourself.' },
+];
+
+const howItWorksSteps = [
+  'Describe the groove: genre, tempo, density, and swing.',
+  'Sonura generates a drum pattern with kicks, snares, hats, and percussion.',
+  'Layer with bass and melody, or export stems to your DAW.',
+];
+
+const useCases = [
+  { title: 'Producers', description: 'Break beat block with fresh, genre-accurate drum patterns that sound human.' },
+  { title: 'Beat battles', description: 'Iterate drum ideas fast under time pressure. Generate, tweak, commit.' },
+  { title: 'Film and games', description: 'Percussion beds, hits, and rhythmic cues for interactive and linear media.' },
+  { title: 'Practice and education', description: 'Backing rhythms for playing instruments or studying groove and timing.' },
+];
+
+const faqs = [
+  { question: 'What kind of drums can I make?', answer: 'Full drum patterns with kick, snare, hi-hats, and percussion. Works for trap, hip-hop, house, techno, drill, and more.' },
+  { question: 'Can I get separate drum stems?', answer: 'Stem export availability depends on your Sonura plan. When available, you get individual elements for mixing.' },
+  { question: 'Which genres work best?', answer: 'Trap, hip-hop, house, techno, drill, and related electronic styles are the strongest starting points.' },
+  { question: 'Do I need to know music theory?', answer: 'No. Describe the feel in everyday language and refine with follow-up prompts.' },
+];
+
+const relatedTools = [
+  { title: 'Beat Maker', href: '/tools/ai-beat-maker/', description: 'Full beats including drums, bass, and melody.' },
+  { title: 'Loop Maker', href: '/tools/ai-loop-maker/', description: 'Loopable phrases for layering over drums.' },
+  { title: 'BPM Tap Tempo', href: '/tools/bpm-tap/', description: 'Find the tempo of a reference track first.' },
+];
+
+const relatedBlogPosts = [
+  { title: 'Music production for beginners', href: '/blog/music-production-for-beginners/' },
+];
+---
+
+<ToolLayout
+  toolName="Drum Maker"
+  toolSlug="ai-drum-maker"
+  title="Drum Maker Online | Generate Drum Patterns Free - Sonura"
+  description="Generate drum patterns and kits for trap, house, drill, and more. Describe the groove and get a full rhythm section in Sonura."
+  keywords="drum maker, drum pattern generator, drum beat maker, drums online free, drum loop generator"
+  headline="Generate drum patterns from a description"
+  subhead="Boom-bap, trap rolls, four-on-the-floor, drill slides. Describe the groove and get a full rhythm section with kick, snare, hats, and percussion."
+  features={features}
+  howItWorksTitle="How it works"
+  howItWorksSteps={howItWorksSteps}
+  useCases={useCases}
+  faqs={faqs}
+  appUrl="https://app.sonurastudio.com/samples"
+  ctaPrimaryText="Make drums free"
+  finalCtaTitle="Start making drum patterns"
+  finalCtaButtonText="Try it free"
+  relatedTools={relatedTools}
+  relatedBlogPosts={relatedBlogPosts}
+/>

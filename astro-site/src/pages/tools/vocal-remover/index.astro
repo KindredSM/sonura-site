@@ -1,0 +1,62 @@
+---
+import ToolLayout from '../../../layouts/ToolLayout.astro';
+
+const features = [
+  { title: 'Vocals vs instrumental', description: 'Isolate the vocal track or extract a clean instrumental from any mixed recording.' },
+  { title: 'High accuracy separation', description: 'Modern source separation models handle complex mixes without manual configuration.' },
+  { title: 'Go beyond 2-stem', description: 'Need drums, bass, and other instruments separately? Use the full stem separator for multi-stem output.' },
+  { title: 'WAV and MP3 support', description: 'Upload common audio formats. Export separated parts in high quality for your workflow.' },
+  { title: 'Fast processing', description: 'Most tracks process in under a minute. No software to install, runs in the browser.' },
+  { title: 'Build from parts', description: 'Once separated, create remixes, mashups, or practice tracks using the isolated elements.' },
+];
+
+const howItWorksSteps = [
+  'Upload a mixed audio file to Sonura.',
+  'Run separation to split vocals from the instrumental.',
+  'Download what you need: acapella, instrumental, or individual stems.',
+];
+
+const useCases = [
+  { title: 'Remixers', description: 'Pull acapellas or instrumentals to build new arrangements and mashups.' },
+  { title: 'Karaoke and practice', description: 'Remove vocals and sing or play along with the backing track.' },
+  { title: 'Samplers', description: 'Isolate elements from tracks you own the rights to for creative reuse.' },
+  { title: 'Video editors', description: 'Adjust the balance between dialogue, voice, and music in post production.' },
+];
+
+const faqs = [
+  { question: 'How do I remove vocals from a song?', answer: 'Upload your file in Sonura and run vocal separation. The tool splits vocals from the instrumental automatically.' },
+  { question: 'Is this the same as stem separation?', answer: 'Vocal removal gives you vocals vs instrumental. Full stem separation splits drums, bass, and more. See the stem separator tool.' },
+  { question: 'Can I use separated audio commercially?', answer: 'You need rights to the original recording. Separation does not grant copyright to the underlying song.' },
+  { question: 'What file formats work?', answer: 'WAV and MP3. Check the app for current file size limits.' },
+];
+
+const relatedTools = [
+  { title: 'Stem Separator', href: '/tools/stem-separator/', description: 'Multi-stem splits: vocals, drums, bass, and more.' },
+  { title: 'Beat Maker', href: '/tools/ai-beat-maker/', description: 'Build new instrumentals after isolating parts.' },
+  { title: 'Vocal Generator', href: '/tools/ai-vocal-generator/', description: 'Add new vocal lines to your project.' },
+];
+
+const relatedBlogPosts = [
+  { title: 'How to release music on Spotify', href: '/blog/how-to-release-music-on-spotify/' },
+];
+---
+
+<ToolLayout
+  toolName="Vocal Remover"
+  toolSlug="vocal-remover"
+  title="Vocal Remover Online | Remove Vocals from Any Song - Sonura"
+  description="Remove vocals from a song online for free. Isolate the acapella or extract a clean instrumental in Sonura."
+  keywords="vocal remover online, remove vocals from song, instrumental extractor, vocal isolation, karaoke maker"
+  headline="Remove vocals from any song"
+  subhead="Upload a track and get the vocals or the instrumental, separated cleanly. Use it for remixes, karaoke, sampling, or editing."
+  features={features}
+  howItWorksTitle="How it works"
+  howItWorksSteps={howItWorksSteps}
+  useCases={useCases}
+  faqs={faqs}
+  ctaPrimaryText="Remove vocals free"
+  finalCtaTitle="Separate vocals now"
+  finalCtaButtonText="Try it free"
+  relatedTools={relatedTools}
+  relatedBlogPosts={relatedBlogPosts}
+/>

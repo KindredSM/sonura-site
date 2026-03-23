@@ -1,0 +1,63 @@
+---
+import ToolLayout from '../../../layouts/ToolLayout.astro';
+
+const features = [
+  { title: 'Hooks and motifs', description: 'Earworm melodies, counter-melodies, and thematic motifs to anchor your track.' },
+  { title: 'Key and scale control', description: 'Specify key, scale, and mode in your prompt for melodies that fit your harmonic foundation.' },
+  { title: 'Genre-native phrasing', description: 'Trap flute runs, lo-fi jazz licks, EDM leads, pop hooks. Melodic language that fits the style.' },
+  { title: 'Loopable or one-shot', description: 'Generate phrases that loop for sections, or single-pass ideas for intros and bridges.' },
+  { title: 'Stem export', description: 'Download melody stems to layer with drums, bass, and vocals in your DAW.' },
+  { title: 'Stack and iterate', description: 'Generate multiple takes and pick the best. Combine fragments from different generations.' },
+];
+
+const howItWorksSteps = [
+  'Set key, scale, genre, and the role of the melody: hook, counter, motif.',
+  'Sonura generates melodic lines you can loop or develop into sections.',
+  'Layer with drums and bass, or export to your DAW.',
+];
+
+const useCases = [
+  { title: 'Top-line writers', description: 'Sketch melodic ideas quickly before committing to full production or vocal sessions.' },
+  { title: 'Beat makers', description: 'Lead lines and earworms that sit above drums and bass and carry the hook.' },
+  { title: 'Film scoring', description: 'Simple motifs for themes, cues, and transitional moments in picture.' },
+  { title: 'EDM and pop producers', description: 'Hooks, pluck leads, and synth lines that carry a drop or chorus.' },
+];
+
+const faqs = [
+  { question: 'What kind of melodies can I make?', answer: 'Hooks, counter-melodies, lead lines, motifs. Set key and scale in your prompt for precise results.' },
+  { question: 'Can I control key and scale?', answer: 'Yes. Include key and scale in your prompt. Refine until the melody fits your harmonic context.' },
+  { question: 'Will output sound generic?', answer: 'Specificity matters. Detailed prompts and iteration produce more interesting results. Layer and edit for originality.' },
+  { question: 'Can I use melodies in full tracks?', answer: 'Absolutely. Use as parts of a larger arrangement built in Sonura or exported to a DAW.' },
+];
+
+const relatedTools = [
+  { title: 'Beat Maker', href: '/tools/ai-beat-maker/', description: 'Full beats built around your melody.' },
+  { title: 'Vocal Generator', href: '/tools/ai-vocal-generator/', description: 'Vocals that follow your harmonic idea.' },
+  { title: 'Loop Maker', href: '/tools/ai-loop-maker/', description: 'Short repeating phrases for layering.' },
+];
+
+const relatedBlogPosts = [
+  { title: 'Choosing an AI music generator', href: '/blog/ai-music-generator-guide/' },
+];
+---
+
+<ToolLayout
+  toolName="Melody Maker"
+  toolSlug="ai-melody-maker"
+  title="Melody Maker Online | Generate Hooks and Leads Free - Sonura"
+  description="Generate melodic hooks, motifs, and leads from text prompts. Set key and scale for precise results in Sonura."
+  keywords="melody maker, melody generator, hook generator, lead melody maker, melody maker online free"
+  headline="Generate melodies from a description"
+  subhead="Hooks, counter-melodies, lead lines. Set key, scale, and genre. The tool handles the rest."
+  features={features}
+  howItWorksTitle="How it works"
+  howItWorksSteps={howItWorksSteps}
+  useCases={useCases}
+  faqs={faqs}
+  appUrl="https://app.sonurastudio.com/samples"
+  ctaPrimaryText="Make melodies free"
+  finalCtaTitle="Start generating melodies"
+  finalCtaButtonText="Try it free"
+  relatedTools={relatedTools}
+  relatedBlogPosts={relatedBlogPosts}
+/>

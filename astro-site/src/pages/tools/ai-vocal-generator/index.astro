@@ -1,0 +1,63 @@
+---
+import ToolLayout from '../../../layouts/ToolLayout.astro';
+
+const features = [
+  { title: 'Hooks, melodies, and ad-libs', description: 'Generate sung phrases and melodic hooks that fit over your beat or arrangement.' },
+  { title: 'Control the style', description: 'Describe tone, energy, and genre. Go from airy R&B to aggressive trap hooks by changing your prompt.' },
+  { title: 'Demo-ready output', description: 'Share full-sounding demos with vocal lines without booking studio time or session singers.' },
+  { title: 'Layer and process', description: 'Export takes, stack them, add effects, or use generated vocals as creative texture alongside real performances.' },
+  { title: 'Works with stems', description: 'Vocals sit alongside other Sonura stems. Build a complete track without leaving the studio.' },
+  { title: 'Iterate instantly', description: 'Not the right vibe? Regenerate with a tweaked prompt until the vocal feels right.' },
+];
+
+const howItWorksSteps = [
+  'Describe the vocal style, mood, and role in the track.',
+  'Generate melodic vocals, hooks, or phrases that match your production.',
+  'Export and drop into your session, or keep building in the Sonura studio.',
+];
+
+const useCases = [
+  { title: 'Songwriters', description: 'Try melodic ideas quickly before committing to a session vocalist.' },
+  { title: 'Producers', description: 'Layer vocals as creative texture or use them as placeholders while you develop the mix.' },
+  { title: 'Demo builders', description: 'Send clients and collaborators full-sounding demos with vocal ideas. No booth needed.' },
+  { title: 'Content creators', description: 'Vocal hooks for shorts, trailers, and social edits without licensing hassles.' },
+];
+
+const faqs = [
+  { question: 'What kind of vocals can I generate?', answer: 'Sung phrases, hooks, ad-libs, melodic lines, and harmonies. Describe the style and energy you need.' },
+  { question: 'Can I use these commercially?', answer: 'Commercial use depends on your Sonura plan. Review pricing and terms before release.' },
+  { question: 'How do I match vocals to my beat?', answer: 'Describe key, style, and energy in your prompt. Align tempo with your project inside Sonura.' },
+  { question: 'Does this replace a real singer?', answer: 'It is a production tool. Many artists use generated vocals for sketches, harmonies, or texture alongside real performances.' },
+];
+
+const relatedTools = [
+  { title: 'Melody Maker', href: '/tools/ai-melody-maker/', description: 'Melodic lines to pair with vocals.' },
+  { title: 'Text to Music', href: '/tools/text-to-music/', description: 'Full musical ideas from a short description.' },
+  { title: 'Vocal Remover', href: '/tools/vocal-remover/', description: 'Isolate or strip vocals from existing tracks.' },
+];
+
+const relatedBlogPosts = [
+  { title: 'Royalty-free music explained', href: '/blog/royalty-free-music-explained/' },
+];
+---
+
+<ToolLayout
+  toolName="Vocal Generator"
+  toolSlug="ai-vocal-generator"
+  title="Vocal Generator | Create Hooks and Melodies Online - Sonura"
+  description="Generate vocal hooks, melodies, and ad-libs from text prompts. Create demo-ready vocal ideas in Sonura."
+  keywords="vocal generator, singing voice generator, vocal hooks online, generate vocals, vocal melody maker"
+  headline="Generate vocal hooks and melodies"
+  subhead="Describe what you need and get vocal ideas back. Hooks, melodies, ad-libs, harmonies. Skip the studio for early drafts and creative exploration."
+  features={features}
+  howItWorksTitle="How it works"
+  howItWorksSteps={howItWorksSteps}
+  useCases={useCases}
+  faqs={faqs}
+  appUrl="https://app.sonurastudio.com/samples"
+  ctaPrimaryText="Generate vocals free"
+  finalCtaTitle="Start generating vocals"
+  finalCtaButtonText="Try it free"
+  relatedTools={relatedTools}
+  relatedBlogPosts={relatedBlogPosts}
+/>

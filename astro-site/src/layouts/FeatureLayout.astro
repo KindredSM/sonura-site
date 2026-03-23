@@ -33,6 +33,8 @@ interface Props {
   trustItems?: string[];
   finalCtaTitle?: string;
   finalCtaButtonText?: string;
+  toolPageHref?: string;
+  toolPageLabel?: string;
 }
 
 const {
@@ -52,6 +54,8 @@ const {
   trustItems = [],
   finalCtaTitle,
   finalCtaButtonText,
+  toolPageHref,
+  toolPageLabel,
 } = Astro.props;
 
 const canonical = `https://sonurastudio.com/features/${featureSlug}/`;
@@ -195,6 +199,9 @@ const jsonLd = [
       <div class="cta">
         <a class="button primary" href="https://app.sonurastudio.com">{ctaText}</a>
         <a class="hero-beta-link" href="/features/">All Features →</a>
+        {toolPageHref && toolPageLabel && (
+          <a class="hero-beta-link" href={toolPageHref}>{toolPageLabel}</a>
+        )}
       </div>
     </div>
   </section>

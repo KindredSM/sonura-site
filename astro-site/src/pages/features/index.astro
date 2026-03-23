@@ -1,7 +1,15 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const features = [
+type Feature = {
+  name: string;
+  slug: string;
+  description: string;
+  icon: string;
+  comingSoon?: boolean;
+};
+
+const features: Feature[] = [
   {
     name: 'AI Vocals',
     slug: 'ai-vocals',
@@ -167,6 +175,7 @@ const jsonLd = [
     <header style="text-align: center; margin-bottom: 64px;">
       <h1 style="font-size: 48px; font-weight: 800; margin-bottom: 24px; line-height: 1.2;">Sonura Features</h1>
       <p style="font-size: 20px; color: var(--muted); max-width: 700px; margin: 0 auto; line-height: 1.6;">Everything you need to create professional music with AI. From vocals to full beats, loops to stems.</p>
+      <p style="margin-top: 20px;"><a href="/tools/" style="color: var(--primary); font-weight: 600;">Browse free AI music tool pages →</a></p>
     </header>
 
     <div class="feature-hub-grid">
