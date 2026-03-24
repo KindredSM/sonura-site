@@ -3,6 +3,10 @@ Allow: /
 
 Sitemap: https://sonurastudio.com/sitemap.xml
 
+# LLM documentation
+# https://sonurastudio.com/llms.txt
+# https://sonurastudio.com/llms-full.txt
+
 User-agent: GPTBot
 Allow: /
 
