@@ -1,0 +1,324 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const SUPABASE_URL = 'https://nnbszdopvyychoayfctc.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5uYnN6ZG9wdnl5Y2hvYXlmY3RjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTczNDc2ODgsImV4cCI6MjA3MjkyMzY4OH0.E6OZSuhtAZ3wPU6eJwZ4Am0SF0xT4gy58lGwXnaTMDQ';
+
+const roles = ['Producer', 'Songwriter', 'Singer / Vocalist', 'Beat Maker'];
+---
+
+<BaseLayout
+  title="Sonura Plugin | VST/AU for Your DAW"
+  description="Generate loops, one-shots, vocals, and drums without leaving your DAW. Join the waitlist."
+  canonical="https://sonurastudio.com/plugin/"
+  ogTitle="Sonura Plugin — AI inside your DAW"
+  ogDescription="Generate loops, one-shots, vocals, and drums without leaving your session. VST3 & AU. Join the waitlist."
+>
+
+  <div class="pg">
+    <div class="pg-glow"></div>
+
+    <div class="pg-copy">
+      <p class="pg-label anim">VST3 · AU · Coming Soon</p>
+      <h1 class="anim">Studio-Quality Sounds<br/>Generated in Your DAW</h1>
+      <p class="pg-sub anim">Vocals, drums, loops, one-shots. Create exactly what you hear in your head, own everything you make.</p>
+      <p class="pg-daws anim">Ableton Live · Logic Pro · FL Studio · Studio One · Bitwig · Cubase</p>
+    </div>
+
+    <form class="pg-form" id="pg-form">
+      <div class="pg-form-inner anim">
+        <input type="email" class="input" placeholder="you@email.com" required autocomplete="email" />
+        <p class="pg-roles-label">I make music as…</p>
+        <div class="pg-roles" id="pg-roles">
+          {roles.map(r => <button type="button" class="pg-pill" data-role={r}>{r}</button>)}
+        </div>
+        <button type="submit" class="button primary full-width pg-submit" id="pg-submit">Join the Waitlist</button>
+        <p class="feedback" id="pg-feedback"></p>
+      </div>
+    </form>
+  </div>
+
+</BaseLayout>
+
+<script define:vars={{ SUPABASE_URL, SUPABASE_ANON_KEY }}>
+  const selected = new Set();
+  const form = document.getElementById('pg-form');
+  const feedback = document.getElementById('pg-feedback');
+  const submitBtn = document.getElementById('pg-submit');
+  const rolesWrap = document.getElementById('pg-roles');
+
+  rolesWrap.querySelectorAll('.pg-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      const role = pill.dataset.role;
+      if (selected.has(role)) { selected.delete(role); pill.classList.remove('on'); }
+      else { selected.add(role); pill.classList.add('on'); }
+      rolesWrap.classList.remove('shake');
+    });
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = form.querySelector('input[type="email"]').value.trim();
+    if (!email) return;
+
+    if (selected.size === 0) {
+      rolesWrap.classList.remove('shake');
+      void rolesWrap.offsetWidth;
+      rolesWrap.classList.add('shake');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Joining...';
+    feedback.textContent = '';
+    feedback.className = 'feedback';
+
+    try {
+      const res = await fetch(SUPABASE_URL + '/rest/v1/plugin_waitlist', {
+        method: 'POST',
+        headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': 'Bearer ' + SUPABASE_ANON_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+        body: JSON.stringify({ email, roles: Array.from(selected) }),
+      });
+      if (res.ok) {
+        feedback.textContent = '';
+        feedback.className = 'feedback';
+        form.reset();
+        selected.clear();
+        rolesWrap.querySelectorAll('.pg-pill').forEach(p => p.classList.remove('on'));
+        submitBtn.textContent = "You're In";
+        submitBtn.classList.add('success');
+      } else if (res.status === 409) {
+        feedback.textContent = 'Already on the list.';
+        feedback.className = 'feedback error';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Join the Waitlist';
+      } else {
+        const body = await res.text();
+        console.error('Waitlist error:', res.status, body);
+        feedback.textContent = 'Something went wrong — try again.';
+        feedback.className = 'feedback error';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Join the Waitlist';
+      }
+    } catch (err) {
+      console.error('Waitlist fetch failed:', err);
+      feedback.textContent = 'Something went wrong — try again.';
+      feedback.className = 'feedback error';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Join the Waitlist';
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof gsap === 'undefined') return;
+    const items = document.querySelectorAll('.anim');
+    gsap.set(items, { opacity: 0, y: 24 });
+    gsap.to(items, {
+      opacity: 1,
+      y: 0,
+      duration: 0.7,
+      ease: 'power3.out',
+      stagger: 0.1,
+      delay: 0.15,
+    });
+  });
+</script>
+
+<style>
+  .pg {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0px 24px 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 56px;
+    min-height: 100vh;
+    justify-content: center;
+  }
+
+  .pg-glow {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+    opacity: 0.35;
+    pointer-events: none;
+    filter: blur(80px);
+  }
+
+  .pg-copy {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .pg-copy h1 {
+    margin: 0;
+    font-size: clamp(36px, 6vw, 56px);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    font-weight: 700;
+    background: linear-gradient(to bottom, #fff 30%, #a1a1aa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .pg-label {
+    margin: 0;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    font-weight: 500;
+  }
+
+  .pg-sub {
+    margin: 0;
+    font-size: clamp(16px, 2.5vw, 20px);
+    color: var(--muted);
+    line-height: 1.5;
+    max-width: 560px;
+    align-self: center;
+  }
+
+  .pg-daws {
+    margin: 0;
+    font-size: 13px;
+    color: #52525b;
+    opacity: 0.4;
+  }
+
+  .pg-form {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+  }
+
+  .pg-form-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .pg-form .input {
+    font-size: 16px;
+    padding: 16px 18px;
+    border-radius: 10px;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  }
+
+  .pg-roles-label {
+    margin: 4px 0 0;
+    font-size: 13px;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  .pg-roles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .pg-roles.shake {
+    animation: shake 0.35s ease;
+  }
+
+  .pg-roles.shake .pg-pill:not(.on) {
+    border-color: rgba(248, 113, 113, 0.6);
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-3px); }
+    40% { transform: translateX(3px); }
+    60% { transform: translateX(-2px); }
+    80% { transform: translateX(2px); }
+  }
+
+  .pg-pill {
+    appearance: none;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    border-radius: 999px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: inherit;
+    white-space: nowrap;
+  }
+
+  .pg-pill:hover {
+    color: var(--fg);
+    border-color: var(--border-light);
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .pg-pill.on {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+    transform: scale(1.04);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.08);
+  }
+
+  .pg-submit {
+    margin-top: 6px;
+    font-size: 16px;
+    padding: 16px 24px;
+    border-radius: 10px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .pg-submit:hover:not([disabled]) {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 30px var(--primary-glow);
+  }
+
+  .pg-submit:active:not([disabled]) {
+    transform: translateY(0);
+  }
+
+  .pg-submit.success {
+    background: #059669;
+    border-color: #059669;
+    pointer-events: none;
+  }
+
+  .anim {
+    opacity: 0;
+  }
+
+  @media (max-width: 480px) {
+    .pg {
+      padding: 100px 20px 80px;
+      gap: 36px;
+    }
+
+    .pg-glow {
+      width: 300px;
+      height: 300px;
+    }
+
+    .pg-pill {
+      padding: 5px 11px;
+      font-size: 12px;
+    }
+
+    .pg-form {
+      max-width: 100%;
+    }
+  }
+</style>
