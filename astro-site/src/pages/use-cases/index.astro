@@ -171,23 +171,6 @@ const jsonLd = [
       font-size: 14px;
     }
 
-    .coming-soon-badge {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      font-size: 11px;
-      padding: 4px 10px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 20px;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .usecase-card.coming-soon {
-      opacity: 0.7;
-      pointer-events: none;
-    }
   </style>
 
   <div style="max-width: 1280px; margin: 80px auto; padding: 0 24px;">
@@ -198,12 +181,11 @@ const jsonLd = [
 
     <div class="usecase-hub-grid">
       {useCases.map((useCase) => (
-        <a href={useCase.comingSoon ? '#' : `/use-cases/${useCase.slug}/`} class={`usecase-card ${useCase.comingSoon ? 'coming-soon' : ''}`}>
-          {useCase.comingSoon && <span class="coming-soon-badge">Coming Soon</span>}
+        <a href={`/use-cases/${useCase.slug}/`} class="usecase-card">
           <div class="usecase-card-audience">{useCase.audience}</div>
           <div class="usecase-card-name">{useCase.name}</div>
           <p class="usecase-card-desc">{useCase.description}</p>
-          {!useCase.comingSoon && <div class="usecase-card-arrow">Learn more →</div>}
+          <div class="usecase-card-arrow">Learn more →</div>
         </a>
       ))}
     </div>
@@ -211,7 +193,7 @@ const jsonLd = [
     <div style="text-align: center; margin-top: 80px; padding: 48px; background: rgba(124, 58, 237, 0.05); border: 1px solid rgba(124, 58, 237, 0.2); border-radius: 16px;">
       <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 16px;">Have a Different Use Case?</h2>
       <p style="color: var(--muted); margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto;">Sonura works for any project that needs music. Try it free and see what you can create.</p>
-      <a href="https://app.sonurastudio.com" class="button primary large" style="display: inline-block; padding: 18px 40px; background: var(--primary); color: white; text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 18px;">Start Creating Free</a>
+      <a href="https://app.sonurastudio.com/studio" class="button primary large" style="display: inline-block; padding: 18px 40px; background: var(--primary); color: white; text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 18px;">Start Creating Free</a>
     </div>
   </div>
 </BaseLayout>

@@ -57,6 +57,7 @@ interface Props {
   finalCtaSubtitle?: string;
   finalCtaButtonText?: string;
   finalCtaFooter?: string;
+  appUrl?: string;
 }
 
 const {
@@ -83,6 +84,7 @@ const {
   finalCtaSubtitle,
   finalCtaButtonText,
   finalCtaFooter,
+  appUrl = 'https://app.sonurastudio.com/studio',
 } = Astro.props;
 
 const canonical = `https://sonurastudio.com/alternatives/${competitorSlug}/`;
@@ -164,7 +166,7 @@ const jsonLd = [
             </div>
           ))}
         </div>
-        <a href="https://app.sonurastudio.com" class="button primary large" style="display: inline-block; margin-top: 40px; padding: 18px 40px; background: var(--primary); color: white; text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 18px;">Try Sonura Free</a>
+        <a href={appUrl} class="button primary large" style="display: inline-block; margin-top: 40px; padding: 18px 40px; background: var(--primary); color: white; text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 18px;">Try Sonura Free</a>
       </div>
     </section>
 
@@ -267,7 +269,7 @@ const jsonLd = [
     <section style="background: rgba(124, 58, 237, 0.1); border: 2px solid var(--primary); border-radius: 16px; padding: 64px; text-align: center;">
       <h2 class="alt-h2" style="font-size: 36px; font-weight: 700; margin-bottom: 24px;">{finalCtaTitle || `Try the Best ${competitor} Alternative`}</h2>
       <p style="font-size: 20px; color: var(--muted); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">{finalCtaSubtitle || 'Free to start, no credit card required.'}</p>
-      <a href="https://app.sonurastudio.com" class="button primary large" style="display: inline-block; padding: 20px 48px; background: var(--primary); color: white; text-decoration: none; border-radius: 12px; font-weight: 700; font-size: 20px;">{finalCtaButtonText || 'Start Creating Free'}</a>
+      <a href={appUrl} class="button primary large" style="display: inline-block; padding: 20px 48px; background: var(--primary); color: white; text-decoration: none; border-radius: 12px; font-weight: 700; font-size: 20px;">{finalCtaButtonText || 'Start Creating Free'}</a>
       {finalCtaFooter && <p style="margin-top: 24px; color: var(--muted); font-size: 14px;">{finalCtaFooter}</p>}
     </section>
   </div>
