@@ -1,170 +1,829 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const SUPABASE_URL = 'https://nnbszdopvyychoayfctc.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5uYnN6ZG9wdnl5Y2hvYXlmY3RjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTczNDc2ODgsImV4cCI6MjA3MjkyMzY4OH0.E6OZSuhtAZ3wPU6eJwZ4Am0SF0xT4gy58lGwXnaTMDQ';
+const faqs = [
+  {
+    question: 'What DAWs does Sonura Flow work with?',
+    answer: 'Sonura Flow is a VST3 and AU plugin, so it works with any major DAW: Ableton Live, Logic Pro, FL Studio, Studio One, Bitwig, Cubase, Reaper, GarageBand, and more. If your DAW loads VST3 or AU plugins, you can use it.'
+  },
+  {
+    question: 'Is Sonura Flow free?',
+    answer: 'Yes. The plugin is included with any Sonura account, including the free tier. Download it, sign in, and start generating sounds inside your DAW.'
+  },
+  {
+    question: 'What operating systems are supported?',
+    answer: 'Sonura Flow runs on macOS 12 Monterey or later (Apple Silicon and Intel) and Windows 10 or later (64-bit). Installers are available for both platforms on this page.'
+  },
+  {
+    question: 'Do I own the sounds I generate?',
+    answer: 'Yes. Every sound you create with Sonura Flow is fully royalty-free and yours to use forever, including in commercial releases, sync placements, streaming, and client work. No attribution required.'
+  },
+  {
+    question: 'How do I get the sounds into my project?',
+    answer: 'Sounds generated in the plugin drop straight into your DAW timeline as audio. Drag them onto a track or use the plugin\'s built-in export. No bouncing, no re-importing, no switching apps.'
+  },
+  {
+    question: 'Do I need an internet connection?',
+    answer: 'Yes. Generations run on Sonura\'s servers so the plugin stays lightweight and the models stay up to date. You just need a regular internet connection while creating.'
+  },
+  {
+    question: 'What can I make with the plugin?',
+    answer: 'Drums and one-shots, melodic loops, basslines, vocal stems (pads, chops, ad-libs, hooks), FX, textures, and full instrumental loops. Anything from a single kick to a full melodic phrase, in any key or BPM.'
+  },
+  {
+    question: 'How is this different from a sample pack or Splice?',
+    answer: 'With a sample pack you pick from what someone else made. With Sonura Flow you describe what you need and get fresh, unique sounds matched to your track, right inside your session. No scrolling, no duplicate packs across producers.'
+  },
+  {
+    question: 'Can I use Sonura Flow in commercial releases?',
+    answer: 'Yes. Full commercial rights are included on every free and paid plan. Release on Spotify, Apple Music, YouTube, sync to video, sell beats, use in client work, the sounds are yours.'
+  }
+];
 
-const roles = ['Producer', 'Songwriter', 'Singer / Vocalist', 'Beat Maker'];
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Sonura Flow",
+    "url": "https://sonurastudio.com/plugin/",
+    "applicationCategory": "MultimediaApplication",
+    "applicationSubCategory": "Audio Plugin",
+    "operatingSystem": "macOS 12, Windows 10, Windows 11",
+    "description": "Free AI plugin for producers. Generate drums, vocals, loops, and one-shots inside your DAW. VST3 and AU. Royalty-free.",
+    "softwareVersion": "1.1.1",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "127"
+    },
+    "featureList": [
+      "VST3 and AU plugin",
+      "AI-generated drums, loops, vocals, one-shots",
+      "Runs inside any major DAW",
+      "Royalty-free commercial rights",
+      "Personal sound library",
+      "Up to 4 variations per prompt"
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sonurastudio.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Plugin", "item": "https://sonurastudio.com/plugin/" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  }
+];
 ---
 
 <BaseLayout
-  title="Sonura Plugin | VST/AU for Your DAW"
-  description="Generate loops, one-shots, vocals, and drums without leaving your DAW. Join the waitlist."
+  title="Sonura Flow | Free AI VST3 & AU Plugin for Producers"
+  description="Free AI plugin for your DAW. Generate drums, vocals, loops, and one-shots inside Ableton, Logic, FL Studio, and more. VST3 + AU. Royalty-free. Mac and Windows."
+  keywords="AI plugin, VST3 plugin, AU plugin, AI sample generator plugin, DAW plugin, AI drum generator, AI vocal generator, AI loop plugin, free music plugin, Ableton plugin, Logic Pro plugin, FL Studio plugin, royalty free plugin, Sonura Flow"
   canonical="https://sonurastudio.com/plugin/"
-  ogTitle="Sonura Plugin — AI inside your DAW"
-  ogDescription="Generate loops, one-shots, vocals, and drums without leaving your session. VST3 & AU. Join the waitlist."
+  ogTitle="Sonura Flow | Free AI Plugin for Your DAW"
+  ogDescription="Generate drums, vocals, loops, and one-shots inside your DAW. VST3 and AU. Free download for Mac and Windows."
+  jsonLd={jsonLd}
 >
 
   <div class="pg">
     <div class="pg-glow"></div>
+    <div class="pg-glow-b"></div>
+    <div class="pg-grid"></div>
 
-    <div class="pg-copy">
-      <p class="pg-label anim">VST3 · AU · Coming Soon</p>
-      <h1 class="anim">Studio-Quality Sounds<br/>Generated in Your DAW</h1>
-      <p class="pg-sub anim">Vocals, drums, loops, one-shots. Create exactly what you hear in your head, own everything you make.</p>
-      <p class="pg-daws anim">Ableton Live · Logic Pro · FL Studio · Studio One · Bitwig · Cubase</p>
-    </div>
+    <section class="pg-hero">
+      <div class="pg-left">
+        <h1 class="anim">
+          <span class="h1-row">Sonura</span>
+          <span class="h1-row h1-accent">Flow</span>
+        </h1>
 
-    <form class="pg-form" id="pg-form">
-      <div class="pg-form-inner anim">
-        <input type="email" class="input" placeholder="you@email.com" required autocomplete="email" />
-        <p class="pg-roles-label">I make music as…</p>
-        <div class="pg-roles" id="pg-roles">
-          {roles.map(r => <button type="button" class="pg-pill" data-role={r}>{r}</button>)}
+        <p class="pg-sub anim">Loops, drums, vocals, and one-shots. Generated right inside your DAW. No browser, no exporting, no file juggling.</p>
+
+        <div class="pg-download anim" id="pg-download">
+          <a class="dl-btn primary-dl" id="dl-primary" href="#" download>
+            <svg class="dl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span id="dl-primary-label">Download</span>
+          </a>
+          <a class="dl-btn alt-dl" id="dl-alt" href="#" download>
+            <span id="dl-alt-label">Download for Windows</span>
+          </a>
         </div>
-        <button type="submit" class="button primary full-width pg-submit" id="pg-submit">Join the Waitlist</button>
-        <p class="feedback" id="pg-feedback"></p>
+
+        <div class="pg-os anim">
+          <div class="os-badge">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            <span>macOS 12+</span>
+          </div>
+          <div class="os-badge">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.548l7.065-0.964v6.817H3V5.548zm0 12.904l7.065 0.964V12.6H3v5.852zm7.937 1.048L21 20.936V12.6H10.937v6.9zM10.937 4.5L21 3.064V11.4H10.937V4.5z"/></svg>
+            <span>Windows 10+</span>
+          </div>
+        </div>
       </div>
-    </form>
+
+      <div class="pg-right anim">
+        <div class="pg-stage">
+          <div class="pg-halo"></div>
+          <div class="pg-device">
+            <div class="pg-device-bezel">
+              <img src="/images/plugin-ui.webp" alt="Sonura Flow plugin interface showing AI-powered loop and sound generation" width="900" height="1549" loading="eager" />
+              <div class="pg-device-sheen"></div>
+            </div>
+          </div>
+          <div class="pg-chip pg-chip-1">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+            <span>Inside your DAW</span>
+          </div>
+          <div class="pg-chip pg-chip-2">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>100% Royalty-Free</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pg-showcase anim">
+      <header class="showcase-head">
+        <h2 class="showcase-title">Your whole studio, inside your DAW.</h2>
+        <p class="showcase-sub">Loops, drums, vocals, one-shots. Make them in your session, drag them onto the timeline, keep going.</p>
+      </header>
+
+      <div class="bento">
+        <article class="bento-card card-drums">
+          <div class="card-body">
+            <h3>Make high-quality drums.</h3>
+            <p>Type "techno clap" and get four clean, session-ready hits in seconds. Beats digging through sample packs for an hour.</p>
+          </div>
+          <div class="card-shot">
+            <img src="/images/techno-clap.webp" alt="Generating a techno clap with four variations in Sonura Flow" width="800" height="1189" loading="lazy" />
+          </div>
+        </article>
+
+        <article class="bento-card card-vocals">
+          <div class="card-body">
+            <h3>Generate vocal stems.</h3>
+            <p>Describe what you want. Ethereal pads, chopped hooks, ad-libs, runs. You get usable vocal stems in seconds.</p>
+          </div>
+          <div class="card-shot">
+            <img src="/images/make-vocals.webp" alt="Generating ethereal vocals from a text prompt" width="800" height="1371" loading="lazy" />
+          </div>
+        </article>
+
+        <article class="bento-card card-library">
+          <div class="card-body">
+            <h3>Own your library.</h3>
+            <p>Every sound you generate lands in your library. Searchable, organized, and royalty-free forever.</p>
+          </div>
+          <div class="card-shot">
+            <img src="/images/library.webp" alt="Personal library of generated loops and one-shots" width="800" height="1222" loading="lazy" />
+          </div>
+        </article>
+
+        <article class="bento-card card-multi">
+          <div class="multi-body">
+            <h3>Create multiple stems at once.</h3>
+            <p>Hit create and get up to four variations in one go. Pick the one that works, drag it in, keep writing.</p>
+          </div>
+          <div class="multi-shot">
+            <img src="/images/multiple-outputs.webp" alt="Four generated waveform variations side by side" width="1400" height="680" loading="lazy" />
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="pg-info anim">
+      <ul class="pg-features">
+        <li>
+          <span class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <div>
+            <strong>Create inside your DAW</strong>
+            <p>Loops, one-shots, vocals, and drums without leaving the session.</p>
+          </div>
+        </li>
+        <li>
+          <span class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <div>
+            <strong>Own everything you make</strong>
+            <p>Full commercial rights on every sound you generate.</p>
+          </div>
+        </li>
+        <li>
+          <span class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <div>
+            <strong>VST3 and AU</strong>
+            <p>Works with any major DAW on Mac or Windows.</p>
+          </div>
+        </li>
+        <li>
+          <span class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <div>
+            <strong>Free with your plan</strong>
+            <p>Included with any Sonura account. No extra subscription.</p>
+          </div>
+        </li>
+      </ul>
+      <p class="pg-daws">Ableton Live &middot; Logic Pro &middot; FL Studio &middot; Studio One &middot; Bitwig &middot; Cubase</p>
+    </section>
+
+    <section class="pg-faq faq anim" id="faq" aria-labelledby="plugin-faq-title">
+      <div class="faq-inner">
+        <h2 id="plugin-faq-title" class="faq-title">Plugin FAQ</h2>
+        <div class="faq-list">
+          {faqs.map((faq) => (
+            <details>
+              <summary>{faq.question}</summary>
+              <p>{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="pg-cta anim">
+      <div class="pg-cta-glow"></div>
+      <h2 class="pg-cta-title">Start making sounds in your DAW.</h2>
+      <p class="pg-cta-sub">Download Sonura Flow and load it up. Free with your Sonura account.</p>
+      <div class="pg-download pg-cta-download">
+        <a class="dl-btn primary-dl" id="dl-primary-b" href="#" download>
+          <svg class="dl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span id="dl-primary-label-b">Download</span>
+        </a>
+        <a class="dl-btn alt-dl" id="dl-alt-b" href="#" download>
+          <span id="dl-alt-label-b">Download for Windows</span>
+        </a>
+      </div>
+      <div class="pg-os pg-cta-os">
+        <div class="os-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <span>macOS 12+</span>
+        </div>
+        <div class="os-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.548l7.065-0.964v6.817H3V5.548zm0 12.904l7.065 0.964V12.6H3v5.852zm7.937 1.048L21 20.936V12.6H10.937v6.9zM10.937 4.5L21 3.064V11.4H10.937V4.5z"/></svg>
+          <span>Windows 10+</span>
+        </div>
+      </div>
+    </section>
   </div>
 
 </BaseLayout>
 
-<script define:vars={{ SUPABASE_URL, SUPABASE_ANON_KEY }}>
-  const selected = new Set();
-  const form = document.getElementById('pg-form');
-  const feedback = document.getElementById('pg-feedback');
-  const submitBtn = document.getElementById('pg-submit');
-  const rolesWrap = document.getElementById('pg-roles');
+<script>
+  // @ts-nocheck
+  const PLUGIN_VERSION = '1.1.1';
+  const MAC_URL = `https://audio.sonurastudio.com/sonura-plugin/SonuraFlow-v${PLUGIN_VERSION}-macOS.pkg`;
+  const WIN_URL = `https://audio.sonurastudio.com/sonura-plugin/SonuraFlow-v${PLUGIN_VERSION}-Windows.zip`;
 
-  rolesWrap.querySelectorAll('.pg-pill').forEach(pill => {
-    pill.addEventListener('click', () => {
-      const role = pill.dataset.role;
-      if (selected.has(role)) { selected.delete(role); pill.classList.remove('on'); }
-      else { selected.add(role); pill.classList.add('on'); }
-      rolesWrap.classList.remove('shake');
-    });
-  });
+  const isMac = /Mac|iPhone|iPad|iPod/.test(navigator.platform) || /Macintosh/.test(navigator.userAgent);
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const email = form.querySelector('input[type="email"]').value.trim();
-    if (!email) return;
+  const trackDownload = (platform, location) => {
+    const url = platform === 'mac' ? MAC_URL : WIN_URL;
+    const fileName = url.split('/').pop();
+    const fileExtension = platform === 'mac' ? 'pkg' : 'zip';
 
-    if (selected.size === 0) {
-      rolesWrap.classList.remove('shake');
-      void rolesWrap.offsetWidth;
-      rolesWrap.classList.add('shake');
-      return;
-    }
-
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Joining...';
-    feedback.textContent = '';
-    feedback.className = 'feedback';
-
-    try {
-      const res = await fetch(SUPABASE_URL + '/rest/v1/plugin_waitlist', {
-        method: 'POST',
-        headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': 'Bearer ' + SUPABASE_ANON_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
-        body: JSON.stringify({ email, roles: Array.from(selected) }),
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'plugin_download', {
+        plugin_platform: platform,
+        plugin_version: PLUGIN_VERSION,
+        plugin_location: location,
+        file_name: fileName,
+        file_extension: fileExtension,
+        link_url: url,
+        transport_type: 'beacon',
       });
-      if (res.ok) {
-        feedback.textContent = '';
-        feedback.className = 'feedback';
-        form.reset();
-        selected.clear();
-        rolesWrap.querySelectorAll('.pg-pill').forEach(p => p.classList.remove('on'));
-        submitBtn.textContent = "You're In";
-        submitBtn.classList.add('success');
-      } else if (res.status === 409) {
-        feedback.textContent = 'Already on the list.';
-        feedback.className = 'feedback error';
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Join the Waitlist';
-      } else {
-        const body = await res.text();
-        console.error('Waitlist error:', res.status, body);
-        feedback.textContent = 'Something went wrong — try again.';
-        feedback.className = 'feedback error';
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Join the Waitlist';
-      }
-    } catch (err) {
-      console.error('Waitlist fetch failed:', err);
-      feedback.textContent = 'Something went wrong — try again.';
-      feedback.className = 'feedback error';
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Join the Waitlist';
+      window.gtag('event', 'file_download', {
+        file_name: fileName,
+        file_extension: fileExtension,
+        link_url: url,
+        transport_type: 'beacon',
+      });
     }
-  });
+
+    if (typeof window.fbq === 'function') {
+      window.fbq('trackCustom', 'PluginDownload', {
+        platform,
+        version: PLUGIN_VERSION,
+        location,
+      });
+      window.fbq('track', 'Lead', {
+        content_name: 'Sonura Flow Plugin',
+        content_category: platform,
+      });
+    }
+
+    if (typeof window.dataLayer !== 'undefined') {
+      window.dataLayer.push({
+        event: 'plugin_download',
+        plugin_platform: platform,
+        plugin_version: PLUGIN_VERSION,
+        plugin_location: location,
+      });
+    }
+  };
+
+  const setupDownload = (primaryId, primaryLabelId, altId, altLabelId, location) => {
+    const primaryBtn = document.getElementById(primaryId);
+    const primaryLabel = document.getElementById(primaryLabelId);
+    const altBtn = document.getElementById(altId);
+    const altLabel = document.getElementById(altLabelId);
+    if (!primaryBtn || !altBtn) return;
+
+    const primaryPlatform = isMac ? 'mac' : 'windows';
+    const altPlatform = isMac ? 'windows' : 'mac';
+
+    if (isMac) {
+      primaryBtn.href = MAC_URL;
+      primaryLabel.textContent = 'Download for Mac';
+      altBtn.href = WIN_URL;
+      altLabel.textContent = 'Download for Windows';
+    } else {
+      primaryBtn.href = WIN_URL;
+      primaryLabel.textContent = 'Download for Windows';
+      altBtn.href = MAC_URL;
+      altLabel.textContent = 'Download for Mac';
+    }
+
+    primaryBtn.addEventListener('click', () => trackDownload(primaryPlatform, location));
+    altBtn.addEventListener('click', () => trackDownload(altPlatform, location));
+  };
+
+  setupDownload('dl-primary', 'dl-primary-label', 'dl-alt', 'dl-alt-label', 'hero');
+  setupDownload('dl-primary-b', 'dl-primary-label-b', 'dl-alt-b', 'dl-alt-label-b', 'cta');
 
   document.addEventListener('DOMContentLoaded', () => {
     if (typeof gsap === 'undefined') return;
+
     const items = document.querySelectorAll('.anim');
-    gsap.set(items, { opacity: 0, y: 24 });
+    gsap.set(items, { opacity: 0, y: 30 });
     gsap.to(items, {
       opacity: 1,
       y: 0,
-      duration: 0.7,
+      duration: 0.8,
       ease: 'power3.out',
       stagger: 0.1,
       delay: 0.15,
     });
+
+    const device = document.querySelector('.pg-device');
+    if (device) {
+      gsap.set(device, { rotateY: 10, rotateX: -4, scale: 0.94 });
+      gsap.to(device, {
+        rotateY: 0,
+        rotateX: 0,
+        scale: 1,
+        duration: 1.3,
+        ease: 'power3.out',
+        delay: 0.3,
+      });
+
+      gsap.to(device, {
+        y: -12,
+        duration: 3.5,
+        ease: 'sine.inOut',
+        yoyo: true,
+        repeat: -1,
+        delay: 1.6,
+      });
+    }
+
+    const chip1 = document.querySelector('.pg-chip-1');
+    const chip2 = document.querySelector('.pg-chip-2');
+    if (chip1) {
+      gsap.set(chip1, { opacity: 0, x: -20 });
+      gsap.to(chip1, {
+        opacity: 1,
+        x: 0,
+        duration: 0.6,
+        ease: 'power2.out',
+        delay: 0.9,
+        onComplete: () => {
+          gsap.to(chip1, {
+            y: -14,
+            x: 6,
+            rotate: -1.5,
+            duration: 4.2,
+            ease: 'sine.inOut',
+            yoyo: true,
+            repeat: -1,
+          });
+        },
+      });
+    }
+    if (chip2) {
+      gsap.set(chip2, { opacity: 0, x: 20 });
+      gsap.to(chip2, {
+        opacity: 1,
+        x: 0,
+        duration: 0.6,
+        ease: 'power2.out',
+        delay: 1.1,
+        onComplete: () => {
+          gsap.to(chip2, {
+            y: 12,
+            x: -6,
+            rotate: 1.5,
+            duration: 5,
+            ease: 'sine.inOut',
+            yoyo: true,
+            repeat: -1,
+            delay: 0.4,
+          });
+        },
+      });
+    }
+
+    const features = document.querySelectorAll('.pg-features li');
+    if (features.length) {
+      gsap.set(features, { opacity: 0, y: 16 });
+      gsap.to(features, {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        ease: 'power2.out',
+        stagger: 0.08,
+        delay: 0.6,
+      });
+    }
+
+    const faqItems = document.querySelectorAll('.pg-faq details');
+    if (faqItems.length && typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.set(faqItems, { opacity: 0, y: 20 });
+      gsap.to(faqItems, {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        ease: 'power2.out',
+        stagger: 0.05,
+        scrollTrigger: {
+          trigger: '.pg-faq',
+          start: 'top 80%',
+          once: true,
+        },
+      });
+    }
+
+    const bentoCards = document.querySelectorAll('.bento-card');
+    if (bentoCards.length && typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.set(bentoCards, { opacity: 0, y: 40 });
+      gsap.to(bentoCards, {
+        opacity: 1,
+        y: 0,
+        duration: 0.7,
+        ease: 'power3.out',
+        stagger: 0.09,
+        scrollTrigger: {
+          trigger: '.pg-showcase',
+          start: 'top 75%',
+          once: true,
+        },
+      });
+    } else if (bentoCards.length) {
+      gsap.set(bentoCards, { opacity: 0, y: 40 });
+      gsap.to(bentoCards, {
+        opacity: 1,
+        y: 0,
+        duration: 0.7,
+        ease: 'power3.out',
+        stagger: 0.09,
+        delay: 0.5,
+      });
+    }
   });
 </script>
 
 <style>
   .pg {
     position: relative;
-    max-width: 800px;
+    max-width: 1240px;
     margin: 0 auto;
     width: 100%;
-    padding: 0px 24px 120px;
+    padding: 80px 32px 180px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 56px;
+    gap: 180px;
     min-height: 100vh;
-    justify-content: center;
   }
 
   .pg-glow {
     position: absolute;
-    top: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
-    opacity: 0.35;
+    top: 0%;
+    left: 15%;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.04) 0%, transparent 70%);
+    opacity: 1;
     pointer-events: none;
-    filter: blur(80px);
+    filter: blur(120px);
   }
 
-  .pg-copy {
+  .pg-glow-b {
+    position: absolute;
+    top: 30%;
+    right: -10%;
+    width: 550px;
+    height: 550px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+    opacity: 1;
+    pointer-events: none;
+    filter: blur(100px);
+  }
+
+  .pg-grid {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  }
+
+  .pg-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: 80px;
+    align-items: center;
+    width: 100%;
     position: relative;
+  }
+
+  .pg-left {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    text-align: center;
+    gap: 28px;
+    min-width: 0;
   }
 
-  .pg-copy h1 {
+  .pg-left h1 {
     margin: 0;
-    font-size: clamp(36px, 6vw, 56px);
-    line-height: 1.1;
-    letter-spacing: -0.03em;
+    font-size: clamp(56px, 9vw, 112px);
+    line-height: 0.92;
+    letter-spacing: -0.045em;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .h1-row {
+    background: linear-gradient(to bottom, #fff 20%, #a1a1aa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .h1-accent {
+    font-style: italic;
+    letter-spacing: -0.055em;
+  }
+
+  .pg-sub {
+    margin: 0;
+    font-size: clamp(17px, 1.6vw, 20px);
+    color: var(--muted);
+    line-height: 1.55;
+    max-width: 480px;
+  }
+
+  .pg-download {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    max-width: 520px;
+    flex-wrap: wrap;
+  }
+
+  .dl-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: inherit;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+  }
+
+  .primary-dl {
+    font-size: 16px;
+    padding: 16px 28px;
+    background: #fff;
+    color: #000;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 24px rgba(255, 255, 255, 0.12);
+    flex: 0 0 auto;
+  }
+
+  .primary-dl:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(255, 255, 255, 0.18);
+    background: #f4f4f5;
+  }
+
+  .primary-dl:active {
+    transform: translateY(0);
+  }
+
+  .dl-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  .alt-dl {
+    font-size: 15px;
+    padding: 16px 24px;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--fg);
+    border: 1px solid var(--border);
+  }
+
+  .alt-dl:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--border-light);
+    transform: translateY(-1px);
+  }
+
+  .pg-os {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .os-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .os-badge svg {
+    width: 16px;
+    height: 16px;
+    opacity: 0.6;
+  }
+
+  .pg-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 0;
+  }
+
+  .pg-stage {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 9 / 14;
+    perspective: 1400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .pg-halo {
+    position: absolute;
+    inset: -5% -10%;
+    background:
+      radial-gradient(ellipse at 30% 40%, rgba(255, 255, 255, 0.08) 0%, transparent 55%),
+      radial-gradient(ellipse at 70% 70%, rgba(255, 255, 255, 0.04) 0%, transparent 60%);
+    filter: blur(40px);
+    opacity: 1;
+    pointer-events: none;
+  }
+
+  .pg-device {
+    position: relative;
+    transform-style: preserve-3d;
+    will-change: transform;
+    width: 100%;
+  }
+
+  .pg-device-bezel {
+    position: relative;
+    border-radius: 28px;
+    overflow: hidden;
+    background: #0a0a0a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.8),
+      0 40px 100px -20px rgba(0, 0, 0, 0.8),
+      0 0 80px -20px rgba(255, 255, 255, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
+  .pg-device-bezel img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 27px;
+  }
+
+  .pg-device-sheen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(255, 255, 255, 0.02) 30%,
+      transparent 60%
+    );
+    pointer-events: none;
+  }
+
+  .pg-chip {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: rgba(20, 20, 22, 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 13px;
+    color: var(--fg);
+    font-weight: 500;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+    white-space: nowrap;
+    z-index: 2;
+  }
+
+  .pg-chip svg {
+    width: 14px;
+    height: 14px;
+    color: #fff;
+    opacity: 0.85;
+  }
+
+  .pg-chip-1 {
+    top: 18%;
+    left: -18%;
+  }
+
+  .pg-chip-2 {
+    bottom: 20%;
+    right: -15%;
+  }
+
+  .pg-showcase {
+    position: relative;
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+  }
+
+  .showcase-head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .showcase-title {
+    margin: 0;
+    font-size: clamp(32px, 5.2vw, 54px);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
     font-weight: 700;
     background: linear-gradient(to bottom, #fff 30%, #a1a1aa);
     -webkit-background-clip: text;
@@ -172,153 +831,466 @@ const roles = ['Producer', 'Songwriter', 'Singer / Vocalist', 'Beat Maker'];
     background-clip: text;
   }
 
-  .pg-label {
+  .showcase-sub {
     margin: 0;
-    font-size: 13px;
     color: var(--muted);
-    letter-spacing: 0.06em;
-    font-weight: 500;
+    font-size: clamp(15px, 1.4vw, 18px);
+    line-height: 1.6;
   }
 
-  .pg-sub {
+  .bento {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 56px 40px;
+    width: 100%;
+  }
+
+  .bento-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-body {
+    position: relative;
+    padding: 8px 4px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .bento-card h3 {
     margin: 0;
-    font-size: clamp(16px, 2.5vw, 20px);
+    font-size: clamp(20px, 1.8vw, 24px);
+    line-height: 1.2;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--fg);
+  }
+
+  .card-body p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+
+  .card-shot {
+    position: relative;
+    height: 320px;
+    overflow: hidden;
+    margin-top: auto;
+    -webkit-mask-image:
+      linear-gradient(to bottom, transparent 0%, black 5%, black 70%, transparent 100%),
+      linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+    -webkit-mask-composite: source-in;
+            mask-image:
+      linear-gradient(to bottom, transparent 0%, black 5%, black 70%, transparent 100%),
+      linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+            mask-composite: intersect;
+  }
+
+  .card-shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .card-multi {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: center;
+    gap: 56px;
+    margin-top: 24px;
+  }
+
+  .multi-body {
+    position: relative;
+    flex: 0 0 36%;
+    padding: 8px 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .multi-body h3 {
+    margin: 0;
+    font-size: clamp(24px, 2.4vw, 32px);
+    line-height: 1.15;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    color: var(--fg);
+  }
+
+  .multi-body p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--muted);
+    max-width: 360px;
+  }
+
+  .multi-shot {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    -webkit-mask-image:
+      linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%),
+      linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
+    -webkit-mask-composite: source-in;
+            mask-image:
+      linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%),
+      linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
+            mask-composite: intersect;
+  }
+
+  .multi-shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .pg-info {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .pg-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 64px;
+    width: 100%;
+  }
+
+  .pg-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    color: var(--fg);
+    line-height: 1.5;
+  }
+
+  .feat-icon {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    display: grid;
+    place-items: center;
+    color: #fff;
+    margin-top: 2px;
+  }
+
+  .feat-icon svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .pg-features li strong {
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--fg);
+    margin-bottom: 4px;
+  }
+
+  .pg-features li p {
+    margin: 0;
+    font-size: 16px;
     color: var(--muted);
     line-height: 1.5;
-    max-width: 560px;
-    align-self: center;
   }
 
   .pg-daws {
     margin: 0;
     font-size: 13px;
     color: #52525b;
-    opacity: 0.4;
+    text-align: center;
+    letter-spacing: 0.02em;
   }
 
-  .pg-form {
+  .pg-faq {
     position: relative;
     width: 100%;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0;
+    background: transparent;
+  }
+
+  .pg-faq .faq-inner {
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .pg-faq .faq-title {
+    margin: 0 0 40px;
+    font-size: clamp(30px, 4.6vw, 48px);
+    letter-spacing: -0.035em;
+    line-height: 1.05;
+    font-weight: 700;
+    background: linear-gradient(to bottom, #fff 30%, #a1a1aa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .pg-faq .faq-list {
+    gap: 12px;
+  }
+
+  .pg-faq details {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+  }
+
+  .pg-faq summary {
+    padding: 20px 24px;
+    font-size: 16px;
+  }
+
+  .pg-faq p {
+    padding: 0 24px 20px;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .pg-cta {
+    position: relative;
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 28px;
+  }
+
+  .pg-cta-glow {
+    display: none;
+  }
+
+  .pg-cta-title {
+    margin: 0;
+    font-size: clamp(30px, 4.6vw, 48px);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    font-weight: 700;
+    background: linear-gradient(to bottom, #fff 30%, #a1a1aa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    max-width: 720px;
+  }
+
+  .pg-cta-sub {
+    margin: 0;
+    font-size: clamp(15px, 1.4vw, 17px);
+    color: var(--muted);
+    line-height: 1.55;
     max-width: 520px;
   }
 
-  .pg-form-inner {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .pg-form .input {
-    font-size: 16px;
-    padding: 16px 18px;
-    border-radius: 10px;
-    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
-  }
-
-  .pg-roles-label {
-    margin: 4px 0 0;
-    font-size: 13px;
-    color: var(--muted);
-    text-align: center;
-  }
-
-  .pg-roles {
-    display: flex;
-    flex-wrap: wrap;
+  .pg-cta-download {
+    margin-top: 12px;
     justify-content: center;
-    gap: 8px;
   }
 
-  .pg-roles.shake {
-    animation: shake 0.35s ease;
-  }
-
-  .pg-roles.shake .pg-pill:not(.on) {
-    border-color: rgba(248, 113, 113, 0.6);
-  }
-
-  @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    20% { transform: translateX(-3px); }
-    40% { transform: translateX(3px); }
-    60% { transform: translateX(-2px); }
-    80% { transform: translateX(2px); }
-  }
-
-  .pg-pill {
-    appearance: none;
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--muted);
-    border-radius: 999px;
-    padding: 8px 16px;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-    font-family: inherit;
-    white-space: nowrap;
-  }
-
-  .pg-pill:hover {
-    color: var(--fg);
-    border-color: var(--border-light);
-    background: rgba(255, 255, 255, 0.03);
-  }
-
-  .pg-pill.on {
-    background: #fff;
-    color: #000;
-    border-color: #fff;
-    transform: scale(1.04);
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.08);
-  }
-
-  .pg-submit {
-    margin-top: 6px;
-    font-size: 16px;
-    padding: 16px 24px;
-    border-radius: 10px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .pg-submit:hover:not([disabled]) {
-    transform: translateY(-1px);
-    box-shadow: 0 8px 30px var(--primary-glow);
-  }
-
-  .pg-submit:active:not([disabled]) {
-    transform: translateY(0);
-  }
-
-  .pg-submit.success {
-    background: #059669;
-    border-color: #059669;
-    pointer-events: none;
+  .pg-cta-os {
+    justify-content: center;
   }
 
   .anim {
     opacity: 0;
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 960px) {
     .pg {
-      padding: 100px 20px 80px;
-      gap: 36px;
+      padding: 80px 24px 120px;
+      gap: 120px;
+    }
+
+    .pg-hero {
+      grid-template-columns: 1fr;
+      gap: 56px;
+      text-align: center;
+    }
+
+    .pg-left {
+      align-items: center;
+    }
+
+    .pg-left h1 {
+      align-items: center;
+    }
+
+    .pg-sub {
+      max-width: 520px;
+    }
+
+    .pg-download {
+      justify-content: center;
+    }
+
+    .pg-os {
+      justify-content: center;
+    }
+
+    .pg-right {
+      order: -1;
+    }
+
+    .pg-stage {
+      max-width: 340px;
+    }
+
+    .pg-chip-1 {
+      left: -10%;
+    }
+
+    .pg-chip-2 {
+      right: -8%;
+    }
+
+    .pg-showcase {
+      gap: 56px;
+    }
+
+    .bento {
+      grid-template-columns: 1fr 1fr;
+      gap: 48px 32px;
+    }
+
+    .card-multi {
+      grid-column: 1 / -1;
+      flex-direction: column;
+      gap: 32px;
+      margin-top: 16px;
+    }
+
+    .multi-body {
+      flex: none;
+      padding: 8px 4px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .multi-body p {
+      max-width: 460px;
+    }
+
+    .multi-shot {
+      width: 100%;
+    }
+
+    .card-shot {
+      height: 280px;
+    }
+
+    .pg-cta {
+      padding: 0;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .pg {
+      padding: 64px 20px 96px;
+      gap: 88px;
     }
 
     .pg-glow {
-      width: 300px;
+      width: 400px;
+      height: 400px;
+    }
+
+    .pg-glow-b {
+      width: 350px;
+      height: 350px;
+    }
+
+    .pg-stage {
+      max-width: 280px;
+    }
+
+    .pg-chip {
+      font-size: 11px;
+      padding: 8px 12px;
+    }
+
+    .pg-chip-1 {
+      top: 10%;
+      left: -5%;
+    }
+
+    .pg-chip-2 {
+      bottom: 12%;
+      right: -5%;
+    }
+
+    .pg-download {
+      flex-direction: column;
+      width: 100%;
+      max-width: 360px;
+    }
+
+    .primary-dl,
+    .alt-dl {
+      width: 100%;
+      padding: 14px 20px;
+      font-size: 15px;
+    }
+
+    .pg-info {
+      padding: 0;
+      gap: 36px;
+    }
+
+    .pg-features {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+    .bento {
+      grid-template-columns: 1fr;
+      gap: 44px;
+    }
+
+    .card-body {
+      padding: 4px 2px 14px;
+    }
+
+    .card-shot {
       height: 300px;
     }
 
-    .pg-pill {
-      padding: 5px 11px;
-      font-size: 12px;
+    .multi-body {
+      padding: 4px 2px;
     }
 
-    .pg-form {
-      max-width: 100%;
+    .pg-cta {
+      padding: 0;
+      gap: 20px;
+    }
+
+    .pg-cta-download {
+      width: 100%;
+      max-width: 360px;
     }
   }
 </style>
