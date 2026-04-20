@@ -287,16 +287,16 @@ const jsonLd = [
 
 <script>
   // @ts-nocheck
-  const PLUGIN_VERSION = '1.1.1';
+  const PLUGIN_VERSION = '1.1.3';
   const MAC_URL = `https://audio.sonurastudio.com/sonura-plugin/SonuraFlow-v${PLUGIN_VERSION}-macOS.pkg`;
-  const WIN_URL = `https://audio.sonurastudio.com/sonura-plugin/SonuraFlow-v${PLUGIN_VERSION}-Windows.zip`;
+  const WIN_URL = `https://audio.sonurastudio.com/sonura-plugin/SonuraFlow-v${PLUGIN_VERSION}-Windows-Setup.exe`;
 
   const isMac = /Mac|iPhone|iPad|iPod/.test(navigator.platform) || /Macintosh/.test(navigator.userAgent);
 
   const trackDownload = (platform, location) => {
     const url = platform === 'mac' ? MAC_URL : WIN_URL;
     const fileName = url.split('/').pop();
-    const fileExtension = platform === 'mac' ? 'pkg' : 'zip';
+    const fileExtension = platform === 'mac' ? 'pkg' : 'exe';
 
     if (typeof window.gtag === 'function') {
       window.gtag('event', 'plugin_download', {
