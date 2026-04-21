@@ -293,7 +293,7 @@ const jsonLd = [
 
   const isMac = /Mac|iPhone|iPad|iPod/.test(navigator.platform) || /Macintosh/.test(navigator.userAgent);
 
-  const trackDownload = (platform, location) => {
+  const trackDownload = (platform, location, button) => {
     const url = platform === 'mac' ? MAC_URL : WIN_URL;
     const fileName = url.split('/').pop();
     const fileExtension = platform === 'mac' ? 'pkg' : 'exe';
@@ -303,6 +303,7 @@ const jsonLd = [
         plugin_platform: platform,
         plugin_version: PLUGIN_VERSION,
         plugin_location: location,
+        plugin_button: button,
         file_name: fileName,
         file_extension: fileExtension,
         link_url: url,
@@ -321,6 +322,7 @@ const jsonLd = [
         platform,
         version: PLUGIN_VERSION,
         location,
+        button,
       });
       window.fbq('track', 'Lead', {
         content_name: 'Sonura Flow Plugin',
@@ -334,6 +336,7 @@ const jsonLd = [
         plugin_platform: platform,
         plugin_version: PLUGIN_VERSION,
         plugin_location: location,
+        plugin_button: button,
       });
     }
   };
@@ -360,8 +363,8 @@ const jsonLd = [
       altLabel.textContent = 'Download for Mac';
     }
 
-    primaryBtn.addEventListener('click', () => trackDownload(primaryPlatform, location));
-    altBtn.addEventListener('click', () => trackDownload(altPlatform, location));
+    primaryBtn.addEventListener('click', () => trackDownload(primaryPlatform, location, 'primary'));
+    altBtn.addEventListener('click', () => trackDownload(altPlatform, location, 'alt'));
   };
 
   setupDownload('dl-primary', 'dl-primary-label', 'dl-alt', 'dl-alt-label', 'hero');
