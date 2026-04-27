@@ -1,10 +1,20 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const PLUGIN_VERSION = '1.2.5';
-const MAC_URL = `https://audio.sonurastudio.com/sonura-plugin/SonuraFlow-v${PLUGIN_VERSION}-macOS.pkg`;
-const WIN_URL = `https://audio.sonurastudio.com/sonura-plugin/SonuraFlow-v${PLUGIN_VERSION}-Windows-Setup.exe`;
-const WIN_ZIP_URL = `https://audio.sonurastudio.com/sonura-plugin/SonuraFlow-v${PLUGIN_VERSION}-Windows.zip`;
+const PLUGIN_MANIFEST_URL = 'https://audio.sonurastudio.com/plugin/latest/manifest.json';
+const MAC_URL = 'https://audio.sonurastudio.com/plugin/latest/SonuraFlow-macOS.pkg';
+const WIN_URL = 'https://audio.sonurastudio.com/plugin/latest/SonuraFlow-Windows-Setup.exe';
+const WIN_ZIP_URL = 'https://audio.sonurastudio.com/plugin/latest/SonuraFlow-Windows.zip';
+
+let PLUGIN_VERSION = 'latest';
+try {
+  const manifest = await fetch(PLUGIN_MANIFEST_URL).then((response) => response.json());
+  if (typeof manifest?.version === 'string') {
+    PLUGIN_VERSION = manifest.version.replace(/^v/, '');
+  }
+} catch {
+  // Keep downloads on stable latest URLs if the manifest is temporarily unavailable at build time.
+}
 
 const faqs = [
   {
