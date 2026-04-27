@@ -34,9 +34,9 @@ Sonura (https://sonurastudio.com) is the AI studio for music production. Users d
 ## Pricing
 
 - Free: Free credits, no credit card, full commercial rights, stem export
-- Starter: $10/month - 200 generations
-- Pro: $20/month - 500 generations
-- Studio: $45/month - 1000 generations
+- Starter: $10/month - 200 credits
+- Pro: $20/month - 500 credits
+- Studio: $45/month - 1000 credits
 
 ## Sonura Flow Plugin
 
