@@ -10,13 +10,20 @@ const jsonLd = [
     "name": "Sonura",
     "url": "https://sonurastudio.com/",
     "logo": "https://sonurastudio.com/demo-image.jpeg",
-    "description": "Sonura is the AI studio for music production. Royalty-free beats, loops, vocals, stems, and full tracks, all in one place.",
-    "founder": {
-      "@type": "Person",
-      "name": "Kindred Salway",
-      "jobTitle": "Founder",
-      "sameAs": "https://www.linkedin.com/in/kindred-salway-8a05b6240/"
-    },
+    "description": "Sonura is the AI studio for original audio. Create royalty-free music, loops, vocals, stems, one-shots, and sound effects in one place.",
+    "founder": [
+      {
+        "@type": "Person",
+        "name": "Kindred Salway",
+        "jobTitle": "Co-founder",
+        "sameAs": "https://www.linkedin.com/in/kindred-salway-8a05b6240/"
+      },
+      {
+        "@type": "Person",
+        "name": "Blue Bookhard",
+        "jobTitle": "Co-founder"
+      }
+    ],
     "sameAs": [
       "https://twitter.com/sonurastudio",
       "https://discord.gg/Yk8RD3Nmyh",
@@ -32,7 +39,7 @@ const jsonLd = [
     "@context": "https://schema.org",
     "@type": "AboutPage",
     "name": "About Sonura",
-    "description": "Learn about Sonura, the AI studio for music production. Our mission is to accelerate music production through AI without replacing the creative process.",
+    "description": "Learn about Sonura, the AI studio for original audio. Our mission is to accelerate music, sound design, and audio creation through AI without replacing the creative process.",
     "mainEntity": {
       "@type": "Organization",
       "name": "Sonura"
@@ -42,18 +49,18 @@ const jsonLd = [
 ---
 
 <BaseLayout
-  title="About Sonura | The AI Studio for Music Production"
-  description="Sonura is the AI studio for music production. Royalty-free beats, loops, vocals, stems, one-shots, and full tracks, all in one place. Built for producers, artists, and creators."
-  keywords="sonura about, ai music company, music production startup, kindred salway, ai music generator company"
+  title="About Sonura | The AI Studio for Audio Creation"
+  description="Sonura is the AI studio for original audio. Create royalty-free music, loops, vocals, stems, one-shots, and sound effects in one place. Built for producers, artists, sound designers, and creators."
+  keywords="sonura about, ai music company, ai audio company, sound design startup, kindred salway, ai sound generator company"
   canonical="https://sonurastudio.com/about/"
-  ogTitle="About Sonura - The AI Studio for Music Production"
-  ogDescription="The AI studio for music production. Learn about Sonura's mission and the team behind it."
+  ogTitle="About Sonura - The AI Studio for Audio Creation"
+  ogDescription="The AI studio for original audio. Learn about Sonura's mission and the team behind it."
   jsonLd={jsonLd}
 >
   <section class="about-hero">
     <div class="about-hero-inner">
-      <h1 class="about-headline reveal">Music production, without the friction</h1>
-      <p class="about-subhead reveal" data-reveal-delay="0.04s">Sonura gives creators and professionals the tools to produce studio-quality music at the speed of thought, without replacing the human spark that drives it.</p>
+      <h1 class="about-headline reveal">Original audio, without the friction</h1>
+      <p class="about-subhead reveal" data-reveal-delay="0.04s">Sonura gives creators and professionals the tools to make music, sound design, vocals, loops, and sonic ideas at the speed of thought, without replacing the human spark that drives them.</p>
     </div>
   </section>
 
@@ -62,8 +69,8 @@ const jsonLd = [
       <div class="mission-grid">
         <div class="mission-content reveal">
           <h2 class="section-title">The Problem</h2>
-          <p class="section-text">Music production has been gatekept by expensive gear, years of technical training, and software with steep learning curves. Creators who need original music are forced to overpay for custom work or settle for generic stock tracks that thousands of others are already using.</p>
-          <p class="section-text">The demand for original audio is growing across every industry. Traditional workflows can't keep up.</p>
+          <p class="section-text">Audio creation has been gatekept by expensive gear, years of technical training, and software with steep learning curves. Creators who need original sound are forced to overpay for custom work or settle for generic stock audio that thousands of others are already using.</p>
+          <p class="section-text">The demand for distinctive music, sound effects, stems, samples, and branded audio is growing across every industry. Traditional workflows can't keep up.</p>
         </div>
         <div class="mission-visual synth-panel reveal" data-reveal-delay="0.08s">
           <div class="mission-stats">
@@ -76,7 +83,7 @@ const jsonLd = [
               <span class="stat-label">royalty-free ownership</span>
             </div>
             <div class="mission-stat">
-              <span class="stat-number">∞</span>
+              <span class="stat-number">Endless</span>
               <span class="stat-label">unique creations</span>
             </div>
           </div>
@@ -90,13 +97,13 @@ const jsonLd = [
       <div class="solution-grid">
         <div class="solution-content reveal">
           <h2 class="section-title">What Sonura Does</h2>
-          <p class="section-text">Sonura turns text descriptions into studio-quality beats, loops, vocals, and full tracks. It's designed for rapid iteration: generate, refine, export stems, and keep moving. Professional-grade output without the traditional overhead.</p>
-          <p class="section-text">Whether you're scoring a game, building a sample library, producing your next release, or creating content, Sonura adapts to your workflow.</p>
+          <p class="section-text">Sonura turns text descriptions into studio-quality music, loops, vocals, one-shots, sound effects, and full tracks. It's designed for rapid iteration: generate, refine, export stems, and keep moving. Professional-grade audio without the traditional overhead.</p>
+          <p class="section-text">Whether you're scoring a game, building a sample library, designing sounds for a video, producing your next release, or creating content, Sonura adapts to your workflow.</p>
           
           <div class="target-audience">
             <h3 class="audience-title">Built for</h3>
             <div class="audience-text">
-              <p>Producers · Artists · Songwriters · Composers · Content Creators · Game Developers · Filmmakers</p>
+              <p>Producers | Artists | Songwriters | Composers | Sound Designers | Content Creators | Game Developers | Filmmakers</p>
             </div>
           </div>
         </div>
@@ -104,8 +111,8 @@ const jsonLd = [
           <div class="industry-context synth-panel">
             <div class="context-content">
               <h3 class="context-title">Our Approach</h3>
-              <p class="context-text">Sonura is designed to extend your imagination and speed up your process, not to replace the creative decisions that make music human.</p>
-              <p class="context-text">We're building tools that keep musicians ahead in the AI era, giving professionals full control over every stem, every layer, every detail.</p>
+              <p class="context-text">Sonura is designed to extend your imagination and speed up your process, not to replace the creative decisions that make sound and music human.</p>
+              <p class="context-text">We're building tools that keep musicians and audio creators ahead in the AI era, giving professionals full control over every stem, layer, texture, and detail.</p>
             </div>
           </div>
         </div>
@@ -134,20 +141,20 @@ const jsonLd = [
         <div class="product-features reveal" data-reveal-delay="0.08s">
           <div class="feature-item">
             <div class="feature-content">
-              <h4>Text-to-Music</h4>
-              <p>Describe a sound and get a professional track in seconds</p>
+              <h4>Text-to-Audio</h4>
+              <p>Describe a sound and get professional music, loops, or FX in seconds</p>
             </div>
           </div>
           <div class="feature-item">
             <div class="feature-content">
               <h4>Stem Export</h4>
-              <p>Separate drums, bass, melody, FX, and vocals for your DAW</p>
+              <p>Separate drums, bass, melody, FX, and vocals for your DAW or edit</p>
             </div>
           </div>
           <div class="feature-item">
             <div class="feature-content">
-              <h4>AI Vocals & One-Shots</h4>
-              <p>Generate original vocals, one-shots, and sound effects on demand</p>
+              <h4>AI Vocals, One-Shots & FX</h4>
+              <p>Generate original vocals, one-shots, textures, and sound effects on demand</p>
             </div>
           </div>
           <div class="feature-item">
@@ -156,38 +163,65 @@ const jsonLd = [
               <p>Share tracks and stems that other creators can remix directly</p>
             </div>
           </div>
-          <a href="/features/" class="features-link">Explore all features →</a>
+          <a href="/features/" class="features-link">Explore all features -></a>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="about-section team-section">
+  <section class="about-section team-section" id="founders">
     <div class="about-section-inner">
-      <h2 class="section-title center reveal">Meet the Founder</h2>
+      <h2 class="section-title center reveal">Meet the Founders</h2>
       
       <div class="team-grid">
         <div class="founder-card reveal" data-reveal-delay="0.04s">
           <div class="founder-content">
             <div class="founder-image">
-              <img src="/images/kindred.jpg" alt="Kindred Salway - Founder of Sonura" />
+              <img src="/images/kindred.jpg" alt="Kindred Salway - Co-founder of Sonura" />
             </div>
             <div class="founder-info">
               <h3 class="founder-name">Kindred Salway</h3>
-              <span class="founder-role">Founder</span>
+              <span class="founder-role">Co-founder</span>
               
               <div class="founder-bio">
-                <p>Musician, engineer, and builder. My career spans working with international artists, sound engineering major projects, and shipping products from scratch.</p>
-                <p>Sonura exists at the intersection of deep musical experience and technical ambition. I built it because I needed it. A tool that removes the friction from production without sacrificing quality or creative control.</p>
+                <p>Music technologist, engineer, and builder working where audio, software, and culture meet. My career spans artist collaborations, sound engineering for AudioActive FM, and shipping technology at companies including Prodia, Jamf, and Hovercode.</p>
+                <p>Sonura exists at the intersection of deep musical experience and technical ambition. I built it because I needed it: a tool that removes the friction from making original sound without sacrificing quality or creative control.</p>
               </div>
               
               <div class="founder-links">
                 <a href="https://x.com/kindredsalway" target="_blank" rel="noopener" class="linkedin-link">
-                  Follow on X (Twitter) →
+                  Follow on X (Twitter)
                 </a>
-                <span class="separator">·</span>
+                <span class="separator">|</span>
                 <a href="https://www.linkedin.com/in/kindred-salway-8a05b6240/" target="_blank" rel="noopener" class="linkedin-link">
-                  Connect on LinkedIn →
+                  Connect on LinkedIn
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="founder-card reveal" data-reveal-delay="0.08s">
+          <div class="founder-content">
+            <div class="founder-image">
+              <img src="/images/blue.jpg" alt="Blue Bookhard - Co-founder of Sonura" />
+            </div>
+            <div class="founder-info">
+              <h3 class="founder-name">Blue Bookhard</h3>
+              <span class="founder-role">Co-founder</span>
+              
+              <div class="founder-bio">
+                <p>Creator, artist, and growth operator with experience across some of the world's biggest platforms. Blue has led creator marketing at Snapchat, worked in Pop editorial at TIDAL, handled partnerships at Google, and earned an MBA from London Business School.</p>
+                <p>He brings a rare mix of taste, audience insight, and music industry context to Sonura. As an artist, he's produced a track with millions of streams, opened for Kiiara and Amine, and runs No Skips, a music publication read by tens of thousands of people each month.</p>
+              </div>
+
+              <div class="founder-links">
+                <a href="https://x.com/Iambluetyler" target="_blank" rel="noopener" class="linkedin-link">
+                  Follow on X (Twitter)
+                </a>
+                <span class="separator">|</span>
+                <a href="https://www.linkedin.com/in/bluebookhard/" target="_blank" rel="noopener" class="linkedin-link">
+                  Connect on LinkedIn
                 </a>
               </div>
             </div>
@@ -204,7 +238,7 @@ const jsonLd = [
         <p class="contact-text">Questions, partnerships, or feedback. We're always listening.</p>
         <div class="contact-actions">
           <a href="mailto:kindred@sonurastudio.com" class="text-link">kindred@sonurastudio.com</a>
-          <span class="separator">·</span>
+          <span class="separator">|</span>
           <a href="https://discord.gg/Yk8RD3Nmyh" target="_blank" rel="noopener" class="text-link">Join our Discord</a>
         </div>
       </div>
@@ -500,8 +534,11 @@ const jsonLd = [
   }
 
   .team-grid {
-    max-width: 900px;
+    max-width: 980px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 96px;
   }
 
   .founder-card {
@@ -579,7 +616,7 @@ const jsonLd = [
     display: flex;
     gap: 16px;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .linkedin-link {
@@ -709,6 +746,7 @@ const jsonLd = [
     .founder-links {
       flex-direction: column;
       gap: 20px;
+      align-items: center;
     }
     
     .separator { display: none; }
