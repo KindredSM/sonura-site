@@ -1,0 +1,55 @@
+---
+import PluginGuideLayout from '../../../layouts/PluginGuideLayout.astro';
+
+const relatedGuides = [
+  { title: 'VST3 plugin guide', href: '/plugin/vst3/', description: 'Learn how VST3 plugins work across Mac and Windows DAWs.' },
+  { title: 'Ableton Live plugin guide', href: '/plugin/ableton/', description: 'Set up Sonura Flow in Ableton Live.' },
+  { title: 'Sample generator plugin', href: '/plugin/ai-sample-generator/', description: 'Generate original samples and one-shots inside your DAW.' },
+];
+---
+
+<PluginGuideLayout
+  title="Make New Sounds in FL Studio | Sonura Flow Setup Guide"
+  description="Use Sonura Flow as a free VST3 plugin in FL Studio. Generate loops, drums, vocals, and one-shots for Channel Rack, Playlist, and Edison workflows."
+  keywords="FL Studio plugin, VST for FL Studio, free FL Studio plugin, Sonura Flow FL Studio, sample generator FL Studio, VST3 FL Studio"
+  slug="fl-studio"
+  headline="Make New Sounds in FL Studio"
+  subhead="Sonura Flow works as a VST3 plugin in FL Studio, helping producers generate fresh drums, loops, vocals, and one-shots before arranging, chopping, and mixing in the Playlist."
+  format="VST3 for FL Studio"
+  bestFor="FL Studio producers, trap producers, electronic producers"
+  ctaText="Download the FL Studio plugin"
+  steps={[
+    'Install Sonura Flow for Mac or Windows from the plugin download page.',
+    'Open FL Studio, go to Manage Plugins, and scan for new VST3 plugins.',
+    'Find Sonura Flow in the plugin list and mark it as a favorite if you want quick access.',
+    'Open Sonura Flow in the Channel Rack or on a mixer route, then sign in.',
+    'Generate audio, drag it to the Playlist, Channel Rack, Edison, or your sampler of choice.'
+  ]}
+  sections={[
+    {
+      title: 'Why Sonura Flow fits FL Studio',
+      body: 'FL Studio producers often move quickly between Channel Rack patterns, audio clips, playlist arrangement, and sample chopping. Sonura Flow gives that workflow fresh source audio without a long sample hunt.',
+      bullets: [
+        'Generate drum one-shots for Channel Rack kits.',
+        'Make melody loops and flip them with FL Studio pitch, time, and chop tools.',
+        'Create vocal phrases, chops, ad-libs, and textures for hooks.',
+        'Build custom sound folders from generated material that nobody else has.'
+      ]
+    },
+    {
+      title: 'Best FL Studio workflow',
+      body: 'Use Sonura Flow to make raw material, then shape it with native FL Studio tools. Try generating a short loop, dragging it into the Playlist, chopping it, then routing it through Gross Beat, Fruity Slicer, Edison, or your favorite effects.'
+    },
+    {
+      title: 'Plugin scan tips',
+      body: 'FL Studio can rescan VST3 plugins from the Plugin Manager. If the plugin does not appear, verify that VST3 scanning is enabled, run a rescan, then restart FL Studio.'
+    }
+  ]}
+  faqs={[
+    { question: 'Does Sonura Flow work in FL Studio?', answer: 'Yes. Sonura Flow works in FL Studio as a VST3 plugin on Mac and Windows.' },
+    { question: 'Can I use Sonura Flow with Channel Rack?', answer: 'Yes. You can generate audio, then drag the result into Channel Rack, the Playlist, Edison, or a sampler.' },
+    { question: 'Is Sonura Flow good for trap and hip-hop?', answer: 'Yes. It can generate drums, 808-friendly one-shots, melodic loops, vocal chops, and textures that fit modern production workflows.' },
+    { question: 'Do I need to pay for the plugin separately?', answer: 'No. Sonura Flow is included with any Sonura account, including the free tier.' }
+  ]}
+  relatedGuides={relatedGuides}
+/>

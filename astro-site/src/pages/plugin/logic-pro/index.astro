@@ -1,0 +1,55 @@
+---
+import PluginGuideLayout from '../../../layouts/PluginGuideLayout.astro';
+
+const relatedGuides = [
+  { title: 'Ableton Live plugin guide', href: '/plugin/ableton/', description: 'Use Sonura Flow as a VST3 plugin in Ableton Live.' },
+  { title: 'VST3 plugin guide', href: '/plugin/vst3/', description: 'Understand VST3 support across modern DAWs.' },
+  { title: 'Free VST plugin guide', href: '/plugin/free-vst-plugin/', description: 'See how Sonura Flow compares with traditional free plugins.' },
+];
+---
+
+<PluginGuideLayout
+  title="Make New Sounds in Logic Pro | Sonura Flow Setup Guide"
+  description="Use Sonura Flow as a free AU plugin in Logic Pro. Generate vocals, loops, drums, one-shots, and song ideas inside your Logic session."
+  keywords="Logic Pro plugin, AU plugin Logic Pro, sample generator for Logic, free Logic Pro plugin, Sonura Flow Logic, sound generator Logic Pro"
+  slug="logic-pro"
+  headline="Make New Sounds in Logic Pro"
+  subhead="Sonura Flow loads as an Audio Unit in Logic Pro, giving songwriters and producers a fast way to create royalty-free loops, vocals, drums, and sound ideas inside the project."
+  format="AU for Logic Pro and GarageBand"
+  bestFor="Logic producers, songwriters, vocal producers"
+  ctaText="Download the Logic Pro plugin"
+  steps={[
+    'Download and install the macOS package from the Sonura Flow plugin page.',
+    'Open Logic Pro after installation so Logic can validate the Audio Unit.',
+    'If Logic does not show Sonura Flow, open Plug-in Manager and rescan the plugin.',
+    'Load Sonura Flow on a track, sign in, and describe the sound you want.',
+    'Drag generated audio into the Tracks area, then arrange, chop, pitch, or process it in Logic.'
+  ]}
+  sections={[
+    {
+      title: 'Why Sonura Flow fits Logic Pro',
+      body: 'Logic is strong for writing, vocal production, arrangement, and polishing songs. Sonura Flow helps at the blank-page stage by generating new material before you reach for loops everyone else already has.',
+      bullets: [
+        'Create vocal pads, hooks, ad-libs, chops, and harmonic textures.',
+        'Generate drum one-shots for custom kits in Drum Machine Designer.',
+        'Make melodic phrases that can be chopped, reversed, tuned, or layered.',
+        'Keep your writing flow inside Logic instead of exporting from a web app.'
+      ]
+    },
+    {
+      title: 'Best Logic Pro workflow',
+      body: 'Start with a musical prompt tied to the song you are writing: key, mood, genre, instrument, and energy. Drag the best result into Logic, then use Flex Time, Flex Pitch, Quick Sampler, and stock effects to fit it tightly into the production.'
+    },
+    {
+      title: 'Audio Unit validation',
+      body: 'Logic Pro validates AU plugins before showing them in the plugin list. If Sonura Flow is not visible immediately after install, restart Logic and run a manual rescan from Plug-in Manager.'
+    }
+  ]}
+  faqs={[
+    { question: 'Does Sonura Flow work in Logic Pro?', answer: 'Yes. Sonura Flow works in Logic Pro as an AU plugin on macOS 12 Monterey or later.' },
+    { question: 'Does Sonura Flow work in GarageBand?', answer: 'Yes. GarageBand supports AU plugins, so Sonura Flow can be used there on supported macOS versions.' },
+    { question: 'Is there a Windows version for Logic Pro?', answer: 'Logic Pro is macOS-only. Sonura Flow also has a Windows VST3 installer for Windows DAWs.' },
+    { question: 'Can I release songs using Sonura Flow sounds?', answer: 'Yes. Generated sounds are royalty-free for commercial releases, sync, streaming, beat sales, and client work.' }
+  ]}
+  relatedGuides={relatedGuides}
+/>

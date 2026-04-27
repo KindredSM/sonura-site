@@ -1,0 +1,55 @@
+---
+import PluginGuideLayout from '../../../layouts/PluginGuideLayout.astro';
+
+const relatedGuides = [
+  { title: 'VST3 plugin guide', href: '/plugin/vst3/', description: 'Install Sonura Flow as a VST3 plugin in modern DAWs.' },
+  { title: 'Sample generator plugin', href: '/plugin/ai-sample-generator/', description: 'Generate custom samples instead of browsing packs.' },
+  { title: 'Logic Pro AU plugin guide', href: '/plugin/logic-pro/', description: 'Use Sonura Flow as an AU plugin in Logic Pro.' },
+];
+---
+
+<PluginGuideLayout
+  title="Free Plugin for Making Sounds in Your DAW | Sonura Flow"
+  description="Download Sonura Flow, a free VST3 and AU plugin for producers. Generate royalty-free samples, drums, loops, vocals, and one-shots in your DAW."
+  keywords="free VST plugin, free music production plugin, free sample generator plugin, Sonura Flow free, free DAW plugin"
+  slug="free-vst-plugin"
+  headline="Free Plugin for Making Sounds in Your DAW"
+  subhead="Sonura Flow is included with any Sonura account, including the free tier. Use it to generate original sounds in your DAW without buying another sample library."
+  format="Free VST3 and AU plugin"
+  bestFor="Producers who need new sounds quickly"
+  ctaText="Download the free plugin"
+  steps={[
+    'Create or use an existing Sonura account.',
+    'Download Sonura Flow for Mac or Windows from the plugin page.',
+    'Install the plugin and open your DAW.',
+    'Load Sonura Flow as a VST3 or AU plugin and sign in.',
+    'Generate drums, loops, vocals, one-shots, samples, and FX for your project.'
+  ]}
+  sections={[
+    {
+      title: 'What makes Sonura Flow different from normal free plugins',
+      body: 'Most free VST plugins are synths, effects, analyzers, or sample instruments. Sonura Flow is different because it creates new audio from prompts inside your session.',
+      bullets: [
+        'Generate original audio instead of only processing existing audio.',
+        'Use it for drums, vocals, loops, one-shots, and textures.',
+        'Keep the sounds royalty-free for commercial work.',
+        'Pair it with your favorite free synths, effects, samplers, and mixing tools.'
+      ]
+    },
+    {
+      title: 'A better starting point than another preset pack',
+      body: 'Preset packs can be useful, but they still leave you searching. Sonura Flow is best when you know the role a sound needs to play and want new material that fits the track instead of almost fitting.'
+    },
+    {
+      title: 'Use it with your existing plugin chain',
+      body: 'Generate a raw sound with Sonura Flow, then run it through your own EQ, saturation, compression, reverb, delay, sampler, or modulation chain. The generated sound becomes source material for your normal production process.'
+    }
+  ]}
+  faqs={[
+    { question: 'Is Sonura Flow really free?', answer: 'Yes. Sonura Flow is included with any Sonura account, including the free tier.' },
+    { question: 'Is it a VST plugin or a standalone app?', answer: 'Sonura Flow is a DAW plugin. It supports VST3 and AU formats, with Mac and Windows installers.' },
+    { question: 'What can I make with the free plugin?', answer: 'You can generate drums, loops, vocals, one-shots, samples, FX, textures, and other production-ready audio ideas.' },
+    { question: 'Can I use the sounds in paid music?', answer: 'Yes. Generated audio is royalty-free for commercial use, including releases, beat sales, sync, and client work.' }
+  ]}
+  relatedGuides={relatedGuides}
+/>

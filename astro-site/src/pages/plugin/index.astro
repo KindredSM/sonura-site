@@ -1,6 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
+const PLUGIN_VERSION = '1.2.3';
+const MAC_URL = `https://audio.sonurastudio.com/sonura-plugin/SonuraFlow-v${PLUGIN_VERSION}-macOS.pkg`;
+const WIN_URL = `https://audio.sonurastudio.com/sonura-plugin/SonuraFlow-v${PLUGIN_VERSION}-Windows-Setup.exe`;
+
 const faqs = [
   {
     question: 'What DAWs does Sonura Flow work with?',
@@ -21,6 +25,10 @@ const faqs = [
   {
     question: 'How do I get the sounds into my project?',
     answer: 'Sounds generated in the plugin drop straight into your DAW timeline as audio. Drag them onto a track or use the plugin\'s built-in export. No bouncing, no re-importing, no switching apps.'
+  },
+  {
+    question: 'What if the plugin does not show up in my DAW?',
+    answer: 'Restart your DAW, rescan plugins, and check the right plugin format for your setup. Logic Pro and GarageBand use AU on Mac, while Ableton Live, FL Studio, Studio One, Bitwig, Cubase, and Reaper can load VST3. The setup section on this page covers the common scan paths.'
   },
   {
     question: 'Do I need an internet connection?',
@@ -46,25 +54,23 @@ const jsonLd = [
     "@type": "SoftwareApplication",
     "name": "Sonura Flow",
     "url": "https://sonurastudio.com/plugin/",
-    "applicationCategory": "MultimediaApplication",
-    "applicationSubCategory": "Audio Plugin",
+    "downloadUrl": [MAC_URL, WIN_URL],
+    "installUrl": "https://sonurastudio.com/plugin/",
+    "screenshot": "https://sonurastudio.com/images/plugin-ui.webp",
+    "applicationCategory": "MusicApplication",
+    "applicationSubCategory": "VST3 and AU audio plugin",
     "operatingSystem": "macOS 12, Windows 10, Windows 11",
-    "description": "Free AI plugin for producers. Generate drums, vocals, loops, and one-shots inside your DAW. VST3 and AU. Royalty-free.",
-    "softwareVersion": "1.1.1",
+    "description": "Free VST3 and AU plugin for producers. Generate drums, vocals, loops, one-shots, and sample ideas inside Ableton, Logic Pro, FL Studio, and other major DAWs.",
+    "softwareVersion": PLUGIN_VERSION,
     "offers": {
       "@type": "Offer",
       "price": "0",
       "priceCurrency": "USD"
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "ratingCount": "127"
-    },
     "featureList": [
-      "VST3 and AU plugin",
-      "AI-generated drums, loops, vocals, one-shots",
-      "Runs inside any major DAW",
+      "VST3 and AU plugin for Mac and Windows",
+      "Generated drums, loops, vocals, one-shots",
+      "Runs inside Ableton Live, Logic Pro, FL Studio, Studio One, Bitwig, Cubase, Reaper, and GarageBand",
       "Royalty-free commercial rights",
       "Personal sound library",
       "Up to 4 variations per prompt"
@@ -94,12 +100,12 @@ const jsonLd = [
 ---
 
 <BaseLayout
-  title="Sonura Flow | Free AI VST3 & AU Plugin for Producers"
-  description="Free AI plugin for your DAW. Generate drums, vocals, loops, and one-shots inside Ableton, Logic, FL Studio, and more. VST3 + AU. Royalty-free. Mac and Windows."
-  keywords="AI plugin, VST3 plugin, AU plugin, AI sample generator plugin, DAW plugin, AI drum generator, AI vocal generator, AI loop plugin, free music plugin, Ableton plugin, Logic Pro plugin, FL Studio plugin, royalty free plugin, Sonura Flow"
+  title="Make New Sounds Inside Your DAW | Sonura Flow Plugin"
+  description="Download Sonura Flow, a free VST3 and AU plugin for Mac and Windows. Generate drums, vocals, loops, one-shots, and samples inside Ableton, Logic Pro, FL Studio, and more."
+  keywords="Sonura Flow, DAW plugin, VST3 plugin, AU plugin, sample generator plugin, drum generator plugin, vocal generator plugin, loop plugin, free music plugin, Ableton plugin, Logic Pro plugin, FL Studio plugin, royalty free plugin"
   canonical="https://sonurastudio.com/plugin/"
-  ogTitle="Sonura Flow | Free AI Plugin for Your DAW"
-  ogDescription="Generate drums, vocals, loops, and one-shots inside your DAW. VST3 and AU. Free download for Mac and Windows."
+  ogTitle="Make New Sounds Inside Your DAW | Sonura Flow"
+  ogDescription="Generate drums, vocals, loops, one-shots, and samples inside Ableton, Logic Pro, FL Studio, and more. VST3 and AU for Mac and Windows."
   jsonLd={jsonLd}
 >
 
@@ -110,19 +116,20 @@ const jsonLd = [
 
     <section class="pg-hero">
       <div class="pg-left">
+        <p class="pg-kicker anim">Sonura Flow</p>
         <h1 class="anim">
-          <span class="h1-row">Sonura</span>
-          <span class="h1-row h1-accent">Flow</span>
+          <span class="h1-row">Supercharge</span>
+          <span class="h1-row h1-accent">Your DAW</span>
         </h1>
 
-        <p class="pg-sub anim">Loops, drums, vocals, and one-shots. Generated right inside your DAW. No browser, no exporting, no file juggling.</p>
+        <p class="pg-sub anim">Generate loops, drums, vocals, one-shots, and sample ideas right inside your DAW. No browser, no exporting, no file juggling.</p>
 
         <div class="pg-download anim" id="pg-download">
-          <a class="dl-btn primary-dl" id="dl-primary" href="#" download>
+          <a class="dl-btn primary-dl" id="dl-primary" href={MAC_URL} download>
             <svg class="dl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            <span id="dl-primary-label">Download</span>
+            <span id="dl-primary-label">Download for Mac</span>
           </a>
-          <a class="dl-btn alt-dl" id="dl-alt" href="#" download>
+          <a class="dl-btn alt-dl" id="dl-alt" href={WIN_URL} download>
             <span id="dl-alt-label">Download for Windows</span>
           </a>
         </div>
@@ -144,7 +151,7 @@ const jsonLd = [
           <div class="pg-halo"></div>
           <div class="pg-device">
             <div class="pg-device-bezel">
-              <img src="/images/plugin-ui.webp" alt="Sonura Flow plugin interface showing AI-powered loop and sound generation" width="900" height="1549" loading="eager" />
+              <img src="/images/plugin-ui.webp" alt="Sonura Flow plugin interface showing loop and sound generation" width="900" height="1549" loading="eager" />
               <div class="pg-device-sheen"></div>
             </div>
           </div>
@@ -157,6 +164,30 @@ const jsonLd = [
             <span>100% Royalty-Free</span>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="pg-demo anim" aria-labelledby="demo-title">
+      <div class="demo-copy">
+        <p class="pg-kicker">In session</p>
+        <h2 id="demo-title">Create without leaving the track.</h2>
+        <p>Describe the sound, generate variations, drag the result into your session, and keep writing.</p>
+      </div>
+      <div class="demo-frame">
+        <video
+          aria-label="Sonura Flow generating sounds inside a DAW session"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          poster="/videos/sonura-flow-demo-poster.jpg"
+          width="900"
+          height="582"
+        >
+          <source src="/videos/sonura-flow-demo.webm" type="video/webm" />
+          <source src="/videos/sonura-flow-demo.mp4" type="video/mp4" />
+        </video>
       </div>
     </section>
 
@@ -243,6 +274,111 @@ const jsonLd = [
       <p class="pg-daws">Ableton Live &middot; Logic Pro &middot; FL Studio &middot; Studio One &middot; Bitwig &middot; Cubase</p>
     </section>
 
+    <section class="pg-seo anim" aria-labelledby="install-title">
+      <div class="seo-head">
+        <p class="pg-kicker">Setup guide</p>
+        <h2 id="install-title">Install Sonura Flow in minutes.</h2>
+        <p>Sonura Flow is a free VST3 and AU plugin for Mac and Windows. Install it once, sign in with your Sonura account, then create royalty-free sounds directly in your DAW session.</p>
+      </div>
+
+      <div class="seo-grid">
+        <article>
+          <h3>Mac install</h3>
+          <ol>
+            <li>Download the macOS package for Sonura Flow.</li>
+            <li>Open the installer and follow the prompts.</li>
+            <li>Restart your DAW so it scans the new AU and VST3 plugin.</li>
+            <li>Open Sonura Flow on an audio or instrument track and sign in.</li>
+          </ol>
+        </article>
+        <article>
+          <h3>Windows install</h3>
+          <ol>
+            <li>Download the Windows setup file for Sonura Flow.</li>
+            <li>Run the installer and keep the default VST3 location.</li>
+            <li>Open your DAW plugin manager and rescan plugins.</li>
+            <li>Load Sonura Flow, sign in, and start generating audio.</li>
+          </ol>
+        </article>
+        <article>
+          <h3>System requirements</h3>
+          <ul>
+            <li>macOS 12 Monterey or later, Apple Silicon or Intel.</li>
+            <li>Windows 10 or Windows 11, 64-bit.</li>
+            <li>A DAW that supports VST3 or AU plugins.</li>
+            <li>An internet connection while generating sounds.</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Supported DAWs</h3>
+          <ul>
+            <li>Ableton Live, FL Studio, Logic Pro, GarageBand, Reaper.</li>
+            <li>Studio One, Bitwig Studio, Cubase, Nuendo, and more.</li>
+            <li>Use AU on Logic Pro and GarageBand.</li>
+            <li>Use VST3 in most other Mac and Windows DAWs.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="pg-seo pg-guides anim" aria-labelledby="guides-title">
+      <div class="seo-head">
+        <p class="pg-kicker">Plugin guides</p>
+        <h2 id="guides-title">DAW-specific setup and workflows.</h2>
+        <p>Use these guides when you want the exact plugin format, install path, and first-session workflow for your production setup.</p>
+      </div>
+      <div class="guide-links">
+        <a href="/plugin/ableton/">Ableton Live plugin guide</a>
+        <a href="/plugin/logic-pro/">Logic Pro AU plugin guide</a>
+        <a href="/plugin/fl-studio/">FL Studio VST3 plugin guide</a>
+        <a href="/plugin/vst3/">VST3 plugin guide</a>
+        <a href="/plugin/ai-sample-generator/">Sample generator plugin</a>
+        <a href="/plugin/free-vst-plugin/">Free VST plugin guide</a>
+      </div>
+    </section>
+
+    <section class="pg-seo pg-troubleshooting anim" aria-labelledby="troubleshooting-title">
+      <div class="seo-head">
+        <p class="pg-kicker">Troubleshooting</p>
+        <h2 id="troubleshooting-title">If your DAW does not see it.</h2>
+        <p>Most plugin issues come down to scan settings, plugin format, or a DAW restart after install. These quick checks cover the common cases.</p>
+      </div>
+      <div class="seo-grid">
+        <article>
+          <h3>Ableton Live</h3>
+          <ul>
+            <li>Open Preferences, then Plug-Ins.</li>
+            <li>Turn VST3 plug-in folders on.</li>
+            <li>Click Rescan, then add Sonura Flow to a track.</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Logic Pro and GarageBand</h3>
+          <ul>
+            <li>Use the AU version on macOS.</li>
+            <li>Restart the app after installation.</li>
+            <li>If needed, open Plug-In Manager and rescan Sonura Flow.</li>
+          </ul>
+        </article>
+        <article>
+          <h3>FL Studio</h3>
+          <ul>
+            <li>Open Plugin Manager.</li>
+            <li>Make sure VST3 locations are enabled.</li>
+            <li>Run Find Plugins, then favorite Sonura Flow.</li>
+          </ul>
+        </article>
+        <article>
+          <h3>VST3 location</h3>
+          <ul>
+            <li>On Windows, keep the default VST3 install path.</li>
+            <li>On Mac, most DAWs scan the system VST3 folder automatically.</li>
+            <li>When in doubt, restart the DAW and rescan plugins.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
     <section class="pg-faq faq anim" id="faq" aria-labelledby="plugin-faq-title">
       <div class="faq-inner">
         <h2 id="plugin-faq-title" class="faq-title">Plugin FAQ</h2>
@@ -262,11 +398,11 @@ const jsonLd = [
       <h2 class="pg-cta-title">Start making sounds in your DAW.</h2>
       <p class="pg-cta-sub">Download Sonura Flow and load it up. Free with your Sonura account.</p>
       <div class="pg-download pg-cta-download">
-        <a class="dl-btn primary-dl" id="dl-primary-b" href="#" download>
+        <a class="dl-btn primary-dl" id="dl-primary-b" href={MAC_URL} download>
           <svg class="dl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          <span id="dl-primary-label-b">Download</span>
+          <span id="dl-primary-label-b">Download for Mac</span>
         </a>
-        <a class="dl-btn alt-dl" id="dl-alt-b" href="#" download>
+        <a class="dl-btn alt-dl" id="dl-alt-b" href={WIN_URL} download>
           <span id="dl-alt-label-b">Download for Windows</span>
         </a>
       </div>
@@ -285,12 +421,8 @@ const jsonLd = [
 
 </BaseLayout>
 
-<script>
+<script define:vars={{ PLUGIN_VERSION, MAC_URL, WIN_URL }}>
   // @ts-nocheck
-  const PLUGIN_VERSION = '1.2.3';
-  const MAC_URL = `https://audio.sonurastudio.com/sonura-plugin/SonuraFlow-v${PLUGIN_VERSION}-macOS.pkg`;
-  const WIN_URL = `https://audio.sonurastudio.com/sonura-plugin/SonuraFlow-v${PLUGIN_VERSION}-Windows-Setup.exe`;
-
   const isMac = /Mac|iPhone|iPad|iPod/.test(navigator.platform) || /Macintosh/.test(navigator.userAgent);
 
   const trackDownload = (platform, location, button) => {
@@ -576,30 +708,40 @@ const jsonLd = [
   .pg-left {
     display: flex;
     flex-direction: column;
-    gap: 28px;
+    gap: 22px;
     min-width: 0;
+  }
+
+  .pg-kicker {
+    margin: 0;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: uppercase;
   }
 
   .pg-left h1 {
     margin: 0;
-    font-size: clamp(56px, 9vw, 112px);
-    line-height: 0.92;
-    letter-spacing: -0.045em;
+    font-size: clamp(42px, 6.4vw, 84px);
+    line-height: 1;
+    letter-spacing: 0;
     font-weight: 700;
     display: flex;
     flex-direction: column;
-  }
-
-  .h1-row {
-    background: linear-gradient(to bottom, #fff 20%, #a1a1aa);
+    background: var(--heading-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
+  .h1-row {
+    color: inherit;
+  }
+
   .h1-accent {
     font-style: italic;
-    letter-spacing: -0.055em;
+    letter-spacing: 0;
     padding-right: 0.12em;
   }
 
@@ -814,6 +956,61 @@ const jsonLd = [
     gap: 80px;
   }
 
+  .pg-demo {
+    position: relative;
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
+    gap: 40px;
+    align-items: center;
+  }
+
+  .demo-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .demo-copy h2 {
+    margin: 0;
+    font-size: clamp(30px, 4.6vw, 52px);
+    line-height: 1.05;
+    letter-spacing: 0;
+    font-weight: 700;
+    background: var(--heading-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .demo-copy p:last-child {
+    margin: 0;
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.65;
+    max-width: 410px;
+  }
+
+  .demo-frame {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    aspect-ratio: 900 / 582;
+    background: transparent;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.3);
+  }
+
+  .demo-frame video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+  }
+
   .showcase-head {
     display: flex;
     flex-direction: column;
@@ -828,9 +1025,9 @@ const jsonLd = [
     margin: 0;
     font-size: clamp(32px, 5.2vw, 54px);
     line-height: 1.05;
-    letter-spacing: -0.035em;
+    letter-spacing: 0;
     font-weight: 700;
-    background: linear-gradient(to bottom, #fff 30%, #a1a1aa);
+    background: var(--heading-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -869,7 +1066,7 @@ const jsonLd = [
     font-size: clamp(20px, 1.8vw, 24px);
     line-height: 1.2;
     font-weight: 600;
-    letter-spacing: -0.02em;
+    letter-spacing: 0;
     color: var(--fg);
   }
 
@@ -925,7 +1122,7 @@ const jsonLd = [
     font-size: clamp(24px, 2.4vw, 32px);
     line-height: 1.15;
     font-weight: 600;
-    letter-spacing: -0.025em;
+    letter-spacing: 0;
     color: var(--fg);
   }
 
@@ -1024,7 +1221,96 @@ const jsonLd = [
     font-size: 13px;
     color: #52525b;
     text-align: center;
-    letter-spacing: 0.02em;
+    letter-spacing: 0;
+  }
+
+  .pg-seo {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+  }
+
+  .seo-head {
+    max-width: 760px;
+  }
+
+  .seo-head h2 {
+    margin: 8px 0 14px;
+    font-size: clamp(30px, 4.8vw, 54px);
+    line-height: 1.05;
+    letter-spacing: 0;
+    font-weight: 700;
+    background: var(--heading-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .seo-head p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.65;
+  }
+
+  .seo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .seo-grid article {
+    padding: 24px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.025);
+  }
+
+  .seo-grid h3 {
+    margin: 0 0 14px;
+    font-size: 20px;
+    line-height: 1.2;
+  }
+
+  .seo-grid ol,
+  .seo-grid ul {
+    margin: 0;
+    padding-left: 20px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .seo-grid li + li {
+    margin-top: 7px;
+  }
+
+  .guide-links {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .guide-links a {
+    min-height: 76px;
+    display: flex;
+    align-items: center;
+    padding: 18px;
+    color: var(--fg);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  .guide-links a:hover {
+    border-color: var(--border-light);
+    background: rgba(255, 255, 255, 0.06);
   }
 
   .pg-faq {
@@ -1044,10 +1330,10 @@ const jsonLd = [
   .pg-faq .faq-title {
     margin: 0 0 40px;
     font-size: clamp(30px, 4.6vw, 48px);
-    letter-spacing: -0.035em;
+    letter-spacing: 0;
     line-height: 1.05;
     font-weight: 700;
-    background: linear-gradient(to bottom, #fff 30%, #a1a1aa);
+    background: var(--heading-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -1095,9 +1381,9 @@ const jsonLd = [
     margin: 0;
     font-size: clamp(30px, 4.6vw, 48px);
     line-height: 1.05;
-    letter-spacing: -0.035em;
+    letter-spacing: 0;
     font-weight: 700;
-    background: linear-gradient(to bottom, #fff 30%, #a1a1aa);
+    background: var(--heading-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -1157,10 +1443,6 @@ const jsonLd = [
       justify-content: center;
     }
 
-    .pg-right {
-      order: -1;
-    }
-
     .pg-stage {
       max-width: 340px;
     }
@@ -1175,6 +1457,15 @@ const jsonLd = [
 
     .pg-showcase {
       gap: 56px;
+    }
+
+    .pg-demo {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+    .demo-copy p:last-child {
+      max-width: 560px;
     }
 
     .bento {
@@ -1192,8 +1483,8 @@ const jsonLd = [
     .multi-body {
       flex: none;
       padding: 8px 4px;
-      align-items: center;
-      text-align: center;
+      align-items: flex-start;
+      text-align: left;
     }
 
     .multi-body p {
@@ -1206,6 +1497,14 @@ const jsonLd = [
 
     .card-shot {
       height: 280px;
+    }
+
+    .seo-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .guide-links {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .pg-cta {
@@ -1269,6 +1568,14 @@ const jsonLd = [
     .pg-features {
       grid-template-columns: 1fr;
       gap: 28px;
+    }
+
+    .seo-grid article {
+      padding: 20px;
+    }
+
+    .guide-links {
+      grid-template-columns: 1fr;
     }
 
     .bento {

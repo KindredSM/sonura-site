@@ -3,6 +3,7 @@
   --panel-bg: #0a0a0a;
   --fg: #e5e5e5;
   --muted: #a1a1aa;
+  --heading-gradient: linear-gradient(to bottom right, #fff, #a1a1aa);
   
   /* Brand Spectrum - Sonura Purple */
   --primary: #7c3aed; 
@@ -339,7 +340,7 @@ body {
   fill: currentColor;
 }
 
-.headline { font-size: clamp(40px, 7vw, 72px); line-height: 1.05; margin: 0; letter-spacing: -0.03em; font-weight: 700; background: linear-gradient(to bottom right, #fff, #a1a1aa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.headline { font-size: clamp(40px, 7vw, 72px); line-height: 1.05; margin: 0; letter-spacing: -0.03em; font-weight: 700; background: var(--heading-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .subhead { margin: 0; font-size: clamp(18px, 2.5vw, 22px); color: var(--muted); font-weight: 400; max-width: 900px; line-height: 1.5; }
 
 .reveal { opacity: 0; transform: translateY(20px); will-change: transform, opacity; }

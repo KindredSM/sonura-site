@@ -1,0 +1,55 @@
+---
+import PluginGuideLayout from '../../../layouts/PluginGuideLayout.astro';
+
+const relatedGuides = [
+  { title: 'Free DAW plugin guide', href: '/plugin/free-vst-plugin/', description: 'Use Sonura Flow as a free plugin in your DAW.' },
+  { title: 'Ableton Live plugin guide', href: '/plugin/ableton/', description: 'Generate samples inside Ableton Live.' },
+  { title: 'FL Studio plugin guide', href: '/plugin/fl-studio/', description: 'Generate samples for Channel Rack, Playlist, and Edison workflows.' },
+];
+---
+
+<PluginGuideLayout
+  title="Sample Generator Plugin for Your DAW | Sonura Flow"
+  description="Generate original samples inside your DAW with Sonura Flow. Create one-shots, drums, loops, vocals, FX, and textures from text prompts."
+  keywords="sample generator plugin, sample generator VST, one shot generator, loop plugin, vocal sample plugin, Sonura Flow samples"
+  slug="ai-sample-generator"
+  headline="Sample Generator Plugin for Your DAW"
+  subhead="Sonura Flow brings sample generation into your DAW, so you can describe the sound you need and turn it into royalty-free audio without searching through sample packs."
+  format="VST3 and AU sample generator"
+  bestFor="Custom samples, one-shots, loops, vocals, FX"
+  ctaText="Download the sample plugin"
+  steps={[
+    'Install Sonura Flow for Mac or Windows from the plugin page.',
+    'Open your DAW and load Sonura Flow as a VST3 or AU plugin.',
+    'Write a clear prompt with sound type, genre, mood, instrument, and use case.',
+    'Generate variations and audition the strongest results.',
+    'Drag the sample into your timeline, sampler, drum rack, or audio track.'
+  ]}
+  sections={[
+    {
+      title: 'Stop digging through shared packs',
+      body: 'Sample libraries are useful, but the same loops and one-shots can show up in thousands of projects. Sonura Flow gives you fresh source material that can be shaped for the track in front of you.',
+      bullets: [
+        'Generate a new kick, clap, snare, riser, bass hit, or texture.',
+        'Create vocal chops, ad-libs, pads, and hook fragments.',
+        'Make loops that fit a specific genre, mood, key, or BPM idea.',
+        'Build a personal sample library from sounds you generated yourself.'
+      ]
+    },
+    {
+      title: 'Prompt ideas that work',
+      body: 'Describe the role of the sample first, then add style and texture. Try prompts like "punchy trap snare with short room", "dreamy vocal chop in A minor", or "dark techno percussion loop with metallic hits".'
+    },
+    {
+      title: 'Best use cases',
+      body: 'Sonura Flow is strongest when you need new raw material fast: a missing drum hit, a vocal texture, a loop to chop, an FX transition, or a sound design layer that makes the track feel less generic.'
+    }
+  ]}
+  faqs={[
+    { question: 'Is Sonura Flow a sample generator plugin?', answer: 'Yes. Sonura Flow generates samples, one-shots, loops, vocals, drums, FX, and textures directly inside your DAW.' },
+    { question: 'Are generated samples royalty-free?', answer: 'Yes. Generated audio is royalty-free and can be used commercially in releases, beats, client work, video, and sync.' },
+    { question: 'Can I generate one-shots?', answer: 'Yes. You can generate drum hits, melodic stabs, bass hits, vocal chops, FX hits, and other one-shot material.' },
+    { question: 'How is this different from a sample pack?', answer: 'A sample pack gives you pre-made sounds. Sonura Flow creates new sounds from your prompt, matched to the sound you need now.' }
+  ]}
+  relatedGuides={relatedGuides}
+/>

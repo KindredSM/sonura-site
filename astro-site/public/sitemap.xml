@@ -15,6 +15,49 @@
   </url>
 
   <url>
+    <loc>https://sonurastudio.com/plugin/</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://sonurastudio.com/plugin/ableton/</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://sonurastudio.com/plugin/logic-pro/</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://sonurastudio.com/plugin/fl-studio/</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://sonurastudio.com/plugin/vst3/</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://sonurastudio.com/plugin/ai-sample-generator/</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://sonurastudio.com/plugin/free-vst-plugin/</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
     <loc>https://sonurastudio.com/genre/trap/</loc>
     <lastmod>2025-12-30</lastmod>
     <changefreq>monthly</changefreq>
@@ -266,7 +309,7 @@
   </url>
   <url>
     <loc>https://sonurastudio.com/blog/best-free-vst-plugins/</loc>
-    <lastmod>2025-12-30</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
