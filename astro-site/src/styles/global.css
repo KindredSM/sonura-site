@@ -3,7 +3,7 @@
   --panel-bg: #0a0a0a;
   --fg: #ffffff;
   --muted: #e0e0e6;
-  --heading-gradient: linear-gradient(to bottom right, #fff, #fff);
+  --heading-gradient: linear-gradient(to bottom right, #ffffff 0%, #f4f4f5 48%, #bdbdc7 100%);
   
   /* Brand Spectrum - Sonura Purple */
   --primary: #7c3aed; 
