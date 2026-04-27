@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const PLUGIN_VERSION = '1.2.3';
+const PLUGIN_VERSION = '1.2.4';
 const MAC_URL = `https://audio.sonurastudio.com/sonura-plugin/SonuraFlow-v${PLUGIN_VERSION}-macOS.pkg`;
 const WIN_URL = `https://audio.sonurastudio.com/sonura-plugin/SonuraFlow-v${PLUGIN_VERSION}-Windows-Setup.exe`;
+const WIN_ZIP_URL = `https://audio.sonurastudio.com/sonura-plugin/SonuraFlow-v${PLUGIN_VERSION}-Windows.zip`;
 
 const faqs = [
   {
@@ -54,7 +55,7 @@ const jsonLd = [
     "@type": "SoftwareApplication",
     "name": "Sonura Flow",
     "url": "https://sonurastudio.com/plugin/",
-    "downloadUrl": [MAC_URL, WIN_URL],
+    "downloadUrl": [MAC_URL, WIN_URL, WIN_ZIP_URL],
     "installUrl": "https://sonurastudio.com/plugin/",
     "screenshot": "https://sonurastudio.com/images/plugin-ui.webp",
     "applicationCategory": "MusicApplication",
@@ -126,13 +127,39 @@ const jsonLd = [
         <p class="pg-sub anim">Generate loops, drums, vocals, one-shots, and sample ideas right inside your DAW. No browser, no exporting, no file juggling.</p>
 
         <div class="pg-download anim" id="pg-download">
-          <a class="dl-btn primary-dl" id="dl-primary" href={MAC_URL} download>
-            <svg class="dl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            <span id="dl-primary-label">Download for Mac</span>
-          </a>
-          <a class="dl-btn alt-dl" id="dl-alt" href={WIN_URL} download>
-            <span id="dl-alt-label">Download for Windows</span>
-          </a>
+          <div class="dl-choice" id="dl-primary-choice">
+            <a class="dl-btn primary-dl" id="dl-primary" href={MAC_URL} download aria-haspopup="menu" aria-expanded="false">
+              <svg class="dl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span id="dl-primary-label">Download for Mac</span>
+              <svg class="dl-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </a>
+            <div class="dl-menu" id="dl-primary-menu" role="menu" aria-label="Windows download options">
+              <a href={WIN_URL} download role="menuitem" data-download-option="installer">
+                <strong>Windows installer</strong>
+                <span>Guided setup, recommended</span>
+              </a>
+              <a href={WIN_ZIP_URL} download role="menuitem" data-download-option="zip">
+                <strong>ZIP file</strong>
+                <span>Manual install package</span>
+              </a>
+            </div>
+          </div>
+          <div class="dl-choice" id="dl-alt-choice">
+            <a class="dl-btn alt-dl" id="dl-alt" href={WIN_URL} download aria-haspopup="menu" aria-expanded="false">
+              <span id="dl-alt-label">Download for Windows</span>
+              <svg class="dl-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </a>
+            <div class="dl-menu" id="dl-alt-menu" role="menu" aria-label="Windows download options">
+              <a href={WIN_URL} download role="menuitem" data-download-option="installer">
+                <strong>Windows installer</strong>
+                <span>Guided setup, recommended</span>
+              </a>
+              <a href={WIN_ZIP_URL} download role="menuitem" data-download-option="zip">
+                <strong>ZIP file</strong>
+                <span>Manual install package</span>
+              </a>
+            </div>
+          </div>
         </div>
 
         <div class="pg-os anim">
@@ -399,13 +426,39 @@ const jsonLd = [
       <h2 class="pg-cta-title">Start making sounds in your DAW.</h2>
       <p class="pg-cta-sub">Download Sonura Flow and load it up. Start with free credits, then keep creating with the plan that fits your workflow.</p>
       <div class="pg-download pg-cta-download">
-        <a class="dl-btn primary-dl" id="dl-primary-b" href={MAC_URL} download>
-          <svg class="dl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          <span id="dl-primary-label-b">Download for Mac</span>
-        </a>
-        <a class="dl-btn alt-dl" id="dl-alt-b" href={WIN_URL} download>
-          <span id="dl-alt-label-b">Download for Windows</span>
-        </a>
+        <div class="dl-choice" id="dl-primary-choice-b">
+          <a class="dl-btn primary-dl" id="dl-primary-b" href={MAC_URL} download aria-haspopup="menu" aria-expanded="false">
+            <svg class="dl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span id="dl-primary-label-b">Download for Mac</span>
+            <svg class="dl-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </a>
+          <div class="dl-menu" id="dl-primary-menu-b" role="menu" aria-label="Windows download options">
+            <a href={WIN_URL} download role="menuitem" data-download-option="installer">
+              <strong>Windows installer</strong>
+              <span>Guided setup, recommended</span>
+            </a>
+            <a href={WIN_ZIP_URL} download role="menuitem" data-download-option="zip">
+              <strong>ZIP file</strong>
+              <span>Manual install package</span>
+            </a>
+          </div>
+        </div>
+        <div class="dl-choice" id="dl-alt-choice-b">
+          <a class="dl-btn alt-dl" id="dl-alt-b" href={WIN_URL} download aria-haspopup="menu" aria-expanded="false">
+            <span id="dl-alt-label-b">Download for Windows</span>
+            <svg class="dl-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </a>
+          <div class="dl-menu" id="dl-alt-menu-b" role="menu" aria-label="Windows download options">
+            <a href={WIN_URL} download role="menuitem" data-download-option="installer">
+              <strong>Windows installer</strong>
+              <span>Guided setup, recommended</span>
+            </a>
+            <a href={WIN_ZIP_URL} download role="menuitem" data-download-option="zip">
+              <strong>ZIP file</strong>
+              <span>Manual install package</span>
+            </a>
+          </div>
+        </div>
       </div>
       <div class="pg-os pg-cta-os">
         <div class="os-badge">
@@ -422,14 +475,24 @@ const jsonLd = [
 
 </BaseLayout>
 
-<script define:vars={{ PLUGIN_VERSION, MAC_URL, WIN_URL }}>
+<script define:vars={{ PLUGIN_VERSION, MAC_URL, WIN_URL, WIN_ZIP_URL }}>
   // @ts-nocheck
   const isMac = /Mac|iPhone|iPad|iPod/.test(navigator.platform) || /Macintosh/.test(navigator.userAgent);
 
-  const trackDownload = (platform, location, button) => {
-    const url = platform === 'mac' ? MAC_URL : WIN_URL;
+  const getDownloadUrl = (platform, packageType = 'installer') => {
+    if (platform === 'mac') return MAC_URL;
+    return packageType === 'zip' ? WIN_ZIP_URL : WIN_URL;
+  };
+
+  const getFileExtension = (platform, packageType = 'installer') => {
+    if (platform === 'mac') return 'pkg';
+    return packageType === 'zip' ? 'zip' : 'exe';
+  };
+
+  const trackDownload = (platform, location, button, packageType = 'installer') => {
+    const url = getDownloadUrl(platform, packageType);
     const fileName = url.split('/').pop();
-    const fileExtension = platform === 'mac' ? 'pkg' : 'exe';
+    const fileExtension = getFileExtension(platform, packageType);
 
     if (typeof window.gtag === 'function') {
       window.gtag('event', 'plugin_download', {
@@ -437,6 +500,7 @@ const jsonLd = [
         plugin_version: PLUGIN_VERSION,
         plugin_location: location,
         plugin_button: button,
+        plugin_package: packageType,
         file_name: fileName,
         file_extension: fileExtension,
         link_url: url,
@@ -456,6 +520,7 @@ const jsonLd = [
         version: PLUGIN_VERSION,
         location,
         button,
+        package: packageType,
       });
       window.fbq('track', 'Lead', {
         content_name: 'Sonura Flow Plugin',
@@ -470,38 +535,77 @@ const jsonLd = [
         plugin_version: PLUGIN_VERSION,
         plugin_location: location,
         plugin_button: button,
+        plugin_package: packageType,
       });
     }
   };
 
-  const setupDownload = (primaryId, primaryLabelId, altId, altLabelId, location) => {
+  const closeDownloadMenus = () => {
+    document.querySelectorAll('.dl-choice.is-open').forEach((choice) => {
+      choice.classList.remove('is-open');
+      choice.querySelector('.dl-btn')?.setAttribute('aria-expanded', 'false');
+    });
+  };
+
+  const setupDownloadSlot = (button, label, choice, menu, platform, location, buttonName) => {
+    if (!button || !label || !choice || !menu) return;
+
+    const isWindows = platform === 'windows';
+    choice.classList.toggle('is-windows', isWindows);
+    button.href = getDownloadUrl(platform);
+    label.textContent = isWindows ? 'Download for Windows' : 'Download for Mac';
+    button.setAttribute('aria-haspopup', isWindows ? 'menu' : 'false');
+    button.setAttribute('aria-expanded', 'false');
+
+    button.addEventListener('click', (event) => {
+      if (!isWindows) {
+        trackDownload(platform, location, buttonName);
+        return;
+      }
+
+      event.preventDefault();
+      const wasOpen = choice.classList.contains('is-open');
+      closeDownloadMenus();
+      choice.classList.toggle('is-open', !wasOpen);
+      button.setAttribute('aria-expanded', String(!wasOpen));
+    });
+
+    menu.querySelectorAll('[data-download-option]').forEach((option) => {
+      option.addEventListener('click', () => {
+        trackDownload('windows', location, buttonName, option.dataset.downloadOption);
+        closeDownloadMenus();
+      });
+    });
+  };
+
+  const setupDownload = (primaryId, primaryLabelId, primaryChoiceId, primaryMenuId, altId, altLabelId, altChoiceId, altMenuId, location) => {
     const primaryBtn = document.getElementById(primaryId);
     const primaryLabel = document.getElementById(primaryLabelId);
+    const primaryChoice = document.getElementById(primaryChoiceId);
+    const primaryMenu = document.getElementById(primaryMenuId);
     const altBtn = document.getElementById(altId);
     const altLabel = document.getElementById(altLabelId);
+    const altChoice = document.getElementById(altChoiceId);
+    const altMenu = document.getElementById(altMenuId);
     if (!primaryBtn || !altBtn) return;
 
     const primaryPlatform = isMac ? 'mac' : 'windows';
     const altPlatform = isMac ? 'windows' : 'mac';
 
-    if (isMac) {
-      primaryBtn.href = MAC_URL;
-      primaryLabel.textContent = 'Download for Mac';
-      altBtn.href = WIN_URL;
-      altLabel.textContent = 'Download for Windows';
-    } else {
-      primaryBtn.href = WIN_URL;
-      primaryLabel.textContent = 'Download for Windows';
-      altBtn.href = MAC_URL;
-      altLabel.textContent = 'Download for Mac';
-    }
-
-    primaryBtn.addEventListener('click', () => trackDownload(primaryPlatform, location, 'primary'));
-    altBtn.addEventListener('click', () => trackDownload(altPlatform, location, 'alt'));
+    setupDownloadSlot(primaryBtn, primaryLabel, primaryChoice, primaryMenu, primaryPlatform, location, 'primary');
+    setupDownloadSlot(altBtn, altLabel, altChoice, altMenu, altPlatform, location, 'alt');
   };
 
-  setupDownload('dl-primary', 'dl-primary-label', 'dl-alt', 'dl-alt-label', 'hero');
-  setupDownload('dl-primary-b', 'dl-primary-label-b', 'dl-alt-b', 'dl-alt-label-b', 'cta');
+  setupDownload('dl-primary', 'dl-primary-label', 'dl-primary-choice', 'dl-primary-menu', 'dl-alt', 'dl-alt-label', 'dl-alt-choice', 'dl-alt-menu', 'hero');
+  setupDownload('dl-primary-b', 'dl-primary-label-b', 'dl-primary-choice-b', 'dl-primary-menu-b', 'dl-alt-b', 'dl-alt-label-b', 'dl-alt-choice-b', 'dl-alt-menu-b', 'cta');
+
+  document.addEventListener('click', (event) => {
+    if (!event.target.closest('.dl-choice')) closeDownloadMenus();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeDownloadMenus();
+  });
 
   document.addEventListener('DOMContentLoaded', () => {
     if (typeof gsap === 'undefined') return;
@@ -755,6 +859,8 @@ const jsonLd = [
   }
 
   .pg-download {
+    position: relative;
+    z-index: 40;
     display: flex;
     flex-direction: row;
     gap: 12px;
@@ -763,6 +869,7 @@ const jsonLd = [
   }
 
   .dl-btn {
+    box-sizing: border-box;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -773,6 +880,34 @@ const jsonLd = [
     border-radius: 12px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
+  }
+
+  .dl-choice {
+    box-sizing: border-box;
+    position: relative;
+    display: inline-flex;
+    flex: 0 0 auto;
+  }
+
+  .dl-choice.is-open {
+    z-index: 60;
+  }
+
+  .dl-chevron {
+    display: none;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    opacity: 0.72;
+    transition: transform 0.2s ease;
+  }
+
+  .dl-choice.is-windows .dl-chevron {
+    display: block;
+  }
+
+  .dl-choice.is-open .dl-chevron {
+    transform: rotate(180deg);
   }
 
   .primary-dl {
@@ -815,7 +950,66 @@ const jsonLd = [
     transform: translateY(-1px);
   }
 
+  .dl-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    z-index: 80;
+    display: grid;
+    gap: 4px;
+    min-width: 238px;
+    padding: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 12px;
+    background: rgba(10, 10, 13, 0.985);
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.46), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-4px) scale(0.98);
+    transform-origin: top left;
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+    backdrop-filter: blur(18px);
+  }
+
+  .dl-choice.is-open .dl-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+  }
+
+  .dl-menu a {
+    display: grid;
+    gap: 2px;
+    padding: 11px 12px;
+    border-radius: 8px;
+    color: var(--fg);
+    text-decoration: none;
+    transition: background 0.18s ease, color 0.18s ease;
+  }
+
+  .dl-menu a:hover,
+  .dl-menu a:focus-visible {
+    background: rgba(255, 255, 255, 0.08);
+    outline: none;
+  }
+
+  .dl-menu strong {
+    font-size: 14px;
+    line-height: 1.25;
+    font-weight: 650;
+  }
+
+  .dl-menu span {
+    font-size: 12px;
+    line-height: 1.35;
+    color: var(--muted);
+  }
+
   .pg-os {
+    position: relative;
+    z-index: 1;
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
@@ -1412,6 +1606,17 @@ const jsonLd = [
     opacity: 0;
   }
 
+  @media (max-width: 1120px) {
+    .pg-download {
+      align-items: stretch;
+    }
+
+    .pg-download .dl-choice,
+    .pg-download .dl-btn {
+      width: 100%;
+    }
+  }
+
   @media (max-width: 960px) {
     .pg {
       padding: 80px 24px 120px;
@@ -1559,6 +1764,16 @@ const jsonLd = [
       width: 100%;
       padding: 14px 20px;
       font-size: 15px;
+    }
+
+    .dl-choice {
+      width: 100%;
+    }
+
+    .dl-menu {
+      right: 0;
+      min-width: 100%;
+      transform-origin: top center;
     }
 
     .pg-info {
