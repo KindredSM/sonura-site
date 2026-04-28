@@ -202,7 +202,7 @@ const jsonLd = [
 
         <div class="founder-card reveal" data-reveal-delay="0.08s">
           <div class="founder-content">
-            <div class="founder-image">
+            <div class="founder-image founder-image-static">
               <img src="/images/blue.jpg" alt="Blue Bookhard - Co-founder of Sonura" />
             </div>
             <div class="founder-info">
@@ -562,6 +562,10 @@ const jsonLd = [
   
   .founder-image:hover {
     filter: grayscale(0%);
+  }
+
+  .founder-image-static:hover {
+    filter: grayscale(100%);
   }
 
   .founder-image img {
