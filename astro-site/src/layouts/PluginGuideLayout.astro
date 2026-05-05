@@ -51,6 +51,7 @@ const {
 } = Astro.props;
 
 const canonical = `https://sonurastudio.com/plugin/${slug}/`;
+const stripHtml = (value: string) => value.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
 
 const jsonLd = [
   {
@@ -95,7 +96,7 @@ const jsonLd = [
       "name": faq.question,
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": faq.answer
+        "text": stripHtml(faq.answer)
       }
     }))
   }
@@ -153,10 +154,10 @@ const jsonLd = [
       {sections.map((section) => (
         <section class="guide-section">
           <h2>{section.title}</h2>
-          <p>{section.body}</p>
+          <p set:html={section.body}></p>
           {section.bullets && (
             <ul>
-              {section.bullets.map((bullet) => <li>{bullet}</li>)}
+              {section.bullets.map((bullet) => <li set:html={bullet}></li>)}
             </ul>
           )}
         </section>
@@ -169,7 +170,7 @@ const jsonLd = [
         {faqs.map((faq) => (
           <details>
             <summary>{faq.question}</summary>
-            <p>{faq.answer}</p>
+            <p set:html={faq.answer}></p>
           </details>
         ))}
       </div>

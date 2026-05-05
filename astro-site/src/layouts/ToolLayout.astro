@@ -73,6 +73,7 @@ const {
 
 const displayHeadline = headline ?? toolName;
 const canonical = `https://sonurastudio.com/tools/${toolSlug}/`;
+const stripHtml = (value: string) => value.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
 
 const jsonLd = [
   {
@@ -100,7 +101,7 @@ const jsonLd = [
     mainEntity: faqs.map((faq) => ({
       '@type': 'Question',
       name: faq.question,
-      acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+      acceptedAnswer: { '@type': 'Answer', text: stripHtml(faq.answer) },
     })),
   },
   {
@@ -372,6 +373,47 @@ const jsonLd = [
     .tp-blog-list a:hover {
       border-color: var(--border-light);
     }
+
+    .tp-money-links {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+    .tp-money-link {
+      display: block;
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--fg);
+      text-decoration: none;
+      background: rgba(255,255,255,0.02);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .tp-money-link:hover {
+      border-color: var(--border-light);
+      background: rgba(255,255,255,0.04);
+    }
+    .tp-money-link strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+    .tp-money-link span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+    @media (max-width: 900px) {
+      .tp-money-links {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (max-width: 560px) {
+      .tp-money-links {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 
   <div class="tp-hero">
@@ -393,7 +435,7 @@ const jsonLd = [
         {features.map((feat) => (
           <div class="tp-feat-card">
             <h3>{feat.title}</h3>
-            <p>{feat.description}</p>
+            <p set:html={feat.description}></p>
           </div>
         ))}
       </div>
@@ -424,6 +466,34 @@ const jsonLd = [
     <a href={appUrl} class="tp-cta-btn">{ctaPrimaryText}</a>
   </div>
 
+  <section class="tp-section alt" aria-labelledby="tool-paid-path-title">
+    <div class="tp-section-inner">
+      <h2 id="tool-paid-path-title" class="tp-section-title">Built for release-ready workflows</h2>
+      <div class="tp-money-links">
+        <a class="tp-money-link" href="/pricing/">
+          <strong>Plans and credits</strong>
+          <span>Compare paid plans for high-quality downloads and commercial work.</span>
+        </a>
+        <a class="tp-money-link" href="/plugin/">
+          <strong>DAW plugin</strong>
+          <span>Generate sounds inside Ableton, Logic Pro, FL Studio, and more.</span>
+        </a>
+        <a class="tp-money-link" href="/features/stem-export/">
+          <strong>Stem export</strong>
+          <span>Export drums, bass, melody, vocals, and FX for mixing.</span>
+        </a>
+        <a class="tp-money-link" href="/alternatives/suno-alternative/">
+          <strong>vs Suno</strong>
+          <span>See why producers use Sonura for stems and faster iteration.</span>
+        </a>
+        <a class="tp-money-link" href="/alternatives/splice-alternative/">
+          <strong>vs Splice</strong>
+          <span>Create original samples instead of browsing shared libraries.</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <section class="tp-section">
     <div class="tp-section-inner">
       <h2 class="tp-section-title">Who uses this</h2>
@@ -431,7 +501,7 @@ const jsonLd = [
         {useCases.map((uc) => (
           <div class="tp-uc-card">
             <h3>{uc.title}</h3>
-            <p>{uc.description}</p>
+            <p set:html={uc.description}></p>
           </div>
         ))}
       </div>
@@ -446,7 +516,7 @@ const jsonLd = [
           {relatedTools.map((t) => (
             <a class="tp-rel-card" href={t.href}>
               <h3>{t.title}</h3>
-              <p>{t.description}</p>
+              <p set:html={t.description}></p>
             </a>
           ))}
         </div>
@@ -476,7 +546,7 @@ const jsonLd = [
         {faqs.map((faq) => (
           <details>
             <summary>{faq.question}</summary>
-            <p>{faq.answer}</p>
+            <p set:html={faq.answer}></p>
           </details>
         ))}
       </div>

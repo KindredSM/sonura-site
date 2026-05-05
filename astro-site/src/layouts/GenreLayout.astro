@@ -61,6 +61,7 @@ const {
 } = Astro.props;
 
 const canonical = `https://sonurastudio.com/genre/${genreSlug}/`;
+const stripHtml = (value: string) => value.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
 
 const jsonLd = [
   {
@@ -88,7 +89,7 @@ const jsonLd = [
       "name": faq.question,
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": faq.answer
+        "text": stripHtml(faq.answer)
       }
     }))
   }
@@ -105,6 +106,71 @@ const jsonLd = [
   jsonLd={jsonLd}
   bodyClass="genre-page"
 >
+  <style>
+    .genre-next {
+      padding: 88px 24px;
+      background: rgba(255,255,255,0.02);
+    }
+    .genre-next-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .genre-next-title {
+      margin: 0 0 28px;
+      text-align: center;
+      font-size: clamp(24px, 3.5vw, 36px);
+      letter-spacing: -0.02em;
+    }
+    .genre-next-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+    .genre-next-link {
+      display: block;
+      min-height: 124px;
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--fg);
+      text-decoration: none;
+      background: rgba(0,0,0,0.18);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .genre-next-link:hover {
+      border-color: var(--border-light);
+      background: rgba(255,255,255,0.04);
+    }
+    .genre-next-link strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      line-height: 1.25;
+    }
+    .genre-next-link span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+    @media (max-width: 900px) {
+      .genre-next-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 560px) {
+      .genre-next {
+        padding: 64px 24px;
+      }
+      .genre-next-grid {
+        grid-template-columns: 1fr;
+      }
+      .genre-next-link {
+        min-height: auto;
+      }
+    }
+  </style>
+
   <section class="hero">
     <div class="hero-background">
       <div class="hero-gradient"></div>
@@ -147,7 +213,7 @@ const jsonLd = [
             </div>
             <div class="workflow-content">
               <h3 class="workflow-item-title">{item.title}</h3>
-              <p class="workflow-item-description">{item.description}</p>
+              <p class="workflow-item-description" set:html={item.description}></p>
             </div>
           </div>
         ))}
@@ -209,6 +275,34 @@ const jsonLd = [
     </section>
   )}
 
+  <section class="genre-next" aria-labelledby="genre-next-title">
+    <div class="genre-next-inner">
+      <h2 id="genre-next-title" class="genre-next-title">Finish the {genre} workflow</h2>
+      <div class="genre-next-grid">
+        <a class="genre-next-link" href="/pricing/">
+          <strong>Plans and credits</strong>
+          <span>Upgrade for more generations, high-quality downloads, and commercial releases.</span>
+        </a>
+        <a class="genre-next-link" href="/features/stem-export/">
+          <strong>Export stems</strong>
+          <span>Pull out drums, bass, melody, vocals, and FX for mixing in your DAW.</span>
+        </a>
+        <a class="genre-next-link" href="/use-cases/type-beats/">
+          <strong>Sell type beats</strong>
+          <span>Turn genre pages into beat-selling workflows with commercial rights.</span>
+        </a>
+        <a class="genre-next-link" href="/plugin/">
+          <strong>Use the plugin</strong>
+          <span>Generate loops, drums, vocals, and one-shots inside your session.</span>
+        </a>
+        <a class="genre-next-link" href="/alternatives/suno-alternative/">
+          <strong>Compare Suno</strong>
+          <span>See why producers use Sonura for faster iteration and stem control.</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <section class="faq" id="faq" aria-labelledby="faq-title">
     <div class="faq-inner">
       <h2 id="faq-title" class="faq-title">{genre} Beat Maker FAQ</h2>
@@ -216,7 +310,7 @@ const jsonLd = [
         {faqs.map((faq, index) => (
           <details class="reveal" data-reveal-delay={`${0.03 * index}s`}>
             <summary>{faq.question}</summary>
-            <p>{faq.answer}</p>
+            <p set:html={faq.answer}></p>
           </details>
         ))}
       </div>

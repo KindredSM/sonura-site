@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sonurastudio.com/sitemap.xml
+Sitemap: https://sonurastudio.com/sitemap-index.xml
 
 # LLM documentation
 # https://sonurastudio.com/llms.txt

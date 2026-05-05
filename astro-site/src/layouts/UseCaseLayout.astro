@@ -63,6 +63,7 @@ const {
 } = Astro.props;
 
 const canonical = `https://sonurastudio.com/use-cases/${useCaseSlug}/`;
+const stripHtml = (value: string) => value.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
 
 const jsonLd = [
   {
@@ -89,7 +90,7 @@ const jsonLd = [
       "name": faq.question,
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": faq.answer
+        "text": stripHtml(faq.answer)
       }
     }))
   }
@@ -227,7 +228,7 @@ const jsonLd = [
         {benefits.map((benefit, index) => (
           <div class="benefit-card reveal" data-reveal-delay={`${0.06 * index}s`}>
             <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 12px; color: var(--fg);">{benefit.title}</h3>
-            <p style="color: var(--muted); line-height: 1.6; font-size: 15px;">{benefit.description}</p>
+            <p style="color: var(--muted); line-height: 1.6; font-size: 15px;" set:html={benefit.description}></p>
           </div>
         ))}
       </div>
@@ -241,7 +242,7 @@ const jsonLd = [
         {examples.map((example, index) => (
           <div class="example-card reveal" data-reveal-delay={`${0.06 * index}s`}>
             <div class="example-prompt">"{example.prompt}"</div>
-            <p style="color: var(--muted); font-size: 14px; line-height: 1.5;">{example.description}</p>
+            <p style="color: var(--muted); font-size: 14px; line-height: 1.5;" set:html={example.description}></p>
           </div>
         ))}
       </div>
@@ -255,7 +256,7 @@ const jsonLd = [
         {faqs.map((faq, index) => (
           <details class="reveal" data-reveal-delay={`${0.03 * index}s`}>
             <summary>{faq.question}</summary>
-            <p>{faq.answer}</p>
+            <p set:html={faq.answer}></p>
           </details>
         ))}
       </div>
@@ -279,4 +280,3 @@ const jsonLd = [
     </div>
   </section>
 </BaseLayout>
-

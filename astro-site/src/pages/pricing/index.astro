@@ -25,7 +25,7 @@ const jsonLd = [
     "applicationCategory": "MusicApplication",
     "operatingSystem": "Web Browser",
     "offers": [
-      { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "USD", "description": "Free credits, commercial rights, stem export" },
+      { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "USD", "description": "Free credits, no credit card required" },
       { "@type": "Offer", "name": "Starter", "price": "10", "priceCurrency": "USD", "billingIncrement": "P1M", "description": "200 credits/month" },
       { "@type": "Offer", "name": "Pro Trial", "price": "5", "priceCurrency": "USD", "billingIncrement": "P1M", "description": "Pro at $5 for the first month, then $20/month" },
       { "@type": "Offer", "name": "Pro", "price": "20", "priceCurrency": "USD", "billingIncrement": "P1M", "description": "500 credits/month" },
@@ -39,7 +39,7 @@ const jsonLd = [
       {
         "@type": "Question",
         "name": "Is Sonura free?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes! Sonura offers free credits to get started with no credit card required. The free tier includes full commercial rights and stem export." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Sonura offers free credits to get started with no credit card required. Check the current Terms if you plan to release or sell work created on the free tier." }
       },
       {
         "@type": "Question",
@@ -49,7 +49,7 @@ const jsonLd = [
       {
         "@type": "Question",
         "name": "Do I own the music I create?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. You own 100% of music you generate with Sonura. Full commercial rights on all tiers including free. Release on Spotify, sell beats, use in client work." }
+        "acceptedAnswer": { "@type": "Answer", "text": "You retain ownership of Generated Content you create with Sonura, subject to the Terms. Private content remains exclusively yours; content shared publicly is released under CC0." }
       },
       {
         "@type": "Question",
@@ -59,7 +59,7 @@ const jsonLd = [
       {
         "@type": "Question",
         "name": "Is stem export included on all plans?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes! Stem export is included on all tiers, including the free tier. Export drums, bass, melody, vocals, and FX separately." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Stem export is available in Sonura for export-driven workflows. Check the current in-app plan details for free-tier availability." }
       }
     ]
   }
@@ -145,7 +145,7 @@ const jsonLd = [
       <div>
         <details style="padding: 24px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 16px;">
           <summary style="font-weight: 700; font-size: 18px;">Is Sonura really free to start?</summary>
-          <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">Yes! Sign up with no credit card and get free credits to create beats, loops, vocals, and more. Full commercial rights and stem export included on the free tier.</p>
+          <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">Yes. Sign up with no credit card and get free credits to create beats, loops, vocals, and more. If you plan to release or sell work created on the free tier, check the current Terms so you understand public and private content rules.</p>
         </details>
         <details style="padding: 24px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 16px;">
           <summary style="font-weight: 700; font-size: 18px;">Can I cancel anytime?</summary>
@@ -153,11 +153,11 @@ const jsonLd = [
         </details>
         <details style="padding: 24px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 16px;">
           <summary style="font-weight: 700; font-size: 18px;">Do I own the music I create?</summary>
-          <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">Yes. You own 100% of all music generated with Sonura. Full commercial rights on all tiers including free. Release on Spotify, sell beats, use in client work, sync to video - no restrictions.</p>
+          <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">You retain ownership of Generated Content you create with Sonura, subject to the Terms. Private content remains exclusively yours; content shared publicly is released under CC0 so others can use and remix it too.</p>
         </details>
         <details style="padding: 24px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 16px;">
           <summary style="font-weight: 700; font-size: 18px;">Is stem export included on all plans?</summary>
-          <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">Yes! Stem export is available on all tiers including free. Export individual drums, bass, melody, vocals, and FX stems in high quality.</p>
+          <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">Yes. Stem export is available in Sonura for export-driven workflows. Check the current in-app plan details for free-tier availability.</p>
         </details>
         <details style="padding: 24px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 16px;">
           <summary style="font-weight: 700; font-size: 18px;">What payment methods do you accept?</summary>
@@ -165,7 +165,7 @@ const jsonLd = [
         </details>
         <details style="padding: 24px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 16px;">
           <summary style="font-weight: 700; font-size: 18px;">How does Sonura pricing compare to competitors?</summary>
-          <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">Sonura offers more value per dollar than most competitors. Unlike Splice, Suno, and others, Sonura includes full commercial rights and stem export on the free tier. Paid plans include a Pro trial at $5 for your first month.</p>
+          <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">Sonura is priced around producer workflows: credits for generation, high-quality downloads, stem export, and commercial-ready creation. Paid plans include a Pro trial at $5 for your first month.</p>
         </details>
       </div>
     </section>

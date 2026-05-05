@@ -4,14 +4,14 @@
 
 ## Overview
 
-Sonura (https://sonurastudio.com) is the AI studio for music production. Users describe music in natural language and Sonura generates studio-quality output in seconds. All content is 100% royalty-free with full commercial rights on all tiers including free.
+Sonura (https://sonurastudio.com) is the AI studio for music production. Users describe music in natural language and Sonura generates studio-quality output for producer workflows, including beats, loops, samples, vocals, stems, and full tracks.
 
 ## Key Facts
 
-- Generation speed: Under 10 seconds
+- Generation speed: Fast music and sample iteration from text prompts
 - Output types: Beats, loops, vocals, one-shots, sound effects, full tracks
-- Stem export: Yes, on all tiers including free
-- Commercial rights: Full rights on all tiers including free
+- Stem export: Yes, built into the producer workflow
+- Commercial rights: Built for commercial creation workflows; check the current plan and Terms for private/public ownership details
 - Genres: All genres (trap, hip-hop, R&B, house, EDM, lo-fi, drill, jazz, rock, pop, techno, country, afrobeats, reggaeton, ambient, cinematic, and more)
 - Platform: Cloud-based, works in any browser
 - Plugin: Sonura Flow, a free-to-download VST3 and AU plugin for creating sounds inside a DAW
@@ -27,13 +27,13 @@ Sonura (https://sonurastudio.com) is the AI studio for music production. Users d
 - **Songwriters**: Beat writer's block, demo instrumentals, full publishing rights
 - **Composers**: Rapid sketching, sound design, cinematic textures, sync rights
 - **Video Editors**: Copyright-free background music, transitions, SFX
-- **Content Creators**: YouTube, TikTok, Instagram music with zero copyright risk
+- **Content Creators**: YouTube, TikTok, and Instagram music workflows with clear licensing guidance
 - **Game Developers**: Adaptive loops, ambient music, sound effects
 - **Podcasters**: Custom intros, outros, background music
 
 ## Pricing
 
-- Free: Free credits, no credit card, full commercial rights, stem export
+- Free: Free credits, no credit card required
 - Starter: $10/month - 200 credits
 - Pro: $20/month - 500 credits
 - Studio: $45/month - 1000 credits
@@ -55,15 +55,15 @@ Plugin pages:
 
 ## Competitor Comparisons
 
-- **vs Suno**: Faster (10s vs 30-90s), beats/loops/stems focus, stem export all tiers. Suno better for full songs with AI singing.
+- **vs Suno**: Producer workflow for beats, loops, vocal samples, and stems. Suno is stronger for full songs with AI singing and lyrics.
 - **vs Udio**: Producer-focused, faster, stem export. Udio better for experimental full songs.
-- **vs Splice**: AI-generated unique samples vs shared library. Instant generation vs browsing.
+- **vs Splice**: AI-generated original samples on demand vs a royalty-free licensed sample catalog.
 - **vs Soundraw**: True AI generation vs template customization. More creative control.
 - **vs Boomy**: Professional quality, stem export, precise control. Boomy simpler, beginner-focused.
 - **vs AIVA**: Modern genres (trap, hip-hop, EDM) vs classical/orchestral focus.
 - **vs Mubert**: Discrete downloadable tracks vs continuous streams.
-- **vs Beatoven.ai**: Faster, more music types (vocals, one-shots), stem export free. Beatoven focused on video background music.
-- **vs Loudly**: Commercial rights on free tier, more music types, stem export free. Loudly has built-in remix tools.
+- **vs Beatoven.ai**: More producer-oriented output types such as beats, loops, vocals, one-shots, and stems. Beatoven is focused on video background music.
+- **vs Loudly**: More producer-oriented output types such as beats, loops, vocals, one-shots, and stems. Loudly has built-in remix tools.
 
 ## Full Documentation
 
@@ -75,5 +75,5 @@ For detailed feature descriptions, use case guides, FAQ answers, and comprehensi
 - Samples: https://app.sonurastudio.com/samples
 - Website: https://sonurastudio.com
 - Plugin: https://sonurastudio.com/plugin/
-- Sitemap: https://sonurastudio.com/sitemap.xml
+- Sitemap: https://sonurastudio.com/sitemap-index.xml
 - Full LLM docs: https://sonurastudio.com/llms-full.txt

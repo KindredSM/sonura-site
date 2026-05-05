@@ -19,8 +19,8 @@ const {
       
       {showTrust && (
         <div class="pricing-trust">
-          <div class="pricing-trust-item"><i data-lucide="check"></i> <span>Full commercial rights on everything you create</span></div>
-          <div class="pricing-trust-item"><i data-lucide="check"></i> <span>Release anywhere, keep all royalties</span></div>
+          <div class="pricing-trust-item"><i data-lucide="check"></i> <span>Commercial-ready paid creation workflows</span></div>
+          <div class="pricing-trust-item"><i data-lucide="check"></i> <span>Private content stays exclusively yours</span></div>
           <div class="pricing-trust-item"><i data-lucide="check"></i> <span>No contracts, cancel anytime</span></div>
         </div>
       )}
@@ -337,7 +337,18 @@ const {
         params.set('coupon', trialCouponId);
         params.set('couponId', trialCouponId);
       }
-      window.location.href = `https://app.sonurastudio.com?${params.toString()}`;
+      const destination = `https://app.sonurastudio.com?${params.toString()}`;
+      const trackedDestination = typeof (window as any).sonuraBuildAppUrl === 'function'
+        ? (window as any).sonuraBuildAppUrl(destination, {
+            cta_location: 'pricing',
+            cta_text: btn.textContent?.trim().replace(/\s+/g, ' ').slice(0, 80) || '',
+            campaign_intent: 'subscription',
+            plan,
+            interval,
+            trial,
+          })
+        : destination;
+      window.location.href = trackedDestination;
     });
   });
 </script>
@@ -462,6 +473,12 @@ const {
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     font-size: 15px;
     color: rgba(255, 255, 255, 0.8);
+  }
+
+  .trial-benefit-item span {
+    flex: 1;
+    min-width: 0;
+    text-align: left;
   }
 
   .trial-benefit-item:last-child {
@@ -860,8 +877,15 @@ const {
       padding: 0 16px;
     }
 
+    .trial-benefit-item {
+      align-items: flex-start;
+      text-align: left;
+    }
+
     .view-all-link {
-      margin-top: 20px;
+      justify-content: flex-start;
+      width: fit-content;
+      margin: 20px 16px 12px;
     }
 
     .pricing-grid {
@@ -871,6 +895,39 @@ const {
     .pricing-card {
       min-height: auto;
       padding: 28px;
+      align-items: stretch;
+      text-align: left;
+    }
+
+    .pricing-card-header {
+      width: 100%;
+      text-align: left;
+    }
+
+    .plan-name-row,
+    .price-row {
+      justify-content: flex-start;
+    }
+
+    .plan-features {
+      width: 100%;
+      align-items: stretch;
+      text-align: left;
+    }
+
+    .plan-features li {
+      width: 100%;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .plan-features li span {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .pricing-cta {
+      width: 100%;
     }
 
     .plan-price {

@@ -23,11 +23,6 @@ interface UseCaseItem {
   text: string;
 }
 
-interface Testimonial {
-  quote: string;
-  author: string;
-}
-
 interface FAQ {
   question: string;
   answer: string;
@@ -50,8 +45,6 @@ interface Props {
   useCasesTitle?: string;
   sonuraUseCases: UseCaseItem[];
   competitorUseCases: UseCaseItem[];
-  testimonialsTitle?: string;
-  testimonials?: Testimonial[];
   faqs: FAQ[];
   finalCtaTitle?: string;
   finalCtaSubtitle?: string;
@@ -77,8 +70,6 @@ const {
   useCasesTitle,
   sonuraUseCases,
   competitorUseCases,
-  testimonialsTitle,
-  testimonials = [],
   faqs,
   finalCtaTitle,
   finalCtaSubtitle,
@@ -113,7 +104,7 @@ const jsonLd = [
   description={description}
   keywords={keywords}
   canonical={canonical}
-  ogTitle={`Best ${competitor} Alternative 2025`}
+  ogTitle={title}
   ogDescription={description}
   jsonLd={jsonLd}
 >
@@ -121,14 +112,13 @@ const jsonLd = [
     .responsive-grid-3 { display: grid; grid-template-columns: 1fr; gap: 32px; }
     .responsive-grid-2 { display: grid; grid-template-columns: 1fr; gap: 32px; }
     .responsive-grid-stats { display: grid; grid-template-columns: 1fr; gap: 32px; }
-    .responsive-grid-testimonials { display: grid; grid-template-columns: 1fr; gap: 24px; }
-
     @media (max-width: 640px) {
       .alt-section { margin-bottom: 48px !important; }
       .alt-h1 { font-size: 32px !important; }
       .alt-h2 { font-size: 24px !important; }
       .alt-h3 { font-size: 20px !important; }
       .responsive-grid-3 > div, .responsive-grid-2 > div { padding: 24px !important; }
+      .alt-revenue-links { grid-template-columns: 1fr !important; }
     }
 
     @media (min-width: 640px) {
@@ -138,12 +128,35 @@ const jsonLd = [
 
     @media (min-width: 768px) {
       .responsive-grid-3 { grid-template-columns: repeat(2, 1fr); }
-      .responsive-grid-testimonials { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (min-width: 1024px) {
       .responsive-grid-3 { grid-template-columns: repeat(3, 1fr); }
-      .responsive-grid-testimonials { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .alt-revenue-links {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .alt-revenue-links a {
+      padding: 18px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      color: var(--fg);
+      text-decoration: none;
+      background: rgba(255,255,255,0.02);
+    }
+    .alt-revenue-links strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+    .alt-revenue-links span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
     }
   </style>
 
@@ -195,6 +208,28 @@ const jsonLd = [
       </div>
     </section>
 
+    <section class="alt-section" style="margin-bottom: 80px;">
+      <h2 class="alt-h2" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; text-align: center;">Compare the production workflow</h2>
+      <div class="alt-revenue-links">
+        <a href="/pricing/">
+          <strong>Pricing and credits</strong>
+          <span>See subscription plans for high-quality downloads and commercial work.</span>
+        </a>
+        <a href="/plugin/">
+          <strong>DAW plugin</strong>
+          <span>Create loops, drums, vocals, and one-shots without leaving your session.</span>
+        </a>
+        <a href="/features/stem-export/">
+          <strong>Stem export</strong>
+          <span>Export separate parts for mixing, edits, and client delivery.</span>
+        </a>
+        <a href="/tools/ai-sample-generator/">
+          <strong>Original samples</strong>
+          <span>Generate unique sounds on demand instead of reusing shared packs.</span>
+        </a>
+      </div>
+    </section>
+
     <!-- Advantages Section -->
     <section class="alt-section" style="margin-bottom: 80px;">
       <h2 class="alt-h2" style="font-size: 36px; font-weight: 700; margin-bottom: 40px;">{advantagesTitle || `Why Choose Sonura Over ${competitor}?`}</h2>
@@ -202,7 +237,7 @@ const jsonLd = [
         {advantages.map((adv) => (
           <div style="padding: 32px; background: rgba(255,255,255,0.02); border-radius: 12px;">
             <h3 class="alt-h3" style="font-size: 24px; font-weight: 700; margin-bottom: 16px;">{adv.title}</h3>
-            <p style="color: var(--muted); line-height: 1.6;">{adv.description}</p>
+            <p style="color: var(--muted); line-height: 1.6;" set:html={adv.description}></p>
           </div>
         ))}
       </div>
@@ -237,21 +272,6 @@ const jsonLd = [
       </div>
     </section>
 
-    <!-- Testimonials Section -->
-    {testimonials.length > 0 && (
-      <section class="alt-section" style="margin-bottom: 80px;">
-        <h2 class="alt-h2" style="font-size: 36px; font-weight: 700; margin-bottom: 40px; text-align: center;">{testimonialsTitle || 'What Users Are Saying'}</h2>
-        <div class="responsive-grid-testimonials">
-          {testimonials.map((t) => (
-            <div style="padding: 32px; background: rgba(255,255,255,0.02); border-radius: 12px; border-left: 3px solid var(--primary);">
-              <p style="font-style: italic; margin-bottom: 16px; line-height: 1.6;">"{t.quote}"</p>
-              <p style="color: var(--muted); font-size: 14px;">— {t.author}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-    )}
-
     <!-- FAQ Section -->
     <section class="alt-section" style="margin-bottom: 80px;">
       <h2 class="alt-h2" style="font-size: 36px; font-weight: 700; margin-bottom: 40px;">Frequently Asked Questions</h2>
@@ -259,7 +279,7 @@ const jsonLd = [
         {faqs.map((faq) => (
           <details style="padding: 24px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 16px;">
             <summary style="font-weight: 700; font-size: 18px; margin-bottom: 12px;">{faq.question}</summary>
-            <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">{faq.answer}</p>
+            <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;" set:html={faq.answer}></p>
           </details>
         ))}
       </div>
