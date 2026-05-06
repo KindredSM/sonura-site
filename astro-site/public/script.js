@@ -16,7 +16,7 @@ window.playHeroVideo = function() {
   const iframe = document.createElement('iframe');
   iframe.className = 'hero-video-element';
   iframe.src = 'https://www.youtube.com/embed/xUuqIAWetXk?rel=0&modestbranding=1&autoplay=1';
-  iframe.title = 'Sonura AI Music Generator Demo';
+  iframe.title = 'Sonura Music Generator Demo';
   iframe.frameBorder = '0';
   iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
   iframe.allowFullscreen = true;
