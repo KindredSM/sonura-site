@@ -375,20 +375,24 @@ const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 const mobileMenu = document.querySelector('.mobile-menu');
 
 if (mobileMenuBtn && mobileMenu) {
+  const setMobileMenuOpen = (isOpen) => {
+    mobileMenu.classList.toggle('active', isOpen);
+  };
+
   mobileMenuBtn.addEventListener('click', (e) => {
     e.stopPropagation();
-    mobileMenu.classList.toggle('active');
+    setMobileMenuOpen(!mobileMenu.classList.contains('active'));
   });
 
   document.addEventListener('click', (e) => {
     if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-      mobileMenu.classList.remove('active');
+      setMobileMenuOpen(false);
     }
   });
 
   mobileMenu.addEventListener('click', (e) => {
     if (e.target.classList.contains('mobile-menu-item')) {
-      mobileMenu.classList.remove('active');
+      setMobileMenuOpen(false);
     }
   });
 }
