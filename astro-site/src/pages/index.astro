@@ -64,6 +64,14 @@ const faqSchema = {
         "@type": "Answer",
         "text": "Everything you create with Sonura is yours with full commercial rights. Release on Spotify, sell as beats, use in client work. No royalty splits, no attribution required."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Will platforms de-rank my music if I use AI tools?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sonura is for those crafting original arrangements and sound, not replacing the human decisions that make a track yours."
+      }
     }
   ]
 };
@@ -265,9 +273,10 @@ const faqSchema = {
           </div>
         </div>
       </div>
-      <div class="workflow-cta reveal" data-reveal-delay="0.24s">
-        <p class="workflow-cta-text">Built to accelerate your process, not replace your creativity.</p>
-        <a class="button primary" href="https://app.sonurastudio.com/studio">Start Creating for Free</a>
+      <div class="release-positioning reveal" data-reveal-delay="0.22s">
+        <h3 class="release-positioning-title">Built for human artistry.</h3>
+        <p class="release-positioning-text">Sonura is for those crafting original arrangements and sound, not replacing the human decisions that make a track yours.</p>
+        <a class="button primary release-positioning-button" href="https://app.sonurastudio.com/studio">Start Creating for Free</a>
       </div>
     </div>
   </section>
@@ -282,9 +291,12 @@ const faqSchema = {
       <div class="testimonials-grid">
         <div class="testimonial-card reveal" data-reveal-delay="0.04s">
           <div class="testimonial-content">
-            <p class="testimonial-text">"Just came across Sonura on Product Hunt and I am completely jazzed by this product! I have numerous projects where I've been dreading doing sound engineering and this has completely flipped the script!"</p>
+            <p class="testimonial-text">"I am completely jazzed by this product! I have numerous projects where I've been dreading doing sound engineering and this has completely flipped the script!"</p>
           </div>
           <div class="testimonial-author">
+            <div class="author-avatar" aria-hidden="true">
+              <img src="/images/erik.jpg" alt="" loading="lazy" decoding="async" />
+            </div>
             <div class="author-info">
               <p class="author-name">Erik Wesslen</p>
               <p class="author-handle">Engineer</p>
@@ -294,12 +306,15 @@ const faqSchema = {
         
         <div class="testimonial-card reveal" data-reveal-delay="0.08s">
           <div class="testimonial-content">
-            <p class="testimonial-text">"Love the app. Easy to use. I'm using it for video background music and my sets, it makes my videos totally unique."</p>
+            <p class="testimonial-text">"I’ve been an electronic musician/record producer for over a decade now — unless you know how to use a console + analog equipment, Sonura is your future."</p>
           </div>
           <div class="testimonial-author">
+            <div class="author-avatar" aria-hidden="true">
+              <img src="/images/glassbead.png" alt="" loading="lazy" decoding="async" />
+            </div>
             <div class="author-info">
-              <p class="author-name">Steve B</p>
-              <p class="author-handle">DJ</p>
+              <p class="author-name">glassBead</p>
+              <p class="author-handle">DJ and Producer</p>
             </div>
           </div>
         </div>
@@ -309,6 +324,9 @@ const faqSchema = {
             <p class="testimonial-text">"The perfect balance between complexity and ease of use. I could go from zero to a complete song with almost no learning curve. A real wow moment for me."</p>
           </div>
           <div class="testimonial-author">
+            <div class="author-avatar" aria-hidden="true">
+              <img src="/images/antonio.jpeg" alt="" loading="lazy" decoding="async" />
+            </div>
             <div class="author-info">
               <p class="author-name">António Ferreira</p>
               <p class="author-handle">Producer</p>
@@ -340,6 +358,10 @@ const faqSchema = {
         <details class="reveal" data-reveal-delay="0.06s">
           <summary>Can I monetize the music I create?</summary>
           <p>Everything you create with Sonura is yours with full commercial rights. Release on Spotify, sell as beats, use in client work, score a film. No royalty splits, no attribution required.</p>
+        </details>
+        <details class="reveal" data-reveal-delay="0.09s">
+          <summary>Will platforms de-rank my music if I use AI tools?</summary>
+          <p>Sonura is for those crafting original arrangements and sound, not replacing the human decisions that make a track yours.</p>
         </details>
         <details class="reveal" data-reveal-delay="0.12s">
           <summary>What genres does Sonura support?</summary>
