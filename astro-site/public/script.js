@@ -161,6 +161,62 @@ window.openVideoFullscreen = function() {
   });
 };
 
+const creatorVideoModal = document.getElementById('creator-video-modal');
+const creatorVideoPlayer = document.getElementById('creator-video-player');
+let creatorVideoLastFocus = null;
+
+if (creatorVideoModal && creatorVideoPlayer) {
+  const closeCreatorVideo = () => {
+    creatorVideoPlayer.pause();
+    creatorVideoPlayer.removeAttribute('src');
+    creatorVideoPlayer.removeAttribute('poster');
+    creatorVideoPlayer.load();
+    creatorVideoModal.hidden = true;
+    creatorVideoModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+
+    if (creatorVideoLastFocus && typeof creatorVideoLastFocus.focus === 'function') {
+      creatorVideoLastFocus.focus();
+    }
+  };
+
+  const openCreatorVideo = (trigger) => {
+    const src = trigger.getAttribute('data-video-src');
+    const poster = trigger.getAttribute('data-video-poster');
+
+    if (!src) return;
+
+    if (typeof pauseAllPlayers === 'function') pauseAllPlayers();
+
+    creatorVideoLastFocus = trigger;
+    creatorVideoPlayer.src = src;
+    if (poster) creatorVideoPlayer.poster = poster;
+    creatorVideoModal.hidden = false;
+    creatorVideoModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    creatorVideoPlayer.focus();
+
+    const playPromise = creatorVideoPlayer.play();
+    if (playPromise && typeof playPromise.catch === 'function') {
+      playPromise.catch(() => {});
+    }
+  };
+
+  document.querySelectorAll('[data-creator-video]').forEach((trigger) => {
+    trigger.addEventListener('click', () => openCreatorVideo(trigger));
+  });
+
+  creatorVideoModal.querySelectorAll('[data-creator-video-close]').forEach((closeTarget) => {
+    closeTarget.addEventListener('click', closeCreatorVideo);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !creatorVideoModal.hidden) {
+      closeCreatorVideo();
+    }
+  });
+}
+
 const brandLink = document.querySelector('.brand');
 
 if (brandLink) {

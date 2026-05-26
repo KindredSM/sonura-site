@@ -75,6 +75,33 @@ const faqSchema = {
     }
   ]
 };
+
+const creatorVideos = [
+  {
+    title: 'Sample discovery',
+    duration: '0:39',
+    src: '/videos/creator-demos/creator-demo-1.mp4',
+    poster: '/videos/creator-demos/creator-demo-1-poster.jpg',
+    credit: '@thedoormanaus',
+    creditUrl: 'https://www.instagram.com/thedoormanaus/'
+  },
+  {
+    title: 'AI DAW workflow',
+    duration: '0:33',
+    src: '/videos/creator-demos/creator-demo-2.mp4',
+    poster: '/videos/creator-demos/creator-demo-2-poster.jpg',
+    credit: '@aaronthecratehacker',
+    creditUrl: 'https://www.instagram.com/p/DXHi4PgDG2U/'
+  },
+  {
+    title: 'Vocal ideas',
+    duration: '0:15',
+    src: '/videos/creator-demos/creator-demo-3.mp4',
+    poster: '/videos/creator-demos/creator-demo-3-poster.jpg',
+    credit: '@sdnoise',
+    creditUrl: 'https://www.instagram.com/sdnoise/'
+  }
+];
 ---
 
 <BaseLayout
@@ -280,13 +307,69 @@ const faqSchema = {
       </div>
     </div>
   </section>
+  <section class="creator-videos" id="creator-videos" aria-labelledby="creator-videos-title">
+    <div class="creator-videos-inner">
+      <div class="creator-videos-header">
+        <h2 id="creator-videos-title" class="creator-videos-title reveal">Creators using Sonura</h2>
+        <p class="creator-videos-subtitle reveal" data-reveal-delay="0.04s">Short product demos from producers putting Sonura into real workflows.</p>
+      </div>
+      <div class="creator-video-grid" aria-label="Creator video demos">
+        {creatorVideos.map((video, index) => (
+          <article
+            class="creator-video-tile reveal"
+            data-reveal-delay={`${0.04 + index * 0.04}s`}
+          >
+            <button
+              class="creator-video-button"
+              type="button"
+              data-creator-video
+              data-video-src={video.src}
+              data-video-poster={video.poster}
+              aria-label={`Play ${video.title}`}
+            >
+              <span class="creator-video-media">
+                <img src={video.poster} alt="" loading="lazy" decoding="async" width="480" height="854" />
+                <span class="creator-video-scrim" aria-hidden="true"></span>
+                <span class="creator-video-play" aria-hidden="true">
+                  <i data-lucide="play"></i>
+                </span>
+                <span class="creator-video-duration">{video.duration}</span>
+              </span>
+              <span class="creator-video-copy">
+                <span class="creator-video-title">{video.title}</span>
+              </span>
+            </button>
+            <a
+              class="creator-video-credit"
+              href={video.creditUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`View ${video.credit} on Instagram`}
+            >
+              <i class="fab fa-instagram" aria-hidden="true"></i>
+              <span>{video.credit}</span>
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+  <div class="creator-video-modal" id="creator-video-modal" hidden aria-hidden="true">
+    <div class="creator-video-modal-backdrop" data-creator-video-close></div>
+    <button class="creator-video-modal-close" type="button" data-creator-video-close aria-label="Close video">
+      <i data-lucide="x"></i>
+    </button>
+    <div class="creator-video-modal-panel" role="dialog" aria-modal="true" aria-label="Creator video">
+      <video id="creator-video-player" class="creator-video-player" controls playsinline preload="metadata"></video>
+    </div>
+  </div>
   <section class="testimonials" aria-labelledby="testimonials-title">
     <div class="testimonials-inner">
       <h2 id="testimonials-title" class="testimonials-title reveal">
         <span class="love-icon-wrapper" aria-hidden="true">
           <i data-lucide="heart" class="love-icon"></i>
         </span>
-        Trusted by Creators Worldwide
+        Trusted by Producers Worldwide
       </h2>
       <div class="testimonials-grid">
         <div class="testimonial-card reveal" data-reveal-delay="0.04s">
