@@ -16,6 +16,8 @@ try {
   // Keep downloads on stable latest URLs if the manifest is temporarily unavailable at build time.
 }
 
+const PLUGIN_VERSION_LABEL = PLUGIN_VERSION === 'latest' ? 'Latest version' : `Version ${PLUGIN_VERSION}`;
+
 const faqs = [
   {
     question: 'What DAWs does Sonura Flow work with?',
@@ -180,6 +182,10 @@ const jsonLd = [
           <div class="os-badge">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.548l7.065-0.964v6.817H3V5.548zm0 12.904l7.065 0.964V12.6H3v5.852zm7.937 1.048L21 20.936V12.6H10.937v6.9zM10.937 4.5L21 3.064V11.4H10.937V4.5z"/></svg>
             <span>Windows 10+</span>
+          </div>
+          <div class="os-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10H3"/><path d="M21 6H3"/><path d="M21 14H3"/><path d="M21 18H3"/></svg>
+            <span>{PLUGIN_VERSION_LABEL}</span>
           </div>
         </div>
       </div>
@@ -478,6 +484,10 @@ const jsonLd = [
         <div class="os-badge">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.548l7.065-0.964v6.817H3V5.548zm0 12.904l7.065 0.964V12.6H3v5.852zm7.937 1.048L21 20.936V12.6H10.937v6.9zM10.937 4.5L21 3.064V11.4H10.937V4.5z"/></svg>
           <span>Windows 10+</span>
+        </div>
+        <div class="os-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10H3"/><path d="M21 6H3"/><path d="M21 14H3"/><path d="M21 18H3"/></svg>
+          <span>{PLUGIN_VERSION_LABEL}</span>
         </div>
       </div>
     </section>
