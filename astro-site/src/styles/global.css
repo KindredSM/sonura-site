@@ -53,8 +53,8 @@ body {
 .page { min-height: 100vh; display: flex; flex-direction: column; }
 .nav { position: sticky; top: 0; z-index: 100; width: 100%; padding: 0 24px; background: transparent; transition: padding 0.25s ease; border-bottom: 1px solid transparent; }
 .nav.scrolled { padding-top: 18px; background: transparent; backdrop-filter: none; border-bottom: 1px solid transparent; }
-.nav-inner { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; max-width: 1280px; margin: 0 auto; width: 100%; position: relative; border: 0; border-radius: 0; background: transparent; backdrop-filter: none; box-shadow: none; transition: max-width 0.25s ease, padding 0.25s ease, border-radius 0.25s ease, background 0.25s ease, box-shadow 0.25s ease, backdrop-filter 0.25s ease; }
-.nav.scrolled .nav-inner { max-width: 1280px; padding: 10px 12px 10px 16px; border-radius: 12px; background: rgba(5, 5, 5, 0.64); backdrop-filter: blur(18px); box-shadow: 0 18px 54px rgba(0,0,0,0.26), inset 0 1px 0 rgba(255,255,255,0.05); }
+.nav-inner { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; max-width: 1280px; margin: 0 auto; width: 100%; position: relative; border: 0; border-radius: 0; background: transparent; backdrop-filter: none; box-shadow: none; transition: max-width 0.25s ease, padding 0.25s ease, border-radius 0.25s ease, background 0.25s ease, box-shadow 0.25s ease, backdrop-filter 0.25s ease; }
+.nav.scrolled .nav-inner { max-width: 1280px; padding: 12px 12px 12px 16px; border-radius: 12px; background: rgba(5, 5, 5, 0.64); backdrop-filter: blur(18px); box-shadow: 0 18px 54px rgba(0,0,0,0.26), inset 0 1px 0 rgba(255,255,255,0.05); }
 .nav-actions { display: flex; align-items: center; gap: 16px; }
 .nav-links { display: flex; align-items: center; gap: 8px; }
 .nav-link { display: inline-flex; align-items: center; gap: 10px; padding: 8px 12px; color: var(--fg); text-decoration: none; font-weight: 500; font-size: 14px; opacity: 0.86; transition: all 0.2s ease; border-radius: 999px; }
@@ -125,7 +125,7 @@ body {
 
 .fab { font-size: 24px; color: inherit !important; }
 .brand { font-weight: 800; letter-spacing: 0.5px; color: var(--fg) !important; text-decoration: none !important; cursor: pointer; transition: opacity 0.2s ease; border: none; outline: none; background: none; display: flex; align-items: center;  }
-.brand p { font-size: 15px; }
+.brand p { font-size: 19px; margin: 0; }
 .brand:hover { opacity: 0.8; color: var(--fg) !important; text-decoration: none !important; }
 .brand:visited { color: var(--fg) !important; text-decoration: none !important; }
 .brand:active { color: var(--fg) !important; text-decoration: none !important; }
@@ -235,6 +235,35 @@ body {
 
 .underground-home .subhead {
   max-width: 860px;
+}
+
+.hero-social-proof {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--muted);
+  font-size: clamp(13px, 1.4vw, 15px);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.hero-avatars {
+  display: inline-flex;
+  align-items: center;
+}
+
+.hero-avatars img {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  object-fit: cover;
+  object-position: center 22%;
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.12);
+}
+
+.hero-avatars img:not(:first-child) {
+  margin-left: -10px;
 }
 
 .underground-home .cta {
@@ -681,10 +710,10 @@ body {
     padding-top: 8px;
   }
   .nav-inner {
-    padding: 18px 0;
+    padding: 12px 0;
   }
   .nav.scrolled .nav-inner {
-    padding: 8px 18px 8px 12px;
+    padding: 8px 8px 8px 12px;
   }
   .nav-actions {
     gap: 6px;
@@ -1490,8 +1519,8 @@ body {
   gap: 26px;
   min-height: 100%;
   padding: 30px;
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.03);
+  border: none;
   border-radius: 16px;
   position: relative;
   overflow: hidden;
@@ -1503,27 +1532,11 @@ body {
 }
 .testimonial-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(255,255,255,0.28);
+  background: rgba(255,255,255,0.05);
   box-shadow:
     0 34px 90px -48px rgba(0,0,0,0.96),
     inset 0 1px 0 rgba(255,255,255,0.14),
     inset 0 -1px 0 rgba(255,255,255,0.06);
-}
-.testimonial-card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  background:
-    linear-gradient(135deg, rgba(255,255,255,0.32), transparent 34%, rgba(255,255,255,0.18) 68%, transparent),
-    linear-gradient(90deg, transparent, rgba(255,255,255,0.36), transparent);
-  opacity: 0.38;
-  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  mask-composite: exclude;
-  -webkit-mask-composite: xor;
-  padding: 1px;
 }
 
 .testimonial-content { flex: 1; position: relative; z-index: 1; }
