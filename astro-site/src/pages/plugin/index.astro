@@ -2,6 +2,9 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const PLUGIN_MANIFEST_URL = 'https://audio.sonurastudio.com/plugin/latest/manifest.json';
+// Browser-facing version source: audio.sonurastudio.com (R2) sends no CORS headers, so the
+// manifest is only fetchable server-side at build time. The backend allows sonurastudio.com.
+const PLUGIN_VERSION_API_URL = 'https://sonura.fly.dev/api/plugin/version';
 const MAC_URL = 'https://audio.sonurastudio.com/plugin/latest/SonuraFlow-macOS.pkg';
 const WIN_URL = 'https://audio.sonurastudio.com/plugin/latest/SonuraFlow-Windows-Setup.exe';
 const WIN_ZIP_URL = 'https://audio.sonurastudio.com/plugin/latest/SonuraFlow-Windows.zip';
@@ -495,19 +498,25 @@ const jsonLd = [
 
 </BaseLayout>
 
-<script define:vars={{ PLUGIN_VERSION, MAC_URL, WIN_URL, WIN_ZIP_URL, MANIFEST_URL: PLUGIN_MANIFEST_URL }}>
+<script define:vars={{ PLUGIN_VERSION, MAC_URL, WIN_URL, WIN_ZIP_URL, MANIFEST_URL: PLUGIN_MANIFEST_URL, VERSION_API_URL: PLUGIN_VERSION_API_URL }}>
   // @ts-nocheck
   // Keep the displayed version in sync with the latest published plugin without a
-  // site rebuild: the build-time value is the fallback, and this refreshes the
-  // label from the live manifest on load.
+  // site rebuild: the build-time value is the fallback. The backend endpoint is the
+  // primary source because the R2 manifest blocks cross-origin reads.
   (async () => {
+    const apply = (version) => {
+      if (typeof version !== 'string' || !version) return false;
+      const label = 'Version ' + version.replace(/^v/, '');
+      document.querySelectorAll('.plugin-version-label').forEach((el) => { el.textContent = label; });
+      return true;
+    };
+    try {
+      const res = await fetch(VERSION_API_URL, { cache: 'no-store' });
+      if (res.ok && apply((await res.json())?.version)) return;
+    } catch {}
     try {
       const res = await fetch(MANIFEST_URL, { cache: 'no-store' });
-      if (!res.ok) return;
-      const manifest = await res.json();
-      if (typeof manifest?.version !== 'string') return;
-      const label = 'Version ' + manifest.version.replace(/^v/, '');
-      document.querySelectorAll('.plugin-version-label').forEach((el) => { el.textContent = label; });
+      if (res.ok) apply((await res.json())?.version);
     } catch {}
   })();
 
