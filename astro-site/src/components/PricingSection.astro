@@ -27,62 +27,6 @@ const {
     </div>
   )}
 
-  <section class="trial-hero">
-    <div class="trial-hero-inner">
-      <div class="trial-hero-copy">
-        <h3 class="trial-hero-heading">Professional-grade music production, starting at $5/mo.</h3>
-        <p class="trial-hero-subtext">Full access to Sonura Pro. No setup required.</p>
-      </div>
-      <div class="trial-card">
-        <div class="trial-badge">trial promo</div>
-        <p class="trial-plan">Pro</p>
-        <div class="trial-price-row">
-          <span class="trial-price">$5</span>
-          <span class="trial-period">/mo for 1 month</span>
-        </div>
-        <p class="trial-after">$20/mo after</p>
-        <button class="button primary full-width trial-button" data-plan="pro" data-trial="true">
-          <span>Try Sonura for $5</span>
-          <svg style="width: 16px; height: 16px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-          </svg>
-        </button>
-      </div>
-    </div>
-    <div class="trial-benefits">
-      <div class="trial-benefit-item">
-        <span>500 monthly credits</span>
-        <svg viewBox="0 0 20 20" fill="currentColor" class="trial-benefit-check">
-          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-        </svg>
-      </div>
-      <div class="trial-benefit-item">
-        <span>High quality downloads with commercial rights</span>
-        <svg viewBox="0 0 20 20" fill="currentColor" class="trial-benefit-check">
-          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-        </svg>
-      </div>
-      <div class="trial-benefit-item">
-        <span>Smart mixing and stem export</span>
-        <svg viewBox="0 0 20 20" fill="currentColor" class="trial-benefit-check">
-          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-        </svg>
-      </div>
-      <div class="trial-benefit-item">
-        <span>Priority 24/7 support</span>
-        <svg viewBox="0 0 20 20" fill="currentColor" class="trial-benefit-check">
-          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-        </svg>
-      </div>
-    </div>
-    <a href="#all-plans" class="view-all-link">
-      <span>View all plans</span>
-      <svg viewBox="0 0 20 20" fill="currentColor" class="view-all-icon" aria-hidden="true">
-        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-      </svg>
-    </a>
-  </section>
-
   <div class="billing-toggle" id="all-plans">
     <button type="button" class="billing-btn active" data-interval="month">
       Monthly
@@ -145,18 +89,10 @@ const {
     <div class="pricing-card featured">
       <div class="popular-badge">Most Popular</div>
       <div class="pricing-card-header">
-        <div class="plan-name-row">
-          <h3 class="plan-name">Pro</h3>
-          <span class="trial-offer-badge" data-trial-offer>trial offer</span>
-        </div>
-        <div class="price-row" data-pro-monthly-row>
+        <h3 class="plan-name">Pro</h3>
+        <div class="price-row">
           <span class="price-strikethrough">$40</span>
-          <span class="plan-price">$5<span class="period">/mo for 1 month</span></span>
-        </div>
-        <div class="trial-regular-price" data-pro-monthly-after>$20/mo after</div>
-        <div class="price-row" data-pro-yearly-row style="display: none;">
-          <span class="price-strikethrough">$40</span>
-          <span class="plan-price">$<span class="price-amount" data-monthly="20" data-annual="15">15</span><span class="period">/mo</span></span>
+          <span class="plan-price">$<span class="price-amount" data-monthly="20" data-annual="15">20</span><span class="period">/mo</span></span>
         </div>
         <div class="monthly-equivalent" data-annual-text="Saves $60 by billing yearly" style="display: none;"></div>
         <p class="plan-desc">for independent artists and producers.</p>
@@ -202,8 +138,8 @@ const {
       </ul>
 
       <div class="pricing-cta">
-        <button class="button primary full-width" data-plan="pro" data-trial="true">
-          <span data-pro-cta-label>Try Sonura for $5</span>
+        <button class="button primary full-width" data-plan="pro">
+          <span>Get Started</span>
           <svg style="width: 16px; height: 16px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
           </svg>
@@ -278,7 +214,6 @@ const {
 
 <script>
   const currentInterval = { value: 'month' };
-  const trialCouponId = 'foFKeiTs';
 
   document.querySelectorAll<HTMLButtonElement>('.billing-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -299,29 +234,6 @@ const {
           equiv.style.display = 'none';
         }
       });
-
-      const proMonthlyRow = document.querySelector<HTMLElement>('[data-pro-monthly-row]');
-      const proMonthlyAfter = document.querySelector<HTMLElement>('[data-pro-monthly-after]');
-      const proYearlyRow = document.querySelector<HTMLElement>('[data-pro-yearly-row]');
-      const proCtaLabel = document.querySelector<HTMLElement>('[data-pro-cta-label]');
-      const trialOfferBadge = document.querySelector<HTMLElement>('[data-trial-offer]');
-      const proButtons = document.querySelectorAll<HTMLButtonElement>('button[data-plan="pro"]');
-
-      if (currentInterval.value === 'month') {
-        if (proMonthlyRow) proMonthlyRow.style.display = 'flex';
-        if (proMonthlyAfter) proMonthlyAfter.style.display = 'block';
-        if (proYearlyRow) proYearlyRow.style.display = 'none';
-        if (proCtaLabel) proCtaLabel.textContent = 'Try Sonura for $5';
-        if (trialOfferBadge) trialOfferBadge.style.display = 'inline-flex';
-        proButtons.forEach(button => button.setAttribute('data-trial', 'true'));
-      } else {
-        if (proMonthlyRow) proMonthlyRow.style.display = 'none';
-        if (proMonthlyAfter) proMonthlyAfter.style.display = 'none';
-        if (proYearlyRow) proYearlyRow.style.display = 'flex';
-        if (proCtaLabel) proCtaLabel.textContent = 'Get Started';
-        if (trialOfferBadge) trialOfferBadge.style.display = 'none';
-        proButtons.forEach(button => button.removeAttribute('data-trial'));
-      }
     });
   });
 
@@ -329,14 +241,8 @@ const {
     btn.addEventListener('click', () => {
       const plan = btn.dataset.plan;
       const interval = currentInterval.value;
-      const trial = btn.dataset.trial === 'true' && plan === 'pro' && interval === 'month';
       if (!plan) return;
       const params = new URLSearchParams({ subscribe: plan, interval });
-      if (trial) {
-        params.set('trial', 'true');
-        params.set('coupon', trialCouponId);
-        params.set('couponId', trialCouponId);
-      }
       const destination = `https://app.sonurastudio.com?${params.toString()}`;
       const trackedDestination = typeof (window as any).sonuraBuildAppUrl === 'function'
         ? (window as any).sonuraBuildAppUrl(destination, {
@@ -345,7 +251,6 @@ const {
             campaign_intent: 'subscription',
             plan,
             interval,
-            trial,
           })
         : destination;
       window.location.href = trackedDestination;
@@ -356,169 +261,6 @@ const {
 <style>
   .pricing-section-wrapper {
     width: 100%;
-  }
-
-  .trial-hero {
-    width: 100%;
-    max-width: 1280px;
-    margin: 0 auto 48px;
-    background: transparent;
-  }
-
-  .trial-hero-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 64px;
-    padding: 20px 0;
-  }
-
-  .trial-hero-copy {
-    flex: 1;
-    text-align: left;
-  }
-
-  .trial-hero-heading {
-    margin: 0;
-    font-size: clamp(32px, 4.5vw, 48px);
-    letter-spacing: -0.035em;
-    line-height: 1.08;
-  }
-
-  .trial-hero-subtext {
-    margin: 16px 0 0;
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 18px;
-    line-height: 1.5;
-  }
-
-  .trial-card {
-    width: 380px;
-    flex-shrink: 0;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.03);
-    padding: 28px;
-    text-align: left;
-  }
-
-  .trial-badge {
-    display: inline-flex;
-    align-items: center;
-    padding: 5px 12px;
-    border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    background: rgba(255, 255, 255, 0.05);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.4px;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 16px;
-  }
-
-  .trial-plan {
-    margin: 0;
-    font-size: 18px;
-    font-weight: 700;
-  }
-
-  .trial-price-row {
-    display: flex;
-    align-items: baseline;
-    gap: 6px;
-    margin-top: 4px;
-  }
-
-  .trial-price {
-    font-size: 52px;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    line-height: 1;
-  }
-
-  .trial-period {
-    font-size: 15px;
-    color: rgba(255, 255, 255, 0.55);
-  }
-
-  .trial-after {
-    margin: 8px 0 20px;
-    color: rgba(255, 255, 255, 0.45);
-    font-size: 14px;
-  }
-
-  .trial-button {
-    width: 100%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    text-align: center;
-  }
-
-  .trial-benefits {
-    border-top: 1px solid rgba(255, 255, 255, 0.07);
-    max-width: 100%;
-    margin: 0;
-    padding: 8px 0 0;
-  }
-
-  .trial-benefit-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    padding: 16px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    font-size: 15px;
-    color: rgba(255, 255, 255, 0.8);
-  }
-
-  .trial-benefit-item span {
-    flex: 1;
-    min-width: 0;
-    text-align: left;
-  }
-
-  .trial-benefit-item:last-child {
-    border-bottom: none;
-  }
-
-  .trial-benefit-check {
-    width: 18px;
-    height: 18px;
-    color: var(--fg);
-    flex-shrink: 0;
-  }
-
-  .view-all-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    margin: 28px auto 12px;
-    width: 100%;
-    color: rgba(255, 255, 255, 0.55);
-    text-decoration: underline;
-    text-decoration-color: rgba(255, 255, 255, 0.2);
-    text-underline-offset: 4px;
-    font-size: 13px;
-    font-weight: 500;
-    line-height: 1;
-    transition: color 0.2s ease, text-decoration-color 0.2s ease;
-  }
-
-  .view-all-link:hover {
-    color: rgba(255, 255, 255, 0.85);
-    text-decoration-color: rgba(255, 255, 255, 0.5);
-  }
-
-  .view-all-icon {
-    width: 14px;
-    height: 14px;
-    display: block;
-    transform: translateY(0.5px);
   }
 
   .pricing-header-section {
@@ -680,41 +422,12 @@ const {
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   }
 
-  .plan-name-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 12px;
-    flex-wrap: wrap;
-  }
-
   .plan-name {
     font-size: 20px;
     font-weight: 700;
     margin: 0 0 12px;
     letter-spacing: -0.01em;
     text-transform: capitalize;
-  }
-
-  .plan-name-row .plan-name {
-    margin: 0;
-  }
-
-  .trial-offer-badge {
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    padding: 4px 10px;
-    background: rgba(255, 255, 255, 0.055);
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    border-radius: 999px;
-    color: rgba(255, 255, 255, 0.72);
-    white-space: nowrap;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
   }
 
   .price-row {
@@ -750,13 +463,6 @@ const {
     color: rgba(255, 255, 255, 0.45);
     margin-top: 6px;
     margin-bottom: 8px;
-  }
-
-  .trial-regular-price {
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.45);
-    margin-top: 0;
-    margin-bottom: 6px;
   }
 
   .plan-desc {
@@ -810,8 +516,7 @@ const {
     transition: all 0.2s;
   }
 
-  .pricing-cta button svg,
-  .trial-button svg {
+  .pricing-cta button svg {
     display: block;
     flex-shrink: 0;
   }
@@ -863,33 +568,6 @@ const {
   }
 
   @media (max-width: 768px) {
-    .trial-hero-inner {
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 20px 0;
-      gap: 28px;
-    }
-
-    .trial-card {
-      width: 100%;
-      min-width: 0;
-    }
-
-    .trial-benefits {
-      padding: 0 16px;
-    }
-
-    .trial-benefit-item {
-      align-items: flex-start;
-      text-align: left;
-    }
-
-    .view-all-link {
-      justify-content: flex-start;
-      width: fit-content;
-      margin: 20px 16px 12px;
-    }
-
     .pricing-grid {
       grid-template-columns: 1fr;
     }
@@ -906,7 +584,6 @@ const {
       text-align: left;
     }
 
-    .plan-name-row,
     .price-row {
       justify-content: flex-start;
     }
