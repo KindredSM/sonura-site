@@ -96,12 +96,41 @@
       window.dataLayer.push({ event: eventName, ...payload });
     }
 
+    if (window.posthog && typeof window.posthog.capture === 'function') {
+      window.posthog.capture(eventName, payload);
+    }
+
     if (eventName === 'signup_started' && typeof window.fbq === 'function') {
       window.fbq('track', 'Lead', {
         content_name: 'Sonura signup',
         content_category: payload.page_type,
       });
     }
+  }
+
+  // Decorate every PostHog event (autocapture, $pageview, custom) with stable
+  // first-touch + campaign context so funnels can be sliced without joining.
+  function registerPostHogContext() {
+    if (!window.posthog || typeof window.posthog.register !== 'function') return;
+    const touch = getFirstTouch();
+    window.posthog.register({
+      page_type: pageType(window.location.pathname),
+      campaign_intent: campaignIntent(window.location.pathname),
+      first_landing_page: touch.first_landing_page,
+      first_landing_path: touch.first_landing_path,
+      first_page_type: touch.first_page_type,
+      first_campaign_intent: touch.first_campaign_intent,
+      first_referrer: touch.first_referrer,
+      first_touch_ts: touch.first_touch_ts,
+      utm_source: touch.utm_source,
+      utm_medium: touch.utm_medium,
+      utm_campaign: touch.utm_campaign,
+      utm_term: touch.utm_term,
+      utm_content: touch.utm_content,
+      gclid: touch.gclid,
+      fbclid: touch.fbclid,
+      msclkid: touch.msclkid,
+    });
   }
 
   function isAppUrl(url) {
@@ -191,6 +220,7 @@
   window.sonuraSeoContext = currentContext;
 
   getFirstTouch();
+  registerPostHogContext();
 
   const inboundEvent = new URLSearchParams(window.location.search).get('sonura_event');
   if (['signup_completed', 'subscription_started'].includes(inboundEvent)) {
