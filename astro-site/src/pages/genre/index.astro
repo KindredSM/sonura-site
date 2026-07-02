@@ -1,0 +1,147 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const genres = [
+  { name: 'Trap', slug: 'trap', tag: '808s & Hi-Hats', description: 'Hard-hitting 808s, rolling hi-hats, and dark melodies for producers.' },
+  { name: 'Hip Hop', slug: 'hip-hop', tag: 'Drums & 808s', description: 'Crisp drums, heavy 808s, and melodic elements for rappers and producers.' },
+  { name: 'Drill', slug: 'drill', tag: 'UK & Chicago', description: 'Sliding 808s, dark piano melodies, and aggressive hi-hats.' },
+  { name: 'Lo-Fi', slug: 'lofi', tag: 'Chill & Study', description: 'Jazzy chords, dusty drums, and vinyl warmth for study beats.' },
+  { name: 'House', slug: 'house', tag: 'Club & Groove', description: 'Four-on-the-floor grooves, deep basslines, and club energy.' },
+  { name: 'Techno', slug: 'techno', tag: 'Underground', description: 'Driving kicks, industrial textures, and hypnotic rhythms.' },
+  { name: 'EDM', slug: 'edm', tag: 'Festival', description: 'Massive drops, epic buildups, and high-energy festival production.' },
+  { name: 'R&B', slug: 'rnb', tag: 'Smooth & Warm', description: 'Warm keys, deep bass, and lush harmonies for artists and producers.' },
+  { name: 'Pop', slug: 'pop', tag: 'Radio-Ready', description: 'Radio-ready production, catchy hooks, and a modern sound.' },
+  { name: 'Afrobeats', slug: 'afrobeats', tag: 'Global Sound', description: 'Infectious percussion, log drums, and danceable grooves.' },
+  { name: 'Reggaeton', slug: 'reggaeton', tag: 'Latin', description: 'Dembow rhythms, heavy 808s, and Latin melodies.' },
+  { name: 'Jazz', slug: 'jazz', tag: 'Sophisticated', description: 'Sophisticated chords, swing rhythms, and improvised solos.' },
+  { name: 'Rock', slug: 'rock', tag: 'Guitars & Drums', description: 'Electric guitars, driving drums, and punchy bass.' },
+  { name: 'Country', slug: 'country', tag: 'Nashville', description: 'Acoustic guitars, warm bass, and Nashville production.' },
+  { name: 'Ambient', slug: 'ambient', tag: 'Atmospheric', description: 'Immersive soundscapes, atmospheric pads, and evolving textures.' },
+  { name: 'Cinematic', slug: 'cinematic', tag: 'Score & Trailer', description: 'Epic orchestral scores, trailer music, and atmospheric underscore.' },
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Sonura Beat Maker by Genre",
+    "description": "Make beats, loops, and stems in any genre — trap, drill, lo-fi, house, techno, R&B, and more.",
+    "url": "https://sonurastudio.com/genre/"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sonurastudio.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Genres", "item": "https://sonurastudio.com/genre/" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": genres.map((genre, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": `${genre.name} Beat Maker`,
+      "url": `https://sonurastudio.com/genre/${genre.slug}/`
+    }))
+  }
+];
+---
+
+<BaseLayout
+  title="AI Beat Maker by Genre | Trap, Drill, Lo-Fi, House & More - Sonura"
+  description="Make production-ready beats, loops, and stems in any genre — trap, drill, hip-hop, lo-fi, house, techno, R&B, and more. Free to start, royalty-free commercial use."
+  keywords="beat maker by genre, ai beat maker, trap beat maker, drill beat maker, lofi beat maker, house music maker, techno generator, genre beat generator"
+  canonical="https://sonurastudio.com/genre/"
+  ogTitle="Sonura Beat Maker by Genre"
+  ogDescription="Make beats, loops, and stems in any genre — trap, drill, lo-fi, house, techno, and more."
+  jsonLd={jsonLd}
+>
+  <style>
+    .genre-hub-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 640px) {
+      .genre-hub-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 1024px) {
+      .genre-hub-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .genre-card {
+      padding: 32px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      transition: border-color 0.2s, transform 0.2s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .genre-card:hover {
+      border-color: rgba(255,255,255,0.18);
+      transform: translateY(-4px);
+    }
+
+    .genre-card-tag {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--primary);
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .genre-card-name {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--fg);
+    }
+
+    .genre-card-desc {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .genre-card-arrow {
+      margin-top: 20px;
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 14px;
+    }
+  </style>
+
+  <div style="max-width: 1280px; margin: 80px auto; padding: 0 24px;">
+    <header style="text-align: center; margin-bottom: 64px;">
+      <h1 style="font-size: 48px; font-weight: 800; margin-bottom: 24px; line-height: 1.2;">Make Beats in Any Genre</h1>
+      <p style="font-size: 20px; color: var(--muted); max-width: 720px; margin: 0 auto; line-height: 1.6;">From trap and drill to lo-fi, house, and cinematic — create production-ready beats, loops, and stems in the genre you're working in. Precise control, full commercial rights.</p>
+    </header>
+
+    <div class="genre-hub-grid">
+      {genres.map((genre) => (
+        <a href={`/genre/${genre.slug}/`} class="genre-card">
+          <div class="genre-card-tag">{genre.tag}</div>
+          <div class="genre-card-name">{genre.name} Beat Maker</div>
+          <p class="genre-card-desc">{genre.description}</p>
+          <div class="genre-card-arrow">Make {genre.name} beats →</div>
+        </a>
+      ))}
+    </div>
+
+    <div style="text-align: center; margin-top: 80px; padding: 48px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 16px;">Your Genre, Your Sound</h2>
+      <p style="color: var(--muted); margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto;">Describe the beat you hear, shape every element, and export stems to finish in your DAW. Free to start, no credit card required.</p>
+      <a href="https://app.sonurastudio.com/studio" class="button primary large" style="display: inline-block; padding: 18px 40px; background: var(--fg); color: var(--bg); text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 18px;">Start Creating Free</a>
+    </div>
+  </div>
+</BaseLayout>

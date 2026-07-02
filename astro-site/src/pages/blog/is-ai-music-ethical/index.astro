@@ -1,0 +1,77 @@
+---
+import BlogLayout from '../../../layouts/BlogLayout.astro';
+
+const toc = [
+  { id: 'short-answer', label: 'The short answer' },
+  { id: 'two-models', label: 'Scraped vs licensed' },
+  { id: 'licensed-practice', label: 'What "licensed" looks like' },
+  { id: 'honest-caveat', label: 'The honest caveat' },
+  { id: 'human-authorship', label: 'The other half: authorship' },
+  { id: 'where-sonura', label: 'Where Sonura fits' },
+  { id: 'conclusion', label: 'Conclusion' },
+];
+---
+
+<BlogLayout
+  title="Is AI Music Ethical? Licensed vs Scraped Models, Explained"
+  description="Whether AI music is 'ethical' comes down to two things: was the model trained with consent, and is there real human authorship in the track. Here's how licensed AI music actually works."
+  keywords="is ai music ethical, licensed ai music, ai music consent, how is ai music trained, ethical ai music generator, is ai music stolen"
+  slug="is-ai-music-ethical"
+  publishedDate="2026-07-02"
+  readTime="7 min read"
+  toc={toc}
+>
+  <div style="line-height: 1.8;">
+    <section id="short-answer" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">The Short Answer</h2>
+      <p style="margin-bottom: 24px;">"Is AI music ethical?" isn't really one question - it's two. First: <strong>was the model trained with consent</strong>, on licensed material, or was it scraped from artists' work without permission? Second: <strong>is there real human authorship</strong> in the finished track, or is it a prompt-to-upload content farm? Get both right and you're on solid ground. The technology isn't the problem - how the model was built and how you use it are what matter.</p>
+    </section>
+
+    <section id="two-models" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Two Models: Scraped vs Licensed</h2>
+      <p style="margin-bottom: 24px;">Not all AI music tools are built the same way, and the difference is night and day.</p>
+      <p style="margin-bottom: 24px;"><strong>Scraped models</strong> are trained on music pulled from the internet without permission. This is the approach at the center of the industry's biggest fights: in mid-2024, the RIAA sued Suno and Udio on behalf of the major labels over training on copyrighted recordings without a license. By late 2025, some of those disputes were being settled and licensed - Universal settled with Udio in October 2025, Warner with Suno in November 2025 - a pattern critics have called "launch, train, settle."</p>
+      <p style="margin-bottom: 24px;"><strong>Licensed models</strong> take the opposite path: strike deals with rights holders <em>first</em>, train on material those rights holders opted in to provide, and share revenue with them. This is the "consent economy" - and it's where the industry's momentum, and its regulators, are heading.</p>
+    </section>
+
+    <section id="licensed-practice" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">What "Licensed" Actually Looks Like</h2>
+      <p style="margin-bottom: 24px;">The clearest real-world example is ElevenLabs' music model. When it launched Eleven Music in August 2025 - and its next-generation Music v2 in May 2026 - ElevenLabs stated the model is "trained only on licensed data and cleared for commercial use." That claim rests on concrete licensing deals rather than good intentions:</p>
+      <ul style="margin-bottom: 24px; padding-left: 24px;">
+        <li style="margin-bottom: 12px;"><strong>Publishing rights via Kobalt</strong> - a licensing partnership covering songwriting/publishing, on an <em>opt-in</em> basis for participating writers.</li>
+        <li style="margin-bottom: 12px;"><strong>Master recordings via Merlin</strong> - the rights body representing roughly 30,000 independent labels, whose members choose whether to opt in.</li>
+        <li style="margin-bottom: 12px;"><strong>A preferred licensing partner, SourceAudio</strong> - providing access to catalogs where rights holders opted their music into AI-training licensing.</li>
+      </ul>
+      <p style="margin-bottom: 24px;">Two things make this "licensed" rather than just "labeled ethical": rights holders <strong>opt in</strong> (they aren't scraped by default), and they <strong>share in the revenue</strong> the model earns. There are also guardrails - watermarking and fingerprinting, and rules that outputs shouldn't reproduce a specific artist's name, lyrics, or an identifiable soundalike. As Merlin's CEO put it when the deal was announced, the goal is "to ensure artists' work is respected, appropriately valued, and protected."</p>
+    </section>
+
+    <section id="honest-caveat" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">The Honest Caveat</h2>
+      <p style="margin-bottom: 24px;">Licensed is a real, meaningful step up from scraped - but it isn't the end of the conversation, and pretending otherwise would be exactly the kind of spin this audience sees through.</p>
+      <p style="margin-bottom: 24px;">In June 2026, a coalition of artist and songwriter organizations - including the Music Artists Coalition, Songwriters of North America, and The Ivors Academy - published an open letter warning that AI deals must not override individual artists' rights. Their core demand: "No default opt-ins... No use of artists' work, voice, performance, likeness or creative identity without meaningful consent, fair remuneration and full transparency." Their sharpest point is a real one: today's "opt-in" often happens at the <strong>label or publisher level</strong>, not with every individual artist personally.</p>
+      <p style="margin-bottom: 24px;">So "licensed" doesn't automatically mean every artist behind every sound personally said yes. It means the model is built on consented, paid-for, contractually-cleared material rather than a scrape - and that the standard is still being pushed higher. That's the honest framing, and it's a far better place to stand than "we trained on the whole internet and we'll sort out the lawsuits later."</p>
+    </section>
+
+    <section id="human-authorship" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">The Other Half: Human Authorship</h2>
+      <p style="margin-bottom: 24px;">Consent-based training answers "was the raw material fair?" The second question is about what <em>you</em> do with it. Even the Recording Academy's guidance makes this distinction: in late 2025, Grammy CEO Harvey Mason Jr. clarified that using AI doesn't make a work ineligible - but eligibility requires <strong>meaningful human authorship</strong>.</p>
+      <p style="margin-bottom: 24px;">That's the line between AI-assisted production and AI spam. Creating a loop and building an original track around it is production. Typing a prompt and mass-uploading the raw output to farm streaming royalties is not. The human decisions - arrangement, editing, performance, taste - are what make a track yours, and what platforms and listeners actually value.</p>
+    </section>
+
+    <section id="where-sonura" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Where Sonura Fits</h2>
+      <p style="margin-bottom: 24px;"><a href="/" style="color: var(--primary); text-decoration: none;">Sonura</a> is built on both halves of that answer. It's built on licensed, commercially-cleared music technology, so the raw sounds rest on a consented foundation rather than a scraped one. And it's designed as a producer's tool, not a song vending machine: you create editable beats, loops, vocals, and <a href="/features/stem-export/" style="color: var(--primary); text-decoration: none;">stems</a>, then arrange, edit, and finish them yourself - so there's real human authorship in what you release, and you own it outright.</p>
+      <p style="margin-bottom: 24px;">We go deeper into exactly how this works on our <a href="/how-we-work-with-artists/" style="color: var(--primary); text-decoration: none;">how we work with artists</a> page, and into what platforms will and won't accept in <a href="/blog/is-ai-music-allowed-on-spotify/" style="color: var(--primary); text-decoration: none;">is AI music allowed on Spotify?</a></p>
+    </section>
+
+    <section id="conclusion" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Conclusion</h2>
+      <p style="margin-bottom: 24px;">AI music can absolutely be ethical - when the model is trained with consent and there's genuine human authorship in the result. Both are choices: the tool's makers choose how the model is built, and you choose how you use it. Pick tools on the licensed side, do real creative work, and you have nothing to apologize for.</p>
+      <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 32px; margin-top: 48px; text-align: center;">
+        <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px;">Create on a Foundation You Can Stand Behind</h3>
+        <p style="margin-bottom: 24px; color: var(--muted);">Create editable beats, loops, vocals, and stems on a licensed foundation - then finish them your way, with full commercial rights.</p>
+        <a href="https://app.sonurastudio.com/studio" class="button primary large" style="display: inline-block; padding: 16px 32px; background: var(--fg); color: var(--bg); text-decoration: none; border-radius: 12px; font-weight: 600;">Start Creating Free</a>
+      </div>
+    </section>
+  </div>
+</BlogLayout>

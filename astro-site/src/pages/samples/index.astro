@@ -1,0 +1,139 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const sampleTypes = [
+  { name: 'Beat Producers', slug: 'beat-producers', audience: 'Producers', description: 'Unique loops and one-shots you can flip into beats and sell — no shared packs.' },
+  { name: 'Hip-Hop Producers', slug: 'hip-hop-producers', audience: 'Hip-Hop', description: 'Trap, drill, and boom bap samples made to order for your next beat.' },
+  { name: 'Electronic Producers', slug: 'electronic-producers', audience: 'Electronic', description: 'House, techno, and EDM sounds — basslines, stabs, and FX on demand.' },
+  { name: 'Vocal Samples', slug: 'ai-vocals-producers', audience: 'Vocals', description: 'Vocal chops, hooks, and ad-libs to layer into your productions.' },
+  { name: 'For Vocalists', slug: 'vocalists', audience: 'Vocalists', description: 'Custom backing tracks and samples for practice, demos, and performances.' },
+  { name: 'For Songwriters', slug: 'songwriters', audience: 'Songwriters', description: 'Instrumentals and samples to spark new songs and beat writer\'s block.' },
+  { name: 'For Content Creators', slug: 'content-creators', audience: 'Creators', description: 'Royalty-free music and FX for videos, streams, and social content.' },
+  { name: 'For Video Editors', slug: 'video-editors', audience: 'Video', description: 'Copyright-free music, transitions, and SFX that clear on every platform.' },
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Sonura AI Sample Generator",
+    "description": "Create unique, royalty-free samples on demand for producers, vocalists, songwriters, and creators.",
+    "url": "https://sonurastudio.com/samples/"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sonurastudio.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Samples", "item": "https://sonurastudio.com/samples/" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": sampleTypes.map((type, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": type.name,
+      "url": `https://sonurastudio.com/samples/${type.slug}/`
+    }))
+  }
+];
+---
+
+<BaseLayout
+  title="AI Sample Generator | Unique Royalty-Free Samples on Demand - Sonura"
+  description="Create unique loops, one-shots, vocals, and FX on demand — original samples you own, not shared packs. For producers, vocalists, songwriters, and creators. Free to start."
+  keywords="ai sample generator, sample packs, unique samples, royalty-free samples, one-shots, vocal chops, loops for producers"
+  canonical="https://sonurastudio.com/samples/"
+  ogTitle="Sonura AI Sample Generator"
+  ogDescription="Create unique, royalty-free samples on demand for producers, vocalists, songwriters, and creators."
+  jsonLd={jsonLd}
+>
+  <style>
+    .sample-hub-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 640px) {
+      .sample-hub-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 1024px) {
+      .sample-hub-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .sample-card {
+      padding: 28px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      transition: border-color 0.2s, transform 0.2s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .sample-card:hover {
+      border-color: rgba(255,255,255,0.18);
+      transform: translateY(-4px);
+    }
+
+    .sample-card-audience {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--primary);
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .sample-card-name {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--fg);
+    }
+
+    .sample-card-desc {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .sample-card-arrow {
+      margin-top: 18px;
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 14px;
+    }
+  </style>
+
+  <div style="max-width: 1280px; margin: 80px auto; padding: 0 24px;">
+    <header style="text-align: center; margin-bottom: 64px;">
+      <h1 style="font-size: 48px; font-weight: 800; margin-bottom: 24px; line-height: 1.2;">Create Samples No One Else Has</h1>
+      <p style="font-size: 20px; color: var(--muted); max-width: 720px; margin: 0 auto; line-height: 1.6;">Stop digging through the same packs everyone else uses. Create unique loops, one-shots, vocals, and FX on demand — original sounds you own outright, ready for any release.</p>
+    </header>
+
+    <div class="sample-hub-grid">
+      {sampleTypes.map((type) => (
+        <a href={`/samples/${type.slug}/`} class="sample-card">
+          <div class="sample-card-audience">{type.audience}</div>
+          <div class="sample-card-name">{type.name}</div>
+          <p class="sample-card-desc">{type.description}</p>
+          <div class="sample-card-arrow">Learn more →</div>
+        </a>
+      ))}
+    </div>
+
+    <div style="text-align: center; margin-top: 80px; padding: 48px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 16px;">Original Sounds, Full Rights</h2>
+      <p style="color: var(--muted); margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto;">Every sample is created for you and yours to release commercially. Free to start, no credit card required.</p>
+      <a href="https://app.sonurastudio.com/studio" class="button primary large" style="display: inline-block; padding: 18px 40px; background: var(--fg); color: var(--bg); text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 18px;">Start Creating Free</a>
+    </div>
+  </div>
+</BaseLayout>

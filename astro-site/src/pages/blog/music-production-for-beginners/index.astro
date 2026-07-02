@@ -7,6 +7,7 @@ const toc = [
   { id: 'daw', label: 'Choosing Your DAW' },
   { id: 'theory', label: 'Music Theory Basics' },
   { id: 'first-track', label: 'Your First Production' },
+  { id: 'mixing', label: 'Mixing & Gain Staging' },
   { id: 'ai-production', label: 'AI-Assisted Production' },
   { id: 'mistakes', label: 'Common Mistakes' },
   { id: 'conclusion', label: 'Conclusion' },
@@ -19,7 +20,8 @@ const toc = [
   keywords="music production for beginners, how to make music, music production tutorial, daw for beginners, learn music production, music production basics"
   slug="music-production-for-beginners"
   publishedDate="2025-10-20"
-  readTime="18 min read"
+  modifiedDate="2026-07-02"
+  readTime="6 min read"
   toc={toc}
 >
   <section style="margin-bottom: 48px;">
@@ -71,9 +73,11 @@ const toc = [
     <p style="margin-bottom: 16px;"><strong>Price:</strong> $199 (one-time, Mac only)</p>
     <p style="margin-bottom: 24px;"><strong>Best For:</strong> All genres, songwriting, recording</p>
     <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 16px; margin-top: 32px;">Free Options</h3>
-    <p style="margin-bottom: 16px;"><strong>GarageBand:</strong> Free on Mac, great for absolute beginners</p>
-    <p style="margin-bottom: 16px;"><strong>Cakewalk:</strong> Free on Windows, full-featured professional DAW</p>
-    <p style="margin-bottom: 24px;"><strong>LMMS:</strong> Free, open-source, FL Studio alternative</p>
+    <p style="margin-bottom: 16px;"><strong>GarageBand:</strong> Free on Mac, pre-installed, great for absolute beginners</p>
+    <p style="margin-bottom: 16px;"><strong>Cakewalk Sonar (free tier):</strong> Full-featured DAW for Windows. Note: the old "Cakewalk by BandLab" was retired in 2025 and replaced by Cakewalk Sonar and Cakewalk Next, both with free tiers (a free BandLab sign-in is required).</p>
+    <p style="margin-bottom: 16px;"><strong>Waveform Free:</strong> Cross-platform (Windows, Mac, Linux) with no track limits - frequently named the best overall free DAW.</p>
+    <p style="margin-bottom: 24px;"><strong>BandLab:</strong> Runs in your browser or on your phone, nothing to install - the simplest place for a total beginner to start.</p>
+    <p style="margin-bottom: 24px;">One caveat you'll see repeated online: Reaper is often called "free," but it's an unlimited trial with a low-cost (~$60) license, not a free DAW.</p>
   </section>
 
   <section style="margin-bottom: 48px;">
@@ -109,15 +113,24 @@ const toc = [
   </section>
 
   <section style="margin-bottom: 48px;">
+    <h2 id="mixing" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Mixing & Gain Staging Basics</h2>
+    <p style="margin-bottom: 24px;">Mixing is where a rough idea starts to sound finished. You don't need to master it on day one, but a few fundamentals prevent most beginner-sounding mixes.</p>
+    <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 16px; margin-top: 32px;">Gain staging (do this first)</h3>
+    <p style="margin-bottom: 24px;">Aim for track peaks around <strong>-18 to -12 dBFS</strong> so you leave headroom. Keep levels consistent through the chain - if a plugin adds volume, pull its output back down. Leave the master fader at unity (0 dB) and balance with individual track faders instead. Modern 24-bit recording gives you huge headroom, so there's no reason to push levels into the red.</p>
+    <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 16px; margin-top: 32px;">The basic signal chain</h3>
+    <p style="margin-bottom: 24px;">A common order on a channel is: <strong>EQ → compression → time-based effects (reverb/delay)</strong>. Use EQ to cut problem frequencies before boosting, and high-pass everything that isn't bass or kick to clear low-end mud. Reach for compression to even out dynamics - a moderate ratio (2:1–4:1) with a few dB of gain reduction is plenty to start. Put reverb and delay on send/aux channels so multiple tracks share one space, and high-pass those returns so the effects don't muddy your mix.</p>
+  </section>
+
+  <section style="margin-bottom: 48px;">
     <h2 id="ai-production" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Modern Approach: AI-Assisted Production</h2>
     <p style="margin-bottom: 24px;">In 2026, many beginners accelerate their learning by combining traditional production with AI tools:</p>
     <ul style="margin-bottom: 24px; padding-left: 24px;">
-      <li style="margin-bottom: 12px;"><strong>Instant Reference Tracks:</strong> Generate professional tracks to study and learn from</li>
+      <li style="margin-bottom: 12px;"><strong>Instant Reference Tracks:</strong> Create professional tracks to study and learn from</li>
       <li style="margin-bottom: 12px;"><strong>Starter Ideas:</strong> Overcome blank canvas paralysis</li>
       <li style="margin-bottom: 12px;"><strong>Learning Tool:</strong> See how professional tracks are structured</li>
-      <li style="margin-bottom: 12px;"><strong>Stem Export:</strong> Import AI-generated elements into your DAW to customize</li>
+      <li style="margin-bottom: 12px;"><strong>Stem Export:</strong> Import AI-made elements into your DAW to customize</li>
     </ul>
-    <p style="margin-bottom: 24px;">Platforms like <a href="/" style="color: var(--primary); text-decoration: none;">Sonura</a> let you generate tracks in any genre, export stems, and use them as starting points or reference tracks.</p>
+    <p style="margin-bottom: 24px;">Platforms like <a href="/" style="color: var(--primary); text-decoration: none;">Sonura</a> let you create tracks in any genre, export stems, and use them as starting points or reference tracks.</p>
     <p style="margin-bottom: 24px;">Browse the <a href="/tools/" style="color: var(--primary); text-decoration: none;">free AI music tools</a> hub for beat maker, text to music, stem separation, and more.</p>
   </section>
 
@@ -135,9 +148,9 @@ const toc = [
     <h2 id="conclusion" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Conclusion: Just Start</h2>
     <p style="margin-bottom: 24px;">Music production in 2026 is more accessible than ever. You just need a computer, DAW (even free ones work), headphones, and dedication to practice.</p>
     <p style="margin-bottom: 24px;">The hardest part is starting. Open your DAW today. Make something terrible. Then make something slightly less terrible tomorrow. That's how every producer began.</p>
-    <div style="background: rgba(124, 58, 237, 0.1); border: 1px solid var(--primary); border-radius: 12px; padding: 32px; margin-top: 48px; text-align: center;">
+    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 32px; margin-top: 48px; text-align: center;">
       <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px;">Start Making Music Today</h3>
-      <p style="margin-bottom: 24px; color: var(--muted);">Generate professional tracks to learn from or use as starting points</p>
+      <p style="margin-bottom: 24px; color: var(--muted);">Create professional tracks to learn from or use as starting points</p>
       <a href="https://app.sonurastudio.com/studio" class="button primary large" style="display: inline-block; padding: 16px 32px; background: var(--fg); color: var(--bg); text-decoration: none; border-radius: 12px; font-weight: 600;">Try Free Now</a>
     </div>
   </section>

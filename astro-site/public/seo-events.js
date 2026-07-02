@@ -31,6 +31,36 @@
     return 'general';
   }
 
+  // Hostnames of AI assistants / answer engines that can send referral traffic.
+  // Detection is best-effort: some assistants strip the referrer, but when present
+  // this lets us measure LLM/AI-search visibility ("LLMSEO") instead of guessing.
+  const AI_REFERRERS = [
+    { host: 'chatgpt.com', source: 'chatgpt' },
+    { host: 'chat.openai.com', source: 'chatgpt' },
+    { host: 'perplexity.ai', source: 'perplexity' },
+    { host: 'gemini.google.com', source: 'gemini' },
+    { host: 'bard.google.com', source: 'gemini' },
+    { host: 'claude.ai', source: 'claude' },
+    { host: 'copilot.microsoft.com', source: 'copilot' },
+    { host: 'you.com', source: 'you' },
+    { host: 'poe.com', source: 'poe' },
+    { host: 'grok.com', source: 'grok' },
+  ];
+
+  function aiReferrerSource(referrer) {
+    if (!referrer) return '';
+    let host;
+    try {
+      host = new URL(referrer).hostname.replace(/^www\./, '');
+    } catch {
+      return '';
+    }
+    const match = AI_REFERRERS.find(
+      (entry) => host === entry.host || host.endsWith('.' + entry.host)
+    );
+    return match ? match.source : '';
+  }
+
   function getSearchParams() {
     const params = new URLSearchParams(window.location.search);
     return ATTR_KEYS.reduce((acc, key) => {
@@ -67,6 +97,7 @@
       first_page_type: pageType(window.location.pathname),
       first_campaign_intent: campaignIntent(window.location.pathname),
       first_referrer: document.referrer || '',
+      first_ai_referrer: aiReferrerSource(document.referrer),
       first_touch_ts: new Date().toISOString(),
       ...getSearchParams(),
     };
@@ -80,6 +111,8 @@
       page_path: window.location.pathname,
       page_type: pageType(window.location.pathname),
       campaign_intent: campaignIntent(window.location.pathname),
+      referrer: document.referrer || '',
+      ai_referrer: aiReferrerSource(document.referrer),
       ...getFirstTouch(),
       ...(extra || {}),
     };
@@ -116,11 +149,13 @@
     window.posthog.register({
       page_type: pageType(window.location.pathname),
       campaign_intent: campaignIntent(window.location.pathname),
+      ai_referrer: aiReferrerSource(document.referrer),
       first_landing_page: touch.first_landing_page,
       first_landing_path: touch.first_landing_path,
       first_page_type: touch.first_page_type,
       first_campaign_intent: touch.first_campaign_intent,
       first_referrer: touch.first_referrer,
+      first_ai_referrer: touch.first_ai_referrer,
       first_touch_ts: touch.first_touch_ts,
       utm_source: touch.utm_source,
       utm_medium: touch.utm_medium,

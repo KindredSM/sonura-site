@@ -2,56 +2,56 @@
 import AlternativeLayout from '../../../layouts/AlternativeLayout.astro';
 
 const quickStats = [
-  { value: 'Original', label: 'AI-Generated Samples' },
-  { value: 'On-Demand', label: 'Generation vs Browsing' },
+  { value: 'Original', label: 'AI-Created Samples' },
+  { value: 'On-Demand', label: 'Creation vs Browsing' },
   { value: 'DAW', label: 'Producer Workflow' },
 ];
 
 const comparisons = [
-  { feature: 'Sample Source', sonura: 'AI-generated on-demand', competitor: 'Pre-made library', competitorHighlight: false },
-  { feature: 'Uniqueness', sonura: 'Generated for your prompt', competitor: 'Licensed shared catalog', competitorHighlight: false },
-  { feature: 'Workflow Speed', sonura: 'Describe and generate', competitor: 'Search, preview, license', competitorHighlight: false },
+  { feature: 'Sample Source', sonura: 'AI-created on-demand', competitor: 'Pre-made library', competitorHighlight: false },
+  { feature: 'Uniqueness', sonura: 'Created for your prompt', competitor: 'Licensed shared catalog', competitorHighlight: false },
+  { feature: 'Workflow Speed', sonura: 'Describe and create', competitor: 'Search, preview, license', competitorHighlight: false },
   { feature: 'Customization', sonura: 'Create the sound you need', competitor: 'Find the closest match', competitorHighlight: false },
   { feature: 'Commercial Workflow', sonura: 'Built for release workflows', competitor: 'Royalty-free licensed samples', competitorHighlight: true },
-  { feature: 'Stem Workflow', sonura: 'Generate and export stems', competitor: 'Sample and DAW integrations', competitorHighlight: true },
-  { feature: 'Pricing Model', sonura: 'Credits for generation', competitor: 'Credits for sample licensing', competitorHighlight: true },
+  { feature: 'Stem Workflow', sonura: 'Create and export stems', competitor: 'Sample and DAW integrations', competitorHighlight: true },
+  { feature: 'Pricing Model', sonura: 'Credits for creation', competitor: 'Credits for sample licensing', competitorHighlight: true },
   { feature: 'Free Tier', sonura: 'Yes', competitor: 'Free account and free catalog content', competitorHighlight: true },
   { feature: 'Sample Types', sonura: 'Loops, one-shots, vocals, FX', competitor: 'Loops, one-shots, vocals, FX', competitorHighlight: true },
 ];
 
 const advantages = [
   { title: 'Original Samples on Demand', description: "Splice is excellent when you want to browse a huge royalty-free catalog. Sonura's <a href='/tools/ai-sample-generator/'>sample generator</a> is stronger when you want a new sound made for your prompt, from a specific <a href='/tools/ai-loop-maker/'>loop</a> idea to a vocal chop, one-shot, or FX texture." },
-  { title: 'Generation Instead of Browsing', description: "Splice works best when you want to search, preview, and license existing sounds. Sonura works best when you already know the sound you want: describe the genre, BPM, mood, and role, then generate a new idea for the track." },
-  { title: 'Commercial-Ready Production Flow', description: "Use Sonura when you want generated sounds to move straight into beats, streaming releases, content, or client work. Use Splice when a royalty-free licensed catalog sample is exactly what the production needs." },
-  { title: 'Stem Export for Customization', description: "Sonura is built around generating and exporting editable parts for layering, mixing, and arrangement in your DAW. Splice is built around licensed samples, plugins, and integrations with DAW workflows." },
-  { title: 'Custom Sample Generation', description: "Splice helps you discover what already exists. Sonura lets you create the sound you have in mind. Describe the sample you want - genre, BPM, mood, style - and keep iterating until it fits." },
-  { title: 'Credits Matched to Creation', description: "Splice credits license catalog sounds. Sonura credits generate new audio. That distinction matters if your priority is originality over library depth." },
+  { title: 'Creation Instead of Browsing', description: "Splice works best when you want to search, preview, and license existing sounds. Sonura works best when you already know the sound you want: describe the genre, BPM, mood, and role, then create a new idea for the track." },
+  { title: 'Commercial-Ready Production Flow', description: "Use Sonura when you want created sounds to move straight into beats, streaming releases, content, or client work. Use Splice when a royalty-free licensed catalog sample is exactly what the production needs." },
+  { title: 'Stem Export for Customization', description: "Sonura is built around creating and exporting editable parts for layering, mixing, and arrangement in your DAW. Splice is built around licensed samples, plugins, and integrations with DAW workflows." },
+  { title: 'Custom Sample Creation', description: "Splice helps you discover what already exists. Sonura lets you create the sound you have in mind. Describe the sample you want - genre, BPM, mood, style - and keep iterating until it fits." },
+  { title: 'Credits Matched to Creation', description: "Splice credits license catalog sounds. Sonura credits create new audio. That distinction matters if your priority is originality over library depth." },
 ];
 
 const sonuraUseCases = [
   { text: 'Want unique samples that stand out' },
   { text: 'Need specific sounds on-demand' },
   { text: 'Want to avoid overused sample packs' },
-  { text: 'Need fast generation while producing' },
+  { text: 'Need fast creation while producing' },
   { text: 'Want a commercial-ready creation workflow' },
   { text: 'Need stem export for mixing' },
 ];
 
 const competitorUseCases = [
   { text: 'Prefer browsing existing libraries' },
-  { text: 'Want to see samples before generating' },
+  { text: 'Want to see samples before creating' },
   { text: 'Need access to specific artist packs' },
   { text: "Don't mind using shared samples" },
   { text: 'Want established sample library ecosystem' },
 ];
 
 const faqs = [
-  { question: 'Can I switch from Splice to Sonura?', answer: 'Yes! Many producers use both. Use Splice for browsing established libraries, use Sonura for generating unique samples on-demand. They complement each other well.' },
-  { question: 'Is Sonura better than Splice?', answer: 'It depends on your needs. Splice is great for browsing existing libraries. Sonura is better for generating unique samples on-demand. If you want original samples that stand out, Sonura is the better choice.' },
-  { question: "Does Sonura have the same sample types as Splice?", answer: "Yes! Sonura generates loops, one-shots, vocals, and sound effects - all the same types Splice offers. But every sample is unique and original, not from a shared library." },
+  { question: 'Can I switch from Splice to Sonura?', answer: 'Yes! Many producers use both. Use Splice for browsing established libraries, use Sonura for creating unique samples on-demand. They complement each other well.' },
+  { question: 'Is Sonura better than Splice?', answer: 'It depends on your needs. Splice is great for browsing existing libraries. Sonura is better for creating unique samples on-demand. If you want original samples that stand out, Sonura is the better choice.' },
+  { question: "Does Sonura have the same sample types as Splice?", answer: "Yes! Sonura creates loops, one-shots, vocals, and sound effects - all the same types Splice offers. But every sample is unique and original, not from a shared library." },
   { question: 'Can I use Sonura samples commercially?', answer: 'Yes. Sonura is designed for commercial creation workflows: beats you sell, streaming releases, content, and client work. Check the current plan and terms if you need private ownership instead of public/shared output.' },
-  { question: 'How does Sonura compare to Splice pricing?', answer: "Sonura and Splice use different pricing models. Sonura credits generate new audio; Splice credits license catalog samples, MIDI, and presets. Compare based on whether you need originality or catalog depth." },
-  { question: 'Can I use both Splice and Sonura?', answer: 'Absolutely! Many creators use Splice for browsing established libraries and Sonura for generating unique samples on-demand. Use the right tool for each job.' },
+  { question: 'How does Sonura compare to Splice pricing?', answer: "Sonura and Splice use different pricing models. Sonura credits create new audio; Splice credits license catalog samples, MIDI, and presets. Compare based on whether you need originality or catalog depth." },
+  { question: 'Can I use both Splice and Sonura?', answer: 'Absolutely! Many creators use Splice for browsing established libraries and Sonura for creating unique samples on-demand. Use the right tool for each job.' },
 ];
 ---
 
@@ -62,7 +62,7 @@ const faqs = [
   description="Stop digging through endless loops. Sonura helps you create original beats and songs quickly, then tweak and export them in one workflow."
   keywords="splice alternative, splice vs sonura, ai sample generator, unique samples, splice competitor, sample pack alternative, ai loops generator"
   headline="Best Splice Alternative for Original Samples"
-  subhead="Looking for an alternative to Splice? Compare unique AI-generated samples vs shared libraries, instant generation vs browsing. Discover why producers choose Sonura for original samples."
+  subhead="Looking for an alternative to Splice? Compare unique AI-created samples vs shared libraries, instant creation vs browsing. Discover why producers choose Sonura for original samples."
   quickStats={quickStats}
   comparisons={comparisons}
   advantages={advantages}
@@ -70,8 +70,8 @@ const faqs = [
   competitorUseCases={competitorUseCases}
   faqs={faqs}
   finalCtaTitle="Try the Best Splice Alternative"
-  finalCtaSubtitle="Generate original samples, loops, vocals, and FX for your production workflow. Free to start, no credit card required."
-  finalCtaButtonText="Start Generating Samples Free"
+  finalCtaSubtitle="Create original samples, loops, vocals, and FX for your production workflow. Free to start, no credit card required."
+  finalCtaButtonText="Start Creating Samples Free"
   finalCtaFooter="No credit card required • Original samples • Export stems"
   appUrl="https://app.sonurastudio.com/samples"
 />

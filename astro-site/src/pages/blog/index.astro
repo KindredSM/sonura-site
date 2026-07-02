@@ -4,13 +4,33 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 // Define all blog posts here - single source of truth
 const blogPosts = [
   {
+    slug: 'is-ai-music-ethical',
+    title: 'Is AI Music Ethical? Licensed vs Scraped Models, Explained',
+    description: 'Whether AI music is "ethical" comes down to two things: was the model trained with consent, and is there real human authorship in the track. Here is how licensed AI music actually works.',
+    date: '2026-07-02',
+    readTime: '7 min read',
+    tag: 'Industry',
+    tagColor: 'rgba(255,255,255,0.1)',
+    tagTextColor: '#c4b5fd'
+  },
+  {
+    slug: 'is-ai-music-allowed-on-spotify',
+    title: 'Is AI Music Allowed on Spotify? What the 2026 Rules Actually Say',
+    description: 'Yes, AI-assisted music is allowed on Spotify — what gets removed is spam, impersonation, and artificial streaming. Here is the real line between AI-assisted production and content-farm uploads.',
+    date: '2026-07-02',
+    readTime: '6 min read',
+    tag: 'Industry',
+    tagColor: 'rgba(255,255,255,0.1)',
+    tagTextColor: '#c4b5fd'
+  },
+  {
     slug: 'ai-music-consent-vs-fraud-2026',
     title: 'AI Music in 2026: The Industry Split Between Consent and Fraud',
     description: 'The music industry is living in two realities. One side runs on licensed AI and label deals. The other runs on 60,000 fake tracks a day. Both are accelerating.',
     date: '2026-04-15',
     readTime: '9 min read',
     tag: 'Industry',
-    tagColor: 'rgba(124,58,237,0.2)',
+    tagColor: 'rgba(255,255,255,0.1)',
     tagTextColor: '#c4b5fd'
   },
   {
@@ -18,9 +38,9 @@ const blogPosts = [
     title: 'Why AI-Generated Samples Beat Generic Sample Libraries',
     description: 'Sample libraries are overused and generic. Discover how AI-generated samples create unique sounds on-demand, giving your music the originality it needs to stand out.',
     date: '2025-01-15',
-    readTime: '6 min read',
+    readTime: '5 min read',
     tag: 'Guide',
-    tagColor: 'rgba(124,58,237,0.2)',
+    tagColor: 'rgba(255,255,255,0.1)',
     tagTextColor: '#c4b5fd'
   },
   {
@@ -30,7 +50,7 @@ const blogPosts = [
     date: '2025-12-10', // Assuming date from content
     readTime: '3 min read',
     tag: 'Event',
-    tagColor: 'rgba(124,58,237,0.2)',
+    tagColor: 'rgba(255,255,255,0.1)',
     tagTextColor: '#c4b5fd'
   },
   {
@@ -38,9 +58,9 @@ const blogPosts = [
     title: 'How to Make Trap Beats: Complete Guide for Beginners',
     description: 'Learn how to make professional trap beats from scratch. Complete guide covering 808s, hi-hats, melodies, mixing, and modern production techniques.',
     date: '2025-10-15',
-    readTime: '8 min read',
+    readTime: '5 min read',
     tag: 'Tutorial',
-    tagColor: 'rgba(124,58,237,0.2)',
+    tagColor: 'rgba(255,255,255,0.1)',
     tagTextColor: '#c4b5fd'
   },
   {
@@ -48,9 +68,9 @@ const blogPosts = [
     title: 'AI Music Generators: Complete Guide 2026',
     description: 'Comprehensive guide to AI music generators. Compare features, pricing, quality, and commercial use rights to choose the best tool for your needs.',
     date: '2025-10-20',
-    readTime: '12 min read',
+    readTime: '4 min read',
     tag: 'Guide',
-    tagColor: 'rgba(124,58,237,0.2)',
+    tagColor: 'rgba(255,255,255,0.1)',
     tagTextColor: '#c4b5fd'
   },
   {
@@ -58,9 +78,9 @@ const blogPosts = [
     title: 'Royalty-Free Music Explained: Complete Guide',
     description: 'Learn what royalty-free means, licensing types, YouTube copyright rules, and how to use music commercially without legal issues.',
     date: '2025-10-10',
-    readTime: '10 min read',
+    readTime: '3 min read',
     tag: 'Education',
-    tagColor: 'rgba(124,58,237,0.2)',
+    tagColor: 'rgba(255,255,255,0.1)',
     tagTextColor: '#c4b5fd'
   },
   {
@@ -68,9 +88,9 @@ const blogPosts = [
     title: 'How to Release Music on Spotify: Complete Guide',
     description: 'Step-by-step guide to releasing music on Spotify as an independent artist. Distribution, playlisting, and maximizing streams.',
     date: '2025-09-20',
-    readTime: '16 min read',
+    readTime: '6 min read',
     tag: 'Release Strategy',
-    tagColor: 'rgba(124,58,237,0.2)',
+    tagColor: 'rgba(255,255,255,0.1)',
     tagTextColor: '#c4b5fd'
   },
   {
@@ -78,9 +98,9 @@ const blogPosts = [
     title: 'Music Production for Beginners: Complete Guide',
     description: 'Start making music from scratch. Equipment, DAWs, music theory basics, and modern production techniques to launch your journey.',
     date: '2025-10-05',
-    readTime: '18 min read',
+    readTime: '6 min read',
     tag: 'Beginner Guide',
-    tagColor: 'rgba(124,58,237,0.2)',
+    tagColor: 'rgba(255,255,255,0.1)',
     tagTextColor: '#c4b5fd'
   },
   {
@@ -88,9 +108,9 @@ const blogPosts = [
     title: 'Best Free VST Plugins for Music Production 2026',
     description: '30+ professional free VST plugins including synths, effects, drums, and mixing tools. Save thousands on your production setup.',
     date: '2025-09-28',
-    readTime: '14 min read',
+    readTime: '6 min read',
     tag: 'Resource Guide',
-    tagColor: 'rgba(124,58,237,0.2)',
+    tagColor: 'rgba(255,255,255,0.1)',
     tagTextColor: '#c4b5fd'
   }
 ];
@@ -142,7 +162,7 @@ const jsonLd = [
   <section style="padding: 60px 24px 80px; max-width: 1280px; margin: 0 auto;">
     <header style="text-align: center; margin-bottom: 48px;">
       <h1 style="font-size: 48px; font-weight: 800; margin-bottom: 16px; color: var(--fg); letter-spacing: -0.02em;">Sonura Blog</h1>
-      <p style="font-size: 20px; color: var(--muted); max-width: 600px; margin: 0 auto;">Guides, tutorials, and tips for music production, AI music generation, and releasing your tracks.</p>
+      <p style="font-size: 20px; color: var(--muted); max-width: 600px; margin: 0 auto;">Guides, tutorials, and tips for music production, AI music creation, and releasing your tracks.</p>
     </header>
 
     <div class="blog-grid">
@@ -164,11 +184,11 @@ const jsonLd = [
     </div>
   </section>
 
-  <section style="background: rgba(124, 58, 237, 0.1); border-top: 1px solid rgba(124, 58, 237, 0.2); border-bottom: 1px solid rgba(124, 58, 237, 0.2); padding: 64px 24px; margin-top: 80px;">
+  <section style="background: rgba(255,255,255,0.03); border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 64px 24px; margin-top: 80px;">
     <div style="max-width: 800px; margin: 0 auto; text-align: center;">
       <h2 style="font-size: 36px; font-weight: 700; margin-bottom: 24px; color: var(--fg);">Ready to Start Creating?</h2>
-      <p style="font-size: 18px; color: var(--muted); margin-bottom: 32px;">Generate professional music in seconds with Sonura's AI music generator.</p>
-      <a href="https://app.sonurastudio.com/studio" class="button primary large" style="display: inline-block; padding: 18px 40px; background: var(--primary); color: white; text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 18px;">Try Sonura Free</a>
+      <p style="font-size: 18px; color: var(--muted); margin-bottom: 32px;">Create professional music in seconds with Sonura's AI music generator.</p>
+      <a href="https://app.sonurastudio.com/studio" class="button primary large" style="display: inline-block; padding: 18px 40px; background: var(--fg); color: var(--bg); text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 18px;">Try Sonura Free</a>
     </div>
   </section>
 </BaseLayout>

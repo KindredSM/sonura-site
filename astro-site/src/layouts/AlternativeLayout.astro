@@ -169,17 +169,17 @@ const jsonLd = [
 
     <!-- Quick Stats Section -->
     <section class="alt-section" style="margin-bottom: 80px;">
-      <div style="background: rgba(124, 58, 237, 0.1); border: 2px solid var(--primary); border-radius: 16px; padding: 48px; text-align: center;">
+      <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 48px; text-align: center;">
         <h2 class="alt-h2" style="font-size: 32px; font-weight: 700; margin-bottom: 24px;">{quickComparisonTitle || `Sonura vs ${competitor}: Quick Comparison`}</h2>
         <div class="responsive-grid-stats" style="margin-top: 40px;">
           {quickStats.map((stat) => (
             <div>
-              <div style="font-size: 48px; font-weight: 800; color: var(--primary); margin-bottom: 8px;">{stat.value}</div>
+              <div style="font-size: 48px; font-weight: 800; color: var(--fg); margin-bottom: 8px;">{stat.value}</div>
               <div style="color: var(--muted);">{stat.label}</div>
             </div>
           ))}
         </div>
-        <a href={appUrl} class="button primary large" style="display: inline-block; margin-top: 40px; padding: 18px 40px; background: var(--primary); color: white; text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 18px;">Try Sonura Free</a>
+        <a href={appUrl} class="button primary large" style="display: inline-block; margin-top: 40px; padding: 18px 40px; background: var(--fg); color: var(--bg); text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 18px;">Try Sonura Free</a>
       </div>
     </section>
 
@@ -189,9 +189,9 @@ const jsonLd = [
       <div style="overflow-x: auto;">
         <table style="width: 100%; border-collapse: collapse; background: rgba(255,255,255,0.02); border-radius: 12px; overflow: hidden;">
           <thead>
-            <tr style="background: rgba(124, 58, 237, 0.1);">
+            <tr style="background: rgba(255,255,255,0.03);">
               <th style="padding: 20px; text-align: left; font-weight: 700;">Feature</th>
-              <th style="padding: 20px; text-align: center; font-weight: 700; color: var(--primary);">Sonura</th>
+              <th style="padding: 20px; text-align: center; font-weight: 700; color: var(--fg);">Sonura</th>
               <th style="padding: 20px; text-align: center; font-weight: 700;">{competitor}</th>
             </tr>
           </thead>
@@ -247,8 +247,8 @@ const jsonLd = [
     <section class="alt-section" style="margin-bottom: 80px;">
       <h2 class="alt-h2" style="font-size: 36px; font-weight: 700; margin-bottom: 40px;">{useCasesTitle || `When to Use ${competitor} vs Sonura`}</h2>
       <div class="responsive-grid-2">
-        <div style="padding: 40px; background: rgba(124, 58, 237, 0.1); border: 1px solid var(--primary); border-radius: 12px;">
-          <h3 class="alt-h3" style="font-size: 28px; font-weight: 700; margin-bottom: 24px; color: var(--primary);">Choose Sonura If You:</h3>
+        <div style="padding: 40px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px;">
+          <h3 class="alt-h3" style="font-size: 28px; font-weight: 700; margin-bottom: 24px; color: var(--fg);">Choose Sonura If You:</h3>
           <ul style="list-style: none; padding: 0;">
             {sonuraUseCases.map((item) => (
               <li style="margin-bottom: 16px; padding-left: 32px; position: relative;">
@@ -286,10 +286,10 @@ const jsonLd = [
     </section>
 
     <!-- Final CTA -->
-    <section style="background: rgba(124, 58, 237, 0.1); border: 2px solid var(--primary); border-radius: 16px; padding: 64px; text-align: center;">
+    <section style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 64px; text-align: center;">
       <h2 class="alt-h2" style="font-size: 36px; font-weight: 700; margin-bottom: 24px;">{finalCtaTitle || `Try the Best ${competitor} Alternative`}</h2>
       <p style="font-size: 20px; color: var(--muted); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">{finalCtaSubtitle || 'Free to start, no credit card required.'}</p>
-      <a href={appUrl} class="button primary large" style="display: inline-block; padding: 20px 48px; background: var(--primary); color: white; text-decoration: none; border-radius: 12px; font-weight: 700; font-size: 20px;">{finalCtaButtonText || 'Start Creating Free'}</a>
+      <a href={appUrl} class="button primary large" style="display: inline-block; padding: 20px 48px; background: var(--fg); color: var(--bg); text-decoration: none; border-radius: 12px; font-weight: 700; font-size: 20px;">{finalCtaButtonText || 'Start Creating Free'}</a>
       {finalCtaFooter && <p style="margin-top: 24px; color: var(--muted); font-size: 14px;">{finalCtaFooter}</p>}
     </section>
   </div>

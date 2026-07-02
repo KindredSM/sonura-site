@@ -9,6 +9,8 @@ interface Props {
   publishedDate: string;
   modifiedDate?: string;
   readTime?: string;
+  author?: string;
+  authorRole?: string;
   ogTitle?: string;
   toc?: { id: string; label: string }[];
 }
@@ -21,6 +23,8 @@ const {
   publishedDate,
   modifiedDate,
   readTime = '5 min read',
+  author = 'Kindred Salway',
+  authorRole = 'Co-founder & CEO, Sonura',
   ogTitle,
   toc = [],
 } = Astro.props;
@@ -33,7 +37,7 @@ const jsonLd = [
     "@type": "Article",
     "headline": title,
     "description": description,
-    "author": { "@type": "Organization", "name": "Sonura" },
+    "author": { "@type": "Person", "name": author, "url": "https://sonurastudio.com/about/" },
     "publisher": {
       "@type": "Organization",
       "name": "Sonura",
@@ -89,7 +93,7 @@ const formattedDate = new Date(publishedDate).toLocaleDateString('en-US', {
       <header style="margin-bottom: 48px;">
         <h1 style="font-size: 42px; font-weight: 800; margin-bottom: 16px; line-height: 1.2;">{title}</h1>
         <div style="color: var(--muted); font-size: 14px; margin-bottom: 24px;">
-          <time datetime={publishedDate}>{formattedDate}</time> • {readTime}
+          By <a href="/about/" style="color: var(--fg); text-decoration: none; font-weight: 600;">{author}</a><span style="opacity: 0.7;">, {authorRole}</span> • <time datetime={publishedDate}>{formattedDate}</time> • {readTime}
         </div>
         <p style="font-size: 20px; color: var(--muted); line-height: 1.6;">{description}</p>
       </header>
