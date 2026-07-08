@@ -165,7 +165,7 @@ body {
 @media (max-width: 768px) { .nav-links { display: none !important; } .nav-separator { display: none !important; } .mobile-menu-btn { display: inline-flex; } .mobile-menu { display: block; } }
 
 .fab { font-size: 24px; color: inherit !important; }
-.brand { font-family: var(--font-body); font-weight: 500; letter-spacing: 0.5px; color: var(--fg) !important; text-decoration: none !important; cursor: pointer; transition: opacity 0.2s ease; border: none; outline: none; background: none; display: flex; align-items: center;  }
+.brand { font-family: var(--font-body); font-weight: 400; letter-spacing: 0.5px; color: var(--fg) !important; text-decoration: none !important; cursor: pointer; transition: opacity 0.2s ease; border: none; outline: none; background: none; display: flex; align-items: center;  }
 .brand p { font-size: 19px; margin: 0; }
 .brand:hover { opacity: 0.8; color: var(--fg) !important; text-decoration: none !important; }
 .brand:visited { color: var(--fg) !important; text-decoration: none !important; }
