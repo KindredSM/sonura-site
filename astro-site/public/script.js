@@ -565,3 +565,18 @@ document.querySelectorAll('.player').forEach((player) => {
     requestAnimationFrame(raf);
   }
 })();
+
+// Studio does not work on mobile: send touch devices to the app root instead
+(function () {
+  if (!window.matchMedia || !window.matchMedia('(pointer: coarse)').matches) return;
+  const retarget = () => {
+    document.querySelectorAll('a[href^="https://app.sonurastudio.com/studio"]').forEach((link) => {
+      link.href = 'https://app.sonurastudio.com/';
+    });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', retarget);
+  } else {
+    retarget();
+  }
+})();
