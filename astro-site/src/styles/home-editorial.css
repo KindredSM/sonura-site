@@ -649,7 +649,6 @@ body.editorial-home .testimonial-text {
   font-size: clamp(16px, 1.6vw, 19px);
   line-height: 1.6;
   font-weight: 500;
-  text-transform: lowercase;
 }
 
 body.editorial-home .testimonial-author {
