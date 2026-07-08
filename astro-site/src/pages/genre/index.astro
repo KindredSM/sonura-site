@@ -25,7 +25,7 @@ const jsonLd = [
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "Sonura Beat Maker by Genre",
-    "description": "Make beats, loops, and stems in any genre — trap, drill, lo-fi, house, techno, R&B, and more.",
+    "description": "Make beats, loops, and stems in any genre: trap, drill, lo-fi, house, techno, R&B, and more.",
     "url": "https://sonurastudio.com/genre/"
   },
   {
@@ -51,20 +51,52 @@ const jsonLd = [
 
 <BaseLayout
   title="AI Beat Maker by Genre | Trap, Drill, Lo-Fi, House & More - Sonura"
-  description="Make production-ready beats, loops, and stems in any genre — trap, drill, hip-hop, lo-fi, house, techno, R&B, and more. Free to start, royalty-free commercial use."
+  description="Make production-ready beats, loops, and stems in any genre: trap, drill, hip-hop, lo-fi, house, techno, R&B, and more. Free to start, royalty-free commercial use."
   keywords="beat maker by genre, ai beat maker, trap beat maker, drill beat maker, lofi beat maker, house music maker, techno generator, genre beat generator"
   canonical="https://sonurastudio.com/genre/"
   ogTitle="Sonura Beat Maker by Genre"
-  ogDescription="Make beats, loops, and stems in any genre — trap, drill, lo-fi, house, techno, and more."
+  ogDescription="Make beats, loops, and stems in any genre: trap, drill, lo-fi, house, techno, and more."
   jsonLd={jsonLd}
 >
   <style>
+    .genre-hub {
+      padding: clamp(56px, 9vh, 110px) var(--page-pad) clamp(96px, 12vw, 140px);
+    }
+
+    .genre-hub-header {
+      text-align: left;
+      margin-bottom: clamp(56px, 8vw, 88px);
+    }
+
+    .genre-hub-header h1 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(48px, 7vw, 104px);
+      line-height: 0.98;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      margin: 0 0 28px;
+      color: var(--fg);
+    }
+
+    .genre-hub-header p {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0;
+      text-transform: lowercase;
+      letter-spacing: 0.022em;
+      word-spacing: 0.04em;
+      line-height: 1.8;
+    }
+
     .genre-hub-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 24px;
-      max-width: 1100px;
-      margin: 0 auto;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-panel);
     }
 
     @media (min-width: 640px) {
@@ -72,61 +104,99 @@ const jsonLd = [
     }
 
     @media (min-width: 1024px) {
-      .genre-hub-grid { grid-template-columns: repeat(3, 1fr); }
+      .genre-hub-grid { grid-template-columns: repeat(4, 1fr); }
     }
 
     .genre-card {
       padding: 32px;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 16px;
-      transition: border-color 0.2s, transform 0.2s;
+      background: var(--bg);
+      border-radius: var(--radius-panel);
+      transition: background 0.2s;
       text-decoration: none;
       color: inherit;
       display: block;
     }
 
     .genre-card:hover {
-      border-color: rgba(255,255,255,0.18);
-      transform: translateY(-4px);
+      background: var(--panel-bg);
     }
 
     .genre-card-tag {
-      font-size: 12px;
+      font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.14em;
       color: var(--primary);
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       font-weight: 600;
     }
 
     .genre-card-name {
-      font-size: 22px;
-      font-weight: 700;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
       margin-bottom: 12px;
       color: var(--fg);
     }
 
     .genre-card-desc {
       color: var(--muted);
-      line-height: 1.6;
-      font-size: 15px;
+      text-transform: lowercase;
+      letter-spacing: 0.022em;
+      word-spacing: 0.04em;
+      line-height: 1.8;
+      font-size: 14px;
+      margin: 0;
     }
 
     .genre-card-arrow {
       margin-top: 20px;
-      color: var(--primary);
-      font-weight: 600;
-      font-size: 14px;
+      color: var(--fg);
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .genre-hub-cta {
+      text-align: left;
+      margin-top: clamp(72px, 9vw, 110px);
+      padding: clamp(48px, 7vw, 96px) clamp(28px, 5vw, 80px);
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-panel);
+      background: var(--bg);
+    }
+
+    .genre-hub-cta h2 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(38px, 4.8vw, 68px);
+      letter-spacing: 0.01em;
+      line-height: 1;
+      text-transform: uppercase;
+      margin: 0 0 24px;
+      color: var(--fg);
+    }
+
+    .genre-hub-cta p:not(.section-kicker) {
+      color: var(--muted);
+      margin: 0 0 36px;
+      max-width: 560px;
+      text-transform: lowercase;
+      letter-spacing: 0.022em;
+      word-spacing: 0.04em;
+      line-height: 1.8;
+      font-size: 15px;
     }
   </style>
 
-  <div style="max-width: 1280px; margin: 80px auto; padding: 0 24px;">
-    <header style="text-align: center; margin-bottom: 64px;">
-      <h1 style="font-size: 48px; font-weight: 800; margin-bottom: 24px; line-height: 1.2;">Make Beats in Any Genre</h1>
-      <p style="font-size: 20px; color: var(--muted); max-width: 720px; margin: 0 auto; line-height: 1.6;">From trap and drill to lo-fi, house, and cinematic — create production-ready beats, loops, and stems in the genre you're working in. Precise control, full commercial rights.</p>
+  <div class="genre-hub">
+    <header class="genre-hub-header">
+      <h1>Make Beats in Any Genre</h1>
+      <p>From trap and drill to lo-fi, house, and cinematic. Create production-ready beats, loops, and stems in the genre you're working in. Precise control, full commercial rights.</p>
     </header>
 
+    <p class="section-kicker">01 / Genres</p>
     <div class="genre-hub-grid">
       {genres.map((genre) => (
         <a href={`/genre/${genre.slug}/`} class="genre-card">
@@ -138,10 +208,11 @@ const jsonLd = [
       ))}
     </div>
 
-    <div style="text-align: center; margin-top: 80px; padding: 48px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px;">
-      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 16px;">Your Genre, Your Sound</h2>
-      <p style="color: var(--muted); margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto;">Describe the beat you hear, shape every element, and export stems to finish in your DAW. Free to start, no credit card required.</p>
-      <a href="https://app.sonurastudio.com/studio" class="button primary large" style="display: inline-block; padding: 18px 40px; background: var(--fg); color: var(--bg); text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 18px;">Start Creating Free</a>
+    <div class="genre-hub-cta">
+      <p class="section-kicker">02 / Get started</p>
+      <h2>Your Genre, Your Sound</h2>
+      <p>Describe the beat you hear, shape every element, and export stems to finish in your DAW. Free to start, no credit card required.</p>
+      <a href="https://app.sonurastudio.com/studio" class="button primary large"><span class="btn-label-full">Start Creating Free</span><span class="btn-label-short">Start free</span></a>
     </div>
   </div>
 </BaseLayout>

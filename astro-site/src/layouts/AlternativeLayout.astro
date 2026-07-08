@@ -109,98 +109,448 @@ const jsonLd = [
   jsonLd={jsonLd}
 >
   <style>
-    .responsive-grid-3 { display: grid; grid-template-columns: 1fr; gap: 32px; }
-    .responsive-grid-2 { display: grid; grid-template-columns: 1fr; gap: 32px; }
-    .responsive-grid-stats { display: grid; grid-template-columns: 1fr; gap: 32px; }
-    @media (max-width: 640px) {
-      .alt-section { margin-bottom: 48px !important; }
-      .alt-h1 { font-size: 32px !important; }
-      .alt-h2 { font-size: 24px !important; }
-      .alt-h3 { font-size: 20px !important; }
-      .responsive-grid-3 > div, .responsive-grid-2 > div { padding: 24px !important; }
-      .alt-revenue-links { grid-template-columns: 1fr !important; }
+    .alt-page {
+      width: 100%;
+      padding: clamp(56px, 9vh, 110px) var(--page-pad) clamp(96px, 12vw, 140px);
+      color: var(--fg);
     }
 
-    @media (min-width: 640px) {
-      .responsive-grid-stats { grid-template-columns: repeat(3, 1fr); }
-      .responsive-grid-2 { grid-template-columns: repeat(2, 1fr); }
+    /* --- Type roles --- */
+    .alt-h1 {
+      margin: 0 0 28px;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(40px, 6.2vw, 92px);
+      line-height: 0.98;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--fg);
     }
 
-    @media (min-width: 768px) {
-      .responsive-grid-3 { grid-template-columns: repeat(2, 1fr); }
+    .alt-h2 {
+      margin: 0 0 40px;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(32px, 4.8vw, 64px);
+      line-height: 1;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--fg);
     }
 
-    @media (min-width: 1024px) {
-      .responsive-grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .alt-h3 {
+      margin: 0 0 16px;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(20px, 2.4vw, 30px);
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--fg);
     }
 
+    .alt-support {
+      color: var(--muted);
+      font-size: 15px;
+      text-transform: lowercase;
+      letter-spacing: 0.022em;
+      word-spacing: 0.04em;
+      line-height: 1.8;
+    }
+
+    /* --- Sections --- */
+    .alt-header {
+      margin-bottom: clamp(56px, 8vw, 96px);
+    }
+
+    .alt-header p {
+      margin: 0;
+      max-width: 640px;
+      font-size: 16px;
+    }
+
+    .alt-section {
+      border-top: 1px solid var(--hairline);
+      padding: clamp(56px, 8vw, 96px) 0;
+    }
+
+    /* --- Quick stats --- */
+    .responsive-grid-stats {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      border-top: 1px solid var(--hairline);
+      padding-top: 32px;
+    }
+
+    .stat-value {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(36px, 4.4vw, 60px);
+      line-height: 1;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--fg);
+      margin-bottom: 10px;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .alt-stats-cta {
+      display: inline-block;
+      margin-top: 48px;
+    }
+
+    /* --- Comparison table --- */
+    .alt-table-scroll {
+      overflow-x: auto;
+    }
+
+    .alt-table {
+      width: 100%;
+      border-collapse: collapse;
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .alt-table th {
+      padding: 16px 20px 16px 0;
+      text-align: left;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .alt-table th.col-sonura {
+      color: var(--fg);
+    }
+
+    .alt-table td {
+      padding: 18px 20px 18px 0;
+      text-align: left;
+      vertical-align: top;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .alt-table tbody tr {
+      border-top: 1px solid var(--hairline);
+    }
+
+    .alt-table tbody tr:first-child {
+      border-top: 0;
+    }
+
+    .alt-table .cell-feature {
+      font-weight: 600;
+      color: var(--fg);
+    }
+
+    .alt-table .cell-strong {
+      color: var(--fg);
+    }
+
+    .alt-table .cell-weak {
+      color: var(--muted);
+    }
+
+    /* --- Workflow links --- */
     .alt-revenue-links {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 12px;
     }
+
     .alt-revenue-links a {
-      padding: 18px;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 12px;
+      padding: 22px 18px;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-panel);
       color: var(--fg);
       text-decoration: none;
-      background: rgba(255,255,255,0.02);
+      background: transparent;
     }
+
+    .alt-revenue-links a:hover {
+      border-color: var(--fg);
+    }
+
     .alt-revenue-links strong {
       display: block;
-      margin-bottom: 6px;
-      font-size: 14px;
+      margin-bottom: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
+
     .alt-revenue-links span {
       display: block;
       color: var(--muted);
-      font-size: 12px;
-      line-height: 1.45;
+      font-size: 13px;
+      text-transform: lowercase;
+      letter-spacing: 0.022em;
+      line-height: 1.7;
+    }
+
+    /* --- Advantages: ruled rows with index numbers --- */
+    .alt-advantages {
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .alt-advantage-row {
+      display: grid;
+      grid-template-columns: 64px minmax(0, 0.9fr) minmax(0, 1.3fr);
+      gap: 16px 40px;
+      align-items: baseline;
+      padding: 32px 0;
+      border-top: 1px solid var(--hairline);
+    }
+
+    .alt-advantage-index {
+      font-size: 13px;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.12em;
+      color: var(--faint);
+    }
+
+    .alt-advantage-row .alt-h3 {
+      margin: 0;
+    }
+
+    .alt-advantage-row p {
+      margin: 0;
+    }
+
+    /* --- Use cases --- */
+    .responsive-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .use-case-panel {
+      padding: 36px 32px;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-panel);
+      background: transparent;
+    }
+
+    .use-case-panel.sonura {
+      border-color: var(--hairline);
+    }
+
+    .use-case-panel .alt-h3 {
+      margin-bottom: 24px;
+    }
+
+    .use-case-panel ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .use-case-panel li {
+      margin-bottom: 16px;
+      padding-left: 28px;
+      position: relative;
+      color: var(--muted);
+      font-size: 15px;
+      text-transform: lowercase;
+      letter-spacing: 0.022em;
+      line-height: 1.7;
+    }
+
+    .use-case-panel li:last-child {
+      margin-bottom: 0;
+    }
+
+    .use-case-marker {
+      position: absolute;
+      left: 0;
+    }
+
+    .use-case-panel.sonura .use-case-marker {
+      color: var(--primary);
+    }
+
+    .use-case-panel.competitor .use-case-marker {
+      color: var(--faint);
+    }
+
+    /* --- FAQ: ruled accordion --- */
+    .alt-faq-list {
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .alt-faq-list details {
+      border-top: 1px solid var(--hairline);
+      border-radius: 0;
+      background: transparent;
+    }
+
+    .alt-faq-list summary {
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 22px 0;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--fg);
+    }
+
+    .alt-faq-list summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .alt-faq-list summary::after {
+      content: '+';
+      font-size: 22px;
+      line-height: 1;
+      color: var(--faint);
+      flex-shrink: 0;
+    }
+
+    .alt-faq-list details[open] summary::after {
+      content: '\2212';
+    }
+
+    .alt-faq-list details p {
+      margin: 0;
+      padding: 0 0 24px;
+      max-width: 760px;
+    }
+
+    /* --- Final CTA: poster frame --- */
+    .alt-final-cta {
+      position: relative;
+      margin-top: clamp(56px, 8vw, 96px);
+      padding: clamp(48px, 7vw, 88px) clamp(28px, 4vw, 72px) clamp(150px, 20vw, 230px);
+      border: 1px solid var(--hairline);
+      overflow: hidden;
+    }
+
+    .alt-final-cta::after {
+      content: '';
+      position: absolute;
+      left: clamp(12px, 2vw, 20px);
+      right: clamp(12px, 2vw, 20px);
+      bottom: clamp(12px, 2vw, 20px);
+      height: clamp(72px, 12vw, 150px);
+      background-image: url('/images/purple-grain-band.webp');
+      background-image: image-set(
+        url('/images/purple-grain-band.avif') type('image/avif'),
+        url('/images/purple-grain-band.webp') type('image/webp')
+      );
+      background-size: cover;
+      background-position: center;
+    }
+
+    .alt-final-cta .alt-h2 {
+      margin-bottom: 24px;
+      font-size: clamp(36px, 6vw, 84px);
+    }
+
+    .alt-final-cta-sub {
+      margin: 0 0 40px;
+      max-width: 560px;
+      font-size: 16px;
+    }
+
+    .alt-final-cta .button.primary {
+      display: inline-block;
+      position: relative;
+      z-index: 1;
+    }
+
+    .alt-final-cta-footer {
+      margin: 28px 0 0;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* --- Responsive --- */
+    @media (min-width: 640px) {
+      .responsive-grid-stats { grid-template-columns: repeat(3, 1fr); }
+      .responsive-grid-2 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 900px) {
+      .alt-revenue-links { grid-template-columns: repeat(2, 1fr); }
+
+      .alt-advantage-row {
+        grid-template-columns: 48px minmax(0, 1fr);
+        gap: 12px 20px;
+      }
+
+      .alt-advantage-row p {
+        grid-column: 2;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .alt-section { padding: 48px 0; }
+      .alt-revenue-links { grid-template-columns: 1fr; }
+      .use-case-panel { padding: 28px 22px; }
     }
   </style>
 
-  <div style="max-width: 1280px; margin: 80px auto; padding: 0 24px; color: var(--fg);">
+  <div class="alt-page">
     <!-- Header -->
-    <header style="text-align: center; margin-bottom: 64px; padding-top: 0px;">
-      <h1 class="alt-h1" style="font-size: 48px; font-weight: 800; margin-bottom: 24px; line-height: 1.2;">{headline}</h1>
-      <p style="font-size: 22px; color: var(--muted); max-width: 700px; margin: 0 auto; line-height: 1.6;">{subhead}</p>
+    <header class="alt-header">
+      <h1 class="alt-h1">{headline}</h1>
+      <p class="alt-support">{subhead}</p>
     </header>
 
     <!-- Quick Stats Section -->
-    <section class="alt-section" style="margin-bottom: 80px;">
-      <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 48px; text-align: center;">
-        <h2 class="alt-h2" style="font-size: 32px; font-weight: 700; margin-bottom: 24px;">{quickComparisonTitle || `Sonura vs ${competitor}: Quick Comparison`}</h2>
-        <div class="responsive-grid-stats" style="margin-top: 40px;">
-          {quickStats.map((stat) => (
-            <div>
-              <div style="font-size: 48px; font-weight: 800; color: var(--fg); margin-bottom: 8px;">{stat.value}</div>
-              <div style="color: var(--muted);">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-        <a href={appUrl} class="button primary large" style="display: inline-block; margin-top: 40px; padding: 18px 40px; background: var(--fg); color: var(--bg); text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 18px;">Try Sonura Free</a>
+    <section class="alt-section">
+      <p class="section-kicker">01 / Quick comparison</p>
+      <h2 class="alt-h2">{quickComparisonTitle || `Sonura vs ${competitor}: Quick Comparison`}</h2>
+      <div class="responsive-grid-stats">
+        {quickStats.map((stat) => (
+          <div>
+            <div class="stat-value">{stat.value}</div>
+            <div class="stat-label">{stat.label}</div>
+          </div>
+        ))}
       </div>
+      <a href={appUrl} class="button primary large alt-stats-cta">Try Sonura Free</a>
     </section>
 
     <!-- Comparison Table -->
-    <section class="alt-section" style="margin-bottom: 80px;">
-      <h2 class="alt-h2" style="font-size: 36px; font-weight: 700; margin-bottom: 40px; text-align: center;">{comparisonTableTitle || 'Detailed Comparison Table'}</h2>
-      <div style="overflow-x: auto;">
-        <table style="width: 100%; border-collapse: collapse; background: rgba(255,255,255,0.02); border-radius: 12px; overflow: hidden;">
+    <section class="alt-section">
+      <p class="section-kicker">02 / Feature table</p>
+      <h2 class="alt-h2">{comparisonTableTitle || 'Detailed Comparison Table'}</h2>
+      <div class="alt-table-scroll">
+        <table class="alt-table">
           <thead>
-            <tr style="background: rgba(255,255,255,0.03);">
-              <th style="padding: 20px; text-align: left; font-weight: 700;">Feature</th>
-              <th style="padding: 20px; text-align: center; font-weight: 700; color: var(--fg);">Sonura</th>
-              <th style="padding: 20px; text-align: center; font-weight: 700;">{competitor}</th>
+            <tr>
+              <th>Feature</th>
+              <th class="col-sonura">Sonura</th>
+              <th>{competitor}</th>
             </tr>
           </thead>
           <tbody>
             {comparisons.map((row) => (
-              <tr style="border-top: 1px solid rgba(255,255,255,0.1);">
-                <td style="padding: 20px; font-weight: 600;">{row.feature}</td>
-                <td style={`padding: 20px; text-align: center; ${row.sonuraHighlight !== false ? 'color: #4ade80;' : ''}`}>{row.sonura}</td>
-                <td style={`padding: 20px; text-align: center; ${row.competitorHighlight ? 'color: #4ade80;' : 'color: var(--muted);'}`}>{row.competitor}</td>
+              <tr>
+                <td class="cell-feature">{row.feature}</td>
+                <td class={row.sonuraHighlight !== false ? 'cell-strong' : 'cell-weak'}>{row.sonura}</td>
+                <td class={row.competitorHighlight ? 'cell-strong' : 'cell-weak'}>{row.competitor}</td>
               </tr>
             ))}
           </tbody>
@@ -208,8 +558,9 @@ const jsonLd = [
       </div>
     </section>
 
-    <section class="alt-section" style="margin-bottom: 80px;">
-      <h2 class="alt-h2" style="font-size: 32px; font-weight: 700; margin-bottom: 24px; text-align: center;">Compare the production workflow</h2>
+    <section class="alt-section">
+      <p class="section-kicker">03 / Workflow</p>
+      <h2 class="alt-h2">Compare the production workflow</h2>
       <div class="alt-revenue-links">
         <a href="/pricing/">
           <strong>Pricing and credits</strong>
@@ -231,39 +582,42 @@ const jsonLd = [
     </section>
 
     <!-- Advantages Section -->
-    <section class="alt-section" style="margin-bottom: 80px;">
-      <h2 class="alt-h2" style="font-size: 36px; font-weight: 700; margin-bottom: 40px;">{advantagesTitle || `Why Choose Sonura Over ${competitor}?`}</h2>
-      <div class="responsive-grid-3">
-        {advantages.map((adv) => (
-          <div style="padding: 32px; background: rgba(255,255,255,0.02); border-radius: 12px;">
-            <h3 class="alt-h3" style="font-size: 24px; font-weight: 700; margin-bottom: 16px;">{adv.title}</h3>
-            <p style="color: var(--muted); line-height: 1.6;" set:html={adv.description}></p>
+    <section class="alt-section">
+      <p class="section-kicker">04 / Advantages</p>
+      <h2 class="alt-h2">{advantagesTitle || `Why Choose Sonura Over ${competitor}?`}</h2>
+      <div class="alt-advantages">
+        {advantages.map((adv, i) => (
+          <div class="alt-advantage-row">
+            <span class="alt-advantage-index">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="alt-h3">{adv.title}</h3>
+            <p class="alt-support" set:html={adv.description}></p>
           </div>
         ))}
       </div>
     </section>
 
     <!-- Use Cases Section -->
-    <section class="alt-section" style="margin-bottom: 80px;">
-      <h2 class="alt-h2" style="font-size: 36px; font-weight: 700; margin-bottom: 40px;">{useCasesTitle || `When to Use ${competitor} vs Sonura`}</h2>
+    <section class="alt-section">
+      <p class="section-kicker">05 / Use cases</p>
+      <h2 class="alt-h2">{useCasesTitle || `When to Use ${competitor} vs Sonura`}</h2>
       <div class="responsive-grid-2">
-        <div style="padding: 40px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px;">
-          <h3 class="alt-h3" style="font-size: 28px; font-weight: 700; margin-bottom: 24px; color: var(--fg);">Choose Sonura If You:</h3>
-          <ul style="list-style: none; padding: 0;">
+        <div class="use-case-panel sonura">
+          <h3 class="alt-h3">Choose Sonura If You:</h3>
+          <ul>
             {sonuraUseCases.map((item) => (
-              <li style="margin-bottom: 16px; padding-left: 32px; position: relative;">
-                <span style="position: absolute; left: 0; color: var(--primary);">✓</span>
+              <li>
+                <span class="use-case-marker">✓</span>
                 {item.text}
               </li>
             ))}
           </ul>
         </div>
-        <div style="padding: 40px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
-          <h3 class="alt-h3" style="font-size: 28px; font-weight: 700; margin-bottom: 24px;">Choose {competitor} If You:</h3>
-          <ul style="list-style: none; padding: 0; color: var(--muted);">
+        <div class="use-case-panel competitor">
+          <h3 class="alt-h3">Choose {competitor} If You:</h3>
+          <ul>
             {competitorUseCases.map((item) => (
-              <li style="margin-bottom: 16px; padding-left: 32px; position: relative;">
-                <span style="position: absolute; left: 0;">•</span>
+              <li>
+                <span class="use-case-marker">•</span>
                 {item.text}
               </li>
             ))}
@@ -273,24 +627,25 @@ const jsonLd = [
     </section>
 
     <!-- FAQ Section -->
-    <section class="alt-section" style="margin-bottom: 80px;">
-      <h2 class="alt-h2" style="font-size: 36px; font-weight: 700; margin-bottom: 40px;">Frequently Asked Questions</h2>
-      <div>
+    <section class="alt-section">
+      <p class="section-kicker">06 / FAQ</p>
+      <h2 class="alt-h2">Frequently Asked Questions</h2>
+      <div class="alt-faq-list">
         {faqs.map((faq) => (
-          <details style="padding: 24px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 16px;">
-            <summary style="font-weight: 700; font-size: 18px; margin-bottom: 12px;">{faq.question}</summary>
-            <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;" set:html={faq.answer}></p>
+          <details>
+            <summary>{faq.question}</summary>
+            <p class="alt-support" set:html={faq.answer}></p>
           </details>
         ))}
       </div>
     </section>
 
     <!-- Final CTA -->
-    <section style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 64px; text-align: center;">
-      <h2 class="alt-h2" style="font-size: 36px; font-weight: 700; margin-bottom: 24px;">{finalCtaTitle || `Try the Best ${competitor} Alternative`}</h2>
-      <p style="font-size: 20px; color: var(--muted); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">{finalCtaSubtitle || 'Free to start, no credit card required.'}</p>
-      <a href={appUrl} class="button primary large" style="display: inline-block; padding: 20px 48px; background: var(--fg); color: var(--bg); text-decoration: none; border-radius: 12px; font-weight: 700; font-size: 20px;">{finalCtaButtonText || 'Start Creating Free'}</a>
-      {finalCtaFooter && <p style="margin-top: 24px; color: var(--muted); font-size: 14px;">{finalCtaFooter}</p>}
+    <section class="alt-final-cta">
+      <h2 class="alt-h2">{finalCtaTitle || `Try the Best ${competitor} Alternative`}</h2>
+      <p class="alt-support alt-final-cta-sub">{finalCtaSubtitle || 'Free to start, no credit card required.'}</p>
+      <a href={appUrl} class="button primary large"><span class="btn-label-full">{finalCtaButtonText || 'Start Creating Free'}</span><span class="btn-label-short">Start free</span></a>
+      {finalCtaFooter && <p class="alt-final-cta-footer">{finalCtaFooter}</p>}
     </section>
   </div>
 </BaseLayout>

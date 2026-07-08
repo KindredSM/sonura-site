@@ -336,12 +336,12 @@ function initGSAPAnimations() {
       {
         y: 0,
         opacity: 1,
-        duration: 0.8,
+        duration: 0.6,
         ease: "power3.out",
         delay: delay,
         scrollTrigger: {
           trigger: element,
-          start: "top 90%",
+          start: "top 98%",
           toggleActions: "play none none reverse",
           toggleClass: "in-view"
         }
@@ -402,6 +402,10 @@ if (document.readyState === 'loading') {
 } else {
   initGSAPAnimations();
 }
+
+window.addEventListener('load', () => {
+  if (typeof ScrollTrigger !== 'undefined' && typeof ScrollTrigger.refresh === 'function') ScrollTrigger.refresh();
+});
 
 window.addEventListener('beforeunload', cleanupGSAPAnimations);
 
@@ -534,3 +538,30 @@ document.querySelectorAll('.player').forEach((player) => {
     audio.volume = Number(vol.value);
   }
 });
+
+// Smooth scrolling (Lenis) — fine pointers only, respects reduced motion
+(function () {
+  if (typeof Lenis === 'undefined') return;
+  if (!window.matchMedia('(pointer: fine)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const lenis = new Lenis({
+    duration: 0.75,
+    smoothWheel: true,
+  });
+
+  lenis.on('scroll', () => {
+    if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.update();
+  });
+
+  if (typeof gsap !== 'undefined') {
+    gsap.ticker.add((time) => lenis.raf(time * 1000));
+    gsap.ticker.lagSmoothing(0);
+  } else {
+    const raf = (time) => {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    };
+    requestAnimationFrame(raf);
+  }
+})();

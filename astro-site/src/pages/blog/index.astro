@@ -10,18 +10,14 @@ const blogPosts = [
     date: '2026-07-02',
     readTime: '7 min read',
     tag: 'Industry',
-    tagColor: 'rgba(255,255,255,0.1)',
-    tagTextColor: '#c4b5fd'
   },
   {
     slug: 'is-ai-music-allowed-on-spotify',
     title: 'Is AI Music Allowed on Spotify? What the 2026 Rules Actually Say',
-    description: 'Yes, AI-assisted music is allowed on Spotify — what gets removed is spam, impersonation, and artificial streaming. Here is the real line between AI-assisted production and content-farm uploads.',
+    description: 'Yes, AI-assisted music is allowed on Spotify. What gets removed is spam, impersonation, and artificial streaming. Here is the real line between AI-assisted production and content-farm uploads.',
     date: '2026-07-02',
     readTime: '6 min read',
     tag: 'Industry',
-    tagColor: 'rgba(255,255,255,0.1)',
-    tagTextColor: '#c4b5fd'
   },
   {
     slug: 'ai-music-consent-vs-fraud-2026',
@@ -30,8 +26,6 @@ const blogPosts = [
     date: '2026-04-15',
     readTime: '9 min read',
     tag: 'Industry',
-    tagColor: 'rgba(255,255,255,0.1)',
-    tagTextColor: '#c4b5fd'
   },
   {
     slug: 'ai-sample-generator-unique-samples',
@@ -40,8 +34,6 @@ const blogPosts = [
     date: '2025-01-15',
     readTime: '5 min read',
     tag: 'Guide',
-    tagColor: 'rgba(255,255,255,0.1)',
-    tagTextColor: '#c4b5fd'
   },
   {
     slug: 'ai-music-genjam-sonura-studio',
@@ -50,8 +42,6 @@ const blogPosts = [
     date: '2025-12-10', // Assuming date from content
     readTime: '3 min read',
     tag: 'Event',
-    tagColor: 'rgba(255,255,255,0.1)',
-    tagTextColor: '#c4b5fd'
   },
   {
     slug: 'how-to-make-trap-beats',
@@ -60,8 +50,6 @@ const blogPosts = [
     date: '2025-10-15',
     readTime: '5 min read',
     tag: 'Tutorial',
-    tagColor: 'rgba(255,255,255,0.1)',
-    tagTextColor: '#c4b5fd'
   },
   {
     slug: 'ai-music-generator-guide',
@@ -70,8 +58,6 @@ const blogPosts = [
     date: '2025-10-20',
     readTime: '4 min read',
     tag: 'Guide',
-    tagColor: 'rgba(255,255,255,0.1)',
-    tagTextColor: '#c4b5fd'
   },
   {
     slug: 'royalty-free-music-explained',
@@ -80,8 +66,6 @@ const blogPosts = [
     date: '2025-10-10',
     readTime: '3 min read',
     tag: 'Education',
-    tagColor: 'rgba(255,255,255,0.1)',
-    tagTextColor: '#c4b5fd'
   },
   {
     slug: 'how-to-release-music-on-spotify',
@@ -90,8 +74,6 @@ const blogPosts = [
     date: '2025-09-20',
     readTime: '6 min read',
     tag: 'Release Strategy',
-    tagColor: 'rgba(255,255,255,0.1)',
-    tagTextColor: '#c4b5fd'
   },
   {
     slug: 'music-production-for-beginners',
@@ -100,8 +82,6 @@ const blogPosts = [
     date: '2025-10-05',
     readTime: '6 min read',
     tag: 'Beginner Guide',
-    tagColor: 'rgba(255,255,255,0.1)',
-    tagTextColor: '#c4b5fd'
   },
   {
     slug: 'best-free-vst-plugins',
@@ -110,10 +90,17 @@ const blogPosts = [
     date: '2025-09-28',
     readTime: '6 min read',
     tag: 'Resource Guide',
-    tagColor: 'rgba(255,255,255,0.1)',
-    tagTextColor: '#c4b5fd'
   }
 ];
+
+// Slash metadata: "02 JUL 2026 / 7 MIN"
+const fmtMeta = (date: string, readTime: string) => {
+  const d = new Date(date);
+  const day = String(d.getUTCDate()).padStart(2, '0');
+  const month = d.toLocaleDateString('en-US', { month: 'short', timeZone: 'UTC' }).toUpperCase();
+  const mins = parseInt(readTime, 10);
+  return `${day} ${month} ${d.getUTCFullYear()} / ${mins} MIN`;
+};
 
 const jsonLd = [
   {
@@ -135,34 +122,126 @@ const jsonLd = [
   jsonLd={jsonLd}
 >
   <style>
+    .blog-index {
+      padding: clamp(56px, 8vh, 90px) var(--page-pad) clamp(72px, 9vw, 110px);
+    }
+    .blog-index-header {
+      text-align: left;
+      margin-bottom: 56px;
+    }
+    .blog-index-title {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(48px, 6.5vw, 92px);
+      line-height: 1;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--fg);
+      margin: 0 0 20px;
+    }
+    .blog-index-sub {
+      font-size: 17px;
+      color: var(--muted);
+      text-transform: lowercase;
+      letter-spacing: 0.022em;
+      line-height: 1.8;
+      word-spacing: 0.04em;
+      max-width: 560px;
+      margin: 0;
+    }
     .blog-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 16px;
+      background: transparent;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-panel);
       padding: 32px;
-      transition: all 0.3s ease;
+      transition: border-color 0.2s ease;
       display: flex;
       flex-direction: column;
       cursor: pointer;
       height: 100%;
     }
     .blog-card:hover {
-      background: rgba(255,255,255,0.06);
-      border-color: rgba(124,58,237,0.3);
-      transform: translateY(-4px);
+      border-color: var(--fg);
+    }
+    .blog-card-tag {
+      display: inline-block;
+      padding: 5px 10px;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-ui);
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .blog-card-title {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin: 0 0 12px;
+      color: var(--fg);
+    }
+    .blog-card-blurb {
+      color: var(--muted);
+      margin: 0 0 20px;
+      font-size: 15px;
+      line-height: 1.8;
+      letter-spacing: 0.022em;
+      word-spacing: 0.04em;
+      text-transform: lowercase;
+      flex-grow: 1;
+    }
+    .blog-card-meta {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .blog-card-more {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--fg);
     }
     /* Grid layout */
     .blog-grid {
-      display: grid; 
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 32px;
+    }
+    .blog-cta {
+      border-top: 1px solid var(--hairline);
+      padding: clamp(72px, 9vw, 110px) var(--page-pad);
+    }
+    .blog-cta-title {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(38px, 4.8vw, 68px);
+      line-height: 1;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--fg);
+      margin: 0 0 24px;
+    }
+    .blog-cta-sub {
+      font-size: 17px;
+      color: var(--muted);
+      text-transform: lowercase;
+      letter-spacing: 0.022em;
+      line-height: 1.8;
+      word-spacing: 0.04em;
+      max-width: 560px;
+      margin: 0 0 32px;
     }
   </style>
 
-  <section style="padding: 60px 24px 80px; max-width: 1280px; margin: 0 auto;">
-    <header style="text-align: center; margin-bottom: 48px;">
-      <h1 style="font-size: 48px; font-weight: 800; margin-bottom: 16px; color: var(--fg); letter-spacing: -0.02em;">Sonura Blog</h1>
-      <p style="font-size: 20px; color: var(--muted); max-width: 600px; margin: 0 auto;">Guides, tutorials, and tips for music production, AI music creation, and releasing your tracks.</p>
+  <section class="blog-index">
+    <header class="blog-index-header">
+      <p class="section-kicker">01 / Journal</p>
+      <h1 class="blog-index-title">Sonura Blog</h1>
+      <p class="blog-index-sub">Guides, tutorials, and tips for music production, AI music creation, and releasing your tracks.</p>
     </header>
 
     <div class="blog-grid">
@@ -170,13 +249,13 @@ const jsonLd = [
         <a href={`/blog/${post.slug}/`} style="text-decoration: none; color: inherit; display: block;">
           <article class="blog-card">
             <div style="margin-bottom: 16px;">
-              <span style={`display: inline-block; padding: 4px 12px; background: ${post.tagColor}; color: ${post.tagTextColor}; border-radius: 6px; font-size: 12px; font-weight: 600;`}>{post.tag}</span>
+              <span class="blog-card-tag">{post.tag}</span>
             </div>
-            <h2 style="font-size: 24px; font-weight: 700; margin-bottom: 12px; color: var(--fg);">{post.title}</h2>
-            <p style="color: var(--muted); margin-bottom: 20px; line-height: 1.6; flex-grow: 1;">{post.description}</p>
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <span style="font-size: 13px; color: var(--muted);">{post.readTime}</span>
-              <span style="color: var(--primary); text-decoration: none; font-weight: 600; font-size: 14px;">Read more →</span>
+            <h2 class="blog-card-title">{post.title}</h2>
+            <p class="blog-card-blurb">{post.description}</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 16px;">
+              <span class="blog-card-meta">{fmtMeta(post.date, post.readTime)}</span>
+              <span class="blog-card-more">Read more →</span>
             </div>
           </article>
         </a>
@@ -184,11 +263,12 @@ const jsonLd = [
     </div>
   </section>
 
-  <section style="background: rgba(255,255,255,0.03); border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 64px 24px; margin-top: 80px;">
-    <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-      <h2 style="font-size: 36px; font-weight: 700; margin-bottom: 24px; color: var(--fg);">Ready to Start Creating?</h2>
-      <p style="font-size: 18px; color: var(--muted); margin-bottom: 32px;">Create professional music in seconds with Sonura's AI music generator.</p>
-      <a href="https://app.sonurastudio.com/studio" class="button primary large" style="display: inline-block; padding: 18px 40px; background: var(--fg); color: var(--bg); text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 18px;">Try Sonura Free</a>
+  <section class="blog-cta">
+    <div style="max-width: 800px;">
+      <p class="section-kicker">02 / Start</p>
+      <h2 class="blog-cta-title">Ready to Start Creating?</h2>
+      <p class="blog-cta-sub">Create professional music in seconds with Sonura's AI music generator.</p>
+      <a href="https://app.sonurastudio.com/studio" class="button primary large" style="display: inline-block; background: var(--fg); color: var(--bg); text-decoration: none; border-radius: var(--radius-ui);">Try Sonura Free</a>
     </div>
   </section>
 </BaseLayout>

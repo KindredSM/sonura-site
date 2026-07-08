@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PricingSection from '../components/PricingSection.astro';
+import '../styles/home-editorial.css';
 
 const jsonLd = [
   {
@@ -102,6 +103,18 @@ const creatorVideos = [
     creditUrl: 'https://www.instagram.com/sdnoise/'
   }
 ];
+
+// Waveform peaks precomputed from the audio files (140 buckets, normalized 0.1-1)
+const demoTracks = [
+  { title: 'Trap Piano', meta: 'Trap / 140 BPM', src: '/music/demo/trap-140-piano.mp3', duration: '0:14',
+    peaks: [0.91,0.89,0.79,0.7,0.57,0.47,0.43,0.38,0.38,0.28,0.23,0.18,0.18,0.22,0.2,0.22,0.18,0.19,0.19,0.19,0.2,0.18,0.13,0.15,0.12,0.11,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.53,0.64,0.5,0.44,0.3,0.21,0.24,0.18,0.22,0.19,0.16,0.14,0.1,0.11,0.11,0.11,0.1,0.11,0.1,0.12,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.84,0.74,0.7,0.67,0.53,0.47,0.39,0.37,0.31,0.28,0.25,0.21,0.21,0.19,0.2,0.23,0.19,0.14,0.14,0.11,0.12,0.13,0.11,0.12,0.12,0.1,0.1,0.11,0.1,0.1,0.1,0.1,0.1,0.1,0.1,1,0.98,0.77,0.57,0.41,0.45,0.39,0.29,0.3,0.3,0.22,0.25,0.16,0.14,0.2,0.17,0.1,0.1,0.12,0.13,0.11,0.12,0.11,0.1,0.11,0.11,0.1,0.1,0.13,0.1,0.14,0.13,0.13,0.11,0.1] },
+  { title: 'UKG Drums', meta: 'UK Garage / 135 BPM', src: '/music/demo/ukg-135-drums.mp3', duration: '0:07',
+    peaks: [0.67,0.65,0.6,0.3,0.48,0.2,0.1,0.1,1,0.87,0.1,0.1,0.1,0.72,0.1,0.23,0.93,0.1,0.1,0.1,0.84,0.67,0.76,0.64,0.59,0.18,0.96,0.26,0.1,0.1,0.52,0.27,0.1,0.1,0.1,0.68,0.65,0.61,0.31,0.57,0.18,0.1,0.1,0.86,0.86,0.1,0.1,0.1,0.5,0.1,0.52,0.75,0.62,0.58,0.17,0.84,0.51,0.67,0.62,0.6,0.19,0.94,0.25,0.1,0.1,0.56,0.32,0.1,0.1,0.1,0.71,0.64,0.6,0.27,0.61,0.19,0.1,0.1,0.84,0.92,0.1,0.1,0.1,0.5,0.1,0.1,0.89,0.1,0.1,0.1,0.89,0.53,0.69,0.64,0.56,0.17,0.88,0.24,0.1,0.1,0.53,0.45,0.1,0.16,0.1,0.7,0.65,0.61,0.32,0.59,0.18,0.1,0.1,0.95,0.96,0.1,0.1,0.1,0.45,0.1,0.1,0.82,0.62,0.59,0.24,0.87,0.41,0.71,0.63,0.58,0.2,0.86,0.34,0.1,0.1,0.77,0.7,0.62,0.61,0.37] },
+  { title: 'House Vocal', meta: 'House / 120 BPM', src: '/music/demo/house-120-vocal.mp3', duration: '0:08',
+    peaks: [0.92,0.8,0.54,0.21,0.83,0.77,0.6,0.16,0.17,0.67,0.41,0.73,0.35,0.49,0.46,0.44,0.2,0.42,0.37,0.45,0.68,0.59,0.26,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.48,1,0.72,0.12,0.19,0.18,0.51,0.56,0.45,0.52,0.48,0.35,0.5,0.45,0.59,0.45,0.43,0.39,0.55,0.61,0.33,0.1,0.54,0.4,0.51,0.58,0.55,0.26,0.1,0.1,0.1,0.1,0.17,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.59,0.55,0.23,0.1,0.36,0.66,0.52,0.41,0.49,0.45,0.55,0.17,0.1,0.59,0.6,0.53,0.44,0.39,0.38,0.24,0.78,0.65,0.39,0.27,0.18,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.29,0.68,0.58,0.58,0.37,0.47,0.45,0.2,0.44,0.31,0.1,0.1,0.48,0.58,0.57,0.29,0.18,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1] },
+  { title: 'Organic Flute', meta: 'Organic / 85 BPM', src: '/music/demo/organic-85-flute.mp3', duration: '0:12',
+    peaks: [0.21,0.47,0.56,0.58,0.66,0.8,0.82,0.85,0.85,0.96,1,0.95,0.88,0.94,0.96,0.94,0.98,0.98,0.97,0.98,0.93,0.92,0.91,0.81,0.86,0.88,0.89,0.46,0.73,0.73,0.78,0.83,0.87,0.89,0.82,0.87,0.68,0.66,0.6,0.65,0.68,0.66,0.69,0.73,0.67,0.68,0.68,0.77,0.77,0.73,0.7,0.68,0.63,0.65,0.65,0.67,0.68,0.62,0.64,0.52,0.54,0.5,0.49,0.43,0.35,0.1,0.1,0.1,0.1,0.1,0.1,0.37,0.64,0.64,0.68,0.78,0.77,0.77,0.78,0.77,0.71,0.72,0.75,0.79,0.77,0.79,0.8,0.86,0.86,0.71,0.76,0.76,0.82,0.92,0.92,0.84,0.54,0.59,0.75,0.81,0.87,0.86,0.92,0.89,0.81,0.78,0.66,0.66,0.66,0.62,0.72,0.73,0.7,0.75,0.76,0.74,0.72,0.75,0.74,0.71,0.73,0.59,0.59,0.55,0.58,0.6,0.63,0.55,0.58,0.56,0.56,0.54,0.49,0.43,0.15,0.1,0.1,0.1,0.1,0.1] }
+];
 ---
 
 <BaseLayout
@@ -112,72 +125,50 @@ const creatorVideos = [
   ogTitle="Create Royalty-Free Beats, Loops & Vocals | Sonura"
   ogDescription="Royalty-free beats, loops, vocals, stems, one-shots, and full tracks, all in one place."
   jsonLd={[...jsonLd, faqSchema]}
-  bodyClass="home-page underground-home"
+  bodyClass="editorial-home"
 >
   <meta slot="head" property="og:video" content="https://www.youtube.com/watch?v=xUuqIAWetXk" />
   <meta slot="head" property="og:video:type" content="text/html" />
   <meta slot="head" property="og:video:width" content="1920" />
   <meta slot="head" property="og:video:height" content="1080" />
   <section class="hero">
-    <div class="hero-background">
-      <div class="hero-gradient"></div>
-      <div class="hero-noise"></div>
-      <svg class="cable-svg" style="z-index: 1;">
-        <defs>
-          <linearGradient id="cableGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.04" />
-            <stop offset="50%" style="stop-color:#ffffff;stop-opacity:0.12" />
-            <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.04" />
-          </linearGradient>
-          <linearGradient id="cableGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.03" />
-            <stop offset="50%" style="stop-color:#ffffff;stop-opacity:0.1" />
-            <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.03" />
-          </linearGradient>
-        </defs>
-        <path d="M -50 100 C 100 500 400 200 800 50" stroke="url(#cableGradient1)" class="cable-path" fill="none" />
-        <path d="M 1400 300 C 1000 700 800 500 400 900" stroke="url(#cableGradient2)" class="cable-path" fill="none" />
-      </svg>
-    </div>
     <div class="hero-content">
-      <div class="hero-social-proof reveal" data-reveal-delay="0.02s">
-        <div class="hero-avatars">
+      <p class="hero-kicker reveal" data-reveal-delay="0.02s">
+        <span class="hero-avatars">
           <img src="/images/doormanaus.jpg" alt="" width="32" height="32" loading="eager" />
           <img src="/images/glassbead.png" alt="" width="32" height="32" loading="eager" />
           <img src="/images/aaron.jpg" alt="" width="32" height="32" loading="eager" />
-        </div>
-        <span>Loved by 10,000+ producers</span>
-      </div>
-      <h1 class="headline reveal" data-reveal-delay="0.04s">Produce music like no one else.</h1>
-      <p class="subhead reveal" data-reveal-delay="0.06s">Create and edit vocals, instruments, samples, sound effects, and full tracks in seconds with the AI music production suite built for modern creatives.</p>
+        </span>
+        <span>Loved by 12,000+ producers</span>
+      </p>
+      <h1 class="headline reveal" data-reveal-delay="0.04s">Produce music <strong>like no one else.</strong></h1>
+      <p class="subhead reveal" data-reveal-delay="0.06s">Create and edit vocals, samples, and full tracks in seconds. Sounds no one else has, yours to shape and release.</p>
 
       <div class="cta reveal" data-reveal-delay="0.08s" id="signup">
         <div class="cta-buttons">
           <a id="cta-button" class="button primary" href="https://app.sonurastudio.com/studio">Try now</a>
           <a class="button secondary" href="/plugin/">Download Plugin</a>
         </div>
-        <a class="hero-beta-link" href="https://app.sonurastudio.com/sketches">Browse Examples</a>
       </div>
     </div>
-    <div class="hero-video reveal" data-reveal-delay="0.16s" id="hero-video-container">
-      <div class="screw tl"></div>
-      <div class="screw tr"></div>
-      <div class="screw bl"></div>
-      <div class="screw br"></div>
-      <video
-        class="hero-video-element hero-video-thumbnail"
-        id="video-thumbnail"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="metadata"
-        poster="/videos/hero-bg-poster.jpg"
-        aria-label="Sonura music creation interface preview"
-      >
-        <source src="/videos/hero-bg.webm" type="video/webm" />
-        <source src="/videos/hero-bg.mp4" type="video/mp4" />
-      </video>
+    <div class="hero-media reveal" data-reveal-delay="0.12s" id="hero-video-container">
+      <div class="hero-media-clip">
+        <video
+          class="hero-video-element hero-video-thumbnail"
+          id="video-thumbnail"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          poster="/videos/hero-bg-poster.jpg"
+          aria-label="Sonura music creation interface preview"
+        >
+          <source src="/videos/hero-bg.webm" type="video/webm" />
+          <source src="/videos/hero-bg.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <span class="hero-media-edge" aria-hidden="true"></span>
     </div>
   </section>
 
@@ -185,114 +176,124 @@ const creatorVideos = [
     <div class="demo-inner">
       <div class="demo-header">
         <div class="demo-header-content">
+          <p class="section-kicker">01 / Sounds</p>
           <h2 id="demo-title" class="demo-title">Made with Sonura</h2>
-          <p class="demo-subtitle">Tracks from the <a href="https://app.sonurastudio.com/sketches" class="community-link">Sonura community</a></p>
+          <p class="demo-subtitle">Release-ready sounds you can use commercially, straight from the suite. Hit play.</p>
         </div>
       </div>
-      <div class="demo-embeds">
-        <div class="embed-container reveal">
-          <iframe src="https://app.sonurastudio.com/embed/f68d56ae-0f06-488b-a9e5-e43fb4eccfc0" width="100%" height="120" frameborder="0" allow="autoplay; encrypted-media" style="border-radius: 0;" loading="lazy"></iframe>
-        </div>
-        <div class="embed-container reveal" data-reveal-delay="0.06s">
-          <iframe src="https://app.sonurastudio.com/embed/1bd17197-13b2-49a8-bb5b-7e9faff958ff" width="100%" height="120" frameborder="0" allow="autoplay; encrypted-media" style="border-radius: 0;" loading="lazy"></iframe>
-        </div>
-        <div class="embed-container reveal" data-reveal-delay="0.12s">
-          <iframe src="https://app.sonurastudio.com/embed/ab6eebc4-9477-4d11-bb12-f22a54dbaf94" width="100%" height="120" frameborder="0" allow="autoplay; encrypted-media" allowtransparency="true" style="display: block; background: transparent; border: 0; border-radius: 0; box-shadow: none; outline: 0;" loading="lazy"></iframe>
-        </div>
+      <div class="demo-tracks-list">
+        {demoTracks.map((track, index) => (
+          <div class="demo-track reveal" data-reveal-delay={`${index * 0.05}s`}>
+            <span class="embed-index">{String(index + 1).padStart(2, '0')}</span>
+            <button
+              class="demo-play"
+              type="button"
+              data-demo-audio={track.src}
+              aria-label={`Play ${track.title}`}
+            >
+              <svg class="demo-icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4l14 8-14 8V4z"/></svg>
+              <svg class="demo-icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>
+            </button>
+            <div class="demo-track-info">
+              <span class="demo-track-title">{track.title}</span>
+              <span class="demo-track-meta">{track.meta}</span>
+            </div>
+            <div class="demo-track-progress" role="presentation">
+              <svg class="demo-wave" viewBox={`0 0 ${track.peaks.length * 3} 40`} preserveAspectRatio="none" aria-hidden="true">
+                {track.peaks.map((p, i) => <rect x={i * 3} y={20 - p * 19} width={2} height={p * 38} />)}
+              </svg>
+              <svg class="demo-wave demo-wave-played" viewBox={`0 0 ${track.peaks.length * 3} 40`} preserveAspectRatio="none" aria-hidden="true" style="clip-path: inset(0 100% 0 0)">
+                {track.peaks.map((p, i) => <rect x={i * 3} y={20 - p * 19} width={2} height={p * 38} />)}
+              </svg>
+            </div>
+            <span class="demo-track-time" data-duration={track.duration}>{track.duration}</span>
+          </div>
+        ))}
       </div>
+      <a class="demo-explore" href="https://app.sonurastudio.com/samples">Explore community sounds</a>
     </div>
   </section>
   
   <section class="workflow" aria-labelledby="workflow-title">
-    <svg class="cable-svg" style="z-index: 0; pointer-events: none; opacity: 0.2;">
-       <path d="M 0 100 C 300 100 300 800 600 800 S 900 100 1200 100" stroke="rgba(255,255,255,0.14)" stroke-width="1" fill="none" />
-    </svg>
     <div class="workflow-inner">
-      <h2 id="workflow-title" class="workflow-title reveal">
-        <span style="display: inline-flex; align-items: center; gap: 16px;">
-          <div class="patch-point"></div>
-          From one idea to a finished track
-          <div class="patch-point"></div>
-        </span>
-      </h2>
-      <div class="workflow-grid">
-        <div class="workflow-item reveal" data-reveal-delay="0.04s">
-          <div class="workflow-image synth-panel workflow-asset-panel">
-            <div class="screw tl"></div>
-            <div class="screw tr"></div>
-            <div class="screw bl"></div>
-            <div class="screw br"></div>
+      <div class="workflow-head">
+        <p class="section-kicker reveal">02 / Workflow</p>
+        <h2 id="workflow-title" class="workflow-title reveal">From one idea to a finished track</h2>
+      </div>
+      <div class="workflow-index">
+        <article class="workflow-row reveal" data-reveal-delay="0.04s">
+          <span class="workflow-num" aria-hidden="true">01</span>
+          <div class="workflow-copy">
+            <h3>Create Original Sounds</h3>
+            <p>Stop using the same packs as everyone else. One-shots, vocals, loops, and FX made to your exact vision, every sound unique, yours, and production-ready out of the box.</p>
+          </div>
+          <div class="workflow-media">
             <picture>
               <source
                 type="image/avif"
                 srcset="/assets/workflow-design-final-768.avif 768w, /assets/workflow-design-final-1280.avif 1280w"
-                sizes="(max-width: 900px) 100vw, 50vw"
+                sizes="(max-width: 900px) 100vw, 40vw"
               />
               <source
                 type="image/webp"
                 srcset="/assets/workflow-design-final-768.webp 768w, /assets/workflow-design-final-1280.webp 1280w"
-                sizes="(max-width: 900px) 100vw, 50vw"
+                sizes="(max-width: 900px) 100vw, 40vw"
               />
               <img src="/assets/workflow-design-final-1280.webp" alt="Unique created sounds in Sonura" loading="lazy" decoding="async" width="1280" height="800" />
             </picture>
           </div>
-          <div class="workflow-content">
-            <h3 class="workflow-item-title">Create Original Sounds</h3>
-            <p class="workflow-item-description">Stop using the same packs as everyone else. One-shots, vocals, loops, and FX made to your exact vision, every sound unique, yours, and production-ready out of the box.</p>
+        </article>
+        <article class="workflow-row reveal" data-reveal-delay="0.08s">
+          <span class="workflow-num" aria-hidden="true">02</span>
+          <div class="workflow-copy">
+            <h3>Compose Full Arrangements</h3>
+            <p>Beat the blank project. Layer your sounds into full arrangements and build a finished track from a single idea, piece by piece.</p>
           </div>
-        </div>
-        <div class="workflow-item workflow-item-reverse reveal" data-reveal-delay="0.08s">
-          <div class="workflow-image synth-panel workflow-asset-panel">
-            <div class="screw tl"></div>
-            <div class="screw tr"></div>
-            <div class="screw bl"></div>
-            <div class="screw br"></div>
+          <div class="workflow-media">
             <picture>
               <source
                 type="image/avif"
                 srcset="/assets/workflow-compose-final-768.avif 768w, /assets/workflow-compose-final-1280.avif 1280w"
-                sizes="(max-width: 900px) 100vw, 50vw"
+                sizes="(max-width: 900px) 100vw, 40vw"
               />
               <source
                 type="image/webp"
                 srcset="/assets/workflow-compose-final-768.webp 768w, /assets/workflow-compose-final-1280.webp 1280w"
-                sizes="(max-width: 900px) 100vw, 50vw"
+                sizes="(max-width: 900px) 100vw, 40vw"
               />
               <img src="/assets/workflow-compose-final-1280.webp" alt="A layered multi-track arrangement in Sonura" loading="lazy" decoding="async" width="1280" height="800" />
             </picture>
           </div>
-          <div class="workflow-content">
-            <h3 class="workflow-item-title">Compose Full Arrangements</h3>
-            <p class="workflow-item-description">Beat the blank project. Layer your sounds into full arrangements and build a finished track from a single idea, piece by piece.</p>
+        </article>
+        <article class="workflow-row reveal" data-reveal-delay="0.12s">
+          <span class="workflow-num" aria-hidden="true">03</span>
+          <div class="workflow-copy">
+            <h3>Collaborate in Real Time</h3>
+            <p>Stop emailing bounces back and forth. Invite collaborators into the same session, assign roles, and keep the track moving in real time, arranging parts and sharing ideas together.</p>
           </div>
-        </div>
-        <div class="workflow-item reveal" data-reveal-delay="0.12s">
-          <div class="workflow-image synth-panel workflow-asset-panel workflow-collab-panel">
-            <div class="screw tl"></div>
-            <div class="screw tr"></div>
-            <div class="screw bl"></div>
-            <div class="screw br"></div>
+          <div class="workflow-media">
             <picture>
               <source
                 type="image/avif"
                 srcset="/assets/workflow-collab-uncropped-768.avif 768w, /assets/workflow-collab-uncropped-1280.avif 1280w"
-                sizes="(max-width: 900px) 100vw, 50vw"
+                sizes="(max-width: 900px) 100vw, 40vw"
               />
               <source
                 type="image/webp"
                 srcset="/assets/workflow-collab-uncropped-768.webp 768w, /assets/workflow-collab-uncropped-1280.webp 1280w"
-                sizes="(max-width: 900px) 100vw, 50vw"
+                sizes="(max-width: 900px) 100vw, 40vw"
               />
               <img src="/assets/workflow-collab-uncropped-1280.webp" alt="Collaborators sharing a Sonura project" loading="lazy" decoding="async" width="1280" height="800" />
             </picture>
           </div>
-          <div class="workflow-content">
-            <h3 class="workflow-item-title">Collaborate in Real Time</h3>
-            <p class="workflow-item-description">Stop emailing bounces back and forth. Invite collaborators into the same session, assign roles, and keep the track moving in real time, arranging parts and sharing ideas together.</p>
+        </article>
+        <article class="workflow-row reveal" data-reveal-delay="0.16s">
+          <span class="workflow-num" aria-hidden="true">04</span>
+          <div class="workflow-copy">
+            <h3>Publish Anywhere</h3>
+            <p>Release to Spotify, Apple Music, YouTube, SoundCloud, Deezer, Bandcamp, or any platform. Full commercial rights. No royalty splits. 100% yours.</p>
           </div>
-        </div>
-        <div class="workflow-item workflow-item-reverse workflow-publish-item reveal" data-reveal-delay="0.16s">
-          <div class="workflow-image synth-panel publish-gradient-panel" aria-hidden="true">
+          <div class="workflow-media" aria-hidden="true">
             <div class="publish-gradient-art">
               <div class="publish-logo publish-logo-one"><i class="fab fa-spotify"></i></div>
               <div class="publish-logo publish-logo-two"><i class="fab fa-youtube"></i></div>
@@ -302,22 +303,19 @@ const creatorVideos = [
               <div class="publish-logo publish-logo-six"><i class="fab fa-bandcamp"></i></div>
             </div>
           </div>
-          <div class="workflow-content">
-            <h3 class="workflow-item-title">Publish Anywhere</h3>
-            <p class="workflow-item-description">Release to Spotify, Apple Music, YouTube, SoundCloud, Deezer, Bandcamp, or any platform. Full commercial rights. No royalty splits. 100% yours.</p>
-          </div>
-        </div>
+        </article>
       </div>
       <div class="release-positioning reveal" data-reveal-delay="0.22s">
         <h3 class="release-positioning-title">Built for human artistry.</h3>
-        <p class="release-positioning-text">Sonura is for those crafting original arrangements and sound. It's built on a licensed foundation, not scraped catalogs - <a href="/how-we-work-with-artists/" style="color: var(--primary); text-decoration: none; font-weight: 600;">here's how we work with artists</a>.</p>
-        <a class="button primary release-positioning-button" href="https://app.sonurastudio.com/studio">Start Creating for Free</a>
+        <p class="release-positioning-text">Sonura is for those crafting original arrangements and sound. Built on licensed music, not scraped catalogs. It's important to us to stay on the right side of consent. <a href="/how-we-work-with-artists/" class="text-link">Here is how we work with artists</a>.</p>
+        <a class="button primary release-positioning-button" href="https://app.sonurastudio.com/studio"><span class="btn-label-full">Start Creating for Free</span><span class="btn-label-short">Start free</span></a>
       </div>
     </div>
   </section>
   <section class="creator-videos" id="creator-videos" aria-labelledby="creator-videos-title">
     <div class="creator-videos-inner">
       <div class="creator-videos-header">
+        <p class="section-kicker reveal">03 / Creators</p>
         <h2 id="creator-videos-title" class="creator-videos-title reveal">Creators using Sonura</h2>
         <p class="creator-videos-subtitle reveal" data-reveal-delay="0.04s">Short product demos from producers putting Sonura into real workflows.</p>
       </div>
@@ -373,12 +371,10 @@ const creatorVideos = [
   </div>
   <section class="testimonials" aria-labelledby="testimonials-title">
     <div class="testimonials-inner">
-      <h2 id="testimonials-title" class="testimonials-title reveal">
-        <span class="love-icon-wrapper" aria-hidden="true">
-          <i data-lucide="heart" class="love-icon"></i>
-        </span>
-        Trusted by Producers Worldwide
-      </h2>
+      <div class="testimonials-head">
+        <p class="section-kicker reveal">04 / Reviews</p>
+        <h2 id="testimonials-title" class="testimonials-title reveal">Trusted by Producers Worldwide</h2>
+      </div>
       <div class="testimonials-grid">
         <div class="testimonial-card reveal" data-reveal-delay="0.04s">
           <div class="testimonial-content">
@@ -430,12 +426,17 @@ const creatorVideos = [
 
   <section class="pricing" id="pricing" aria-labelledby="pricing-title">
     <div class="pricing-inner">
+      <div class="pricing-head">
+        <p class="section-kicker">05 / Pricing</p>
+        <h2 id="pricing-title" class="pricing-heading">Pick your plan</h2>
+      </div>
       <PricingSection showHeader={true} showTrust={true} />
     </div>
   </section>
   
   <section class="faq" id="faq" aria-labelledby="faq-title">
     <div class="faq-inner">
+      <p class="section-kicker">06 / FAQ</p>
       <h2 id="faq-title" class="faq-title">Frequently asked questions</h2>
       <div class="faq-list">
         <details class="reveal">
@@ -488,13 +489,12 @@ const creatorVideos = [
 
   <section class="final-cta" aria-labelledby="final-cta-title">
     <div class="final-cta-inner">
-      <h2 id="final-cta-title" class="final-cta-title reveal">Elevate your productions.</h2>
-      <p class="final-cta-subtitle reveal" data-reveal-delay="0.06s">Free to start. No credit card. No setup.</p>
+      <h2 id="final-cta-title" class="final-cta-title reveal">Own your sound.</h2>
+      <p class="final-cta-subtitle reveal" data-reveal-delay="0.06s">Free to start / No credit card / No setup</p>
       <div class="final-cta-form reveal" data-reveal-delay="0.12s">
         <a class="button primary large" href="https://app.sonurastudio.com/studio">Get Started Free</a>
       </div>
       <div class="final-cta-trust reveal" data-reveal-delay="0.18s">
-        <div class="trust-item"><span>No credit card required</span></div>
         <div class="trust-item"><span>Cancel anytime</span></div>
         <div class="trust-item"><span>Full commercial rights</span></div>
       </div>
@@ -502,8 +502,100 @@ const creatorVideos = [
   </section>
 </BaseLayout>
 
-<style>
-  .hero-content {
-    padding-top: 120px !important;
-  }
-</style>
+<script>
+  const rows = Array.from(document.querySelectorAll<HTMLElement>('.demo-track'));
+  const player = new Audio();
+  // In the DOM with .player-audio so script.js's pauseAllPlayers() stops it
+  // (e.g. when the creator-video modal opens)
+  player.className = 'player-audio';
+  player.hidden = true;
+  document.body.appendChild(player);
+  let activeRow: HTMLElement | null = null;
+
+  const fmt = (s: number) => {
+    if (!isFinite(s)) return '0:00';
+    const m = Math.floor(s / 60);
+    const r = Math.floor(s % 60);
+    return `${m}:${String(r).padStart(2, '0')}`;
+  };
+
+  const paint = () => {
+    if (!activeRow) return;
+    const played = activeRow.querySelector<HTMLElement>('.demo-wave-played');
+    const time = activeRow.querySelector<HTMLElement>('.demo-track-time');
+    const pct = isFinite(player.duration) && player.duration > 0
+      ? (player.currentTime / player.duration) * 100
+      : 0;
+    if (played) played.style.clipPath = `inset(0 ${Math.max(0, 100 - pct)}% 0 0)`;
+    if (time) time.textContent = fmt(player.currentTime);
+  };
+
+  const resetRow = (row: HTMLElement) => {
+    row.classList.remove('is-playing');
+    const played = row.querySelector<HTMLElement>('.demo-wave-played');
+    const time = row.querySelector<HTMLElement>('.demo-track-time');
+    if (played) played.style.clipPath = 'inset(0 100% 0 0)';
+    if (time) time.textContent = time.dataset.duration || '0:00';
+  };
+
+  rows.forEach((row) => {
+    const button = row.querySelector<HTMLButtonElement>('.demo-play');
+    const src = button?.dataset.demoAudio;
+    if (!button || !src) return;
+
+    button.addEventListener('click', () => {
+      if (activeRow === row && !player.paused) {
+        player.pause();
+        return;
+      }
+      if (activeRow && activeRow !== row) resetRow(activeRow);
+      if (activeRow !== row) {
+        player.src = src;
+        activeRow = row;
+      }
+      player.play().catch(() => {
+        if (activeRow === row) resetRow(row);
+      });
+    });
+
+    row.querySelector('.demo-track-progress')?.addEventListener('click', (event) => {
+      if (activeRow !== row || !isFinite(player.duration)) return;
+      const bar = event.currentTarget as HTMLElement;
+      const rect = bar.getBoundingClientRect();
+      const ratio = ((event as MouseEvent).clientX - rect.left) / rect.width;
+      player.currentTime = Math.max(0, Math.min(1, ratio)) * player.duration;
+      paint(); // repaint immediately so seeks are visible while paused/ended
+    });
+  });
+
+  // Smooth 60fps progress: keep the loop alive even before metadata loads
+  // (paint() guards against NaN duration until it arrives)
+  let rafId = 0;
+  const tick = () => {
+    if (!activeRow || player.paused) return;
+    paint();
+    rafId = requestAnimationFrame(tick);
+  };
+
+  player.addEventListener('play', () => {
+    if (activeRow) activeRow.classList.add('is-playing');
+    cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(tick);
+  });
+
+  // Covers our toggle AND external pauses (pauseAllPlayers from script.js)
+  player.addEventListener('pause', () => {
+    cancelAnimationFrame(rafId);
+    if (activeRow) activeRow.classList.remove('is-playing');
+  });
+
+  player.addEventListener('ended', () => {
+    cancelAnimationFrame(rafId);
+    if (activeRow) resetRow(activeRow);
+  });
+
+  player.addEventListener('error', () => {
+    cancelAnimationFrame(rafId);
+    if (activeRow) resetRow(activeRow);
+  });
+</script>

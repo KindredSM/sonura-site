@@ -9,11 +9,12 @@ const lastUpdated = "January 29, 2026";
   description="Terms of Service for Sonura, the AI music creation studio. Understand your rights, content licensing, and how to use our platform."
   keywords="sonura terms of service, sonura tos, ai music terms, sonura legal"
   canonical="https://sonurastudio.com/terms/"
-  ogTitle="Terms of Service — Sonura"
+  ogTitle="Terms of Service | Sonura"
   ogDescription="Terms of Service for Sonura music creation studio."
 >
   <section class="legal-hero">
     <div class="legal-hero-inner">
+      <p class="section-kicker">01 / Legal</p>
       <h1 class="legal-headline">Terms of Service</h1>
       <p class="legal-subhead">Last updated: {lastUpdated}</p>
     </div>
@@ -58,7 +59,7 @@ const lastUpdated = "January 29, 2026";
         <h3>4.1 Your Created Content</h3>
         <p>You retain ownership of the Created Content you create using Sonura. Subject to the licensing terms below, you have full commercial rights to use, sell, distribute, and monetize your Created Content without royalty payments to Sonura.</p>
         
-        <h3>4.2 Public Content — CC0 License</h3>
+        <h3>4.2 Public Content: CC0 License</h3>
         <p><strong>All content shared publicly on Sonura is released under the Creative Commons Zero (CC0 1.0) Universal Public Domain Dedication.</strong></p>
         <p>This applies to:</p>
         <ul>
@@ -192,37 +193,42 @@ const lastUpdated = "January 29, 2026";
 
 <style>
   .legal-hero {
-    padding: 180px 24px 80px;
-    text-align: center;
+    padding: clamp(96px, 14vh, 180px) var(--page-pad) 80px;
+    text-align: left;
     position: relative;
   }
 
   .legal-hero-inner {
     max-width: 900px;
-    margin: 0 auto;
+    margin: 0;
   }
 
   .legal-headline {
-    font-size: clamp(42px, 7vw, 64px);
-    line-height: 1.05;
+    font-family: var(--font-display);
+    font-size: clamp(44px, 6.5vw, 88px);
+    line-height: 0.98;
     margin: 0 0 24px;
-    letter-spacing: -0.04em;
-    font-weight: 700;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    font-weight: 400;
     color: var(--fg);
   }
 
   .legal-subhead {
-    font-size: 16px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
     color: var(--muted);
     margin: 0;
   }
 
   .legal-content {
-    padding: 0 24px 120px;
+    padding: 0 var(--page-pad) 120px;
   }
 
-  .legal-content-inner {
-    max-width: 800px;
+  .legal-content-inner { /* centered prose column */
+    max-width: 760px;
     margin: 0 auto;
   }
 
@@ -239,16 +245,21 @@ const lastUpdated = "January 29, 2026";
   }
 
   .legal-section h2 {
-    font-size: 24px;
-    font-weight: 600;
+    font-family: var(--font-display);
+    font-size: clamp(22px, 2.6vw, 30px);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    line-height: 1;
     margin: 0 0 24px;
     color: var(--fg);
-    letter-spacing: -0.02em;
   }
 
   .legal-section h3 {
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
     margin: 32px 0 16px;
     color: var(--fg);
   }
@@ -283,11 +294,11 @@ const lastUpdated = "January 29, 2026";
   .legal-section a {
     color: var(--fg);
     text-decoration: underline;
-    text-underline-offset: 3px;
+    text-underline-offset: 7px;
   }
 
   .legal-section a:hover {
-    color: #fff;
+    color: var(--fg);
   }
 
   .legal-section strong {
@@ -297,11 +308,11 @@ const lastUpdated = "January 29, 2026";
 
   @media (max-width: 768px) {
     .legal-hero {
-      padding: 140px 24px 60px;
+      padding: 96px var(--page-pad) 60px;
     }
 
     .legal-content {
-      padding: 0 24px 80px;
+      padding: 0 var(--page-pad) 80px;
     }
 
     .legal-section {

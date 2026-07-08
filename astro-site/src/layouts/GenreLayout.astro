@@ -63,6 +63,15 @@ const {
 const canonical = `https://sonurastudio.com/genre/${genreSlug}/`;
 const stripHtml = (value: string) => value.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
 
+/* Numbered section kickers (demo section is conditional, so numbering shifts) */
+const hasDemo = demoTracks.length > 0;
+const kickers = {
+  workflow: '01 / Workflow',
+  demo: '02 / Demos',
+  next: hasDemo ? '03 / Next steps' : '02 / Next steps',
+  faq: hasDemo ? '04 / FAQ' : '03 / FAQ',
+};
+
 const jsonLd = [
   {
     "@context": "https://schema.org",
@@ -107,66 +116,81 @@ const jsonLd = [
   bodyClass="genre-page"
 >
   <style>
+    .hero-beta-link {
+      align-self: flex-start;
+    }
     .genre-next {
-      padding: 88px 24px;
-      background: rgba(255,255,255,0.02);
+      border-top: 1px solid var(--hairline);
+      padding: clamp(72px, 9vw, 110px) var(--page-pad);
     }
     .genre-next-inner {
-      max-width: 1100px;
-      margin: 0 auto;
+      max-width: none;
+      margin: 0;
     }
     .genre-next-title {
-      margin: 0 0 28px;
-      text-align: center;
-      font-size: clamp(24px, 3.5vw, 36px);
-      letter-spacing: -0.02em;
+      margin: 0 0 48px;
+      text-align: left;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(38px, 4.8vw, 68px);
+      letter-spacing: 0.01em;
+      line-height: 1;
+      text-transform: uppercase;
+      color: var(--fg);
     }
     .genre-next-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 12px;
+      display: block;
+      counter-reset: genre-next;
+      border-bottom: 1px solid var(--hairline);
     }
     .genre-next-link {
-      display: block;
-      min-height: 124px;
-      padding: 18px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
+      counter-increment: genre-next;
+      display: grid;
+      grid-template-columns: 64px minmax(0, 300px) 1fr;
+      gap: 24px;
+      align-items: baseline;
+      padding: 22px 0;
+      border-top: 1px solid var(--hairline);
+      border-radius: var(--radius-ui);
       color: var(--fg);
       text-decoration: none;
-      background: rgba(0,0,0,0.18);
-      transition: border-color 0.2s, background 0.2s;
+      transition: color 0.2s;
     }
-    .genre-next-link:hover {
-      border-color: var(--border-light);
-      background: rgba(255,255,255,0.04);
+    .genre-next-link::before {
+      content: counter(genre-next, decimal-leading-zero);
+      font-size: 13px;
+      font-variant-numeric: tabular-nums;
+      color: var(--faint);
     }
     .genre-next-link strong {
       display: block;
-      margin-bottom: 8px;
-      font-size: 14px;
-      line-height: 1.25;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      line-height: 1.4;
+      color: var(--fg);
     }
     .genre-next-link span {
       display: block;
       color: var(--muted);
-      font-size: 12px;
-      line-height: 1.45;
+      font-size: 14px;
+      text-transform: lowercase;
+      letter-spacing: 0.022em;
+      word-spacing: 0.04em;
+      line-height: 1.8;
+      transition: color 0.2s;
     }
-    @media (max-width: 900px) {
-      .genre-next-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+    .genre-next-link:hover span {
+      color: var(--fg);
     }
-    @media (max-width: 560px) {
-      .genre-next {
-        padding: 64px 24px;
-      }
-      .genre-next-grid {
-        grid-template-columns: 1fr;
-      }
+    @media (max-width: 768px) {
       .genre-next-link {
-        min-height: auto;
+        grid-template-columns: 40px 1fr;
+        gap: 8px 16px;
+      }
+      .genre-next-link span {
+        grid-column: 2;
       }
     }
   </style>
@@ -175,26 +199,10 @@ const jsonLd = [
     <div class="hero-background">
       <div class="hero-gradient"></div>
       <div class="hero-noise"></div>
-      <svg class="cable-svg" style="z-index: 1;">
-        <defs>
-          <linearGradient id="cableGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:0.2" />
-            <stop offset="50%" style="stop-color:#a78bfa;stop-opacity:0.6" />
-            <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:0.2" />
-          </linearGradient>
-          <linearGradient id="cableGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" style="stop-color:#5b21b6;stop-opacity:0.2" />
-            <stop offset="50%" style="stop-color:#7c3aed;stop-opacity:0.5" />
-            <stop offset="100%" style="stop-color:#5b21b6;stop-opacity:0.2" />
-          </linearGradient>
-        </defs>
-        <path d="M -50 100 C 100 500 400 200 800 50" stroke="url(#cableGradient1)" class="cable-path" fill="none" />
-        <path d="M 1400 300 C 1000 700 800 500 400 900" stroke="url(#cableGradient2)" class="cable-path" fill="none" />
-      </svg>
     </div>
     <div class="hero-content">
       <h1 class="headline reveal">{headline}</h1>
-      <p class="subhead reveal" data-reveal-delay="0.06s" style="max-width: 70vw; margin-left: auto; margin-right: auto;">{subhead}</p>
+      <p class="subhead reveal" data-reveal-delay="0.06s">{subhead}</p>
       <div class="cta">
         <a class="button primary" href={appUrl}>{ctaText}</a>
         <a class="hero-beta-link" href="/">Explore all genres →</a>
@@ -204,6 +212,7 @@ const jsonLd = [
   
   <section class="workflow" aria-labelledby="workflow-title">
     <div class="workflow-inner">
+      <p class="section-kicker">{kickers.workflow}</p>
       <h2 id="workflow-title" class="workflow-title reveal">{workflowTitle}</h2>
       <div class="workflow-grid">
         {workflowItems.map((item, index) => (
@@ -226,6 +235,7 @@ const jsonLd = [
       <div class="demo-inner">
         <div class="demo-header">
           <div class="demo-header-content">
+            <p class="section-kicker">{kickers.demo}</p>
             <h2 id="demo-title" class="demo-title">{demoTitle || `Hear ${genre} Beats Made with Sonura`}</h2>
           </div>
         </div>
@@ -277,6 +287,7 @@ const jsonLd = [
 
   <section class="genre-next" aria-labelledby="genre-next-title">
     <div class="genre-next-inner">
+      <p class="section-kicker">{kickers.next}</p>
       <h2 id="genre-next-title" class="genre-next-title">Finish the {genre} workflow</h2>
       <div class="genre-next-grid">
         <a class="genre-next-link" href="/pricing/">
@@ -305,6 +316,7 @@ const jsonLd = [
 
   <section class="faq" id="faq" aria-labelledby="faq-title">
     <div class="faq-inner">
+      <p class="section-kicker">{kickers.faq}</p>
       <h2 id="faq-title" class="faq-title">{genre} Beat Maker FAQ</h2>
       <div class="faq-list">
         {faqs.map((faq, index) => (

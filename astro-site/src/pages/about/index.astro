@@ -59,8 +59,8 @@ const jsonLd = [
 >
   <section class="about-hero">
     <div class="about-hero-inner">
-      <h1 class="about-headline reveal">Original audio, without the friction</h1>
-      <p class="about-subhead reveal" data-reveal-delay="0.04s">Sonura gives creators and professionals the tools to make music and design sound at the speed of thought, without replacing the human spark that drives them.</p>
+      <h1 class="about-headline reveal">Sounds that don't exist yet</h1>
+      <p class="about-subhead reveal" data-reveal-delay="0.04s">Everyone pulls from the same packs. Sonura makes new sounds instead: original audio you can shape in seconds, and every creative decision stays yours.</p>
     </div>
   </section>
 
@@ -68,6 +68,7 @@ const jsonLd = [
     <div class="about-section-inner">
       <div class="mission-grid">
         <div class="mission-content reveal">
+          <p class="section-kicker">01 / Mission</p>
           <h2 class="section-title">The Problem</h2>
           <p class="section-text">Audio creation has been gatekept by expensive gear, years of technical training, and software with steep learning curves. Creators who need original sound are forced to overpay for custom work or settle for generic stock audio that thousands of others are already using.</p>
           <p class="section-text">The demand for distinctive music, sound effects, stems, samples, and branded audio is growing across every industry. Traditional workflows can't keep up.</p>
@@ -96,6 +97,7 @@ const jsonLd = [
     <div class="about-section-inner">
       <div class="solution-grid">
         <div class="solution-content reveal">
+          <p class="section-kicker">02 / Approach</p>
           <h2 class="section-title">What Sonura Does</h2>
           <p class="section-text">Sonura turns text descriptions into studio-quality music, loops, vocals, one-shots, sound effects, and full tracks. It's designed for rapid iteration: create, refine, export stems, and keep moving. Professional-grade audio without the traditional overhead.</p>
           <p class="section-text">Whether you're scoring a game, building a sample library, designing sounds for a video, producing your next release, or creating content, Sonura adapts to your workflow.</p>
@@ -113,7 +115,7 @@ const jsonLd = [
               <h3 class="context-title">Our Approach</h3>
               <p class="context-text">Sonura is designed to extend your imagination and speed up your process, not to replace the creative decisions that make sound and music human.</p>
               <p class="context-text">We're building tools that keep musicians and audio creators in control, with command over every stem, layer, texture, and detail.</p>
-              <p class="context-text">We're also built on the consent side of AI music — a licensed foundation, not scraped catalogs. <a href="/how-we-work-with-artists/" style="color: var(--primary); text-decoration: none;">See how we work with artists</a>.</p>
+              <p class="context-text">We're also built on the consent side of AI music: licensed, not scraped. Tools trained on scraped catalogs are in court over it, and what you make with them sits on shaky commercial ground. What you make here is cleared to release and sell. <a href="/how-we-work-with-artists/" class="text-link">See how we work with artists</a>.</p>
             </div>
           </div>
         </div>
@@ -123,6 +125,7 @@ const jsonLd = [
 
   <section class="about-section product-section">
     <div class="about-section-inner">
+      <p class="section-kicker">03 / Product</p>
       <div class="product-header reveal">
         <h2 class="section-title">Our Product</h2>
         <div class="product-stage">
@@ -172,6 +175,7 @@ const jsonLd = [
 
   <section class="about-section team-section" id="founders">
     <div class="about-section-inner">
+      <p class="section-kicker">04 / Founders</p>
       <h2 class="section-title center reveal">Meet the Founders</h2>
       
       <div class="team-grid">
@@ -233,6 +237,7 @@ const jsonLd = [
   <section class="about-section contact-section">
     <div class="about-section-inner">
       <div class="contact-card reveal">
+        <p class="section-kicker">05 / Contact</p>
         <h2 class="contact-title">Get in Touch</h2>
         <p class="contact-text">Questions, partnerships, or feedback. We're always listening.</p>
         <div class="contact-actions">
@@ -247,55 +252,64 @@ const jsonLd = [
 
 <style>
   .about-hero {
-    padding: 180px 24px 120px;
-    text-align: center;
+    padding: clamp(96px, 14vh, 180px) var(--page-pad) clamp(72px, 9vw, 120px);
+    text-align: left;
     position: relative;
   }
 
   .about-hero-inner {
-    max-width: 900px;
-    margin: 0 auto;
+    max-width: 1100px;
+    margin: 0;
   }
 
   .about-headline {
-    font-size: clamp(42px, 7vw, 72px);
-    line-height: 1.05;
+    font-family: var(--font-display);
+    font-size: clamp(48px, 7vw, 104px);
+    line-height: 0.96;
     margin: 0 0 32px;
-    letter-spacing: -0.04em;
-    font-weight: 700;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    font-weight: 400;
     color: var(--fg);
-    text-align: center;
+    text-align: left;
   }
 
   .about-subhead {
-    font-size: clamp(18px, 2.5vw, 24px);
+    font-size: 17px;
     color: var(--muted);
-    line-height: 1.6;
-    margin: 0 auto;
-    max-width: 720px;
+    line-height: 1.8;
+    letter-spacing: 0.022em;
+    word-spacing: 0.04em;
+    text-transform: lowercase;
+    margin: 0;
+    max-width: 640px;
     font-weight: 400;
-    text-align: center;
+    text-align: left;
   }
 
   .about-section {
-    padding: 100px 24px;
+    padding: clamp(72px, 9vw, 110px) var(--page-pad);
+    border-top: 1px solid var(--hairline);
   }
 
   .about-section-inner {
-    max-width: 1280px;
-    margin: 0 auto;
+    max-width: none;
+    margin: 0;
   }
 
   .section-title {
-    font-size: clamp(32px, 5vw, 42px);
-    letter-spacing: -0.03em;
+    font-family: var(--font-display);
+    font-size: clamp(38px, 4.8vw, 68px);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    line-height: 1;
     margin: 0 0 32px;
-    font-weight: 700;
+    font-weight: 400;
     color: var(--fg);
   }
 
   .section-title.center {
-    text-align: center;
+    text-align: left;
     margin-bottom: 64px;
   }
 
@@ -304,6 +318,7 @@ const jsonLd = [
     color: var(--muted);
     line-height: 1.8;
     margin: 0 0 24px;
+    max-width: 760px;
   }
 
   .section-text:last-of-type {
@@ -322,43 +337,11 @@ const jsonLd = [
   .solution-visual {
     padding: 64px;
     background: var(--panel-bg);
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    box-shadow: 0 20px 40px -20px rgba(0,0,0,0.5);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-panel);
+    box-shadow: none;
     position: relative;
   }
-
-  /* Refined corner accents instead of screws for text panels */
-  .mission-visual::before,
-  .solution-visual::before,
-  .product-image::before {
-    content: '';
-    position: absolute;
-    top: -1px;
-    left: -1px;
-    width: 20px;
-    height: 20px;
-    border-top: 2px solid var(--border-light);
-    border-left: 2px solid var(--border-light);
-    opacity: 0.5;
-  }
-
-  .mission-visual::after,
-  .solution-visual::after,
-  .product-image::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    right: -1px;
-    width: 20px;
-    height: 20px;
-    border-bottom: 2px solid var(--border-light);
-    border-right: 2px solid var(--border-light);
-    opacity: 0.5;
-  }
-  
-  /* Hide the purple screws */
-  .screw { display: none; }
 
   .mission-stats {
     display: flex;
@@ -373,20 +356,21 @@ const jsonLd = [
   }
 
   .stat-number {
+    font-family: var(--font-display);
     font-size: clamp(48px, 6vw, 64px);
-    font-weight: 700;
-    letter-spacing: -0.04em;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
     color: var(--fg);
     line-height: 1;
   }
 
   .stat-label {
-    font-size: 13px;
+    font-size: 12px;
     color: var(--muted);
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     font-weight: 500;
-    opacity: 0.7;
   }
 
   .target-audience {
@@ -396,12 +380,12 @@ const jsonLd = [
   }
 
   .audience-title {
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 13px;
+    font-weight: 700;
     margin: 0 0 16px;
     color: var(--fg);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.12em;
   }
 
   .audience-text p {
@@ -418,16 +402,13 @@ const jsonLd = [
     box-shadow: none;
   }
 
-  .industry-context::before, .industry-context::after {
-    display: none;
-  }
-
   .context-title {
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
     margin: 0 0 24px;
     color: var(--fg);
-    letter-spacing: -0.02em;
   }
 
   .context-text {
@@ -435,6 +416,9 @@ const jsonLd = [
     color: var(--muted);
     line-height: 1.7;
     margin: 0 0 16px;
+    text-transform: lowercase;
+    letter-spacing: 0.022em;
+    line-height: 1.8;
   }
 
   .product-header {
@@ -442,7 +426,7 @@ const jsonLd = [
     justify-content: space-between;
     align-items: baseline;
     margin-bottom: 64px;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--hairline);
     padding-bottom: 24px;
   }
 
@@ -453,11 +437,11 @@ const jsonLd = [
   }
 
   .stage-text {
-    font-size: 14px;
-    color: var(--fg); /* Changed from accent to fg */
+    font-size: 12px;
+    color: var(--muted);
     font-weight: 500;
-    letter-spacing: 0.02em;
-    opacity: 0.8;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
   }
 
   .product-grid {
@@ -470,7 +454,8 @@ const jsonLd = [
   .product-image {
     position: relative;
     background: var(--panel-bg);
-    border: 1px solid var(--border);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-panel);
     padding: 12px; /* Inner frame padding */
   }
 
@@ -501,10 +486,11 @@ const jsonLd = [
 
   .feature-content h4 {
     margin: 0 0 8px;
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 13px;
+    font-weight: 700;
     color: var(--fg);
-    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
   }
 
   .feature-content p {
@@ -521,20 +507,20 @@ const jsonLd = [
     font-size: 14px;
     font-weight: 500;
     margin-top: 16px;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--hairline);
     padding-bottom: 2px;
     align-self: flex-start;
-    transition: all 0.2s;
+    transition: border-color 0.2s, color 0.2s;
   }
 
   .features-link:hover {
-    color: #fff;
-    border-color: #fff;
+    color: var(--fg);
+    border-color: var(--fg);
   }
 
   .team-grid {
     max-width: 980px;
-    margin: 0 auto;
+    margin: 0;
     display: flex;
     flex-direction: column;
     gap: 96px;
@@ -555,7 +541,8 @@ const jsonLd = [
   .founder-image {
     width: 100%;
     aspect-ratio: 1;
-    border-radius: 2px;
+    border-radius: var(--radius-panel);
+    border: 1px solid var(--hairline);
     overflow: hidden;
     filter: grayscale(100%);
     transition: filter 0.5s ease;
@@ -581,22 +568,24 @@ const jsonLd = [
   }
 
   .founder-name {
-    font-size: 32px;
-    font-weight: 700;
-    margin: 0 0 4px;
-    letter-spacing: -0.03em;
+    font-family: var(--font-display);
+    font-size: clamp(24px, 2.8vw, 38px);
+    font-weight: 400;
+    margin: 0 0 8px;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    line-height: 1;
     color: var(--fg);
   }
 
   .founder-role {
     display: block;
-    font-size: 14px;
-    color: var(--muted); /* Changed from accent */
+    font-size: 12px;
+    color: var(--muted);
     margin-bottom: 32px;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.12em;
     font-weight: 500;
-    opacity: 0.8;
   }
 
   .founder-bio {
@@ -624,17 +613,13 @@ const jsonLd = [
 
   .linkedin-link {
     display: inline-block;
-    color: var(--muted);
-    text-decoration: none;
+    color: var(--fg);
     font-size: 14px;
-    font-weight: 500;
-    transition: color 0.2s;
-    border-bottom: 1px solid transparent;
-  }
-
-  .linkedin-link:hover {
-    color: #fff;
-    border-bottom-color: #fff;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 7px;
+    text-decoration-color: currentColor;
   }
 
   .contact-section {
@@ -643,50 +628,45 @@ const jsonLd = [
 
   .contact-card {
     max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
+    margin: 0;
+    text-align: left;
     padding: 0;
     background: transparent;
     border: none;
   }
 
   .contact-title {
-    font-size: clamp(32px, 5vw, 48px);
+    font-family: var(--font-display);
+    font-size: clamp(38px, 4.8vw, 68px);
     margin: 0 0 24px;
-    letter-spacing: -0.03em;
-    font-weight: 700;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    line-height: 1;
+    font-weight: 400;
+    color: var(--fg);
   }
 
   .contact-text {
-    font-size: 18px;
+    font-size: 17px;
     color: var(--muted);
     margin: 0 0 48px;
-    line-height: 1.6;
+    line-height: 1.8;
+    letter-spacing: 0.022em;
+    word-spacing: 0.04em;
+    text-transform: lowercase;
   }
 
   .contact-actions {
     display: flex;
     gap: 16px;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     font-size: 18px;
   }
 
-  .text-link {
-    color: var(--fg);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s;
-  }
-  
-  .text-link:hover {
-    color: #fff;
-    text-decoration: underline;
-    text-underline-offset: 4px;
-  }
-  
+
   .separator {
-    color: var(--border);
+    color: var(--faint);
   }
 
   @media (max-width: 900px) {
@@ -709,11 +689,11 @@ const jsonLd = [
 
     .founder-image {
       width: 200px;
-      margin: 0 auto;
+      margin: 0;
     }
-    
+
     .founder-info {
-      text-align: center;
+      text-align: left;
     }
 
     .founder-bio {
@@ -723,11 +703,11 @@ const jsonLd = [
 
   @media (max-width: 768px) {
     .about-hero {
-      padding: 140px 24px 80px;
+      padding: 96px var(--page-pad) 72px;
     }
 
     .about-section {
-      padding: 64px 24px;
+      padding: 64px var(--page-pad);
     }
 
     .mission-visual,
@@ -743,13 +723,14 @@ const jsonLd = [
     
     .contact-actions {
       flex-direction: column;
+      align-items: flex-start;
       gap: 12px;
     }
-    
+
     .founder-links {
       flex-direction: column;
       gap: 20px;
-      align-items: center;
+      align-items: flex-start;
     }
     
     .separator { display: none; }

@@ -109,14 +109,24 @@ const jsonLd = [
 >
   <style>
     .benefit-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
-    .example-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
-    
+
     @media (min-width: 640px) {
       .benefit-grid { grid-template-columns: repeat(2, 1fr); }
     }
-    
+
     @media (min-width: 1024px) {
       .benefit-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .cta .hero-beta-link { align-self: flex-start; }
+
+    .usecase-section {
+      border-top: 1px solid var(--hairline);
+      padding: clamp(72px, 9vw, 110px) var(--page-pad);
+    }
+
+    .usecase-section .workflow-title {
+      margin: 0 0 48px;
     }
 
     .problem-solution {
@@ -131,47 +141,93 @@ const jsonLd = [
       }
     }
 
-    .problem-card {
-      padding: 40px;
-      background: rgba(239, 68, 68, 0.05);
-      border: 1px solid rgba(239, 68, 68, 0.2);
-      border-radius: 16px;
-    }
-
+    .problem-card,
     .solution-card {
       padding: 40px;
-      background: rgba(34, 197, 94, 0.05);
-      border: 1px solid rgba(34, 197, 94, 0.2);
-      border-radius: 16px;
+      background: transparent;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-panel);
+    }
+
+    .ps-title {
+      margin: 0 0 20px;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(24px, 2.8vw, 38px);
+      line-height: 1;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--fg);
     }
 
     .benefit-card {
       padding: 28px;
-      background: rgba(255,255,255,0.02);
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.1);
+      background: transparent;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-panel);
       transition: border-color 0.2s;
     }
 
     .benefit-card:hover {
-      border-color: var(--primary);
+      border-color: var(--fg);
+    }
+
+    .card-title {
+      margin: 0 0 14px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--fg);
+    }
+
+    .card-desc {
+      margin: 0;
+      font-size: 15px;
+      color: var(--muted);
+      text-transform: lowercase;
+      letter-spacing: 0.022em;
+      line-height: 1.8;
+      word-spacing: 0.04em;
+    }
+
+    .example-grid {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid var(--hairline);
     }
 
     .example-card {
-      padding: 24px;
-      background: rgba(255,255,255,0.03);
-      border-radius: 12px;
-      border-left: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      align-items: baseline;
+      gap: 28px;
+      padding: 24px 0;
+      border-top: 1px solid var(--hairline);
+      background: transparent;
+    }
+
+    .example-index {
+      flex-shrink: 0;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      font-variant-numeric: tabular-nums;
+      color: var(--faint);
     }
 
     .example-prompt {
-      font-family: monospace;
-      background: rgba(0,0,0,0.3);
-      padding: 12px 16px;
-      border-radius: 8px;
-      margin-bottom: 12px;
+      font-family: var(--font-body);
+      margin: 0 0 10px;
       font-size: 14px;
+      letter-spacing: 0.02em;
       color: var(--primary);
+    }
+
+    @media (max-width: 640px) {
+      .problem-card,
+      .solution-card { padding: 28px; }
+      .benefit-card { padding: 24px; }
+      .example-card { gap: 18px; }
     }
   </style>
 
@@ -179,26 +235,10 @@ const jsonLd = [
     <div class="hero-background">
       <div class="hero-gradient"></div>
       <div class="hero-noise"></div>
-      <svg class="cable-svg" style="z-index: 1;">
-        <defs>
-          <linearGradient id="cableGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:0.2" />
-            <stop offset="50%" style="stop-color:#a78bfa;stop-opacity:0.6" />
-            <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:0.2" />
-          </linearGradient>
-          <linearGradient id="cableGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" style="stop-color:#5b21b6;stop-opacity:0.2" />
-            <stop offset="50%" style="stop-color:#7c3aed;stop-opacity:0.5" />
-            <stop offset="100%" style="stop-color:#5b21b6;stop-opacity:0.2" />
-          </linearGradient>
-        </defs>
-        <path d="M -50 100 C 100 500 400 200 800 50" stroke="url(#cableGradient1)" class="cable-path" fill="none" />
-        <path d="M 1400 300 C 1000 700 800 500 400 900" stroke="url(#cableGradient2)" class="cable-path" fill="none" />
-      </svg>
     </div>
     <div class="hero-content">
       <h1 class="headline reveal">{headline}</h1>
-      <p class="subhead reveal" data-reveal-delay="0.06s" style="max-width: 70vw; margin-left: auto; margin-right: auto;">{subhead}</p>
+      <p class="subhead reveal" data-reveal-delay="0.06s">{subhead}</p>
       <div class="cta">
         <a class="button primary" href={appUrl}>{ctaText}</a>
         <a class="hero-beta-link" href="/use-cases/">All Use Cases →</a>
@@ -206,51 +246,52 @@ const jsonLd = [
     </div>
   </section>
 
-  <section style="padding: 80px 24px;" aria-labelledby="problem-solution-title">
-    <div style="max-width: 1000px; margin: 0 auto;">
-      <div class="problem-solution">
-        <div class="problem-card reveal">
-          <h2 style="font-size: 24px; font-weight: 700; margin-bottom: 16px; color: #ef4444;">{problemTitle}</h2>
-          <p style="color: var(--muted); line-height: 1.7;">{problemDescription}</p>
-        </div>
-        <div class="solution-card reveal" data-reveal-delay="0.1s">
-          <h2 style="font-size: 24px; font-weight: 700; margin-bottom: 16px; color: #22c55e;">{solutionTitle}</h2>
-          <p style="color: var(--muted); line-height: 1.7;">{solutionDescription}</p>
-        </div>
+  <section class="usecase-section" aria-labelledby="problem-solution-title">
+    <p class="section-kicker">01 / Problem / Solution</p>
+    <div class="problem-solution">
+      <div class="problem-card reveal">
+        <h2 class="ps-title">{problemTitle}</h2>
+        <p class="card-desc">{problemDescription}</p>
+      </div>
+      <div class="solution-card reveal" data-reveal-delay="0.1s">
+        <h2 class="ps-title">{solutionTitle}</h2>
+        <p class="card-desc">{solutionDescription}</p>
       </div>
     </div>
   </section>
 
-  <section style="padding: 80px 24px; background: rgba(0,0,0,0.2);" aria-labelledby="benefits-title">
-    <div style="max-width: 1280px; margin: 0 auto;">
-      <h2 id="benefits-title" class="workflow-title reveal" style="text-align: center; margin-bottom: 48px;">Why Sonura for {useCase}</h2>
-      <div class="benefit-grid">
-        {benefits.map((benefit, index) => (
-          <div class="benefit-card reveal" data-reveal-delay={`${0.06 * index}s`}>
-            <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 12px; color: var(--fg);">{benefit.title}</h3>
-            <p style="color: var(--muted); line-height: 1.6; font-size: 15px;" set:html={benefit.description}></p>
-          </div>
-        ))}
-      </div>
+  <section class="usecase-section" aria-labelledby="benefits-title">
+    <p class="section-kicker">02 / Benefits</p>
+    <h2 id="benefits-title" class="workflow-title reveal">Why Sonura for {useCase}</h2>
+    <div class="benefit-grid">
+      {benefits.map((benefit, index) => (
+        <div class="benefit-card reveal" data-reveal-delay={`${0.06 * index}s`}>
+          <h3 class="card-title">{benefit.title}</h3>
+          <p class="card-desc" set:html={benefit.description}></p>
+        </div>
+      ))}
     </div>
   </section>
 
-  <section style="padding: 80px 24px;" aria-labelledby="examples-title">
-    <div style="max-width: 800px; margin: 0 auto;">
-      <h2 id="examples-title" class="workflow-title reveal" style="text-align: center; margin-bottom: 48px;">{examplesTitle || 'Example Prompts'}</h2>
-      <div class="example-grid">
-        {examples.map((example, index) => (
-          <div class="example-card reveal" data-reveal-delay={`${0.06 * index}s`}>
+  <section class="usecase-section" aria-labelledby="examples-title">
+    <p class="section-kicker">03 / Examples</p>
+    <h2 id="examples-title" class="workflow-title reveal">{examplesTitle || 'Example Prompts'}</h2>
+    <div class="example-grid">
+      {examples.map((example, index) => (
+        <div class="example-card reveal" data-reveal-delay={`${0.06 * index}s`}>
+          <span class="example-index">{String(index + 1).padStart(2, '0')}</span>
+          <div>
             <div class="example-prompt">"{example.prompt}"</div>
-            <p style="color: var(--muted); font-size: 14px; line-height: 1.5;" set:html={example.description}></p>
+            <p class="card-desc" set:html={example.description}></p>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   </section>
 
   <section class="faq" id="faq" aria-labelledby="faq-title">
     <div class="faq-inner">
+      <p class="section-kicker">04 / FAQ</p>
       <h2 id="faq-title" class="faq-title">{useCase} FAQ</h2>
       <div class="faq-list">
         {faqs.map((faq, index) => (

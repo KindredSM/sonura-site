@@ -121,9 +121,9 @@ const currentYear = new Date().getFullYear();
   }
 
   .footer-inner {
-    max-width: 1280px;
+    max-width: none;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 var(--page-pad);
   }
 
   .footer-grid {
@@ -177,7 +177,7 @@ const currentYear = new Date().getFullYear();
   .footer-social-link {
     width: 40px;
     height: 40px;
-    border-radius: 12px;
+    border-radius: 0;
     background: rgba(255,255,255,0.05);
     border: 1px solid var(--border);
     display: flex;
@@ -192,7 +192,6 @@ const currentYear = new Date().getFullYear();
     background: rgba(255,255,255,0.1);
     color: var(--fg);
     border-color: var(--border-light);
-    transform: translateY(-2px);
   }
 
   .footer-social-link i, 
@@ -203,11 +202,11 @@ const currentYear = new Date().getFullYear();
   }
 
   .footer-heading {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 600;
     color: var(--fg);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.14em;
     margin: 0 0 24px 0;
   }
 

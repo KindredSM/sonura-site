@@ -5,7 +5,7 @@ const jsonLd = [
   {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: 'Free Music Tools — Sonura',
+    name: 'Free Music Tools | Sonura',
     url: 'https://sonurastudio.com/tools/',
     description:
       'Free music production tools: beat maker, loops, vocals, stems, drums, samples, and more.',
@@ -84,73 +84,94 @@ const tools = [
   description="Free music production tools online: beat maker, loop maker, vocal generator, stem separator, drums, samples, and more. Create in Sonura."
   keywords="free music production tools online, music tools, beat maker online, stem separator free, vocal generator, music tools free"
   canonical="https://sonurastudio.com/tools/"
-  ogTitle="Free Music Tools — Sonura"
+  ogTitle="Free Music Tools | Sonura"
   ogDescription="Beats, loops, vocals, stems, drums, and samples. Create in Sonura."
   jsonLd={jsonLd}
   bodyClass="tools-index-page"
 >
   <style>
     .ti-hero {
-      padding: 160px 24px 80px;
-      text-align: center;
-      max-width: 720px;
-      margin: 0 auto;
+      padding: clamp(56px, 9vh, 110px) var(--page-pad) clamp(72px, 9vw, 110px);
+      text-align: left;
     }
     .ti-hero h1 {
-      font-size: clamp(32px, 5vw, 48px);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      margin: 0 0 20px;
-      line-height: 1.1;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(48px, 7vw, 104px);
+      line-height: 0.98;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      margin: 0 0 28px;
       color: var(--fg);
     }
     .ti-hero p {
       color: var(--muted);
-      font-size: clamp(15px, 1.8vw, 17px);
-      line-height: 1.6;
+      font-size: 17px;
+      max-width: 560px;
+      text-transform: lowercase;
+      letter-spacing: 0.022em;
+      word-spacing: 0.04em;
+      line-height: 1.8;
       margin: 0;
     }
     .ti-grid-wrap {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 60px 24px 120px;
+      border-top: 1px solid var(--hairline);
+      padding: clamp(72px, 9vw, 110px) var(--page-pad) clamp(96px, 12vw, 140px);
     }
     .ti-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-    }
-    @media (max-width: 768px) {
-      .ti-grid { grid-template-columns: 1fr; }
+      display: block;
+      counter-reset: ti-tool;
+      border-bottom: 1px solid var(--hairline);
     }
     .ti-card {
-      display: flex;
-      flex-direction: column;
-      padding: 28px;
-      background: var(--bg);
+      counter-increment: ti-tool;
+      display: grid;
+      grid-template-columns: 64px minmax(0, 300px) 1fr;
+      gap: 24px;
+      align-items: baseline;
+      padding: 22px 0;
+      border-top: 1px solid var(--hairline);
+      border-radius: var(--radius-ui);
+      background: transparent;
       text-decoration: none;
       color: inherit;
-      transition: background 0.15s;
     }
-    .ti-card:hover {
-      background: rgba(255,255,255,0.03);
+    .ti-card::before {
+      content: counter(ti-tool, decimal-leading-zero);
+      font-size: 13px;
+      font-variant-numeric: tabular-nums;
+      color: var(--faint);
     }
     .ti-card h2 {
-      margin: 0 0 8px;
-      font-size: 16px;
+      margin: 0;
+      font-size: 13px;
       font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      line-height: 1.4;
       color: var(--fg);
     }
     .ti-card p {
       margin: 0;
-      font-size: 13px;
+      font-size: 14px;
       color: var(--muted);
-      line-height: 1.55;
-      flex: 1;
+      text-transform: lowercase;
+      letter-spacing: 0.022em;
+      word-spacing: 0.04em;
+      line-height: 1.8;
+      transition: color 0.2s;
+    }
+    .ti-card:hover p {
+      color: var(--fg);
+    }
+    @media (max-width: 768px) {
+      .ti-card {
+        grid-template-columns: 40px 1fr;
+        gap: 8px 16px;
+      }
+      .ti-card p {
+        grid-column: 2;
+      }
     }
   </style>
 
@@ -162,6 +183,7 @@ const tools = [
   </div>
 
   <div class="ti-grid-wrap">
+    <p class="section-kicker">01 / Tools</p>
     <div class="ti-grid">
       {tools.map((t) => (
         <a class="ti-card" href={t.href}>

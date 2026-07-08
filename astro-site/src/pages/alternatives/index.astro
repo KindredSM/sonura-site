@@ -87,90 +87,183 @@ const jsonLd = [
   jsonLd={jsonLd}
 >
   <style>
-    .alt-hub-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    @media (min-width: 768px) {
-      .alt-hub-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    .alt-card {
-      padding: 32px;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 16px;
-      transition: border-color 0.2s, transform 0.2s;
-      text-decoration: none;
-      color: inherit;
-      display: block;
-    }
-
-    .alt-card:hover {
-      border-color: rgba(124, 58, 237, 0.3);
-      transform: translateY(-4px);
-    }
-
-    .alt-card-name {
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 12px;
+    .alt-hub {
+      width: 100%;
+      padding: clamp(56px, 9vh, 110px) var(--page-pad) clamp(96px, 12vw, 140px);
       color: var(--fg);
     }
 
-    .alt-card-desc {
+    .alt-hub-header {
+      margin-bottom: clamp(56px, 8vw, 96px);
+    }
+
+    .alt-hub-header h1 {
+      margin: 0 0 28px;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(44px, 6.6vw, 100px);
+      line-height: 0.98;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--fg);
+    }
+
+    .alt-hub-header p {
+      margin: 0;
+      max-width: 640px;
+      font-size: 16px;
       color: var(--muted);
-      line-height: 1.6;
-      margin-bottom: 16px;
+      text-transform: lowercase;
+      letter-spacing: 0.022em;
+      word-spacing: 0.04em;
+      line-height: 1.8;
+    }
+
+    .alt-hub-list {
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .alt-row {
+      display: grid;
+      grid-template-columns: 64px minmax(0, 0.9fr) minmax(0, 1.3fr);
+      gap: 24px 40px;
+      align-items: baseline;
+      padding: 32px 0;
+      border-top: 1px solid var(--hairline);
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .alt-row-index {
+      font-size: 13px;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.12em;
+      color: var(--faint);
+    }
+
+    .alt-card-name {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(22px, 2.6vw, 34px);
+      line-height: 1;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--fg);
+    }
+
+    .alt-row-body {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .alt-card-desc {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      text-transform: lowercase;
+      letter-spacing: 0.022em;
+      word-spacing: 0.04em;
+      line-height: 1.8;
     }
 
     .alt-card-comparison {
-      font-size: 13px;
-      color: var(--primary);
-      padding: 8px 12px;
-      background: rgba(255,255,255,0.03);
-      border-radius: 8px;
-      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--faint);
     }
 
     .alt-card-arrow {
-      margin-top: 20px;
-      color: var(--primary);
+      font-size: 12px;
       font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .alt-row:hover .alt-card-arrow,
+    .alt-row:hover .alt-card-name {
+      color: var(--fg);
+    }
+
+    .alt-row:hover .alt-card-arrow {
+      text-decoration: underline;
+      text-underline-offset: 7px;
+    }
+
+    .alt-hub-cta {
+      margin-top: clamp(72px, 9vw, 110px);
+      padding: clamp(40px, 6vw, 72px) clamp(28px, 4vw, 64px);
+      border: 1px solid var(--hairline);
+    }
+
+    .alt-hub-cta h2 {
+      margin: 0 0 20px;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(32px, 4.8vw, 64px);
+      line-height: 1;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--fg);
+    }
+
+    .alt-hub-cta p {
+      margin: 0 0 36px;
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 15px;
+      text-transform: lowercase;
+      letter-spacing: 0.022em;
+      word-spacing: 0.04em;
+      line-height: 1.8;
+    }
+
+    .alt-hub-cta .button.primary {
+      display: inline-block;
+    }
+
+    @media (max-width: 860px) {
+      .alt-row {
+        grid-template-columns: 48px minmax(0, 1fr);
+        gap: 12px 20px;
+      }
+
+      .alt-row-body {
+        grid-column: 2;
+      }
     }
   </style>
 
-  <div style="max-width: 1280px; margin: 80px auto; padding: 0 24px;">
-    <header style="text-align: center; margin-bottom: 64px;">
-      <h1 style="font-size: 48px; font-weight: 800; margin-bottom: 24px; line-height: 1.2;">AI Music Generator Alternatives</h1>
-      <p style="font-size: 20px; color: var(--muted); max-width: 700px; margin: 0 auto; line-height: 1.6;">Compare Sonura with other AI music generators and music creation tools. Find out which tool is best for your specific needs - beats, loops, samples, or more.</p>
+  <div class="alt-hub">
+    <header class="alt-hub-header">
+      <p class="section-kicker">01 / Compare</p>
+      <h1>AI Music Generator Alternatives</h1>
+      <p>Compare Sonura with other AI music generators and music creation tools. Find out which tool is best for your specific needs - beats, loops, samples, or more.</p>
     </header>
 
-    <div class="alt-hub-grid">
-      {alternatives.map((alt) => (
-        <a href={`/alternatives/${alt.slug}/`} class="alt-card">
+    <div class="alt-hub-list">
+      {alternatives.map((alt, i) => (
+        <a href={`/alternatives/${alt.slug}/`} class="alt-row">
+          <span class="alt-row-index">{String(i + 1).padStart(2, '0')}</span>
           <div class="alt-card-name">{alt.name} Alternative</div>
-          <p class="alt-card-desc">{alt.description}</p>
-          <div class="alt-card-comparison">{alt.comparison}</div>
-          <div class="alt-card-arrow">Compare Sonura vs {alt.name} →</div>
+          <div class="alt-row-body">
+            <p class="alt-card-desc">{alt.description}</p>
+            <div class="alt-card-comparison">{alt.comparison}</div>
+            <div class="alt-card-arrow">Compare Sonura vs {alt.name} →</div>
+          </div>
         </a>
       ))}
     </div>
 
-    <div style="text-align: center; margin-top: 80px; padding: 48px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px;">
-      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 16px;">Not Sure Which to Choose?</h2>
-      <p style="color: var(--muted); margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto;">Try Sonura free and see if it fits your workflow. No credit card required, full features available.</p>
-      <a href="https://app.sonurastudio.com/studio" class="button primary large" style="display: inline-block; padding: 18px 40px; background: var(--fg); color: var(--bg); text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 18px;">Try Sonura Free</a>
+    <div class="alt-hub-cta">
+      <p class="section-kicker">02 / Get started</p>
+      <h2>Not Sure Which to Choose?</h2>
+      <p>Try Sonura free and see if it fits your workflow. No credit card required, full features available.</p>
+      <a href="https://app.sonurastudio.com/studio" class="button primary large">Try Sonura Free</a>
     </div>
   </div>
 </BaseLayout>
-

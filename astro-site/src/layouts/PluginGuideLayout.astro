@@ -195,86 +195,96 @@ const jsonLd = [
 <style>
   .pg-guide {
     width: 100%;
-    max-width: 1120px;
-    margin: 0 auto;
-    padding: 96px 24px 128px;
+    padding: clamp(56px, 9vh, 110px) var(--page-pad) clamp(96px, 12vw, 140px);
     color: var(--fg);
   }
 
   .guide-hero {
-    max-width: 820px;
-    margin-bottom: 48px;
+    max-width: 900px;
+    margin-bottom: clamp(48px, 7vw, 80px);
   }
 
   .back-link,
   .guide-kicker {
     display: inline-flex;
-    color: #fff;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     text-decoration: none;
   }
 
   .back-link {
-    color: var(--muted);
     margin-bottom: 24px;
   }
 
   .back-link:hover {
-    color: #fff;
+    color: var(--fg);
   }
 
   .guide-hero h1 {
-    margin: 10px 0 18px;
-    font-size: clamp(42px, 7vw, 76px);
-    line-height: 1;
-    letter-spacing: 0;
+    margin: 14px 0 22px;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(42px, 7vw, 96px);
+    line-height: 0.98;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--fg);
   }
 
-  .guide-hero p,
   .guide-split p,
   .guide-section p,
   .guide-section li,
-  .step-list li,
-  .guide-faq p {
+  .step-list li {
     color: var(--muted);
-    line-height: 1.7;
+    text-transform: lowercase;
+    letter-spacing: 0.022em;
+    line-height: 1.8;
     font-size: 16px;
   }
 
   .guide-hero > p {
-    font-size: 20px;
-    max-width: 720px;
+    margin: 0;
+    max-width: 640px;
+    color: var(--muted);
+    font-size: 16px;
+    text-transform: lowercase;
+    letter-spacing: 0.022em;
+    word-spacing: 0.04em;
+    line-height: 1.8;
   }
 
   .guide-actions {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
-    margin-top: 30px;
+    margin-top: 34px;
   }
 
   .guide-summary {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 12px;
-    margin-bottom: 80px;
+    margin-bottom: clamp(56px, 8vw, 96px);
   }
 
   .guide-summary div {
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 18px;
-    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-panel);
+    padding: 22px 18px;
+    background: transparent;
   }
 
   .guide-summary span {
     display: block;
     color: var(--muted);
-    font-size: 13px;
-    margin-bottom: 8px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
   }
 
   .guide-summary strong {
@@ -287,17 +297,23 @@ const jsonLd = [
     grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
     gap: 48px;
     align-items: start;
-    margin-bottom: 80px;
+    border-top: 1px solid var(--hairline);
+    padding-top: clamp(48px, 7vw, 80px);
+    margin-bottom: clamp(56px, 8vw, 96px);
   }
 
   .guide-split h2,
   .guide-section h2,
   .guide-faq h2,
   .related-guides h2 {
-    margin: 8px 0 14px;
-    font-size: clamp(28px, 4vw, 42px);
-    line-height: 1.1;
-    letter-spacing: 0;
+    margin: 12px 0 18px;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(28px, 4vw, 52px);
+    line-height: 1;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--fg);
   }
 
   .step-list {
@@ -311,14 +327,18 @@ const jsonLd = [
 
   .section-stack {
     display: grid;
-    gap: 34px;
-    margin-bottom: 80px;
+    gap: 0;
+    margin-bottom: clamp(56px, 8vw, 96px);
   }
 
   .guide-section {
     max-width: 820px;
-    border-top: 1px solid var(--border);
-    padding-top: 32px;
+    border-top: 1px solid var(--hairline);
+    padding: 40px 0;
+  }
+
+  .guide-section:last-child {
+    padding-bottom: 0;
   }
 
   .guide-section ul {
@@ -331,30 +351,69 @@ const jsonLd = [
   }
 
   .guide-faq {
-    max-width: 860px;
-    margin-bottom: 80px;
+    border-top: 1px solid var(--hairline);
+    padding-top: clamp(48px, 7vw, 80px);
+    margin-bottom: clamp(56px, 8vw, 96px);
+  }
+
+  .guide-faq > div {
+    border-bottom: 1px solid var(--hairline);
   }
 
   .guide-faq details {
-    border: 1px solid var(--border);
-    border-radius: 8px;
+    border: 0;
+    border-top: 1px solid var(--hairline);
+    border-radius: 0;
     padding: 0;
-    background: rgba(255, 255, 255, 0.02);
-  }
-
-  .guide-faq details + details {
-    margin-top: 10px;
+    background: transparent;
   }
 
   .guide-faq summary {
     cursor: pointer;
-    padding: 18px 20px;
-    font-weight: 700;
+    list-style: none;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 22px 0;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--fg);
+  }
+
+  .guide-faq summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .guide-faq summary::after {
+    content: '+';
+    font-size: 22px;
+    line-height: 1;
+    color: var(--faint);
+    flex-shrink: 0;
+  }
+
+  .guide-faq details[open] summary::after {
+    content: '\2212';
   }
 
   .guide-faq p {
     margin: 0;
-    padding: 0 20px 20px;
+    padding: 0 0 24px;
+    max-width: 760px;
+    color: var(--muted);
+    font-size: 15px;
+    text-transform: lowercase;
+    letter-spacing: 0.022em;
+    word-spacing: 0.04em;
+    line-height: 1.8;
+  }
+
+  .related-guides {
+    border-top: 1px solid var(--hairline);
+    padding-top: clamp(48px, 7vw, 80px);
   }
 
   .related-guides > div {
@@ -366,25 +425,34 @@ const jsonLd = [
   .related-guides a {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
     min-height: 116px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 18px;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-panel);
+    padding: 22px 18px;
     color: var(--fg);
     text-decoration: none;
-    background: rgba(255, 255, 255, 0.03);
+    background: transparent;
   }
 
   .related-guides a:hover {
-    border-color: var(--border-light);
-    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--fg);
+    background: transparent;
+  }
+
+  .related-guides strong {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
   }
 
   .related-guides span {
     color: var(--muted);
-    font-size: 14px;
-    line-height: 1.5;
+    font-size: 13px;
+    text-transform: lowercase;
+    letter-spacing: 0.022em;
+    line-height: 1.7;
   }
 
   @media (max-width: 860px) {
@@ -401,7 +469,7 @@ const jsonLd = [
 
   @media (max-width: 640px) {
     .pg-guide {
-      padding: 72px 20px 96px;
+      padding-top: 64px;
     }
 
     .guide-actions {

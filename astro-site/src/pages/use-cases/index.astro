@@ -105,83 +105,194 @@ const jsonLd = [
   jsonLd={jsonLd}
 >
   <style>
+    .usecases-hub {
+      padding: clamp(56px, 9vh, 110px) var(--page-pad) clamp(96px, 12vw, 140px);
+    }
+
+    .hub-header {
+      margin-bottom: clamp(48px, 7vw, 80px);
+    }
+
+    .hub-title {
+      margin: 0 0 24px;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(48px, 7vw, 104px);
+      line-height: 0.98;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--fg);
+    }
+
+    .hub-sub {
+      margin: 0;
+      max-width: 620px;
+      font-size: 17px;
+      color: var(--muted);
+      text-transform: lowercase;
+      letter-spacing: 0.022em;
+      line-height: 1.8;
+      word-spacing: 0.04em;
+    }
+
     .usecase-hub-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    @media (min-width: 640px) {
-      .usecase-hub-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .usecase-hub-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid var(--hairline);
     }
 
     .usecase-card {
-      padding: 32px;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 16px;
-      transition: border-color 0.2s, transform 0.2s;
+      display: grid;
+      grid-template-columns: 44px 160px minmax(180px, 260px) 1fr auto;
+      align-items: baseline;
+      gap: 24px;
+      padding: 28px 0;
+      border-top: 1px solid var(--hairline);
+      background: transparent;
       text-decoration: none;
       color: inherit;
-      display: block;
       position: relative;
+      transition: color 0.2s;
     }
 
-    .usecase-card:hover {
-      border-color: rgba(255,255,255,0.18);
-      transform: translateY(-4px);
+    .usecase-card-index {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      font-variant-numeric: tabular-nums;
+      color: var(--faint);
     }
 
     .usecase-card-audience {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--primary);
-      margin-bottom: 12px;
+      font-size: 11px;
       font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--primary);
     }
 
     .usecase-card-name {
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 12px;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(20px, 2.2vw, 28px);
+      line-height: 1;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
       color: var(--fg);
     }
 
     .usecase-card-desc {
+      margin: 0;
+      max-width: 560px;
       color: var(--muted);
-      line-height: 1.6;
       font-size: 15px;
+      text-transform: lowercase;
+      letter-spacing: 0.022em;
+      line-height: 1.8;
+      word-spacing: 0.04em;
     }
 
     .usecase-card-arrow {
-      margin-top: 20px;
-      color: var(--primary);
+      font-size: 12px;
       font-weight: 600;
-      font-size: 14px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.2s;
     }
 
+    .usecase-card:hover .usecase-card-arrow {
+      color: var(--fg);
+    }
+
+    .hub-cta {
+      margin-top: clamp(72px, 9vw, 110px);
+      padding: clamp(40px, 6vw, 72px);
+      background: transparent;
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-panel);
+    }
+
+    .hub-cta-title {
+      margin: 0 0 20px;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(34px, 4.4vw, 56px);
+      line-height: 1;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--fg);
+    }
+
+    .hub-cta-sub {
+      margin: 0 0 32px;
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 15px;
+      text-transform: lowercase;
+      letter-spacing: 0.022em;
+      line-height: 1.8;
+      word-spacing: 0.04em;
+    }
+
+    .hub-cta .button.primary {
+      display: inline-block;
+      padding: 20px 36px;
+      background: var(--fg);
+      color: var(--bg);
+      border: 1px solid var(--fg);
+      border-radius: var(--radius-ui);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .hub-cta .button.primary:hover {
+      background: var(--fg);
+      color: var(--bg);
+      transform: none;
+    }
+
+    @media (max-width: 900px) {
+      .usecase-card {
+        display: block;
+        padding: 24px 0;
+      }
+
+      .usecase-card-index {
+        display: inline-block;
+        margin-right: 16px;
+        margin-bottom: 12px;
+      }
+
+      .usecase-card-audience {
+        display: inline-block;
+        margin-bottom: 12px;
+      }
+
+      .usecase-card-name {
+        margin-bottom: 10px;
+      }
+
+      .usecase-card-arrow {
+        display: inline-block;
+        margin-top: 14px;
+      }
+    }
   </style>
 
-  <div style="max-width: 1280px; margin: 80px auto; padding: 0 24px;">
-    <header style="text-align: center; margin-bottom: 64px;">
-      <h1 style="font-size: 48px; font-weight: 800; margin-bottom: 24px; line-height: 1.2;">Use Cases</h1>
-      <p style="font-size: 20px; color: var(--muted); max-width: 700px; margin: 0 auto; line-height: 1.6;">Discover how creators, producers, and businesses use Sonura to create music for their projects.</p>
+  <div class="usecases-hub">
+    <header class="hub-header">
+      <p class="section-kicker">01 / Use cases</p>
+      <h1 class="hub-title">Use Cases</h1>
+      <p class="hub-sub">Discover how creators, producers, and businesses use Sonura to create music for their projects.</p>
     </header>
 
     <div class="usecase-hub-grid">
-      {useCases.map((useCase) => (
+      {useCases.map((useCase, index) => (
         <a href={`/use-cases/${useCase.slug}/`} class="usecase-card">
+          <span class="usecase-card-index">{String(index + 1).padStart(2, '0')}</span>
           <div class="usecase-card-audience">{useCase.audience}</div>
           <div class="usecase-card-name">{useCase.name}</div>
           <p class="usecase-card-desc">{useCase.description}</p>
@@ -190,10 +301,11 @@ const jsonLd = [
       ))}
     </div>
 
-    <div style="text-align: center; margin-top: 80px; padding: 48px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px;">
-      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 16px;">Have a Different Use Case?</h2>
-      <p style="color: var(--muted); margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto;">Sonura works for any project that needs music. Try it free and see what you can create.</p>
-      <a href="https://app.sonurastudio.com/studio" class="button primary large" style="display: inline-block; padding: 18px 40px; background: var(--fg); color: var(--bg); text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 18px;">Start Creating Free</a>
+    <div class="hub-cta">
+      <p class="section-kicker">02 / Get started</p>
+      <h2 class="hub-cta-title">Have a Different Use Case?</h2>
+      <p class="hub-cta-sub">Sonura works for any project that needs music. Try it free and see what you can create.</p>
+      <a href="https://app.sonurastudio.com/studio" class="button primary large"><span class="btn-label-full">Start Creating Free</span><span class="btn-label-short">Start free</span></a>
     </div>
   </div>
 </BaseLayout>

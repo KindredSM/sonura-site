@@ -83,52 +83,52 @@ const formattedDate = new Date(publishedDate).toLocaleDateString('en-US', {
       }
       .blog-toc::-webkit-scrollbar { width: 6px; }
       .blog-toc::-webkit-scrollbar-track { background: transparent; }
-      .blog-toc::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
-      .blog-toc::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+      .blog-toc::-webkit-scrollbar-thumb { background: var(--border); border-radius: var(--radius-ui); }
+      .blog-toc::-webkit-scrollbar-thumb:hover { background: var(--border-light); }
     </style>
   </Fragment>
 
-  <div style="display: flex; max-width: 1280px; margin: 80px auto; padding: 0 24px; gap: 48px;">
-    <article style="flex: 1; min-width: 0; color: var(--fg); line-height: 1.8;">
+  <div style="display: flex; justify-content: center; margin: 80px 0; padding: 0 var(--page-pad); gap: 48px;">
+    <article style="flex: 1; min-width: 0; max-width: 760px; color: var(--fg); line-height: 1.8;">
       <header style="margin-bottom: 48px;">
-        <h1 style="font-size: 42px; font-weight: 800; margin-bottom: 16px; line-height: 1.2;">{title}</h1>
-        <div style="color: var(--muted); font-size: 14px; margin-bottom: 24px;">
-          By <a href="/about/" style="color: var(--fg); text-decoration: none; font-weight: 600;">{author}</a><span style="opacity: 0.7;">, {authorRole}</span> • <time datetime={publishedDate}>{formattedDate}</time> • {readTime}
+        <h1 style="font-family: var(--font-display); font-size: clamp(38px, 5.5vw, 64px); font-weight: 400; text-transform: uppercase; letter-spacing: 0.01em; margin-bottom: 20px; line-height: 1; color: var(--fg);">{title}</h1>
+        <div style="color: var(--muted); font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 24px;">
+          By <a href="/about/" style="color: var(--fg); text-decoration: none; font-weight: 600;">{author}</a><span style="color: var(--faint);">, {authorRole}</span> • <time datetime={publishedDate}>{formattedDate}</time> • {readTime}
         </div>
-        <p style="font-size: 20px; color: var(--muted); line-height: 1.6;">{description}</p>
+        <p style="font-size: 19px; color: var(--muted); line-height: 1.7;">{description}</p>
       </header>
 
       <slot />
 
-      <footer style="margin-top: 64px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.1);">
+      <footer style="margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--hairline);">
         <div style="margin-bottom: 32px;">
-          <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px;">Explore Sonura</h3>
+          <h3 style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--fg); margin-bottom: 16px;">Explore Sonura</h3>
           <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-            <a href="/features/ai-beats/" style="padding: 6px 14px; background: rgba(255,255,255,0.05); border-radius: 20px; color: var(--muted); text-decoration: none; font-size: 13px;">Beat Generator</a>
-            <a href="/features/ai-loops/" style="padding: 6px 14px; background: rgba(255,255,255,0.05); border-radius: 20px; color: var(--muted); text-decoration: none; font-size: 13px;">Loop Maker</a>
-            <a href="/features/ai-vocals/" style="padding: 6px 14px; background: rgba(255,255,255,0.05); border-radius: 20px; color: var(--muted); text-decoration: none; font-size: 13px;">Vocal Generator</a>
-            <a href="/features/stem-export/" style="padding: 6px 14px; background: rgba(255,255,255,0.05); border-radius: 20px; color: var(--muted); text-decoration: none; font-size: 13px;">Stem Export</a>
-            <a href="/plugin/" style="padding: 6px 14px; background: rgba(255,255,255,0.05); border-radius: 20px; color: var(--muted); text-decoration: none; font-size: 13px;">DAW Plugin</a>
-            <a href="/use-cases/vocalists/" style="padding: 6px 14px; background: rgba(255,255,255,0.05); border-radius: 20px; color: var(--muted); text-decoration: none; font-size: 13px;">For Vocalists</a>
-            <a href="/use-cases/songwriters/" style="padding: 6px 14px; background: rgba(255,255,255,0.05); border-radius: 20px; color: var(--muted); text-decoration: none; font-size: 13px;">For Songwriters</a>
-            <a href="/use-cases/video-editors/" style="padding: 6px 14px; background: rgba(255,255,255,0.05); border-radius: 20px; color: var(--muted); text-decoration: none; font-size: 13px;">For Video Editors</a>
-            <a href="/use-cases/composers/" style="padding: 6px 14px; background: rgba(255,255,255,0.05); border-radius: 20px; color: var(--muted); text-decoration: none; font-size: 13px;">For Composers</a>
-            <a href="/genre/trap/" style="padding: 6px 14px; background: rgba(255,255,255,0.05); border-radius: 20px; color: var(--muted); text-decoration: none; font-size: 13px;">Trap Beats</a>
-            <a href="/genre/lofi/" style="padding: 6px 14px; background: rgba(255,255,255,0.05); border-radius: 20px; color: var(--muted); text-decoration: none; font-size: 13px;">Lo-Fi Beats</a>
-            <a href="/genre/rnb/" style="padding: 6px 14px; background: rgba(255,255,255,0.05); border-radius: 20px; color: var(--muted); text-decoration: none; font-size: 13px;">R&B Beats</a>
-            <a href="/tools/bpm-tap/" style="padding: 6px 14px; background: rgba(255,255,255,0.05); border-radius: 20px; color: var(--muted); text-decoration: none; font-size: 13px;">BPM Tap Tool</a>
-            <a href="/pricing/" style="padding: 6px 14px; background: rgba(255,255,255,0.05); border-radius: 20px; color: var(--muted); text-decoration: none; font-size: 13px;">Pricing</a>
+            <a href="/features/ai-beats/" style="padding: 8px 14px; background: transparent; border: 1px solid var(--border-light); border-radius: var(--radius-ui); color: var(--muted); text-decoration: none; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em;">Beat Generator</a>
+            <a href="/features/ai-loops/" style="padding: 8px 14px; background: transparent; border: 1px solid var(--border-light); border-radius: var(--radius-ui); color: var(--muted); text-decoration: none; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em;">Loop Maker</a>
+            <a href="/features/ai-vocals/" style="padding: 8px 14px; background: transparent; border: 1px solid var(--border-light); border-radius: var(--radius-ui); color: var(--muted); text-decoration: none; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em;">Vocal Generator</a>
+            <a href="/features/stem-export/" style="padding: 8px 14px; background: transparent; border: 1px solid var(--border-light); border-radius: var(--radius-ui); color: var(--muted); text-decoration: none; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em;">Stem Export</a>
+            <a href="/plugin/" style="padding: 8px 14px; background: transparent; border: 1px solid var(--border-light); border-radius: var(--radius-ui); color: var(--muted); text-decoration: none; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em;">DAW Plugin</a>
+            <a href="/use-cases/vocalists/" style="padding: 8px 14px; background: transparent; border: 1px solid var(--border-light); border-radius: var(--radius-ui); color: var(--muted); text-decoration: none; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em;">For Vocalists</a>
+            <a href="/use-cases/songwriters/" style="padding: 8px 14px; background: transparent; border: 1px solid var(--border-light); border-radius: var(--radius-ui); color: var(--muted); text-decoration: none; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em;">For Songwriters</a>
+            <a href="/use-cases/video-editors/" style="padding: 8px 14px; background: transparent; border: 1px solid var(--border-light); border-radius: var(--radius-ui); color: var(--muted); text-decoration: none; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em;">For Video Editors</a>
+            <a href="/use-cases/composers/" style="padding: 8px 14px; background: transparent; border: 1px solid var(--border-light); border-radius: var(--radius-ui); color: var(--muted); text-decoration: none; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em;">For Composers</a>
+            <a href="/genre/trap/" style="padding: 8px 14px; background: transparent; border: 1px solid var(--border-light); border-radius: var(--radius-ui); color: var(--muted); text-decoration: none; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em;">Trap Beats</a>
+            <a href="/genre/lofi/" style="padding: 8px 14px; background: transparent; border: 1px solid var(--border-light); border-radius: var(--radius-ui); color: var(--muted); text-decoration: none; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em;">Lo-Fi Beats</a>
+            <a href="/genre/rnb/" style="padding: 8px 14px; background: transparent; border: 1px solid var(--border-light); border-radius: var(--radius-ui); color: var(--muted); text-decoration: none; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em;">R&B Beats</a>
+            <a href="/tools/bpm-tap/" style="padding: 8px 14px; background: transparent; border: 1px solid var(--border-light); border-radius: var(--radius-ui); color: var(--muted); text-decoration: none; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em;">BPM Tap Tool</a>
+            <a href="/pricing/" style="padding: 8px 14px; background: transparent; border: 1px solid var(--border-light); border-radius: var(--radius-ui); color: var(--muted); text-decoration: none; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em;">Pricing</a>
           </div>
         </div>
         <p style="color: var(--muted); font-size: 14px;">
-          <a href="/blog/" style="color: var(--primary); text-decoration: none;">← All blog posts</a>
+          <a href="/blog/" class="text-link">← All blog posts</a>
         </p>
       </footer>
     </article>
 
     {toc.length > 0 && (
       <nav style="position: sticky; top: 120px; width: 240px; height: fit-content; max-height: calc(100vh - 140px); overflow-y: auto; flex-shrink: 0; display: none;" class="blog-toc">
-        <div style="font-size: 14px; font-weight: 600; margin-bottom: 16px; color: var(--fg); text-transform: uppercase; letter-spacing: 0.5px;">On This Page</div>
+        <div style="font-size: 12px; font-weight: 600; margin-bottom: 16px; color: var(--fg); text-transform: uppercase; letter-spacing: 0.14em;">On This Page</div>
         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px;">
           {toc.map((item) => (
             <li>
