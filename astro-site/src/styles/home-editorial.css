@@ -955,7 +955,7 @@ body.editorial-home .demo-tracks-list {
 
 body.editorial-home .demo-track {
   display: grid;
-  grid-template-columns: 56px 56px minmax(0, 300px) 1fr 60px;
+  grid-template-columns: 56px minmax(0, 300px) 1fr 60px;
   gap: clamp(20px, 3vw, 48px);
   align-items: center;
   border-top: var(--rule);
@@ -1071,10 +1071,10 @@ body.editorial-home .demo-explore {
 
 @media (max-width: 768px) {
   body.editorial-home .demo-track {
-    grid-template-columns: 28px 48px minmax(0, 1fr) 48px;
+    grid-template-columns: 48px minmax(0, 1fr) 48px;
     grid-template-areas:
-      'index play info time'
-      'progress progress progress progress';
+      'play info time'
+      'progress progress progress';
     gap: 18px 14px;
     padding: 28px 0;
   }
@@ -1088,7 +1088,6 @@ body.editorial-home .demo-explore {
     height: 44px;
   }
 
-  body.editorial-home .demo-track .embed-index { grid-area: index; }
   body.editorial-home .demo-track .demo-play { grid-area: play; }
   body.editorial-home .demo-track .demo-track-info { grid-area: info; }
   body.editorial-home .demo-track .demo-track-progress { grid-area: progress; }
