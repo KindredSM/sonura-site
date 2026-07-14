@@ -77,7 +77,9 @@ body.editorial-home .hero {
   align-items: center;
   justify-content: flex-start;
   text-align: left;
-  min-height: calc(100svh - var(--nav-h));
+  /* +32px: run slightly past the fold so the next section's rule sits
+     just below the viewport instead of exactly on its bottom edge */
+  min-height: calc(100svh - var(--nav-h) + 32px);
   margin-top: 0;
   padding: 64px var(--page-pad);
   overflow: hidden;
@@ -267,7 +269,7 @@ body.editorial-home .hero-media-edge {
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
-    min-height: calc(100svh - var(--nav-h));
+    min-height: calc(100svh - var(--nav-h) + 32px);
     /* no bottom padding: the video runs to the section edge */
     padding: 48px 24px 0;
     margin-bottom: 0;

@@ -6,6 +6,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://sonurastudio.com',
   trailingSlash: 'ignore',
+  devToolbar: { enabled: false },
   build: {
     format: 'directory'
   },
