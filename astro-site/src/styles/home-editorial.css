@@ -948,9 +948,44 @@ body.editorial-home .testimonial-text {
    01 / Community — native demo-sound player rows
    -------------------------------------------------------------------------- */
 
+body.editorial-home .demo-toggle {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 24px;
+}
+
+body.editorial-home .demo-toggle-btn {
+  padding: 0 0 7px;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+body.editorial-home .demo-toggle-btn:hover {
+  color: var(--fg);
+}
+
+body.editorial-home .demo-toggle-btn[aria-selected='true'] {
+  color: var(--fg);
+  border-bottom-color: currentColor;
+}
+
 body.editorial-home .demo-tracks-list {
   display: flex;
   flex-direction: column;
+}
+
+/* display: flex above would otherwise override the hidden attribute */
+body.editorial-home .demo-tracks-list[hidden] {
+  display: none;
 }
 
 body.editorial-home .demo-track {
