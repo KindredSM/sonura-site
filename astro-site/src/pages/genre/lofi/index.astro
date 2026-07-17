@@ -22,6 +22,13 @@ const workflowItems = [
   }
 ];
 
+const proseTitle = 'The Ultimate AI Lofi Music Generator';
+const proseBody = `
+  <p>Most AI music generators hand you a single flat file &mdash; a bounced-down stereo track you can play but can&rsquo;t take apart. That&rsquo;s fine for background listening, but useless the moment you want to actually produce. Sonura is built for producers: every lofi beat comes back as <strong>separated stems</strong>, not a locked mixdown.</p>
+  <p>Generate a chill lofi beat and Sonura splits it into individual stems &mdash; <strong>drums</strong>, <strong>bass</strong>, and <strong>melody</strong> as their own tracks. Mute the dusty drums to loop the jazzy keys, swap in your own kit, rebalance the low end, or drag a single stem straight into Ableton, FL Studio, or Logic. You get real control over the mix instead of a take-it-or-leave-it render.</p>
+  <p>That difference is why Sonura works as a genuine lofi music generator and not just a novelty. Flat tracks lock you into whatever the model decided; split stems let you finish, remix, and release. Learn more about <a href="/features/stem-export/">stem export</a>, or start with the <a href="/tools/ai-beat-maker/">AI beat maker</a> and build your first lofi track in seconds.</p>
+`;
+
 const faqs = [
   {
     question: 'What is lo-fi hip hop?',
@@ -57,6 +64,8 @@ const faqs = [
   ctaText="Create Lo-Fi Beats"
   workflowTitle="How to make lo-fi beats with AI"
   workflowItems={workflowItems}
+  proseTitle={proseTitle}
+  proseBody={proseBody}
   faqs={faqs}
   finalCtaTitle="Start making lo-fi beats now"
   finalCtaButtonText="Create Lo-Fi Beats Free"
