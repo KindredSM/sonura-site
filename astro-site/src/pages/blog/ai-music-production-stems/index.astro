@@ -1,0 +1,89 @@
+---
+import BlogLayout from '../../../layouts/BlogLayout.astro';
+
+const toc = [
+  { id: 'what-are-stems', label: 'What are stems?' },
+  { id: 'why-stems-matter', label: 'Why stems matter' },
+  { id: 'where-stems-come-from', label: 'Where stems come from' },
+  { id: 'ai-workflow', label: 'How AI changes the workflow' },
+  { id: 'faq', label: 'FAQ' },
+];
+---
+
+<BlogLayout
+  title="The Ultimate Guide to AI Music Production & Stems"
+  description="What are stems in music production, and why do they matter? A complete guide to stems, how AI generation changes the workflow versus sample packs and manual recording, and how to use them in your DAW."
+  keywords="what are stems in music production, ai stems, stems in music, music production stems, ai music production"
+  slug="ai-music-production-stems"
+  publishedDate="2026-07-19"
+  readTime="5 min read"
+  toc={toc}
+>
+  <div style="line-height: 1.8;">
+    <p style="margin-bottom: 24px;">Stems are the backbone of modern music production, but the word gets used loosely. This guide covers what stems actually are, why they matter in a real session, and how AI generation changes the way producers get them compared to sample packs or recording every part by hand.</p>
+
+    <section id="what-are-stems" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">What Are Stems in Music Production?</h2>
+      <p style="margin-bottom: 24px;">In music production, stems are the individual layers of a track exported as separate audio files: drums on one, bass on another, then melody, vocals, and effects. A finished song is usually delivered as a single stereo mix, one file with everything summed together. Stems are that same song broken back out into its parts, so each element can be adjusted on its own.</p>
+      <p style="margin-bottom: 24px;">The distinction matters because a flattened mix is fixed. You can play it, but you cannot turn the drums down without turning everything down with them. Stems give you a separate fader for each part, which is what makes mixing, remixing, and rearranging possible in the first place.</p>
+    </section>
+
+    <section id="why-stems-matter" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Why Stems Matter</h2>
+      <ul style="margin-bottom: 24px; padding-left: 24px;">
+        <li style="margin-bottom: 12px;"><strong>Mixing:</strong> balance and process each element independently, for example EQ the bass without touching the vocal.</li>
+        <li style="margin-bottom: 12px;"><strong>Remixing and editing:</strong> swap, chop, or rearrange one layer without rebuilding the whole track.</li>
+        <li style="margin-bottom: 12px;"><strong>Collaboration:</strong> hand a vocalist a clean instrumental, or send a mix engineer isolated parts.</li>
+        <li style="margin-bottom: 12px;"><strong>Sync and licensing:</strong> film, TV, and games often require stems so audio can be re-balanced against dialogue.</li>
+        <li style="margin-bottom: 12px;"><strong>Live performance:</strong> trigger or mute individual layers on the fly.</li>
+      </ul>
+      <p style="margin-bottom: 24px;">Working from stems is the difference between producing a track and only playing one back.</p>
+    </section>
+
+    <section id="where-stems-come-from" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Where Stems Come From</h2>
+      <p style="margin-bottom: 24px;">There are a few ways producers get stems:</p>
+      <ol style="margin-bottom: 24px; padding-left: 24px;">
+        <li style="margin-bottom: 12px;"><strong>Recording and producing manually.</strong> Track each part yourself in a DAW. Full control, but it takes time, gear, and playing or programming skill.</li>
+        <li style="margin-bottom: 12px;"><strong>Sample packs.</strong> Fast, but the loops are shared with thousands of other producers and often arrive as flattened one-file loops rather than separated layers.</li>
+        <li style="margin-bottom: 12px;"><strong>AI generation.</strong> Tools like Sonura generate original, multi-layer stems from a text prompt in seconds. You describe the sound and get drums, bass, melody, and vocals as separate files, unique to your prompt rather than pulled from a shared library. These are what people mean by "AI stems."</li>
+      </ol>
+      <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 16px; margin-top: 32px;">Generating Stems vs. Separating Them</h3>
+      <p style="margin-bottom: 24px;">There is a fourth path worth separating out: splitting an existing song into stems after the fact. That is stem separation, a different job from generation. If you already have a finished track and need to pull it apart, an AI <a href="/tools/stem-separator/" class="text-link">stem separator</a> or <a href="/tools/vocal-remover/" class="text-link">vocal remover</a> extracts the parts from the mix. This guide focuses on generating new stems, but the two workflows often sit side by side in the same session.</p>
+    </section>
+
+    <section id="ai-workflow" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">How AI Generation Changes the Stem Workflow</h2>
+      <p style="margin-bottom: 24px;">The practical shift with AI generation is that original, editable stems stop being the slow part of production.</p>
+      <ul style="margin-bottom: 24px; padding-left: 24px;">
+        <li style="margin-bottom: 12px;"><strong>Original, not shared.</strong> Every generation is new, so layering a drum stem from one prompt with a melody from another does not clash the way reused sample-pack material can.</li>
+        <li style="margin-bottom: 12px;"><strong>Editable from the start.</strong> Because you get separate layers via <a href="/features/stem-export/" class="text-link">stem export</a>, you rebalance and rearrange in your DAW instead of working around a fixed loop.</li>
+        <li style="margin-bottom: 12px;"><strong>Royalty-free.</strong> Sonura's output is royalty-free with full commercial rights on every tier, including free.</li>
+        <li style="margin-bottom: 12px;"><strong>DAW-ready.</strong> Make sounds in the browser and download them, or use <a href="/plugin/" class="text-link">Sonura Flow</a> to drag generations straight into an Ableton Live, FL Studio, Logic Pro, or Pro Tools project.</li>
+      </ul>
+      <p style="margin-bottom: 24px;">Sonura generates both individual samples and full multi-layer stems, so the same tool covers a single one-shot and a full arrangement. Compared to hunting through sample packs or recording every part by hand, generating <a href="/features/ai-loops/" class="text-link">AI loops</a> and stems collapses the "get the raw material" step from hours into seconds, and leaves you with parts you actually own.</p>
+    </section>
+
+    <section id="faq" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">FAQ</h2>
+
+      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; margin-top: 32px;">What are stems in music production?</h3>
+      <p style="margin-bottom: 24px;">Stems are the individual layers of a track (drums, bass, melody, vocals, effects) exported as separate audio files, rather than one flattened stereo mix. Separating them lets you mix, remix, and rearrange each part on its own.</p>
+
+      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; margin-top: 32px;">What is the difference between stems and a mix?</h3>
+      <p style="margin-bottom: 24px;">A mix is the final track summed into one (usually stereo) file. Stems are that same track split back into its component parts. A mix is for listening; stems are for editing.</p>
+
+      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; margin-top: 32px;">Are AI-generated stems royalty-free?</h3>
+      <p style="margin-bottom: 24px;">Sonura's generations are royalty-free with full commercial rights on every tier, including the free tier, with no producer splits.</p>
+
+      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; margin-top: 32px;">Can I split an existing song into stems?</h3>
+      <p style="margin-bottom: 24px;">Yes, but that is stem separation rather than generation. Use an AI <a href="/tools/stem-separator/" class="text-link">stem separator</a> or <a href="/tools/vocal-remover/" class="text-link">vocal remover</a> to extract parts from a finished mix.</p>
+
+      <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 32px; margin-top: 48px; text-align: center;">
+        <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px;">Generate Original Stems From a Prompt</h3>
+        <p style="margin-bottom: 24px; color: var(--muted);">Make individual samples and full multi-layer stems in seconds, royalty-free on every tier.</p>
+        <a href="https://app.sonurastudio.com/" class="button primary large"><span class="btn-label-full">Start Creating Free</span><span class="btn-label-short">Start free</span></a>
+      </div>
+    </section>
+  </div>
+</BlogLayout>
