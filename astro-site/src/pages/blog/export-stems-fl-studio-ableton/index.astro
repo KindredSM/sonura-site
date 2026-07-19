@@ -1,0 +1,75 @@
+---
+import BlogLayout from '../../../layouts/BlogLayout.astro';
+
+const toc = [
+  { id: 'fl-studio', label: 'Export stems in FL Studio' },
+  { id: 'ableton', label: 'Export stems in Ableton' },
+  { id: 'faster-path', label: 'Start from separated stems' },
+  { id: 'faq', label: 'FAQ' },
+];
+---
+
+<BlogLayout
+  title="Exporting Stems to Your DAW (FL Studio + Ableton)"
+  description="How to export stems in FL Studio and Ableton Live, step by step, plus a faster path when your source is generated rather than tracked by hand. Includes bit-depth and sync tips."
+  keywords="how to export stems fl studio, export stems ableton, how to export stems from ableton, export stems, stem export daw"
+  slug="export-stems-fl-studio-ableton"
+  publishedDate="2026-07-19"
+  readTime="4 min read"
+  toc={toc}
+>
+  <div style="line-height: 1.8;">
+    <p style="margin-bottom: 24px;">Exporting stems means bouncing each part of your track (drums, bass, melody, vocals) out as its own audio file instead of one mixed-down file. You need them for mixing, collaboration, remixing, and delivery. If you are not sure what stems are or why they matter, start with our guide to <a href="/blog/ai-music-production-stems/" class="text-link">AI music production and stems</a>. This walks through exporting stems in FL Studio and Ableton Live, plus a faster path when your source is generated rather than tracked by hand.</p>
+
+    <section id="fl-studio" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">How to Export Stems in FL Studio</h2>
+      <p style="margin-bottom: 24px;">FL Studio exports stems by rendering each mixer track to its own file:</p>
+      <ol style="margin-bottom: 24px; padding-left: 24px;">
+        <li style="margin-bottom: 12px;">Route each element (drums, bass, melody, and so on) to its own mixer track. Stems are only as clean as your routing.</li>
+        <li style="margin-bottom: 12px;">Go to File, then Export, then WAV file.</li>
+        <li style="margin-bottom: 12px;">In the render dialog, enable <strong>Split mixer tracks</strong>. This writes one file per mixer track instead of a single mix.</li>
+        <li style="margin-bottom: 12px;">Set the format (24-bit WAV is standard for mixing) and render.</li>
+      </ol>
+      <p style="margin-bottom: 24px;">You get one WAV per mixer track, all the same length and aligned to the start, ready to import elsewhere.</p>
+    </section>
+
+    <section id="ableton" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">How to Export Stems in Ableton Live</h2>
+      <p style="margin-bottom: 24px;">Ableton exports stems through the Export Audio/Video dialog:</p>
+      <ol style="margin-bottom: 24px; padding-left: 24px;">
+        <li style="margin-bottom: 12px;">Make sure each part lives on its own track.</li>
+        <li style="margin-bottom: 12px;">Open Export Audio/Video (File menu, or Cmd/Ctrl + Shift + R).</li>
+        <li style="margin-bottom: 12px;">Set <strong>Rendered Track</strong> to <strong>All Individual Tracks</strong>. Live renders each track as a separate file rather than only the master.</li>
+        <li style="margin-bottom: 12px;">Choose your sample rate and bit depth (24-bit is standard) and export.</li>
+      </ol>
+      <p style="margin-bottom: 24px;">Live writes one file per track, each starting at the same point so they line back up on import. If a track runs heavy real-time devices, freezing it first can speed up the render.</p>
+    </section>
+
+    <section id="faster-path" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">A Faster Path: Start From Separated Stems</h2>
+      <p style="margin-bottom: 24px;">Manual stem export assumes you tracked or programmed every part yourself. If the source is generated, you can skip the routing-and-render step entirely.</p>
+      <p style="margin-bottom: 24px;">Sonura generates multi-layer stems from a prompt and exports them as separate WAV files through <a href="/features/stem-export/" class="text-link">stem export</a>, on every plan. Download them from the browser, or use <a href="/plugin/" class="text-link">Sonura Flow</a> to drag the separated stems straight into your FL Studio or Ableton session. Either way the parts arrive already split, so there is no mixer routing or All Individual Tracks step to set up first.</p>
+    </section>
+
+    <section id="faq" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">FAQ</h2>
+
+      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; margin-top: 32px;">What bit depth should I export stems at?</h3>
+      <p style="margin-bottom: 24px;">24-bit WAV is the standard for stems you plan to mix or send to an engineer. It preserves headroom and detail better than 16-bit.</p>
+
+      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; margin-top: 32px;">Do exported stems stay in sync when I import them?</h3>
+      <p style="margin-bottom: 24px;">Yes. In both FL Studio (Split mixer tracks) and Ableton (All Individual Tracks), every file starts at the same point and shares the same length, so dropping them onto aligned tracks lines them up.</p>
+
+      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; margin-top: 32px;">Can I get stems without exporting from a DAW at all?</h3>
+      <p style="margin-bottom: 24px;">Yes. If you generate with Sonura, the stems come out already separated via stem export, so you can skip the DAW export step. If you need to split an existing finished song instead, that is stem separation, covered in our <a href="/blog/ai-music-production-stems/" class="text-link">stems guide</a>.</p>
+
+      <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 32px; margin-top: 48px; text-align: center;">
+        <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px;">Skip the Manual Stem Export</h3>
+        <p style="margin-bottom: 24px; color: var(--muted);">Generate multi-layer stems and export them as separate WAVs on every plan, then drag them straight into your DAW.</p>
+        <a href="/features/stem-export/" class="button primary large"><span class="btn-label-full">See Sonura Stem Export</span><span class="btn-label-short">Stem export</span></a>
+      </div>
+
+      <p style="margin-bottom: 24px; color: var(--muted); font-size: 14px;">External reference: the <a href="https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/" class="text-link">FL Studio manual</a> and <a href="https://www.ableton.com/en/live/" class="text-link">Ableton Live manual</a> for version-specific export details.</p>
+    </section>
+  </div>
+</BlogLayout>
