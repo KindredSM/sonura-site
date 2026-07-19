@@ -246,6 +246,23 @@ const jsonLd = [
           <a href="https://discord.gg/Yk8RD3Nmyh" target="_blank" rel="noopener" class="text-link">Join our Discord</a>
         </div>
       </div>
+
+      <div class="about-affiliations reveal">
+        <a href="https://aiformusic.info/" target="_blank" rel="noopener" class="affiliation">
+          <span class="affiliation-chip affiliation-chip-dark">
+            <img src="/images/affiliations/aiformusic-wh.png" alt="" loading="lazy" width="264" height="178" />
+          </span>
+          <span class="affiliation-name">AI For Music</span>
+          <span class="affiliation-role">Supporter, Principles for Music Creation with AI</span>
+        </a>
+        <a href="https://musictechnology.uk/" target="_blank" rel="noopener" class="affiliation">
+          <span class="affiliation-chip affiliation-chip-light">
+            <img src="/images/affiliations/mtuk.png" alt="" loading="lazy" width="264" height="190" />
+          </span>
+          <span class="affiliation-name">Music Technology UK</span>
+          <span class="affiliation-role">Member</span>
+        </a>
+      </div>
     </div>
   </section>
 </BaseLayout>
@@ -667,6 +684,67 @@ const jsonLd = [
 
   .separator {
     color: var(--faint);
+  }
+
+  /* Quiet affiliations strip (no heading, not part of 01-05). Per-logo chip
+     backgrounds chosen for contrast: AI For Music logo is white (dark chip),
+     MTUK logo is black (light chip). */
+  .about-affiliations {
+    margin-top: 56px;
+    padding-top: 40px;
+    border-top: 1px solid var(--hairline);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+
+  .affiliation {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-decoration: none;
+    max-width: 280px;
+  }
+
+  .affiliation-chip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 132px;
+    height: 68px;
+    padding: 14px 18px;
+    border-radius: var(--radius-ui);
+    border: 1px solid var(--hairline);
+  }
+
+  .affiliation-chip-dark { background: #101010; }
+  .affiliation-chip-light { background: #ffffff; }
+
+  .affiliation-chip img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  .affiliation-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--fg);
+    letter-spacing: 0.02em;
+  }
+
+  .affiliation:hover .affiliation-name {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .affiliation-role {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
   }
 
   @media (max-width: 900px) {
