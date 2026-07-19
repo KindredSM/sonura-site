@@ -1,0 +1,409 @@
+---
+// Shared "Made with Sonura" audio-demo module (loops / one-shots / songs) with
+// inline players. Used on the homepage and the Suno alternative page.
+// Self-contained: carries its own styles (de-scoped from body.editorial-home so
+// they work on any page; --rule is redefined locally since it is homepage-only)
+// and its own player script.
+interface Props {
+  kicker?: string;
+  title?: string;
+  subtitle?: string;
+  // Drop the section's own horizontal padding when placed inside an
+  // already-gutter-padded container (e.g. AlternativeLayout's .alt-page slot),
+  // so it aligns with the surrounding sections instead of double-insetting.
+  flush?: boolean;
+}
+const {
+  kicker = '01 / Sounds',
+  title = 'Made with Sonura',
+  subtitle = 'Release-ready sounds you can use commercially, straight from the suite. Hit play.',
+  flush = false,
+} = Astro.props;
+
+// Waveform peaks precomputed from the audio files (140 buckets, normalized 0.1-1)
+const demoLoops = [
+  { title: 'Trap Piano', meta: 'Trap / 140 BPM', src: '/music/demo/trap-140-piano.mp3', duration: '0:14',
+    peaks: [0.91,0.89,0.79,0.7,0.57,0.47,0.43,0.38,0.38,0.28,0.23,0.18,0.18,0.22,0.2,0.22,0.18,0.19,0.19,0.19,0.2,0.18,0.13,0.15,0.12,0.11,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.53,0.64,0.5,0.44,0.3,0.21,0.24,0.18,0.22,0.19,0.16,0.14,0.1,0.11,0.11,0.11,0.1,0.11,0.1,0.12,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.84,0.74,0.7,0.67,0.53,0.47,0.39,0.37,0.31,0.28,0.25,0.21,0.21,0.19,0.2,0.23,0.19,0.14,0.14,0.11,0.12,0.13,0.11,0.12,0.12,0.1,0.1,0.11,0.1,0.1,0.1,0.1,0.1,0.1,0.1,1,0.98,0.77,0.57,0.41,0.45,0.39,0.29,0.3,0.3,0.22,0.25,0.16,0.14,0.2,0.17,0.1,0.1,0.12,0.13,0.11,0.12,0.11,0.1,0.11,0.11,0.1,0.1,0.13,0.1,0.14,0.13,0.13,0.11,0.1] },
+  { title: 'UKG Drums', meta: 'UK Garage / 135 BPM', src: '/music/demo/ukg-135-drums.mp3', duration: '0:07',
+    peaks: [0.67,0.65,0.6,0.3,0.48,0.2,0.1,0.1,1,0.87,0.1,0.1,0.1,0.72,0.1,0.23,0.93,0.1,0.1,0.1,0.84,0.67,0.76,0.64,0.59,0.18,0.96,0.26,0.1,0.1,0.52,0.27,0.1,0.1,0.1,0.68,0.65,0.61,0.31,0.57,0.18,0.1,0.1,0.86,0.86,0.1,0.1,0.1,0.5,0.1,0.52,0.75,0.62,0.58,0.17,0.84,0.51,0.67,0.62,0.6,0.19,0.94,0.25,0.1,0.1,0.56,0.32,0.1,0.1,0.1,0.71,0.64,0.6,0.27,0.61,0.19,0.1,0.1,0.84,0.92,0.1,0.1,0.1,0.5,0.1,0.1,0.89,0.1,0.1,0.1,0.89,0.53,0.69,0.64,0.56,0.17,0.88,0.24,0.1,0.1,0.53,0.45,0.1,0.16,0.1,0.7,0.65,0.61,0.32,0.59,0.18,0.1,0.1,0.95,0.96,0.1,0.1,0.1,0.45,0.1,0.1,0.82,0.62,0.59,0.24,0.87,0.41,0.71,0.63,0.58,0.2,0.86,0.34,0.1,0.1,0.77,0.7,0.62,0.61,0.37] },
+  { title: 'House Vocal', meta: 'House / 120 BPM', src: '/music/demo/house-120-vocal.mp3', duration: '0:08',
+    peaks: [0.92,0.8,0.54,0.21,0.83,0.77,0.6,0.16,0.17,0.67,0.41,0.73,0.35,0.49,0.46,0.44,0.2,0.42,0.37,0.45,0.68,0.59,0.26,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.48,1,0.72,0.12,0.19,0.18,0.51,0.56,0.45,0.52,0.48,0.35,0.5,0.45,0.59,0.45,0.43,0.39,0.55,0.61,0.33,0.1,0.54,0.4,0.51,0.58,0.55,0.26,0.1,0.1,0.1,0.1,0.17,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.59,0.55,0.23,0.1,0.36,0.66,0.52,0.41,0.49,0.45,0.55,0.17,0.1,0.59,0.6,0.53,0.44,0.39,0.38,0.24,0.78,0.65,0.39,0.27,0.18,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.29,0.68,0.58,0.58,0.37,0.47,0.45,0.2,0.44,0.31,0.1,0.1,0.48,0.58,0.57,0.29,0.18,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1] },
+  { title: 'Organic Flute', meta: 'Organic / 85 BPM', src: '/music/demo/organic-85-flute.mp3', duration: '0:12',
+    peaks: [0.21,0.47,0.56,0.58,0.66,0.8,0.82,0.85,0.85,0.96,1,0.95,0.88,0.94,0.96,0.94,0.98,0.98,0.97,0.98,0.93,0.92,0.91,0.81,0.86,0.88,0.89,0.46,0.73,0.73,0.78,0.83,0.87,0.89,0.82,0.87,0.68,0.66,0.6,0.65,0.68,0.66,0.69,0.73,0.67,0.68,0.68,0.77,0.77,0.73,0.7,0.68,0.63,0.65,0.65,0.67,0.68,0.62,0.64,0.52,0.54,0.5,0.49,0.43,0.35,0.1,0.1,0.1,0.1,0.1,0.1,0.37,0.64,0.64,0.68,0.78,0.77,0.77,0.78,0.77,0.71,0.72,0.75,0.79,0.77,0.79,0.8,0.86,0.86,0.71,0.76,0.76,0.82,0.92,0.92,0.84,0.54,0.59,0.75,0.81,0.87,0.86,0.92,0.89,0.81,0.78,0.66,0.66,0.66,0.62,0.72,0.73,0.7,0.75,0.76,0.74,0.72,0.75,0.74,0.71,0.73,0.59,0.59,0.55,0.58,0.6,0.63,0.55,0.58,0.56,0.56,0.54,0.49,0.43,0.15,0.1,0.1,0.1,0.1,0.1] }
+];
+
+const demoOneShots = [
+  { title: 'Berlin Kick', meta: 'One-shot', src: '/music/demo/one-shots/kick-berlin.mp3', duration: '0:01',
+    peaks: [0.38,0.9,0.89,0.79,0.67,0.62,0.56,0.72,0.41,0.67,0.73,0.44,0.66,0.65,0.74,0.65,0.71,0.73,0.66,0.79,0.73,0.89,0.92,1,0.83,0.84,0.82,0.88,0.84,0.83,0.75,0.82,0.84,0.82,0.7,0.74,0.8,0.8,0.91,0.9,0.92,0.84,0.92,0.79,0.93,0.69,0.82,0.59,0.8,0.71,0.84,0.8,0.69,0.67,0.67,0.74,0.58,0.71,0.59,0.67,0.69,0.57,0.71,0.61,0.66,0.7,0.45,0.7,0.68,0.46,0.67,0.65,0.62,0.72,0.6,0.58,0.68,0.59,0.67,0.72,0.56,0.57,0.69,0.65,0.53,0.73,0.69,0.31,0.68,0.69,0.49,0.64,0.71,0.58,0.36,0.6,0.6,0.38,0.49,0.59,0.54,0.2,0.44,0.46,0.38,0.22,0.41,0.41,0.28,0.23,0.33,0.33,0.21,0.2,0.3,0.3,0.18,0.15,0.19,0.18,0.13,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1] },
+  { title: 'Punchy Snare', meta: 'One-shot', src: '/music/demo/one-shots/snare-punchy.mp3', duration: '0:01',
+    peaks: [0.27,0.72,0.84,0.57,0.46,0.62,0.88,0.77,0.76,0.65,0.72,1,0.61,0.57,0.74,0.68,0.71,0.58,0.74,0.69,0.56,0.57,0.52,0.52,0.61,0.6,0.46,0.58,0.51,0.41,0.46,0.46,0.37,0.33,0.22,0.28,0.39,0.2,0.25,0.23,0.18,0.21,0.12,0.17,0.16,0.11,0.18,0.15,0.11,0.12,0.13,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1] },
+  { title: 'Open Hi-Hat', meta: 'One-shot', src: '/music/demo/one-shots/hihat-acoustic-open.mp3', duration: '0:01',
+    peaks: [0.17,0.4,0.24,0.22,0.59,0.43,0.46,0.62,0.6,0.69,0.7,0.58,0.58,0.98,0.52,0.66,0.85,0.71,0.86,0.78,0.94,0.74,0.86,0.7,0.92,1,0.61,0.67,0.71,0.85,0.61,0.66,0.63,0.53,0.79,0.48,0.55,0.88,0.8,0.85,0.64,0.73,0.84,0.49,0.76,0.49,0.74,0.66,0.51,0.83,0.55,0.8,0.9,0.67,0.79,0.68,0.6,0.79,0.41,0.42,0.4,0.4,0.4,0.45,0.34,0.3,0.31,0.2,0.27,0.22,0.18,0.15,0.2,0.14,0.16,0.1,0.17,0.22,0.21,0.15,0.16,0.11,0.11,0.12,0.11,0.11,0.1,0.1,0.1,0.1,0.1,0.13,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1] },
+  { title: 'Circus Piano', meta: 'One-shot', src: '/music/demo/one-shots/piano-circus.mp3', duration: '0:01',
+    peaks: [0.15,0.43,1,0.58,0.81,0.44,0.63,0.61,0.63,0.64,0.6,0.51,0.59,0.54,0.5,0.53,0.56,0.47,0.54,0.54,0.48,0.45,0.47,0.54,0.53,0.39,0.43,0.42,0.41,0.41,0.43,0.44,0.37,0.36,0.33,0.31,0.39,0.35,0.31,0.31,0.23,0.25,0.25,0.25,0.25,0.19,0.17,0.19,0.18,0.19,0.19,0.16,0.13,0.13,0.16,0.16,0.17,0.11,0.1,0.11,0.1,0.13,0.11,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1] }
+];
+
+const demoSongs = [
+  { title: '404 Falling', meta: 'Full song', src: '/music/demo/songs/404-falling.mp3', duration: '2:38',
+    peaks: [0.1,0.12,0.1,0.12,0.11,0.1,0.16,0.1,0.13,0.15,0.1,0.14,0.11,0.15,0.14,0.15,0.19,0.13,0.16,0.28,0.81,0.79,0.8,0.78,0.82,0.81,0.78,0.8,0.8,0.82,0.93,0.88,0.91,0.86,0.8,0.95,0.87,0.91,0.86,0.82,0.95,0.94,0.95,0.95,0.98,0.99,0.98,0.94,0.97,0.36,0.96,0.99,0.95,0.94,0.97,0.98,0.91,0.93,0.91,0.31,0.39,0.39,0.4,0.4,0.38,0.37,0.39,0.4,0.41,0.38,0.38,0.39,0.41,0.39,0.39,0.38,0.4,0.41,0.42,0.46,0.88,0.93,0.89,1,0.91,0.9,0.97,0.92,0.9,0.87,0.91,0.86,0.9,0.93,0.92,0.92,0.93,0.88,0.93,0.85,0.92,0.93,0.96,0.93,0.91,0.91,0.89,0.9,0.95,0.94,0.92,0.89,0.79,0.74,0.61,0.71,0.7,0.52,0.43,0.19,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1] },
+  { title: 'Magnolia', meta: 'Full song', src: '/music/demo/songs/magnolia.mp3', duration: '1:08',
+    peaks: [0.34,0.29,0.3,0.28,0.29,0.31,0.3,0.39,0.26,0.28,0.29,0.3,0.27,0.28,0.31,0.26,0.27,0.29,0.27,0.26,0.28,0.31,0.28,0.26,0.38,0.39,0.4,0.52,0.86,0.85,0.83,0.75,0.79,0.67,0.52,0.77,0.74,0.83,0.85,0.72,0.71,0.7,0.73,0.72,0.83,0.76,0.72,0.65,0.61,0.71,0.85,0.78,0.76,0.8,0.81,0.84,0.83,0.73,0.79,0.8,0.77,0.73,0.74,0.82,0.8,0.88,0.77,0.83,0.71,0.79,0.74,0.82,0.71,0.8,0.68,0.66,0.66,0.79,0.78,0.79,0.74,0.72,0.8,0.79,0.88,0.78,0.54,0.9,0.94,0.81,0.89,0.97,0.84,0.81,0.82,0.87,0.83,0.78,0.94,1,0.62,0.86,0.89,0.84,0.93,0.97,0.87,0.54,0.92,0.94,0.87,0.73,0.89,0.85,0.62,0.95,0.92,0.81,0.81,0.99,0.86,0.59,0.85,0.96,0.9,0.87,0.94,0.83,0.61,0.82,0.89,0.82,0.81,0.92,0.86,0.62,0.86,1,0.84,0.83] },
+  { title: 'Chasing', meta: 'Full song', src: '/music/demo/songs/chasing.mp3', duration: '3:12',
+    peaks: [0.77,0.73,0.61,0.57,0.9,0.65,0.63,0.38,0.67,0.92,0.9,0.9,0.89,0.92,0.84,0.63,0.45,0.7,0.95,0.91,0.89,0.89,0.9,0.93,0.69,0.61,0.89,0.94,0.91,0.91,0.93,0.9,0.97,0.71,0.51,0.95,0.91,0.9,0.89,0.94,0.92,0.97,0.72,0.68,0.87,0.9,0.92,0.93,0.96,0.9,0.92,0.76,0.77,0.38,0.83,0.94,0.94,0.94,0.91,0.95,0.89,0.72,0.84,0.83,0.96,0.95,0.92,0.88,0.93,0.87,0.87,0.67,0.72,0.81,0.9,0.76,0.92,0.68,0.69,0.71,0.43,0.89,0.88,0.65,0.74,0.89,0.95,0.94,0.89,0.75,0.98,0.94,0.86,0.9,0.6,0.69,0.76,0.57,0.63,0.79,0.76,0.88,0.64,0.66,0.69,0.81,0.6,0.66,0.63,0.97,0.96,0.94,0.94,0.9,0.73,0.75,0.93,0.97,0.96,0.96,0.93,0.92,0.88,0.75,0.98,0.98,0.89,0.92,0.82,0.94,0.91,0.93,0.92,1,0.95,0.93,0.78,0.9,0.96,0.94] },
+  { title: 'Higher', meta: 'Full song', src: '/music/demo/songs/higher.mp3', duration: '1:58',
+    peaks: [0.61,0.47,0.45,0.93,0.95,0.91,0.91,0.9,0.93,0.93,0.93,0.94,0.94,0.91,0.92,0.91,0.95,0.92,0.88,0.92,0.92,0.94,0.94,0.94,0.94,0.94,0.9,0.92,0.84,0.92,0.88,0.94,0.88,0.93,0.94,0.91,0.85,0.91,0.89,0.86,0.92,0.94,0.89,0.91,0.88,0.85,0.9,0.9,0.8,0.83,0.77,0.6,0.8,0.94,0.91,0.95,0.9,0.89,0.93,0.93,0.87,0.92,0.91,0.89,0.94,0.93,0.86,0.93,0.92,0.89,0.89,0.92,0.87,0.89,0.93,0.93,0.91,0.94,1,0.88,0.84,0.8,0.65,0.78,0.87,0.79,0.81,0.86,1,0.74,0.78,0.88,0.78,0.7,0.9,0.63,0.77,0.8,0.62,0.73,0.76,0.88,0.76,0.85,0.88,0.72,0.9,0.92,0.9,0.92,0.92,0.97,0.87,0.94,0.93,0.86,0.91,0.93,0.87,0.94,0.84,0.92,0.93,0.86,0.93,0.91,0.94,0.94,0.86,0.93,0.94,0.89,0.83,0.13,0.1,0.1,0.1,0.1,0.1,0.1] }
+];
+
+const demoTabs = [
+  { id: 'loops', label: 'Loops', tracks: demoLoops },
+  { id: 'oneshots', label: 'One-shots', tracks: demoOneShots },
+  { id: 'songs', label: 'Songs', tracks: demoSongs }
+];
+---
+
+<section class:list={['demo', { flush }]} aria-labelledby="demo-title">
+  <div class="demo-inner">
+    <div class="demo-header">
+      <div class="demo-header-content">
+        <p class="section-kicker">{kicker}</p>
+        <h2 id="demo-title" class="demo-title">{title}</h2>
+        <p class="demo-subtitle">{subtitle}</p>
+      </div>
+    </div>
+    <div class="demo-toggle" role="tablist" aria-label="Preview type">
+      {demoTabs.map((tab, tabIndex) => (
+        <button
+          class="demo-toggle-btn"
+          type="button"
+          role="tab"
+          id={`demo-tab-${tab.id}`}
+          aria-selected={tabIndex === 0 ? 'true' : 'false'}
+          aria-controls={`demo-panel-${tab.id}`}
+          data-demo-tab={tab.id}
+        >{tab.label}</button>
+      ))}
+    </div>
+    {demoTabs.map((tab, tabIndex) => (
+      <div
+        class="demo-tracks-list"
+        id={`demo-panel-${tab.id}`}
+        role="tabpanel"
+        aria-labelledby={`demo-tab-${tab.id}`}
+        data-demo-group={tab.id}
+        hidden={tabIndex !== 0}
+      >
+        {tab.tracks.map((track, index) => (
+          <div class={tabIndex === 0 ? 'demo-track reveal' : 'demo-track'} data-reveal-delay={`${index * 0.05}s`}>
+            <button
+              class="demo-play"
+              type="button"
+              data-demo-audio={track.src}
+              aria-label={`Play ${track.title}`}
+            >
+              <svg class="demo-icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4l14 8-14 8V4z"/></svg>
+              <svg class="demo-icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>
+            </button>
+            <div class="demo-track-info">
+              <span class="demo-track-title">{track.title}</span>
+              <span class="demo-track-meta">{track.meta}</span>
+            </div>
+            <div class="demo-track-progress" role="presentation">
+              <svg class="demo-wave" viewBox={`0 0 ${track.peaks.length * 3} 40`} preserveAspectRatio="none" aria-hidden="true">
+                {track.peaks.map((p, i) => <rect x={i * 3} y={20 - p * 19} width={2} height={p * 38} />)}
+              </svg>
+              <svg class="demo-wave demo-wave-played" viewBox={`0 0 ${track.peaks.length * 3} 40`} preserveAspectRatio="none" aria-hidden="true" style="clip-path: inset(0 100% 0 0)">
+                {track.peaks.map((p, i) => <rect x={i * 3} y={20 - p * 19} width={2} height={p * 38} />)}
+              </svg>
+            </div>
+            <span class="demo-track-time" data-duration={track.duration}>{track.duration}</span>
+          </div>
+        ))}
+      </div>
+    ))}
+    <a class="demo-explore" href="https://app.sonurastudio.com/samples">Explore community sounds</a>
+  </div>
+</section>
+
+<style>
+  /* De-scoped from body.editorial-home so the module works on any page.
+     --rule is homepage-only (defined in home-editorial.css), so redefine it
+     here; --hairline and the rest are global (global.css). */
+  .demo {
+    --rule: 1px solid var(--hairline);
+    border-top: var(--rule);
+    padding: clamp(72px, 9vw, 110px) var(--page-pad);
+  }
+  /* When the parent already applies the page gutter (e.g. AlternativeLayout),
+     drop our own horizontal padding to avoid double-insetting. */
+  .demo.flush {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .demo-inner { max-width: none; }
+  .demo-header { margin-bottom: 48px; text-align: left; }
+  .demo-title {
+    margin: 0 0 18px;
+    text-align: left;
+    text-transform: uppercase;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(38px, 4.8vw, 68px);
+    line-height: 1;
+    letter-spacing: 0.01em;
+    color: var(--fg);
+  }
+  .demo-subtitle {
+    font-size: 14px;
+    color: var(--muted);
+    text-transform: lowercase;
+    letter-spacing: 0.022em;
+    line-height: 1.8;
+    word-spacing: 0.04em;
+  }
+  .demo-toggle {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 24px;
+  }
+  .demo-toggle-btn {
+    padding: 0 0 7px;
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  .demo-toggle-btn:hover { color: var(--fg); }
+  .demo-toggle-btn[aria-selected='true'] {
+    color: var(--fg);
+    border-bottom-color: currentColor;
+  }
+  .demo-tracks-list {
+    display: flex;
+    flex-direction: column;
+  }
+  /* display: flex above would otherwise override the hidden attribute */
+  .demo-tracks-list[hidden] { display: none; }
+  .demo-track {
+    display: grid;
+    grid-template-columns: 56px minmax(0, 300px) 1fr 60px;
+    gap: clamp(20px, 3vw, 48px);
+    align-items: center;
+    border-top: var(--rule);
+    padding: clamp(24px, 3vw, 36px) 0;
+  }
+  .demo-track:last-child { border-bottom: var(--rule); }
+  .demo-play {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    padding: 0;
+    background: transparent;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-ui);
+    color: var(--fg);
+    cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+  }
+  .demo-play:hover { border-color: var(--fg); }
+  .demo-play svg { width: 18px; height: 18px; }
+  .demo-play .demo-icon-pause { display: none; }
+  .demo-track.is-playing .demo-icon-play { display: none; }
+  .demo-track.is-playing .demo-icon-pause { display: block; }
+  .demo-track.is-playing .demo-play {
+    background: var(--fg);
+    border-color: var(--fg);
+    color: var(--bg);
+  }
+  .demo-track-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+  .demo-track-title {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--fg);
+  }
+  .demo-track-meta {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .demo-track-progress {
+    position: relative;
+    height: 56px;
+    cursor: pointer;
+  }
+  .demo-wave {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .demo-wave rect { fill: var(--border-light); }
+  .demo-wave-played rect { fill: var(--fg); }
+  .demo-track-time {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+  }
+  .demo-explore {
+    display: block;
+    width: fit-content;
+    margin: 56px auto 0;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--fg);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 7px;
+    text-decoration-color: currentColor;
+  }
+
+  @media (max-width: 768px) {
+    .demo-track {
+      grid-template-columns: 48px minmax(0, 1fr) 48px;
+      grid-template-areas:
+        'play info time'
+        'progress progress progress';
+      gap: 18px 14px;
+      padding: 28px 0;
+    }
+    .demo-track .demo-play { width: 48px; height: 48px; }
+    .demo-track .demo-track-progress { height: 44px; }
+    .demo-track .demo-play { grid-area: play; }
+    .demo-track .demo-track-info { grid-area: info; }
+    .demo-track .demo-track-progress { grid-area: progress; }
+    .demo-track .demo-track-time { grid-area: time; }
+  }
+</style>
+
+<script>
+  const rows = Array.from(document.querySelectorAll<HTMLElement>('.demo-track'));
+  const player = new Audio();
+  // In the DOM with .player-audio so script.js's pauseAllPlayers() stops it
+  // (e.g. when the creator-video modal opens)
+  player.className = 'player-audio';
+  player.hidden = true;
+  document.body.appendChild(player);
+  let activeRow: HTMLElement | null = null;
+
+  const fmt = (s: number) => {
+    if (!isFinite(s)) return '0:00';
+    const m = Math.floor(s / 60);
+    const r = Math.floor(s % 60);
+    return `${m}:${String(r).padStart(2, '0')}`;
+  };
+
+  const paint = () => {
+    if (!activeRow) return;
+    const played = activeRow.querySelector<HTMLElement>('.demo-wave-played');
+    const time = activeRow.querySelector<HTMLElement>('.demo-track-time');
+    const pct = isFinite(player.duration) && player.duration > 0
+      ? (player.currentTime / player.duration) * 100
+      : 0;
+    if (played) played.style.clipPath = `inset(0 ${Math.max(0, 100 - pct)}% 0 0)`;
+    if (time) time.textContent = fmt(player.currentTime);
+  };
+
+  const resetRow = (row: HTMLElement) => {
+    row.classList.remove('is-playing');
+    const played = row.querySelector<HTMLElement>('.demo-wave-played');
+    const time = row.querySelector<HTMLElement>('.demo-track-time');
+    if (played) played.style.clipPath = 'inset(0 100% 0 0)';
+    if (time) time.textContent = time.dataset.duration || '0:00';
+  };
+
+  rows.forEach((row) => {
+    const button = row.querySelector<HTMLButtonElement>('.demo-play');
+    const src = button?.dataset.demoAudio;
+    if (!button || !src) return;
+
+    button.addEventListener('click', () => {
+      if (activeRow === row && !player.paused) {
+        player.pause();
+        return;
+      }
+      if (activeRow && activeRow !== row) resetRow(activeRow);
+      if (activeRow !== row) {
+        player.src = src;
+        activeRow = row;
+      }
+      player.play().catch(() => {
+        if (activeRow === row) resetRow(row);
+      });
+    });
+
+    row.querySelector('.demo-track-progress')?.addEventListener('click', (event) => {
+      if (activeRow !== row || !isFinite(player.duration)) return;
+      const bar = event.currentTarget as HTMLElement;
+      const rect = bar.getBoundingClientRect();
+      const ratio = ((event as MouseEvent).clientX - rect.left) / rect.width;
+      player.currentTime = Math.max(0, Math.min(1, ratio)) * player.duration;
+      paint(); // repaint immediately so seeks are visible while paused/ended
+    });
+  });
+
+  // Preview-type toggle (Loops / Songs). Audio keeps playing across tab
+  // switches — the player is global, so a hidden row just keeps its progress.
+  const tabButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-demo-tab]'));
+  const tabGroups = Array.from(document.querySelectorAll<HTMLElement>('[data-demo-group]'));
+  tabButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const id = button.dataset.demoTab;
+      tabButtons.forEach((b) => b.setAttribute('aria-selected', String(b === button)));
+      tabGroups.forEach((group) => { group.hidden = group.dataset.demoGroup !== id; });
+    });
+  });
+
+  // Smooth 60fps progress: keep the loop alive even before metadata loads
+  // (paint() guards against NaN duration until it arrives)
+  let rafId = 0;
+  const tick = () => {
+    if (!activeRow || player.paused) return;
+    paint();
+    rafId = requestAnimationFrame(tick);
+  };
+
+  player.addEventListener('play', () => {
+    if (activeRow) activeRow.classList.add('is-playing');
+    cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(tick);
+  });
+
+  // Covers our toggle AND external pauses (pauseAllPlayers from script.js)
+  player.addEventListener('pause', () => {
+    cancelAnimationFrame(rafId);
+    if (activeRow) activeRow.classList.remove('is-playing');
+  });
+
+  player.addEventListener('ended', () => {
+    cancelAnimationFrame(rafId);
+    if (activeRow) resetRow(activeRow);
+  });
+
+  player.addEventListener('error', () => {
+    cancelAnimationFrame(rafId);
+    if (activeRow) resetRow(activeRow);
+  });
+</script>

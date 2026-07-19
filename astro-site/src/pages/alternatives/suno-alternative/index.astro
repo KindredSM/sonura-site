@@ -1,5 +1,6 @@
 ---
 import AlternativeLayout from '../../../layouts/AlternativeLayout.astro';
+import MadeWithSonura from '../../../components/MadeWithSonura.astro';
 
 const quickStats = [
   { value: 'Free', label: 'To Start - No Card' },
@@ -73,4 +74,11 @@ const faqs = [
   finalCtaTitle="Try the Best Suno Alternative"
   finalCtaSubtitle="Create producer-ready beats, loops, vocals, and stems with precise genre control. Free to start, no credit card required."
   finalCtaFooter="No credit card required • Producer workflow • Export stems"
-/>
+>
+  <MadeWithSonura
+    slot="demos"
+    flush
+    kicker="07 / Sounds"
+    subtitle="Real Sonura output you can edit and export - loops, one-shots, and full songs. Hit play."
+  />
+</AlternativeLayout>
