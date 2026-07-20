@@ -37,6 +37,7 @@ interface Props {
   finalCtaTitle?: string;
   finalCtaButtonText?: string;
   appUrl?: string;
+  canonicalOverride?: string;
 }
 
 const {
@@ -60,9 +61,13 @@ const {
   finalCtaTitle,
   finalCtaButtonText,
   appUrl = 'https://app.sonurastudio.com/',
+  canonicalOverride,
 } = Astro.props;
 
-const canonical = `https://sonurastudio.com/use-cases/${useCaseSlug}/`;
+// The /use-cases/ twin is the canonical version by default; pages whose twin
+// was retired (redirected) must point at the redirect target instead, so the
+// canonical never lands on a redirecting URL.
+const canonical = canonicalOverride ?? `https://sonurastudio.com/use-cases/${useCaseSlug}/`;
 const stripHtml = (value: string) => value.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
 
 const jsonLd = [

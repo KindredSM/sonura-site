@@ -12,15 +12,22 @@ const workflowItems = [
     image: '/images/compose.jpg',
     imageAlt: 'Create lo-fi beats instantly',
     title: 'Instant chill beats',
-    description: 'Get your lo-fi beat in under 10 seconds. Complete with jazzy chords, dusty drums, bass, and that warm analog feel. Perfect for studying or relaxing.'
+    description: 'Get your lo-fi beat in under 10 seconds. Use our built-in <a href="/features/ai-loops/">ai loop generator</a> to quickly build your foundation of jazzy chords, dusty drums, and bass, all with that warm analog feel. Perfect for studying or relaxing.'
   },
   {
     image: '/images/share.jpg',
     imageAlt: 'Use lo-fi beats everywhere',
     title: 'Use everywhere',
-    description: 'Stream on lo-fi radio stations, use in YouTube videos, create study playlists. 100% royalty-free with full commercial rights.'
+    description: 'Stream on lo-fi radio stations, use in YouTube videos, create study playlists. 100% royalty-free with full commercial rights. Prefer generating full songs? Our <a href="/alternatives/suno-alternative/">Suno alternative</a> gives producers editable beats and stems instead of a locked track.'
   }
 ];
+
+const proseTitle = 'The Ultimate AI Lofi Music Generator';
+const proseBody = `
+  <p>Most AI music generators hand you a single flat file &mdash; a bounced-down stereo track you can play but can&rsquo;t take apart. That&rsquo;s fine for background listening, but useless the moment you want to actually produce. Sonura is built for producers: every lofi beat comes back as <strong>separated stems</strong>, not a locked mixdown.</p>
+  <p>Generate a chill lofi beat and Sonura splits it into individual stems &mdash; <strong>drums</strong>, <strong>bass</strong>, and <strong>melody</strong> as their own tracks. Mute the dusty drums to loop the jazzy keys, swap in your own kit, rebalance the low end, or drag a single stem straight into Ableton, FL Studio, or Logic. You get real control over the mix instead of a take-it-or-leave-it render.</p>
+  <p>That difference is why Sonura works as a genuine lofi music generator and not just a novelty. Flat tracks lock you into whatever the model decided; split stems let you finish, remix, and release. Learn more about <a href="/features/stem-export/">stem export</a>, or start with the <a href="/tools/ai-beat-maker/">AI beat maker</a> and build your first lofi track in seconds.</p>
+`;
 
 const faqs = [
   {
@@ -36,12 +43,16 @@ const faqs = [
     answer: 'Yes! 100% royalty-free with commercial rights. Perfect for YouTube background music, lo-fi radio streams, study music channels, or content creation. No copyright strikes ever.'
   },
   {
-    question: 'What BPM are lo-fi beats?',
-    answer: 'Lo-fi hip hop typically ranges from 70-90 bpm for a relaxed, downtempo feel. Sonura can create lo-fi at any tempo you specify in your prompt.'
-  },
-  {
     question: 'Is this better than lo-fi sample packs?',
     answer: 'Sample packs are overused by thousands of creators. Sonura\'s <a href="/tools/ai-sample-generator/">sample generator</a> creates completely original lo-fi sounds tailored to your exact mood and style. Every track is unique and fresh. For the bigger picture, see our guide to <a href="/blog/ai-music-production-stems/">AI music production and stems</a>.'
+  },
+  {
+    question: 'What BPM is lo-fi? (best BPM for lo-fi beats)',
+    answer: 'The lo-fi BPM sweet spot is 70-90 BPM, with most tracks landing around 80-85 BPM for that relaxed, head-nod feel. Slower tempos (70-75 BPM) suit sleepy, late-night beats, while 88-90 BPM adds a little more bounce. In Sonura you can set the exact BPM in your prompt - just add "82 BPM" (or any tempo) and every generation locks to it.'
+  },
+  {
+    question: 'What chords are used in lo-fi? (lo-fi guitar chords)',
+    answer: 'Lo-fi leans on soft, jazzy extended chords - major 7th, minor 7th, and 9th voicings rather than plain triads. A quick classic progression is Cmaj7 - Am7 - Dm7 - G7 (a I-vi-ii-V turnaround), which works the same for lo-fi guitar chords or keys. Detune slightly or add vinyl crackle for that warm, nostalgic character, then let Sonura build dusty drums and bass around it.'
   }
 ];
 ---
@@ -57,6 +68,8 @@ const faqs = [
   ctaText="Create Lo-Fi Beats"
   workflowTitle="How to make lo-fi beats with AI"
   workflowItems={workflowItems}
+  proseTitle={proseTitle}
+  proseBody={proseBody}
   faqs={faqs}
   finalCtaTitle="Start making lo-fi beats now"
   finalCtaButtonText="Create Lo-Fi Beats Free"

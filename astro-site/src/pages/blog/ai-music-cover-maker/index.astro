@@ -1,0 +1,71 @@
+---
+import BlogLayout from '../../../layouts/BlogLayout.astro';
+
+const toc = [
+  { id: 'overview', label: 'Two steps, not one button' },
+  { id: 'step-1-isolate', label: 'Step 1: Isolate vocals or instrumental' },
+  { id: 'step-2-backing', label: 'Step 2: Build or replace the backing track' },
+  { id: 'step-3-stems', label: 'Step 3: Layer and export stems' },
+  { id: 'step-4-daw', label: 'Step 4: Finish in your DAW' },
+  { id: 'faq', label: 'Technical production FAQ' },
+];
+---
+
+<BlogLayout
+  title="How to Make an AI Music Cover: A Producer's Workflow"
+  description="'AI music cover maker' usually implies one button. In practice a clean cover takes two steps: isolate the vocal or instrumental, then build a new backing track. Here's the honest producer workflow."
+  keywords="ai music cover maker, ai cover maker, how to make an ai cover, ai cover song, vocal remover, cover song backing track"
+  slug="ai-music-cover-maker"
+  publishedDate="2026-07-11"
+  readTime="3 min read"
+  toc={toc}
+>
+  <div style="line-height: 1.8;">
+    <section id="overview" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Two Steps, Not One Button</h2>
+      <p style="margin-bottom: 24px;">"AI music cover maker" often implies a single button that turns any song into a new version. In practice, a clean cover takes two distinct steps: isolating what you need from the original, and building or replacing the instrumental around it. Here's the workflow.</p>
+    </section>
+
+    <section id="step-1-isolate" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Step 1: Isolate the Vocals or Instrumental</h2>
+      <p style="margin-bottom: 24px;">Use <a href="/tools/vocal-remover/" class="text-link">Vocal Remover</a> to strip vocals from a reference track and get a clean acapella or instrumental to work from. Whether you are recording your own vocals over the original instrumental, or building something new around the isolated acapella, this is the foundation.</p>
+    </section>
+
+    <section id="step-2-backing" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Step 2: Build or Replace the Backing Track</h2>
+      <p style="margin-bottom: 24px;">If you want a new arrangement instead, describe the style you are going for (genre, tempo, mood) and generate a new <a href="/use-cases/vocalists/" class="text-link">backing track</a> with Sonura. Match the key and tempo of the original vocal so it sits correctly.</p>
+    </section>
+
+    <section id="step-3-stems" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Step 3: Layer and Export Stems</h2>
+      <p style="margin-bottom: 24px;">Export <a href="/features/stem-export/" class="text-link">individual stems</a> (drums, bass, melody) so you can balance the new instrumental against the isolated vocal in your DAW rather than fighting a flattened mix.</p>
+    </section>
+
+    <section id="step-4-daw" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Step 4: Finish in Your DAW</h2>
+      <p style="margin-bottom: 24px;">Drop stems into Ableton Live, FL Studio, or Logic Pro via <a href="/plugin/" class="text-link">Sonura Flow</a> and mix the cover the way you would any other production: EQ, compression, and levels to make the new instrumental and the vocal sit together.</p>
+    </section>
+
+    <section id="faq" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Technical Production FAQ</h2>
+
+      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; margin-top: 32px;">Can I release a cover made this way commercially?</h3>
+      <p style="margin-bottom: 24px;">Cover songs carry their own mechanical licensing requirements around the original composition, separate from anything Sonura generates. Sonura's generated backing tracks are 100% royalty-free with full commercial rights, but check cover licensing requirements (e.g. via a service like Songfile/Harry Fox) for the underlying song itself before distributing.</p>
+
+      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; margin-top: 32px;">What file format does the vocal isolation export in?</h3>
+      <p style="margin-bottom: 24px;">WAV, for clean quality suitable for further mixing. MP3 preview available for quick reference.</p>
+
+      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; margin-top: 32px;">Will an isolated vocal have artifacts from the removal process?</h3>
+      <p style="margin-bottom: 24px;">Some isolation artifacts are possible depending on the source recording's mix density. This is a known limitation of any vocal-isolation technology, not unique to one tool.</p>
+
+      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; margin-top: 32px;">Is there a single-click way to generate a full cover version?</h3>
+      <p style="margin-bottom: 24px;">Not currently. This workflow combines vocal isolation with a separately generated backing track, giving you more control over the result than a one-click black-box output would.</p>
+
+      <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 32px; margin-top: 48px; text-align: center;">
+        <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px;">Start Your Cover with a Clean Acapella</h3>
+        <p style="margin-bottom: 24px; color: var(--muted);">Isolate the vocal or instrumental from your reference track, then build the new version around it - stems and full commercial rights included.</p>
+        <a href="/tools/vocal-remover/" class="button primary large"><span class="btn-label-full">Try Vocal Remover Free</span><span class="btn-label-short">Try it free</span></a>
+      </div>
+    </section>
+  </div>
+</BlogLayout>

@@ -1,0 +1,167 @@
+---
+import BlogLayout from '../../../layouts/BlogLayout.astro';
+
+const toc = [
+  { id: 'quick-comparison', label: 'Quick comparison' },
+  { id: 'where-each-wins', label: 'Where each tool wins' },
+  { id: 'use-both', label: 'Use both' },
+  { id: 'faq', label: 'Technical production FAQ' },
+];
+---
+
+<BlogLayout
+  title="Waves ILLUGEN 2.0 vs. Sonura: Which AI Sample Generator Fits Your Workflow?"
+  description="Waves ILLUGEN 2.0 and Sonura are both AI text-to-sound generators, built for different jobs. ILLUGEN makes individual one-shots, loops, and SFX; Sonura makes full multi-layer stems. An even-handed comparison for producers."
+  keywords="waves illugen alternative, illugen vs sonura, waves illugen 2.0, ai sample generator, sonura vs illugen"
+  slug="waves-illugen-vs-sonura"
+  publishedDate="2026-07-03"
+  readTime="4 min read"
+  toc={toc}
+>
+  <div style="line-height: 1.8;">
+    <p style="margin-bottom: 24px;">Waves ILLUGEN 2.0 and Sonura are both AI text-to-sound generators: you type a prompt and get original audio back, no sample-pack digging required. They are built for different points in a session, though. ILLUGEN is a standalone app that generates individual samples (one-shots, loops, and SFX) from a prompt, three WAV files at a time, which you then drag into your DAW. Sonura generates individual samples (one-shots, loops, and vocals) as well as full multi-layer stems and arrangements (drums, bass, melody, and vocals) from a prompt. You make them in the browser and download, or use <a href="/plugin/" class="text-link">Sonura Flow</a> to drag generations straight into your DAW project. Both tools are credit-based and generate over an internet connection.</p>
+    <p style="margin-bottom: 24px;">If you want individual, ready-to-drop samples with in-app musical control (ILLUGEN 2.0 added Lock to Key, loop-length, and stereo controls, plus separate Studio and Creative engines), ILLUGEN is built for that. If you want one tool that spans individual samples through full instrumentals, loop sets, and vocal ideas split into editable stems, that is Sonura's territory. Specs below are drawn from Waves' official <a href="https://www.waves.com/illugen" class="text-link">ILLUGEN page</a>; confirm current details there before relying on them.</p>
+
+    <section id="quick-comparison" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Quick Comparison</h2>
+      <div class="alt-table-scroll">
+        <table class="alt-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th class="col-sonura">Sonura</th>
+              <th>Waves ILLUGEN 2.0</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cell-feature">Input</td>
+              <td class="cell-strong">Text prompt</td>
+              <td class="cell-strong">Text prompt</td>
+            </tr>
+            <tr>
+              <td class="cell-feature">What you get</td>
+              <td class="cell-strong">Individual samples plus full multi-layer stems and arrangements (drums, bass, melody, vocals)</td>
+              <td class="cell-strong">Individual samples: one-shots, loops, and SFX (three WAVs per prompt)</td>
+            </tr>
+            <tr>
+              <td class="cell-feature">Where it runs</td>
+              <td class="cell-strong">Browser (download) plus Sonura Flow, dragging into your DAW project (Ableton Live, FL Studio, Logic Pro, Pro Tools)</td>
+              <td class="cell-strong">Standalone app; drag samples into your DAW</td>
+            </tr>
+            <tr>
+              <td class="cell-feature">Stem export</td>
+              <td class="cell-strong">Multi-layer stems on every plan</td>
+              <td class="cell-weak">Individual samples, not multi-track stems</td>
+            </tr>
+            <tr>
+              <td class="cell-feature">Pricing model</td>
+              <td class="cell-strong">Credit-based; free tier plus paid plans</td>
+              <td class="cell-weak">Credit-based subscription</td>
+            </tr>
+            <tr>
+              <td class="cell-feature">Commercial rights</td>
+              <td class="cell-strong">Royalty-free on every tier, including free</td>
+              <td class="cell-weak">Under Waves' license terms</td>
+            </tr>
+            <tr>
+              <td class="cell-feature">Control</td>
+              <td class="cell-strong">Prompt-based and precise (e.g. "140 BPM trap, heavy 808s")</td>
+              <td class="cell-strong">Studio and Creative engines; Lock to Key, loop length, stereo controls</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="where-each-wins" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Where Each Tool Wins</h2>
+      <p style="margin-bottom: 12px;"><strong>Choose Sonura if you:</strong></p>
+      <ul style="margin-bottom: 24px; padding-left: 24px;">
+        <li style="margin-bottom: 12px;">Need individual samples, a full instrumental, a loop set, or a vocal idea generated from scratch</li>
+        <li style="margin-bottom: 12px;">Want individual <a href="/features/stem-export/" class="text-link">stems</a> to mix and rearrange in your DAW</li>
+        <li style="margin-bottom: 12px;">Are producing <a href="/use-cases/type-beats/" class="text-link">type beats</a> or backing tracks and need speed</li>
+        <li style="margin-bottom: 12px;">Want royalty-free commercial rights on every tier, including free</li>
+      </ul>
+      <p style="margin-bottom: 12px;"><strong>Choose Waves ILLUGEN 2.0 if you:</strong></p>
+      <ul style="margin-bottom: 24px; padding-left: 24px;">
+        <li style="margin-bottom: 12px;">Want individual one-shots, loops, or SFX rather than a full arrangement</li>
+        <li style="margin-bottom: 12px;">Want in-app musical control like Lock to Key and separate Studio and Creative engines</li>
+        <li style="margin-bottom: 12px;">Prefer a standalone sample app you pull sounds from into any DAW</li>
+      </ul>
+    </section>
+
+    <section id="use-both" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Use Both</h2>
+      <p style="margin-bottom: 24px;">Many producers run both: sketch the arrangement fast with <a href="/tools/ai-beat-maker/" class="text-link">Sonura's beat maker</a>, export stems into Ableton or FL Studio, then pull individual one-shots or textures from ILLUGEN to layer on top. Different tools for different parts of the same session.</p>
+    </section>
+
+    <section id="faq" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Technical Production FAQ</h2>
+
+      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; margin-top: 32px;">Can I export stems from ILLUGEN the way I can from Sonura?</h3>
+      <p style="margin-bottom: 24px;">ILLUGEN generates individual samples (one-shots, loops, and SFX), so there is no full arrangement to split into parts. Sonura makes both individual samples and full multi-layer stems (drums, bass, melody, FX, vocals), exported as separate WAV files on every plan, which is what lets you rebalance a mix in your DAW.</p>
+
+      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; margin-top: 32px;">Does either tool need an internet connection?</h3>
+      <p style="margin-bottom: 24px;">Both are credit-based and generate over an internet connection. With Sonura you make sounds in the browser and download them, or drag them straight into your DAW with Sonura Flow. ILLUGEN generates in its standalone app; the samples are then stored locally and stay in your Waves account for around six months.</p>
+
+      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; margin-top: 32px;">How do licensing and commercial use compare?</h3>
+      <p style="margin-bottom: 24px;">Both train on documented, licensed material. ILLUGEN runs on a credit-based subscription, with commercial use under Waves' license terms. Sonura's outputs are royalty-free with full commercial rights on every tier, including the free tier, with no splits owed.</p>
+
+      <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 32px; margin-top: 48px; text-align: center;">
+        <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px;">Generate Samples and Stems From a Prompt</h3>
+        <p style="margin-bottom: 24px; color: var(--muted);">Create samples, stems, and full arrangements in seconds, with commercial rights on every tier.</p>
+        <a href="https://app.sonurastudio.com/" class="button primary large"><span class="btn-label-full">Start Creating Free</span><span class="btn-label-short">Start free</span></a>
+      </div>
+    </section>
+  </div>
+</BlogLayout>
+
+<style>
+  /* Comparison table: replicated from AlternativeLayout's .alt-table so it
+     visually matches the /alternatives/ comparison tables. CSS vars are global. */
+  .alt-table-scroll {
+    overflow-x: auto;
+  }
+  .alt-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .alt-table th {
+    padding: 16px 20px 16px 0;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .alt-table th.col-sonura {
+    color: var(--fg);
+  }
+  .alt-table td {
+    padding: 18px 20px 18px 0;
+    text-align: left;
+    vertical-align: top;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .alt-table tbody tr {
+    border-top: 1px solid var(--hairline);
+  }
+  .alt-table tbody tr:first-child {
+    border-top: 0;
+  }
+  .alt-table .cell-feature {
+    font-weight: 600;
+    color: var(--fg);
+  }
+  .alt-table .cell-strong {
+    color: var(--fg);
+  }
+  .alt-table .cell-weak {
+    color: var(--muted);
+  }
+</style>

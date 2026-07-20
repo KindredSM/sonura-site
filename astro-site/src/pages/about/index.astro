@@ -193,6 +193,10 @@ const jsonLd = [
               </div>
               
               <div class="founder-links">
+                <a href="mailto:kindred@sonurastudio.com" class="linkedin-link">
+                  kindred@sonurastudio.com
+                </a>
+                <span class="separator">|</span>
                 <a href="https://x.com/kindredsalway" target="_blank" rel="noopener" class="linkedin-link">
                   Follow on X (Twitter)
                 </a>
@@ -219,6 +223,10 @@ const jsonLd = [
               </div>
 
               <div class="founder-links">
+                <a href="mailto:blue@sonurastudio.com" class="linkedin-link">
+                  blue@sonurastudio.com
+                </a>
+                <span class="separator">|</span>
                 <a href="https://www.instagram.com/iambluetyler/" target="_blank" rel="noopener" class="linkedin-link">
                   Follow on Instagram
                 </a>
@@ -236,15 +244,21 @@ const jsonLd = [
 
   <section class="about-section contact-section">
     <div class="about-section-inner">
-      <div class="contact-card reveal">
-        <p class="section-kicker">05 / Contact</p>
-        <h2 class="contact-title">Get in Touch</h2>
-        <p class="contact-text">Questions, partnerships, or feedback. We're always listening.</p>
-        <div class="contact-actions">
-          <a href="mailto:kindred@sonurastudio.com" class="text-link">kindred@sonurastudio.com</a>
-          <span class="separator">|</span>
-          <a href="https://discord.gg/Yk8RD3Nmyh" target="_blank" rel="noopener" class="text-link">Join our Discord</a>
-        </div>
+      <div class="about-affiliations reveal">
+        <a href="https://aiformusic.info/" target="_blank" rel="noopener" class="affiliation">
+          <span class="affiliation-chip affiliation-chip-dark">
+            <img src="/images/affiliations/aiformusic-wh.png" alt="" loading="lazy" width="264" height="178" />
+          </span>
+          <span class="affiliation-name">AI For Music</span>
+          <span class="affiliation-role">Supporter, Principles for Music Creation with AI</span>
+        </a>
+        <a href="https://musictechnology.uk/" target="_blank" rel="noopener" class="affiliation">
+          <span class="affiliation-chip affiliation-chip-light">
+            <img src="/images/affiliations/mtuk.png" alt="" loading="lazy" width="264" height="190" />
+          </span>
+          <span class="affiliation-name">Music Technology UK</span>
+          <span class="affiliation-role">Member</span>
+        </a>
       </div>
     </div>
   </section>
@@ -626,47 +640,66 @@ const jsonLd = [
     padding-bottom: 160px;
   }
 
-  .contact-card {
-    max-width: 800px;
-    margin: 0;
-    text-align: left;
-    padding: 0;
-    background: transparent;
-    border: none;
-  }
-
-  .contact-title {
-    font-family: var(--font-display);
-    font-size: clamp(38px, 4.8vw, 68px);
-    margin: 0 0 24px;
-    letter-spacing: 0.01em;
-    text-transform: uppercase;
-    line-height: 1;
-    font-weight: 400;
-    color: var(--fg);
-  }
-
-  .contact-text {
-    font-size: 17px;
-    color: var(--muted);
-    margin: 0 0 48px;
-    line-height: 1.8;
-    letter-spacing: 0.022em;
-    word-spacing: 0.04em;
-    text-transform: lowercase;
-  }
-
-  .contact-actions {
-    display: flex;
-    gap: 16px;
-    justify-content: flex-start;
-    align-items: center;
-    font-size: 18px;
-  }
-
-
   .separator {
     color: var(--faint);
+  }
+
+  /* Quiet affiliations strip (no heading, not part of the numbered sections).
+     Per-logo chip backgrounds chosen for contrast: AI For Music logo is white
+     (dark chip), MTUK logo is black (light chip). */
+  .about-affiliations {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+
+  .affiliation {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-decoration: none;
+    max-width: 280px;
+  }
+
+  .affiliation-chip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 132px;
+    height: 68px;
+    padding: 14px 18px;
+    border-radius: var(--radius-ui);
+    border: 1px solid var(--hairline);
+  }
+
+  .affiliation-chip-dark { background: #101010; }
+  .affiliation-chip-light { background: #ffffff; }
+
+  .affiliation-chip img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  .affiliation-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--fg);
+    letter-spacing: 0.02em;
+  }
+
+  .affiliation:hover .affiliation-name {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .affiliation-role {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
   }
 
   @media (max-width: 900px) {
@@ -721,12 +754,6 @@ const jsonLd = [
       gap: 16px;
     }
     
-    .contact-actions {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 12px;
-    }
-
     .founder-links {
       flex-direction: column;
       gap: 20px;
