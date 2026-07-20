@@ -2145,10 +2145,13 @@ body {
   .final-cta-title { font-size: clamp(38px, 11vw, 64px); }
 }
 
-/* Inline text links — THE one underline style (see DESIGN-SYSTEM.md) */
+/* Inline text links — THE one underline style (see DESIGN-SYSTEM.md).
+   a:not([class]) covers plain anchors in body copy (card descriptions,
+   FAQ answers, prose); anything with a class styles itself. */
 .text-link,
 .community-link,
-.hero-beta-link {
+.hero-beta-link,
+a:not([class]) {
   color: var(--fg);
   font-weight: 600;
   text-decoration: underline;
@@ -2159,7 +2162,8 @@ body {
 
 .text-link:hover,
 .community-link:hover,
-.hero-beta-link:hover {
+.hero-beta-link:hover,
+a:not([class]):hover {
   color: var(--fg);
 }
 
