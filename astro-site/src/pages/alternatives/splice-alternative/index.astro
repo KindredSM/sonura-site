@@ -20,7 +20,7 @@ const comparisons = [
 ];
 
 const advantages = [
-  { title: 'Original Samples on Demand', description: "Splice is excellent when you want to browse a huge royalty-free catalog. Sonura's <a href='/tools/ai-sample-generator/'>sample generator</a> is stronger when you want a new sound made for your prompt, from a specific <a href='/tools/ai-loop-maker/'>loop</a> idea to a vocal chop, one-shot, or FX texture." },
+  { title: 'Original Samples on Demand', description: "On Splice, the same royalty-free loops are licensed by a million other producers. Sonura's <a href='/tools/ai-sample-generator/'>sample generator</a> is stronger when you want a unique sound made for your prompt - from a specific <a href='/tools/ai-loop-maker/'>loop</a> idea to a vocal chop, one-shot, or FX texture - original every time." },
   { title: 'Creation Instead of Browsing', description: "Splice works best when you want to search, preview, and license existing sounds. Sonura works best when you already know the sound you want: describe the genre, BPM, mood, and role, then create a new idea for the track." },
   { title: 'Commercial-Ready Production Flow', description: "Use Sonura when you want created sounds to move straight into beats, streaming releases, content, or client work. Use Splice when a royalty-free licensed catalog sample is exactly what the production needs." },
   { title: 'Stem Export for Customization', description: "Sonura is built around creating and exporting editable parts for layering, mixing, and arrangement in your DAW. Splice is built around licensed samples, plugins, and integrations with DAW workflows." },
@@ -46,58 +46,31 @@ const competitorUseCases = [
 ];
 
 const faqs = [
-  { question: 'What are the best Splice alternatives for producers?', answer: "Most Splice alternatives fall into two camps: other shared-library subscriptions, or tools that create original audio on demand. If your goal is to stop searching repetitive catalogs, Sonura is the strongest Splice alternative for producers - it generates unique loops, one-shots, vocals, and FX from a prompt and exports <a href='/features/stem-export/'>stems</a> for your DAW." },
-  { question: 'Is there a free Splice alternative?', answer: 'Yes. Sonura is free to start with no credit card required, so you can generate original samples before deciding on a plan. It is a genuinely free Splice alternative for producers who want to create sounds rather than pay to license a shared catalog.' },
   { question: 'Can I switch from Splice to Sonura?', answer: 'Yes! Many producers use both. Use Splice for browsing established libraries, use Sonura for creating unique samples on-demand. They complement each other well.' },
   { question: 'Is Sonura better than Splice?', answer: 'It depends on your needs. Splice is great for browsing existing libraries. Sonura is better for creating unique samples on-demand. If you want original samples that stand out, Sonura is the better choice.' },
-  { question: 'Do I own the samples I generate, and are they royalty-free?', answer: 'Samples you generate with Sonura are yours to use in commercial work - beats you sell, streaming releases, content, and client projects - royalty-free. Because the audio is created for you rather than licensed from a shared pool, there are no per-use clearances to track. Check the current plan terms for the specifics that apply to your account.' },
   { question: "Does Sonura have the same sample types as Splice?", answer: "Yes! Sonura creates loops, one-shots, vocals, and sound effects - all the same types Splice offers. But every sample is unique and original, not from a shared library." },
   { question: 'Can I use Sonura samples commercially?', answer: 'Yes. Sonura is designed for commercial creation workflows: beats you sell, streaming releases, content, and client work. Check the current plan and terms if you need private ownership instead of public/shared output.' },
   { question: 'How does Sonura compare to Splice pricing?', answer: "Sonura and Splice use different pricing models. Sonura credits create new audio; Splice credits license catalog samples, MIDI, and presets. Compare based on whether you need originality or catalog depth." },
-  { question: 'Can Sonura replace my Splice subscription?', answer: 'For producers whose main use of Splice is finding fresh sounds, Sonura can replace that workflow entirely by generating original samples on demand. If you also rely on Splice for its plugin rent-to-own ecosystem or a specific artist pack, many producers keep both and use Sonura for the original material that makes a track stand out.' },
   { question: 'Can I use both Splice and Sonura?', answer: 'Absolutely! Many creators use Splice for browsing established libraries and Sonura for creating unique samples on-demand. Use the right tool for each job.' },
-];
-
-const narrative = [
-  {
-    heading: 'Stop Searching Repetitive Sample Libraries',
-    body: `
-      <p>Every producer who has used Splice knows the routine: open the browser, type a keyword, and scroll through hundreds of loops that thousands of other producers are downloading the same day. Shared sample libraries are deep, but they are <strong>shared</strong> &mdash; the sound you finally settle on has already shipped in a hundred other beats. The more producers pull from the same catalog, the more everything starts to sound alike.</p>
-      <p>That is the real reason producers look for a Splice alternative: not because the library is bad, but because searching a repetitive shared catalog is slow and rarely lands on something that is truly yours.</p>
-    `,
-  },
-  {
-    heading: 'Start Generating Original Samples on Demand',
-    body: `
-      <p>Sonura flips the workflow. Instead of searching for a sound that already exists, you describe the one you want &mdash; genre, BPM, mood, and role &mdash; and the <a href="/tools/ai-sample-generator/">AI sample generator</a> creates it on demand. Need a warm <a href="/genre/lofi/">lo-fi</a> key loop at 82 BPM, or a gritty 808 pattern? Generate it, regenerate for variations, and keep the take that fits. Every result is original and made for your track, not licensed from a shared pool.</p>
-      <p>Because Sonura creates the audio rather than licensing it, you can pull <a href="/tools/ai-loop-maker/">loops</a>, one-shots, vocals, and FX straight into your session, then <a href="/features/stem-export/">export stems</a> to mix and arrange in your DAW. Stop searching, start generating &mdash; and spend your time producing instead of browsing.</p>
-    `,
-  },
-  {
-    heading: 'The Best Splice Alternative for Producers',
-    body: `
-      <p>If you are comparing Splice alternatives, the question is not which app has the biggest library &mdash; it is whether you want to keep searching shared catalogs or start creating original sounds on demand. For producers who value originality, speed, and a release-ready workflow, Sonura is the best Splice alternative: unique AI-created samples, stem export on every plan, and full commercial rights.</p>
-      <p>None of this is all-or-nothing. Plenty of producers keep Splice for its catalog and plugin ecosystem while using Sonura to generate the original samples that make a track stand out. Use the right tool for each job &mdash; and when you need something nobody else has, generate it.</p>
-    `,
-  },
+  { question: 'What are the best Splice alternatives?', answer: "Most Splice alternatives are still shared sample libraries - you browse and license the same sounds thousands of other producers already use. Sonura takes a different approach: instead of searching a catalog, you <a href='/tools/ai-sample-generator/'>generate</a> unique, royalty-free loops, one-shots, and vocals on demand, with stem exports for your DAW. If originality matters more than catalog size, it's the strongest Splice alternative." },
 ];
 ---
 
 <AlternativeLayout
   competitor="Splice"
   competitorSlug="splice-alternative"
-  title="Splice Alternative: Stop Searching, Start Generating | Sonura"
-  description="The AI Splice alternative for producers. Stop searching repetitive shared libraries and generate original, royalty-free samples on demand - loops, vocals, FX, and stems for your DAW."
-  keywords="splice alternative, splice alternatives, best splice alternative, splice vs sonura, ai sample generator, unique samples, splice competitor, sample pack alternative, ai loops generator"
-  headline="The AI Splice Alternative: Stop Searching, Start Generating"
-  subhead="Tired of scrolling the same shared Splice loops everyone else uses? Sonura is the Splice alternative that generates original, royalty-free samples on demand - the top pick among Splice alternatives for producers who would rather create than search."
+  title="Best Splice Alternative: Generate Unique Samples | Sonura"
+  description="Comparing Splice alternatives? Stop searching shared libraries - Sonura generates unique, royalty-free samples and loops on demand, with stem exports. Free to start."
+  keywords="splice alternative, splice alternatives, best splice alternative, best splice alternatives, splice vs sonura, ai sample generator, unique samples, splice competitor, sample pack alternative, ai loops generator"
+  headline="The Best AI Splice Alternative: Stop Searching, Start Generating"
+  subhead="The most-searched Splice alternatives are still shared sample libraries — on Splice the same loops go to a million other producers. Sonura is the Splice alternative that generates unique, royalty-free loops and samples on demand, stem exports included."
+  advantagesTitle="Why Sonura Leads the Splice Alternatives"
   quickStats={quickStats}
   comparisons={comparisons}
   advantages={advantages}
   sonuraUseCases={sonuraUseCases}
   competitorUseCases={competitorUseCases}
   faqs={faqs}
-  narrative={narrative}
   finalCtaTitle="Try the Best Splice Alternative"
   finalCtaSubtitle="Create original samples, loops, vocals, and FX for your production workflow. Free to start, no credit card required."
   finalCtaButtonText="Start Creating Samples Free"
