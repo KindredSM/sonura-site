@@ -32,6 +32,8 @@ interface Props {
   workflowTitle: string;
   workflowItems: WorkflowItem[];
   faqs: FAQ[];
+  proseTitle?: string;
+  proseBody?: string;
   demoTitle?: string;
   demoTracks?: DemoTrack[];
   trustItems?: string[];
@@ -52,6 +54,8 @@ const {
   workflowTitle,
   workflowItems,
   faqs,
+  proseTitle,
+  proseBody,
   demoTitle,
   demoTracks = [],
   trustItems = [],
@@ -63,13 +67,18 @@ const {
 const canonical = `https://sonurastudio.com/genre/${genreSlug}/`;
 const stripHtml = (value: string) => value.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
 
-/* Numbered section kickers (demo section is conditional, so numbering shifts) */
+/* Numbered section kickers. Prose and demo sections are optional, so numbering
+   is computed from whichever sections are actually present. */
+const hasProse = Boolean(proseTitle && proseBody);
 const hasDemo = demoTracks.length > 0;
+let sectionNo = 0;
+const nextKicker = (label: string) => `${String(++sectionNo).padStart(2, '0')} / ${label}`;
 const kickers = {
-  workflow: '01 / Workflow',
-  demo: '02 / Demos',
-  next: hasDemo ? '03 / Next steps' : '02 / Next steps',
-  faq: hasDemo ? '04 / FAQ' : '03 / FAQ',
+  workflow: nextKicker('Workflow'),
+  prose: hasProse ? nextKicker('Why Sonura') : '',
+  demo: hasDemo ? nextKicker('Demos') : '',
+  next: nextKicker('Next steps'),
+  faq: nextKicker('FAQ'),
 };
 
 const jsonLd = [
@@ -118,6 +127,42 @@ const jsonLd = [
   <style>
     .hero-beta-link {
       align-self: flex-start;
+    }
+    .genre-prose {
+      border-top: 1px solid var(--hairline);
+      padding: clamp(72px, 9vw, 110px) var(--page-pad);
+    }
+    .genre-prose-inner {
+      max-width: 820px;
+      margin: 0;
+    }
+    .genre-prose-title {
+      margin: 0 0 28px;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(32px, 4.2vw, 56px);
+      letter-spacing: 0.01em;
+      line-height: 1.02;
+      text-transform: uppercase;
+      color: var(--fg);
+    }
+    .genre-prose-body :global(p) {
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: clamp(16px, 1.4vw, 18px);
+      line-height: 1.75;
+    }
+    .genre-prose-body :global(p:last-child) {
+      margin-bottom: 0;
+    }
+    .genre-prose-body :global(strong) {
+      color: var(--fg);
+      font-weight: 600;
+    }
+    .genre-prose-body :global(a) {
+      color: var(--fg);
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
     .genre-next {
       border-top: 1px solid var(--hairline);
@@ -229,6 +274,16 @@ const jsonLd = [
       </div>
     </div>
   </section>
+
+  {hasProse && (
+    <section class="genre-prose" aria-labelledby="genre-prose-title">
+      <div class="genre-prose-inner">
+        <p class="section-kicker">{kickers.prose}</p>
+        <h2 id="genre-prose-title" class="genre-prose-title">{proseTitle}</h2>
+        <div class="genre-prose-body" set:html={proseBody}></div>
+      </div>
+    </section>
+  )}
 
   {demoTracks.length > 0 && (
     <section class="demo" aria-labelledby="demo-title">
