@@ -693,6 +693,9 @@ const jsonLd = [
       </div>
     </section>
 
+    <!-- Optional custom section (e.g. audio demos), injected by the page -->
+    <slot name="demos" />
+
     <!-- Final CTA -->
     <section class="alt-final-cta">
       <h2 class="alt-h2">{finalCtaTitle || `Try the Best ${competitor} Alternative`}</h2>

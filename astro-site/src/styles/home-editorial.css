@@ -27,7 +27,6 @@ body.editorial-home::before {
    Shared editorial primitives
    -------------------------------------------------------------------------- */
 
-body.editorial-home .demo-title,
 body.editorial-home .workflow-title,
 body.editorial-home .creator-videos-title,
 body.editorial-home .testimonials-title,
@@ -44,7 +43,6 @@ body.editorial-home .faq-title {
   color: var(--fg);
 }
 
-body.editorial-home .demo,
 body.editorial-home .workflow,
 body.editorial-home .creator-videos,
 body.editorial-home .testimonials,
@@ -56,7 +54,6 @@ body.editorial-home .final-cta {
 }
 
 /* One horizontal system: section content spans the same width as the nav */
-body.editorial-home .demo-inner,
 body.editorial-home .workflow-inner,
 body.editorial-home .creator-videos-inner,
 body.editorial-home .testimonials-inner,
@@ -323,17 +320,6 @@ body.editorial-home .hero-media-edge {
 /* --------------------------------------------------------------------------
    01 / Made with Sonura — ruled track list
    -------------------------------------------------------------------------- */
-
-body.editorial-home .demo-header {
-  margin-bottom: 48px;
-  text-align: left;
-}
-
-body.editorial-home .demo-subtitle {
-  font-size: 14px;
-  color: var(--muted);
-  text-transform: lowercase;
-}
 
 body.editorial-home .demo-embeds { gap: 0; }
 
@@ -935,7 +921,6 @@ body.editorial-home .faq p {
    -------------------------------------------------------------------------- */
 
 body.editorial-home .subhead,
-body.editorial-home .demo-subtitle,
 body.editorial-home .creator-videos-subtitle,
 body.editorial-home .workflow-copy p,
 body.editorial-home .release-positioning-text,
@@ -946,190 +931,6 @@ body.editorial-home .testimonial-text {
   word-spacing: 0.04em;
 }
 
-/* --------------------------------------------------------------------------
-   01 / Community — native demo-sound player rows
-   -------------------------------------------------------------------------- */
-
-body.editorial-home .demo-toggle {
-  display: flex;
-  gap: 32px;
-  margin-bottom: 24px;
-}
-
-body.editorial-home .demo-toggle-btn {
-  padding: 0 0 7px;
-  background: none;
-  border: none;
-  font-family: inherit;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-  cursor: pointer;
-  border-bottom: 1px solid transparent;
-  transition: color 0.2s ease, border-color 0.2s ease;
-}
-
-body.editorial-home .demo-toggle-btn:hover {
-  color: var(--fg);
-}
-
-body.editorial-home .demo-toggle-btn[aria-selected='true'] {
-  color: var(--fg);
-  border-bottom-color: currentColor;
-}
-
-body.editorial-home .demo-tracks-list {
-  display: flex;
-  flex-direction: column;
-}
-
-/* display: flex above would otherwise override the hidden attribute */
-body.editorial-home .demo-tracks-list[hidden] {
-  display: none;
-}
-
-body.editorial-home .demo-track {
-  display: grid;
-  grid-template-columns: 56px minmax(0, 300px) 1fr 60px;
-  gap: clamp(20px, 3vw, 48px);
-  align-items: center;
-  border-top: var(--rule);
-  padding: clamp(24px, 3vw, 36px) 0;
-}
-
-body.editorial-home .demo-track:last-child {
-  border-bottom: var(--rule);
-}
-
-body.editorial-home .demo-play {
-  display: grid;
-  place-items: center;
-  width: 56px;
-  height: 56px;
-  padding: 0;
-  background: transparent;
-  border: 1px solid var(--hairline);
-  border-radius: var(--radius-ui);
-  color: var(--fg);
-  cursor: pointer;
-  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
-}
-
-body.editorial-home .demo-play:hover {
-  border-color: var(--fg);
-}
-
-body.editorial-home .demo-play svg {
-  width: 18px;
-  height: 18px;
-}
-
-body.editorial-home .demo-play .demo-icon-pause { display: none; }
-body.editorial-home .demo-track.is-playing .demo-icon-play { display: none; }
-body.editorial-home .demo-track.is-playing .demo-icon-pause { display: block; }
-
-body.editorial-home .demo-track.is-playing .demo-play {
-  background: var(--fg);
-  border-color: var(--fg);
-  color: var(--bg);
-}
-
-body.editorial-home .demo-track-info {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  min-width: 0;
-}
-
-body.editorial-home .demo-track-title {
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--fg);
-}
-
-body.editorial-home .demo-track-meta {
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-body.editorial-home .demo-track-progress {
-  position: relative;
-  height: 56px;
-  cursor: pointer;
-}
-
-body.editorial-home .demo-wave {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-body.editorial-home .demo-wave rect {
-  fill: var(--border-light);
-}
-
-body.editorial-home .demo-wave-played rect {
-  fill: var(--fg);
-}
-
-body.editorial-home .demo-track-time {
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  color: var(--muted);
-  font-variant-numeric: tabular-nums;
-  text-align: right;
-}
-
-body.editorial-home .demo-explore {
-  display: block;
-  width: fit-content;
-  margin: 56px auto 0;
-  text-align: center;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--fg);
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 7px;
-  text-decoration-color: currentColor;
-}
-
-@media (max-width: 768px) {
-  body.editorial-home .demo-track {
-    grid-template-columns: 48px minmax(0, 1fr) 48px;
-    grid-template-areas:
-      'play info time'
-      'progress progress progress';
-    gap: 18px 14px;
-    padding: 28px 0;
-  }
-
-  body.editorial-home .demo-track .demo-play {
-    width: 48px;
-    height: 48px;
-  }
-
-  body.editorial-home .demo-track .demo-track-progress {
-    height: 44px;
-  }
-
-  body.editorial-home .demo-track .demo-play { grid-area: play; }
-  body.editorial-home .demo-track .demo-track-info { grid-area: info; }
-  body.editorial-home .demo-track .demo-track-progress { grid-area: progress; }
-  body.editorial-home .demo-track .demo-track-time { grid-area: time; }
-}
 
 @media (max-width: 768px) {
   body.editorial-home .release-positioning-button {
