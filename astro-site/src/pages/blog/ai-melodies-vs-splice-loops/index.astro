@@ -1,0 +1,64 @@
+---
+import BlogLayout from '../../../layouts/BlogLayout.astro';
+
+const toc = [
+  { id: 'splice-loops', label: 'What Splice loops are' },
+  { id: 'ai-melodies', label: 'What AI melodies do differently' },
+  { id: 'shared-vs-original', label: 'Shared vs original' },
+  { id: 'use-both', label: 'Use both' },
+  { id: 'faq', label: 'FAQ' },
+];
+---
+
+<BlogLayout
+  title="AI Melodies vs. Splice Loops"
+  description="Splice loops let you browse and license melodic loops from a shared catalog. AI melody generation creates an original loop from your prompt. Here is how the two compare for a producer who cares about originality."
+  keywords="splice loops, ai melodies, splice loops alternative, ai melody generator, unique melodies, royalty-free loops"
+  slug="ai-melodies-vs-splice-loops"
+  publishedDate="2026-07-19"
+  readTime="4 min read"
+  toc={toc}
+>
+  <div style="line-height: 1.8;">
+    <p style="margin-bottom: 24px;">Both Splice loops and AI melody generation get a melodic loop into your session in minutes. The difference is how you get there: browsing and licensing a loop from a shared catalog, or generating an original one from a prompt. If you want the wider context first, our guide to <a href="/blog/ai-music-production-stems/" class="text-link">AI music production and stems</a> covers where generated material fits in a production workflow.</p>
+
+    <section id="splice-loops" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">What Splice Loops Are</h2>
+      <p style="margin-bottom: 24px;">Splice is a large, curated library of professionally recorded samples and loops. You browse by instrument, key, BPM, and genre, preview in context, and pull a loop into your DAW under a royalty-free license. It is strong when you want a specific, vetted sound fast, and when hearing the exact loop before you commit matters more than owning something no one else has.</p>
+    </section>
+
+    <section id="ai-melodies" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">What AI Melodies Do Differently</h2>
+      <p style="margin-bottom: 24px;">Instead of searching a catalog, you describe the melody you want (genre, key, mood, and BPM) and generate an original loop. Sonura's <a href="/tools/ai-melody-maker/" class="text-link">melody maker</a> and <a href="/features/ai-loops/" class="text-link">AI loops</a> create something unique to your prompt rather than pulled from a shared pool, and you can export the parts as editable stems and keep iterating until it fits. Every result is royalty-free with full commercial rights on every tier.</p>
+    </section>
+
+    <section id="shared-vs-original" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Shared vs. Original</h2>
+      <p style="margin-bottom: 24px;">This is the core split. A Splice loop is royalty-free, but it is not exclusive: the same loop is available to every other subscriber, so popular ones show up across many tracks. A generated melody is original to your prompt, which matters most when originality is the point, for example type beats, releases, or anything you want to sound like yours rather than a recognizable pack. For the full breakdown of generating versus searching shared libraries, see our <a href="/alternatives/splice-alternative/" class="text-link">Splice alternative comparison</a>.</p>
+    </section>
+
+    <section id="use-both" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Use Both</h2>
+      <p style="margin-bottom: 24px;">These are not mutually exclusive. Many producers browse Splice for reference or a quick vetted sound, then generate original melodies in Sonura for the parts that carry the track. Reference where it helps, generate where originality matters.</p>
+    </section>
+
+    <section id="faq" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">FAQ</h2>
+
+      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; margin-top: 32px;">Are Splice loops royalty-free?</h3>
+      <p style="margin-bottom: 24px;">Yes, Splice loops are licensed royalty-free for use in your productions under their terms. The catch is not royalties, it is exclusivity: the same loop is available to every other subscriber.</p>
+
+      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; margin-top: 32px;">Are AI-generated melodies unique?</h3>
+      <p style="margin-bottom: 24px;">Yes. Each generation is created from your prompt rather than served from a shared library, so it is original to you. Sonura's output is royalty-free with full commercial rights on every tier, including free.</p>
+
+      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; margin-top: 32px;">Which is better for type beats or releases?</h3>
+      <p style="margin-bottom: 24px;">When originality is the point, generating tends to win, because a recognizable Splice loop can appear in other producers' tracks too. When you just need a vetted reference sound quickly, a Splice loop is fine.</p>
+
+      <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 32px; margin-top: 48px; text-align: center;">
+        <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px;">Generate an Original Melody</h3>
+        <p style="margin-bottom: 24px; color: var(--muted);">Describe the genre, key, and mood, and generate a melodic loop that is yours, royalty-free on every tier.</p>
+        <a href="/tools/ai-melody-maker/" class="button primary large"><span class="btn-label-full">Try the Melody Maker</span><span class="btn-label-short">Try it free</span></a>
+      </div>
+    </section>
+  </div>
+</BlogLayout>
