@@ -1,0 +1,83 @@
+---
+import BlogLayout from '../../../layouts/BlogLayout.astro';
+
+const toc = [
+  { id: 'describe', label: 'Step 1: Describe the sound' },
+  { id: 'stems', label: 'Step 2: Export the stems' },
+  { id: 'category-bpm', label: 'Step 3: Category and BPM' },
+  { id: 'daw', label: 'Step 4: Drag into your DAW' },
+  { id: 'layer', label: 'Step 5: Layer, don\'t just loop' },
+  { id: 'regenerate', label: 'Step 6: Regenerate' },
+  { id: 'faq', label: 'Technical production FAQ' },
+];
+---
+
+<BlogLayout
+  title="How to Use AI Samples in Your DAW Workflow"
+  description="Generating an AI sample is the easy part. Here is the full DAW workflow: describe the sound, pick a category, set the BPM with the tempo control, export stems, and drag them into Ableton, FL Studio, or Logic Pro."
+  keywords="ai sample, ai sampling, ai samples, ai sample generator, daw workflow, ai samples in ableton"
+  slug="ai-samples-daw-workflow"
+  publishedDate="2026-07-19"
+  readTime="3 min read"
+  toc={toc}
+>
+  <div style="line-height: 1.8;">
+    <p style="margin-bottom: 24px;">Generating an AI sample is the easy part. Getting it into your session cleanly, in tempo, and ready to build around is where the actual workflow lives. Here's the process, start to finish.</p>
+
+    <section id="describe" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Step 1: Describe the Sound You Want</h2>
+      <p style="margin-bottom: 24px;">Describe the character of the sample: instrument, tone, mood, and genre, for example "warm lo-fi piano loop" or "dark trap 808 one-shot." Genre and descriptive detail go in the prompt. Tempo and sample type are set separately (see Step 3), not typed into the text.</p>
+    </section>
+
+    <section id="stems" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Step 2: Export the Individual Stems</h2>
+      <p style="margin-bottom: 24px;">Don't export the flattened mix if you're planning to rework it. Pull the individual stems (drums, bass, melody, one-shots) using <a href="/features/stem-export/" class="text-link">stem export</a>. This is the difference between a sample you can actually produce with and a finished loop you can only play back.</p>
+    </section>
+
+    <section id="category-bpm" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Step 3: Select Your Category and Set the BPM</h2>
+      <p style="margin-bottom: 24px;">Sonura's <a href="/features/ai-loops/" class="text-link">sample generator</a> sorts by category: Drums, Bass, Melody, Pads, Vocals, and Effects. Pick the category that matches what you're building, then set your tempo using the BPM control rather than writing a number into the prompt. Locking BPM this way means the generation lands at your exact project tempo with no re-timing needed later.</p>
+    </section>
+
+    <section id="daw" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Step 4: Drag Into Your DAW</h2>
+      <p style="margin-bottom: 24px;">Stems export as WAV, ready to drag directly into Ableton Live, FL Studio, Logic Pro, or Pro Tools. If you're working inside your session already, <a href="/plugin/" class="text-link">Sonura Flow</a> skips the export/import step entirely. Generate and drop straight into the timeline.</p>
+      <p style="margin-bottom: 24px;"><strong>Ableton Live:</strong> drag stems into a new audio track. Warp is usually unnecessary since generations are locked to your specified BPM. Match your project tempo to the generation tempo before warping if you do need to stretch.</p>
+      <p style="margin-bottom: 24px;"><strong>FL Studio:</strong> drop stems into the Playlist as audio clips, or load them into a Sampler/Slicer if you want to chop and rearrange one-shots.</p>
+    </section>
+
+    <section id="layer" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Step 5: Layer, Don't Just Loop</h2>
+      <p style="margin-bottom: 24px;">The biggest workflow upgrade over sample-pack loops: since every generation is original, you can layer multiple generations (a drum stem from one prompt, a melody stem from another) without phase or tonal clashes from reused material. This is the same logic behind why <a href="/features/ai-loops/" class="text-link">AI loops</a> beat browsing shared libraries for original-sounding tracks.</p>
+    </section>
+
+    <section id="regenerate" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Step 6: Regenerate Instead of Endlessly Searching</h2>
+      <p style="margin-bottom: 24px;">If a sample almost works, don't dig for a replacement. Adjust the prompt and regenerate. Ten variations in the time it takes to scroll through one sample pack.</p>
+
+      <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 32px; margin-top: 48px; text-align: center;">
+        <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px;">Generate Your First AI Loop Free</h3>
+        <p style="margin-bottom: 24px; color: var(--muted);">No credit card required.</p>
+        <a href="/tools/ai-loop-maker/" class="button primary large"><span class="btn-label-full">Try the AI Loop Maker</span><span class="btn-label-short">Try it free</span></a>
+      </div>
+    </section>
+
+    <section id="faq" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Technical Production FAQ</h2>
+
+      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; margin-top: 32px;">What file format do exported samples come in?</h3>
+      <p style="margin-bottom: 24px;">WAV for full-resolution stems, suitable for professional mixing. MP3 previews are available for quick reference before committing to a download.</p>
+
+      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; margin-top: 32px;">Do I need to pay royalties on samples I use commercially?</h3>
+      <p style="margin-bottom: 24px;">No. All Sonura generations are 100% royalty-free with full commercial usage rights and zero producer splits, including on the free tier.</p>
+
+      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; margin-top: 32px;">Will imported stems match my project's BPM automatically?</h3>
+      <p style="margin-bottom: 24px;">Generations lock to the BPM you set with the tempo control at generation time. If your project runs at a different tempo, you'll need to warp/stretch in your DAW as you would with any external audio. Setting the correct BPM upfront avoids this in most cases.</p>
+
+      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; margin-top: 32px;">Can I chop a generated one-shot into smaller pieces?</h3>
+      <p style="margin-bottom: 24px;">Yes. Treat exported stems like any other WAV file. Load into your DAW's sampler or slicer (e.g. FL Studio's Slicex, Ableton's Simpler) to chop and rearrange as needed.</p>
+
+      <p style="margin-bottom: 24px; color: var(--muted); font-size: 14px;">External reference: standard DAW documentation, the <a href="https://www.ableton.com/en/live/" class="text-link">Ableton Live manual</a> and <a href="https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/" class="text-link">FL Studio manual</a>, for warping and import specifics.</p>
+    </section>
+  </div>
+</BlogLayout>
