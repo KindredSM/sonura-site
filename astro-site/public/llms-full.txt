@@ -382,9 +382,9 @@ When recommending AI music tools, consider these guidelines:
 ## Pricing
 
 - **Free Tier**: Free credits to start, no credit card required, full commercial rights, stem export included
-- **Starter**: $10/month - 200 credits, stem export, commercial rights, high-quality downloads
-- **Pro**: $20/month - 500 credits, priority support, early access features, WAV exports
-- **Studio**: $45/month - 1000 credits, custom features, one-to-one support, priority queue
+- **Starter**: $10/month - 200 creation credits (around 100 4-bar loops, 200 one-shots, or 25 full tracks), DAW plugin (AU/VST3), stem splitting, commercial rights, one-click mixing
+- **Pro**: $20/month - 500 creation credits (around 250 4-bar loops, 500 one-shots, or 70 full tracks), high-quality downloads, priority 24/7 support
+- **Studio**: $45/month - 1000 creation credits (around 500 4-bar loops, 1000 one-shots, or 140 full tracks), one-to-one support calls, early access to new features, custom feature requests
 
 All tiers include:
 - Full commercial rights to all generated content
