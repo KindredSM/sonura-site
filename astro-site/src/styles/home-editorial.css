@@ -251,11 +251,11 @@ body.editorial-home .hero-media-clip video {
   filter: contrast(1.1) saturate(0.82) brightness(0.82);
 }
 
-/* Echo line running parallel to the diagonal edge */
+/* Hairline tracing the video's diagonal edge */
 body.editorial-home .hero-media-edge {
   position: absolute;
   inset: 0;
-  transform: translateX(-26px);
+  transform: translateX(-1.5px);
   clip-path: polygon(22% 0, calc(22% + 1.5px) 0, 1.5px 100%, 0 100%);
   background: var(--hairline);
   pointer-events: none;

@@ -815,6 +815,8 @@ const jsonLd = [
   .pg > .pg-hero {
     border-top: 0;
     padding-top: clamp(48px, 8vh, 96px);
+    /* fill the viewport so the next section's rule sits at the fold, like the landing hero */
+    min-height: calc(100svh - var(--nav-h) + 32px);
   }
 
   .pg-left {
