@@ -170,13 +170,6 @@ body.editorial-home .cta-buttons {
   gap: 14px;
 }
 
-body.editorial-home .cta-note {
-  margin: 0;
-  font-size: 12px;
-  letter-spacing: 0.04em;
-  color: var(--muted);
-}
-
 body.editorial-home .cta .button.primary,
 body.editorial-home .cta .button.secondary {
   flex: 0 0 auto;
