@@ -72,7 +72,6 @@ For detailed feature descriptions, use case guides, FAQ answers, and comprehensi
 ## Links
 
 - App: https://app.sonurastudio.com
-- Samples: https://app.sonurastudio.com/samples
 - Website: https://sonurastudio.com
 - Plugin: https://sonurastudio.com/plugin/
 - Sitemap: https://sonurastudio.com/sitemap-index.xml
