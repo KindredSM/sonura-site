@@ -2,6 +2,7 @@
 import BaseLayout from './BaseLayout.astro';
 
 interface WorkflowItem {
+  /* asset base path, e.g. '/assets/workflow-design-final' (needs -768/-1280 avif+webp variants) */
   image: string;
   imageAlt: string;
   title: string;
@@ -263,7 +264,19 @@ const jsonLd = [
         {workflowItems.map((item, index) => (
           <div class={`workflow-item ${index % 2 === 1 ? 'workflow-item-reverse' : ''} reveal`} data-reveal-delay={`${0.04 * (index + 1)}s`}>
             <div class="workflow-image">
-              <img src={item.image} alt={item.imageAlt} loading="lazy">
+              <picture>
+                <source
+                  type="image/avif"
+                  srcset={`${item.image}-768.avif 768w, ${item.image}-1280.avif 1280w`}
+                  sizes="(max-width: 900px) 100vw, 50vw"
+                />
+                <source
+                  type="image/webp"
+                  srcset={`${item.image}-768.webp 768w, ${item.image}-1280.webp 1280w`}
+                  sizes="(max-width: 900px) 100vw, 50vw"
+                />
+                <img src={`${item.image}-1280.webp`} alt={item.imageAlt} loading="lazy" decoding="async" width="1280" height="800" />
+              </picture>
             </div>
             <div class="workflow-content">
               <h3 class="workflow-item-title">{item.title}</h3>
