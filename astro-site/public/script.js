@@ -546,7 +546,7 @@ document.querySelectorAll('.player').forEach((player) => {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   const lenis = new Lenis({
-    duration: 0.75,
+    duration: 0.45,
     smoothWheel: true,
   });
 
