@@ -1,0 +1,66 @@
+---
+import BlogLayout from '../../../layouts/BlogLayout.astro';
+
+const toc = [
+  { id: 'what-happened', label: 'What happened' },
+  { id: 'training-data', label: 'What the files revealed' },
+  { id: 'legal-stakes', label: 'The legal stakes' },
+  { id: 'producer-risk', label: 'Two safety questions' },
+  { id: 'where-sonura', label: 'Where Sonura fits' },
+  { id: 'conclusion', label: 'Conclusion' },
+];
+---
+
+<BlogLayout
+  title="Is Suno Safe? What the July 2026 Hack Revealed About Its Training Data"
+  description="A hack exposed Suno user data and confirmed scraped training sources. What producers should know before relying on it."
+  keywords="is suno safe, suno hack, suno training data, suno data breach, suno copyright, what did suno train on"
+  slug="is-suno-safe"
+  publishedDate="2026-07-21"
+  readTime="6 min read"
+  toc={toc}
+>
+  <div style="line-height: 1.8;">
+    <section id="what-happened" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">What Happened</h2>
+      <p style="margin-bottom: 24px;">In mid-July 2026, reporting by <a href="https://techcrunch.com/2026/07/15/hack-suggests-ai-music-generator-suno-scraped-youtube-for-training-data/" class="text-link" rel="noopener" target="_blank">TechCrunch</a> and <a href="https://www.404media.co/hack-reveals-suno-ai-music-generator-scraped-youtube-deezer-and-genius/" class="text-link" rel="noopener" target="_blank">404 Media</a> revealed that Suno had been breached. A hacker used a supply chain attack to obtain an employee's credentials and got access to source code from 2023 to 2024 along with customer data: emails, phone numbers, and partial payment card details stored in Stripe, reportedly covering hundreds of thousands of users.</p>
+      <p style="margin-bottom: 24px;">Two details stand out. The breach itself reportedly dates back to November 2025, and customers were never notified. Suno described it as a "limited security incident that was quickly contained." Whatever you make of that characterization, users found out about their exposed data from journalists, not from the company.</p>
+    </section>
+
+    <section id="training-data" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">What the Files Revealed About Training Data</h2>
+      <p style="margin-bottom: 24px;">The bigger story for producers is what the source code contained. According to the files reviewed by 404 Media, Suno's training pipeline scraped audio and lyrics from YouTube Music, Deezer, Genius, Pond5, Jamendo, Freesound, the International Music Score Library Project, and podcast RSS feeds. The documented scale is not small: one file logged 113,879 hours of YouTube Music audio and 12,287 hours from Deezer, with the total described as at least decades worth of music.</p>
+      <p style="margin-bottom: 24px;">This matters because it moves a long-running allegation from claim to evidence. The RIAA accused Suno of stream-ripping YouTube back in 2024, and Suno had only admitted in court filings to training on "essentially all music files of reasonable quality that are accessible on the open internet." The hacked code, per 404 Media, confirms the stream-ripping directly. Circumventing YouTube's protections is a potential DMCA issue on its own, separate from any copyright question about the music itself.</p>
+      <p style="margin-bottom: 24px;">None of this describes how every AI music model is built. It describes how scraped models are built, and the difference between scraped and licensed training is something we broke down in detail in <a href="/blog/is-ai-music-ethical/" class="text-link">is AI music ethical?</a></p>
+    </section>
+
+    <section id="legal-stakes" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">The Legal Stakes</h2>
+      <p style="margin-bottom: 24px;">The timing is rough for Suno. The company is still in active litigation with major labels, and <a href="https://www.musicbusinessworldwide.com/suno-scraped-youtube-deezer-and-genius-to-train-its-ai-hacked-code-reveals/" class="text-link" rel="noopener" target="_blank">Music Business Worldwide</a> reported that the leaked code could strengthen the plaintiffs' case. A separate verdict in GEMA's lawsuit against Suno is due from a Munich court on July 31. Suno's core defense has been fair use; evidence of circumvented platform protections complicates that argument.</p>
+      <p style="margin-bottom: 24px;">To be clear about what has not happened: no court has ruled that music made by Suno users infringes anything, and nothing in the leak changes the ownership terms Suno offers its subscribers. The risk here is uncertainty. Litigation outcomes, settlement terms, and platform policies around scraped-model output are all still moving.</p>
+    </section>
+
+    <section id="producer-risk" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">So, Is Suno Safe? Two Different Questions</h2>
+      <p style="margin-bottom: 24px;">"Is Suno safe" is really two questions, and they have different answers.</p>
+      <p style="margin-bottom: 24px;"><strong>Is your data safe?</strong> The record now includes a breach of emails, phone numbers, and partial payment data, plus a company that did not notify affected users for months. Standard advice applies: change your password, enable two-factor authentication if available, and watch for phishing that references your Suno account.</p>
+      <p style="margin-bottom: 24px;"><strong>Is your music commercially safe?</strong> This is the harder one. If you release tracks built on a model whose training is the subject of active copyright litigation, your commercial position depends on how that litigation resolves and on policies you do not control. For a hobbyist that may be fine. For a producer selling beats on BeatStars, scoring client work, or building a catalog, the honest answer is that scraped-model output carries a risk premium that licensed-model output does not. If that trade-off does not sit right, it is worth looking at a <a href="/alternatives/suno-alternative/" class="text-link">Suno alternative</a> built the other way.</p>
+    </section>
+
+    <section id="where-sonura" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Where Sonura Fits</h2>
+      <p style="margin-bottom: 24px;"><a href="/" class="text-link">Sonura</a> sits on the opposite side of the line this story draws. The models are built on ethically licensed training data rather than scraped catalogs, and everything you generate is 100% royalty-free with full commercial usage rights and zero producer splits. The output is also a different shape: production-ready, multi-layer stems, loops, one-shots, and vocals instead of a finished stereo file, so you keep authorship of the track you release. The <a href="/features/ai-beats/" class="text-link">AI beat maker</a> gets you starting material, <a href="/features/stem-export/" class="text-link">stem export</a> brings every layer into Ableton Live, FL Studio, or Logic Pro, and Sonura Flow, the DAW plugin, keeps generation inside your session.</p>
+      <p style="margin-bottom: 24px;">The industry context around consent and fraud that made this hack such a big story is one we have been tracking all year in <a href="/blog/ai-music-consent-vs-fraud-2026/" class="text-link">AI music in 2026: the industry split between consent and fraud</a>.</p>
+    </section>
+
+    <section id="conclusion" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Conclusion</h2>
+      <p style="margin-bottom: 24px;">The Suno hack did two things at once: it exposed user data the company sat on for months, and it turned the industry's biggest open question about scraped training data into documented evidence. If you use Suno, lock down your account. If you build music you intend to sell, decide with clear eyes whether you want your catalog resting on a model that is currently defending how it was built in two courts. Consent-based tools exist, and they were built for exactly this moment.</p>
+      <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 32px; margin-top: 48px; text-align: center;">
+        <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px;">Build on Licensed Ground</h3>
+        <p style="margin-bottom: 24px; color: var(--muted);">Generate multi-layer stems, loops, and vocals from ethically licensed models, with full commercial rights and no fine print.</p>
+        <a href="https://app.sonurastudio.com/" class="button primary large"><span class="btn-label-full">Start Creating Free</span><span class="btn-label-short">Start free</span></a>
+      </div>
+    </section>
+  </div>
+</BlogLayout>
