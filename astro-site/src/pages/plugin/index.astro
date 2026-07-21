@@ -1620,13 +1620,13 @@ const jsonLd = [
     right: clamp(12px, 2vw, 20px);
     bottom: clamp(12px, 2vw, 20px);
     height: clamp(72px, 12vw, 150px);
-    background-image: url('/images/purple-grain-band.webp');
+    /* fade is baked into the asset (grainy paint dissolve) */
+    background-image: url('/images/purple-grain-band-fade.webp');
     background-image: image-set(
-      url('/images/purple-grain-band.avif') type('image/avif'),
-      url('/images/purple-grain-band.webp') type('image/webp')
+      url('/images/purple-grain-band-fade.avif') type('image/avif'),
+      url('/images/purple-grain-band-fade.webp') type('image/webp')
     );
-    background-size: cover;
-    background-position: center;
+    background-size: 100% 100%;
   }
 
   .pg-cta-title {
