@@ -1,0 +1,38 @@
+name: Auto PR for blog branches
+
+# Opens a pull request automatically whenever a branch named blog/** is pushed.
+# Used by the scheduled daily SEO blog task, which can push branches but cannot
+# call the GitHub API directly from its sandbox.
+
+on:
+  push:
+    branches:
+      - 'blog/**'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  open-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create PR if none exists for this branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          BRANCH="${GITHUB_REF#refs/heads/}"
+          existing=$(gh pr list --head "$BRANCH" --state open --json number --jq 'length')
+          if [ "$existing" = "0" ]; then
+            TITLE=$(git log -1 --pretty=%s)
+            BODY=$(git log -1 --pretty=%b)
+            gh pr create \
+              --base main \
+              --head "$BRANCH" \
+              --title "$TITLE" \
+              --body "${BODY:-Automated daily blog post. Review before merging.}"
+          else
+            echo "Open PR already exists for $BRANCH, skipping."
+          fi
