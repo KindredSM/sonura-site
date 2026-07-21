@@ -1,0 +1,67 @@
+---
+import ToolLayout from '../../../layouts/ToolLayout.astro';
+
+const features = [
+  { title: 'Full songs from a prompt', description: 'Structured tracks with intro, verse, and hook energy. Not 8-bar fragments stitched together.' },
+  { title: 'Multi-layer stems on every generation', description: 'Drums, bass, melody, FX, and vocals arrive as separate layers, never a flattened stereo track. Pull everything into your session with <a href="/features/stem-export/">stem export</a>.' },
+  { title: 'Vocals included', description: 'Generate with AI vocals or keep it instrumental. Swap either without regenerating the rest - the <a href="/tools/ai-vocal-generator/">vocal generator</a> handles hooks, chops, and ad-libs.' },
+  { title: 'Any genre, tempo, and key', description: 'Trap, lo-fi, hip-hop, drill, house, techno, pop, R&B. Specify BPM, key, and mood directly in the prompt.' },
+  { title: 'Full commercial usage rights', description: 'Zero producer splits, 100% royalty-free, trained on ethically licensed data. Sell on BeatStars, release on Spotify, use in client work.' },
+  { title: 'Production-ready output', description: 'Mixed and balanced from the start. Export stems to Ableton Live, FL Studio, Logic Pro, or Pro Tools and finish the record.' },
+];
+
+const howItWorksSteps = [
+  'Describe your song: "melancholy lofi with vinyl crackle, 72 BPM, A minor" or "dark trap, 140 BPM, heavy 808s."',
+  'Sonura generates the full track in seconds, with every layer isolated.',
+  'Regenerate individual stems, adjust the arrangement, then export to your DAW or publish directly.',
+];
+
+const useCases = [
+  { title: 'Producers', description: 'Sketch full arrangements in minutes. Keep the strongest, rebuild by hand in the DAW.' },
+  { title: 'Songwriters', description: 'Generate backing tracks to write toplines over. Full songs, not just loops, so structure is already handled.' },
+  { title: 'Type beat producers', description: 'Full structured beats at volume. Every output is unique, so no shared sounds with other producers.' },
+  { title: 'Video editors and creators', description: 'Original, rights-clean music that matches your edit. No copyright claims, no stock licensing.' },
+];
+
+const faqs = [
+  { question: 'What is the best AI song maker?', answer: 'It depends on the output you need. Tools like Suno return a finished stereo file. Sonura returns the full song as isolated stems: drums, bass, melody, and vocals you can edit, rearrange, and export to Ableton Live, FL Studio, or Logic Pro. For producers who need control over the final record, that difference is the whole decision. See the full <a href="/alternatives/suno-alternative/">Suno alternative</a> breakdown.' },
+  { question: 'Is there a free AI song maker?', answer: 'Yes. Sonura’s free plan generates full songs with no credit card required, and output is 100% royalty-free with full commercial usage rights.' },
+  { question: 'Can I sell songs made with an AI song maker?', answer: 'With Sonura, yes. Every plan carries full commercial usage rights with zero producer splits. Check licensing carefully on other tools; several restrict commercial use to paid tiers.' },
+  { question: 'Does the AI song maker include vocals?', answer: 'Yes. Generate songs with AI vocals, keep them instrumental, or add vocals to an existing track with the <a href="/tools/ai-vocal-generator/">vocal generator</a>. Vocals arrive as a separate stem for mixing, retuning, or replacement.' },
+  { question: 'Can I edit a song after generating it?', answer: 'Yes. Every generation is delivered as multi-layer stems. Regenerate a single element, rearrange the structure, or pull everything into your DAW via <a href="/features/stem-export/">stem export</a>.' },
+  { question: 'Do I need music theory?', answer: 'No. Plain-language prompts work. If you know theory, specify key, scale, and BPM for tighter control.' },
+];
+
+const relatedTools = [
+  { title: 'Beat Maker', href: '/tools/ai-beat-maker/', description: 'Full instrumentals with drums, bass, and melody.' },
+  { title: 'Loop Maker', href: '/tools/ai-loop-maker/', description: 'Short loopable phrases for hooks and sections.' },
+  { title: 'Vocal Generator', href: '/tools/ai-vocal-generator/', description: 'Hooks, chops, and ad-libs as separate stems.' },
+  { title: 'Text to Music', href: '/tools/text-to-music/', description: 'Turn written descriptions into finished audio.' },
+];
+
+const relatedBlogPosts = [
+  { title: 'Choosing an AI music generator', href: '/blog/ai-music-generator-guide/' },
+  { title: 'What makes the best AI music maker', href: '/blog/best-ai-music-maker/' },
+];
+---
+
+<ToolLayout
+  toolName="AI Song Maker"
+  toolSlug="ai-song-maker"
+  title="AI Song Maker Online | Generate Full Songs Free - Sonura"
+  description="Describe a song and generate production-ready, multi-layer stems, loops, and vocals. Full commercial usage rights on every plan. No credit card required."
+  keywords="ai song maker, song maker ai, ai song maker free, song generator ai, make a song with ai, full song generator"
+  headline="Make a full song from a description"
+  subhead="Describe the track. Get a complete song as multi-layer stems - drums, bass, melody, and vocals - each one editable and exportable to your DAW."
+  features={features}
+  howItWorksTitle="How it works"
+  howItWorksSteps={howItWorksSteps}
+  useCases={useCases}
+  faqs={faqs}
+  appUrl="https://app.sonurastudio.com/songs"
+  ctaPrimaryText="Make a song free"
+  finalCtaTitle="Start making songs"
+  finalCtaButtonText="Try it free"
+  relatedTools={relatedTools}
+  relatedBlogPosts={relatedBlogPosts}
+/>
