@@ -1,0 +1,67 @@
+---
+import BlogLayout from '../../../layouts/BlogLayout.astro';
+
+const toc = [
+  { id: 'the-numbers', label: 'The numbers' },
+  { id: 'nobody-listens', label: 'Uploads vs streams' },
+  { id: 'platform-response', label: 'What platforms are doing' },
+  { id: 'what-it-means', label: 'What it means for producers' },
+  { id: 'where-sonura', label: 'Where Sonura fits' },
+  { id: 'conclusion', label: 'Conclusion' },
+];
+---
+
+<BlogLayout
+  title="How Much Music Is AI-Generated? Deezer Says It Just Passed Half"
+  description="Over half of daily uploads to Deezer are now fully AI-generated. The numbers behind the flood, and what they mean for producers."
+  keywords="how much music is ai generated, ai music statistics, deezer ai music, ai music streaming fraud, fully ai generated music"
+  slug="how-much-music-is-ai-generated"
+  publishedDate="2026-07-22"
+  readTime="5 min read"
+  toc={toc}
+>
+  <div style="line-height: 1.8;">
+    <section id="the-numbers" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">The Numbers</h2>
+      <p style="margin-bottom: 24px;">Deezer has become the industry's de facto counter for AI music, because it actually runs detection on every upload. This week it reported a new milestone: <strong>more than half of the tracks uploaded to the platform each day are now fully AI-generated</strong>, as reported by <a href="https://www.billboard.com/pro/deezer-50-percent-daily-song-uploads-fully-ai-generated/" class="text-link" rel="noopener" target="_blank">Billboard</a> and <a href="https://musically.com/2026/07/21/ai-generated-music-is-now-more-than-half-of-deezers-uploads/" class="text-link" rel="noopener" target="_blank">Music Ally</a>.</p>
+      <p style="margin-bottom: 24px;">The trend line is steep. In January 2025, Deezer was seeing roughly 10,000 fully AI tracks arrive per day. By <a href="https://techcrunch.com/2026/04/20/deezer-says-44-of-songs-uploaded-to-its-platform-daily-are-ai-generated/" class="text-link" rel="noopener" target="_blank">April 2026 that was 44% of all daily uploads</a>, around 75,000 tracks a day and over 2 million a month. Three months later the share has crossed 50%. On Deezer, fully AI-generated music is no longer the exception in the upload queue. It is the majority.</p>
+      <p style="margin-bottom: 24px;">"AI-generated music is now far from a marginal phenomenon," Deezer CEO Alexis Lanternier said when the April figures were published. The July numbers make that an understatement.</p>
+    </section>
+
+    <section id="nobody-listens" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Uploads vs Streams: Almost Nobody Listens</h2>
+      <p style="margin-bottom: 24px;">Here is the part of the story that matters more than the headline. Despite making up half the upload queue, fully AI-generated tracks account for only <strong>1 to 3% of actual streams</strong> on Deezer. And of those streams, the platform has said <strong>up to 85% are fraudulent</strong>: bot farms streaming AI tracks on loop to siphon royalties out of the pool that real artists get paid from. Deezer detects those streams and demonetizes them.</p>
+      <p style="margin-bottom: 24px;">Read those two numbers together and the picture is clear. This is not a wave of listeners choosing AI songs. It is a wave of automated uploading, driven mostly by people gaming streaming royalties at scale. The tracks are cheap to make, cheap to upload, and almost nobody hears them.</p>
+    </section>
+
+    <section id="platform-response" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">What Platforms Are Doing About It</h2>
+      <p style="margin-bottom: 24px;">Deezer's response has been systematic. Since June 2025 it has tagged more than 13 million fully AI tracks with its detection system. Tagged tracks are <strong>removed from algorithmic recommendations and editorial playlists</strong>, and fraudulent streams are stripped of royalties. In June 2026 it went further and <a href="https://techcrunch.com/2026/06/11/deezers-new-tool-can-identify-ai-music-from-spotify-apple-music-and-others/" class="text-link" rel="noopener" target="_blank">released a tool that can identify AI-generated tracks in playlists from other platforms</a>, including Spotify and Apple Music.</p>
+      <p style="margin-bottom: 24px;">Listeners appear to back this. In a Deezer and Ipsos survey, 52% of respondents opposed fully AI-generated songs appearing in main charts alongside human-made music. Other platforms are moving the same direction with labeling and spam filtering, something we covered in detail in <a href="/blog/is-ai-music-allowed-on-spotify/" class="text-link">is AI music allowed on Spotify?</a></p>
+      <p style="margin-bottom: 24px;">The direction of travel is consistent everywhere: platforms are not banning AI music, they are filtering <em>fully</em> AI music with no human authorship, and cutting off the royalty fraud attached to it.</p>
+    </section>
+
+    <section id="what-it-means" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">What It Means for Producers</h2>
+      <p style="margin-bottom: 24px;">If you make music for a living, the takeaway is not "AI is taking over." It is the opposite: <strong>the prompt-to-upload pipeline is being systematically devalued</strong>. Tracks that are 100% machine output get tagged, pulled from recommendations, and demonetized when the streams look fake. That entire lane is getting narrower by the month.</p>
+      <p style="margin-bottom: 24px;">What is not being filtered is human-made music that uses AI as raw material. The dividing line platforms keep drawing is authorship: did a person arrange, edit, and finish this track, or did a model output it whole? A producer who generates a loop, chops it, re-sequences the drums, writes a bassline, and mixes the result is on the right side of that line. The same distinction decides Grammy eligibility and, increasingly, distributor policy. We broke down the ethics side of this in <a href="/blog/is-ai-music-ethical/" class="text-link">is AI music ethical?</a></p>
+      <p style="margin-bottom: 24px;">Practically, that means the safest and most useful form for AI output is not a finished stereo track. It is editable parts: stems, loops, and one-shots you can pull into FL Studio, Ableton Live, or Logic Pro and make decisions about.</p>
+    </section>
+
+    <section id="where-sonura" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Where Sonura Fits</h2>
+      <p style="margin-bottom: 24px;">This is the exact design premise behind <a href="/" class="text-link">Sonura</a>. Generations come out as production-ready, multi-layer stems, loops, one-shots, and vocals rather than a flattened file, so the human authorship happens in your DAW, not in a prompt box. The <a href="/features/ai-beats/" class="text-link">AI beat maker</a> and <a href="/features/ai-loops/" class="text-link">AI loop maker</a> give you starting material, <a href="/features/stem-export/" class="text-link">stem export</a> gets every layer into your session, and Sonura Flow, the DAW plugin, keeps the whole loop inside your project.</p>
+      <p style="margin-bottom: 24px;">Just as relevant to this story: Sonura's models are built on ethically licensed training data, and everything you generate is 100% royalty-free with full commercial usage rights and zero producer splits. In a market where scraped models and royalty fraud are the two things regulators and platforms are actively hunting, both halves of that matter.</p>
+    </section>
+
+    <section id="conclusion" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Conclusion</h2>
+      <p style="margin-bottom: 24px;">Half of new uploads being fully AI-generated sounds apocalyptic until you see the stream counts. The flood is real, but it is a flood of unheard, largely fraudulent content that platforms are getting better at filtering every month. The producers who win in this environment are not the ones uploading the most tracks. They are the ones using AI-generated stems and loops as raw material for music only they could have finished.</p>
+      <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 32px; margin-top: 48px; text-align: center;">
+        <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px;">Be the Producer, Not the Flood</h3>
+        <p style="margin-bottom: 24px; color: var(--muted);">Generate multi-layer stems, loops, and vocals on an ethically licensed foundation, then finish them your way with full commercial rights.</p>
+        <a href="https://app.sonurastudio.com/" class="button primary large"><span class="btn-label-full">Start Creating Free</span><span class="btn-label-short">Start free</span></a>
+      </div>
+    </section>
+  </div>
+</BlogLayout>
