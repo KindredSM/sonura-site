@@ -1,0 +1,78 @@
+---
+import BlogLayout from '../../../layouts/BlogLayout.astro';
+
+const toc = [
+  { id: 'what-makes-lofi', label: 'What makes a beat lofi' },
+  { id: 'tempo-groove', label: 'Tempo and groove' },
+  { id: 'chords', label: 'Chords and melody' },
+  { id: 'drums', label: 'Drums' },
+  { id: 'texture', label: 'Texture and noise' },
+  { id: 'bass-arrangement', label: 'Bass and arrangement' },
+  { id: 'sourcing-sounds', label: 'Sourcing your sounds' },
+  { id: 'conclusion', label: 'Conclusion' },
+];
+---
+
+<BlogLayout
+  title="How to Make Lofi Beats: A Producer's Guide"
+  description="Learn how to make lofi beats: tempo, jazzy chords, dusty drums, texture and arrangement, plus a faster way to source original loops."
+  keywords="how to make lofi beats, lofi beat tutorial, how to make lofi music, lofi hip hop production, lofi chords, lofi drums"
+  slug="how-to-make-lofi-beats"
+  publishedDate="2026-07-22"
+  readTime="6 min read"
+  toc={toc}
+>
+  <div style="line-height: 1.8;">
+    <section id="what-makes-lofi" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">What Makes a Beat Lofi</h2>
+      <p style="margin-bottom: 24px;">Lofi is not a tempo or a chord progression - it's a set of deliberate imperfections. Detuned keys, drums that drag slightly behind the grid, tape hiss, a lowpass filter where a mix engineer would put clarity. The genre grew out of producers like J Dilla and Nujabes sampling jazz records and leaving the dust in, and the modern lofi hip hop playlist economy still runs on that same aesthetic: warm, loose, and unpolished on purpose.</p>
+      <p style="margin-bottom: 24px;">That's good news if you're learning, because the target is forgiving. You don't need a perfect take. You need the right ingredients, arranged with restraint. Here's each one in the order you'll actually build the track.</p>
+    </section>
+
+    <section id="tempo-groove" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Tempo and Groove</h2>
+      <p style="margin-bottom: 24px;">Most lofi sits between <strong>70 and 90 BPM</strong>. Below 70 it starts to feel ambient; above 90 it drifts toward boom bap. Pick something in the low 80s to start - it leaves room for double-time hi-hat ideas without rushing the head-nod.</p>
+      <p style="margin-bottom: 24px;">Groove matters more than tempo. Turn on swing (55-62% in most DAWs) or nudge your snare and hats a few ticks late by hand. Quantized-to-the-grid lofi is the fastest way to sound like a preset. If your DAW has a humanize function, use it on velocity too - flat velocities are the second fastest way.</p>
+    </section>
+
+    <section id="chords" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Chords and Melody</h2>
+      <p style="margin-bottom: 24px;">Lofi harmony borrows from jazz: <strong>7ths, 9ths, and minor chords with extensions</strong>. A dependable starting progression is ii7 - V7 - Imaj7 - vi7 in any key, played on an electric piano, soft keys, or a guitar sample. Voice the chords close together in the middle of the keyboard and avoid big root-position jumps - smooth voice leading is most of what makes a progression sound "jazzy."</p>
+      <p style="margin-bottom: 24px;">Then degrade it. Detune a few cents, add slow pitch wobble (a chorus or tape-emulation plugin works), and lowpass around 8-12 kHz. Keep melodies sparse and repetitive - a four-note motif that returns every two bars beats a busy solo in this genre every time. If melody writing is the part you get stuck on, our guide to <a href="/blog/ai-samples-daw-workflow/" class="text-link">using AI samples in your DAW workflow</a> covers how to start from a generated phrase and edit it into something personal.</p>
+    </section>
+
+    <section id="drums" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Drums</h2>
+      <p style="margin-bottom: 24px;">The lofi drum formula is simple: a <strong>soft, round kick</strong>, a <strong>snare or rimshot with almost no high end</strong>, and <strong>hats that sound like they were recorded in another room</strong>. Program a basic boom bap pattern - kick on 1 and the "and" of 2, snare on 2 and 4 - then apply the swing from earlier.</p>
+      <p style="margin-bottom: 24px;">Processing does the heavy lifting. Layer a little vinyl or tape saturation on the drum bus, roll off everything above 10 kHz, and compress gently so the kick and snare glue together. Velocity variation on the hats matters more than any plugin: alternate loud and quiet hits so the pattern breathes. If you'd rather start from a finished groove and tweak it, an <a href="/tools/ai-beat-maker/" class="text-link">AI beat maker</a> can hand you a swung lofi pattern you can edit note by note instead of programming from silence.</p>
+    </section>
+
+    <section id="texture" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Texture and Noise</h2>
+      <p style="margin-bottom: 24px;">Texture is the layer listeners notice least and miss most. The staples: <strong>vinyl crackle</strong>, <strong>tape hiss</strong>, <strong>rain or room ambience</strong>, and short foley moments - a page turn, a chair creak, a distant voice. Keep the noise bed 15-20 dB under your music and filter it so it doesn't fight the hats.</p>
+      <p style="margin-bottom: 24px;">One texture running through the whole track is background; textures that come and go are arrangement. Drop the crackle out at the bridge and bring it back with the drums, and the return lands harder without adding a single new instrument.</p>
+    </section>
+
+    <section id="bass-arrangement" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Bass and Arrangement</h2>
+      <p style="margin-bottom: 24px;">Lofi bass is simple and warm: a sine or lightly saturated electric bass playing roots and the occasional approach note, mostly following the kick. Lowpass it around 200-400 Hz so it stays felt rather than heard, and sidechain it lightly to the kick if the low end gets muddy.</p>
+      <p style="margin-bottom: 24px;">Arrangement in lofi is subtraction. A typical structure: 4-bar intro (texture plus keys), 16-bar A section, 8-bar B section where something drops out - drums, bass, or the chords - then the A section again with one new element on top. Two to three minutes total. Working with your track split into layers makes this fast, which is why producing on <a href="/features/stem-export/" class="text-link">stems</a> beats bouncing a single stereo loop and hoping. If you finish in FL Studio or Ableton, we've covered the export side in <a href="/blog/export-stems-fl-studio-ableton/" class="text-link">exporting stems to your DAW</a>.</p>
+    </section>
+
+    <section id="sourcing-sounds" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Sourcing Your Sounds</h2>
+      <p style="margin-bottom: 24px;">The classic lofi method - sampling old jazz records - has a legal problem: uncleared samples can't be released commercially without a clearance you almost certainly can't afford. Sample packs solve the legal side but hand the same loops to thousands of other producers.</p>
+      <p style="margin-bottom: 24px;"><a href="/" class="text-link">Sonura</a> takes a third path: generate original lofi keys, drums, and full <a href="/features/ai-loops/" class="text-link">loops</a> that no one else has, delivered as multi-layer stems you can edit, swing, and degrade to taste. Everything is 100% royalty-free with full commercial rights, and the models are trained on ethically licensed data, so the "can I actually release this" question is answered before you start. With the Sonura Flow plugin you can generate and audition those stems inside your DAW without breaking the writing session. The same workflow applies to other genres too - our <a href="/blog/how-to-make-trap-beats/" class="text-link">trap beats guide</a> shows the harder-hitting end of it.</p>
+    </section>
+
+    <section id="conclusion" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Conclusion</h2>
+      <p style="margin-bottom: 24px;">Lofi rewards taste over technique: a swung groove at 80 BPM, jazzy chords played imperfectly, dusty drums, one good texture, and an arrangement that knows when to remove things. Start with those ingredients, resist the urge to polish, and finish the track. The tenth beat you make this way will sound like you.</p>
+      <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 32px; margin-top: 48px; text-align: center;">
+        <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px;">Start Your Next Lofi Beat with Original Stems</h3>
+        <p style="margin-bottom: 24px; color: var(--muted);">Generate lofi keys, drums, and loops as editable multi-layer stems - royalty-free, full commercial rights, ethically licensed.</p>
+        <a href="https://app.sonurastudio.com/" class="button primary large"><span class="btn-label-full">Start Creating Free</span><span class="btn-label-short">Start free</span></a>
+      </div>
+    </section>
+  </div>
+</BlogLayout>
