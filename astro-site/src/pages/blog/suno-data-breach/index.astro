@@ -1,0 +1,74 @@
+---
+import BlogLayout from '../../../layouts/BlogLayout.astro';
+
+const toc = [
+  { id: 'what-suno-confirmed', label: 'What Suno confirmed' },
+  { id: 'what-leaked', label: 'What actually leaked' },
+  { id: 'check-exposure', label: 'How to check your exposure' },
+  { id: 'bigger-pattern', label: 'The bigger pattern' },
+  { id: 'where-sonura', label: 'Where Sonura fits' },
+  { id: 'conclusion', label: 'Conclusion' },
+];
+---
+
+<BlogLayout
+  title="Suno Data Breach: What 55 Million Exposed Accounts Mean for Producers"
+  description="Suno confirmed a breach exposing 55.3 million accounts. See what leaked, how to check your exposure, and what to do next."
+  keywords="suno data breach, suno breach, suno hacked, suno leak, suno have i been pwned, was my suno account leaked"
+  slug="suno-data-breach"
+  publishedDate="2026-07-23"
+  readTime="5 min read"
+  toc={toc}
+>
+  <div style="line-height: 1.8;">
+    <section id="what-suno-confirmed" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">What Suno Confirmed</h2>
+      <p style="margin-bottom: 24px;">The Suno breach now has a number attached to it, and it is much bigger than first reported. On July 21, <a href="https://www.musicbusinessworldwide.com/suno-admits-data-breach-that-reportedly-leaked-55-3-million-users-data/" class="text-link" rel="noopener" target="_blank">Music Business Worldwide</a> reported that Suno has formally acknowledged the security incident, and the breach-notification service Have I Been Pwned added the stolen dataset to its database: <strong>55.3 million unique email addresses</strong>. When the story first broke in mid-July, early reporting put the customer data at hundreds of thousands of users. The confirmed figure is roughly a hundred times larger, against a user base Suno has said passed 100 million.</p>
+      <p style="margin-bottom: 24px;">Two details in Suno's response are worth reading closely. The company says the incident, which dates back to November 2025, "primarily involved outdated source code" and was quickly contained. And it argued that individual breach notifications "were not warranted under applicable privacy laws," per <a href="https://cybernews.com/security/data-breach-at-suno-affects-over-55-million-users/" class="text-link" rel="noopener" target="_blank">Cybernews</a>. In practice that means 55 million people found out their data was exposed from journalists and Have I Been Pwned, not from the company that held it. We covered the original hack and what it revealed about Suno's training pipeline in <a href="/blog/is-suno-safe/" class="text-link">is Suno safe?</a> This post is about the part that now affects users directly.</p>
+    </section>
+
+    <section id="what-leaked" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">What Actually Leaked</h2>
+      <p style="margin-bottom: 24px;">Based on the Have I Been Pwned listing and reporting from <a href="https://www.404media.co/hack-reveals-suno-ai-music-generator-scraped-youtube-deezer-and-genius/" class="text-link" rel="noopener" target="_blank">404 Media</a> and others, the exposed data includes:</p>
+      <ul style="margin-bottom: 24px; padding-left: 24px;">
+        <li style="margin-bottom: 12px;"><strong>55.3 million unique email addresses</strong> tied to Suno accounts.</li>
+        <li style="margin-bottom: 12px;"><strong>Phone numbers</strong>, where users had provided them.</li>
+        <li style="margin-bottom: 12px;"><strong>Tens of thousands of Stripe payment records</strong> containing names, physical addresses, purchase amounts, and partial card details: card type, expiry date, and the last four digits.</li>
+      </ul>
+      <p style="margin-bottom: 24px;">No full card numbers and no passwords have been reported in the dataset. That is genuinely better than the worst case, but partial payment data is not harmless. A scammer who knows your name, address, card type, and last four digits can write a very convincing "there was a problem with your Suno subscription" email. That is the realistic risk here: targeted phishing, not direct card fraud.</p>
+    </section>
+
+    <section id="check-exposure" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">How to Check Your Exposure</h2>
+      <p style="margin-bottom: 24px;">If you have ever made a Suno account, even a free one you abandoned, assume your email is in the set and spend five minutes on the basics:</p>
+      <ul style="margin-bottom: 24px; padding-left: 24px;">
+        <li style="margin-bottom: 12px;"><strong>Check Have I Been Pwned.</strong> Search your email at haveibeenpwned.com. The Suno dataset was added on July 20, so a current search reflects it.</li>
+        <li style="margin-bottom: 12px;"><strong>Rotate your password</strong> on Suno and anywhere you reused it, and turn on two-factor authentication where you can.</li>
+        <li style="margin-bottom: 12px;"><strong>Treat billing emails with suspicion.</strong> Anything referencing your Suno subscription, a refund, or a payment problem deserves a manual visit to the site rather than a click on the link, especially if it quotes real details about you.</li>
+        <li style="margin-bottom: 12px;"><strong>Watch card statements</strong> if you were a paying subscriber. The leaked card data is partial, so replacement is a judgment call, but unexpected charges deserve a fast report.</li>
+      </ul>
+    </section>
+
+    <section id="bigger-pattern" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">The Bigger Pattern</h2>
+      <p style="margin-bottom: 24px;">The uncomfortable throughline of this story is how each side of it rhymes. The leaked source code showed a training pipeline built on scraping YouTube Music, Deezer, Genius, and a long list of other sources without permission, something we broke down in <a href="/blog/is-ai-music-ethical/" class="text-link">is AI music ethical?</a> The breach response shows user data handled with a similar posture: a November incident, no individual notifications, and a company position that none were legally required. A platform's attitude toward consent tends to be consistent, whether the data in question is artists' catalogs or its own users' billing records.</p>
+      <p style="margin-bottom: 24px;">The timing adds pressure. Suno is still in litigation with the major labels, and a Munich court is due to rule in GEMA's case against the company on July 31. None of this makes music made with Suno illegal, and nothing here changes its subscriber terms. But if you are choosing infrastructure for work you sell, the question is no longer only what the model was trained on. It is also how the company behaves when something goes wrong.</p>
+    </section>
+
+    <section id="where-sonura" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Where Sonura Fits</h2>
+      <p style="margin-bottom: 24px;"><a href="/" class="text-link">Sonura</a> sits on the other side of the consent line by design. The generation technology is built on ethically licensed training data rather than scraped catalogs, and everything you create is royalty-free with full commercial rights. If the news has you evaluating a <a href="/alternatives/suno-alternative/" class="text-link">Suno alternative</a>, the practical difference for producers is the output: instead of a finished song locked to a platform, you get multi-layer stems, loops, one-shots, and vocals you can pull apart and finish yourself.</p>
+      <p style="margin-bottom: 24px;">That structure also limits platform dependence. Use <a href="/features/stem-export/" class="text-link">stem export</a> to move every layer into your DAW, or work through the Sonura Flow plugin to generate directly inside your session. Build with the <a href="/features/ai-beats/" class="text-link">AI beat maker</a>, keep the files locally, and your catalog does not live or die with any one service's security practices.</p>
+    </section>
+
+    <section id="conclusion" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Conclusion</h2>
+      <p style="margin-bottom: 24px;">The Suno breach went from a source-code story to a 55-million-user story in a week. Check your email against Have I Been Pwned, rotate the password, and be skeptical of billing emails for a while. Then take the larger lesson: the platforms you build on differ not just in sound, but in how they treat consent, on both sides of the product.</p>
+      <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 32px; margin-top: 48px; text-align: center;">
+        <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px;">Build on Sounds You Actually Own</h3>
+        <p style="margin-bottom: 24px; color: var(--muted);">Generate multi-layer stems, loops, and vocals on an ethically licensed foundation, export everything to your DAW, and keep full commercial rights.</p>
+        <a href="https://app.sonurastudio.com/" class="button primary large"><span class="btn-label-full">Start Creating Free</span><span class="btn-label-short">Start free</span></a>
+      </div>
+    </section>
+  </div>
+</BlogLayout>
