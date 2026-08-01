@@ -450,8 +450,9 @@ body.editorial-home .workflow-media .publish-gradient-art {
     height: 56px;
   }
 
-  body.editorial-home .workflow-media .publish-logo i {
-    font-size: 46px;
+  body.editorial-home .workflow-media .publish-logo svg {
+    width: 46px;
+    height: 46px;
   }
 }
 

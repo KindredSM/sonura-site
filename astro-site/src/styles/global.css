@@ -104,7 +104,6 @@ body {
 .nav-link { display: inline-flex; align-items: center; gap: 10px; padding: 8px 12px; color: var(--fg); text-decoration: none; font-weight: 500; font-size: 14px; text-transform: lowercase; opacity: 0.86; transition: all 0.2s ease; border-radius: var(--radius-ui); }
 .nav-link:hover { opacity: 1; background: rgba(255, 255, 255, 0.04); color: var(--fg); }
 .nav-link i { width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.nav-link .fab { font-size: 18px; width: 18px; height: 18px; }
 .nav-separator { width: 1px; height: 24px; background: var(--border); }
 
 /* Clean Tech Panel Styling */
@@ -167,7 +166,6 @@ body {
 .mobile-menu-item svg, .mobile-menu-item i { opacity: 0.8; }
 @media (max-width: 768px) { .nav-links { display: none !important; } .nav-separator { display: none !important; } .mobile-menu-btn { display: inline-flex; } .mobile-menu { display: block; } }
 
-.fab { font-size: 24px; color: inherit !important; }
 .brand { font-family: var(--font-body); font-weight: 400; text-transform: uppercase; letter-spacing: 0.12em; color: var(--fg) !important; text-decoration: none !important; cursor: pointer; transition: opacity 0.2s ease; border: none; outline: none; background: none; display: flex; align-items: center;  }
 .brand p { font-size: 19px; margin: 0; }
 .brand:hover { opacity: 0.8; color: var(--fg) !important; text-decoration: none !important; }
@@ -1076,9 +1074,9 @@ body {
   will-change: transform;
 }
 
-.publish-logo i {
-  font-size: clamp(58px, 7vw, 96px);
-  line-height: 1;
+.publish-logo svg {
+  width: clamp(58px, 7vw, 96px);
+  height: clamp(58px, 7vw, 96px);
   filter: drop-shadow(0 20px 34px rgba(0,0,0,0.5));
 }
 
@@ -1089,18 +1087,11 @@ body {
 .publish-logo-five { left: 30%; top: 42%; animation-delay: -1.4s; }
 .publish-logo-six { right: 7%; bottom: 9%; animation-delay: -4.4s; }
 
-.publish-logo-one i { color: #1db954 !important; }
-.publish-logo-two i { color: #ff0033 !important; }
-.publish-logo-three i { color: #ff5500 !important; }
-.publish-logo-four i {
-  color: #fa243c !important;
-  background: linear-gradient(135deg, #fa243c 10%, #fb5bc5 52%, #7a5cff 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.publish-logo-five i { color: #a238ff !important; }
-.publish-logo-six i { color: #1da0c3 !important; }
+.publish-logo-one svg { color: #1db954 !important; }
+.publish-logo-two svg { color: #ff0033 !important; }
+.publish-logo-three svg { color: #ff5500 !important; }
+.publish-logo-five svg { color: #a238ff !important; }
+.publish-logo-six svg { color: #1da0c3 !important; }
 
 @keyframes publishFloat {
   0%, 100% {
@@ -1175,8 +1166,9 @@ body {
     height: 54px;
     animation-duration: 8s;
   }
-  .workflow-publish-item .publish-logo i {
-    font-size: 52px;
+  .workflow-publish-item .publish-logo svg {
+    width: 52px;
+    height: 52px;
     filter: drop-shadow(0 12px 22px rgba(0,0,0,0.45));
   }
   .workflow-publish-item .publish-logo-one,
@@ -1394,9 +1386,9 @@ body {
   color: var(--fg);
 }
 
-.creator-video-credit i {
-  font-size: 16px;
-  line-height: 1;
+.creator-video-credit svg {
+  width: 16px;
+  height: 16px;
 }
 
 .creator-video-credit span {
@@ -1680,7 +1672,6 @@ body {
 .footer-social { display: flex; gap: 12px; }
 .footer-social-link { min-width: 40px; height: 40px; border-radius: var(--radius-ui); background: rgba(255,255,255,0.05); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; gap: 8px; color: var(--fg); text-decoration: none; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); padding: 0 12px; }
 .footer-social-link:hover { background: rgba(255,255,255,0.1); border-color: var(--border-light); color: var(--fg); }
-.footer-social-link .fab { font-size: 18px; }
 .footer-social-link span { font-size: 13px; color: var(--muted); }
 .footer-copyright { color: var(--muted); font-size: 14px; }
 .footer-copyright p { margin: 0; }
@@ -1704,7 +1695,6 @@ body {
   .footer-inner { padding: 0 var(--page-pad); }
   .footer-content { gap: 20px; }
   .footer-social-link { min-width: 36px; height: 36px; padding: 0 8px; }
-  .footer-social-link .fab { font-size: 16px; }
   .footer-social-link svg { width: 16px; height: 16px; }
   .footer-social-link span { font-size: 12px; }
   .footer-copyright { font-size: 13px; }
