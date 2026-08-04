@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PricingSection from '../components/PricingSection.astro';
 import MadeWithSonura from '../components/MadeWithSonura.astro';
+import BrandIcon from '../components/icons/BrandIcon.astro';
 import '../styles/home-editorial.css';
 
 const jsonLd = [
@@ -24,7 +25,7 @@ const jsonLd = [
     "alternateName": "Sonura",
     "url": "https://sonurastudio.com/",
     "logo": "https://sonurastudio.com/demo-image.jpeg",
-    "sameAs": ["https://twitter.com/sonurastudio", "https://discord.gg/Yk8RD3Nmyh"],
+    "sameAs": ["https://twitter.com/sonurastudio", "https://discord.com/invite/Yk8RD3Nmyh"],
     "contactPoint": { "@type": "ContactPoint", "email": "kindred@sonurastudio.com", "contactType": "Customer Support" }
   },
   {
@@ -125,9 +126,9 @@ const creatorVideos = [
     <div class="hero-content">
       <p class="hero-kicker reveal" data-reveal-delay="0.02s">
         <span class="hero-avatars">
-          <img src="/images/doormanaus.jpg" alt="" width="32" height="32" loading="eager" />
-          <img src="/images/glassbead.png" alt="" width="32" height="32" loading="eager" />
-          <img src="/images/aaron.jpg" alt="" width="32" height="32" loading="eager" />
+          <img src="/images/doormanaus.jpg" alt="Photo of @thedoormanaus, music creator on Sonura" width="32" height="32" loading="eager" />
+          <img src="/images/glassbead.png" alt="Photo of glassBead, music creator on Sonura" width="32" height="32" loading="eager" />
+          <img src="/images/aaron.jpg" alt="Photo of @aaronthecratehacker, music creator on Sonura" width="32" height="32" loading="eager" />
         </span>
         <span>Loved by 12,000+ producers</span>
       </p>
@@ -245,12 +246,23 @@ const creatorVideos = [
           </div>
           <div class="workflow-media" aria-hidden="true">
             <div class="publish-gradient-art">
-              <div class="publish-logo publish-logo-one"><i class="fab fa-spotify"></i></div>
-              <div class="publish-logo publish-logo-two"><i class="fab fa-youtube"></i></div>
-              <div class="publish-logo publish-logo-three"><i class="fab fa-soundcloud"></i></div>
-              <div class="publish-logo publish-logo-four"><i class="fab fa-itunes-note"></i></div>
-              <div class="publish-logo publish-logo-five"><i class="fab fa-deezer"></i></div>
-              <div class="publish-logo publish-logo-six"><i class="fab fa-bandcamp"></i></div>
+              <div class="publish-logo publish-logo-one"><BrandIcon name="spotify" /></div>
+              <div class="publish-logo publish-logo-two"><BrandIcon name="youtube" /></div>
+              <div class="publish-logo publish-logo-three"><BrandIcon name="soundcloud" /></div>
+              <div class="publish-logo publish-logo-four">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" aria-hidden="true" focusable="false">
+                  <defs>
+                    <linearGradient id="publish-logo-itunes-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="10%" stop-color="#fa243c" />
+                      <stop offset="52%" stop-color="#fb5bc5" />
+                      <stop offset="100%" stop-color="#7a5cff" />
+                    </linearGradient>
+                  </defs>
+                  <path fill="url(#publish-logo-itunes-gradient)" d="M381.9 388.2c-6.4 27.4-27.2 42.8-55.1 48-24.5 4.5-44.9 5.6-64.5-10.2-23.9-20.1-24.2-53.4-2.7-74.4 17-16.2 40.9-19.5 76.8-25.8 6-1.1 11.2-2.5 15.6-7.4 6.4-7.2 4.4-4.1 4.4-163.2 0-11.2-5.5-14.3-17-12.3-8.2 1.4-185.7 34.6-185.7 34.6-10.2 2.2-13.4 5.2-13.4 16.7 0 234.7 1.1 223.9-2.5 239.5-4.2 18.2-15.4 31.9-30.2 39.5-16.8 9.3-47.2 13.4-63.4 10.4-43.2-8.1-58.4-58-29.1-86.6 17-16.2 40.9-19.5 76.8-25.8 6-1.1 11.2-2.5 15.6-7.4 10.1-11.5 1.8-256.6 5.2-270.2.8-5.2 3-9.6 7.1-12.9 4.2-3.5 11.8-5.5 13.4-5.5 204-38.2 228.9-43.1 232.4-43.1 11.5-.8 18.1 6 18.1 17.6.2 344.5 1.1 326-1.8 338.5z" />
+                </svg>
+              </div>
+              <div class="publish-logo publish-logo-five"><BrandIcon name="deezer" /></div>
+              <div class="publish-logo publish-logo-six"><BrandIcon name="bandcamp" /></div>
             </div>
           </div>
         </article>
@@ -284,7 +296,7 @@ const creatorVideos = [
               aria-label={`Play ${video.title}`}
             >
               <span class="creator-video-media">
-                <img src={video.poster} alt="" loading="lazy" decoding="async" width="480" height="854" />
+                <img src={video.poster} alt={`Preview poster for ${video.title}`} loading="lazy" decoding="async" width="480" height="854" />
                 <span class="creator-video-scrim" aria-hidden="true"></span>
                 <span class="creator-video-play" aria-hidden="true">
                   <i data-lucide="play"></i>
@@ -302,7 +314,7 @@ const creatorVideos = [
               rel="noopener noreferrer"
               aria-label={`View ${video.credit} on Instagram`}
             >
-              <i class="fab fa-instagram" aria-hidden="true"></i>
+              <BrandIcon name="instagram" />
               <span>{video.credit}</span>
             </a>
           </article>
