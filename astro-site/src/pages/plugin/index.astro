@@ -8,6 +8,8 @@ const PLUGIN_VERSION_API_URL = 'https://sonura.fly.dev/api/plugin/version';
 const MAC_URL = 'https://audio.sonurastudio.com/plugin/latest/SonuraFlow-macOS.pkg';
 const WIN_URL = 'https://audio.sonurastudio.com/plugin/latest/SonuraFlow-Windows-Setup.exe';
 const WIN_ZIP_URL = 'https://audio.sonurastudio.com/plugin/latest/SonuraFlow-Windows.zip';
+const TUTORIAL_VIDEO_ID = 'hTa_ysLlG9M';
+const TUTORIAL_URL = `https://youtu.be/${TUTORIAL_VIDEO_ID}`;
 
 let PLUGIN_VERSION = 'latest';
 try {
@@ -92,6 +94,22 @@ const jsonLd = [
       "Personal sound library",
       "Up to 4 variations per prompt"
     ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "Sonura Flow Tutorial - A Generative Audio VST For Any DAW",
+    "description": "Guided walkthrough of Sonura Flow in Ableton Live: install the plugin, describe the sound you need, and drag the result straight onto the timeline.",
+    "thumbnailUrl": "https://sonurastudio.com/images/plugin-tutorial-poster.webp",
+    "uploadDate": "2026-08-11T14:44:00-07:00",
+    "duration": "PT6M34S",
+    "embedUrl": `https://www.youtube.com/embed/${TUTORIAL_VIDEO_ID}`,
+    "contentUrl": TUTORIAL_URL,
+    "publisher": {
+      "@type": "Organization",
+      "name": "Sonura Studio",
+      "url": "https://sonurastudio.com/"
+    }
   },
   {
     "@context": "https://schema.org",
@@ -228,6 +246,34 @@ const jsonLd = [
           <source src="/videos/sonura-flow-demo.mp4" type="video/mp4" />
         </video>
       </div>
+    </section>
+
+    <section class="pg-seo pg-tutorial anim" id="pg-tutorial" aria-labelledby="tutorial-title">
+      <div class="seo-head">
+        <h2 id="tutorial-title">Want to see Sonura in action?</h2>
+      </div>
+      <div class="tutorial-frame">
+        <a
+          class="yt-facade"
+          id="yt-facade"
+          href={TUTORIAL_URL}
+          target="_blank"
+          rel="noopener"
+          aria-label="Play the Sonura Flow tutorial"
+        >
+          <img
+            src="/images/plugin-tutorial-poster.webp"
+            alt="Sonura Flow tutorial: creating sounds inside a DAW session"
+            width="1280"
+            height="720"
+            loading="lazy"
+          />
+          <span class="yt-play" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>
+          </span>
+        </a>
+      </div>
+      <p class="tutorial-meta">Sonura Flow Tutorial &middot; A generative audio VST for any DAW</p>
     </section>
 
     <section class="pg-showcase anim">
@@ -492,7 +538,7 @@ const jsonLd = [
 
 </BaseLayout>
 
-<script define:vars={{ PLUGIN_VERSION, MAC_URL, WIN_URL, WIN_ZIP_URL, MANIFEST_URL: PLUGIN_MANIFEST_URL, VERSION_API_URL: PLUGIN_VERSION_API_URL }}>
+<script define:vars={{ PLUGIN_VERSION, MAC_URL, WIN_URL, WIN_ZIP_URL, MANIFEST_URL: PLUGIN_MANIFEST_URL, VERSION_API_URL: PLUGIN_VERSION_API_URL, TUTORIAL_VIDEO_ID }}>
   // @ts-nocheck
   // Keep the displayed version in sync with the latest published plugin without a
   // site rebuild: the build-time value is the fallback. The backend endpoint is the
@@ -562,6 +608,20 @@ const jsonLd = [
       window.fbq('track', 'Lead', {
         content_name: 'Sonura Flow Plugin',
         content_category: platform,
+      });
+    }
+
+    // PostHog gets its own capture (not via sonuraSeoTrack, which would double-fire
+    // GA/dataLayer). It auto-attaches $feature/<flag>, so this is the experiment goal.
+    if (window.posthog && typeof window.posthog.capture === 'function') {
+      window.posthog.capture('plugin_download', {
+        plugin_platform: platform,
+        plugin_version: PLUGIN_VERSION,
+        plugin_location: location,
+        plugin_button: button,
+        plugin_package: packageType,
+        file_name: fileName,
+        link_url: url,
       });
     }
 
@@ -639,6 +699,36 @@ const jsonLd = [
   document.addEventListener('click', (event) => {
     if (!event.target.closest('.dl-choice')) closeDownloadMenus();
   });
+
+  // --- Tutorial video: click-to-play facade ----------------------------------
+  // The poster stands in for the embed so no YouTube iframe (or its cookies)
+  // loads until someone actually asks to watch.
+  (() => {
+    const facade = document.getElementById('yt-facade');
+    if (!facade) return;
+
+    const playInline = (event) => {
+      // Cmd/ctrl/middle click keeps the normal "open on YouTube" behaviour.
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.button > 0) return;
+      event.preventDefault();
+
+      const iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube-nocookie.com/embed/' + TUTORIAL_VIDEO_ID + '?autoplay=1&rel=0&modestbranding=1';
+      iframe.title = 'Sonura Flow tutorial';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.allowFullscreen = true;
+      facade.replaceWith(iframe);
+
+      if (window.posthog && typeof window.posthog.capture === 'function') {
+        window.posthog.capture('plugin_tutorial_play', { video_id: TUTORIAL_VIDEO_ID, plugin_location: 'plugin_page' });
+      }
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'video_start', { video_provider: 'youtube', video_title: 'Sonura Flow Tutorial', video_id: TUTORIAL_VIDEO_ID });
+      }
+    };
+
+    facade.addEventListener('click', playInline);
+  })();
 
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') closeDownloadMenus();
@@ -1491,6 +1581,92 @@ const jsonLd = [
     margin-top: 7px;
   }
 
+  /* Experiment section stays collapsed until the variant is assigned. */
+  .pg-tutorial[hidden] {
+    display: none;
+  }
+
+  /* Heading stands alone here: no kicker above, no paragraph below. */
+  .pg-tutorial .seo-head h2 {
+    margin: 0;
+  }
+
+  .tutorial-frame {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-panel);
+    aspect-ratio: 16 / 9;
+    background: var(--bg);
+  }
+
+  .yt-facade {
+    position: absolute;
+    inset: 0;
+    display: block;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .yt-facade img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(0.45) contrast(1.06);
+    transition: filter 0.35s ease;
+  }
+
+  .yt-facade:hover img,
+  .yt-facade:focus-visible img {
+    filter: none;
+  }
+
+  .yt-play {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    place-items: center;
+    width: clamp(60px, 7vw, 82px);
+    height: clamp(60px, 7vw, 82px);
+    border-radius: 50%;
+    background: var(--fg);
+    color: var(--bg);
+    border: 1px solid var(--fg);
+    transition: transform 0.25s ease;
+  }
+
+  .yt-facade:hover .yt-play,
+  .yt-facade:focus-visible .yt-play {
+    transform: translate(-50%, -50%) scale(1.06);
+  }
+
+  .yt-play svg {
+    width: 40%;
+    height: 40%;
+    margin-left: 6%;
+  }
+
+  /* :global — the player iframe is injected at runtime, so it carries no scope attribute. */
+  .tutorial-frame :global(iframe) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .tutorial-meta {
+    margin: -14px 0 0;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+
   .guide-links {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1785,10 +1961,11 @@ const jsonLd = [
       right: -5%;
     }
 
+    /* Stacked: buttons span the column rather than sitting in a narrow strip. */
     .pg-download {
       flex-direction: column;
       width: 100%;
-      max-width: 360px;
+      max-width: none;
     }
 
     .primary-dl,
@@ -1842,7 +2019,7 @@ const jsonLd = [
 
     .pg-cta-download {
       width: 100%;
-      max-width: 360px;
+      max-width: none;
     }
   }
 </style>
