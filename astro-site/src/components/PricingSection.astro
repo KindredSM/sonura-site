@@ -49,20 +49,15 @@ const {
         <p class="plan-desc">for hobbyists and beginners.</p>
       </div>
 
+      <div class="plan-value">
+        <p class="plan-value-headline">200 loops a month</p>
+        <ul class="plan-value-list">
+          <li>400 one-shots</li>
+          <li>55 full tracks</li>
+        </ul>
+      </div>
+
       <ul class="plan-features">
-        <li class="has-breakdown">
-          <svg class="feature-check" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-          </svg>
-          <div>
-            <span>200 monthly creation credits</span>
-            <ul class="credit-breakdown">
-              <li>100 4-bar loops</li>
-              <li>200 one-shots</li>
-              <li>25 full tracks</li>
-            </ul>
-          </div>
-        </li>
         <li>
           <svg class="feature-check" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
@@ -111,20 +106,15 @@ const {
         <p class="plan-desc">for independent artists and producers.</p>
       </div>
 
+      <div class="plan-value">
+        <p class="plan-value-headline">500 loops a month</p>
+        <ul class="plan-value-list">
+          <li>1,000 one-shots</li>
+          <li>140 full tracks</li>
+        </ul>
+      </div>
+
       <ul class="plan-features">
-        <li class="has-breakdown">
-          <svg class="feature-check" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-          </svg>
-          <div>
-            <span>500 monthly creation credits</span>
-            <ul class="credit-breakdown">
-              <li>250 4-bar loops</li>
-              <li>500 one-shots</li>
-              <li>70 full tracks</li>
-            </ul>
-          </div>
-        </li>
         <li>
           <svg class="feature-check" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
@@ -184,25 +174,20 @@ const {
         <p class="plan-desc">for studios and professional teams.</p>
       </div>
 
+      <div class="plan-value">
+        <p class="plan-value-headline">1,250 loops a month</p>
+        <ul class="plan-value-list">
+          <li>2,500 one-shots</li>
+          <li>355 full tracks</li>
+        </ul>
+      </div>
+
       <ul class="plan-features">
         <li>
           <svg class="feature-check" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
           </svg>
           <span>Everything in Pro</span>
-        </li>
-        <li class="has-breakdown">
-          <svg class="feature-check" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-          </svg>
-          <div>
-            <span>1000 monthly creation credits</span>
-            <ul class="credit-breakdown">
-              <li>500 4-bar loops</li>
-              <li>1000 one-shots</li>
-              <li>140 full tracks</li>
-            </ul>
-          </div>
         </li>
         <li>
           <svg class="feature-check" viewBox="0 0 20 20" fill="currentColor">
@@ -523,22 +508,43 @@ const {
     margin-top: 1px;
   }
 
-  .credit-breakdown {
+  /* what the plan buys, between the price and the feature list so it is read
+     first. a credit is an internal unit; the card talks in creations instead. */
+  .plan-value {
+    margin: 20px 0 22px;
+    padding: 18px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .plan-value-headline {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--fg);
+  }
+
+  .plan-value-list {
     list-style: none;
-    margin: 8px 0 0;
+    margin: 12px 0 0;
     padding: 0;
   }
 
-  .credit-breakdown li {
+  .plan-value-list li {
     display: flex;
     align-items: baseline;
     gap: 8px;
     padding: 3px 0;
     font-size: 14px;
     color: var(--faint);
+    text-transform: lowercase;
   }
 
-  .credit-breakdown li::before {
+  .plan-value-list li::before {
     content: '\00B7';
   }
 
