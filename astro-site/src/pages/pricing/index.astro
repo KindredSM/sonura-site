@@ -8,7 +8,7 @@ const jsonLd = [
     "@type": "WebPage",
     "name": "Sonura Pricing",
     "url": "https://sonurastudio.com/pricing/",
-    "description": "Sonura pricing plans for AI music generation. Choose Starter, Pro, or Studio."
+    "description": "Sonura pricing plans for AI music generation. Choose Starter, Pro, or Max."
   },
   {
     "@context": "https://schema.org",
@@ -26,9 +26,9 @@ const jsonLd = [
     "operatingSystem": "Web Browser",
     "offers": [
       { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "USD", "description": "Free credits, no credit card required" },
-      { "@type": "Offer", "name": "Starter", "price": "10", "priceCurrency": "USD", "billingIncrement": "P1M", "description": "200 creation credits/month: around 100 4-bar loops, 200 one-shots, or 25 full tracks" },
-      { "@type": "Offer", "name": "Pro", "price": "20", "priceCurrency": "USD", "billingIncrement": "P1M", "description": "500 creation credits/month: around 250 4-bar loops, 500 one-shots, or 70 full tracks" },
-      { "@type": "Offer", "name": "Studio", "price": "45", "priceCurrency": "USD", "billingIncrement": "P1M", "description": "1000 creation credits/month: around 500 4-bar loops, 1000 one-shots, or 140 full tracks" }
+      { "@type": "Offer", "name": "Starter", "price": "10", "priceCurrency": "USD", "billingIncrement": "P1M", "description": "400 creation credits/month: around 200 4-bar loops, 400 one-shots and fx, or 55 full tracks" },
+      { "@type": "Offer", "name": "Pro", "price": "20", "priceCurrency": "USD", "billingIncrement": "P1M", "description": "1000 creation credits/month: around 500 4-bar loops, 1000 one-shots and fx, or 140 full tracks" },
+      { "@type": "Offer", "name": "Max", "price": "45", "priceCurrency": "USD", "billingIncrement": "P1M", "description": "2500 creation credits/month: around 1250 4-bar loops, 2500 one-shots and fx, or 355 full tracks" }
     ]
   },
   {
@@ -66,7 +66,7 @@ const jsonLd = [
 ---
 
 <BaseLayout
-  title="Sonura Pricing | AI Music Generator Plans - Free, Starter, Pro, Studio"
+  title="Sonura Pricing | AI Music Generator Plans - Free, Starter, Pro, Max"
   description="Sonura pricing for AI music generation. Pro is $20/month. No contracts, cancel anytime."
   keywords="sonura pricing, ai music generator pricing, ai beat maker pricing, sonura plans, sonura cost, ai music generator free, sonura free tier"
   canonical="https://sonurastudio.com/pricing/"
@@ -233,11 +233,11 @@ const jsonLd = [
             <th>Feature</th>
             <th>Starter</th>
             <th>Pro</th>
-            <th>Studio</th>
+            <th>Max</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>Credits</td><td>200/mo</td><td>500/mo</td><td>1000/mo</td></tr>
+          <tr><td>Credits</td><td>400/mo</td><td>1,000/mo</td><td>2,500/mo</td></tr>
           <tr><td>Commercial Rights</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
           <tr><td>Stem Export</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
           <tr><td>Smart Mixing</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
