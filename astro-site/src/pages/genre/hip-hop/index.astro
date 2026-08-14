@@ -4,15 +4,15 @@ import GenreLayout from '../../../layouts/GenreLayout.astro';
 const workflowItems = [
   {
     image: '/assets/workflow-design-final',
-    imageAlt: 'Design hip hop beats in Sonura',
-    title: 'Describe your hip hop beat',
+    imageAlt: 'Design rap beats in Sonura',
+    title: 'Describe your rap beat',
     description: 'Type prompts like "boom bap hip hop 90 bpm" or "modern rap beat with 808s and piano". Sonura understands classic and modern hip hop production.'
   },
   {
     image: '/assets/workflow-compose-final',
-    imageAlt: 'Create hip hop beats instantly',
+    imageAlt: 'Create rap beats instantly',
     title: 'Instant professional beats',
-    description: 'Get your hip hop beat in under 10 seconds. Complete with drums, 808s, melody, and atmosphere. Ready for vocals or instrumental release.'
+    description: 'Get your rap beat in under 10 seconds. Complete with drums, 808s, melody, and atmosphere. Ready for vocals or instrumental release.'
   },
   {
     image: '/assets/workflow-collab-uncropped',
@@ -42,22 +42,26 @@ const faqs = [
   {
     question: 'Can I make type beats with Sonura?',
     answer: 'Absolutely! Sonura is perfect for type beat producers. Create beats in any artist\'s style with the <a href="/tools/ai-loop-maker/">loop maker</a>, export stems, add your producer tag, and sell. Much faster than traditional production.'
+  },
+  {
+    question: 'Is Sonura a free rap beat maker?',
+    answer: 'Yes! Sonura is free to start, no credit card required. Create rap beats with drums, 808s, and melody at no cost, then upgrade only when you need high-quality downloads or want to release and sell with full commercial rights.'
   }
 ];
 ---
 
 <GenreLayout
-  genre="Hip Hop"
+  genre="Rap"
   genreSlug="hip-hop"
-  title="Free Hip Hop Beat Maker | AI Hip Hop Music Generator - Sonura"
-  description="Create professional hip hop beats in seconds with AI. Generate drums, 808s, and melodies instantly. Free hip hop beat maker with royalty-free commercial use for rappers and producers."
-  keywords="hip hop beat maker, hip hop generator, ai hip hop beats, rap beat maker, make hip hop beats online, hip hop production, boom bap generator, free rap beats, type beat maker"
-  headline="Free Hip Hop Beat Maker"
-  subhead="Create professional hip hop beats with crisp drums, heavy 808s, and melodic elements. Built for rappers and producers."
-  ctaText="Create Hip Hop Beats"
-  workflowTitle="How to make hip hop beats with AI"
+  title="Free Rap Beat Maker | AI Rap Beat Generator - Sonura"
+  description="Create rap beats in seconds with AI. Generate crisp drums, heavy 808s, and melodic hooks instantly. Free rap beat maker with royalty-free commercial use for rappers and producers."
+  keywords="rap beat maker, rap beat maker free, ai rap beats, free rap beats, hip hop beat maker, hip hop generator, ai hip hop beats, boom bap generator, make hip hop beats online, type beat maker"
+  headline="Free Rap Beat Maker"
+  subhead="Create professional rap beats with crisp drums, heavy 808s, and melodic elements. Built for rappers and hip hop producers."
+  ctaText="Create Rap Beats"
+  workflowTitle="How to make rap beats with AI"
   workflowItems={workflowItems}
   faqs={faqs}
-  finalCtaTitle="Start making hip hop beats now"
-  finalCtaButtonText="Create Hip Hop Beats Free"
+  finalCtaTitle="Start making rap beats now"
+  finalCtaButtonText="Create Rap Beats Free"
 />
