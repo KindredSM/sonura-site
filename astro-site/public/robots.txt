@@ -3,14 +3,26 @@ Allow: /
 
 Sitemap: https://sonurastudio.com/sitemap-index.xml
 
+# Content Signal directives (https://contentsignals.org/)
+Content-Signal: search=yes,ai-input=yes,ai-train=no,use=reference
+
 # LLM documentation
 # https://sonurastudio.com/llms.txt
 # https://sonurastudio.com/llms-full.txt
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
 
 User-agent: GPTBot
 Allow: /
 
 User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: Google-Extended
@@ -38,9 +50,6 @@ User-agent: Meta-ExternalAgent
 Allow: /
 
 User-agent: CCBot
-Allow: /
-
-User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: GoogleOther
