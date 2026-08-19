@@ -1,0 +1,129 @@
+---
+import ComparisonLayout from '../../../layouts/ComparisonLayout.astro';
+---
+
+<ComparisonLayout
+  slug="lyria-vs-suno"
+  a="lyria"
+  b="suno"
+  title="Lyria 3 vs Suno: Google's AI Music Model Compared 2026 | Sonura"
+  description="Google Lyria 3.5 and Lyria 3 Pro vs Suno v5.5 on vocals, length, languages, watermarking, and commercial terms. Verified August 2026."
+  keywords="lyria vs suno, lyria 3 vs suno, google lyria 3, lyria 3.5, lyria 3 pro vertex ai, google flow music, suno v5.5, google ai music generator, suno alternative"
+  lede="google's music model is not really aimed at you unless you are building something. lyria 3 and lyria 3 pro live on vertex ai, lyria 3.5 lives in flow, and the whole family is priced, governed, and watermarked like cloud infrastructure. suno is an app you open and use."
+  verdict={[
+    {
+      label: 'Best for products and pipelines',
+      pick: 'lyria',
+      body: 'vertex ai access, eight languages, multi-vocal conditioning, and google cloud terms your legal team has already signed.',
+    },
+    {
+      label: 'Best for making music',
+      pick: 'suno',
+      body: 'stronger vocals, longer songs, a browser daw, up to 12 stems, and no cloud console between you and the track.',
+    },
+  ]}
+  headToHead={[
+    {
+      dimension: 'Track length',
+      a: 'three minutes on Lyria 3 Pro, thirty seconds on Lyria 3. that thirty-second tier is a building block, not a song.',
+      b: 'full songs, extendable in the app, with no hard ceiling you run into on a normal record.',
+      winner: 'b',
+    },
+    {
+      dimension: 'Vocals',
+      a: 'multi-vocal conditioning across eight languages, and 3.5 sharpened expression, emotion, and pronunciation noticeably.',
+      b: 'the most natural pop and r&b delivery available, plus Voices for a reusable voice across a catalogue.',
+      winner: 'b',
+    },
+    {
+      dimension: 'Languages',
+      a: 'english, german, spanish, french, hindi, japanese, korean, and portuguese, generated and conditioned properly rather than approximated.',
+      b: 'wide coverage in practice, but without google\'s explicit multi-language vocal conditioning.',
+      winner: 'a',
+    },
+    {
+      dimension: 'Structural control',
+      a: 'prompt intros, verses, choruses, and bridges directly, and get timed lyrics with the arrangement built around them.',
+      b: 'deep meta-tag control refined by two years of community experimentation, which is powerful and less deterministic.',
+      winner: 'tie',
+    },
+    {
+      dimension: 'Building it into software',
+      a: 'vertex ai, with the quotas, iam, billing, and regional controls that come with it. this is the point of lyria.',
+      b: 'a consumer product first. workable, but not the natural place to wire music into your own application.',
+      winner: 'a',
+    },
+    {
+      dimension: 'Editing and stems',
+      a: 'no stem export, and no timeline. lyria generates, and what you do next happens elsewhere.',
+      b: 'Suno Studio: multitrack timeline, take lanes, eq, faders, warp markers, and up to 12 stems on the top plan.',
+      winner: 'b',
+    },
+    {
+      dimension: 'Terms and governance',
+      a: 'covered by google cloud terms rather than a music licence, with SynthID watermarking applied to generated audio.',
+      b: 'commercial rights on paid plans, a warner deal, and other label litigation still unresolved.',
+      winner: 'a',
+    },
+    {
+      dimension: 'Time to first track',
+      a: 'a cloud project, credentials, and an api call, or Flow if you want the friendlier door.',
+      b: 'sign up and type. it is the least friction in the category and that is deliberate.',
+      winner: 'b',
+    },
+  ]}
+  narrative={[
+    {
+      heading: 'Lyria is infrastructure wearing a music model costume',
+      body: `<p>the tell is the thirty-second tier. lyria 3 generates up to thirty seconds and lyria 3 pro up to three minutes, which is odd for a songwriting tool and completely normal for a component you call from software. it lives on vertex ai next to every other google model, under google cloud terms, with the same billing and access controls.</p><p>that is a genuine strength if you are shipping a product. procurement is already done, the region controls exist, and nobody has to evaluate a new vendor. <strong>it is the wrong shape entirely if you just wanted to write a song this evening.</strong></p>`,
+    },
+    {
+      heading: 'The watermark is a feature and a constraint',
+      body: `<p>google applies SynthID watermarking to its generated audio. depending on who you are, that is either reassuring or limiting. for a platform, a broadcaster, or anyone who needs to demonstrate provenance downstream, an inaudible marker that survives normal processing is genuinely useful.</p><p>for an artist releasing under their own name, it is a permanent signal attached to the file that says where it came from. nobody is hiding this and it is not a trap, but it is worth knowing before it is embedded in a master, because it is not something you remove later.</p>`,
+    },
+    {
+      heading: 'Where 3.5 landed',
+      body: `<p>lyria 3.5 shipped on 29 july 2026 into google flow music, and the improvements were aimed exactly where the family was weakest: musicality, lyrics, vocal expression, and pronunciation. the gap to suno on vocals is smaller than it was in february.</p><p>it is still a gap. suno v5.5 has had since march to be the reference point, and it has the ecosystem, the editor, and the stems around it. google is closing distance on the model while suno keeps winning on everything wrapped around the model, and for most people the wrapper is what they actually use.</p>`,
+    },
+  ]}
+  chooseA={[
+    'are generating music from inside your own product or pipeline',
+    'need vocals in german, spanish, french, hindi, japanese, korean, or portuguese',
+    'already run on google cloud and would rather not add a vendor',
+    'want provenance watermarking attached rather than avoided',
+    'need short, precise cues more often than full songs',
+  ]}
+  chooseB={[
+    'want a finished song rather than a component',
+    'need the strongest vocal performance available today',
+    'want stems and a multitrack editor in the same place you generate',
+    'would rather type a prompt than configure a cloud project',
+    'are releasing music under your own name',
+  ]}
+  faqs={[
+    {
+      question: 'Is Google Lyria better than Suno?',
+      answer: 'for building music into software, yes: lyria 3 and lyria 3 pro run on vertex ai with proper quotas, access controls, and google cloud terms, and support multi-vocal generation in eight languages. for making music yourself, suno v5.5 is ahead on vocals, length, and everything around the model, including a browser daw and up to 12 stems.',
+    },
+    {
+      question: 'How long can Lyria 3 generate?',
+      answer: 'lyria 3 pro generates up to three minutes and lyria 3 up to thirty seconds. lyria 3.5, released 29 july 2026 into google flow music, improved musicality, lyrics, vocals, and pronunciation. suno makes full songs and extends them in the app, so it has more headroom for a normal record.',
+    },
+    {
+      question: 'Does Lyria watermark its output?',
+      answer: 'yes, google applies SynthID watermarking to its generated audio. that is useful if you need to demonstrate provenance downstream and worth knowing about before it ends up embedded in a master you release under your own name.',
+    },
+    {
+      question: 'Can I use Lyria music commercially?',
+      answer: 'lyria is covered by google cloud terms rather than a dedicated music licence, so what you can do follows your cloud agreement. that suits companies with existing google cloud contracts and is less clear-cut for an independent artist. sonura gives you exclusive commercial rights on every paid plan with no royalty splits if you want a plainer answer.',
+    },
+    {
+      question: 'Which languages does Lyria support for vocals?',
+      answer: 'english, german, spanish, french, hindi, japanese, korean, and portuguese, with multi-vocal conditioning rather than approximated pronunciation. that is the clearest advantage lyria holds over suno.',
+    },
+    {
+      question: 'Does Lyria export stems?',
+      answer: 'no. lyria generates finished audio and anything you do after that happens in another tool. suno offers up to 12 stems inside Suno Studio on the top plan, and sonura splits any track into stems on every paid plan.',
+    },
+  ]}
+/>

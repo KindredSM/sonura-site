@@ -1,0 +1,1298 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { MODELS, SPEC_ROWS, specValue, COMPARISONS, LAST_VERIFIED } from '../data/music-models';
+
+interface VerdictCard {
+  /** Metadata-role label, e.g. "best for release-ready songs" */
+  label: string;
+  /** which model it points at */
+  pick: string;
+  body: string;
+}
+
+interface HeadToHead {
+  dimension: string;
+  a: string;
+  b: string;
+  /** 'a' | 'b' | 'tie' */
+  winner: 'a' | 'b' | 'tie';
+}
+
+interface NarrativeBlock {
+  heading: string;
+  body: string;
+}
+
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  /** page slug under /compare/ */
+  slug: string;
+  /** keys into MODELS */
+  a: string;
+  b: string;
+  title: string;
+  description: string;
+  keywords: string;
+  /** overrides the default "A vs B" h1 */
+  headline?: string;
+  lede: string;
+  verdict: VerdictCard[];
+  headToHead: HeadToHead[];
+  narrative: NarrativeBlock[];
+  chooseA: string[];
+  chooseB: string[];
+  /** optional override for the "run it in Sonura" copy */
+  sonuraBody?: string;
+  faqs: FAQ[];
+  appUrl?: string;
+}
+
+const {
+  slug,
+  a,
+  b,
+  title,
+  description,
+  keywords,
+  headline,
+  lede,
+  verdict,
+  headToHead,
+  narrative,
+  chooseA,
+  chooseB,
+  sonuraBody,
+  faqs,
+  appUrl = 'https://app.sonurastudio.com/',
+} = Astro.props;
+
+const A = MODELS[a];
+const B = MODELS[b];
+
+// Which of the two you can actually pick inside Sonura songs mode. This drives
+// every CTA label and the whole "run it here" section, so the page can never
+// promise a model Sonura does not carry.
+const inBoth = [A, B].filter((m) => m.inSonura);
+const outOf = [A, B].filter((m) => !m.inSonura);
+const ALL_IN_SONURA = Object.values(MODELS).filter((m) => m.inSonura && m.slug !== 'sonura');
+
+const ctaFull =
+  inBoth.length === 2
+    ? 'Try Both Free'
+    : inBoth.length === 1
+      ? `Try ${inBoth[0].short} Free`
+      : 'Try Sonura Free';
+
+const runHeading =
+  inBoth.length === 2
+    ? 'Both of them, one studio'
+    : inBoth.length === 1
+      ? `Run ${inBoth[0].name} here`
+      : 'The models you can actually choose';
+
+if (!A || !B) throw new Error(`ComparisonLayout: unknown model key "${a}" or "${b}"`);
+
+const canonical = `https://sonurastudio.com/compare/${slug}/`;
+const h1 = headline || `${A.name} vs ${B.name}`;
+
+// Win tally, computed rather than authored so it can never contradict the rows.
+const winsA = headToHead.filter((row) => row.winner === 'a').length;
+const winsB = headToHead.filter((row) => row.winner === 'b').length;
+const ties = headToHead.filter((row) => row.winner === 'tie').length;
+
+// Every other comparison that touches either model, for the related rail.
+const related = COMPARISONS.filter(
+  (c) => c.slug !== slug && (c.a === a || c.b === a || c.a === b || c.b === b)
+).slice(0, 4);
+
+const stripHtml = (value: string) =>
+  value.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: title,
+    description,
+    url: canonical,
+    dateModified: '2026-08-18',
+    about: [
+      { '@type': 'SoftwareApplication', name: A.name, applicationCategory: 'MultimediaApplication' },
+      { '@type': 'SoftwareApplication', name: B.name, applicationCategory: 'MultimediaApplication' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://sonurastudio.com/' },
+      { '@type': 'ListItem', position: 2, name: 'Compare', item: 'https://sonurastudio.com/compare/' },
+      { '@type': 'ListItem', position: 3, name: `${A.name} vs ${B.name}`, item: canonical },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: { '@type': 'Answer', text: stripHtml(faq.answer) },
+    })),
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  keywords={keywords}
+  canonical={canonical}
+  ogTitle={title}
+  ogDescription={description}
+  jsonLd={jsonLd}
+>
+  <div class="cmp">
+    <!-- ============ HERO ============ -->
+    <header class="cmp-hero">
+      <p class="section-kicker">Comparison / Verified {LAST_VERIFIED}</p>
+      <h1 class="cmp-h1">
+        <span class="cmp-h1-name">{A.name}</span>
+        <span class="cmp-h1-vs">vs</span>
+        <span class="cmp-h1-name">{B.name}</span>
+      </h1>
+      <p class="cmp-lede">{lede}</p>
+
+      <div class="cmp-hero-actions">
+        <a href={appUrl} class="button primary large"
+          ><span class="btn-label-full">{ctaFull}</span><span class="btn-label-short">Try free</span></a
+        >
+        <a href="#spec-sheet" class="button secondary large">See the specs</a>
+      </div>
+      <p class="cmp-hero-trust">
+        {inBoth.length > 0
+          ? `${inBoth.map((m) => m.name).join(' and ')} in Sonura songs mode / Free to start / No credit card`
+          : 'Free to start / No credit card / Full commercial rights on paid plans'}
+      </p>
+
+      <div class="cmp-verdict">
+        {verdict.map((card) => (
+          <div class="cmp-verdict-cell">
+            <p class="cmp-verdict-label">{card.label}</p>
+            <p class="cmp-verdict-pick">{MODELS[card.pick] ? MODELS[card.pick].name : card.pick}</p>
+            <p class="cmp-verdict-body">{card.body}</p>
+          </div>
+        ))}
+        <div class="cmp-verdict-cell is-sonura">
+          <p class="cmp-verdict-label">
+            {inBoth.length === 2 ? 'Use either one' : inBoth.length === 1 ? `Use ${inBoth[0].short} here` : 'Where you pick'}
+          </p>
+          <p class="cmp-verdict-pick">Sonura</p>
+          <p class="cmp-verdict-body">
+            {inBoth.length === 2
+              ? `${A.short} and ${B.short} are both selectable in songs mode. same prompt, both models, stems either way.`
+              : inBoth.length === 1
+                ? `${inBoth[0].name} is selectable in songs mode, with stems and a plugin for your DAW on top.`
+                : 'the studio where you choose the model instead of being handed one, with stems on every plan and exclusive rights on paid plans.'}
+          </p>
+          <a href={appUrl} class="cmp-verdict-cta">Open it free</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============ 01 SPEC SHEET ============ -->
+    <section class="cmp-section" id="spec-sheet">
+      <p class="section-kicker">01 / Spec sheet</p>
+      <h2 class="cmp-h2">Side by side, no marketing</h2>
+      <p class="cmp-support cmp-section-lede">
+        every row below is checkable against a public source, and it is the same table on every page
+        here, so nothing gets quietly reworded to suit an argument.
+      </p>
+
+      <div class="cmp-table-scroll">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th class="cmp-th-spec"><span class="cmp-sr">Specification</span></th>
+              <th>{A.name}<span class="cmp-th-maker">{A.maker}</span></th>
+              <th>{B.name}<span class="cmp-th-maker">{B.maker}</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            {SPEC_ROWS.map((row) => (
+              <tr>
+                <th scope="row" class="cmp-row-label">{row.label}</th>
+                <td class={row.key === 'sonura' && A.inSonura ? 'cmp-cell-yes' : ''}>{specValue(A, row.key as string)}</td>
+                <td class={row.key === 'sonura' && B.inSonura ? 'cmp-cell-yes' : ''}>{specValue(B, row.key as string)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ============ 02 HEAD TO HEAD ============ -->
+    <section class="cmp-section" id="head-to-head">
+      <p class="section-kicker">02 / Head to head</p>
+      <h2 class="cmp-h2">Where each one actually wins</h2>
+
+      <div class="cmp-h2h">
+        {headToHead.map((row, i) => (
+          <div class="cmp-h2h-row">
+            <span class="cmp-h2h-index">{String(i + 1).padStart(2, '0')}</span>
+            <div class="cmp-h2h-head">
+              <h3 class="cmp-h3">{row.dimension}</h3>
+              <span class="cmp-pill">
+                {row.winner === 'tie' ? 'Too close to call' : `${row.winner === 'a' ? A.short : B.short} takes it`}
+              </span>
+            </div>
+            <div class={`cmp-h2h-cell${row.winner === 'a' ? ' is-winner' : ''}`}>
+              <span class="cmp-h2h-who">{A.short}</span>
+              <p class="cmp-support" set:html={row.a}></p>
+            </div>
+            <div class={`cmp-h2h-cell${row.winner === 'b' ? ' is-winner' : ''}`}>
+              <span class="cmp-h2h-who">{B.short}</span>
+              <p class="cmp-support" set:html={row.b}></p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="cmp-score">
+        <div class="cmp-score-cell">
+          <span class="cmp-score-num">{String(winsA).padStart(2, '0')}</span>
+          <span class="cmp-score-label">{A.short}</span>
+        </div>
+        <div class="cmp-score-cell">
+          <span class="cmp-score-num">{String(winsB).padStart(2, '0')}</span>
+          <span class="cmp-score-label">{B.short}</span>
+        </div>
+        <div class="cmp-score-cell">
+          <span class="cmp-score-num">{String(ties).padStart(2, '0')}</span>
+          <span class="cmp-score-label">Split</span>
+        </div>
+        <p class="cmp-score-note cmp-support">
+          a tally is not a recommendation. the rows that matter are the ones that touch what you are
+          trying to ship.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ MID-PAGE CTA ============ -->
+    <aside class="cmp-band">
+      <div class="cmp-band-text">
+        <p class="cmp-band-label">
+          {inBoth.length > 0 ? 'Skip the argument' : 'Or choose for yourself'}
+        </p>
+        <p class="cmp-band-line">
+          {inBoth.length === 2
+            ? `run the same prompt through ${A.name} and ${B.name} in Sonura songs mode and keep the take that wins.`
+            : inBoth.length === 1
+              ? `${inBoth[0].name} is one of the models in Sonura songs mode. try it on your own prompt in about a minute.`
+              : 'Sonura songs mode lets you pick the model instead of being handed one, then take the stems into your DAW.'}
+        </p>
+      </div>
+      <a href={appUrl} class="button primary large cmp-band-cta"
+        ><span class="btn-label-full">{ctaFull}</span><span class="btn-label-short">Try free</span></a
+      >
+    </aside>
+
+    <!-- ============ 03 NARRATIVE ============ -->
+    <section class="cmp-section" id="the-catch">
+      <p class="section-kicker">03 / The catch</p>
+      <h2 class="cmp-h2">What the feature lists leave out</h2>
+      <div class="cmp-prose">
+        {narrative.map((block) => (
+          <div class="cmp-prose-block">
+            <h3 class="cmp-h3">{block.heading}</h3>
+            <div class="cmp-prose-body" set:html={block.body}></div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ============ 04 PICK ONE ============ -->
+    <section class="cmp-section" id="pick-one">
+      <p class="section-kicker">04 / Pick one</p>
+      <h2 class="cmp-h2">Which one is yours</h2>
+      <div class="cmp-pick">
+        <div class="cmp-pick-panel">
+          <h3 class="cmp-h3">Go with {A.name} if you</h3>
+          <ul>
+            {chooseA.map((item) => (
+              <li><span class="cmp-pick-marker">/</span>{item}</li>
+            ))}
+          </ul>
+        </div>
+        <div class="cmp-pick-panel">
+          <h3 class="cmp-h3">Go with {B.name} if you</h3>
+          <ul>
+            {chooseB.map((item) => (
+              <li><span class="cmp-pick-marker">/</span>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 05 IN SONURA ============ -->
+    <section class="cmp-section" id="sonura">
+      <p class="section-kicker">05 / In Sonura</p>
+      <h2 class="cmp-h2">{runHeading}</h2>
+      <div class="cmp-sonura">
+        <div class="cmp-sonura-body">
+          {sonuraBody ? (
+            <Fragment set:html={sonuraBody} />
+          ) : inBoth.length === 2 ? (
+            <Fragment>
+              <p>
+                you do not have to pick. <strong>{A.name} and {B.name} are both selectable in Sonura
+                songs mode</strong>, so you can run the same prompt through each and keep whichever take
+                actually wins, instead of deciding from a table.
+              </p>
+              <p>
+                then keep going. split the result into stems, chop it, stack it, and finish it inside
+                Ableton, Logic, or FL Studio through the AU and VST3 plugin. <strong>every paid plan
+                makes the result exclusively yours, with no royalty splits</strong>, whichever model made it.
+              </p>
+            </Fragment>
+          ) : inBoth.length === 1 ? (
+            <Fragment>
+              <p>
+                <strong>{inBoth[0].name} is one of the models you can pick in Sonura songs mode</strong>,
+                alongside {ALL_IN_SONURA.filter((m) => m.slug !== inBoth[0].slug).map((m) => m.name).join(', ')}.
+                {' '}{outOf[0].name} only runs inside {outOf[0].short}, which is the trade a closed platform asks you to make.
+              </p>
+              <p>
+                so you get the model and the workflow. split any track into stems, work inside Ableton,
+                Logic, and FL Studio through the AU and VST3 plugin, and keep <strong>exclusive commercial
+                rights on every paid plan, with no royalty splits</strong>.
+              </p>
+            </Fragment>
+          ) : (
+            <Fragment>
+              <p>
+                {A.name} only runs inside {A.short}. {B.name} only runs inside {B.short}. that is the deal
+                a closed platform offers: one model, one interface, and whatever their roadmap decides next.
+              </p>
+              <p>
+                <strong>Sonura songs mode lets you choose.</strong> MiniMax Music 3.0, Stable Audio 3,
+                ElevenLabs Music v2, and Google Lyria, on the same prompt, then stems out into Ableton,
+                Logic, or FL Studio through the AU and VST3 plugin, with <strong>exclusive commercial rights on
+                every paid plan and no royalty splits</strong>.
+              </p>
+            </Fragment>
+          )}
+
+          <div class="cmp-sonura-actions">
+            <a href={appUrl} class="button primary large"
+              ><span class="btn-label-full">{ctaFull}</span><span class="btn-label-short">Try free</span></a
+            >
+            <a href="/pricing/" class="button secondary large">See pricing</a>
+          </div>
+        </div>
+
+        <div class="cmp-roster">
+          <p class="cmp-roster-label">Models in songs mode</p>
+          <ul>
+            {ALL_IN_SONURA.map((m) => (
+              <li class={m.slug === a || m.slug === b ? 'is-here' : ''}>
+                <span class="cmp-roster-name">{m.name}</span>
+                <span class="cmp-roster-note">{m.oneLiner}</span>
+              </li>
+            ))}
+          </ul>
+          <ul class="cmp-roster-facts">
+            <li><strong>Stems on every plan</strong><span>split any track into parts you can chop and mix, free included.</span></li>
+            <li><strong>Inside your DAW</strong><span>AU and VST3 for Ableton, Logic, and FL Studio.</span></li>
+            <li><strong>Free to start</strong><span>10 loops, 20 one-shots, and 2 full tracks, no card.</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 06 FAQ ============ -->
+    <section class="cmp-section" id="faq">
+      <p class="section-kicker">06 / FAQ</p>
+      <h2 class="cmp-h2">Questions people actually ask</h2>
+      <div class="cmp-faq">
+        {faqs.map((faq) => (
+          <details>
+            <summary>{faq.question}</summary>
+            <p class="cmp-support" set:html={faq.answer}></p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <!-- ============ RELATED ============ -->
+    {related.length > 0 && (
+      <section class="cmp-section" id="related">
+        <p class="section-kicker">07 / Keep comparing</p>
+        <h2 class="cmp-h2">Next to this one</h2>
+        <div class="cmp-related">
+          {related.map((c, i) => (
+            <a href={`/compare/${c.slug}/`}>
+              <span class="cmp-related-index">{String(i + 1).padStart(2, '0')}</span>
+              <span class="cmp-related-name">{MODELS[c.a].name} vs {MODELS[c.b].name}</span>
+              <span class="cmp-related-angle">{c.angle}</span>
+              <span class="cmp-related-arrow">Read</span>
+            </a>
+          ))}
+        </div>
+        <p class="cmp-support cmp-related-all">
+          or see <a href="/compare/">every model comparison</a> and the
+          <a href="/alternatives/">Sonura alternatives index</a>.
+        </p>
+      </section>
+    )}
+
+    <!-- ============ FINAL CTA ============ -->
+    <section class="cmp-final">
+      <h2 class="cmp-h2 cmp-final-h2">Own your sound</h2>
+      <p class="cmp-support cmp-final-sub">
+        make the loop, the vocal, or the whole track, then take the parts into your DAW and release it
+        as yours. free to start, no card needed.
+      </p>
+      <a href={appUrl} class="button primary large"
+        ><span class="btn-label-full">Start Creating Free</span><span class="btn-label-short">Start free</span></a
+      >
+      <p class="cmp-final-footer">Free to start / No credit card / Full commercial rights on paid plans</p>
+    </section>
+  </div>
+
+  <style>
+    .cmp {
+      width: 100%;
+      padding: clamp(48px, 8vh, 96px) var(--page-pad) clamp(96px, 12vw, 140px);
+      color: var(--fg);
+    }
+
+    /* ---------- Type roles (DESIGN-SYSTEM.md §2) ---------- */
+    .cmp-h1 {
+      margin: 0 0 28px;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(42px, 6.4vw, 96px);
+      line-height: 0.94;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--fg);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0 0.28em;
+    }
+
+    .cmp-h1-vs {
+      font-size: 0.42em;
+      color: var(--faint);
+      letter-spacing: 0.12em;
+    }
+
+    .cmp-h2 {
+      margin: 0 0 24px;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(32px, 4.6vw, 64px);
+      line-height: 1;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--fg);
+    }
+
+    .cmp-h3 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(20px, 2.3vw, 29px);
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--fg);
+    }
+
+    .cmp-support {
+      color: var(--muted);
+      font-size: 15px;
+      letter-spacing: 0.022em;
+      word-spacing: 0.04em;
+      line-height: 1.8;
+    }
+
+    .cmp-sr {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    /* ---------- Hero ---------- */
+    .cmp-hero {
+      padding-bottom: clamp(8px, 1.5vw, 16px);
+    }
+
+    .cmp-lede {
+      margin: 0 0 clamp(40px, 6vw, 64px);
+      max-width: 660px;
+      color: var(--muted);
+      font-size: 17px;
+      letter-spacing: 0.022em;
+      word-spacing: 0.04em;
+      line-height: 1.8;
+    }
+
+    /* Verdict strip: three hairline-ruled columns, no card chrome */
+    .cmp-verdict {
+      display: grid;
+      grid-template-columns: 1fr;
+      border-top: 1px solid var(--hairline);
+    }
+
+    .cmp-verdict-cell {
+      padding: 28px 0 26px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cmp-verdict-label {
+      margin: 0 0 14px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .cmp-verdict-pick {
+      margin: 0 0 12px;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(24px, 2.6vw, 34px);
+      line-height: 1;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--fg);
+    }
+
+    .cmp-verdict-cell.is-sonura .cmp-verdict-label {
+      color: var(--primary);
+    }
+
+    .cmp-verdict-body {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      letter-spacing: 0.022em;
+      line-height: 1.75;
+    }
+
+    /* ---------- Sections ---------- */
+    .cmp-section {
+      border-top: 1px solid var(--hairline);
+      padding: clamp(56px, 8vw, 96px) 0 clamp(48px, 7vw, 80px);
+    }
+
+    .cmp-section-lede {
+      margin: -6px 0 clamp(36px, 5vw, 52px);
+      max-width: 620px;
+    }
+
+    /* ---------- Spec table ---------- */
+    .cmp-table-scroll {
+      overflow-x: auto;
+    }
+
+    .cmp-table {
+      width: 100%;
+      min-width: 720px;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .cmp-table thead th {
+      padding: 0 24px 16px 0;
+      vertical-align: bottom;
+      border-bottom: 1px solid var(--hairline);
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(17px, 1.7vw, 22px);
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--fg);
+    }
+
+    .cmp-table thead th.cmp-th-spec {
+      width: 148px;
+    }
+
+    .cmp-th-maker {
+      display: block;
+      margin-top: 8px;
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+
+    .cmp-table thead th.cmp-th-sonura .cmp-th-maker {
+      color: var(--primary);
+    }
+
+    .cmp-table tbody tr {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cmp-table tbody tr:last-child {
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .cmp-table td,
+    .cmp-table tbody th {
+      padding: 20px 24px 20px 0;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .cmp-row-label {
+      width: 148px;
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+
+    .cmp-table td {
+      color: var(--muted);
+      font-size: 14px;
+      letter-spacing: 0.022em;
+      line-height: 1.7;
+    }
+
+    .cmp-table td.cmp-cell-sonura {
+      color: var(--fg);
+    }
+
+    /* ---------- Head to head ---------- */
+    .cmp-h2h {
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .cmp-h2h-row {
+      display: grid;
+      grid-template-columns: 48px minmax(0, 0.85fr) minmax(0, 1fr) minmax(0, 1fr);
+      gap: 20px 36px;
+      align-items: start;
+      padding: 32px 0;
+      border-top: 1px solid var(--hairline);
+    }
+
+    .cmp-h2h-index {
+      font-size: 13px;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.12em;
+      color: var(--faint);
+      line-height: 1.6;
+    }
+
+    .cmp-h2h-head {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .cmp-pill {
+      padding: 6px 12px;
+      border: 1px solid var(--hairline);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .cmp-h2h-cell p {
+      margin: 0;
+    }
+
+    .cmp-h2h-cell.is-winner p {
+      color: var(--fg);
+    }
+
+    .cmp-h2h-who {
+      display: none;
+      margin-bottom: 10px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+
+    /* Score tally */
+    .cmp-score {
+      display: grid;
+      grid-template-columns: repeat(3, auto) minmax(0, 1fr);
+      align-items: end;
+      gap: 24px 44px;
+      margin-top: clamp(40px, 5vw, 56px);
+    }
+
+    .cmp-score-cell {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .cmp-score-num {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(40px, 4.6vw, 62px);
+      line-height: 1;
+      letter-spacing: 0.01em;
+      font-variant-numeric: tabular-nums;
+      color: var(--fg);
+    }
+
+    .cmp-score-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .cmp-score-note {
+      margin: 0;
+      max-width: 400px;
+      font-size: 13px;
+    }
+
+    /* ---------- Narrative ---------- */
+    .cmp-prose {
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .cmp-prose-block {
+      display: grid;
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.5fr);
+      gap: 20px 44px;
+      padding: 32px 0;
+      border-top: 1px solid var(--hairline);
+    }
+
+    .cmp-prose-body :global(p) {
+      margin: 0 0 16px;
+      max-width: 680px;
+      color: var(--muted);
+      font-size: 15px;
+      letter-spacing: 0.022em;
+      word-spacing: 0.04em;
+      line-height: 1.8;
+    }
+
+    .cmp-prose-body :global(p:last-child) {
+      margin-bottom: 0;
+    }
+
+    .cmp-prose-body :global(strong) {
+      color: var(--fg);
+      font-weight: 600;
+    }
+
+    /* ---------- Pick one ---------- */
+    .cmp-pick {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .cmp-pick-panel {
+      padding: 34px 30px;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-panel);
+    }
+
+    .cmp-pick-panel .cmp-h3 {
+      margin-bottom: 24px;
+    }
+
+    .cmp-pick-panel ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .cmp-pick-panel li {
+      position: relative;
+      margin-bottom: 15px;
+      padding-left: 26px;
+      color: var(--muted);
+      font-size: 15px;
+      letter-spacing: 0.022em;
+      line-height: 1.7;
+    }
+
+    .cmp-pick-panel li:last-child {
+      margin-bottom: 0;
+    }
+
+    .cmp-pick-marker {
+      position: absolute;
+      left: 0;
+      color: var(--faint);
+    }
+
+    /* ---------- Hero actions ---------- */
+    .cmp-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 0 0 18px;
+    }
+
+    .cmp-hero-actions .button {
+      display: inline-block;
+    }
+
+    .cmp-hero-trust {
+      margin: 0 0 clamp(40px, 6vw, 60px);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .cmp-verdict-cta {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--fg);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 7px;
+    }
+
+    /* ---------- Mid-page CTA band ---------- */
+    .cmp-band {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px 40px;
+      margin: clamp(40px, 6vw, 64px) 0 0;
+      padding: clamp(28px, 4vw, 40px) clamp(24px, 3vw, 40px);
+      border: 1px solid var(--hairline);
+    }
+
+    .cmp-band-text {
+      max-width: 620px;
+    }
+
+    .cmp-band-label {
+      margin: 0 0 10px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--primary);
+    }
+
+    .cmp-band-line {
+      margin: 0;
+      color: var(--fg);
+      font-size: 16px;
+      letter-spacing: 0.022em;
+      word-spacing: 0.04em;
+      line-height: 1.7;
+    }
+
+    .cmp-band-cta {
+      flex-shrink: 0;
+      display: inline-block;
+    }
+
+    /* ---------- In Sonura ---------- */
+    .cmp-sonura {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: clamp(32px, 5vw, 56px);
+    }
+
+    .cmp-sonura-body :global(p) {
+      margin: 0 0 16px;
+      max-width: 620px;
+      color: var(--muted);
+      font-size: 16px;
+      letter-spacing: 0.022em;
+      word-spacing: 0.04em;
+      line-height: 1.8;
+    }
+
+    .cmp-sonura-body :global(strong) {
+      color: var(--fg);
+      font-weight: 600;
+    }
+
+    .cmp-sonura-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .cmp-sonura-actions .button {
+      display: inline-block;
+    }
+
+    .cmp-roster {
+      border-top: 1px solid var(--hairline);
+      padding-top: 22px;
+    }
+
+    .cmp-roster-label {
+      margin: 0 0 4px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .cmp-roster ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .cmp-roster > ul > li {
+      display: grid;
+      gap: 6px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cmp-roster-name {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(17px, 1.8vw, 22px);
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+
+    .cmp-roster > ul > li.is-here .cmp-roster-name {
+      color: var(--fg);
+    }
+
+    .cmp-roster-note {
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: 0.022em;
+      line-height: 1.7;
+    }
+
+    .cmp-roster > ul > li:not(.is-here) .cmp-roster-note {
+      display: none;
+    }
+
+    .cmp-roster-facts {
+      margin-top: 24px !important;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cmp-roster-facts li {
+      display: grid;
+      gap: 6px;
+      padding: 16px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .cmp-roster-facts strong {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--fg);
+    }
+
+    .cmp-roster-facts span {
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: 0.022em;
+      line-height: 1.7;
+    }
+
+    .cmp-cell-yes {
+      color: var(--fg) !important;
+      font-weight: 600;
+    }
+
+    /* ---------- FAQ ---------- */
+    .cmp-faq details {
+      border-top: 1px solid var(--hairline);
+      background: transparent;
+    }
+
+    .cmp-faq details:last-of-type {
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .cmp-faq summary {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 22px 0;
+      list-style: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--fg);
+    }
+
+    .cmp-faq summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .cmp-faq summary::after {
+      content: '+';
+      flex-shrink: 0;
+      font-size: 22px;
+      line-height: 1;
+      color: var(--faint);
+    }
+
+    .cmp-faq details[open] summary::after {
+      content: '\2212';
+    }
+
+    .cmp-faq details p {
+      margin: 0;
+      padding: 0 0 24px;
+      max-width: 760px;
+    }
+
+    /* ---------- Related ---------- */
+    .cmp-related {
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .cmp-related a {
+      display: grid;
+      grid-template-columns: 48px minmax(0, 0.9fr) minmax(0, 1.3fr) auto;
+      align-items: baseline;
+      gap: 14px 36px;
+      padding: 26px 0;
+      border-top: 1px solid var(--hairline);
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .cmp-related-index {
+      font-size: 13px;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.12em;
+      color: var(--faint);
+    }
+
+    .cmp-related-name {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(19px, 2.1vw, 27px);
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--fg);
+    }
+
+    .cmp-related-angle {
+      color: var(--muted);
+      font-size: 14px;
+      letter-spacing: 0.022em;
+      line-height: 1.7;
+    }
+
+    .cmp-related-arrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .cmp-related a:hover .cmp-related-arrow {
+      color: var(--fg);
+      text-decoration: underline;
+      text-underline-offset: 7px;
+    }
+
+    .cmp-related-all {
+      margin: 28px 0 0;
+    }
+
+    /* ---------- Final CTA: poster frame ---------- */
+    .cmp-final {
+      position: relative;
+      margin-top: clamp(56px, 8vw, 96px);
+      padding: clamp(48px, 7vw, 88px) clamp(28px, 4vw, 72px) clamp(150px, 20vw, 230px);
+      border: 1px solid var(--hairline);
+      overflow: hidden;
+    }
+
+    .cmp-final::after {
+      content: '';
+      position: absolute;
+      left: clamp(12px, 2vw, 20px);
+      right: clamp(12px, 2vw, 20px);
+      bottom: clamp(12px, 2vw, 20px);
+      height: clamp(72px, 12vw, 150px);
+      background-image: url('/images/purple-grain-band-fade.webp');
+      background-image: image-set(
+        url('/images/purple-grain-band-fade.avif') type('image/avif'),
+        url('/images/purple-grain-band-fade.webp') type('image/webp')
+      );
+      background-size: 100% 100%;
+    }
+
+    .cmp-final-h2 {
+      font-size: clamp(38px, 6vw, 84px);
+    }
+
+    .cmp-final-sub {
+      margin: 0 0 40px;
+      max-width: 560px;
+      font-size: 16px;
+    }
+
+    .cmp-final .button.primary {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+    }
+
+    .cmp-final-footer {
+      margin: 28px 0 0;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (min-width: 760px) {
+      .cmp-verdict {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .cmp-verdict-cell {
+        padding: 30px 32px 30px 0;
+        border-bottom: 0;
+        border-right: 1px solid var(--border);
+      }
+
+      .cmp-verdict-cell:last-child {
+        border-right: 0;
+        padding-right: 0;
+      }
+
+      .cmp-verdict-cell + .cmp-verdict-cell {
+        padding-left: 32px;
+      }
+
+      .cmp-pick {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .cmp-sonura {
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      }
+    }
+
+    @media (max-width: 1000px) {
+      .cmp-h2h-row {
+        grid-template-columns: 40px minmax(0, 1fr);
+        gap: 16px 20px;
+      }
+
+      .cmp-h2h-cell {
+        grid-column: 2;
+      }
+
+      .cmp-h2h-who {
+        display: block;
+      }
+
+      .cmp-prose-block {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .cmp-band {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .cmp-related a {
+        grid-template-columns: 40px minmax(0, 1fr);
+      }
+
+      .cmp-related-angle,
+      .cmp-related-arrow {
+        grid-column: 2;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .cmp-section {
+        padding: 44px 0 36px;
+      }
+
+      .cmp-h1 {
+        display: block;
+      }
+
+      .cmp-h1-vs {
+        display: block;
+        margin: 4px 0;
+      }
+
+      .cmp-score {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+
+      .cmp-score-note {
+        grid-column: 1 / -1;
+      }
+
+      .cmp-pick-panel {
+        padding: 26px 20px;
+      }
+
+      .cmp-hero-actions .button,
+      .cmp-sonura-actions .button {
+        width: 100%;
+      }
+    }
+  </style>
+</BaseLayout>

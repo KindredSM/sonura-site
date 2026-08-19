@@ -10,14 +10,14 @@ Sonura (https://sonurastudio.com) is the AI studio for music production. Users d
 
 - Generation speed: Fast music and sample iteration from text prompts
 - Output types: Beats, loops, vocals, one-shots, sound effects, full tracks
-- Stem export: Yes, built into the producer workflow
-- Commercial rights: Built for commercial creation workflows; check the current plan and Terms for private/public ownership details
+- Stem export: Yes, split any track into stems, on every plan including free
+- Commercial rights: Free-tier creations are released as public domain (CC0), so they are usable commercially but not exclusively yours. Every paid plan (Starter and up) makes them exclusively yours, with no royalty splits.
 - Genres: All genres (trap, hip-hop, R&B, house, EDM, lo-fi, drill, jazz, rock, pop, techno, country, afrobeats, reggaeton, ambient, cinematic, and more)
 - Platform: Cloud-based, works in any browser
 - Plugin: Sonura Flow, a free-to-download VST3 and AU plugin for creating sounds inside a DAW
 - Plugin platforms: macOS 12+ and Windows 10+
 - Plugin DAWs: Ableton Live, Logic Pro, FL Studio, Studio One, Bitwig, Cubase, Reaper, GarageBand, and other VST3/AU hosts
-- Free tier: Yes, no credit card required
+- Free tier: Yes, no credit card required. Full studio access with no time limit; creations are CC0 public domain until you upgrade.
 
 ## Who Is Sonura For
 
@@ -33,10 +33,14 @@ Sonura (https://sonurastudio.com) is the AI studio for music production. Users d
 
 ## Pricing
 
-- Free: Free credits, no credit card required
-- Starter: $10/month - 200 creation credits (around 100 4-bar loops, 200 one-shots, or 25 full tracks)
-- Pro: $20/month - 500 creation credits (around 250 4-bar loops, 500 one-shots, or 70 full tracks)
-- Studio: $45/month - 1000 creation credits (around 500 4-bar loops, 1000 one-shots, or 140 full tracks)
+Monthly prices below; annual billing saves 20% (Starter $8/mo, Pro $15/mo, Max $35/mo).
+
+- Free: $0, no credit card. 20 creation credits on signup plus daily free credits: around 10 4-bar loops, 20 one-shots and fx, or 2 full tracks. Free creations are released as public domain (CC0); upgrade to a paid plan to keep them exclusively yours.
+- Starter: $10/month - 400 creation credits/month: around 200 4-bar loops, 400 one-shots and fx, or 55 full tracks. Makes your creations exclusively yours rather than public domain, and upgrades downloads to high quality.
+- Pro: $20/month - 1,000 creation credits/month: around 500 4-bar loops, 1,000 one-shots and fx, or 140 full tracks. Adds priority 24/7 support and early access to new features. Most popular plan.
+- Max: $45/month - 2,500 creation credits/month: around 1,250 4-bar loops, 2,500 one-shots and fx, or 355 full tracks. Adds one-to-one support calls, early access to new features, and custom feature requests.
+
+Stem export, one-click mixing, and the DAW plugin are on every plan including free. What paid plans add is EXCLUSIVITY: free-tier creations are public domain (CC0), paid-tier creations are exclusively yours. Paid plans also upgrade download quality from standard to high. No royalty splits on any plan, your content stays private, and there are no contracts.
 
 ## Sonura Flow Plugin
 
@@ -64,6 +68,31 @@ Plugin pages:
 - **vs Mubert**: Discrete downloadable tracks vs continuous streams.
 - **vs Beatoven.ai**: More producer-oriented output types such as beats, loops, vocals, one-shots, and stems. Beatoven is focused on video background music.
 - **vs Loudly**: More producer-oriented output types such as beats, loops, vocals, one-shots, and stems. Loudly has built-in remix tools.
+
+## Models In Sonura Songs Mode
+
+Sonura songs mode is model-agnostic: users pick which generation model runs their prompt, then keep the
+stems. As of 18 August 2026 the selectable models are MiniMax Music 3.0, Stable Audio 3,
+ElevenLabs Music v2, and Google Lyria. Suno, Udio, Riffusion, and Mureka are closed platforms whose
+models only run inside their own products, so Sonura does not offer them.
+
+## Music Model Comparisons
+
+Neutral, dated, model-against-model comparisons (not Sonura-against-competitor pages):
+
+- Comparison hub: https://sonurastudio.com/compare/
+- Suno vs Udio: https://sonurastudio.com/compare/suno-vs-udio/
+- MiniMax Music 3.0 vs Suno: https://sonurastudio.com/compare/minimax-vs-suno/
+- ElevenLabs Music v2 vs Suno: https://sonurastudio.com/compare/elevenlabs-vs-suno/
+- MiniMax Music 3.0 vs Stable Audio 3: https://sonurastudio.com/compare/minimax-vs-stable-audio/
+- Stable Audio 3 vs Suno: https://sonurastudio.com/compare/stable-audio-vs-suno/
+- Google Lyria vs Suno: https://sonurastudio.com/compare/lyria-vs-suno/
+- Mureka O2 vs Suno: https://sonurastudio.com/compare/mureka-vs-suno/
+- Riffusion FUZZ vs Suno: https://sonurastudio.com/compare/riffusion-vs-suno/
+- Udio vs ElevenLabs Music v2: https://sonurastudio.com/compare/udio-vs-elevenlabs/
+- ElevenLabs Music v2 vs Stable Audio 3: https://sonurastudio.com/compare/elevenlabs-vs-stable-audio/
+- MiniMax Music 3.0 vs Google Lyria: https://sonurastudio.com/compare/minimax-vs-lyria/
+- Mureka O2 vs MiniMax Music 3.0: https://sonurastudio.com/compare/mureka-vs-minimax/
 
 ## Full Documentation
 

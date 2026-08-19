@@ -53,7 +53,7 @@ const alternatives = [
   {
     name: 'Loudly',
     slug: 'loudly-alternative',
-    description: 'Want commercial rights on the free tier? Sonura offers full rights, stem export, and more music types from day one.',
+    description: 'Loudly limits its free tier to personal use. Sonura lets you release from day one, with stem export on every plan and exclusive rights from $10 a month.',
     comparison: 'Best for: Producer tools vs social media background music'
   }
 ];
@@ -226,6 +226,17 @@ const jsonLd = [
       display: inline-block;
     }
 
+    .alt-hub-crosslink {
+      margin: clamp(32px, 5vw, 48px) 0 0;
+      max-width: 680px;
+      color: var(--muted);
+      font-size: 15px;
+      text-transform: lowercase;
+      letter-spacing: 0.022em;
+      word-spacing: 0.04em;
+      line-height: 1.8;
+    }
+
     @media (max-width: 860px) {
       .alt-row {
         grid-template-columns: 48px minmax(0, 1fr);
@@ -258,6 +269,13 @@ const jsonLd = [
         </a>
       ))}
     </div>
+
+    <p class="alt-hub-crosslink">
+      looking for model against model instead of sonura against everyone? see
+      <a href="/compare/">every music model compared head to head</a>, including
+      <a href="/compare/suno-vs-udio/">suno vs udio</a> and
+      <a href="/compare/minimax-vs-stable-audio/">minimax vs stable audio</a>.
+    </p>
 
     <div class="alt-hub-cta">
       <p class="section-kicker">02 / Get started</p>

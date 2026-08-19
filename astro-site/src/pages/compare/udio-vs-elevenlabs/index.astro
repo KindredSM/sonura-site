@@ -1,0 +1,129 @@
+---
+import ComparisonLayout from '../../../layouts/ComparisonLayout.astro';
+---
+
+<ComparisonLayout
+  slug="udio-vs-elevenlabs"
+  a="udio"
+  b="elevenlabs"
+  title="Udio vs ElevenLabs Music: Licensed AI Models Compared | Sonura"
+  description="Udio after the Universal settlement vs ElevenLabs Music v2. Two licensed models, only one of which lets you export the file. Verified August 2026."
+  keywords="udio vs elevenlabs, elevenlabs vs udio, elevenlabs music v2, udio licensing umg, licensed ai music model, udio downloads disabled, commercial rights ai music, udio alternative"
+  lede="these are the two cleanest rights stories in the category, arrived at from opposite directions. udio got sued and settled. elevenlabs licensed first and shipped second. the practical difference right now is that one of them lets you leave with the audio."
+  verdict={[
+    {
+      label: 'Best licensing on paper',
+      pick: 'udio',
+      body: 'settled with universal, then warner, merlin, and kobalt, with a royalty pool paying artists whose work shaped the model.',
+    },
+    {
+      label: 'Best licensed model you can use',
+      pick: 'elevenlabs',
+      body: 'licensed through merlin and kobalt on a 50/50 split, with downloads, an api, and inpainting that all still work.',
+    },
+  ]}
+  headToHead={[
+    {
+      dimension: 'Getting the file',
+      a: 'audio download, stem download, and video export are all switched off during the transition, with no confirmed return date.',
+      b: 'downloads work. the track leaves the platform and lands wherever you need it.',
+      winner: 'b',
+    },
+    {
+      dimension: 'Breadth of licensing',
+      a: 'universal, warner, merlin, and kobalt, which is the widest set of rights holders anyone in this category has signed.',
+      b: 'merlin, covering roughly 30,000 independent labels, and kobalt for publishing. narrower, and genuinely comprehensive.',
+      winner: 'a',
+    },
+    {
+      dimension: 'How artists get paid',
+      a: 'a royalty pool distributes to universal artists whose works influenced the model.',
+      b: 'a 50/50 revenue split with rights holders, which set the precedent others are now measured against.',
+      winner: 'tie',
+    },
+    {
+      dimension: 'Commercial coverage',
+      a: 'paid plans, inside the platform, which limits what "commercial use" can actually mean while export is off.',
+      b: 'cleared for commercial use, though self-serve plans carve out film, tv, and Studio Games. enterprise covers all.',
+      winner: 'b',
+    },
+    {
+      dimension: 'Editing',
+      a: 'editing lives in the platform, and with export disabled that is also where it ends.',
+      b: 'section inpainting and genre transitions, so you can rewrite part of a track without regenerating all of it.',
+      winner: 'b',
+    },
+    {
+      dimension: 'Building on it',
+      a: 'a closed platform by design. that is the settlement, not an oversight, and it is not the shape of an integration partner.',
+      b: 'a proper api from an audio infrastructure company, which is the natural place to wire music into your own product.',
+      winner: 'b',
+    },
+    {
+      dimension: 'Music quality',
+      a: 'high fidelity was udio\'s original differentiator and the mixes still stand up well.',
+      b: 'solid and improving, and not where elevenlabs is winning this comparison.',
+      winner: 'tie',
+    },
+    {
+      dimension: 'Certainty',
+      a: 'the relaunch as a walled garden has no confirmed date, so what comes back and when is still open.',
+      b: 'shipped, stable, documented, and behaving like the infrastructure product it is.',
+      winner: 'b',
+    },
+  ]}
+  narrative={[
+    {
+      heading: 'Two routes to the same claim',
+      body: `<p>udio arrived here through litigation. universal sued, udio settled in october 2025, and the price of the settlement was becoming a closed platform where creation stays inside. it then added warner, merlin, and kobalt. that gives udio the <strong>broadest set of rights holders of anyone in the category</strong>, majors included.</p><p>elevenlabs arrived here by choice. it signed merlin and kobalt before launching music, structured a 50/50 revenue split, and shipped a product that was cleared from day one. narrower coverage, no lawsuit, no walled garden. same destination, and only one of the two had to give up the export button to get there.</p>`,
+    },
+    {
+      heading: 'Both have a caveat worth knowing',
+      body: `<p>udio's is obvious: you currently cannot download audio, stems, or video. that is a temporary state with no end date attached, which is a difficult thing to plan a release around.</p><p>elevenlabs' is quieter and catches people at delivery. on self-serve plans, the commercial clearance <strong>excludes film, tv, and Studio Games</strong>, and enterprise covers everything. and while the licensing is genuinely opt-in with revenue sharing, it operates at the rights holder, label, and publisher level rather than per individual artist. that distinction was the point of an artists' coalition letter in june 2026. it does not make the licence weaker, it just means the strongest version of the claim is not the true one.</p>`,
+    },
+    {
+      heading: 'If you are choosing for a client, choose the one you can deliver from',
+      body: `<p>procurement questions about training data have a real answer at both of these, which is not something you could say about most of this category a year ago. so the tiebreaker is not ethics, it is logistics.</p><p>a licensed track you cannot export is not a deliverable. until udio's downloads return, elevenlabs is the licensed model you can actually hand to someone, with the film, tv, and games carve-out checked first. that is a boring reason to pick a tool and it is the one that survives contact with a deadline.</p>`,
+    },
+  ]}
+  chooseA={[
+    'want the widest set of rights holders behind the model, majors included',
+    'want a royalty pool paying artists whose work influenced the training',
+    'are happy creating and keeping tracks inside one platform',
+    'can wait out the transition rather than delivering this month',
+    'value the audio fidelity udio built its early reputation on',
+  ]}
+  chooseB={[
+    'need to download the file and use it somewhere else',
+    'are wiring music generation into your own product through an api',
+    'want to inpaint a section or transition genres inside one track',
+    'need licensed training data with a revenue split you can point at',
+    'are not delivering to film, tv, or games on a self-serve plan',
+  ]}
+  faqs={[
+    {
+      question: 'Which has better licensing, Udio or ElevenLabs?',
+      answer: 'udio has broader coverage: universal, warner, merlin, and kobalt, with a royalty pool for artists whose work influenced the model. elevenlabs has merlin, covering around 30,000 independent labels, and kobalt for publishing, on a 50/50 revenue split. both are far ahead of the rest of the category. udio\'s is wider, elevenlabs\' is usable right now.',
+    },
+    {
+      question: 'Why can I not download from Udio?',
+      answer: 'as part of settling with universal music group and moving to a licensed model, udio agreed to become a closed platform, and audio downloads, stem downloads, and video export were disabled during the transition. udio says they will return once new safeguards are in place, but as of august 2026 there is no confirmed date.',
+    },
+    {
+      question: 'Is ElevenLabs Music cleared for every commercial use?',
+      answer: 'almost. on self-serve plans the commercial clearance excludes film, tv, and Studio Games, and enterprise plans cover all uses. everything else is cleared, backed by licensed training data through merlin and kobalt with a 50/50 royalty split.',
+    },
+    {
+      question: 'Did individual artists consent to either model?',
+      answer: 'not individually, in either case. udio\'s arrangement runs through label and publisher settlements with a royalty pool, and elevenlabs\' runs through opt-in partnerships with rights holders on a 50/50 split. both operate at the rights holder level rather than per artist, which an artists\' coalition letter in june 2026 pointed out publicly. the licensing is real, the per-artist version of the claim is not accurate.',
+    },
+    {
+      question: 'Do either export stems?',
+      answer: 'no. udio\'s stem download is part of what is currently switched off, and elevenlabs does not offer stem export at all, using section inpainting instead. sonura splits any track into stems on every paid plan.',
+    },
+    {
+      question: 'Which should I use for a client project today?',
+      answer: 'elevenlabs, assuming the project is not film, tv, or a game on a self-serve plan. a licensed track you cannot export is not a deliverable, and udio\'s downloads are off with no return date. check which elevenlabs plan you are on before you commit to the delivery.',
+    },
+  ]}
+/>

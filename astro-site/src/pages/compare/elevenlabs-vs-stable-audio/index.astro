@@ -1,0 +1,129 @@
+---
+import ComparisonLayout from '../../../layouts/ComparisonLayout.astro';
+---
+
+<ComparisonLayout
+  slug="elevenlabs-vs-stable-audio"
+  a="elevenlabs"
+  b="stable-audio"
+  title="ElevenLabs Music vs Stable Audio 3: Licensed Models 2026 | Sonura"
+  description="ElevenLabs Music v2 vs Stable Audio 3 on licensing, indemnification, vocals, sound effects, and open weights. Verified August 2026."
+  keywords="elevenlabs vs stable audio, stable audio vs elevenlabs, elevenlabs music v2, stable audio 3, licensed ai music model, open weights audio model, indemnification ai music, ai sound effects generator"
+  lede="the two models built for people who read contracts. both trained on data they are allowed to use, and they answer completely different briefs: elevenlabs makes songs through an api, stability makes sound you can run on your own hardware and get indemnified for."
+  verdict={[
+    {
+      label: 'Best for songs through an API',
+      pick: 'elevenlabs',
+      body: 'licensed through merlin and kobalt on a 50/50 split, with vocals, inpainting, and genre transitions behind a solid api.',
+    },
+    {
+      label: 'Best for sound and indemnity',
+      pick: 'stable-audio',
+      body: 'six-minute instrumentals, a dedicated effects model, open weights, and legal indemnification above $1m revenue.',
+    },
+  ]}
+  headToHead={[
+    {
+      dimension: 'Vocals',
+      a: 'yes, and it is the reason to be here. songs with sung leads are what this model is for.',
+      b: 'thin. the family is tuned for instrumentals, textures, and effects, and a lead vocal is out of scope.',
+      winner: 'a',
+    },
+    {
+      dimension: 'Sound effects',
+      a: 'not the focus. this is a music model.',
+      b: 'a dedicated Small SFX model ships in the family, which is why post and game audio teams use it.',
+      winner: 'b',
+    },
+    {
+      dimension: 'How the licensing works',
+      a: 'opt-in deals with Merlin and Kobalt on a 50/50 revenue split, so rights holders share in what the model earns.',
+      b: 'trained on fully licensed plus creative commons data, and an enterprise licence adds legal indemnification above $1m revenue.',
+      winner: 'tie',
+    },
+    {
+      dimension: 'If a claim arrives',
+      a: 'cleared for commercial use, with no indemnification offered, and film, tv, and Studio Games carved out on self-serve.',
+      b: 'indemnification is written into the enterprise licence, which is a promise to stand behind you rather than a statement about training.',
+      winner: 'b',
+    },
+    {
+      dimension: 'Where it runs',
+      a: 'web app and api. hosted, and that is the whole model.',
+      b: 'api, your own laptop, or a phone for the small model, with open weights for small and medium.',
+      winner: 'b',
+    },
+    {
+      dimension: 'Length',
+      a: 'full songs, which is the right length for the job it does.',
+      b: 'six minutes twenty on medium and large, which is built for beds and score rather than singles.',
+      winner: 'tie',
+    },
+    {
+      dimension: 'Editing',
+      a: 'section inpainting and genre transitions, aimed at reshaping a song you already like.',
+      b: 'region editing and inpainting on any existing file, aimed at fixing audio you already have.',
+      winner: 'tie',
+    },
+    {
+      dimension: 'Stems',
+      a: 'none. inpainting is the substitute.',
+      b: 'none. region editing is the substitute.',
+      winner: 'tie',
+    },
+  ]}
+  narrative={[
+    {
+      heading: 'Same principle, different promises',
+      body: `<p>it is easy to file both of these under "the licensed ones" and stop thinking. the promises are not the same shape. elevenlabs is making a statement about <strong>where the training data came from</strong>: merlin, kobalt, opt-in, 50/50 revenue share. stability is making that statement too, and then adding a second one on top: <strong>if someone comes after you, we will stand behind it</strong>, contractually, for organisations above $1m in revenue.</p><p>the first is provenance. the second is insurance. if you are an independent artist, provenance is what you were worried about. if you are an agency delivering to a brand with a legal department, insurance is the only part of the sentence anyone reads.</p>`,
+    },
+    {
+      heading: 'They answer different briefs entirely',
+      body: `<p>put the licensing aside for a second and these barely compete. elevenlabs makes songs with vocals and lets you repaint sections of them. stable audio makes instrumentals, textures, and sound effects up to six minutes twenty and lets you fix regions of any file.</p><p>a trailer house wants stable audio. a product that needs background music generated on demand wants elevenlabs. the overlap is thin enough that "which is better" is usually the wrong question, and the right one is which of those two sentences describes what you are shipping.</p>`,
+    },
+    {
+      heading: 'Neither one gives you the parts',
+      body: `<p>this is where both stop, and it is the same wall from two directions. elevenlabs offers section inpainting. stability offers region editing. both are ways of changing part of a finished file, and neither hands you the drums on one track and the bass on another.</p><p>for a bed under dialogue, or a song used as a song, that is fine. for anyone who intends to actually produce with the output, it is the end of the road, and it is not a gap that model quality closes. it is a decision about what the product is for.</p>`,
+    },
+  ]}
+  chooseA={[
+    'need songs with sung vocals rather than instrumentals',
+    'are generating music from inside your own product through an api',
+    'want licensed training data with a revenue split you can point at',
+    'want to inpaint a section or move between genres inside one track',
+    'are not delivering to film, tv, or games on a self-serve plan',
+  ]}
+  chooseB={[
+    'make instrumentals, textures, beds, or sound effects',
+    'need legal indemnification, not just a statement about training data',
+    'want it running on your own hardware, offline, with open weights',
+    'need six minutes of coherent audio under picture or gameplay',
+    'want to repair or extend audio files you already have',
+  ]}
+  faqs={[
+    {
+      question: 'Which is more legally safe, ElevenLabs Music or Stable Audio 3?',
+      answer: 'stable audio 3, if safety means someone standing behind you. its enterprise licence includes legal indemnification for organisations above $1m in annual revenue, and it is trained on fully licensed plus creative commons data. elevenlabs music v2 is trained only on licensed data through merlin and kobalt on a 50/50 split, which is excellent provenance, but it offers no indemnification and carves out film, tv, and Studio Games on self-serve plans.',
+    },
+    {
+      question: 'Can Stable Audio 3 make songs with vocals?',
+      answer: 'not well. the family is built for instrumentals, textures, and sound effects, and vocals are its weakest area. elevenlabs music v2 is the right choice of the two if you need a sung lead.',
+    },
+    {
+      question: 'Can I self-host either of them?',
+      answer: 'stable audio 3 yes, elevenlabs no. stability publishes open weights for the small and medium models, sized for consumer hardware, and the small model runs on a phone or laptop with no cloud connection. elevenlabs is a hosted api and web app only.',
+    },
+    {
+      question: 'Do either export stems?',
+      answer: 'neither one does. elevenlabs offers section inpainting and genre transitions, and stable audio offers region editing and inpainting. both change parts of a finished file rather than handing you separate parts. sonura splits any track into stems on every paid plan.',
+    },
+    {
+      question: 'Which is better for sound effects?',
+      answer: 'stable audio 3, without question. it ships a dedicated Small SFX model in the family alongside the music models, which is why post-production and game audio teams keep choosing it. elevenlabs music is a music model.',
+    },
+    {
+      question: 'How long can each generate?',
+      answer: 'stable audio 3 reaches six minutes twenty on its medium and large models. elevenlabs music v2 generates full songs, which is the appropriate length for what it does. stable audio\'s length advantage matters most for beds and score under picture.',
+    },
+  ]}
+/>

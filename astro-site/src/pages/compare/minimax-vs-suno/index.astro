@@ -1,0 +1,129 @@
+---
+import ComparisonLayout from '../../../layouts/ComparisonLayout.astro';
+---
+
+<ComparisonLayout
+  slug="minimax-vs-suno"
+  a="minimax"
+  b="suno"
+  title="MiniMax Music 3 vs Suno v5.5: AI Song Models Compared | Sonura"
+  description="MiniMax Music 3.0 vs Suno v5.5 on vocals, song structure, stems, licensing, and open weights. Verified August 2026, including what you give up by self-hosting."
+  keywords="minimax vs suno, minimax music vs suno, minimax music 3 vs suno, minimax music-2 vs suno, suno v5.5, open weights music model, self host music model, suno alternative"
+  lede="minimax music 3.0 landed on 17 august 2026 as an open checkpoint anyone can download. suno v5.5 has been the thing most released tracks come out of since march. one of these you can own outright and one of these is better at the job, and for now those are not the same model."
+  verdict={[
+    {
+      label: 'Best output today',
+      pick: 'suno',
+      body: 'the most natural vocals in the category, a browser daw attached, and up to 12 stems on the top plan.',
+    },
+    {
+      label: 'Best to own',
+      pick: 'minimax',
+      body: 'open weights on hugging face, five-minute songs in one pass, and a pipeline nobody can price you out of.',
+    },
+  ]}
+  headToHead={[
+    {
+      dimension: 'Vocal realism',
+      a: 'strong and expressive, and it holds one vocal identity across a five-minute arrangement, which is the hard part.',
+      b: 'still the benchmark for pop and r&b delivery, and Voices lets you reuse a single voice across a whole catalogue.',
+      winner: 'b',
+    },
+    {
+      dimension: 'Song structure',
+      a: 'single-pass generation of a complete five-minute song, with intro, verse, bridge, and chorus arriving as one coherent take.',
+      b: 'structured songs with extend in the app, which is flexible but means the long version is stitched rather than conceived whole.',
+      winner: 'a',
+    },
+    {
+      dimension: 'Lyric control',
+      a: '1 to 3,500 characters of lyrics, an auto-optimiser if you want the phrasing cleaned up, and named instrument and technique tags.',
+      b: 'deep prompt and meta-tag control that people have spent two years learning, with a large body of community documentation behind it.',
+      winner: 'tie',
+    },
+    {
+      dimension: 'Stems and editing',
+      a: 'none. it returns a finished 32 kHz mix and that is the end of the pipeline.',
+      b: 'Suno Studio gives you a multitrack timeline, take lanes, eq, faders, warp markers, and up to 12 stems, on the top plan.',
+      winner: 'b',
+    },
+    {
+      dimension: 'Audio spec',
+      a: '32 kHz 16-bit stereo wav, which is under release spec and wants a super-resolution pass before anyone masters it.',
+      b: 'full song wav, per-clip wav, and midi out of Studio, at a spec you can hand to a distributor.',
+      winner: 'b',
+    },
+    {
+      dimension: 'Owning the pipeline',
+      a: 'the checkpoint is on hugging face. no api key, no rate limit, no price change, no deprecation notice.',
+      b: 'closed weights, and suno has said current models get deprecated when the industry-partnered models arrive.',
+      winner: 'a',
+    },
+    {
+      dimension: 'Cost at volume',
+      a: 'an 8B global model paired with a 0.6B local one, so the bill is gpu time rather than per-generation credits.',
+      b: 'subscription tiers, and the features you want most, Studio and stems, sit on the most expensive one.',
+      winner: 'a',
+    },
+    {
+      dimension: 'Rights clarity',
+      a: 'training data is not disclosed and the release carries a custom community licence to read against your use.',
+      b: 'commercial rights on paid plans and a warner deal, with other label litigation still unresolved.',
+      winner: 'tie',
+    },
+  ]}
+  narrative={[
+    {
+      heading: 'What open weights actually buys you',
+      body: `<p>it is not quality. suno v5.5 is still ahead on the thing most people are listening for, which is whether the vocal sounds like a person who meant it. minimax music 3 is genuinely close and it is a day old, but close is not ahead.</p><p>what open weights buys is <strong>permanence</strong>. the checkpoint sits on your disk. it does not get deprecated, repriced, rate-limited, or quietly swapped for a version that sounds different. if you are wiring music generation into a product, a game, or a pipeline that has to still work in two years, that is worth more than a few points of vocal realism. if you are making a song this afternoon, it is worth nothing at all.</p>`,
+    },
+    {
+      heading: 'The 32 kHz problem nobody mentions',
+      body: `<p>minimax returns 32 kHz 16-bit stereo. that is a perfectly good mix and it is under the 44.1 or 48 kHz you want before anything gets mastered or distributed. so a real minimax pipeline is not one model, it is two: generation, then an audio super-resolution pass to bring the bandwidth up.</p><p>that is completely doable and it is also a second model, a second inference cost, and a second thing to keep running. suno hands you a distributable file directly. <strong>when you price the two against each other, price the whole chain, not the generation step.</strong></p>`,
+    },
+    {
+      heading: 'Both stop at the mix',
+      body: `<p>minimax has no stem export at all. suno has stems, up to twelve of them, behind its top plan and inside its own browser daw. so on both sides the default deliverable is a finished song, and the parts are either unavailable or gated.</p><p>that is fine if you wanted a song. it is a wall if you wanted a bassline you could rewrite, a hat pattern you could swap, or a vocal you could keep while you tore down everything under it. that is a different tool, and it is the one producers keep looking for.</p>`,
+    },
+  ]}
+  chooseA={[
+    'want the weights on your own disk, with no api key in the loop',
+    'are generating at volume and would rather pay for gpu than per track',
+    'need a five-minute song conceived as one take rather than extended in pieces',
+    'can add an audio super-resolution pass to get above 32 kHz',
+    'are building music into a product that has to keep working in two years',
+  ]}
+  chooseB={[
+    'want the most convincing vocal available right now',
+    'need a distributable file today, at a spec a distributor will accept',
+    'want stems and a multitrack editor without standing up any infrastructure',
+    'value two years of community prompting knowledge you can borrow',
+    'are making songs rather than building a pipeline',
+  ]}
+  faqs={[
+    {
+      question: 'Is MiniMax Music 3.0 better than Suno?',
+      answer: 'not yet, for most people. suno v5.5 still leads on vocal realism and hands you a distributable file with stems and a multitrack editor attached. minimax music 3 wins on things suno cannot offer at all: open weights you can host yourself, five-minute songs generated in a single pass, and no dependence on anyone else\'s pricing or deprecation schedule.',
+    },
+    {
+      question: 'Can I run MiniMax Music 3.0 myself?',
+      answer: 'yes. minimax publishes the checkpoint on hugging face under a custom community licence. plan for real gpu though: the architecture pairs an 8B global model with a 0.6B local one on a flow-matching synthesis stack, so a laptop is optimistic. it returns 32 kHz 16-bit stereo wav, which you will want to run through an audio super-resolution pass before release.',
+    },
+    {
+      question: 'Does MiniMax Music 3.0 export stems?',
+      answer: 'no. it returns a finished mix. suno gives you up to 12 stems but only inside Suno Studio on the top plan. if you want stems without a top-tier subscription, sonura splits any track into stems on every paid plan.',
+    },
+    {
+      question: 'Which is cheaper at volume?',
+      answer: 'minimax, if you already have gpu capacity, because self-hosting converts a per-generation cost into a fixed hardware cost. suno is cheaper to start and much cheaper to try, and it needs no infrastructure at all. the crossover point depends entirely on how many tracks a month you actually generate.',
+    },
+    {
+      question: 'Is MiniMax Music 3.0 free to use commercially?',
+      answer: 'the weights are open but the release carries a custom community licence rather than a standard open one, and the training data has not been disclosed. read the licence against your specific use before you release. if you need a clear answer instead of a legal reading, sonura gives you exclusive commercial rights on every paid plan with no royalty splits.',
+    },
+    {
+      question: 'What is the newest model here?',
+      answer: 'minimax music 3.0, released 17 august 2026. suno v5.5 has been current since 26 march 2026, and suno has said its industry-partnered models will roll out in 2026 and deprecate the current ones, though nothing has shipped as of 18 august 2026.',
+    },
+  ]}
+/>

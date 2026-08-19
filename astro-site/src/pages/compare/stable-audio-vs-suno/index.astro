@@ -1,0 +1,129 @@
+---
+import ComparisonLayout from '../../../layouts/ComparisonLayout.astro';
+---
+
+<ComparisonLayout
+  slug="stable-audio-vs-suno"
+  a="stable-audio"
+  b="suno"
+  title="Stable Audio 3 vs Suno: AI Music Models Compared 2026 | Sonura"
+  description="Stable Audio 3 vs Suno v5.5 on songs, sound design, licensing, open weights, and editing. Verified August 2026, with what each family is genuinely built for."
+  keywords="stable audio vs suno, suno vs stable audio, stable audio 3, stable audio 3 vs suno v5.5, sound effects generator, open weights music model, licensed training data, suno alternative"
+  lede="one of these writes songs and one of these builds sound. stability trained stable audio 3 on fully licensed and creative commons data and shipped it in four sizes, two of them open. suno v5.5 makes the vocal track people actually release. they barely overlap, and the wrong pick wastes a week."
+  verdict={[
+    {
+      label: 'Best for score and sound design',
+      pick: 'stable-audio',
+      body: 'six-minute instrumentals, a dedicated effects model, region editing, and licensed data with indemnification above $1m revenue.',
+    },
+    {
+      label: 'Best for songs with vocals',
+      pick: 'suno',
+      body: 'the strongest vocal delivery in the category, plus a browser daw and up to 12 stems on the top plan.',
+    },
+  ]}
+  headToHead={[
+    {
+      dimension: 'Vocals and lyrics',
+      a: 'thin. this family is tuned for instrumentals, textures, and effects, and a lead vocal is not what it is for.',
+      b: 'the benchmark. Voices reuses one voice across a catalogue and custom models bias generation toward your own sound.',
+      winner: 'b',
+    },
+    {
+      dimension: 'Sound effects',
+      a: 'a dedicated Small SFX model in the family, which is why post houses and game audio teams keep landing here.',
+      b: 'no effects model. suno makes songs, and asking it for a door slam is asking the wrong tool.',
+      winner: 'a',
+    },
+    {
+      dimension: 'Long-form under picture',
+      a: 'six minutes twenty on the medium and large models, holding structure and melodic tone the whole way.',
+      b: 'full songs with extend, which works, but a stitched extension is not the same as a bed conceived at length.',
+      winner: 'a',
+    },
+    {
+      dimension: 'Training data and indemnity',
+      a: 'fully licensed plus creative commons, with an enterprise licence carrying legal indemnification above $1m revenue.',
+      b: 'a warner deal, other label litigation unresolved, and no indemnification on offer.',
+      winner: 'a',
+    },
+    {
+      dimension: 'Running it yourself',
+      a: 'small and medium weights are open and consumer-sized, and the small model writes a complete piece on a phone or laptop offline.',
+      b: 'closed weights, cloud only, and suno has said current models will be deprecated when its next generation arrives.',
+      winner: 'a',
+    },
+    {
+      dimension: 'Editing after the fact',
+      a: 'edits and inpaints regions of an existing file, so you fix eight bars instead of rerolling six minutes.',
+      b: 'Suno Studio is a real multitrack timeline with eq, faders, pan, take lanes, and warp markers.',
+      winner: 'tie',
+    },
+    {
+      dimension: 'Stems',
+      a: 'no stem export. region editing is the substitute.',
+      b: 'up to 12 stems, behind Suno Studio on the top plan.',
+      winner: 'b',
+    },
+    {
+      dimension: 'Getting started',
+      a: 'a model family, an api, and a licence to read. it assumes you are technical or have someone who is.',
+      b: 'an app you can use in ninety seconds, with two years of community prompting knowledge behind it.',
+      winner: 'b',
+    },
+  ]}
+  narrative={[
+    {
+      heading: 'These are not competitors, they are different departments',
+      body: `<p>the reason this comparison gets written badly everywhere is that people score them on one axis. stable audio 3 loses a "which makes better songs" test and it was never entered in that race. it ships in four sizes including one built purely for sound effects, it goes to six minutes twenty, and it edits regions of existing audio.</p><p>that is a post-production toolkit. suno is a songwriting product. <strong>if your deliverable has a singer on it, suno. if your deliverable sits under dialogue, gameplay, or picture, stable audio.</strong> the only people genuinely torn between them are the ones who have not yet decided what they are making.</p>`,
+    },
+    {
+      heading: 'Indemnification is the quiet differentiator',
+      body: `<p>stability trained on fully licensed and creative commons material, and organisations above $1m in annual revenue can buy an enterprise licence that includes <strong>legal indemnification</strong> and support for customisation. that is a contractual promise to stand behind you if a claim arrives.</p><p>nobody else in this comparison offers that. suno grants commercial rights on paid plans and has a warner deal, but unresolved litigation elsewhere and no indemnity. for an independent artist that gap is theoretical. for an agency delivering to a brand, it is the entire procurement conversation, and it is why a lot of commercial work quietly routes through stability regardless of what sounds better.</p>`,
+    },
+    {
+      heading: 'Open weights, and small enough to matter',
+      body: `<p>plenty of models are technically open and practically unrunnable. stability sized the small and medium models for consumer hardware deliberately, and the small model writes a complete piece on a phone or laptop with no cloud connection at all.</p><p>that changes what you can build. offline generation in an app, on-device sound design in a game engine, a pipeline that costs electricity instead of credits. suno cannot do any of that and is not trying to. it is worth being clear that this is an architecture choice rather than a scoreboard: <strong>stability optimised for where the model can run, suno optimised for how the output sounds.</strong></p>`,
+    },
+  ]}
+  chooseA={[
+    'make instrumentals, beds, textures, or sound effects rather than songs',
+    'need six minutes of coherent audio under picture or gameplay',
+    'want licensed training data on paper, with indemnification if the client asks',
+    'need it running offline, on a laptop or in an engine, with no cloud call',
+    'want to fix a region of an existing file instead of regenerating it',
+  ]}
+  chooseB={[
+    'need a song with a convincing lead vocal',
+    'want a multitrack editor and stems without standing up infrastructure',
+    'are releasing to streaming rather than delivering to picture',
+    'want to be making music within a couple of minutes of signing up',
+    'value the community prompting knowledge that has built up around it',
+  ]}
+  faqs={[
+    {
+      question: 'Is Stable Audio better than Suno?',
+      answer: 'for instrumentals, sound effects, long-form beds, and anything delivered under picture, yes. stable audio 3 goes to six minutes twenty, ships a dedicated sound-effects model, and edits regions of existing audio. for songs with a lead vocal, suno v5.5 is clearly ahead and it is not close. they are built for different jobs.',
+    },
+    {
+      question: 'Can Stable Audio 3 make songs with vocals?',
+      answer: 'not really. the family is trained and tuned for instrumental music, textures, and sound effects, and vocals are its weakest area. if you need a sung lead, use suno, or use sonura if you want the vocal as an editable part rather than baked into a mix.',
+    },
+    {
+      question: 'Is Stable Audio 3 free?',
+      answer: 'the small and medium model weights are open and sized for consumer hardware, and the small model can generate a complete piece on a phone or laptop with no cloud connection, so inference costs you hardware rather than a subscription. hosted api use is paid, and organisations above $1m in annual revenue can buy an enterprise licence that adds legal indemnification.',
+    },
+    {
+      question: 'Which one is safer for commercial work?',
+      answer: 'stable audio 3. it is trained on fully licensed and creative commons data, and the enterprise licence includes legal indemnification for organisations above $1m in revenue. suno grants commercial rights on paid plans and has a warner deal, but other label litigation is unresolved and there is no indemnity attached.',
+    },
+    {
+      question: 'How long can each one generate?',
+      answer: 'stable audio 3 reaches six minutes twenty on its medium and large models, up from about 47 seconds in stable audio open. suno makes full songs and can extend them in the app, so length is flexible but built up in sections rather than conceived as one long take.',
+    },
+    {
+      question: 'Do either of them give me stems?',
+      answer: 'stable audio does not; it offers region editing and inpainting instead. suno gives up to 12 stems but only inside Suno Studio on the top plan. sonura splits any track into stems on every paid plan, from the entry tier up.',
+    },
+  ]}
+/>
