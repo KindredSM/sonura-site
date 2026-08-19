@@ -1,0 +1,139 @@
+---
+import ComparisonLayout from '../../../layouts/ComparisonLayout.astro';
+---
+
+<ComparisonLayout
+  slug="suno-vs-udio"
+  a="suno"
+  b="udio"
+  title="Suno vs Udio (2026): Which AI Music Generator Wins? | Sonura"
+  description="Suno v5.5 vs Udio after the Universal settlement. Downloads, stems, vocals, licensing, and what changed. Verified August 2026 with the trade-off spelled out."
+  keywords="suno vs udio, udio vs suno, suno vs udio 2026, suno ai vs udio ai, suno vs udio which is better, suno vs udio comparison 2026, udio vs suno 2026, suno v5.5, udio downloads disabled, best ai music generator 2026, suno alternative, udio alternative"
+  h1Tail="in 2026"
+  lede="this used to be a question about which one sounded better. it is now a question about whether you can keep what you make. udio settled with universal and became a closed platform, and audio, stem, and video downloads went off during the transition. suno kept shipping."
+  quickAnswer="<strong>between these two, suno, but that is a narrower win than it sounds.</strong> udio has export switched off, so whatever it does well, you cannot leave with the track. that decides it on its own. what suno does not hand you is a settled answer on training data: it has a warner deal and it is still in litigation with labels it has not signed. so the honest read is that one of these two is usable today, and neither has finished the argument about whose music the model learned from. if that second part matters to you, the choice is not really between these two."
+  verdict={[
+    {
+      label: 'Best if you need the file',
+      pick: 'suno',
+      body: 'v5.5 exports wav, per-clip wav, and midi, and it is where roughly nine in ten commercially released tracks of this kind came from in early 2026.',
+    },
+    {
+      label: 'Best rights story',
+      pick: 'udio',
+      body: 'licensed through universal, warner, merlin, and kobalt, with a royalty pool for artists. the cleanest provenance of the two by a distance.',
+    },
+  ]}
+  headToHead={[
+    {
+      dimension: 'Leaving with your track',
+      a: 'wav, per-clip wav, and midi come out of Suno Studio, so the track lands in your session and on your drive.',
+      b: 'audio download, stem download, and video export are all switched off during the transition, with no firm date for their return.',
+      winner: 'a',
+    },
+    {
+      dimension: 'Licensing and provenance',
+      a: 'a deal with Warner Music, with other label litigation still unresolved. better than it was, not settled.',
+      b: 'settled with Universal in october 2025, then added Warner, Merlin, and Kobalt, with a royalty pool paying through to artists.',
+      winner: 'b',
+    },
+    {
+      dimension: 'Vocals',
+      a: 'the strongest pop and r&b vocal delivery in the category, plus Voices to reuse one voice and custom models trained on your own catalogue.',
+      b: 'genuinely good vocals, and the reason udio built its early following, but v5.5 moved the bar while udio was in transition.',
+      winner: 'a',
+    },
+    {
+      dimension: 'Mix and fidelity',
+      a: 'v5.5 sits at the top of independent quality rankings for structure and vocal realism.',
+      b: 'higher audio fidelity was udio\'s original pitch and the mixes still hold up well against anything in the field.',
+      winner: 'tie',
+    },
+    {
+      dimension: 'Stems',
+      a: 'up to 12 stems inside Suno Studio, though Studio is gated to the top plan and the cap is real.',
+      b: 'stem download is part of what went off during the transition, so there is nothing to compare right now.',
+      winner: 'a',
+    },
+    {
+      dimension: 'Post-generation editing',
+      a: 'Suno Studio is a browser daw with a multitrack timeline, take lanes, eq, faders, pan, solo and mute, warp markers, and time signatures.',
+      b: 'editing lives inside the platform and, with export disabled, it is where the work also has to stay.',
+      winner: 'a',
+    },
+    {
+      dimension: 'Knowing it will still be there',
+      a: 'suno said in late 2025 that current models get deprecated when its industry-partnered models arrive, so v5.5 has a shelf life.',
+      b: 'the relaunch is a walled garden with no confirmed date. what comes back, and when, is still an open question.',
+      winner: 'tie',
+    },
+    {
+      dimension: 'Where releases actually come from',
+      a: 'roughly 90 percent of commercially released tracks in this category in q1 2026, on around 2 million paid subscriptions.',
+      b: 'a much smaller share, and shrinking while people cannot export.',
+      winner: 'a',
+    },
+  ]}
+  narrative={[
+    {
+      heading: 'The download is the entire argument',
+      body: `<p>everything else on this page is a preference. this one is a hard stop. udio agreed to become a closed platform as part of settling with universal, and audio downloads, stem downloads, and video export were switched off while the new safeguards get built. the company has said they will return. it has not said when.</p><p>so if you are choosing today, ask yourself one question: does the track need to leave the website? if it is going to a client, a distributor, a video edit, a game build, or a daw session, the answer is yes, and that answer picks suno for you regardless of anything else here.</p>`,
+    },
+    {
+      heading: 'Two different bets on how this gets legal',
+      body: `<p>udio took the settlement route. it paid, it partnered, and it rebuilt around licensed catalogues from universal, warner, merlin, and kobalt with a royalty pool that pays artists whose work influenced the model. that is the most defensible position anyone in this category holds, and it cost udio its open door to do it.</p><p>suno took the ship-and-negotiate route. it has a warner deal and the rest is still moving. it also has the market, the revenue, and the release share, which buys time that udio did not have. <strong>neither bet is finished, and both companies are asking you to be comfortable with an unresolved paragraph in the terms.</strong></p>`,
+    },
+    {
+      heading: 'What "deprecated" means for the songs you already made',
+      body: `<p>suno said publicly in november 2025 that its current models will be deprecated when the industry-partnered models roll out. that is normal software practice and it is also a real risk if your catalogue depends on regenerating in a specific model's voice. v5.5 has been the current model since march 2026 and no successor has shipped, so the clock is running but nothing has broken yet.</p><p>the practical defence is boring and it works: <strong>export everything the day you make it.</strong> a wav on your own drive does not care which model gets retired. that is also, not coincidentally, the reason udio's disabled downloads are more alarming than they look on a feature table.</p>`,
+    },
+  ]}
+  chooseA={[
+    'need to download the track, the stems, or a midi file',
+    'want the strongest vocal delivery available right now',
+    'are releasing to spotify, youtube, or a client and need the file in hand',
+    'want a browser daw attached, and are willing to pay for the top plan to get it',
+    'care more about output quality today than about a fully settled rights story',
+  ]}
+  chooseB={[
+    'want the clearest licensing position in the category, on paper',
+    'are fine creating and keeping tracks inside one platform for now',
+    'work somewhere that will ask who the training data belonged to',
+    'want artists whose work shaped the model to be paid through a royalty pool',
+    'can wait out the transition rather than shipping this month',
+  ]}
+  faqs={[
+    {
+      question: 'Can you still download songs from Udio in 2026?',
+      answer: 'no. as part of settling with universal music group and moving to a licensed model, udio agreed to become a closed platform and switched off audio downloads, stem downloads, and video export during the transition. udio has said downloads will return once new technical safeguards are in place, but as of august 2026 there is no confirmed date.',
+    },
+    {
+      question: 'Is Suno or Udio better in 2026?',
+      answer: 'suno v5.5 is better for almost everyone right now, mostly because you can export what you make. it also leads on vocal delivery and has a browser daw with up to 12 stems on the top plan. udio has the better licensing position, settled with universal and partnered with warner, merlin, and kobalt, so it wins if provenance matters more to you than shipping this month.',
+    },
+    {
+      question: 'Is Suno legal to use commercially?',
+      answer: 'suno grants commercial rights on paid plans and has signed a licensing deal with warner music, but other label litigation has not fully resolved. read the current terms before you release anything with real money behind it. if you want a plainer answer, sonura gives you exclusive commercial rights on every paid plan with no royalty splits, on licensed rather than scraped technology.',
+    },
+    {
+      question: 'Does Suno export stems?',
+      answer: 'yes, up to 12 stems, but only inside Suno Studio, which is on the top plan. you can export a full song wav, per-clip wav, or midi. if stems on every plan matter to you, sonura splits any track into stems from the entry paid tier up.',
+    },
+    {
+      question: 'What is the latest Suno model?',
+      answer: 'v5.5, released 26 march 2026 and still current as of 18 august 2026. it added Voices for a reusable voice, custom models you can train on at least six songs you own, and My Taste. suno has said its first industry-partnered model will roll out in 2026 and that current models will be deprecated when it does, but nothing has shipped yet.',
+    },
+    {
+      question: 'Suno vs Udio: which is better for beginners?',
+      answer: 'suno. you can start free, the prompt-to-song path is shorter, and you leave with a file you can post. udio is the harder recommendation for a beginner right now, not because it is complicated but because the thing a beginner most wants to do, share what they made, is exactly what the export freeze blocks.',
+    },
+    {
+      question: 'How do Suno and Udio compare to the other AI music tools in 2026?',
+      answer: 'suno and udio are the two consumer platforms people name first, but the wider field is model-shaped rather than app-shaped: minimax music 3.0 and stable audio 3 ship open weights, elevenlabs music v2 and google lyria are licensed apis, and mureka o2 goes deepest on stems and midi. sonura runs a set of those models in one studio so you pick the model per track instead of committing to one company.',
+    },
+    {
+      question: 'Which one do most released tracks come from?',
+      answer: 'suno, by a wide margin. it accounted for roughly 90 percent of commercially released tracks in this category in q1 2026, on around 2 million paid subscriptions. udio\'s share is smaller and has been shrinking while export is disabled.',
+    },
+  ]}
+/>

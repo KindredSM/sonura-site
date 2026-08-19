@@ -1,0 +1,491 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { MODELS, COMPARISONS, LAST_VERIFIED } from '../../data/music-models';
+
+const IN_SONURA = Object.values(MODELS).filter((m) => m.inSonura && m.slug !== 'sonura');
+
+const modelOrder = ['suno', 'minimax', 'elevenlabs', 'stable-audio', 'lyria', 'udio', 'mureka', 'riffusion'];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'AI Music Model Comparisons',
+    description:
+      'Head to head comparisons of the current AI music generation models: Suno v5.5, MiniMax Music 3.0, ElevenLabs Music v2, Stable Audio 3, Google Lyria 3.5, Udio, Mureka O2, and Riffusion FUZZ.',
+    url: 'https://sonurastudio.com/compare/',
+    dateModified: '2026-08-18',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://sonurastudio.com/' },
+      { '@type': 'ListItem', position: 2, name: 'Compare', item: 'https://sonurastudio.com/compare/' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: COMPARISONS.map((c, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: `${MODELS[c.a].name} vs ${MODELS[c.b].name}`,
+      url: `https://sonurastudio.com/compare/${c.slug}/`,
+    })),
+  },
+];
+---
+
+<BaseLayout
+  title="AI Music Model Comparisons (2026) | Suno, MiniMax, Stable Audio"
+  description="Suno, Udio, Mureka, ElevenLabs Music, Lyria and Riffusion compared head to head on export, stems, vocals and licensing. Verified August 2026."
+  keywords="ai music model comparison, suno vs udio, minimax vs stable audio, best ai music generator 2026, ai song generator comparison, minimax music 3, stable audio 3, elevenlabs music v2, lyria 3.5, mureka o2, riffusion fuzz"
+  canonical="https://sonurastudio.com/compare/"
+  ogTitle="AI Music Model Comparisons (2026)"
+  ogDescription="Every current music model, compared head to head on what you can actually do with the output."
+  jsonLd={jsonLd}
+>
+  <div class="hub">
+    <header class="hub-hero">
+      <p class="section-kicker">Comparisons / Verified {LAST_VERIFIED}</p>
+      <h1 class="hub-h1">Every model, side by side</h1>
+      <p class="hub-lede">
+        eight music models shipped, updated, or repositioned in the last year, and most of the
+        comparisons written about them are out of date within a month. these pages are dated, sourced,
+        and use the same spec table every time, so nothing gets quietly reworded to win an argument.
+      </p>
+      <p class="hub-lede hub-lede-strong">
+        four of them are selectable in Sonura songs mode, so you can stop reading and just run the same
+        prompt through each one.
+      </p>
+      <div class="hub-hero-actions">
+        <a href="https://app.sonurastudio.com/" class="button primary large"
+          ><span class="btn-label-full">Try The Models Free</span><span class="btn-label-short">Try free</span></a
+        >
+        <a href="#matchups" class="button secondary large">See the matchups</a>
+      </div>
+      <p class="hub-hero-trust">
+        MiniMax Music 3.0 / Stable Audio 3 / ElevenLabs Music v2 / Google Lyria, in one studio
+      </p>
+    </header>
+
+    <!-- ===== The field ===== -->
+    <section class="hub-section">
+      <p class="section-kicker">01 / The field</p>
+      <h2 class="hub-h2">Where each one stands today</h2>
+      <div class="hub-models">
+        {modelOrder.map((key, i) => {
+          const m = MODELS[key];
+          return (
+            <div class="hub-model-row">
+              <span class="hub-index">{String(i + 1).padStart(2, '0')}</span>
+              <div class="hub-model-id">
+                <h3 class="hub-h3">{m.name}</h3>
+                <span class="hub-model-meta">{m.maker} / {m.released}</span>
+              </div>
+              <div class="hub-model-body">
+                <p class="hub-support hub-model-line">{m.oneLiner}</p>
+                <span class={`hub-tag${m.inSonura ? ' is-in' : ''}`}>
+                  {m.inSonura ? 'In Sonura songs mode' : `Only inside ${m.short}`}
+                </span>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+
+    <!-- ===== Comparisons ===== -->
+    <section class="hub-section" id="matchups">
+      <p class="section-kicker">02 / Head to head</p>
+      <h2 class="hub-h2">Pick a matchup</h2>
+      <div class="hub-list">
+        {COMPARISONS.map((c, i) => (
+          <a href={`/compare/${c.slug}/`} class="hub-row">
+            <span class="hub-index">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="hub-row-name">{MODELS[c.a].name} vs {MODELS[c.b].name}</h3>
+            <span class="hub-support hub-row-angle">{c.angle}</span>
+            <span class="hub-row-arrow">Read</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- ===== In Sonura ===== -->
+    <section class="hub-section">
+      <p class="section-kicker">03 / In Sonura</p>
+      <h2 class="hub-h2">Stop comparing, start switching</h2>
+      <div class="hub-sonura">
+        <div class="hub-sonura-body">
+          <p class="hub-support">
+            every page here ends the same way: it depends on what you are making. that is a real answer
+            and it is a useless one when you just want to hear the difference.
+          </p>
+          <p class="hub-support">
+            so <strong>Sonura songs mode lets you pick the model</strong>. run the same prompt through
+            MiniMax Music 3.0, Stable Audio 3, ElevenLabs Music v2, and Google Lyria, keep the take that
+            wins, then split it into stems and finish it inside Ableton, Logic, or FL Studio through the
+            AU and VST3 plugin. exclusive commercial rights on every paid plan, with no royalty splits,
+            whichever model made it.
+          </p>
+          <div class="hub-hero-actions">
+            <a href="https://app.sonurastudio.com/" class="button primary large"
+              ><span class="btn-label-full">Try The Models Free</span><span class="btn-label-short">Try free</span></a
+            >
+            <a href="/pricing/" class="button secondary large">See pricing</a>
+          </div>
+        </div>
+        <ul class="hub-facts">
+          {IN_SONURA.map((m) => (
+            <li><strong>{m.name}</strong><span>{m.oneLiner}</span></li>
+          ))}
+        </ul>
+      </div>
+      <p class="hub-support hub-crosslink">
+        also worth reading: <a href="/alternatives/">how sonura compares to each tool directly</a>,
+        <a href="/how-we-work-with-artists/">how we work with artists</a>, and
+        <a href="/features/stem-export/">what stem export actually gives you</a>.
+      </p>
+    </section>
+
+    <!-- ===== Final CTA ===== -->
+    <section class="hub-final">
+      <h2 class="hub-h2 hub-final-h2">Own your sound</h2>
+      <p class="hub-support hub-final-sub">
+        make the loop, the vocal, or the whole track, then take the parts into your DAW and release it as
+        yours. free to start, no card needed.
+      </p>
+      <a href="https://app.sonurastudio.com/" class="button primary large"
+        ><span class="btn-label-full">Start Creating Free</span><span class="btn-label-short">Start free</span></a
+      >
+      <p class="hub-final-footer">Free to start / No credit card / Full commercial rights on paid plans</p>
+    </section>
+  </div>
+
+  <style>
+    .hub {
+      width: 100%;
+      padding: clamp(48px, 8vh, 96px) var(--page-pad) clamp(96px, 12vw, 140px);
+      color: var(--fg);
+    }
+
+    .hub-h1 {
+      margin: 0 0 28px;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(46px, 7vw, 104px);
+      line-height: 0.96;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--fg);
+    }
+
+    .hub-h2 {
+      margin: 0 0 40px;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(32px, 4.8vw, 68px);
+      line-height: 1;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--fg);
+    }
+
+    .hub-h3 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(20px, 2.3vw, 30px);
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--fg);
+    }
+
+    .hub-support {
+      color: var(--muted);
+      font-size: 15px;
+      letter-spacing: 0.022em;
+      word-spacing: 0.04em;
+      line-height: 1.8;
+    }
+
+    .hub-hero {
+      padding-bottom: clamp(48px, 7vw, 80px);
+    }
+
+    .hub-lede {
+      margin: 0;
+      max-width: 680px;
+      color: var(--muted);
+      font-size: 17px;
+      letter-spacing: 0.022em;
+      word-spacing: 0.04em;
+      line-height: 1.8;
+    }
+
+    .hub-lede-strong {
+      margin-top: 20px;
+      color: var(--fg);
+    }
+
+    .hub-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 36px 0 18px;
+    }
+
+    .hub-hero-actions .button {
+      display: inline-block;
+    }
+
+    .hub-hero-trust {
+      margin: 0;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .hub-model-body {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .hub-tag {
+      padding: 5px 11px;
+      border: 1px solid var(--border-light);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+
+    .hub-tag.is-in {
+      border-color: var(--hairline);
+      color: var(--fg);
+    }
+
+    .hub-section {
+      border-top: 1px solid var(--hairline);
+      padding: clamp(56px, 8vw, 96px) 0 clamp(48px, 7vw, 80px);
+    }
+
+    .hub-index {
+      font-size: 13px;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.12em;
+      color: var(--faint);
+    }
+
+    /* --- The field --- */
+    .hub-models {
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .hub-model-row {
+      display: grid;
+      grid-template-columns: 56px minmax(0, 0.9fr) minmax(0, 1.4fr);
+      gap: 14px 40px;
+      align-items: baseline;
+      padding: 28px 0;
+      border-top: 1px solid var(--hairline);
+    }
+
+    .hub-model-id {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .hub-model-meta {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+
+    .hub-model-line {
+      margin: 0;
+    }
+
+    /* --- Comparison list --- */
+    .hub-list {
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .hub-row {
+      display: grid;
+      grid-template-columns: 56px minmax(0, 1fr) minmax(0, 1.2fr) auto;
+      gap: 14px 40px;
+      align-items: baseline;
+      padding: 28px 0;
+      border-top: 1px solid var(--hairline);
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .hub-row-name {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(21px, 2.4vw, 32px);
+      line-height: 1.02;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--fg);
+    }
+
+    .hub-row-angle {
+      display: block;
+    }
+
+    .hub-row-arrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .hub-row:hover .hub-row-arrow {
+      color: var(--fg);
+      text-decoration: underline;
+      text-underline-offset: 7px;
+    }
+
+    /* --- Sonura block --- */
+    .hub-sonura {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: clamp(32px, 5vw, 56px);
+    }
+
+    .hub-sonura-body p {
+      margin: 0 0 16px;
+      max-width: 620px;
+      font-size: 16px;
+    }
+
+    .hub-sonura-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .hub-facts {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hub-facts li {
+      display: grid;
+      gap: 8px;
+      padding: 18px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .hub-facts strong {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--fg);
+    }
+
+    .hub-facts span {
+      color: var(--muted);
+      font-size: 14px;
+      letter-spacing: 0.022em;
+      line-height: 1.7;
+    }
+
+    .hub-crosslink {
+      margin: clamp(32px, 5vw, 48px) 0 0;
+      max-width: 680px;
+    }
+
+    /* --- Final CTA --- */
+    .hub-final {
+      position: relative;
+      margin-top: clamp(56px, 8vw, 96px);
+      padding: clamp(48px, 7vw, 88px) clamp(28px, 4vw, 72px) clamp(150px, 20vw, 230px);
+      border: 1px solid var(--hairline);
+      overflow: hidden;
+    }
+
+    .hub-final::after {
+      content: '';
+      position: absolute;
+      left: clamp(12px, 2vw, 20px);
+      right: clamp(12px, 2vw, 20px);
+      bottom: clamp(12px, 2vw, 20px);
+      height: clamp(72px, 12vw, 150px);
+      background-image: url('/images/purple-grain-band-fade.webp');
+      background-image: image-set(
+        url('/images/purple-grain-band-fade.avif') type('image/avif'),
+        url('/images/purple-grain-band-fade.webp') type('image/webp')
+      );
+      background-size: 100% 100%;
+    }
+
+    .hub-final-h2 {
+      margin-bottom: 24px;
+      font-size: clamp(38px, 6vw, 84px);
+    }
+
+    .hub-final-sub {
+      margin: 0 0 40px;
+      max-width: 560px;
+      font-size: 16px;
+    }
+
+    .hub-final .button.primary {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+    }
+
+    .hub-final-footer {
+      margin: 28px 0 0;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    @media (min-width: 760px) {
+      .hub-sonura {
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hub-model-row,
+      .hub-row {
+        grid-template-columns: 44px minmax(0, 1fr);
+        gap: 12px 20px;
+      }
+
+      .hub-model-body,
+      .hub-row-angle,
+      .hub-row-arrow {
+        grid-column: 2;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hub-section {
+        padding: 44px 0 36px;
+      }
+    }
+  </style>
+</BaseLayout>

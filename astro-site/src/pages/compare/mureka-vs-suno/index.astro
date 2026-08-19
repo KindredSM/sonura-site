@@ -1,0 +1,130 @@
+---
+import ComparisonLayout from '../../../layouts/ComparisonLayout.astro';
+---
+
+<ComparisonLayout
+  slug="mureka-vs-suno"
+  a="mureka"
+  b="suno"
+  title="Mureka vs Suno (2026): Stems, MIDI and Vocals Compared | Sonura"
+  description="Mureka O2 vs Suno v5.5 on stem separation, MIDI export, voice cloning, and vocal quality. Verified August 2026, with the trade-off named."
+  keywords="mureka vs suno, suno vs mureka, mureka ai vs suno, mureka o2, mureka v7, suno v5.5, ai music stem separation, midi export ai music, suno alternative"
+  h1Tail="in 2026"
+  lede="mureka is the one people find after they hit suno's edges. it separates stems 5 and 12 ways, exports midi, clones voices, fine-tunes a custom model, and exposes all of it through an api. suno still sings better. which of those two facts matters more depends entirely on what happens after the track exists."
+  verdict={[
+    {
+      label: 'Best toolkit after generation',
+      pick: 'mureka',
+      body: '5-stem and 12-stem separation, midi export, region editing, song extend, remix, and fine-tuning, all available through an api.',
+    },
+    {
+      label: 'Best vocal performance',
+      pick: 'suno',
+      body: 'the most natural pop and r&b delivery in the category, with Voices and custom models trained on songs you own.',
+    },
+  ]}
+  headToHead={[
+    {
+      dimension: 'Stem separation',
+      a: '5-stem and 12-stem separation on any track you upload, with quality on par with dedicated separation tools.',
+      b: 'up to 12 stems, but only inside Suno Studio, and only on the top plan.',
+      winner: 'a',
+    },
+    {
+      dimension: 'MIDI export',
+      a: 'yes, alongside audio, which means the part goes into your daw as notes you can rewrite rather than audio you can only cut.',
+      b: 'midi comes out of Suno Studio, so it is there, behind the same top-plan gate as everything else in Studio.',
+      winner: 'tie',
+    },
+    {
+      dimension: 'Vocals',
+      a: 'lyrics-first with MusiCoT, and the O2 model is the best mureka has shipped, but suno is still the reference.',
+      b: 'the strongest vocal delivery available, and the thing suno is genuinely hardest to beat on.',
+      winner: 'b',
+    },
+    {
+      dimension: 'Voice cloning',
+      a: 'available on the Pro plan, and straightforward to use once you are on it.',
+      b: 'Voices lets you clone or reuse your own voice, with ownership verification required first.',
+      winner: 'tie',
+    },
+    {
+      dimension: 'Custom models',
+      a: 'a fine-tuning api, so you can train a model properly rather than nudge one, and call it from your own software.',
+      b: 'train a variant on at least six songs you own and verify, then generate biased toward your sound. simpler, less controllable.',
+      winner: 'a',
+    },
+    {
+      dimension: 'Building it into software',
+      a: 'a real api covering generation, extend, region edit, and stem extraction, plus soundtrack generation from image and video.',
+      b: 'a consumer product with an api story attached, rather than an api product with a consumer app attached.',
+      winner: 'a',
+    },
+    {
+      dimension: 'Editing a finished track',
+      a: 'region editing, song extend, remix, and lyrics video, so an almost-right take is fixable in place.',
+      b: 'Suno Studio is a genuine browser daw: take lanes, eq, faders, pan, warp markers, time signatures, and Remove FX.',
+      winner: 'b',
+    },
+    {
+      dimension: 'Community and documentation',
+      a: 'much thinner. you will be reading official docs rather than two years of forum posts about meta-tags.',
+      b: 'the largest body of shared prompting knowledge in the category, and it compounds.',
+      winner: 'b',
+    },
+  ]}
+  narrative={[
+    {
+      heading: 'Mureka is what suno looks like if you optimise for after',
+      body: `<p>suno spent its effort on the generation step and it shows: the vocal is the best in the category and that is what most people are buying. mureka spent its effort on everything that happens next. separation into 5 or 12 stems, midi out, region edits, extend, remix, fine-tuning, and an api that exposes all of it.</p><p>so the honest framing is not "which is better", it is <strong>which half of the workflow you actually struggle with</strong>. if getting a good take is your bottleneck, suno. if getting a good take apart is your bottleneck, mureka.</p>`,
+    },
+    {
+      heading: 'Separation is not the same as stems',
+      body: `<p>worth being precise, because the feature tables blur it. mureka's 5-stem and 12-stem features are <strong>separation</strong>: you hand it a finished mix and a model pulls the parts back out. it works well and it is genuinely useful, and it is still a reconstruction of parts that were mixed together, not the parts themselves.</p><p>that is fine for remixing, sampling, and rescuing something you already have. it is not the same as a tool that gives you the bassline as its own recording because it was never glued to anything. if you have ever heard separation artefacts on a busy chorus, you know the difference.</p>`,
+    },
+    {
+      heading: 'The fine-tuning gap is bigger than it looks',
+      body: `<p>both offer a "custom model". suno's version asks for at least six songs you can prove you own and gives you a private variant biased toward your sound. mureka exposes an actual fine-tuning api.</p><p>for one artist chasing a signature sound, suno's is easier and probably enough. for a studio, a label, or a product that needs a repeatable house sound across hundreds of generations, the api version is the one that can be versioned, tested, and called from your own code. that is a different category of tool wearing the same feature name.</p>`,
+    },
+  ]}
+  chooseA={[
+    'need stem separation without paying for a top-tier plan to get it',
+    'want midi out so parts arrive as notes rather than audio',
+    'are calling music generation from your own software through an api',
+    'want to fine-tune a model properly rather than nudge one',
+    'need region editing, extend, and remix on tracks you already have',
+  ]}
+  chooseB={[
+    'want the best vocal performance available today',
+    'want a real multitrack editor in the browser rather than a set of endpoints',
+    'benefit from a large community and two years of prompting knowledge',
+    'are making songs to release rather than building a system',
+    'prefer one polished product over a deeper but rougher toolkit',
+  ]}
+  faqs={[
+    {
+      question: 'Is Mureka better than Suno?',
+      answer: 'mureka is better at everything after generation: 5-stem and 12-stem separation, midi export, region editing, extend, remix, and a fine-tuning api. suno is better at generation itself, particularly vocals, and it has a genuine browser daw and a much larger community. pick based on which half of your workflow is the bottleneck.',
+    },
+    {
+      question: 'Does Mureka export stems and MIDI?',
+      answer: 'yes to both. mureka offers 5-stem and 12-stem separation on uploaded tracks with quality comparable to dedicated separation tools, and exports midi alongside audio. suno also exports midi and up to 12 stems, but only inside Suno Studio on the top plan.',
+    },
+    {
+      question: 'What is the latest Mureka model?',
+      answer: 'O2 is the current model, with the best audio quality and musical coherence mureka has shipped, and V7.5 from july 2025 is still selectable. mureka is made by Kunlun Tech and takes a lyrics-first approach using MusiCoT.',
+    },
+    {
+      question: 'Can I clone a voice in either one?',
+      answer: 'yes. mureka offers voice cloning on its Pro plan. suno offers Voices, which lets you clone or reuse your own voice after verifying you own it. both are gated behind paid tiers.',
+    },
+    {
+      question: 'Which has the better API?',
+      answer: 'mureka, clearly. its api covers track generation, song extension, region editing, and stem extraction, plus fine-tuning for a custom model and soundtrack generation from image and video. suno is a consumer product first, so mureka is the easier one to build software on top of.',
+    },
+    {
+      question: 'Is separated stems the same as real stems?',
+      answer: 'no. separation reconstructs parts from a finished mix, which works well and still leaves artefacts on dense material. generating parts separately in the first place avoids the problem entirely, which is how sonura works: loops, one-shots, and stems that were never glued together.',
+    },
+  ]}
+/>

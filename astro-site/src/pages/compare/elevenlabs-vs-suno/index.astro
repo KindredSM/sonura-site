@@ -1,0 +1,130 @@
+---
+import ComparisonLayout from '../../../layouts/ComparisonLayout.astro';
+---
+
+<ComparisonLayout
+  slug="elevenlabs-vs-suno"
+  a="elevenlabs"
+  b="suno"
+  title="ElevenLabs Music vs Suno (2026 Comparison) | Sonura"
+  description="ElevenLabs Music v2 vs Suno v5.5 on licensing, vocals, editing, stems, and commercial rights. Verified August 2026, including the film and TV carve-out."
+  keywords="elevenlabs vs suno, suno vs elevenlabs, elevenlabs music vs suno, elevenlabs music v2, suno v5.5, licensed ai music model, commercial rights ai music, suno alternative"
+  h1Tail="in 2026"
+  lede="elevenlabs built the rights story before it built the product, licensing through merlin and kobalt on a 50/50 split. suno built the product first and has been negotiating ever since. as of august 2026 that gives you the cleanest provenance on one side and the highest ceiling on the other."
+  verdict={[
+    {
+      label: 'Best rights story',
+      pick: 'elevenlabs',
+      body: 'trained only on licensed data through merlin and kobalt, with a 50/50 royalty split and commercial clearance built in from day one.',
+    },
+    {
+      label: 'Best output ceiling',
+      pick: 'suno',
+      body: 'the most natural vocals in the category, a browser daw, up to 12 stems, and the ecosystem most releases come out of.',
+    },
+  ]}
+  headToHead={[
+    {
+      dimension: 'Training data',
+      a: 'licensed only, through Merlin for roughly 30,000 indie labels and Kobalt for publishing, on a 50/50 royalty split with rights holders.',
+      b: 'a warner deal, with other label litigation still unresolved. materially better than a year ago, not finished.',
+      winner: 'a',
+    },
+    {
+      dimension: 'Commercial clearance',
+      a: 'cleared for commercial use, but self-serve plans carve out film, tv, and Studio Games. enterprise covers all of it.',
+      b: 'commercial rights on paid plans, with the underlying training question still open.',
+      winner: 'a',
+    },
+    {
+      dimension: 'Vocals',
+      a: 'good, and improving fast, but this is not where elevenlabs is beating the field on music.',
+      b: 'the strongest pop and r&b vocal delivery available, plus Voices for a reusable voice and custom models on your own catalogue.',
+      winner: 'b',
+    },
+    {
+      dimension: 'Editing what you made',
+      a: 'section inpainting and genre transitions, so you can rewrite eight bars or move between styles inside one track.',
+      b: 'Suno Studio: a full browser daw with take lanes, eq, faders, pan, warp markers, and time signatures.',
+      winner: 'b',
+    },
+    {
+      dimension: 'Stems',
+      a: 'no stem export. inpainting is the substitute and it is not the same thing.',
+      b: 'up to 12 stems, gated behind Suno Studio on the top plan.',
+      winner: 'b',
+    },
+    {
+      dimension: 'Building it into a product',
+      a: 'a proper api from a company whose whole business is audio api, which is why it keeps winning integration work.',
+      b: 'built as a consumer product first. good app, and not the obvious choice to wire into your own software.',
+      winner: 'a',
+    },
+    {
+      dimension: 'Where releases come from',
+      a: 'a smaller share of released music, and a much larger share of music inside other companies\' products.',
+      b: 'roughly 90 percent of commercially released tracks in this category in q1 2026.',
+      winner: 'b',
+    },
+    {
+      dimension: 'Predictability',
+      a: 'the licensing is contractual and written down, which makes the terms boring in the way legal teams like.',
+      b: 'suno has said current models get deprecated when the industry-partnered models land, so plan for change.',
+      winner: 'a',
+    },
+  ]}
+  narrative={[
+    {
+      heading: 'Read the carve-out before you assume you are covered',
+      body: `<p>"cleared for commercial use" is doing a lot of work in elevenlabs marketing, and it is broadly true. the detail that catches people is that on self-serve plans the clearance <strong>excludes film, tv, and Studio Games</strong>. enterprise plans cover everything.</p><p>so if you are scoring a short, cutting a trailer, or shipping a game, the plan you are probably on is not the plan you need. that is not a gotcha, it is written down, and it is exactly the sort of clause worth finding before the delivery deadline rather than after it.</p>`,
+    },
+    {
+      heading: 'Licensed is a claim with a paper trail behind it, or it is not',
+      body: `<p>the merlin and kobalt deals matter because they are opt-in partnerships with rights holders who share the revenue on a 50/50 split. that is a real economic arrangement, not a statement of intent, and at a moment when several competitors are in active litigation it is the cleanest provenance in the category.</p><p>one honest caveat, since this page is not a sales sheet: opt-in and revenue share operate at the <strong>rights holder, label, and publisher level</strong>, not per individual artist. that distinction was the subject of an artists' coalition letter in june 2026. it does not undo the licensing, it just means "every artist consented" is a stronger claim than anyone can actually make.</p>`,
+    },
+    {
+      heading: 'Different companies, different products',
+      body: `<p>suno is a consumer music product that happens to have an api story. elevenlabs is an audio infrastructure company that happens to have a music product. that shows up everywhere: suno has the browser daw, the community, the meta-tag lore, and the release share. elevenlabs has the api, the enterprise contract, and the legal department that already answered your compliance questionnaire.</p><p>if you are a musician, that points at suno. if you are putting music inside software you are shipping, it points at elevenlabs. very few people are genuinely choosing between them on sound alone.</p>`,
+    },
+  ]}
+  chooseA={[
+    'need licensed training data you can point a legal team at',
+    'are wiring music generation into your own product through an api',
+    'want to inpaint a section or transition genres inside one track',
+    'work at a company that will ask where the training data came from',
+    'are on, or can move to, an enterprise plan if film, tv, or games are involved',
+  ]}
+  chooseB={[
+    'want the most convincing vocal available today',
+    'need a multitrack editor and up to 12 stems without leaving the browser',
+    'are releasing music rather than shipping software',
+    'want two years of community prompting knowledge to draw on',
+    'can live with an unresolved paragraph in the training-data story',
+  ]}
+  faqs={[
+    {
+      question: 'Is ElevenLabs Music better than Suno?',
+      answer: 'for provenance and for building music into your own product, yes. elevenlabs music v2 trains only on licensed data through merlin and kobalt on a 50/50 royalty split, and its api is the better integration path. for the music itself, suno v5.5 still has the higher ceiling, particularly on vocals, and it has stems and a browser daw attached.',
+    },
+    {
+      question: 'Is ElevenLabs Music cleared for commercial use?',
+      answer: 'yes, with one important limit. on self-serve plans the commercial clearance excludes film, tv, and Studio Games. enterprise plans cover all uses. the underlying training data is licensed through merlin and kobalt with a 50/50 royalty split to rights holders, which is the clearest position in the category as of august 2026.',
+    },
+    {
+      question: 'Does ElevenLabs Music export stems?',
+      answer: 'no. it offers section inpainting and genre transitions instead, which lets you rewrite part of a track without regenerating the whole thing, but it does not hand you the drums and bass on separate tracks. suno gives you up to 12 stems on its top plan. sonura splits any track into stems on every paid plan.',
+    },
+    {
+      question: 'Which one is safer for a client project?',
+      answer: 'elevenlabs, on paper, as long as the project is not film, tv, or a game and you have read which plan you are on. its licensing is contractual and its rights holders share revenue. suno has a warner deal but unresolved litigation elsewhere, which is a harder conversation to have with a cautious client.',
+    },
+    {
+      question: 'What version of ElevenLabs Music is current?',
+      answer: 'music v2, released in may 2026, which added genre transitions and section inpainting. this page was verified on 18 august 2026.',
+    },
+    {
+      question: 'Did every artist consent to the ElevenLabs training data?',
+      answer: 'not individually. the merlin and kobalt deals are opt-in partnerships with rights holders, labels, and publishers who share revenue on a 50/50 split, and that operates at the rights holder level rather than per artist. an artists\' coalition letter in june 2026 made that distinction publicly. the licensing is real, the "every artist agreed" version of it is not.',
+    },
+  ]}
+/>
