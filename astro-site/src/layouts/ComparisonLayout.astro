@@ -617,7 +617,12 @@ const jsonLd = [
     }
 
     .cmp-verdict-cell.is-sonura .cmp-verdict-label {
-      color: var(--accent);
+      display: inline-block;
+      background: var(--primary);
+      color: var(--fg);
+      padding: 7px 12px;
+      border-radius: var(--radius-ui);
+      font-weight: 700;
     }
 
     .cmp-verdict-body {
@@ -677,10 +682,6 @@ const jsonLd = [
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--faint);
-    }
-
-    .cmp-table thead th.cmp-th-sonura .cmp-th-maker {
-      color: var(--accent);
     }
 
     .cmp-table tbody tr {
@@ -942,12 +943,16 @@ const jsonLd = [
     }
 
     .cmp-band-label {
-      margin: 0 0 10px;
+      margin: 0 0 14px;
       font-size: 11px;
-      font-weight: 600;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--accent);
+      display: inline-block;
+      background: var(--primary);
+      color: var(--fg);
+      padding: 7px 12px;
+      border-radius: var(--radius-ui);
+      font-weight: 700;
     }
 
     .cmp-band-line {
