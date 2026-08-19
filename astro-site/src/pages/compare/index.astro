@@ -4,7 +4,7 @@ import { MODELS, COMPARISONS, LAST_VERIFIED } from '../../data/music-models';
 
 const IN_SONURA = Object.values(MODELS).filter((m) => m.inSonura && m.slug !== 'sonura');
 
-const modelOrder = ['suno', 'minimax', 'elevenlabs', 'stable-audio', 'lyria', 'udio', 'mureka', 'riffusion'];
+const modelOrder = ['suno', 'minimax', 'elevenlabs', 'stable-audio', 'lyria', 'udio', 'mureka'];
 
 const jsonLd = [
   {
@@ -12,7 +12,7 @@ const jsonLd = [
     '@type': 'CollectionPage',
     name: 'AI Music Model Comparisons',
     description:
-      'Head to head comparisons of the current AI music generation models: Suno v5.5, MiniMax Music 3.0, ElevenLabs Music v2, Stable Audio 3, Google Lyria 3.5, Udio, Mureka O2, and Riffusion FUZZ.',
+      'Head to head comparisons of the current AI music generation models: Suno v5.5, MiniMax Music 3.0, ElevenLabs Music v2, Stable Audio 3, Google Lyria 3.5, Udio, and Mureka O2.',
     url: 'https://sonurastudio.com/compare/',
     dateModified: '2026-08-18',
   },
@@ -39,8 +39,8 @@ const jsonLd = [
 
 <BaseLayout
   title="AI Music Model Comparisons (2026) | Suno, MiniMax, Stable Audio"
-  description="Suno, Udio, Mureka, ElevenLabs Music, Lyria and Riffusion compared head to head on export, stems, vocals and licensing. Verified August 2026."
-  keywords="ai music model comparison, suno vs udio, minimax vs stable audio, best ai music generator 2026, ai song generator comparison, minimax music 3, stable audio 3, elevenlabs music v2, lyria 3.5, mureka o2, riffusion fuzz"
+  description="Suno, Udio, Mureka, ElevenLabs Music, Lyria and MiniMax compared head to head on export, stems, vocals and licensing. Verified August 2026."
+  keywords="ai music model comparison, suno vs udio, minimax vs stable audio, best ai music generator 2026, ai song generator comparison, minimax music 3, stable audio 3, elevenlabs music v2, lyria 3.5, mureka o2"
   canonical="https://sonurastudio.com/compare/"
   ogTitle="AI Music Model Comparisons (2026)"
   ogDescription="Every current music model, compared head to head on what you can actually do with the output."
