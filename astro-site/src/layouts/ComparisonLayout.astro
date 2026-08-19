@@ -37,9 +37,13 @@ interface Props {
   title: string;
   description: string;
   keywords: string;
-  /** overrides the default "A vs B" h1 */
+  /** overrides the default "A vs B" h1 entirely */
   headline?: string;
+  /** trailing fragment on the default h1, e.g. "in 2026" */
+  h1Tail?: string;
   lede: string;
+  /** direct one-paragraph answer to the "which is better" query, under the lede */
+  quickAnswer?: string;
   verdict: VerdictCard[];
   headToHead: HeadToHead[];
   narrative: NarrativeBlock[];
@@ -59,7 +63,9 @@ const {
   description,
   keywords,
   headline,
+  h1Tail,
   lede,
+  quickAnswer,
   verdict,
   headToHead,
   narrative,
@@ -97,7 +103,6 @@ const runHeading =
 if (!A || !B) throw new Error(`ComparisonLayout: unknown model key "${a}" or "${b}"`);
 
 const canonical = `https://sonurastudio.com/compare/${slug}/`;
-const h1 = headline || `${A.name} vs ${B.name}`;
 
 // Win tally, computed rather than authored so it can never contradict the rows.
 const winsA = headToHead.filter((row) => row.winner === 'a').length;
@@ -160,11 +165,21 @@ const jsonLd = [
     <header class="cmp-hero">
       <p class="section-kicker">Comparison / Verified {LAST_VERIFIED}</p>
       <h1 class="cmp-h1">
-        <span class="cmp-h1-name">{A.name}</span>
-        <span class="cmp-h1-vs">vs</span>
-        <span class="cmp-h1-name">{B.name}</span>
+        {headline ? (
+          headline
+        ) : (
+          <>
+            <span class="cmp-h1-name">{A.name}</span>
+            <span class="cmp-h1-vs">vs</span>
+            <span class="cmp-h1-name">{B.name}</span>
+            {h1Tail && <span class="cmp-h1-tail">{h1Tail}</span>}
+          </>
+        )}
       </h1>
       <p class="cmp-lede">{lede}</p>
+      {quickAnswer && (
+        <p class="cmp-quick-answer" set:html={quickAnswer} />
+      )}
 
       <div class="cmp-hero-actions">
         <a href={appUrl} class="button primary large"
@@ -493,6 +508,12 @@ const jsonLd = [
       letter-spacing: 0.12em;
     }
 
+    .cmp-h1-tail {
+      font-size: 0.42em;
+      color: var(--faint);
+      letter-spacing: 0.12em;
+    }
+
     .cmp-h2 {
       margin: 0 0 24px;
       font-family: var(--font-display);
@@ -535,6 +556,22 @@ const jsonLd = [
     /* ---------- Hero ---------- */
     .cmp-hero {
       padding-bottom: clamp(8px, 1.5vw, 16px);
+    }
+
+    .cmp-lede:has(+ .cmp-quick-answer) {
+      margin-bottom: 24px;
+    }
+
+    .cmp-quick-answer {
+      margin: 0 0 clamp(40px, 6vw, 64px);
+      padding-left: 20px;
+      border-left: 1px solid var(--hairline);
+      max-width: 660px;
+      color: var(--fg);
+      font-size: 17px;
+      letter-spacing: 0.022em;
+      word-spacing: 0.04em;
+      line-height: 1.8;
     }
 
     .cmp-lede {

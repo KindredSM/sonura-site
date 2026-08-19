@@ -2,7 +2,7 @@
  * Canonical spec sheet for the music models compared under /compare/.
  *
  * ONE source of truth: every comparison page renders its spec table from these
- * records, so a model update lands on all 12 pages at once. Keep every value
+ * records, so a model update lands on every comparison page at once. Keep every value
  * verifiable from a public source, and keep the voice rules from
  * DESIGN-SYSTEM.md §5 (prose is lowercase, no em dashes, no "AI" in headings).
  *
@@ -267,17 +267,10 @@ export function specValue(model: MusicModel, key: string): string {
 /** Every comparison page, in hub order. Used for the hub grid and the related rails. */
 export const COMPARISONS: { slug: string; a: string; b: string; angle: string }[] = [
   { slug: 'suno-vs-udio', a: 'suno', b: 'udio', angle: 'the market leader against the licensed walled garden' },
-  { slug: 'minimax-vs-suno', a: 'minimax', b: 'suno', angle: 'open weights you can host against the platform everyone uses' },
-  { slug: 'elevenlabs-vs-suno', a: 'elevenlabs', b: 'suno', angle: 'a clean rights story against the highest ceiling' },
-  { slug: 'minimax-vs-stable-audio', a: 'minimax', b: 'stable-audio', angle: 'the two open-weight models, pulling in opposite directions' },
-  { slug: 'stable-audio-vs-suno', a: 'stable-audio', b: 'suno', angle: 'sound design and score work against finished songs' },
-  { slug: 'lyria-vs-suno', a: 'lyria', b: 'suno', angle: 'a cloud building block against a consumer studio' },
   { slug: 'mureka-vs-suno', a: 'mureka', b: 'suno', angle: 'the deepest edit toolkit against the best vocals' },
+  { slug: 'elevenlabs-vs-suno', a: 'elevenlabs', b: 'suno', angle: 'a clean rights story against the highest ceiling' },
   { slug: 'riffusion-vs-suno', a: 'riffusion', b: 'suno', angle: 'free and generous against paid and polished' },
-  { slug: 'udio-vs-elevenlabs', a: 'udio', b: 'elevenlabs', angle: 'two licensed models, only one of which lets you leave with the file' },
-  { slug: 'elevenlabs-vs-stable-audio', a: 'elevenlabs', b: 'stable-audio', angle: 'licensed api against licensed open weights' },
-  { slug: 'minimax-vs-lyria', a: 'minimax', b: 'lyria', angle: 'run it yourself against run it on vertex' },
-  { slug: 'mureka-vs-minimax', a: 'mureka', b: 'minimax', angle: 'a finished toolkit against a raw checkpoint' },
+  { slug: 'lyria-vs-suno', a: 'lyria', b: 'suno', angle: 'a cloud building block against a consumer studio' },
 ];
 
 export const LAST_VERIFIED = '18 August 2026';

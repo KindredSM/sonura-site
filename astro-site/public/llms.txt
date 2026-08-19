@@ -82,17 +82,10 @@ Neutral, dated, model-against-model comparisons (not Sonura-against-competitor p
 
 - Comparison hub: https://sonurastudio.com/compare/
 - Suno vs Udio: https://sonurastudio.com/compare/suno-vs-udio/
-- MiniMax Music 3.0 vs Suno: https://sonurastudio.com/compare/minimax-vs-suno/
 - ElevenLabs Music v2 vs Suno: https://sonurastudio.com/compare/elevenlabs-vs-suno/
-- MiniMax Music 3.0 vs Stable Audio 3: https://sonurastudio.com/compare/minimax-vs-stable-audio/
-- Stable Audio 3 vs Suno: https://sonurastudio.com/compare/stable-audio-vs-suno/
 - Google Lyria vs Suno: https://sonurastudio.com/compare/lyria-vs-suno/
 - Mureka O2 vs Suno: https://sonurastudio.com/compare/mureka-vs-suno/
 - Riffusion FUZZ vs Suno: https://sonurastudio.com/compare/riffusion-vs-suno/
-- Udio vs ElevenLabs Music v2: https://sonurastudio.com/compare/udio-vs-elevenlabs/
-- ElevenLabs Music v2 vs Stable Audio 3: https://sonurastudio.com/compare/elevenlabs-vs-stable-audio/
-- MiniMax Music 3.0 vs Google Lyria: https://sonurastudio.com/compare/minimax-vs-lyria/
-- Mureka O2 vs MiniMax Music 3.0: https://sonurastudio.com/compare/mureka-vs-minimax/
 
 ## Full Documentation
 
