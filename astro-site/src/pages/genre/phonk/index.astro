@@ -1,0 +1,63 @@
+---
+import GenreLayout from '../../../layouts/GenreLayout.astro';
+
+const workflowItems = [
+  {
+    image: '/assets/workflow-design-final',
+    imageAlt: 'Design phonk beats in Sonura',
+    title: 'Describe your phonk beat',
+    description: 'Type prompts like "drift phonk 150 bpm with distorted 808s and cowbell" or "memphis phonk with dark vocal chops". Sonura understands both the classic Memphis sound and modern drift phonk.'
+  },
+  {
+    image: '/assets/workflow-compose-final',
+    imageAlt: 'Create phonk beats instantly',
+    title: 'Cowbells and distorted 808s',
+    description: 'Get your phonk beat in under 10 seconds, with the cowbell melody, saturated 808s, and lo-fi grit the genre runs on. Ready to drop straight into an edit.'
+  },
+  {
+    image: '/assets/workflow-collab-uncropped',
+    imageAlt: 'Export phonk stems to your DAW',
+    title: 'Take the stems',
+    description: 'Split any beat into stems on every plan, free included, then finish the distortion and mix in your DAW. Paid plans from $10 a month make the track exclusively yours.'
+  }
+];
+
+const faqs = [
+  {
+    question: 'What is phonk music?',
+    answer: 'Phonk is a subgenre built on 1990s Memphis rap: distorted 808s, cowbell melodies, chopped and screwed vocal samples, and deliberately lo-fi, saturated drums. Drift phonk, the strain that soundtracks car edits, pushes the cowbell to the front and typically sits around 140-160 bpm.'
+  },
+  {
+    question: 'How do I make phonk with Sonura?',
+    answer: 'Describe the beat you want: "drift phonk 150 bpm heavy cowbell" or "memphis phonk with dark piano and screwed vocals". Sonura\'s <a href="/tools/ai-beat-maker/">AI beat maker</a> builds the drums, 808s, and cowbell melody in one pass, then you take the stems into your DAW to push the saturation further.'
+  },
+  {
+    question: 'What is the difference between phonk and drift phonk?',
+    answer: 'Classic phonk leans on the Memphis rap sample tradition, with chopped vocals and murky drums. Drift phonk strips that back to a driving cowbell riff, hard distorted 808s, and a faster, more repetitive arrangement built for car and drift videos. Name the one you want in the prompt and you will get it.'
+  },
+  {
+    question: 'Can I use Sonura phonk beats commercially?',
+    answer: 'Paid plans from $10 a month give you exclusive commercial rights with no royalty splits, so you can release, sell, or license the track. Free tier creations are released as public domain (CC0), which means you can use them straight away but they are not exclusively yours.'
+  },
+  {
+    question: 'Can I export phonk stems for mixing?',
+    answer: 'Yes, on every plan including free. Split the beat into drums, 808s, cowbell, and vocal layers, then run your own distortion, saturation, and mix chain over the parts instead of working around a finished file.'
+  }
+];
+---
+
+<GenreLayout
+  genre="Phonk"
+  genreSlug="phonk"
+  title="Free Phonk Beat Maker | AI Drift Phonk Generator - Sonura"
+  description="Make phonk and drift phonk beats in seconds. Distorted 808s, cowbell melodies, and Memphis grit, with stem export on every plan. Free to start, no card needed."
+  keywords="phonk beat maker, phonk maker, drift phonk generator, ai phonk, make phonk online, memphis phonk maker, phonk music generator, free phonk beats, cowbell beat maker"
+  headline="Free Phonk Beat Maker"
+  subhead="Distorted 808s, cowbell melodies, and Memphis grit. Make phonk and drift phonk beats in under 10 seconds, then take the stems into your DAW."
+  ctaText="Create Phonk Beats"
+  workflowTitle="How to make phonk with AI"
+  workflowItems={workflowItems}
+  faqs={faqs}
+  finalCtaTitle="Start making phonk now"
+  finalCtaButtonText="Create Phonk Beats Free"
+/>
