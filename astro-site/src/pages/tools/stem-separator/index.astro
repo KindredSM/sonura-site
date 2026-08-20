@@ -54,7 +54,7 @@ const jsonLd = [
   }
 ];
 
-const appUrl = 'https://app.sonurastudio.com/';
+const appUrl = 'https://app.sonurastudio.com/tools/stem-separator';
 ---
 
 <BaseLayout
@@ -140,6 +140,8 @@ const appUrl = 'https://app.sonurastudio.com/';
     }
 
     .stem-tag {
+      display: block;
+      text-decoration: none;
       padding: 14px 16px;
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.06);
@@ -148,6 +150,12 @@ const appUrl = 'https://app.sonurastudio.com/';
       font-size: 14px;
       font-weight: 600;
       color: rgba(255, 255, 255, 0.7);
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .stem-tag:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+      color: var(--fg);
     }
 
     .info-section {
@@ -228,12 +236,12 @@ const appUrl = 'https://app.sonurastudio.com/';
     </a>
 
     <div class="stems-preview">
-      <div class="stem-tag">Vocals</div>
-      <div class="stem-tag">Drums</div>
-      <div class="stem-tag">Bass</div>
-      <div class="stem-tag">Guitar</div>
-      <div class="stem-tag">Piano</div>
-      <div class="stem-tag">Other</div>
+      <a href={appUrl} class="stem-tag">Vocals</a>
+      <a href={appUrl} class="stem-tag">Drums</a>
+      <a href={appUrl} class="stem-tag">Bass</a>
+      <a href={appUrl} class="stem-tag">Guitar</a>
+      <a href={appUrl} class="stem-tag">Piano</a>
+      <a href={appUrl} class="stem-tag">Other</a>
     </div>
 
     <div class="info-section">
