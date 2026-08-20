@@ -22,6 +22,10 @@ export default defineConfig({
     '/use-cases/electronic-producers': '/genre/edm/',
     '/use-cases/content-creators': '/use-cases/video-editors/',
     '/use-cases/hip-hop-producers': '/genre/hip-hop/',
+    // Riffusion became ProducerAI, Google acquired it in Feb 2026, and it is
+    // now Flow Music running Lyria 3.5 — so the live comparison is the Lyria
+    // one. Verified 2026-08-19 via riffusion.com -> producer.ai -> flowmusic.app.
+    '/compare/riffusion-vs-suno': '/compare/lyria-vs-suno/',
   },
   integrations: [
     sitemap({

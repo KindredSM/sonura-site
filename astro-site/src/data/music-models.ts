@@ -6,7 +6,7 @@
  * verifiable from a public source, and keep the voice rules from
  * DESIGN-SYSTEM.md §5 (prose is lowercase, no em dashes, no "AI" in headings).
  *
- * Last verified against public sources: 18 August 2026.
+ * Last verified against public sources: 19 August 2026.
  */
 
 export interface ModelSpecs {
@@ -81,7 +81,7 @@ export const MODELS: Record<string, MusicModel> = {
       stems: 'stem download is switched off during the transition',
       sonura: 'no, it only runs inside Udio',
       download: 'switched off: audio, stems, and video export are all disabled',
-      training: 'licensed through Universal Music Group, Warner Music, Merlin, and Kobalt, with a royalty pool for artists',
+      training: 'licensed through Universal Music Group, Warner Music, Merlin, and Kobalt, opt-in for the artists and songwriters at each',
       commercial: 'paid plans, and only inside the platform',
       weights: 'closed',
       access: 'web, as a closed platform you create and keep tracks inside',
@@ -94,7 +94,7 @@ export const MODELS: Record<string, MusicModel> = {
     short: 'MiniMax',
     maker: 'MiniMax',
     version: 'Music 3.0 (MiniMax-Music3)',
-    released: '17 August 2026',
+    released: '13 August 2026',
     oneLiner: 'the newest open-weights song model, and the first you can run on your own hardware end to end.',
     inSonura: true,
     specs: {
@@ -176,28 +176,6 @@ export const MODELS: Record<string, MusicModel> = {
     },
   },
 
-  riffusion: {
-    slug: 'riffusion',
-    name: 'Riffusion FUZZ',
-    short: 'Riffusion',
-    maker: 'Riffusion',
-    version: 'FUZZ',
-    released: 'public beta 2025, still free through 2026',
-    oneLiner: 'the one that stayed free while everyone else tightened the free tier.',
-    inSonura: false,
-    specs: {
-      length: 'around three minutes',
-      vocals: 'yes, full songs with lyrics rather than clips',
-      stems: 'no stem export',
-      sonura: 'no, it only runs inside Riffusion',
-      download: 'mp3',
-      training: 'not disclosed',
-      commercial: 'read the current terms before you release anything',
-      weights: 'closed',
-      access: 'web, free for as long as the gpus hold up',
-    },
-  },
-
   mureka: {
     slug: 'mureka',
     name: 'Mureka O2',
@@ -269,8 +247,7 @@ export const COMPARISONS: { slug: string; a: string; b: string; angle: string }[
   { slug: 'suno-vs-udio', a: 'suno', b: 'udio', angle: 'the market leader against the licensed walled garden' },
   { slug: 'mureka-vs-suno', a: 'mureka', b: 'suno', angle: 'the deepest edit toolkit against the best vocals' },
   { slug: 'elevenlabs-vs-suno', a: 'elevenlabs', b: 'suno', angle: 'a clean rights story against the highest ceiling' },
-  { slug: 'riffusion-vs-suno', a: 'riffusion', b: 'suno', angle: 'free and generous against paid and polished' },
   { slug: 'lyria-vs-suno', a: 'lyria', b: 'suno', angle: 'a cloud building block against a consumer studio' },
 ];
 
-export const LAST_VERIFIED = '18 August 2026';
+export const LAST_VERIFIED = '19 August 2026';

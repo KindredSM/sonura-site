@@ -12,6 +12,36 @@ import ComparisonLayout from '../../../layouts/ComparisonLayout.astro';
   h1Tail="in 2026"
   lede="this used to be a question about which one sounded better. it is now a question about whether you can keep what you make. udio settled with universal and became a closed platform, and audio, stem, and video downloads went off during the transition. suno kept shipping."
   quickAnswer="<strong>between these two, suno, but that is a narrower win than it sounds.</strong> udio has export switched off, so whatever it does well, you cannot leave with the track. that decides it on its own. what suno does not hand you is a settled answer on training data: it has a warner deal and it is still in litigation with labels it has not signed. so the honest read is that one of these two is usable today, and neither has finished the argument about whose music the model learned from. if that second part matters to you, the choice is not really between these two."
+  sources={[
+    {
+      label: 'Udio Help Center — changes associated with the Universal Music Group partnership (audio, video and stem downloads disabled)',
+      url: 'https://help.udio.com/en/articles/12683565-changes-associated-with-the-universal-music-group-umg-partnership',
+    },
+    {
+      label: 'Billboard — Udio allows downloads for 48 hours after the UMG settlement backlash',
+      url: 'https://www.billboard.com/pro/udio-deal-backlash-ai-users-download-ai-songs-48-hours/',
+    },
+    {
+      label: 'Suno — v5.5 release notes, 26 March 2026',
+      url: 'https://suno.com/blog/v5-5',
+    },
+    {
+      label: 'Warner Music Group and Suno partnership announcement, November 2025 (current models deprecated when the licensed models launch)',
+      url: 'https://www.prnewswire.com/news-releases/warner-music-group-and-suno-forge-groundbreaking-partnership-302626017.html',
+    },
+    {
+      label: 'Music Business Worldwide — UMG and Sony still litigating against Suno',
+      url: 'https://www.musicbusinessworldwide.com/suno-fights-to-keep-warner-music-settlement-terms-away-from-umg-and-sony/',
+    },
+    {
+      label: 'TechCrunch — Suno hits 2 million paid subscribers and $300M ARR, February 2026',
+      url: 'https://techcrunch.com/2026/02/27/ai-music-generator-suno-hits-2-million-paid-subscribers-and-300m-in-annual-recurring-revenue/',
+    },
+    {
+      label: 'Music Business Worldwide — Udio licensing deals with Universal, Warner, Merlin and Kobalt',
+      url: 'https://www.musicbusinessworldwide.com/after-universal-warner-and-merlin-deals-now-udio-inks-licensing-agreement-with-kobalt/',
+    },
+  ]}
   verdict={[
     {
       label: 'Best if you need the file',
@@ -21,7 +51,7 @@ import ComparisonLayout from '../../../layouts/ComparisonLayout.astro';
     {
       label: 'Best rights story',
       pick: 'udio',
-      body: 'licensed through universal, warner, merlin, and kobalt, with a royalty pool for artists. the cleanest provenance of the two by a distance.',
+      body: 'licensed through universal, warner, merlin, and kobalt, opt-in for the artists and songwriters signed to each. the cleanest provenance of the two by a distance.',
     },
   ]}
   headToHead={[
@@ -34,7 +64,7 @@ import ComparisonLayout from '../../../layouts/ComparisonLayout.astro';
     {
       dimension: 'Licensing and provenance',
       a: 'a deal with Warner Music, with other label litigation still unresolved. better than it was, not settled.',
-      b: 'settled with Universal in october 2025, then added Warner, Merlin, and Kobalt, with a royalty pool paying through to artists.',
+      b: 'settled with Universal in october 2025, then added Warner, Merlin, and Kobalt, opt-in for the artists and songwriters at each.',
       winner: 'b',
     },
     {
@@ -81,7 +111,7 @@ import ComparisonLayout from '../../../layouts/ComparisonLayout.astro';
     },
     {
       heading: 'Two different bets on how this gets legal',
-      body: `<p>udio took the settlement route. it paid, it partnered, and it rebuilt around licensed catalogues from universal, warner, merlin, and kobalt with a royalty pool that pays artists whose work influenced the model. that is the most defensible position anyone in this category holds, and it cost udio its open door to do it.</p><p>suno took the ship-and-negotiate route. it has a warner deal and the rest is still moving. it also has the market, the revenue, and the release share, which buys time that udio did not have. <strong>neither bet is finished, and both companies are asking you to be comfortable with an unresolved paragraph in the terms.</strong></p>`,
+      body: `<p>udio took the settlement route. it paid, it partnered, and it rebuilt around licensed catalogues from universal, warner, merlin, and kobalt on an opt-in basis for the artists and songwriters involved. that is the most defensible position anyone in this category holds, and it cost udio its open door to do it.</p><p>suno took the ship-and-negotiate route. it has a warner deal and the rest is still moving. it also has the market, the revenue, and the release share, which buys time that udio did not have. <strong>neither bet is finished, and both companies are asking you to be comfortable with an unresolved paragraph in the terms.</strong></p>`,
     },
     {
       heading: 'What "deprecated" means for the songs you already made',
@@ -99,7 +129,7 @@ import ComparisonLayout from '../../../layouts/ComparisonLayout.astro';
     'want the clearest licensing position in the category, on paper',
     'are fine creating and keeping tracks inside one platform for now',
     'work somewhere that will ask who the training data belonged to',
-    'want artists whose work shaped the model to be paid through a royalty pool',
+    'want the artists whose catalogues trained it to have opted in first',
     'can wait out the transition rather than shipping this month',
   ]}
   faqs={[

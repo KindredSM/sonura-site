@@ -44,6 +44,8 @@ interface Props {
   lede: string;
   /** direct one-paragraph answer to the "which is better" query, under the lede */
   quickAnswer?: string;
+  /** public sources behind the dated claims, shown under the verified stamp */
+  sources?: { label: string; url: string }[];
   verdict: VerdictCard[];
   headToHead: HeadToHead[];
   narrative: NarrativeBlock[];
@@ -66,6 +68,7 @@ const {
   h1Tail,
   lede,
   quickAnswer,
+  sources = [],
   verdict,
   headToHead,
   narrative,
@@ -315,6 +318,19 @@ const jsonLd = [
       >
     </aside>
 
+    {sources.length > 0 && (
+      <section class="cmp-sources">
+        <p class="section-kicker">Sources / Verified {LAST_VERIFIED}</p>
+        <ul class="cmp-sources-list">
+          {sources.map((src) => (
+            <li>
+              <a href={src.url} target="_blank" rel="noopener nofollow">{src.label}</a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
     <!-- ============ 03 NARRATIVE ============ -->
     <section class="cmp-section" id="the-catch">
       <p class="section-kicker">03 / The catch</p>
@@ -560,6 +576,32 @@ const jsonLd = [
 
     .cmp-lede:has(+ .cmp-quick-answer) {
       margin-bottom: 24px;
+    }
+
+    .cmp-sources {
+      margin: clamp(40px, 6vw, 64px) 0 0;
+      padding-top: 24px;
+      border-top: 1px solid var(--hairline);
+    }
+
+    .cmp-sources-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 8px;
+      max-width: 660px;
+    }
+
+    .cmp-sources-list a {
+      color: var(--muted);
+      font-size: 14px;
+      letter-spacing: 0.02em;
+      line-height: 1.6;
+    }
+
+    .cmp-sources-list a:hover {
+      color: var(--fg);
     }
 
     .cmp-quick-answer {
