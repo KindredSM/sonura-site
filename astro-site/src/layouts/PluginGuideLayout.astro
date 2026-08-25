@@ -32,6 +32,7 @@ interface Props {
   faqs: Faq[];
   relatedGuides?: GuideLink[];
   ctaText?: string;
+  publishedDate: string;
 }
 
 const {
@@ -48,6 +49,7 @@ const {
   faqs,
   relatedGuides = [],
   ctaText = 'Download the plugin',
+  publishedDate,
 } = Astro.props;
 
 const canonical = `https://sonurastudio.com/plugin/${slug}/`;
@@ -59,6 +61,7 @@ const jsonLd = [
     "@type": "TechArticle",
     "headline": headline,
     "description": description,
+    "datePublished": publishedDate,
     "author": { "@type": "Organization", "name": "Sonura" },
     "publisher": {
       "@type": "Organization",
