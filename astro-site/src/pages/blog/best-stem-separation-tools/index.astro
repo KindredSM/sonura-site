@@ -1,0 +1,66 @@
+---
+import BlogLayout from '../../../layouts/BlogLayout.astro';
+
+const toc = [
+  { id: 'approaches', label: 'The approaches, in order' },
+  { id: 'what-this-means', label: 'What this means practically' },
+  { id: 'where-sonura-fits', label: 'Where Sonura fits' },
+  { id: 'faq', label: 'FAQ' },
+];
+---
+
+<BlogLayout
+  title="Best Stem Separation Tools Compared | Sonura"
+  h1="Best Stem Separation Tools Compared"
+  description="The best stem separation tools compared: phase cancellation, spectral masking, waveform, and hybrid models explained, plus how to pick the best stem splitter for your workflow."
+  keywords="best stem separation tools, stem splitter comparison, stem separator, phase cancellation vs spectral masking, hybrid demucs"
+  slug="best-stem-separation-tools"
+  publishedDate="2026-08-24"
+  readTime="4 min read"
+  toc={toc}
+>
+  <div style="line-height: 1.8;">
+    <p style="margin-bottom: 24px;">Stem separation tools span a wider range of approaches than most comparison posts let on. The approach a tool uses tells you more about what to expect than any marketing copy does. Here's the actual landscape, oldest to newest.</p>
+
+    <section id="approaches" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">The Approaches, in Order</h2>
+      <p style="margin-bottom: 24px;">Phase cancellation is the oldest trick in the book: invert one stereo channel, sum to mono, and anything panned dead center cancels out. It's not real separation, just a side effect of stereo mixing, and it collapses the whole track to mono while killing the kick and bass along with the vocal. No modern tool relies on this alone.</p>
+      <p style="margin-bottom: 24px;">Spectral masking came next. Tools like Spleeter (Deezer, 2019) and Open-Unmix predict a mask over the frequency picture, then rebuild audio using the original mix's phase. This produces multiple real stems instead of two, a real step up from phase cancellation. Reusing the original phase causes the watery, smeared sound older free tools are known for.</p>
+      <p style="margin-bottom: 24px;">Waveform models predict the actual audio samples directly instead of masking a spectrogram. Better sound, heavier to run.</p>
+      <p style="margin-bottom: 24px;">Hybrid models are the newest generation. They run a waveform branch and a spectrogram branch together, joined by a transformer, combining the strengths of both approaches instead of picking one.</p>
+      <p style="margin-bottom: 24px;">Proprietary systems like LALAL.AI, Moises, and iZotope RX don't publish their underlying architecture. They're worth mentioning as a category, but not something to compare on internals, since there's no way to verify what's actually running under the hood.</p>
+    </section>
+
+    <section id="what-this-means" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">What This Means Practically</h2>
+      <p style="margin-bottom: 24px;">A few things matter when you're comparing options. Stem count matters first: two-stem (vocals/instrumental) is a different job than full six-stem separation, and not every free tool offers both. Output format matters too, lossless WAV vs. compressed MP3, if the stems are going into further production work. Check the file length and format limits on the free tier, since every tool draws that line somewhere. And a transparent answer about what model a tool runs, even if it's not required, is a reasonable trust signal.</p>
+    </section>
+
+    <section id="where-sonura-fits" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Where Sonura Fits</h2>
+      <p style="margin-bottom: 24px;">Sonura's <a href="/tools/stem-separator/" class="text-link">stem separator</a> runs Demucs, specifically Hybrid Transformer Demucs (HTDemucs), the open source model from Meta AI Research that popularized this hybrid approach. The fine-tuned version handles two-stem splits, the standard version handles the full six-stem breakdown. On the MUSDB18-HQ benchmark, the fine-tuned model scores about 9.19 dB median SDR, a published Demucs figure, not a Sonura measurement. It's built into a broader tool for producers rather than existing as a single-purpose utility, so a separated stem can go straight into further work in the same place instead of dead-ending after the download.</p>
+    </section>
+
+    <section id="faq" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">FAQ</h2>
+
+      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; margin-top: 32px;">Is a more expensive stem separator necessarily better?</h3>
+      <p style="margin-bottom: 24px;">Not automatically. Price often reflects the surrounding product, storage, editing tools, subscription model, more than raw separation quality. The model underneath matters more than the price tag.</p>
+
+      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; margin-top: 32px;">Can I trust a tool's own claims about beating other tools?</h3>
+      <p style="margin-bottom: 24px;">Treat any "better than X" claim with the same scrutiny you'd want applied to this article. Ask whether it's backed by a real, disclosed measurement, or just a marketing line.</p>
+
+      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; margin-top: 32px;">Do free and paid stem separators actually use different models?</h3>
+      <p style="margin-bottom: 24px;">Sometimes, sometimes not. A free tier is often a usage-limited version of the same underlying model as the paid tier, not a lesser model entirely.</p>
+
+      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; margin-top: 32px;">Is there one best stem splitter for everyone?</h3>
+      <p style="margin-bottom: 24px;">Not really. The best stem splitter depends on the job: whether it needs two stems or six, and whether DAW-ready extras matter more than a single-purpose tool. Match the tool to the job rather than chasing a single universal winner.</p>
+
+      <div style="padding: 32px; margin-top: 48px; text-align: center;">
+        <h3 style="font-size: 24px; font-weight: 700; line-height: 1.3; margin: 0 0 16px;">Try a Hybrid-Model Stem Separator</h3>
+        <p style="margin-bottom: 24px; color: var(--muted);">Split any track into two or six stems with Sonura's Demucs-based separator, then take the result straight into further production.</p>
+        <a href="/tools/stem-separator/" class="button primary large"><span class="btn-label-full">Try Stem Separator Free</span><span class="btn-label-short">Try it free</span></a>
+      </div>
+    </section>
+  </div>
+</BlogLayout>
