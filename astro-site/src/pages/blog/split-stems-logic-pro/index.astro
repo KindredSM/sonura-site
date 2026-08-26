@@ -1,0 +1,68 @@
+---
+import BlogLayout from '../../../layouts/BlogLayout.astro';
+
+const toc = [
+  { id: 'actual-workflow', label: 'The actual workflow' },
+  { id: 'before-you-start', label: 'Before you start' },
+  { id: 'where-flow-fits', label: 'Where Sonura Flow fits in' },
+  { id: 'faq', label: 'FAQ' },
+];
+---
+
+<BlogLayout
+  title="How to Split Stems in Logic Pro (Without Losing Quality) | Sonura"
+  h1="How to Split Stems in Logic Pro (Without Losing Quality)"
+  description="How to split stems in Logic Pro without losing quality. A step-by-step stem splitter workflow for importing and aligning stems in your session."
+  keywords="split stems logic pro, stem splitter, import stems logic pro, logic pro stem separation, stem separator"
+  slug="split-stems-logic-pro"
+  publishedDate="2026-08-26"
+  readTime="4 min read"
+  toc={toc}
+>
+  <div style="line-height: 1.8;">
+    <p style="margin-bottom: 24px;">Logic Pro's built-in stem splitter only works on Apple Silicon Macs, and it splits into a fixed set of stems rather than the full breakdown most mixing work actually needs. If you're on an Intel Mac, or the session calls for a full six-stem split rather than whatever Logic's version gives you, separating the track externally first is the more reliable path. Getting the import right matters just as much as the separation itself. Get it wrong and things drift out of time or lose quality before you've even started mixing.</p>
+
+    <section id="actual-workflow" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">The Actual Workflow</h2>
+      <ol style="margin-bottom: 24px; padding-left: 24px;">
+        <li style="margin-bottom: 12px;"><strong>Separate the track first, outside Logic.</strong> Upload the song to Sonura's <a href="/tools/stem-separator/" class="text-link">stem separator</a> in a browser. Choose either the two-stem split (vocals and instrumental) or the full six-stem breakdown (vocals, drums, bass, guitar, piano, other), then download the result as WAV for lossless quality. MP3 works too, but WAV skips a second round of lossy compression before the file even reaches your session.</li>
+        <li style="margin-bottom: 12px;"><strong>Create a new track in Logic for each stem.</strong> Keep drums, bass, vocals, and anything else on their own lanes rather than stacking everything onto one track. That's what lets you mute, process, and mix each piece independently.</li>
+        <li style="margin-bottom: 12px;"><strong>Drag each stem file onto its matching track, starting from bar 1</strong> (or wherever the original track started). All the stems came from the same separation pass on the same source file, so they're already time-aligned. No manual syncing needed. Logic will usually prompt to conform the file to your project's sample rate on import, accept that. If you're bringing stems into a session that already has tracks built out, use "copy and adjust" (the bottom option in that dialog) rather than letting it change your project settings to match the file.</li>
+        <li style="margin-bottom: 12px;"><strong>Zoom in and check the start and end of each stem before doing anything else.</strong> Separation occasionally leaves a few milliseconds of silence or a faint artifact at the boundaries. Easy to trim in Logic's sample editor if it's there, and just as often, it isn't.</li>
+        <li style="margin-bottom: 12px;"><strong>From here it's a normal Logic session.</strong> EQ, compress, reroute to busses, or replace one stem entirely, whatever the project calls for.</li>
+      </ol>
+    </section>
+
+    <section id="before-you-start" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">A Couple of Things to Keep in Mind Before You Start</h2>
+      <p style="margin-bottom: 24px;">Two-stem and six-stem are different jobs, not different quality levels of the same job. If the plan only needs vocals removed or isolated, the two-stem split is the right tool for that. Sample rate and bit depth should match your session settings where possible, so nothing gets resampled on import, and WAV exports preserve this correctly. And you need rights to the source recording for anything beyond your own practice or private reference use. Separating a track doesn't change who owns the underlying song.</p>
+    </section>
+
+    <section id="where-flow-fits" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Where Sonura Flow Fits In, if It's Relevant to the Session</h2>
+      <p style="margin-bottom: 24px;">Separated stems handle the "I already have a track and need its parts" side of things. Sometimes a session also calls for new material that doesn't exist in any source track yet: drums, a bassline, a vocal chop. That's a different job entirely, creation rather than separation. <a href="/plugin/" class="text-link">Sonura Flow</a>, the DAW plugin, handles that side directly inside Logic as an AU plugin, without needing to leave the session to render anything.</p>
+    </section>
+
+    <section id="faq" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">FAQ</h2>
+
+      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; margin-top: 32px;">Doesn't Logic Pro already have a stem splitter built in?</h3>
+      <p style="margin-bottom: 24px;">On Apple Silicon Macs, yes, Logic Pro includes a built-in stem splitter. It's limited to a fixed set of stems and isn't available on Intel Macs. For a full six-stem breakdown or a cross-platform workflow, separating externally first is the more flexible option.</p>
+
+      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; margin-top: 32px;">Will imported stems be perfectly in time with each other?</h3>
+      <p style="margin-bottom: 24px;">Yes. All the stems came from one separation pass on the same source file, so they share the same timing as the original track.</p>
+
+      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; margin-top: 32px;">Does it matter if I export stems as MP3 instead of WAV?</h3>
+      <p style="margin-bottom: 24px;">WAV is lossless and generally the better choice for further production work. MP3 is smaller and fine for quick reference, but it's already been compressed once before it even reaches Logic.</p>
+
+      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; margin-top: 32px;">Can I use Sonura Flow to separate stems too, or only to create new audio?</h3>
+      <p style="margin-bottom: 24px;">Sonura Flow is built for creating new audio inside the session. Stem separation happens through Sonura's separator online, then the resulting files get imported into Logic as usual.</p>
+
+      <div style="padding: 32px; margin-top: 48px; text-align: center;">
+        <h3 style="font-size: 24px; font-weight: 700; line-height: 1.3; margin: 0 0 16px;">Get Session-Ready Stems for Logic Pro</h3>
+        <p style="margin-bottom: 24px; color: var(--muted);">Split any track into two or six lossless stems, then drag them straight into your Logic Pro session.</p>
+        <a href="/tools/stem-separator/" class="button primary large"><span class="btn-label-full">Try Stem Separator Free</span><span class="btn-label-short">Try it free</span></a>
+      </div>
+    </section>
+  </div>
+</BlogLayout>
