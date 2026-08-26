@@ -22,11 +22,11 @@ const toc = [
   toc={toc}
 >
   <div style="line-height: 1.8;">
-    <p style="margin-bottom: 24px;">Pulling a clean drum stem out of a finished track used to require the multitrack session, or a producer who'd kept their stems around. Now it's a separation job. Upload a mixed song to a <a href="/tools/stem-separator/" class="text-link">stem separator</a>, run it through Demucs, and download just the drum part.</p>
+    <p style="margin-bottom: 24px;">Pulling a clean drum stem out of a finished track used to require the multitrack session, or a producer who'd kept their stems around. Now it's a separation job. Upload a mixed song to a <a href="/tools/stem-separator/" class="text-link">stem separator</a>, run the six-stem split, and download just the drum part.</p>
 
     <section id="six-stem-split" style="margin-bottom: 48px;">
       <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Why This Needs the Full Six-Stem Split, Not the Quick Two-Stem One</h2>
-      <p style="margin-bottom: 24px;">Sonura's stem separator runs Demucs, the open source separation model from Meta AI Research, in two configurations. Vocals-and-instrumental (the two-stem split) uses the fine-tuned version, built for a simpler job. Getting an actual isolated drum track means running the full six-stem separation instead: vocals, drums, bass, guitar, piano, and everything else, on the standard version. Drums, bass, and vocals come out the strongest of the six. Guitar and piano are the known soft spots to watch for if a track leans heavily on either.</p>
+      <p style="margin-bottom: 24px;">Sonura's stem separator runs Sonura Split in two configurations. Vocals-and-instrumental (the two-stem split) uses the configuration built for that simpler job. Getting an actual isolated drum track means running the full six-stem separation instead: vocals, drums, bass, guitar, piano, and everything else. Drums, bass, and vocals come out the strongest of the six. Guitar and piano are the known soft spots to watch for if a track leans heavily on either.</p>
       <p style="margin-bottom: 24px;">This matters even more for drums than for other stems. Kicks and snares are quick, sharp hits, and older separation methods often lost detail and smeared them. Sonura's separator generates the actual drum audio instead of just filtering it out of the original mix, which is why the hits stay tight and clean.</p>
     </section>
 
