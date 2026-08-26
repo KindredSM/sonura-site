@@ -34,7 +34,7 @@ const toc = [
 
     <section id="two-stems-pass" style="margin-bottom: 48px;">
       <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Two Stems Is Its Own Separation Pass, Not a Shortcut</h2>
-      <p style="margin-bottom: 24px;">Sonura's vocal remover runs Demucs, specifically the fine-tuned htdemucs_ft version, to produce two stems: vocals and instrumental. The six-stem separation (vocals, drums, bass, guitar, piano, other) runs the standard version instead. Getting a clean two-stem acapella isn't a lighter version of the full job. It's built by separating all six sources with the stronger model, then summing everything except the vocal back into one instrumental file.</p>
+      <p style="margin-bottom: 24px;">Sonura's vocal remover runs the two-stem configuration of Sonura Split to produce vocals and instrumental. The six-stem separation (vocals, drums, bass, guitar, piano, other) runs a different configuration. Getting a clean two-stem acapella isn't a lighter version of the full job. It's built by separating the sources with the configuration tuned for that job, then summing everything except the vocal back into one instrumental file.</p>
     </section>
 
     <section id="getting-acapella-out" style="margin-bottom: 48px;">

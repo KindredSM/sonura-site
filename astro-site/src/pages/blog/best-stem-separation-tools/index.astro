@@ -13,7 +13,7 @@ const toc = [
   title="Best Stem Separation Tools Compared | Sonura"
   h1="Best Stem Separation Tools Compared"
   description="The best stem separation tools compared: phase cancellation, spectral masking, waveform, and hybrid models explained, plus how to pick the best stem splitter for your workflow."
-  keywords="best stem separation tools, stem splitter comparison, stem separator, phase cancellation vs spectral masking, hybrid demucs"
+  keywords="best stem separation tools, stem splitter comparison, stem separator, phase cancellation vs spectral masking, hybrid separation models"
   slug="best-stem-separation-tools"
   publishedDate="2026-08-24"
   readTime="4 min read"
@@ -35,12 +35,12 @@ const toc = [
 
     <section id="what-this-means" style="margin-bottom: 48px;">
       <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">What This Means Practically</h2>
-      <p style="margin-bottom: 24px;">A few things matter when you're comparing options. Stem count matters first: two-stem (vocals/instrumental) is a different job than full six-stem separation, and not every free tool offers both. Output format matters too, lossless WAV vs. compressed MP3, if the stems are going into further production work. Check the file length and format limits on the free tier, since every tool draws that line somewhere. And a transparent answer about what model a tool runs, even if it's not required, is a reasonable trust signal.</p>
+      <p style="margin-bottom: 24px;">A few things matter when you're comparing options. Stem count matters first: two-stem (vocals/instrumental) is a different job than full six-stem separation, and not every free tool offers both. Output format matters too, lossless WAV vs. compressed MP3, if the stems are going into further production work. Check the file length and format limits on the free tier, since every tool draws that line somewhere. And a clear answer about what happens to your audio, how long files are kept, and what the free tier actually allows is a reasonable trust signal.</p>
     </section>
 
     <section id="where-sonura-fits" style="margin-bottom: 48px;">
       <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Where Sonura Fits</h2>
-      <p style="margin-bottom: 24px;">Sonura's <a href="/tools/stem-separator/" class="text-link">stem separator</a> runs Demucs, specifically Hybrid Transformer Demucs (HTDemucs), the open source model from Meta AI Research that popularized this hybrid approach. The fine-tuned version handles two-stem splits, the standard version handles the full six-stem breakdown. On the MUSDB18-HQ benchmark, the fine-tuned model scores about 9.19 dB median SDR, a published Demucs figure, not a Sonura measurement. It's built into a broader tool for producers rather than existing as a single-purpose utility, so a separated stem can go straight into further work in the same place instead of dead-ending after the download.</p>
+      <p style="margin-bottom: 24px;">Sonura's <a href="/tools/stem-separator/" class="text-link">stem separator</a> runs Sonura Split, a hybrid separator in the newest generation described above: a waveform branch and a spectrogram branch working together rather than one or the other. It runs in two configurations, one tuned for the two-stem vocal and instrumental split and one for the full six-stem breakdown, so neither job is a compromise made to serve the other. It's built into a broader tool for producers rather than existing as a single-purpose utility, so a separated stem can go straight into further work in the same place instead of dead-ending after the download.</p>
     </section>
 
     <section id="faq" style="margin-bottom: 48px;">
@@ -60,7 +60,7 @@ const toc = [
 
       <div style="padding: 32px; margin-top: 48px; text-align: center;">
         <h3 style="font-size: 24px; font-weight: 700; line-height: 1.3; margin: 0 0 16px;">Try a Hybrid-Model Stem Separator</h3>
-        <p style="margin-bottom: 24px; color: var(--muted);">Split any track into two or six stems with Sonura's Demucs-based separator, then take the result straight into further production.</p>
+        <p style="margin-bottom: 24px; color: var(--muted);">Split any track into two or six stems with Sonura Split, then take the result straight into further production.</p>
         <a href="/tools/stem-separator/" class="button primary large"><span class="btn-label-full">Try Stem Separator Free</span><span class="btn-label-short">Try it free</span></a>
       </div>
     </section>

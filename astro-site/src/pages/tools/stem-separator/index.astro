@@ -1,329 +1,865 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-
-const jsonLd = [
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "AI Stem Separator Tool",
-    "url": "https://sonurastudio.com/tools/stem-separator/",
-    "applicationCategory": "MusicApplication",
-    "operatingSystem": "Web Browser",
-    "description": "Free AI stem separator tool. Separate vocals, drums, bass, and instruments from any audio file. Extract stems in seconds with advanced AI.",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sonurastudio.com/" },
-      { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://sonurastudio.com/tools/" },
-      { "@type": "ListItem", "position": 3, "name": "Stem Separator", "item": "https://sonurastudio.com/tools/stem-separator/" }
-    ]
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is stem separation?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Stem separation is the process of using AI to split a mixed audio track into individual components like vocals, drums, bass, guitar, piano, and other instruments. This allows you to isolate, remix, or remove specific elements from a song." }
-      },
-      {
-        "@type": "Question",
-        "name": "What formats are supported?",
-        "acceptedAnswer": { "@type": "Answer", "text": "The stem separator supports WAV and MP3 input files. You can export your separated stems as either WAV (lossless) or MP3 (compressed) format." }
-      },
-      {
-        "@type": "Question",
-        "name": "Is stem separation free?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Sonura offers free stem separation with limited credits. You can separate several tracks for free each month. For unlimited separations and advanced features, check out our premium plans." }
-      },
-      {
-        "@type": "Question",
-        "name": "How accurate is AI stem separation?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Modern AI stem separation is highly accurate, typically achieving 95%+ separation quality on well-mixed tracks. The accuracy depends on the source material quality and how distinct each element is in the mix." }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I use separated stems commercially?",
-        "acceptedAnswer": { "@type": "Answer", "text": "You can use our stem separation tool commercially, but you must own the rights to the original audio file or have permission from the copyright holder. Separating copyrighted music does not grant you rights to use the stems commercially." }
-      }
-    ]
-  }
-];
+import fs from 'node:fs';
+import path from 'node:path';
+import ToolLayout from '../../../layouts/ToolLayout.astro';
 
 const appUrl = 'https://app.sonurastudio.com/tools/stem-separator';
+
+/* ------------------------------------------------------------------
+   Separation console (hero illustration)
+   Waveform heights are generated at build time from deterministic
+   functions, so the panel renders identically on every build and works
+   with JavaScript disabled. The client script only recomputes the mix
+   row when a lane is toggled.
+   ------------------------------------------------------------------ */
+const BARS = 128;
+
+/* deterministic hash in 0..1 — a stand-in for noise, stable across builds */
+const jitter = (i: number, seed: number) => {
+  const x = Math.sin(i * 12.9898 + seed * 78.233) * 43758.5453;
+  return x - Math.floor(x);
+};
+
+const inPhrase = (i: number) => {
+  const t = i / BARS;
+  return (t >= 0.13 && t <= 0.37) || (t >= 0.46 && t <= 0.69) || (t >= 0.77 && t <= 0.97);
+};
+
+const shape: Record<string, (i: number) => number> = {
+  /* sustained phrases with breaths between them */
+  vocals: (i) => (inPhrase(i) ? 0.38 + 0.42 * Math.abs(Math.sin(i * 0.31)) + 0.08 * jitter(i, 1) : 0.03),
+  /* kick on the one, snare on the three, hats between */
+  drums: (i) => (i % 8 === 0 ? 0.98 : i % 8 === 4 ? 0.84 : i % 2 === 0 ? 0.26 : 0.14 + 0.1 * jitter(i, 2)),
+  /* low undulation, always present */
+  bass: (i) => 0.36 + 0.22 * Math.sin(i * 0.15) + 0.07 * jitter(i, 3),
+  /* chord blocks: five bars on, three off */
+  guitar: (i) => (i % 8 < 5 ? 0.3 + 0.24 * Math.abs(Math.sin(i * 0.4)) : 0.04),
+  /* sparse stabs that decay over three bars */
+  piano: (i) => (i % 12 === 0 ? 0.7 : i % 12 === 1 ? 0.4 : i % 12 === 2 ? 0.2 : i % 12 === 3 ? 0.1 : 0.04),
+  /* room, fx, texture */
+  other: (i) => 0.08 + 0.1 * Math.abs(Math.sin(i * 0.5)) + 0.05 * jitter(i, 4),
+};
+
+const lanes = [
+  { key: 'vocals', name: 'vocals', note: 'lead and backing' },
+  { key: 'drums', name: 'drums', note: 'kick, snare, hats' },
+  { key: 'bass', name: 'bass', note: 'sub and bassline' },
+  { key: 'guitar', name: 'guitar', note: 'rhythm and lead' },
+  { key: 'piano', name: 'piano', note: 'keys and pads' },
+  { key: 'other', name: 'other', note: 'everything left' },
+];
+
+/* ------------------------------------------------------------------
+   Real audio, when it exists.
+
+   scripts/build-stem-waveforms.mjs takes six separated stems, trims and
+   encodes them into public/music/demo/stems/<slug>/, and writes the peak
+   envelopes to src/data/stem-demo.json. When both the JSON and the six mp3s
+   are present the console plays the actual stems and draws their actual
+   waveforms; until then it falls back to the generated illustration above.
+   ------------------------------------------------------------------ */
+const STEM_SLUG = 'echoes-in-bloom';
+const STEM_TITLE = 'Echoes in Bloom';
+const STEM_PATH = `/music/demo/stems/${STEM_SLUG}`;
+
+interface StemCapture {
+  bars: number;
+  duration: number;
+  waves: Record<string, number[]>;
+}
+
+/* import.meta.url points at the compiled chunk during `astro build`, so paths
+   are resolved from the project root that Astro was started in instead. */
+const projectRoot = process.cwd();
+
+let capture: StemCapture | null = null;
+try {
+  capture = JSON.parse(
+    fs.readFileSync(path.join(projectRoot, 'src/data/stem-demo.json'), 'utf8'),
+  ) as StemCapture;
+} catch {
+  capture = null; /* not captured yet */
+}
+
+const audioFiles: Record<string, string> = Object.fromEntries(
+  lanes.map((lane) => [lane.key, `${STEM_PATH}/${lane.key}.mp3`]),
+);
+
+const hasAudio =
+  capture !== null &&
+  lanes.every((lane) => Boolean(capture?.waves?.[lane.key]?.length)) &&
+  lanes.every((lane) => fs.existsSync(path.join(projectRoot, 'public', audioFiles[lane.key])));
+
+const waves: Record<string, number[]> = hasAudio
+  ? capture!.waves
+  : Object.fromEntries(
+      lanes.map((lane) => [lane.key, Array.from({ length: BARS }, (_, i) => Math.min(1, shape[lane.key](i)))]),
+    );
+
+const barCount = hasAudio ? capture!.bars : BARS;
+const duration = hasAudio ? capture!.duration : 0;
+
+/* the mix row is the sum of whatever lanes are still switched on */
+const MIX_SCALE = hasAudio ? 0.5 : 0.3;
+const mixAt = (i: number) =>
+  Math.min(1, lanes.reduce((sum, lane) => sum + (waves[lane.key][i] ?? 0), 0) * MIX_SCALE);
+const mix = Array.from({ length: barCount }, (_, i) => mixAt(i));
+
+/* bar height as a percentage of its row, with a floor so silence still reads as a line */
+const barHeight = (value: number) => `${(4 + value * 96).toFixed(1)}%`;
+
+const features = [
+  {
+    title: 'Six stems in one pass',
+    description: 'One upload returns vocals, drums, bass, guitar, piano, and everything else as separate files.',
+  },
+  {
+    title: 'Two stem mode',
+    description: 'Only need the acapella or the instrumental? Run the two stem split and skip straight to the download.',
+  },
+  {
+    title: 'Sonura Split',
+    description: 'Sonura Split does the separating, tuned for both two stem and six stem output. Nothing to configure: upload, pick the split, download.',
+  },
+  {
+    title: 'WAV or MP3 out',
+    description: 'Export lossless WAV when the stems are going into a mix, or MP3 when file size matters more than headroom.',
+  },
+  {
+    title: 'Nothing to install',
+    description: 'Runs in the browser on any machine. No plugin, no local GPU, no command line.',
+  },
+  {
+    title: 'The next step is in the same place',
+    description: 'A separated part sits alongside the tools that make new ones, so an isolated drum loop can become the seed of a new track instead of a dead-end download.',
+  },
+];
+
+const howItWorksSteps = [
+  'Upload a mixed WAV or MP3.',
+  'Choose two stems (vocals and instrumental) or six (vocals, drums, bass, guitar, piano, other).',
+  'Give it about a minute while the model pulls the mix apart.',
+  'Download the parts you need as WAV or MP3 and drop them into your DAW.',
+];
+
+const useCases = [
+  {
+    title: 'Producers',
+    description: 'Pull a reference track apart to hear how it was built, or lift a single element from music you own the rights to.',
+  },
+  {
+    title: 'DJs',
+    description: 'Build mashups, extend an intro, or run an acapella over a different instrumental in a live set.',
+  },
+  {
+    title: 'Remixers',
+    description: 'Start from a clean acapella instead of a filtered mix, and rebuild the arrangement underneath it.',
+  },
+  {
+    title: 'Musicians and learners',
+    description: 'Mute the vocal to sing over the backing track, or solo the bass to work out a part by ear.',
+  },
+  {
+    title: 'Mix and post engineers',
+    description: 'Rebalance a bounced mix when the session is gone, or separate music from voice in delivered audio.',
+  },
+  {
+    title: 'Video and content creators',
+    description: 'Take the instrumental under a voiceover, or lift a hook out of a track for an edit.',
+  },
+];
+
+const faqs = [
+  {
+    question: 'What is stem separation?',
+    answer:
+      'Stem separation splits a finished, mixed audio file back into its parts: vocals, drums, bass, guitar, piano, and everything else. A separation model estimates what each source contributed to the mix and writes each one out as its own file, which lets you isolate, mute, or rebuild around individual elements of a song you only have as a stereo bounce.',
+  },
+  {
+    question: 'What formats are supported?',
+    answer:
+      'Upload WAV or MP3. Stems come back as WAV for lossless quality or MP3 for smaller files. Check the app for the current file size limit.',
+  },
+  {
+    question: "What's the difference between 2 stems and 6 stems?",
+    answer:
+      'Two stems gives you vocals and instrumental: the fastest route to an acapella or a backing track. Six stems separates vocals, drums, bass, guitar, piano, and other, which is what you want for remixing, sampling, or studying an arrangement. Drums only come out of the six stem split.',
+  },
+  {
+    question: 'How long does separation take?',
+    answer:
+      'Most tracks finish in under a minute. Longer files and six stem splits take a few minutes, and processing happens on our machines, so nothing depends on how fast your laptop is.',
+  },
+  {
+    question: 'Is stem separation free?',
+    answer:
+      'Yes, free accounts get credits each month that cover several separations. <a href="/pricing/" class="text-link">Paid plans</a> raise the limit and cover commercial work.',
+  },
+  {
+    question: 'How accurate is stem separation?',
+    answer:
+      'Accuracy depends on the source: a well recorded, clearly arranged track separates far more cleanly than a dense or heavily limited one. Sonura Split isolates each element as cleanly as the mix allows, which on most material means stems you can drop straight into a session. Expect some bleed between parts on busy or heavily limited mixes.',
+  },
+  {
+    question: 'Can I get just the drums?',
+    answer:
+      'Yes: run the six stem split and download the drum stem on its own. <a href="/blog/how-to-separate-drums/" class="text-link">Here is the full walkthrough</a>.',
+  },
+  {
+    question: 'Can I use separated stems commercially?',
+    answer:
+      'The tool is cleared for commercial use, but the underlying recording is not automatically yours. You need to own the original or have permission from the rights holder. Separating a track does not create any new rights in the song.',
+  },
+  {
+    question: "What's the best stem separator?",
+    answer:
+      'The real differences between tools are stem count, output format, speed, and what happens after the download. Sonura Split does two and six stem splits, exports WAV or MP3, and sits next to the tools you would actually use the stems in, so a separated part can go straight into new work. <a href="/blog/best-stem-separation-tools/" class="text-link">Full comparison here</a>.',
+  },
+];
+
+const relatedTools = [
+  { title: 'Vocal Remover', href: '/tools/vocal-remover/', description: 'The two stem version: vocals out, instrumental left behind.' },
+  { title: 'Stem Export', href: '/features/stem-export/', description: 'Generated tracks come out as separate parts from the start.' },
+  { title: 'Beat Maker', href: '/tools/ai-beat-maker/', description: 'Build something new under the stem you just pulled.' },
+];
+
+const relatedBlogPosts = [
+  { title: 'The best stem separation tools, compared', href: '/blog/best-stem-separation-tools/' },
+  { title: 'How to separate drums from a song', href: '/blog/how-to-separate-drums/' },
+  { title: 'How to split stems in Logic Pro', href: '/blog/split-stems-logic-pro/' },
+  { title: 'Exporting stems in FL Studio and Ableton', href: '/blog/export-stems-fl-studio-ableton/' },
+  { title: 'How to extract an acapella from any track', href: '/blog/acapella-extractor/' },
+];
 ---
 
-<BaseLayout
+<ToolLayout
+  toolName="Stem Separator"
+  toolSlug="stem-separator"
   title="AI Stem Separator | Extract Vocals & Instruments - Sonura"
   description="Free AI stem separator tool. Extract vocals, drums, bass, and instruments from any audio file. Separate stems in seconds with advanced AI technology."
   keywords="stem separator, vocal remover, isolate vocals, extract instrumentals, ai stem separation, music stem splitter, separate tracks, acapella extractor, backing track remover"
-  canonical="https://sonurastudio.com/tools/stem-separator/"
-  ogTitle="AI Stem Separator Tool - Sonura"
-  ogDescription="Free AI stem separator. Extract vocals and instruments from any audio file."
-  jsonLd={jsonLd}
+  headline="Split a song into its parts"
+  subhead="Upload a mixed track and get the vocals, drums, bass, guitar, piano, and everything else back as separate files. Two stems or six, ready for your DAW."
+  features={features}
+  howItWorksTitle="How separation works"
+  howItWorksSteps={howItWorksSteps}
+  useCases={useCases}
+  faqs={faqs}
+  appUrl={appUrl}
+  ctaPrimaryText="Split a track free"
+  trustPills={['free to start', 'no credit card', 'wav or mp3 out']}
+  finalCtaTitle="Split your first track"
+  finalCtaButtonText="Open stem separator"
+  relatedTools={relatedTools}
+  relatedBlogPosts={relatedBlogPosts}
 >
+  <section slot="after-hero" class="stemc" data-cta-location="stem-console" aria-labelledby="stemc-title">
+    <div class="stemc-panel">
+      <div class="stemc-head">
+        <div class="stemc-headline">
+          <h2 id="stemc-title" class="stemc-title">The split</h2>
+          {hasAudio && (
+            <button type="button" class="stemc-play" id="stemc-play" aria-pressed="false">
+              <svg class="stemc-icon stemc-icon-play" viewBox="0 0 12 14" aria-hidden="true">
+                <path d="M1 0.6 11.2 7 1 13.4Z" fill="currentColor" />
+              </svg>
+              <svg class="stemc-icon stemc-icon-pause" viewBox="0 0 12 14" aria-hidden="true">
+                <path d="M1 0.6h3.4v12.8H1zM7.6 0.6H11v12.8H7.6z" fill="currentColor" />
+              </svg>
+              <span class="stemc-play-label">Play</span>
+            </button>
+          )}
+        </div>
+        <p class="stemc-legend">
+          <span id="stemc-count">6</span> / 6 stems in the mix
+          {hasAudio && <span class="stemc-time" id="stemc-time">0:00</span>}
+        </p>
+      </div>
+
+      <div class="stemc-mixrow">
+        <span class="stemc-num">00</span>
+        <span class="stemc-name">mix<em>{hasAudio ? STEM_TITLE.toLowerCase() : 'the file you upload'}</em></span>
+        <span class="stemc-wave stemc-wave-mix" id="stemc-mix" aria-hidden="true">
+          {mix.map((value) => <i style={`height:${barHeight(value)}`}></i>)}
+        </span>
+        <span class="stemc-controls"><span class="stemc-state stemc-state-static">sum</span></span>
+      </div>
+
+      <div class="stemc-lanes">
+        {lanes.map((lane, index) => (
+          <div class="stemc-lane" data-lane={lane.key} data-audible="true">
+            <span class="stemc-num">{String(index + 1).padStart(2, '0')}</span>
+            <span class="stemc-name">{lane.name}<em>{lane.note}</em></span>
+            <span class="stemc-wave" aria-hidden="true">
+              {waves[lane.key].map((value) => <i style={`height:${barHeight(value)}`}></i>)}
+            </span>
+            <span class="stemc-controls">
+              <button
+                type="button"
+                class="stemc-btn"
+                data-action="mute"
+                aria-pressed="false"
+                aria-label={`Mute ${lane.name}`}
+                title={`Mute ${lane.name}`}
+              >M</button>
+              <button
+                type="button"
+                class="stemc-btn"
+                data-action="solo"
+                aria-pressed="false"
+                aria-label={`Solo ${lane.name}`}
+                title={`Solo ${lane.name}`}
+              >S</button>
+            </span>
+          </div>
+        ))}
+      </div>
+
+      {hasAudio && <span class="stemc-cursor" id="stemc-cursor" aria-hidden="true"></span>}
+
+      <div class="stemc-foot">
+        <p class="stemc-caption">
+          {hasAudio
+            ? `"${STEM_TITLE}", separated into six stems by sonura. press play, then mute or solo a lane to hear the split.`
+            : 'an illustration of a six stem split, not audio playback. mute or solo a lane to take it out of the mix.'}
+        </p>
+        <a class="stemc-link" href={appUrl}>Run it on your own track</a>
+      </div>
+    </div>
+
+    <script is:inline define:vars={{ waves, lanes, hasAudio, audioFiles, MIX_SCALE }}>
+      (function () {
+        const panel = document.querySelector('.stemc-panel');
+        if (!panel) return;
+
+        const mixBars = Array.from(panel.querySelectorAll('#stemc-mix i'));
+        const laneEls = Array.from(panel.querySelectorAll('.stemc-lane'));
+        const countEl = panel.querySelector('#stemc-count');
+        if (!mixBars.length || !laneEls.length) return;
+
+        /* Mute and solo are independent, the way they are on a mixer: solo
+           narrows the mix to the soloed lane, mute still silences whatever it
+           is set on. A lane is heard when both agree. */
+        const muted = new Set();
+        let soloed = null;
+
+        const isAudible = (key) => (soloed === null || soloed === key) && !muted.has(key);
+        const activeKeys = () => laneEls.map((el) => el.dataset.lane).filter(isAudible);
+
+        function renderMix() {
+          const active = activeKeys();
+          for (let i = 0; i < mixBars.length; i += 1) {
+            let sum = 0;
+            for (const key of active) sum += waves[key][i];
+            const value = Math.min(1, sum * MIX_SCALE);
+            mixBars[i].style.height = (4 + value * 96).toFixed(1) + '%';
+          }
+          if (countEl) countEl.textContent = String(active.length);
+        }
+
+        /* ---------------------------------------------------------------
+           Audio, when the six stems have been captured into /public.
+           Every stem is decoded up front and started from the same
+           AudioContext clock, so the lanes stay sample-locked to each
+           other however many times they are muted and unmuted.
+           --------------------------------------------------------------- */
+        let audio = null;
+
+        function createAudio() {
+          const playBtn = panel.querySelector('#stemc-play');
+          const playLabel = panel.querySelector('.stemc-play-label');
+          const timeEl = panel.querySelector('#stemc-time');
+          const cursor = panel.querySelector('#stemc-cursor');
+          const mixWave = panel.querySelector('#stemc-mix');
+          const lanesEl = panel.querySelector('.stemc-lanes');
+          if (!playBtn || !cursor || !mixWave || !lanesEl) return null;
+
+          let ctx = null;
+          let buffers = null;
+          let nodes = null;
+          let startedAt = 0;
+          let duration = 0;
+          let playing = false;
+          let frame = 0;
+          let geometry = { left: 0, width: 0 };
+
+          function measure() {
+            const panelBox = panel.getBoundingClientRect();
+            const waveBox = mixWave.getBoundingClientRect();
+            const lanesBox = lanesEl.getBoundingClientRect();
+            geometry = { left: waveBox.left - panelBox.left, width: waveBox.width };
+            cursor.style.top = waveBox.top - panelBox.top + 'px';
+            cursor.style.height = lanesBox.bottom - waveBox.top + 'px';
+          }
+
+          function clock(seconds) {
+            const total = Math.max(0, Math.floor(seconds));
+            return Math.floor(total / 60) + ':' + String(total % 60).padStart(2, '0');
+          }
+
+          function tick() {
+            if (!playing || !ctx || !duration) return;
+            const elapsed = (ctx.currentTime - startedAt) % duration;
+            cursor.style.transform = 'translateX(' + (geometry.left + (elapsed / duration) * geometry.width) + 'px)';
+            if (timeEl) timeEl.textContent = clock(elapsed);
+            frame = requestAnimationFrame(tick);
+          }
+
+          async function load() {
+            const Ctx = window.AudioContext || window.webkitAudioContext;
+            ctx = new Ctx();
+            const loaded = await Promise.all(
+              Object.entries(audioFiles).map(async ([key, url]) => {
+                const response = await fetch(url);
+                const bytes = await response.arrayBuffer();
+                const buffer = await ctx.decodeAudioData(bytes);
+                return [key, buffer];
+              }),
+            );
+            buffers = Object.fromEntries(loaded);
+            duration = Math.max(...Object.values(buffers).map((buffer) => buffer.duration));
+          }
+
+          function start() {
+            nodes = {};
+            const at = ctx.currentTime + 0.08;
+            for (const el of laneEls) {
+              const key = el.dataset.lane;
+              const source = ctx.createBufferSource();
+              source.buffer = buffers[key];
+              source.loop = true;
+              const gain = ctx.createGain();
+              gain.gain.value = isAudible(key) ? 1 : 0;
+              source.connect(gain).connect(ctx.destination);
+              source.start(at);
+              nodes[key] = { source, gain };
+            }
+            startedAt = at;
+            playing = true;
+            measure();
+            cursor.setAttribute('data-on', 'true');
+            playBtn.setAttribute('aria-pressed', 'true');
+            if (playLabel) playLabel.textContent = 'Pause';
+            playBtn.removeAttribute('data-state');
+            tick();
+          }
+
+          async function toggle() {
+            if (playBtn.getAttribute('data-state') === 'loading') return;
+
+            if (!buffers) {
+              playBtn.setAttribute('data-state', 'loading');
+              if (playLabel) playLabel.textContent = 'Loading';
+              try {
+                await load();
+              } catch (error) {
+                playBtn.removeAttribute('data-state');
+                if (playLabel) playLabel.textContent = 'Play';
+                console.warn('[stem console] could not load the demo stems', error);
+                return;
+              }
+              start();
+              return;
+            }
+
+            if (playing) {
+              await ctx.suspend();
+              playing = false;
+              cancelAnimationFrame(frame);
+              playBtn.setAttribute('aria-pressed', 'false');
+              if (playLabel) playLabel.textContent = 'Play';
+              return;
+            }
+
+            await ctx.resume();
+            playing = true;
+            playBtn.setAttribute('aria-pressed', 'true');
+            if (playLabel) playLabel.textContent = 'Pause';
+            tick();
+          }
+
+          playBtn.addEventListener('click', toggle);
+          window.addEventListener('resize', measure);
+          if (window.ResizeObserver) new ResizeObserver(measure).observe(panel);
+
+          return {
+            /* push the current mute/solo state onto every gain node */
+            apply() {
+              if (!nodes || !ctx) return;
+              for (const key of Object.keys(nodes)) {
+                const value = nodes[key].gain.gain;
+                value.cancelScheduledValues(ctx.currentTime);
+                value.setTargetAtTime(isAudible(key) ? 1 : 0, ctx.currentTime, 0.015);
+              }
+            },
+          };
+        }
+
+        if (hasAudio) audio = createAudio();
+
+        function render() {
+          for (const el of laneEls) {
+            const key = el.dataset.lane;
+            el.setAttribute('data-audible', String(isAudible(key)));
+            const muteBtn = el.querySelector('[data-action="mute"]');
+            const soloBtn = el.querySelector('[data-action="solo"]');
+            if (muteBtn) muteBtn.setAttribute('aria-pressed', String(muted.has(key)));
+            if (soloBtn) soloBtn.setAttribute('aria-pressed', String(soloed === key));
+          }
+          renderMix();
+          if (audio) audio.apply();
+        }
+
+        panel.addEventListener('click', (event) => {
+          const button = event.target.closest('.stemc-btn');
+          if (!button || !panel.contains(button)) return;
+          const key = button.closest('.stemc-lane')?.dataset.lane;
+          if (!key) return;
+
+          if (button.dataset.action === 'solo') {
+            soloed = soloed === key ? null : key;
+          } else if (muted.has(key)) {
+            muted.delete(key);
+          } else {
+            muted.add(key);
+          }
+          render();
+        });
+      })();
+    </script>
+  </section>
+
   <style>
-    .stem-tool {
-      max-width: 800px;
-      margin: 80px auto;
-      padding: 0 24px;
+    .stemc {
+      border-top: 1px solid var(--hairline);
+      padding: clamp(56px, 7vw, 88px) var(--page-pad) clamp(72px, 9vw, 110px);
     }
 
-    .tool-header {
-      text-align: center;
-      margin-bottom: 48px;
+    .stemc-panel {
+      position: relative;
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-panel);
+      background: var(--bg);
     }
 
-    .tool-title {
-      font-size: 40px;
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
-
-    .tool-description {
-      color: var(--muted);
-      font-size: 18px;
-      margin: 0;
-    }
-
-    .upload-cta {
+    .stemc-headline {
       display: flex;
-      flex-direction: column;
       align-items: center;
-      border: 2px dashed rgba(255, 255, 255, 0.2);
-      border-radius: 16px;
-      padding: 64px 32px;
-      text-align: center;
-      background: rgba(255, 255, 255, 0.02);
-      cursor: pointer;
-      transition: all 0.3s ease;
-      margin-bottom: 32px;
-      text-decoration: none;
-      color: inherit;
+      gap: 20px;
     }
 
-    .upload-cta:hover {
-      border-color: var(--fg);
-      background: rgba(255,255,255,0.03);
-    }
-
-    .upload-icon {
-      width: 64px;
-      height: 64px;
-      margin-bottom: 20px;
+    .stemc-play {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-ui);
+      background: transparent;
       color: var(--fg);
-      opacity: 0.8;
-    }
-
-    .upload-text {
-      font-size: 18px;
+      font-family: var(--font-body);
+      font-size: 11px;
       font-weight: 600;
-      margin-bottom: 8px;
-      color: var(--fg);
-    }
-
-    .upload-hint {
-      font-size: 14px;
-      color: var(--muted);
-      margin: 0;
-    }
-
-    .stems-preview {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-bottom: 48px;
-    }
-
-    .stem-tag {
-      display: block;
-      text-decoration: none;
-      padding: 14px 16px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 10px;
-      text-align: center;
-      font-size: 14px;
-      font-weight: 600;
-      color: rgba(255, 255, 255, 0.7);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      line-height: 1;
+      white-space: nowrap;
       transition: border-color 0.2s ease, color 0.2s ease;
     }
 
-    .stem-tag:hover {
-      border-color: rgba(255, 255, 255, 0.2);
-      color: var(--fg);
+    .stemc-play:hover,
+    .stemc-play[aria-pressed='true'] {
+      border-color: var(--fg);
     }
 
-    .info-section {
-      margin-top: 64px;
-      padding: 40px;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 16px;
+    .stemc-play[data-state='loading'] {
+      color: var(--faint);
     }
 
-    .info-title {
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 24px;
-      text-align: center;
+    .stemc-icon {
+      width: 10px;
+      height: 12px;
+      flex-shrink: 0;
     }
 
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 24px;
+    .stemc-icon-pause,
+    .stemc-play[aria-pressed='true'] .stemc-icon-play {
+      display: none;
     }
 
-    .info-card {
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.02);
-      border-radius: 12px;
+    .stemc-play[aria-pressed='true'] .stemc-icon-pause {
+      display: block;
     }
 
-    .info-card-title {
-      font-weight: 600;
-      font-size: 16px;
-      margin-bottom: 8px;
-      color: var(--fg);
+    .stemc-play[data-state='loading'] .stemc-icon {
+      display: none;
     }
 
-    .info-card-text {
-      font-size: 14px;
+    /* per lane mute and solo */
+    .stemc-controls {
+      display: flex;
+      justify-content: flex-end;
+      gap: 6px;
+    }
+
+    .stemc-btn {
+      width: 30px;
+      height: 30px;
+      padding: 0;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-ui);
+      background: transparent;
       color: var(--muted);
-      line-height: 1.6;
-      margin: 0;
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      transition: border-color 0.2s ease, color 0.2s ease;
     }
 
-    .sonura-cta {
-      margin-top: 64px;
-      padding: 48px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 16px;
-      text-align: center;
+    .stemc-btn:hover {
+      border-color: var(--hairline);
+      color: var(--fg);
+    }
+
+    .stemc-btn[aria-pressed='true'] {
+      border-color: var(--fg);
+      color: var(--fg);
+    }
+
+    .stemc-btn:focus-visible {
+      outline: 1px solid var(--hairline);
+      outline-offset: 2px;
+    }
+
+    .stemc-time {
+      margin-left: 14px;
+      color: var(--faint);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .stemc-time::before {
+      content: '/';
+      margin-right: 14px;
+      color: var(--faint);
+    }
+
+    /* playhead: one continuous line through the mix row and every lane */
+    .stemc-cursor {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1px;
+      background: var(--fg);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .stemc-cursor[data-on='true'] {
+      opacity: 0.9;
+    }
+
+    .stemc-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 22px clamp(16px, 2.4vw, 28px);
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .stemc-title {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(24px, 2.8vw, 38px);
+      line-height: 1;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--fg);
+    }
+
+    .stemc-legend {
+      margin: 0;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    /* one grid shared by the mix row and every lane row */
+    .stemc-mixrow,
+    .stemc-lane {
+      display: grid;
+      grid-template-columns: 40px minmax(96px, 150px) 1fr 68px;
+      align-items: center;
+      gap: clamp(12px, 1.6vw, 24px);
+      width: 100%;
+      padding: 18px clamp(16px, 2.4vw, 28px);
+      text-align: left;
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid var(--border);
+      font-family: var(--font-body);
+      color: var(--fg);
+    }
+
+    .stemc-mixrow {
+      padding-top: 26px;
+      padding-bottom: 26px;
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .stemc-lanes .stemc-lane:last-child {
+      border-bottom: 0;
+    }
+
+    .stemc-num {
+      font-size: 12px;
+      font-variant-numeric: tabular-nums;
+      color: var(--faint);
+    }
+
+    .stemc-name {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--fg);
+    }
+
+    .stemc-name em {
+      display: block;
+      margin-top: 6px;
+      font-style: normal;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.022em;
+      text-transform: lowercase;
+      color: var(--faint);
+    }
+
+    .stemc-wave {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      height: 34px;
+      color: var(--fg);
+      transition: color 0.2s ease;
+    }
+
+    .stemc-wave-mix {
+      height: 76px;
+    }
+
+    .stemc-wave i {
+      flex: 1 1 0;
+      min-width: 1px;
+      min-height: 1px;
+      background: currentColor;
+      border-radius: 0;
+      transition: height 0.28s ease;
+    }
+
+    .stemc-state {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .stemc-state-static {
+      color: var(--faint);
+    }
+
+    .stemc-lane[data-audible='false'] .stemc-wave {
+      color: var(--faint);
+      opacity: 0.5;
+    }
+
+    .stemc-lane[data-audible='false'] .stemc-name {
+      color: var(--faint);
+    }
+
+    .stemc-foot {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+      padding: 22px clamp(16px, 2.4vw, 28px);
+      border-top: 1px solid var(--hairline);
+    }
+
+    .stemc-caption {
+      margin: 0;
+      max-width: 520px;
+      font-size: 13px;
+      color: var(--muted);
+      text-transform: lowercase;
+      letter-spacing: 0.022em;
+      word-spacing: 0.04em;
+      line-height: 1.8;
+    }
+
+    .stemc-link {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--fg);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 7px;
+      text-decoration-color: currentColor;
+      white-space: nowrap;
     }
 
     @media (max-width: 768px) {
-      .upload-cta {
-        padding: 48px 24px;
+      .stemc-mixrow,
+      .stemc-lane {
+        grid-template-columns: 68px 1fr 68px;
+        padding: 14px 16px;
       }
 
-      .stems-preview {
-        grid-template-columns: repeat(2, 1fr);
+      .stemc-num {
+        display: none;
+      }
+
+      .stemc-name em {
+        display: none;
+      }
+
+      /* no gap on narrow screens, and let the bars go subpixel rather than
+         overflow: 128 columns have to share whatever is left beside the label
+         and the mute/solo controls, and dropping bars would flatten the
+         drum pattern */
+      .stemc-wave {
+        height: 28px;
+        gap: 0;
+      }
+
+      .stemc-wave i {
+        min-width: 0;
+      }
+
+      .stemc-wave-mix {
+        height: 56px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .stemc-wave i,
+      .stemc-wave {
+        transition: none;
       }
     }
   </style>
 
-  <div class="stem-tool">
-    <div class="tool-header">
-      <h1 class="tool-title">AI Stem Separator</h1>
-      <p class="tool-description">Separate any audio file into individual stems</p>
-    </div>
-
-    <a href={appUrl} class="upload-cta">
-      <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-        <polyline points="17 8 12 3 7 8"></polyline>
-        <line x1="12" y1="3" x2="12" y2="15"></line>
-      </svg>
-      <div class="upload-text">Click to drop your file in the app</div>
-      <p class="upload-hint">Supports MP3, WAV. Opens Sonura Stem Separator</p>
-    </a>
-
-    <div class="stems-preview">
-      <a href={appUrl} class="stem-tag">Vocals</a>
-      <a href={appUrl} class="stem-tag">Drums</a>
-      <a href={appUrl} class="stem-tag">Bass</a>
-      <a href={appUrl} class="stem-tag">Guitar</a>
-      <a href={appUrl} class="stem-tag">Piano</a>
-      <a href={appUrl} class="stem-tag">Other</a>
-    </div>
-
-    <div class="info-section">
-      <h2 class="info-title">What is Stem Separation?</h2>
-      <div class="info-grid">
-        <div class="info-card">
-          <div class="info-card-title">Isolate Elements</div>
-          <p class="info-card-text">Extract individual components like vocals, drums, bass, and instruments from any mixed audio track.</p>
-        </div>
-        <div class="info-card">
-          <div class="info-card-title">AI-Powered</div>
-          <p class="info-card-text">Uses advanced machine learning to accurately separate stems while preserving audio quality.</p>
-        </div>
-        <div class="info-card">
-          <div class="info-card-title">Multiple Formats</div>
-          <p class="info-card-text">Export your separated stems as WAV for maximum quality or MP3 for smaller file sizes.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="info-section">
-      <h2 class="info-title">Who Uses Stem Separation?</h2>
-      <div class="info-grid">
-        <div class="info-card">
-          <div class="info-card-title">Music Producers</div>
-          <p class="info-card-text">Analyze production techniques, create remixes, or sample specific elements from reference tracks for your own productions.</p>
-        </div>
-        <div class="info-card">
-          <div class="info-card-title">DJs</div>
-          <p class="info-card-text">Create custom mashups, extend intros/outros, or isolate acapellas and instrumentals for live performances and DJ sets.</p>
-        </div>
-        <div class="info-card">
-          <div class="info-card-title">Musicians & Learners</div>
-          <p class="info-card-text">Remove vocals to practice along with backing tracks, isolate instruments to learn parts, or create karaoke versions of songs.</p>
-        </div>
-        <div class="info-card">
-          <div class="info-card-title">Content Creators</div>
-          <p class="info-card-text">Extract instrumentals for background music, remove vocals for podcasts, or isolate specific elements for video editing.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="sonura-cta">
-      <h2 style="font-size: 28px; font-weight: 700; margin-bottom: 12px;">Create Your Own Music</h2>
-      <p style="color: var(--muted); margin-bottom: 24px;">Create AI beats, vocals, and instrumentals in under 10 seconds. Free to start.</p>
-      <a href="https://app.sonurastudio.com/" style="display: inline-block; padding: 14px 32px; background: var(--fg); color: var(--bg); text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 16px;">Try Sonura Free</a>
-    </div>
-
-    <section style="margin-top: 64px;">
-      <h2 style="font-size: 24px; font-weight: 700; margin-bottom: 24px; text-align: center;">Stem Separator FAQ</h2>
-      <details style="padding: 20px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 12px;">
-        <summary style="font-weight: 700;">What is stem separation?</summary>
-        <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">Stem separation is the process of using AI to split a mixed audio track into individual components like vocals, drums, bass, guitar, piano, and other instruments. This allows you to isolate, remix, or remove specific elements from a song.</p>
-      </details>
-      <details style="padding: 20px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 12px;">
-        <summary style="font-weight: 700;">What formats are supported?</summary>
-        <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">The stem separator supports MP3 and WAV input files up to 50MB. You can export your separated stems as either WAV (lossless, higher quality) or MP3 (compressed, smaller file size).</p>
-      </details>
-      <details style="padding: 20px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 12px;">
-        <summary style="font-weight: 700;">What's the difference between 2 stems and 6 stems?</summary>
-        <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">2 stems separates your audio into vocals and instrumental (everything else). 6 stems provides more detailed separation: vocals, drums, bass, guitar, piano, and other instruments. Use 2 stems for simple vocal removal or 6 stems for detailed remixing.</p>
-      </details>
-      <details style="padding: 20px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 12px;">
-        <summary style="font-weight: 700;">How long does separation take?</summary>
-        <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">Processing time depends on the length and complexity of your audio file. Most tracks are separated in 30-90 seconds. Longer tracks or 6-stem separation may take a few minutes.</p>
-      </details>
-      <details style="padding: 20px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 12px;">
-        <summary style="font-weight: 700;">Is stem separation free?</summary>
-        <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">Sonura offers free stem separation with limited credits. You can separate several tracks for free each month. For unlimited separations and advanced features, check out our premium plans.</p>
-      </details>
-      <details style="padding: 20px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 12px;">
-        <summary style="font-weight: 700;">How accurate is AI stem separation?</summary>
-        <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">Modern AI stem separation is highly accurate, typically achieving 95%+ separation quality on well-mixed tracks. The accuracy depends on the source material quality and how distinct each element is in the mix. Sonura uses state-of-the-art source-separation models to isolate each element as cleanly as possible.</p>
-      </details>
-      <details style="padding: 20px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 12px;">
-        <summary style="font-weight: 700;">Can I use separated stems commercially?</summary>
-        <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">You can use our stem separation tool commercially, but you must own the rights to the original audio file or have permission from the copyright holder. Separating copyrighted music does not grant you rights to use the stems commercially.</p>
-      </details>
-      <details style="padding: 20px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 12px;">
-        <summary style="font-weight: 700;">What's the best stem separator?</summary>
-        <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">Sonura's stem separator uses advanced AI models comparable to industry-leading tools. We offer both 2-stem (vocals/instrumental) and 6-stem (vocals, drums, bass, guitar, piano, other) separation with high accuracy, fast processing, and support for WAV and MP3 formats.</p>
-      </details>
-    </section>
-  </div>
-</BaseLayout>
+</ToolLayout>
