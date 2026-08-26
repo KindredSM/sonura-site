@@ -12,6 +12,7 @@ interface Props {
   author?: string;
   authorRole?: string;
   ogTitle?: string;
+  h1?: string;
   toc?: { id: string; label: string }[];
 }
 
@@ -26,6 +27,7 @@ const {
   author = 'Kindred Salway',
   authorRole = 'Co-founder & CEO, Sonura',
   ogTitle,
+  h1 = title,
   toc = [],
 } = Astro.props;
 
@@ -35,7 +37,7 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": title,
+    "headline": h1,
     "description": description,
     "author": { "@type": "Person", "name": author, "url": "https://sonurastudio.com/about/" },
     "publisher": {
@@ -53,7 +55,7 @@ const jsonLd = [
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sonurastudio.com/" },
       { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://sonurastudio.com/blog/" },
-      { "@type": "ListItem", "position": 3, "name": title, "item": canonical }
+      { "@type": "ListItem", "position": 3, "name": h1, "item": canonical }
     ]
   }
 ];
@@ -91,7 +93,7 @@ const formattedDate = new Date(publishedDate).toLocaleDateString('en-US', {
   <div style="display: flex; justify-content: center; margin: 80px 0; padding: 0 var(--page-pad); gap: 48px;">
     <article style="flex: 1; min-width: 0; max-width: 760px; color: var(--fg); line-height: 1.8;">
       <header style="margin-bottom: 48px;">
-        <h1 style="font-family: var(--font-display); font-size: clamp(38px, 5.5vw, 64px); font-weight: 400; text-transform: uppercase; letter-spacing: 0.01em; margin-bottom: 20px; line-height: 1; color: var(--fg);">{title}</h1>
+        <h1 style="font-family: var(--font-display); font-size: clamp(38px, 5.5vw, 64px); font-weight: 400; text-transform: uppercase; letter-spacing: 0.01em; margin-bottom: 20px; line-height: 1; color: var(--fg);">{h1}</h1>
         <div style="color: var(--muted); font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 24px;">
           By <a href="/about/" style="color: var(--fg); text-decoration: none; font-weight: 600;">{author}</a><span style="color: var(--faint);">, {authorRole}</span> • <time datetime={publishedDate}>{formattedDate}</time> • {readTime}
         </div>

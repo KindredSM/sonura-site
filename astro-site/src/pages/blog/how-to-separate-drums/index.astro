@@ -1,0 +1,70 @@
+---
+import BlogLayout from '../../../layouts/BlogLayout.astro';
+
+const toc = [
+  { id: 'six-stem-split', label: 'Why six-stem, not two-stem' },
+  { id: 'getting-drum-stem', label: 'Getting the drum stem' },
+  { id: 'what-producers-do', label: 'What producers do with it' },
+  { id: 'faq', label: 'FAQ' },
+];
+---
+
+<BlogLayout
+  title="How to Separate Drums From Any Song | Sonura"
+  h1="How to Separate Drums From Any Song"
+  description="How to separate drums from any song using an AI stem separator. Get a clean, isolated drum stem for sampling, studying grooves, or remixing."
+  keywords="how to separate drums from a song, drum stem separator, isolate drums ai, extract drums from song, stem separator"
+  slug="how-to-separate-drums"
+  publishedDate="2026-08-22"
+  readTime="4 min read"
+  author="Blue Bookhard"
+  authorRole="Co-founder & COO, Sonura"
+  toc={toc}
+>
+  <div style="line-height: 1.8;">
+    <p style="margin-bottom: 24px;">Pulling a clean drum stem out of a finished track used to require the multitrack session, or a producer who'd kept their stems around. Now it's a separation job. Upload a mixed song to a <a href="/tools/stem-separator/" class="text-link">stem separator</a>, run it through Demucs, and download just the drum part.</p>
+
+    <section id="six-stem-split" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Why This Needs the Full Six-Stem Split, Not the Quick Two-Stem One</h2>
+      <p style="margin-bottom: 24px;">Sonura's stem separator runs Demucs, the open source separation model from Meta AI Research, in two configurations. Vocals-and-instrumental (the two-stem split) uses the fine-tuned version, built for a simpler job. Getting an actual isolated drum track means running the full six-stem separation instead: vocals, drums, bass, guitar, piano, and everything else, on the standard version. Drums, bass, and vocals come out the strongest of the six. Guitar and piano are the known soft spots to watch for if a track leans heavily on either.</p>
+      <p style="margin-bottom: 24px;">This matters even more for drums than for other stems. Kicks and snares are quick, sharp hits, and older separation methods often lost detail and smeared them. Sonura's separator generates the actual drum audio instead of just filtering it out of the original mix, which is why the hits stay tight and clean.</p>
+    </section>
+
+    <section id="getting-drum-stem" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Getting the Drum Stem</h2>
+      <ol style="margin-bottom: 24px; padding-left: 24px;">
+        <li style="margin-bottom: 12px;">Upload the track. WAV, MP3, FLAC, M4A, OGG, and AAC all work.</li>
+        <li style="margin-bottom: 12px;">Choose the <a href="/tools/stem-separator/" class="text-link">six-stem split</a>, not the two-stem option. Drums only come out of the full separation.</li>
+        <li style="margin-bottom: 12px;">Download the drums file as WAV for lossless quality, or MP3 if size matters more than the last bit of fidelity.</li>
+      </ol>
+    </section>
+
+    <section id="what-producers-do" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">What Producers Do With an Isolated Drum Stem</h2>
+      <p style="margin-bottom: 24px;">Sampling a specific break or fill is the most common use for isolating drum stems. Pull the exact drum pattern from a reference track and chop it into something new, instead of digging through a sample pack for something close. Some producers isolate drums just to study a groove, listening to the pocket, the hi-hat pattern, and the ghost notes without the rest of the mix competing for attention. Others build a new arrangement around an existing drum part, keeping the drums from a reference and writing new bass, melody, and vocals over them. And remix work runs both directions: swap a reference track's drums under your own instrumental, or the reverse.</p>
+      <p style="margin-bottom: 24px;">You need permission to use the underlying recording for anything beyond your own practice or reference. Separation gives you access to a layer of the mix. It doesn't give you ownership of the song.</p>
+    </section>
+
+    <section id="faq" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">FAQ</h2>
+
+      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; margin-top: 32px;">Do I need the six-stem split just to get drums, or is there a drums-only option?</h3>
+      <p style="margin-bottom: 24px;">Six-stem is currently how drums come out. It separates all six sources in the same pass, and you keep the one you need.</p>
+
+      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; margin-top: 32px;">Will the drum stem have bleed from other instruments?</h3>
+      <p style="margin-bottom: 24px;">Some bleed is possible on any separator, most often when a bassline sits close in frequency to the kick. Sonura's separator is built to keep this to a minimum, producing noticeably less bleed than older tools.</p>
+
+      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; margin-top: 32px;">Does track genre affect how clean the drum separation is?</h3>
+      <p style="margin-bottom: 24px;">Denser mixes with a lot of overlapping low end are harder for any separator to untangle than sparser arrangements. Results vary by track, not just by tool.</p>
+
+      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; margin-top: 32px;">Can I use this on a live recording instead of a studio track?</h3>
+      <p style="margin-bottom: 24px;">Yes. Separation quality depends on the source recording's clarity in general, not on whether it's live or studio.</p>
+
+      <div style="padding: 32px; margin-top: 48px; text-align: center;">
+        <h3 style="font-size: 24px; font-weight: 700; line-height: 1.3; margin: 0 0 16px;">Pull a Clean Drum Stem From Any Track</h3>
+        <p style="margin-bottom: 24px; color: var(--muted);">Run the full six-stem separation and download an isolated drum track ready for sampling or remixing.</p>
+        <a href="/tools/stem-separator/" class="button primary large"><span class="btn-label-full">Try Stem Separator Free</span><span class="btn-label-short">Try it free</span></a>
+      </div>
+    </section>
+  </div>
+</BlogLayout>
