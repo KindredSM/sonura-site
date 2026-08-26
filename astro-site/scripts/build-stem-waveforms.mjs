@@ -5,6 +5,7 @@
  *
  * Usage:
  *   node scripts/build-stem-waveforms.mjs --in ~/Downloads/stems [--slug demo] [--start 0] [--dur 24]
+ *                                          [--stems vocals,drums,bass,guitar,other]
  *
  * The input directory needs one file per stem whose name contains the stem
  * name: vocals, drums, bass, guitar, piano, other (wav, mp3, flac, or m4a).
@@ -23,7 +24,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const STEMS = ['vocals', 'drums', 'bass', 'guitar', 'piano', 'other'];
+const DEFAULT_STEMS = ['vocals', 'drums', 'bass', 'guitar', 'piano', 'other'];
 const BARS = 128;
 const SAMPLE_RATE = 8000; /* plenty for a peak envelope */
 
@@ -36,6 +37,7 @@ const inputDir = arg('in');
 const slug = arg('slug', 'demo');
 const start = Number(arg('start', '0'));
 const seconds = Number(arg('dur', '24'));
+const STEMS = arg('stems', DEFAULT_STEMS.join(',')).split(',').map((name) => name.trim()).filter(Boolean);
 
 if (!inputDir) {
   console.error('missing --in <directory of separated stems>');

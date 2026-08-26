@@ -34,10 +34,6 @@ const shape: Record<string, (i: number) => number> = {
   bass: (i) => 0.36 + 0.22 * Math.sin(i * 0.15) + 0.07 * jitter(i, 3),
   /* chord blocks: five bars on, three off */
   guitar: (i) => (i % 8 < 5 ? 0.3 + 0.24 * Math.abs(Math.sin(i * 0.4)) : 0.04),
-  /* sparse stabs that decay over three bars */
-  piano: (i) => (i % 12 === 0 ? 0.7 : i % 12 === 1 ? 0.4 : i % 12 === 2 ? 0.2 : i % 12 === 3 ? 0.1 : 0.04),
-  /* room, fx, texture */
-  other: (i) => 0.08 + 0.1 * Math.abs(Math.sin(i * 0.5)) + 0.05 * jitter(i, 4),
 };
 
 const lanes = [
@@ -45,8 +41,6 @@ const lanes = [
   { key: 'drums', name: 'drums', note: 'kick, snare, hats' },
   { key: 'bass', name: 'bass', note: 'sub and bassline' },
   { key: 'guitar', name: 'guitar', note: 'rhythm and lead' },
-  { key: 'piano', name: 'piano', note: 'keys and pads' },
-  { key: 'other', name: 'other', note: 'everything left' },
 ];
 
 /* ------------------------------------------------------------------
@@ -271,7 +265,7 @@ const relatedBlogPosts = [
           )}
         </div>
         <p class="stemc-legend">
-          <span id="stemc-count">6</span> / 6 stems in the mix
+          <span id="stemc-count">{lanes.length}</span> / {lanes.length} stems in the mix
           {hasAudio && <span class="stemc-time" id="stemc-time">0:00</span>}
         </p>
       </div>
@@ -320,8 +314,8 @@ const relatedBlogPosts = [
       <div class="stemc-foot">
         <p class="stemc-caption">
           {hasAudio
-            ? `"${STEM_TITLE}", separated into six stems by sonura. press play, then mute or solo a lane to hear the split.`
-            : 'an illustration of a six stem split, not audio playback. mute or solo a lane to take it out of the mix.'}
+            ? `"${STEM_TITLE}", separated by sonura. press play, then mute or solo a lane to hear the split.`
+            : 'an illustration of a stem split, not audio playback. mute or solo a lane to take it out of the mix.'}
         </p>
         <a class="stemc-link" href={appUrl}>Run it on your own track</a>
       </div>
