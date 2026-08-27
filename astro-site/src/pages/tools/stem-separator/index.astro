@@ -170,6 +170,11 @@ const faqs = [
       'Stem separation splits a finished, mixed audio file back into its parts: vocals, drums, bass, guitar, piano, and everything else. A separation model estimates what each source contributed to the mix and writes each one out as its own file, which lets you isolate, mute, or rebuild around individual elements of a song you only have as a stereo bounce.',
   },
   {
+    question: 'Is a stem separator the same thing as a stem splitter?',
+    answer:
+      'Yes. "Stem splitter" and "stem separator" describe the same job: pulling a mixed track back into vocals, drums, bass, and other individual parts. Sonura Split runs the same separation either way.',
+  },
+  {
     question: 'What formats are supported?',
     answer:
       'Upload WAV or MP3. Stems come back as WAV for lossless quality or MP3 for smaller files. Check the app for the current file size limit.',
@@ -213,7 +218,7 @@ const faqs = [
 
 const relatedTools = [
   { title: 'Vocal Remover', href: '/tools/vocal-remover/', description: 'The two stem version: vocals out, instrumental left behind.' },
-  { title: 'Stem Export', href: '/features/stem-export/', description: 'Generated tracks come out as separate parts from the start.' },
+  { title: 'Acapella Extractor', href: '/tools/acapella-extractor/', description: 'The two stem version, run the other way: instrumental out, vocals left behind.' },
   { title: 'Beat Maker', href: '/tools/ai-beat-maker/', description: 'Build something new under the stem you just pulled.' },
 ];
 
