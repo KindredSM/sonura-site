@@ -1,0 +1,92 @@
+---
+import ToolLayout from '../../../layouts/ToolLayout.astro';
+
+const features = [
+  { title: 'Free to try', description: 'Run your first extraction free, no credit card required.' },
+  { title: 'Clean separation', description: 'Modern source separation pulls the vocal out without the phasey, hollow artifacts older tools leave behind.' },
+  { title: 'Get the instrumental too', description: 'The same pass that extracts the acapella also produces the instrumental, so both sides come from one upload.' },
+  { title: 'Go beyond 2-stem', description: 'Need drums, bass, and other instruments split out separately? Use the full stem separator for multi-stem output.' },
+  { title: 'WAV and MP3 out', description: 'Download the acapella as lossless WAV or a smaller MP3, whichever fits your workflow.' },
+  { title: 'Fast processing', description: 'Most tracks finish in under a minute. Nothing to install, runs in the browser.' },
+];
+
+const howItWorksSteps = [
+  'Upload a mixed track to Sonura.',
+  'Run the two-stem split to separate vocals from the instrumental.',
+  'Download the acapella or the instrumental as WAV or MP3.',
+];
+
+const useCases = [
+  { title: 'Remixers and mashup artists', description: 'Drop an isolated vocal over a new instrumental, a different tempo, or a different genre entirely.' },
+  { title: 'DJs', description: 'Layer an acapella over the outro of one track and the intro of the next for a smoother transition than crossfading two full mixes.' },
+  { title: 'Vocalists', description: 'Check pitch and phrasing against the original performance without the instrumental masking small details.' },
+  { title: 'Samplers and producers', description: 'Pull a specific phrase or ad-lib clean and turn it into its own building block in a new arrangement.' },
+];
+
+const faqs = [
+  {
+    question: 'Is an acapella extractor the same thing as a vocal remover?',
+    answer:
+      'Yes, same tool, described from opposite directions. "Acapella extractor" describes keeping the vocal and discarding everything else. "Vocal remover" describes removing the vocal to get an instrumental. This tool produces both from the same separation pass, so you get the acapella and the instrumental from one run. The <a href="/tools/vocal-remover/" class="text-link">vocal remover</a> page covers the same tool from the instrumental-first angle.',
+  },
+  {
+    question: 'Is this free to use?',
+    answer:
+      'Yes, free accounts get credits each month that cover several extractions. <a href="/pricing/" class="text-link">Paid plans</a> raise the limit and cover commercial work.',
+  },
+  {
+    question: 'Will the acapella have any of the instrumental bleeding through?',
+    answer:
+      "Some bleed is possible on any separation tool, particularly on vocals that sit close in frequency to another instrument. Sonura's separator is built to keep this to a minimum.",
+  },
+  {
+    question: 'Can I extract an acapella from a low-quality MP3?',
+    answer: 'Yes, though separation quality depends partly on the source recording. A cleaner, higher-bitrate source generally extracts a cleaner acapella.',
+  },
+  {
+    question: 'Is this the same as full stem separation?',
+    answer:
+      'An acapella extractor gives you vocals vs. instrumental, the two-stem split. Full stem separation splits drums, bass, guitar, piano, and more. See the <a href="/tools/stem-separator/" class="text-link">stem separator</a> for the multi-stem version.',
+  },
+  {
+    question: 'Can I use the extracted vocal commercially?',
+    answer: 'You need rights to the original recording. Extracting an acapella does not grant you copyright over the underlying song.',
+  },
+  {
+    question: 'What file formats work?',
+    answer: 'WAV and MP3 on upload. Download the result as WAV or MP3.',
+  },
+];
+
+const relatedTools = [
+  { title: 'Vocal Remover', href: '/tools/vocal-remover/', description: 'Same tool, run from the other direction: vocals out, instrumental left behind.' },
+  { title: 'Stem Separator', href: '/tools/stem-separator/', description: 'Multi-stem splits: vocals, drums, bass, guitar, piano, and more.' },
+  { title: 'Beat Maker', href: '/tools/ai-beat-maker/', description: 'Build a new instrumental under the vocal you just extracted.' },
+];
+
+const relatedBlogPosts = [
+  { title: 'Acapella Extractor: How to Pull Clean Vocals From Any Track', href: '/blog/acapella-extractor/' },
+  { title: 'The best stem separation tools, compared', href: '/blog/best-stem-separation-tools/' },
+];
+---
+
+<ToolLayout
+  toolName="Acapella Extractor"
+  toolSlug="acapella-extractor"
+  title="Acapella Extractor Online | Extract Clean Vocals From Any Song - Sonura"
+  description="Extract a clean acapella from any song for free in Sonura. No credit card required. Isolate vocals for remixes, mashups, and DJ sets."
+  keywords="acapella extractor, extract acapella, extract vocals from song, isolate vocals, vocal extractor, pull vocals from a song, acapella maker, vocal remover"
+  headline="Extract a clean acapella from any track"
+  subhead="Upload a song and pull out the isolated vocal, no drums, no bass, no instruments underneath. Free to try, no credit card required."
+  features={features}
+  howItWorksTitle="How it works"
+  howItWorksSteps={howItWorksSteps}
+  useCases={useCases}
+  faqs={faqs}
+  ctaPrimaryText="Extract vocals free"
+  trustPills={['free to try', 'no credit card', 'commercial rights']}
+  finalCtaTitle="Extract your first acapella"
+  finalCtaButtonText="Try it free"
+  relatedTools={relatedTools}
+  relatedBlogPosts={relatedBlogPosts}
+/>
