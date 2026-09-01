@@ -89,7 +89,11 @@
 
   function getFirstTouch() {
     const existing = readFirstTouch();
-    if (existing && existing.first_landing_page) return existing;
+    if (existing && existing.first_landing_page) {
+      // a visitor from before the cookie shipped still has their origin in localStorage
+      writeFirstTouchCookie(existing);
+      return existing;
+    }
 
     const touch = {
       first_landing_page: window.location.pathname + window.location.search,
@@ -102,6 +106,7 @@
       ...getSearchParams(),
     };
     writeFirstTouch(touch);
+    writeFirstTouchCookie(touch);
     return touch;
   }
 
@@ -253,6 +258,76 @@
   window.sonuraSeoTrack = track;
   window.sonuraBuildAppUrl = buildAppUrl;
   window.sonuraSeoContext = currentContext;
+
+  // Shared first-touch cookie, read by the app on app.sonurastudio.com.
+  // localStorage above is this site's own; it cannot cross the origin boundary, and link
+  // decoration only covers visitors who arrive by clicking a decorated anchor. The cookie
+  // covers everyone, including a Google OAuth or Stripe return straight into the app.
+  // Name and JSON shape must match frontend/src/lib/attribution.ts.
+  const FT_COOKIE = 'sonura_attribution';
+  const FT_MAX_AGE = 90 * 24 * 60 * 60;
+  const PASS_THROUGH_HOSTS = [
+    'sonurastudio.com',
+    'accounts.google.com',
+    'stripe.com',
+    'login.microsoftonline.com',
+    'appleid.apple.com',
+  ];
+  const CLICK_IDS = [
+    { param: 'gclid', source: 'google', medium: 'cpc' },
+    { param: 'gbraid', source: 'google', medium: 'cpc' },
+    { param: 'wbraid', source: 'google', medium: 'cpc' },
+    { param: 'msclkid', source: 'bing', medium: 'cpc' },
+    { param: 'fbclid', source: 'facebook', medium: 'social' },
+    { param: 'ttclid', source: 'tiktok', medium: 'social' },
+  ];
+
+  function externalReferrerHost(referrer) {
+    if (!referrer) return '';
+    let host;
+    try {
+      host = new URL(referrer).hostname.replace(/^www\./, '');
+    } catch {
+      return '';
+    }
+    const passThrough = PASS_THROUGH_HOSTS.some(
+      (h) => host === h || host.endsWith('.' + h)
+    );
+    return passThrough ? '' : host;
+  }
+
+  function hasFirstTouchCookie() {
+    return document.cookie.split(';').some((part) => part.trim().startsWith(FT_COOKIE + '='));
+  }
+
+  // write-once: a later visit with different tags is a return, not an origin
+  function writeFirstTouchCookie(touch) {
+    if (hasFirstTouchCookie()) return;
+
+    const params = new URLSearchParams(window.location.search);
+    const click = CLICK_IDS.find((entry) => params.get(entry.param));
+    const referrerHost = externalReferrerHost(touch.first_referrer);
+    const source = touch.utm_source || touch.first_ai_referrer || referrerHost || (click && click.source) || 'direct';
+    const medium =
+      touch.utm_medium ||
+      (touch.utm_source ? '' : referrerHost ? 'referral' : click ? click.medium : 'none');
+
+    const value = JSON.stringify({
+      source: String(source).slice(0, 120),
+      medium: String(medium).slice(0, 120),
+      campaign: (touch.utm_campaign || '').slice(0, 120),
+      content: (touch.utm_content || '').slice(0, 120),
+      referrer: referrerHost ? String(touch.first_referrer).slice(0, 120) : '',
+      landingPath: String(touch.first_landing_path || '/').slice(0, 120),
+      capturedAt: touch.first_touch_ts || new Date().toISOString(),
+    });
+
+    // scoped to the parent domain so app.sonurastudio.com reads what this site wrote
+    document.cookie =
+      FT_COOKIE + '=' + encodeURIComponent(value) +
+      '; path=/; max-age=' + FT_MAX_AGE +
+      '; domain=.sonurastudio.com; SameSite=Lax; Secure';
+  }
 
   getFirstTouch();
   registerPostHogContext();
