@@ -411,7 +411,7 @@ body.editorial-home .workflow-media {
   aspect-ratio: 16 / 10;
   overflow: hidden;
   border: var(--rule);
-  background: #050505;
+  background: #000000;
 }
 
 body.editorial-home .workflow-media picture,
@@ -572,7 +572,7 @@ body.editorial-home .creator-video-play {
 
 body.editorial-home .creator-video-duration {
   border-radius: 0;
-  background: rgba(5, 5, 5, 0.8);
+  background: rgba(0,0,0, 0.8);
   font-weight: 500;
   letter-spacing: 0.1em;
   backdrop-filter: none;

@@ -10,7 +10,7 @@
 
   /* Surfaces & text — text uses exactly three tiers:
      --fg (primary), --muted (secondary/reading), --faint (tertiary/de-emphasized) */
-  --bg: #050505;
+  --bg: #000000;
   --panel-bg: #0a0a0a;
   --fg: #f4f4f0;
   --muted: #c7c7c0;
@@ -95,8 +95,8 @@ body {
 }
 
 .page { min-height: 100vh; display: flex; flex-direction: column; }
-.nav { position: sticky; top: 0; z-index: 100; width: 100%; padding: 0 var(--page-pad); background: rgba(5, 5, 5, 0.92); backdrop-filter: blur(14px); border-bottom: 1px solid var(--hairline); }
-.nav.scrolled { background: rgba(5, 5, 5, 0.92); backdrop-filter: blur(14px); border-bottom: 1px solid var(--hairline); }
+.nav { position: sticky; top: 0; z-index: 100; width: 100%; padding: 0 var(--page-pad); background: rgba(0,0,0, 0.92); backdrop-filter: blur(14px); border-bottom: 1px solid var(--hairline); }
+.nav.scrolled { background: rgba(0,0,0, 0.92); backdrop-filter: blur(14px); border-bottom: 1px solid var(--hairline); }
 .nav-inner { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; max-width: none; margin: 0 auto; width: 100%; position: relative; border: 0; border-radius: 0; background: transparent; backdrop-filter: none; box-shadow: none; }
 .nav.scrolled .nav-inner { max-width: none; padding: 12px 0; border-radius: 0; background: transparent; backdrop-filter: none; box-shadow: none; }
 .nav-actions { display: flex; align-items: center; gap: 16px; }
@@ -159,7 +159,7 @@ body {
 .mobile-menu-btn { display: none; background: transparent; border: none; color: var(--fg); cursor: pointer; padding: 8px; opacity: 0.85; transition: opacity 0.2s; line-height: 0; border-radius: 0; }
 .mobile-menu-btn:hover { opacity: 1; background: transparent; }
 .mobile-menu-btn i { width: 22px; height: 22px; }
-.mobile-menu { display: none; position: absolute; top: calc(100% + 10px); right: 0; background: #050505; border: 1px solid var(--border); border-radius: var(--radius-ui); padding: 10px; margin: 0; min-width: 210px; opacity: 0; transform: translateY(-8px) scale(0.98); transform-origin: top right; pointer-events: none; transition: opacity 0.18s ease, transform 0.18s ease; box-shadow: 0 18px 54px rgba(0,0,0,0.34), inset 0 1px 0 rgba(255,255,255,0.05); overflow: hidden; }
+.mobile-menu { display: none; position: absolute; top: calc(100% + 10px); right: 0; background: #000000; border: 1px solid var(--border); border-radius: var(--radius-ui); padding: 10px; margin: 0; min-width: 210px; opacity: 0; transform: translateY(-8px) scale(0.98); transform-origin: top right; pointer-events: none; transition: opacity 0.18s ease, transform 0.18s ease; box-shadow: 0 18px 54px rgba(0,0,0,0.34), inset 0 1px 0 rgba(255,255,255,0.05); overflow: hidden; }
 .mobile-menu.active { opacity: 1; transform: translateY(0); pointer-events: all; }
 .mobile-menu-item { display: flex; align-items: center; gap: 10px; padding: 13px 16px; color: var(--fg); text-decoration: none; font-weight: 600; font-size: 16px; text-transform: lowercase; border-radius: var(--radius-ui); transition: background 0.18s ease, opacity 0.18s ease; opacity: 0.88; position: relative; z-index: 1; }
 .mobile-menu-item:hover { opacity: 1; background: rgba(255, 255, 255, 0.07); }
@@ -241,8 +241,8 @@ body {
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse at center, rgba(5,5,5,0.18) 0%, rgba(5,5,5,0.38) 48%, rgba(5,5,5,0.72) 100%),
-    linear-gradient(180deg, rgba(5,5,5,0.34) 0%, rgba(5,5,5,0.1) 42%, var(--bg) 100%);
+    radial-gradient(ellipse at center, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.38) 48%, rgba(0,0,0,0.72) 100%),
+    linear-gradient(180deg, rgba(0,0,0,0.34) 0%, rgba(0,0,0,0.1) 42%, var(--bg) 100%);
   z-index: 3;
 }
 
@@ -410,8 +410,8 @@ body {
 .underground-home .hero-video::before {
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(5,5,5,0.34) 0%, rgba(5,5,5,0) 18%, rgba(5,5,5,0) 82%, rgba(5,5,5,0.26) 100%),
-    linear-gradient(180deg, rgba(5,5,5,0.42) 0%, rgba(5,5,5,0) 22%, rgba(5,5,5,0) 76%, rgba(5,5,5,0.64) 100%);
+    linear-gradient(90deg, rgba(0,0,0,0.34) 0%, rgba(0,0,0,0) 18%, rgba(0,0,0,0) 82%, rgba(0,0,0,0.26) 100%),
+    linear-gradient(180deg, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0) 22%, rgba(0,0,0,0) 76%, rgba(0,0,0,0.64) 100%);
 }
 
 .underground-home .hero-video::after {
@@ -419,7 +419,7 @@ body {
   right: 0;
   bottom: 0;
   height: 34%;
-  background: linear-gradient(180deg, rgba(5,5,5,0) 0%, rgba(5,5,5,0.54) 70%, var(--bg) 100%);
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.54) 70%, var(--bg) 100%);
 }
 
 .underground-home .hero-video:hover {
@@ -784,8 +784,8 @@ body {
   }
   .underground-home .hero::after {
     background:
-      linear-gradient(180deg, rgba(5,5,5,0.58) 0%, rgba(5,5,5,0.2) 34%, rgba(5,5,5,0.54) 100%),
-      radial-gradient(ellipse at center, rgba(5,5,5,0.04) 0%, rgba(5,5,5,0.5) 100%);
+      linear-gradient(180deg, rgba(0,0,0,0.58) 0%, rgba(0,0,0,0.2) 34%, rgba(0,0,0,0.54) 100%),
+      radial-gradient(ellipse at center, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.5) 100%);
   }
   .underground-home .hero-content {
     align-items: center;
@@ -994,13 +994,13 @@ body {
 .workflow-grid { display: flex; flex-direction: column; gap: 124px; }
 .workflow-item { display: flex; flex-direction: row; align-items: center; gap: 80px; }
 .workflow-item-reverse { flex-direction: row-reverse; }
-.workflow-image { flex: 1; min-width: 0; aspect-ratio: 16 / 10; overflow: hidden; border: 1px solid var(--hairline); background: #050505; position: relative; }
+.workflow-image { flex: 1; min-width: 0; aspect-ratio: 16 / 10; overflow: hidden; border: 1px solid var(--hairline); background: #000000; position: relative; }
 .workflow-image picture, .workflow-image img { display: block; width: 100%; height: 100%; }
 .workflow-image img { object-fit: cover; filter: grayscale(0.55) contrast(1.08) brightness(0.92); transition: filter 0.3s ease; }
 .workflow-item:hover .workflow-image img { filter: grayscale(0) contrast(1.02) brightness(1); }
 
 .workflow-asset-panel {
-  background: #050505;
+  background: #000000;
 }
 
 .workflow-asset-panel picture {
@@ -2248,3 +2248,6 @@ html.lenis, html.lenis body { height: auto; }
     margin: 0;
   }
 }
+
+/* Acronyms that must stay uppercase inside lowercased copy */
+.caps { text-transform: none; }
