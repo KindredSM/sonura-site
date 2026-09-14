@@ -13,7 +13,7 @@ const toc = [
 <BlogLayout
   title="Acapella Extractor: How to Pull Clean Vocals From Any Track | Sonura"
   h1="Acapella Extractor: How to Pull Clean Vocals From Any Track"
-  description="How to pull a clean acapella from any song. Extract isolated vocals for remixes, mashups, and DJ transitions using Sonura's vocal remover."
+  description="How to pull a clean acapella from any song. Extract isolated vocals for remixes, mashups, and DJ transitions using Sonura's acapella extractor."
   keywords="acapella extractor, how to extract acapella, extract vocals from song, isolate vocals ai, vocal remover"
   slug="acapella-extractor"
   publishedDate="2026-08-20"
@@ -23,24 +23,24 @@ const toc = [
   toc={toc}
 >
   <div style="line-height: 1.8;">
-    <p style="margin-bottom: 24px;">An acapella is the vocal track isolated from everything else in a mix: no drums, no bass, no instruments underneath it. Producers use them for remixes, DJs use them to build mashups and transitions, and vocalists use them as reference tracks to practice against an instrumental. The tool that does this job is usually called a <a href="/tools/vocal-remover/" class="text-link">vocal remover</a> or a stem separator. An acapella extractor is a tool that completes the task of separating vocals from an underlying track.</p>
+    <p style="margin-bottom: 24px;">An acapella is the vocal track isolated from everything else in a mix: no drums, no bass, no instruments underneath it. Producers use them for remixes, DJs use them to build mashups and transitions, and vocalists use them as reference tracks to practice against an instrumental. The tool that does this job is usually called an <a href="/tools/acapella-extractor/" class="text-link">acapella extractor</a>, a vocal remover, or a stem separator. Sonura's <a href="/tools/acapella-extractor/" class="text-link">acapella extractor</a> completes the task of separating vocals from an underlying track.</p>
 
     <section id="what-happens" style="margin-bottom: 48px;">
       <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">What Actually Happens When You Extract an Acapella</h2>
       <p style="margin-bottom: 24px;">A finished song is one mixed file, every instrument and voice summed together into a single waveform. Pulling a clean acapella out of that means separating what a human voice sounds like from everything layered underneath it, without the odd, hollow sound older tools were known for.</p>
-      <p style="margin-bottom: 24px;">Sonura's vocal remover is built to produce a clean extraction rather than the phasey, hollow-sounding result you get from a lot of free tools.</p>
+      <p style="margin-bottom: 24px;">Sonura's acapella extractor is built to produce a clean extraction rather than the phasey, hollow-sounding result you get from a lot of free tools.</p>
       <p style="margin-bottom: 24px;">The alternative worth knowing about is phase cancellation, the old "invert one channel and sum to mono" karaoke trick. It cannot produce a real acapella. It kills anything panned to the center of the mix, which includes the kick and bass along with the vocal. It also collapses the whole track to mono in the process. What comes out is not a clean, usable acapella. It's a hole where the center of the mix used to be.</p>
     </section>
 
     <section id="two-stems-pass" style="margin-bottom: 48px;">
       <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Two Stems Is Its Own Separation Pass, Not a Shortcut</h2>
-      <p style="margin-bottom: 24px;">Sonura's vocal remover runs the two-stem configuration of Sonura Split to produce vocals and instrumental. The six-stem separation (vocals, drums, bass, guitar, piano, other) runs a different configuration. Getting a clean two-stem acapella isn't a lighter version of the full job. It's built by separating the sources with the configuration tuned for that job, then summing everything except the vocal back into one instrumental file.</p>
+      <p style="margin-bottom: 24px;">Sonura's acapella extractor runs the two-stem configuration of Sonura Split to produce vocals and instrumental. The six-stem separation (vocals, drums, bass, guitar, piano, other) runs a different configuration. Getting a clean two-stem acapella isn't a lighter version of the full job. It's built by separating the sources with the configuration tuned for that job, then summing everything except the vocal back into one instrumental file.</p>
     </section>
 
     <section id="getting-acapella-out" style="margin-bottom: 48px;">
       <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Getting an Acapella Out</h2>
       <ol style="margin-bottom: 24px; padding-left: 24px;">
-        <li style="margin-bottom: 12px;">Upload the track to Sonura's <a href="/tools/vocal-remover/" class="text-link">vocal remover</a>. WAV, MP3, FLAC, M4A, OGG, and AAC all work.</li>
+        <li style="margin-bottom: 12px;">Upload the track to Sonura's <a href="/tools/acapella-extractor/" class="text-link">acapella extractor</a>. WAV, MP3, FLAC, M4A, OGG, and AAC all work.</li>
         <li style="margin-bottom: 12px;">Choose the two-stem split, vocals and instrumental, rather than the full six-stem breakdown.</li>
         <li style="margin-bottom: 12px;">Download the acapella as WAV for lossless quality, or MP3 if file size matters more than every last bit of fidelity.</li>
       </ol>
@@ -70,7 +70,7 @@ const toc = [
       <div style="padding: 32px; margin-top: 48px; text-align: center;">
         <h3 style="font-size: 24px; font-weight: 700; line-height: 1.3; margin: 0 0 16px;">Pull a Clean Acapella From Any Track</h3>
         <p style="margin-bottom: 24px; color: var(--muted);">Upload a track, choose two stems, and download an isolated vocal ready for remixes, mashups, and transitions.</p>
-        <a href="/tools/vocal-remover/" class="button primary large"><span class="btn-label-full">Try Vocal Remover Free</span><span class="btn-label-short">Try it free</span></a>
+        <a href="/tools/acapella-extractor/" class="button primary large"><span class="btn-label-full">Try Acapella Extractor Free</span><span class="btn-label-short">Try it free</span></a>
       </div>
     </section>
   </div>

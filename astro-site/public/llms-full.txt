@@ -301,6 +301,7 @@ Neutral, dated, model-against-model comparisons (not Sonura-against-competitor p
 - AI Loop Maker: https://sonurastudio.com/tools/ai-loop-maker/
 - AI Vocal Generator: https://sonurastudio.com/tools/ai-vocal-generator/
 - Vocal Remover: https://sonurastudio.com/tools/vocal-remover/
+- Acapella Extractor: https://sonurastudio.com/tools/acapella-extractor/
 - AI Drum Maker: https://sonurastudio.com/tools/ai-drum-maker/
 - AI Sound Effects: https://sonurastudio.com/tools/ai-sound-effects/
 - AI Melody Maker: https://sonurastudio.com/tools/ai-melody-maker/
