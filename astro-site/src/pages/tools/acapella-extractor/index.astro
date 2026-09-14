@@ -1,0 +1,182 @@
+---
+import ToolLayout from '../../../layouts/ToolLayout.astro';
+
+// Same two stem pass the vocal remover runs, so the same app route serves it.
+const appUrl = 'https://app.sonurastudio.com/tools/stem-separator';
+
+const features = [
+  {
+    title: 'The vocal on its own',
+    description: 'Upload a finished mix and get the lead and backing vocal back as one clean file, with the instrumental left behind.',
+  },
+  {
+    title: 'A real separation, not a trick',
+    description: 'Phase cancellation cannot produce a usable acapella. This is a separation pass tuned for vocals, so the centre of the mix survives.',
+  },
+  {
+    title: 'Two stems in one pass',
+    description: 'The same run gives you the acapella and the instrumental. Download one or both.',
+  },
+  {
+    title: 'WAV or MP3 out',
+    description: 'Export lossless WAV when the acapella is going into a session, or MP3 when file size matters more than headroom.',
+  },
+  {
+    title: 'Nothing to install',
+    description: 'Runs in the browser on any machine. No plugin, no local GPU, no command line.',
+  },
+  {
+    title: 'You still need the rights',
+    description: 'Separation does not grant copyright over the underlying song. You need to own the original or have permission for anything beyond private practice.',
+  },
+];
+
+const howItWorksSteps = [
+  'Upload the track. WAV, MP3, FLAC, M4A, OGG, and AAC all work.',
+  'Choose the two stem split, vocals and instrumental, rather than the full six stem breakdown.',
+  'Download the acapella as WAV for lossless quality, or MP3 if file size matters more than every last bit of fidelity.',
+];
+
+const useCases = [
+  {
+    title: 'Remixes and mashups',
+    description: 'Drop the isolated vocal over a new instrumental, a different tempo, or a completely different genre.',
+  },
+  {
+    title: 'DJ transitions',
+    description: 'Layer an acapella over the outro of one track and the intro of the next for a smoother blend than crossfading two full mixes.',
+  },
+  {
+    title: 'Vocalists and practice',
+    description: 'Check pitch and phrasing against the original performance without the instrumental masking small details.',
+  },
+  {
+    title: 'Sampling',
+    description: 'Pull a specific phrase or ad lib out clean and turn it into its own building block in a new arrangement.',
+  },
+];
+
+const faqs = [
+  {
+    question: 'Is an acapella extractor the same thing as a vocal remover?',
+    answer:
+      'Yes, same tool, described from opposite directions. "Vocal remover" describes removing the vocal to get an instrumental. "Acapella extractor" describes keeping the vocal and discarding everything else. Sonura produces both from the same separation pass.',
+  },
+  {
+    question: 'Can I get the instrumental too?',
+    answer:
+      'Yes, from the same pass. The two stem split writes out the acapella and the instrumental together, so you download whichever you need, or both. The <a href="/tools/vocal-remover/" class="text-link">vocal remover</a> is the same run described from the instrumental side.',
+  },
+  {
+    question: 'Will the acapella have any of the instrumental bleeding through?',
+    answer:
+      'Some bleed is possible on any separation tool, particularly on vocals that sit very close in frequency to another instrument. Sonura\'s separator is built to keep this to a minimum, producing noticeably less bleed than older separation tools.',
+  },
+  {
+    question: 'Can I extract an acapella from a low-quality MP3?',
+    answer:
+      'Yes, though separation quality depends partly on the source recording. A cleaner, higher-bitrate source generally extracts a cleaner acapella.',
+  },
+  {
+    question: 'Do I need production experience to do this?',
+    answer: 'No. Upload, choose two stems, download. The technical separation work happens on Sonura\'s end.',
+  },
+];
+
+const relatedTools = [
+  { title: 'Vocal Remover', href: '/tools/vocal-remover/', description: 'The same split from the other side: keep the instrumental.' },
+  { title: 'Stem Separator', href: '/tools/stem-separator/', description: 'Six stems instead of two: drums, bass, guitar, and piano as well.' },
+  { title: 'Vocal Generator', href: '/tools/ai-vocal-generator/', description: 'Write a new vocal line instead of borrowing one.' },
+];
+
+const relatedBlogPosts = [
+  { title: 'The best stem separation tools, compared', href: '/blog/best-stem-separation-tools/' },
+  { title: 'How to separate drums from a song', href: '/blog/how-to-separate-drums/' },
+  { title: 'How to make an AI music cover', href: '/blog/ai-music-cover-maker/' },
+];
+---
+
+<ToolLayout
+  toolName="Acapella Extractor"
+  toolSlug="acapella-extractor"
+  title="Acapella Extractor | Extract Vocals From Any Song - Sonura"
+  description="Extract a clean acapella from any song. Upload a track, run the two stem split, and download isolated vocals as WAV or MP3. Free to start, no credit card."
+  keywords="acapella extractor, extract acapella, acapella maker, extract vocals from song, isolate vocals, vocal isolator, get acapella from song, acapella extractor online free"
+  headline="Pull a clean acapella out of any track"
+  subhead="Upload a song and get the vocal on its own, with the instrumental left behind. Built for remixes, mashups, DJ transitions, and practice."
+  features={features}
+  howItWorksTitle="How to extract an acapella"
+  howItWorksSteps={howItWorksSteps}
+  useCases={useCases}
+  faqs={faqs}
+  appUrl={appUrl}
+  ctaPrimaryText="Extract an acapella free"
+  trustPills={['free to start', 'no credit card', 'wav or mp3 out']}
+  finalCtaTitle="Get the vocal on its own"
+  finalCtaButtonText="Open the extractor"
+  relatedTools={relatedTools}
+  relatedBlogPosts={relatedBlogPosts}
+>
+  <section slot="after-hero" class="acx">
+    <div class="acx-inner">
+      <h2 id="what-happens" class="acx-h2">What actually happens when you extract an acapella</h2>
+      <p>
+        An acapella is the vocal track isolated from everything else in a mix: no drums, no bass, no
+        instruments underneath it. A finished song is one mixed file, every instrument and voice summed
+        together into a single waveform. Pulling a clean acapella out of that means separating what a
+        human voice sounds like from everything layered underneath it, without the odd, hollow sound
+        older tools were known for.
+      </p>
+      <p>
+        The alternative worth knowing about is phase cancellation, the old "invert one channel and sum to
+        mono" karaoke trick. It cannot produce a real acapella. It kills anything panned to the centre of
+        the mix, which includes the kick and bass along with the vocal. It also collapses the whole track
+        to mono in the process. What comes out is not a clean, usable acapella. It is a hole where the
+        centre of the mix used to be.
+      </p>
+
+      <h2 id="two-stems-pass" class="acx-h2">Two stems is its own separation pass, not a shortcut</h2>
+      <p>
+        The extractor runs the two stem configuration of Sonura Split to produce vocals and instrumental.
+        The <a href="/tools/stem-separator/" class="text-link">six stem separation</a> (vocals, drums,
+        bass, guitar, piano, other) runs a different configuration. Getting a clean two stem acapella is
+        not a lighter version of the full job. It is built by separating the sources with the
+        configuration tuned for that job, then summing everything except the vocal back into one
+        instrumental file.
+      </p>
+    </div>
+  </section>
+</ToolLayout>
+
+<style>
+  .acx {
+    border-top: 1px solid var(--hairline);
+    padding: clamp(72px, 9vw, 110px) var(--page-pad);
+  }
+  .acx-inner {
+    max-width: 760px;
+  }
+  .acx-h2 {
+    margin: 0 0 24px;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(30px, 3.4vw, 46px);
+    letter-spacing: 0.01em;
+    line-height: 1.05;
+    text-transform: uppercase;
+    color: var(--fg);
+  }
+  .acx-h2:not(:first-child) {
+    margin-top: 64px;
+  }
+  .acx p {
+    margin: 0 0 24px;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.8;
+    letter-spacing: 0.022em;
+  }
+  .acx p:last-child {
+    margin-bottom: 0;
+  }
+</style>
