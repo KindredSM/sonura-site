@@ -213,7 +213,7 @@ export const MODELS: Record<string, MusicModel> = {
       stems: 'split any track into stems, on every plan including free',
       sonura: 'this is Sonura',
       download: 'high quality downloads from Pro up',
-      training: 'licensed, commercially cleared music technology rather than scraped catalogues',
+      training: 'trained on licensed music data rather than scraped catalogues',
       commercial: 'exclusive rights on every paid plan, with no royalty splits; free output is public domain (CC0)',
       weights: 'closed',
       access: 'web, plus an AU and VST3 plugin for Ableton, Logic, and FL Studio',
