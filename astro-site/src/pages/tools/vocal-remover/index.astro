@@ -1,6 +1,11 @@
 ---
 import ToolLayout from '../../../layouts/ToolLayout.astro';
 
+// Vocal removal is the two stem case of the separator, and this is the app
+// route that serves it. Without this the ToolLayout default sends every CTA
+// on the page to the app home instead of the tool.
+const appUrl = 'https://app.sonurastudio.com/tools/stem-separator';
+
 const features = [
   { title: 'Vocals vs instrumental', description: 'Isolate the vocal track or extract a clean instrumental from any mixed recording.' },
   { title: 'High accuracy separation', description: 'Modern source separation models handle complex mixes without manual configuration.' },
@@ -25,13 +30,16 @@ const useCases = [
 
 const faqs = [
   { question: 'How do I remove vocals from a song?', answer: 'Upload your file in Sonura and run vocal separation. The tool splits vocals from the instrumental automatically.' },
-  { question: 'Is this the same as stem separation?', answer: 'Vocal removal gives you vocals vs instrumental. Full stem separation splits drums, bass, and more. See the stem separator tool.' },
+  { question: 'Is this the same as stem separation?', answer: 'Vocal removal gives you vocals vs instrumental, the same two stem pass the <a href="/tools/acapella-extractor/" class="text-link">acapella extractor</a> uses. Full <a href="/tools/stem-separator/" class="text-link">stem separation</a> splits drums, bass, guitar, and piano out as well.' },
   { question: 'Can I use separated audio commercially?', answer: 'You need rights to the original recording. Separation does not grant copyright to the underlying song.' },
   { question: 'What file formats work?', answer: 'WAV and MP3. Check the app for current file size limits.' },
+  { question: 'Can I remove vocals from an MP3?', answer: 'Yes. Upload the MP3 and run the two stem split. You get the instrumental and the vocal back as separate files, and you can download either one as WAV or MP3.' },
+  { question: 'Does removing vocals make a karaoke track?', answer: 'The instrumental side of the split is what you sing over, so yes for practice and for most live use. It is separated from a finished mix rather than mixed from the original session, so dense or heavily limited tracks can leave a little vocal bleed behind.' },
 ];
 
 const relatedTools = [
   { title: 'Stem Separator', href: '/tools/stem-separator/', description: 'Multi-stem splits: vocals, drums, bass, and more.' },
+  { title: 'Acapella Extractor', href: '/tools/acapella-extractor/', description: 'The other half of the split: keep the vocal, drop the backing.' },
   { title: 'Beat Maker', href: '/tools/ai-beat-maker/', description: 'Build new instrumentals after isolating parts.' },
   { title: 'Vocal Generator', href: '/tools/ai-vocal-generator/', description: 'Add new vocal lines to your project.' },
 ];
@@ -45,9 +53,9 @@ const relatedBlogPosts = [
 <ToolLayout
   toolName="Vocal Remover"
   toolSlug="vocal-remover"
-  title="Vocal Remover Online | Remove Vocals from Any Song - Sonura"
-  description="Remove vocals from a song online for free. Isolate the acapella or extract a clean instrumental in Sonura."
-  keywords="vocal remover online, remove vocals from song, instrumental extractor, vocal isolation, karaoke maker"
+  title="Vocal Remover | Remove Vocals From a Song Online Free - Sonura"
+  description="Remove vocals from any song online. Get a clean instrumental or keep the acapella, separated in about a minute and downloaded as WAV or MP3. Free to start."
+  keywords="vocal remover, vocal remover online, remove vocals from song, remove vocals from mp3, instrumental extractor, vocal isolation, vocal isolator, karaoke maker, backing track maker"
   headline="Remove vocals from any song"
   subhead="Upload a track and get the vocals or the instrumental, separated cleanly. Use it for remixes, karaoke, sampling, or editing."
   features={features}
@@ -55,6 +63,7 @@ const relatedBlogPosts = [
   howItWorksSteps={howItWorksSteps}
   useCases={useCases}
   faqs={faqs}
+  appUrl={appUrl}
   ctaPrimaryText="Remove vocals free"
   finalCtaTitle="Separate vocals now"
   finalCtaButtonText="Try it free"
