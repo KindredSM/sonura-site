@@ -11,7 +11,7 @@ const jsonLd = [
         "name": "What is the Sonura Partner Program?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A way to earn recurring commission by recommending Sonura to producers, artists and creators in your audience."
+          "text": "A way to earn recurring commission by recommending Sonura to producers, artists and creators in your audience. Some people call this an affiliate program or an ambassador program. At Sonura it works the same way: apply, get a tracking link, and get paid every month for the customers you bring in."
         }
       },
       {
@@ -19,7 +19,7 @@ const jsonLd = [
         "name": "Who can apply?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Anyone with an audience or network of music makers: creators, educators, studios, engineers and community builders."
+          "text": "Anyone with an audience or network of music makers: creators, educators, studios, engineers, newsletter writers and community builders."
         }
       },
       {
@@ -88,9 +88,9 @@ const earnCards = [
 ];
 
 const faqs = [
-  { q: 'What is the Sonura Partner Program?', a: 'A way to earn recurring commission by recommending Sonura to producers, artists and creators in your audience.' },
-  { q: 'Who can apply?', a: 'Anyone with an audience or network of music makers: creators, educators, studios, engineers and community builders.' },
-  { q: 'How much can I earn?', a: 'You earn a commission every month for each paying customer you refer. We share full terms with accepted partners.' },
+  { q: 'What is the Sonura Partner Program?', a: 'A way to earn recurring commission by recommending Sonura to producers, artists and creators in your audience. Some people call this an affiliate program or an ambassador program. At Sonura it works the same way: apply, get a tracking link, and get paid every month for the customers you bring in.' },
+  { q: 'Who can apply?', a: 'Anyone with an audience or network of music makers: creators, educators, studios, engineers, newsletter writers and community builders.' },
+  { q: 'How much can I earn?', a: 'You earn a commission every month for each paying customer you refer, based on <a href="/pricing/" class="text-link">Sonura\'s paying plans</a>. We share full terms with accepted partners.' },
   { q: 'Is this different from the referral program?', a: 'Yes. Every Sonura user can already give friends 20 credits and earn free months. The partner program is for people who want to earn cash.' },
   { q: 'Does it cost anything to join?', a: 'No.' },
   { q: 'What do my referrals get?', a: '20 free credits when they sign up through your link.' },
@@ -100,11 +100,11 @@ const faqs = [
 
 <BaseLayout
   title="Sonura Partner Program | Earn Recurring Commission"
-  description="Recommend Sonura to producers and creators and earn commission every month for each paying customer you refer. Apply to the partner program."
-  keywords="sonura partner program, sonura affiliate, music software affiliate program"
+  description="Recommend Sonura and earn recurring commission every month for each paying customer you refer. Apply to the partner program."
+  keywords="sonura partner program, sonura affiliate program, music affiliate program, ambassador program, creator affiliate program, recurring commission affiliate program"
   canonical="https://sonurastudio.com/partners/"
   ogTitle="Sonura Partner Program | Earn Recurring Commission"
-  ogDescription="Recommend Sonura to producers and creators and earn commission every month for each paying customer you refer."
+  ogDescription="Recommend Sonura and earn recurring commission every month for each paying customer you refer."
   jsonLd={jsonLd}
 >
   <section class="partners-hero">
@@ -150,7 +150,7 @@ const faqs = [
       <div class="works-copy reveal">
         <p class="section-kicker">01 / Who it's for</p>
         <h2 class="section-title">A program that works for everyone</h2>
-        <p class="section-text">The Sonura partner program works differently depending on how you work. Whether you are a creator recommending tools to your audience or a studio bringing new artists into your workflow, there is a version of this that fits.</p>
+        <p class="section-text">The Sonura partner program works differently depending on how you work. Whether you are a creator recommending tools to your audience or a studio bringing new artists into your workflow, there is a version of this that fits. Read <a href="/how-we-work-with-artists/" class="text-link">how we work with artists</a> to see the terms behind it.</p>
       </div>
       <div class="works-cards">
         {cards.map((card, i) => (
@@ -211,7 +211,7 @@ const faqs = [
         {faqs.map((item) => (
           <details class="reveal">
             <summary>{item.q}</summary>
-            <p>{item.a}</p>
+            <p set:html={item.a} />
           </details>
         ))}
       </div>
