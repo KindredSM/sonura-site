@@ -1,71 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const jsonLd = [
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is the Sonura Partner Program?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "A way to earn recurring commission by recommending Sonura to producers, artists and creators in your audience. Some people call this an affiliate program or an ambassador program. At Sonura it works the same way: apply, get a tracking link, and get paid every month for the customers you bring in."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Who can apply?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Anyone with an audience or network of music makers: creators, educators, studios, engineers, newsletter writers and community builders."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How much can I earn?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "You earn a commission every month for each paying customer you refer, based on Sonura's paying plans. We share full terms with accepted partners."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is this different from the referral program?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Every Sonura user can already give friends 20 credits and earn free months. The partner program is for people who want to earn cash."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does it cost anything to join?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What do my referrals get?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "20 free credits when they sign up through your link."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "When will I hear back?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "We are opening the program in stages. Apply and we will be in touch."
-        }
-      }
-    ]
-  }
-];
-
 const cards = [
   { title: 'Content Creators', text: 'YouTube, TikTok and Instagram channels covering production, gear and workflow.' },
   { title: 'Producers and Beatmakers', text: 'Producers whose followers want to know what is in their toolkit.' },
@@ -95,6 +30,21 @@ const faqs = [
   { q: 'Does it cost anything to join?', a: 'No.' },
   { q: 'What do my referrals get?', a: '20 free credits when they sign up through your link.' },
   { q: 'When will I hear back?', a: 'We are opening the program in stages. Apply and we will be in touch.' },
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map((item) => ({
+      "@type": "Question",
+      "name": item.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.a.replace(/<[^>]+>/g, ''),
+      },
+    })),
+  },
 ];
 ---
 
@@ -250,7 +200,7 @@ const faqs = [
     if (ctaRow) ctaRow.hidden = true;
     if (form) form.hidden = false;
     const emailInput = document.getElementById('partner-email') as HTMLInputElement | null;
-    window.setTimeout(() => emailInput?.focus(), form && !form.hidden ? 400 : 700);
+    window.setTimeout(() => emailInput?.focus(), 400);
   }
 
   document.querySelectorAll<HTMLButtonElement>('[data-apply-trigger]').forEach((el) => {
@@ -289,7 +239,13 @@ const faqs = [
       return;
     }
 
-    if (!email) return;
+    if (!email) {
+      if (errorEl) {
+        errorEl.textContent = 'Please enter your email.';
+        errorEl.hidden = false;
+      }
+      return;
+    }
 
     const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement | null;
     if (submitButton) submitButton.disabled = true;
@@ -319,7 +275,10 @@ const faqs = [
       form.hidden = true;
       if (thanksEl) thanksEl.hidden = false;
     } catch (err) {
-      if (errorEl) errorEl.hidden = false;
+      if (errorEl) {
+        errorEl.textContent = 'Something went wrong. Please try again.';
+        errorEl.hidden = false;
+      }
       if (submitButton) submitButton.disabled = false;
     }
   });
