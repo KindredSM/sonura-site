@@ -209,12 +209,9 @@ const faqs = [
 
       <div class="faq-list">
         {faqs.map((item) => (
-          <details class="faq-item reveal">
-            <summary class="faq-question">
-              {item.q}
-              <span class="faq-indicator" aria-hidden="true"></span>
-            </summary>
-            <p class="faq-answer">{item.a}</p>
+          <details class="reveal">
+            <summary>{item.q}</summary>
+            <p>{item.a}</p>
           </details>
         ))}
       </div>
@@ -374,6 +371,11 @@ const faqs = [
     display: flex;
     flex-direction: column;
     gap: 12px;
+  }
+
+  .apply-form[hidden],
+  .hero-cta-row[hidden] {
+    display: none;
   }
 
   .apply-field {
@@ -612,77 +614,6 @@ const faqs = [
 
   .faq-list {
     max-width: 780px;
-  }
-
-  .faq-item {
-    border-top: 1px solid var(--border);
-  }
-
-  .faq-item:last-child {
-    border-bottom: 1px solid var(--border);
-  }
-
-  .faq-question {
-    list-style: none;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 24px;
-    padding: 24px 0;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--fg);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-
-  .faq-question::-webkit-details-marker {
-    display: none;
-  }
-
-  .faq-indicator {
-    flex-shrink: 0;
-    width: 16px;
-    height: 16px;
-    position: relative;
-  }
-
-  .faq-indicator::before,
-  .faq-indicator::after {
-    content: '';
-    position: absolute;
-    background: var(--fg);
-    transition: transform 0.2s ease;
-  }
-
-  .faq-indicator::before {
-    top: 7px;
-    left: 0;
-    width: 16px;
-    height: 1px;
-  }
-
-  .faq-indicator::after {
-    top: 0;
-    left: 7px;
-    width: 1px;
-    height: 16px;
-  }
-
-  .faq-item[open] .faq-indicator::after {
-    transform: rotate(90deg);
-    opacity: 0;
-  }
-
-  .faq-answer {
-    font-size: 15px;
-    color: var(--muted);
-    line-height: 1.8;
-    letter-spacing: 0.022em;
-    text-transform: lowercase;
-    margin: 0 0 28px;
-    max-width: 640px;
   }
 
   .final-cta-section {
