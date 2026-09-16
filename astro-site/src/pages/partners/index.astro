@@ -116,7 +116,16 @@ const faqs = [
       <p class="partners-subhead reveal" data-reveal-delay="0.04s">Refer creators to Sonura and earn commission every month for each paying customer you bring in.</p>
 
       <div class="apply-form-wrap reveal" data-reveal-delay="0.08s" id="apply">
-        <form id="partner-apply-form" class="apply-form" novalidate>
+        <div class="hero-cta-row">
+          <button type="button" class="button primary apply-trigger" data-apply-trigger data-cta-location="partners-hero">
+            <span class="btn-label-full">Apply Now</span><span class="btn-label-short">Apply</span>
+          </button>
+          <a href="#how-it-works" class="button secondary" data-apply-scroll-only>
+            <span class="btn-label-full">See how it works</span><span class="btn-label-short">How it works</span>
+          </a>
+        </div>
+
+        <form id="partner-apply-form" class="apply-form" novalidate hidden>
           <div class="apply-field">
             <input type="email" name="email" id="partner-email" placeholder="you@email.com" required aria-label="Email address" />
             <label class="honeypot" aria-hidden="true">
@@ -130,12 +139,6 @@ const faqs = [
           <p class="apply-error" role="alert" hidden>Something went wrong. Please try again.</p>
         </form>
         <p class="apply-thanks" hidden>Thank you. We will be in touch.</p>
-      </div>
-
-      <div class="hero-secondary-actions reveal" data-reveal-delay="0.1s">
-        <a href="#how-it-works" class="button secondary" data-apply-scroll-only>
-          <span class="btn-label-full">See how it works</span><span class="btn-label-short">How it works</span>
-        </a>
       </div>
 
       <p class="hero-login reveal" data-reveal-delay="0.12s">Already a partner? <a href="https://app.sonurastudio.com/" class="text-link">Log in</a>.</p>
@@ -242,12 +245,25 @@ const faqs = [
     }
   }
 
+  const ctaRow = document.querySelector('.hero-cta-row') as HTMLElement | null;
+  const form = document.getElementById('partner-apply-form') as HTMLFormElement | null;
+
+  function revealApplyForm(location: string) {
+    trackClick(location);
+    if (ctaRow) ctaRow.hidden = true;
+    if (form) form.hidden = false;
+    const emailInput = document.getElementById('partner-email') as HTMLInputElement | null;
+    window.setTimeout(() => emailInput?.focus(), form && !form.hidden ? 400 : 700);
+  }
+
+  document.querySelectorAll<HTMLButtonElement>('[data-apply-trigger]').forEach((el) => {
+    el.addEventListener('click', () => revealApplyForm('hero'));
+  });
+
   document.querySelectorAll<HTMLAnchorElement>('[data-apply-scroll]').forEach((el) => {
     el.addEventListener('click', () => {
-      const location = el.getAttribute('data-cta-location') || 'hero';
-      trackClick(location.replace('partners-', ''));
-      const emailInput = document.getElementById('partner-email') as HTMLInputElement | null;
-      window.setTimeout(() => emailInput?.focus(), 500);
+      const location = (el.getAttribute('data-cta-location') || 'hero').replace('partners-', '');
+      revealApplyForm(location);
     });
   });
 
@@ -257,12 +273,6 @@ const faqs = [
     });
   });
 
-  const heroEmail = document.getElementById('partner-email');
-  heroEmail?.addEventListener('focus', () => {
-    if (lastClickedLocation === 'hero') trackClick('hero');
-  }, { once: true });
-
-  const form = document.getElementById('partner-apply-form') as HTMLFormElement | null;
   const wrap = document.querySelector('.apply-form-wrap');
   const errorEl = document.querySelector('.apply-error') as HTMLElement | null;
   const thanksEl = document.querySelector('.apply-thanks') as HTMLElement | null;
@@ -424,10 +434,14 @@ const faqs = [
     margin: 0;
   }
 
-  .hero-secondary-actions {
+  .hero-cta-row {
     display: flex;
     gap: 16px;
-    margin-bottom: 24px;
+  }
+
+  .apply-trigger {
+    height: 56px;
+    padding: 0 32px;
   }
 
   .hero-login {
@@ -712,6 +726,15 @@ const faqs = [
 
     .partners-section {
       padding: 64px var(--page-pad);
+    }
+
+    .hero-cta-row {
+      flex-direction: column;
+    }
+
+    .apply-trigger,
+    .hero-cta-row .button.secondary {
+      width: 100%;
     }
 
     .apply-field {
