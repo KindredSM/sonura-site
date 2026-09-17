@@ -229,7 +229,9 @@ const jsonLd = [
     if (errorEl) errorEl.hidden = true;
 
     const data = new FormData(form);
-    const email = String(data.get('email') || '').trim();
+    // Lowercased so "Someone@Gmail.com" and "someone@gmail.com" are treated
+    // as the same applicant by the email unique constraint.
+    const email = String(data.get('email') || '').trim().toLowerCase();
     const honeypot = String(data.get('company_website') || '').trim();
 
     if (honeypot) {
@@ -239,9 +241,9 @@ const jsonLd = [
       return;
     }
 
-    if (!email) {
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       if (errorEl) {
-        errorEl.textContent = 'Please enter your email.';
+        errorEl.textContent = 'Please enter a valid email.';
         errorEl.hidden = false;
       }
       return;
@@ -265,11 +267,14 @@ const jsonLd = [
       // 409 means this email already applied (unique constraint) - treat as success, not an error.
       if (!res.ok && res.status !== 409) throw new Error(`Supabase insert failed: ${res.status}`);
 
+      // Email goes to PostHog directly (identify + capture), not through
+      // sonuraSeoTrack: that helper also forwards event params to
+      // gtag/dataLayer (GA4/GTM), which must never receive raw PII.
       if (typeof (window as any).posthog?.identify === 'function') {
         (window as any).posthog.identify(email, { email });
       }
-      if (typeof (window as any).sonuraSeoTrack === 'function') {
-        (window as any).sonuraSeoTrack('partner_apply_submitted', { email, button_location: lastClickedLocation });
+      if (typeof (window as any).posthog?.capture === 'function') {
+        (window as any).posthog.capture('partner_apply_submitted', { email, button_location: lastClickedLocation });
       }
 
       form.hidden = true;
