@@ -3,7 +3,7 @@ import BaseLayout from './BaseLayout.astro';
 import { MODELS, SPEC_ROWS, specValue, COMPARISONS, LAST_VERIFIED } from '../data/music-models';
 
 interface VerdictCard {
-  /** Metadata-role label, e.g. "best for release-ready songs" */
+  /** Metadata-role label, e.g. "Best for release-ready songs" */
   label: string;
   /** which model it points at */
   pick: string;
@@ -193,7 +193,7 @@ const jsonLd = [
       <p class="cmp-hero-trust">
         {inBoth.length > 0
           ? `${inBoth.map((m) => m.name).join(' and ')} in Sonura songs mode / Free to start / No credit card`
-          : 'Free to start / No credit card / exclusive commercial rights on paid plans on paid plans'}
+          : 'Free to start / No credit card / Exclusive commercial rights on paid plans'}
       </p>
 
       <div class="cmp-verdict">
@@ -211,10 +211,10 @@ const jsonLd = [
           <p class="cmp-verdict-pick">Sonura</p>
           <p class="cmp-verdict-body">
             {inBoth.length === 2
-              ? `${A.short} and ${B.short} are both selectable in songs mode. same prompt, both models, stems either way.`
+              ? `${A.short} and ${B.short} are both selectable in songs mode. Same prompt, both models, stems either way.`
               : inBoth.length === 1
                 ? `${inBoth[0].name} is selectable in songs mode, with stems and a plugin for your DAW on top.`
-                : 'the studio where you choose the model instead of being handed one, with stems on every plan and exclusive rights on paid plans.'}
+                : 'The studio where you choose the model instead of being handed one, with stems on every plan and exclusive rights on paid plans.'}
           </p>
           <a href={appUrl} class="cmp-verdict-cta">Open it free</a>
         </div>
@@ -223,10 +223,10 @@ const jsonLd = [
 
     <!-- ============ 01 SPEC SHEET ============ -->
     <section class="cmp-section" id="spec-sheet">
-      <p class="section-kicker">01 / Spec sheet</p>
+      <p class="section-kicker">Spec sheet</p>
       <h2 class="cmp-h2">Side by side, no marketing</h2>
       <p class="cmp-support cmp-section-lede">
-        every row below is checkable against a public source, and it is the same table on every page
+        Every row below is checkable against a public source, and it is the same table on every page
         here, so nothing gets quietly reworded to suit an argument.
       </p>
 
@@ -254,7 +254,7 @@ const jsonLd = [
 
     <!-- ============ 02 HEAD TO HEAD ============ -->
     <section class="cmp-section" id="head-to-head">
-      <p class="section-kicker">02 / Head to head</p>
+      <p class="section-kicker">Head to head</p>
       <h2 class="cmp-h2">Where each one actually wins</h2>
 
       <div class="cmp-h2h">
@@ -293,7 +293,7 @@ const jsonLd = [
           <span class="cmp-score-label">Split</span>
         </div>
         <p class="cmp-score-note cmp-support">
-          a tally is not a recommendation. the rows that matter are the ones that touch what you are
+          A tally is not a recommendation. The rows that matter are the ones that touch what you are
           trying to ship.
         </p>
       </div>
@@ -307,9 +307,9 @@ const jsonLd = [
         </p>
         <p class="cmp-band-line">
           {inBoth.length === 2
-            ? `run the same prompt through ${A.name} and ${B.name} in Sonura songs mode and keep the take that wins.`
+            ? `Run the same prompt through ${A.name} and ${B.name} in Sonura songs mode and keep the take that wins.`
             : inBoth.length === 1
-              ? `${inBoth[0].name} is one of the models in Sonura songs mode. try it on your own prompt in about a minute.`
+              ? `${inBoth[0].name} is one of the models in Sonura songs mode. Try it on your own prompt in about a minute.`
               : 'Sonura songs mode lets you pick the model instead of being handed one, then take the stems into your DAW.'}
         </p>
       </div>
@@ -333,7 +333,7 @@ const jsonLd = [
 
     <!-- ============ 03 NARRATIVE ============ -->
     <section class="cmp-section" id="the-catch">
-      <p class="section-kicker">03 / The catch</p>
+      <p class="section-kicker">The catch</p>
       <h2 class="cmp-h2">What the feature lists leave out</h2>
       <div class="cmp-prose">
         {narrative.map((block) => (
@@ -347,7 +347,7 @@ const jsonLd = [
 
     <!-- ============ 04 PICK ONE ============ -->
     <section class="cmp-section" id="pick-one">
-      <p class="section-kicker">04 / Pick one</p>
+      <p class="section-kicker">Pick one</p>
       <h2 class="cmp-h2">Which one is yours</h2>
       <div class="cmp-pick">
         <div class="cmp-pick-panel">
@@ -371,7 +371,7 @@ const jsonLd = [
 
     <!-- ============ 05 IN SONURA ============ -->
     <section class="cmp-section" id="sonura">
-      <p class="section-kicker">05 / In Sonura</p>
+      <p class="section-kicker">In Sonura</p>
       <h2 class="cmp-h2">{runHeading}</h2>
       <div class="cmp-sonura">
         <div class="cmp-sonura-body">
@@ -398,7 +398,7 @@ const jsonLd = [
                 {' '}{outOf[0].name} only runs inside {outOf[0].short}, which is the trade a closed platform asks you to make.
               </p>
               <p>
-                so you get the model and the workflow. split any track into stems, work inside Ableton,
+                So you get the model and the workflow. Split any track into stems, work inside Ableton,
                 Logic, and FL Studio through the AU and VST3 plugin, and keep <strong>exclusive commercial
                 rights on every paid plan, with no royalty splits</strong>.
               </p>
@@ -406,7 +406,7 @@ const jsonLd = [
           ) : (
             <Fragment>
               <p>
-                {A.name} only runs inside {A.short}. {B.name} only runs inside {B.short}. that is the deal
+                {A.name} only runs inside {A.short}. {B.name} only runs inside {B.short}. That is the deal
                 a closed platform offers: one model, one interface, and whatever their roadmap decides next.
               </p>
               <p>
@@ -447,7 +447,7 @@ const jsonLd = [
 
     <!-- ============ 06 FAQ ============ -->
     <section class="cmp-section" id="faq">
-      <p class="section-kicker">06 / FAQ</p>
+      <p class="section-kicker">FAQ</p>
       <h2 class="cmp-h2">Questions people actually ask</h2>
       <div class="cmp-faq">
         {faqs.map((faq) => (
@@ -462,7 +462,7 @@ const jsonLd = [
     <!-- ============ RELATED ============ -->
     {related.length > 0 && (
       <section class="cmp-section" id="related">
-        <p class="section-kicker">07 / Keep comparing</p>
+        <p class="section-kicker">Keep comparing</p>
         <h2 class="cmp-h2">Next to this one</h2>
         <div class="cmp-related">
           {related.map((c, i) => (
@@ -475,7 +475,7 @@ const jsonLd = [
           ))}
         </div>
         <p class="cmp-support cmp-related-all">
-          or see <a href="/compare/">every model comparison</a> and the
+          Or see <a href="/compare/">every model comparison</a> and the
           <a href="/alternatives/">Sonura alternatives index</a>.
         </p>
       </section>
@@ -485,13 +485,13 @@ const jsonLd = [
     <section class="cmp-final">
       <h2 class="cmp-h2 cmp-final-h2">Own your sound</h2>
       <p class="cmp-support cmp-final-sub">
-        make the loop, the vocal, or the whole track, then take the parts into your DAW and release it
-        as yours. free to start, no card needed.
+        Make the loop, the vocal, or the whole track, then take the parts into your DAW and release it
+        as yours. Free to start, no card needed.
       </p>
       <a href={appUrl} class="button primary large"
         ><span class="btn-label-full">Start Creating Free</span><span class="btn-label-short">Start free</span></a
       >
-      <p class="cmp-final-footer">Free to start / No credit card / exclusive commercial rights on paid plans on paid plans</p>
+      <p class="cmp-final-footer">Free to start / No credit card / Exclusive commercial rights on paid plans</p>
     </section>
   </div>
 

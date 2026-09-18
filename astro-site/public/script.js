@@ -415,20 +415,10 @@ if (window.lucide && window.lucide.createIcons) {
 
 // Nav Scroll
 const nav = document.querySelector('.nav');
-let scrollTimeout = null;
-function handleNavScroll() {
-  if (scrollTimeout) return;
-  scrollTimeout = requestAnimationFrame(() => {
-    const currentScrollY = window.scrollY;
-    if (currentScrollY > 50) {
-      nav.classList.add('scrolled');
-    } else {
-      nav.classList.remove('scrolled');
-    }
-    scrollTimeout = null;
-  });
-}
-window.addEventListener('scroll', handleNavScroll, { passive: true });
+// Nav.astro owns the `scrolled` class. A second handler here used a 50px
+// threshold against its 24px, so the two contradicted each other between the
+// two values and the winner depended on module registration order.
+
 
 // Mobile Menu
 const mobileMenuBtn = document.querySelector('.mobile-menu-btn');

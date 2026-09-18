@@ -42,16 +42,16 @@ const {
       <div class="pricing-card-header">
         <h3 class="plan-name">Free</h3>
         <div class="price-row">
-          <span class="plan-price">$<span class="price-amount">0</span><span class="period">/mo</span></span>
+          <span class="plan-price">$<span class="price-amount" data-monthly="0" data-annual="0">0</span><span class="period">/mo</span></span>
         </div>
         <p class="plan-desc">try it out, no card needed.</p>
       </div>
 
       <div class="plan-value">
-        <p class="plan-value-headline">10 loops to start</p>
+        <p class="plan-value-headline">10 loops daily</p>
         <ul class="plan-value-list">
-          <li>20 one-shots &amp; fx</li>
-          <li>2 full tracks</li>
+          <li>20 one-shots &amp; FX daily</li>
+          <li>2 full tracks daily</li>
         </ul>
       </div>
 
@@ -66,7 +66,7 @@ const {
           <svg class="feature-check" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
           </svg>
-          <span>More free credits every day you come back</span>
+          <span>Your free allowance resets every day</span>
         </li>
         <li>
           <svg class="feature-check" viewBox="0 0 20 20" fill="currentColor">
@@ -103,7 +103,7 @@ const {
       <div class="plan-value">
         <p class="plan-value-headline">200 loops / month</p>
         <ul class="plan-value-list">
-          <li>400 one-shots &amp; fx</li>
+          <li>400 one-shots &amp; FX</li>
           <li>55 full tracks</li>
         </ul>
       </div>
@@ -160,7 +160,7 @@ const {
       <div class="plan-value">
         <p class="plan-value-headline">500 loops / month</p>
         <ul class="plan-value-list">
-          <li>1,000 one-shots &amp; fx</li>
+          <li>1,000 one-shots &amp; FX</li>
           <li>140 full tracks</li>
         </ul>
       </div>
@@ -228,7 +228,7 @@ const {
       <div class="plan-value">
         <p class="plan-value-headline">1,250 loops / month</p>
         <ul class="plan-value-list">
-          <li>2,500 one-shots &amp; fx</li>
+          <li>2,500 one-shots &amp; FX</li>
           <li>355 full tracks</li>
         </ul>
       </div>
@@ -431,16 +431,17 @@ const {
 
   @media (min-width: 768px) {
     .pricing-grid {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 
   /* four cards only fit one row once there is real width for them */
   @media (min-width: 1180px) {
     .pricing-grid {
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
   }
+
 
   .pricing-card {
     padding: 40px 32px 32px;
@@ -455,7 +456,7 @@ const {
   }
 
   .pricing-card:hover {
-    border-color: var(--fg);
+    border-color: var(--hairline);
   }
 
   .pricing-card.featured {
@@ -465,7 +466,7 @@ const {
   }
 
   .pricing-card.featured:hover {
-    box-shadow: 0 16px 40px -8px rgba(0, 0, 0, 0.36);
+    box-shadow: none;
   }
 
   .popular-badge {
@@ -486,13 +487,13 @@ const {
   }
 
   .pricing-card-header {
-    margin-bottom: 24px;
-    padding-bottom: 24px;
+    margin-bottom: 0;
+    padding-bottom: 20px;
     border-bottom: 1px solid var(--border);
   }
 
   .plan-name {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 700;
     margin: 0 0 12px;
     letter-spacing: 0.1em;
@@ -522,24 +523,27 @@ const {
   }
 
   .plan-price .period {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 500;
     color: var(--muted);
   }
 
   .monthly-equivalent {
-    font-size: 13px;
+    font-size: 12px;
     color: var(--muted);
     margin-top: 6px;
     margin-bottom: 8px;
   }
 
+  /* "for independent artists and producers." wraps where "try it out, no card
+     needed." does not: two lines always, so the block below starts level. */
   .plan-desc {
     color: var(--muted);
     font-size: 14px;
     font-weight: 500;
+    line-height: 1.4;
+    min-height: 3em;
     margin-bottom: 0;
-    text-transform: lowercase;
   }
 
   .plan-features {
@@ -554,7 +558,7 @@ const {
     display: flex;
     align-items: flex-start;
     gap: 12px;
-    font-size: 15px;
+    font-size: 16px;
     color: var(--muted);
   }
 
@@ -568,14 +572,18 @@ const {
 
   /* what the plan buys, between the price and the feature list so it is read
      first. a credit is an internal unit; the card talks in creations instead. */
+  /* "1,250 loops / month" wraps where the others do not, so the block carries
+     the spare line and every card's list and features stay level. */
   .plan-value {
-    margin: 20px 0 22px;
-    padding: 18px 0;
+    margin: 0 0 22px;
+    padding: 20px 0;
+    min-height: 156px;
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
   }
 
   .plan-value-headline {
+    line-height: 1.1;
     margin: 0;
     font-family: var(--font-display);
     font-weight: 400;
@@ -599,7 +607,6 @@ const {
     padding: 3px 0;
     font-size: 14px;
     color: var(--faint);
-    text-transform: lowercase;
   }
 
   .plan-value-list li::before {
@@ -609,9 +616,19 @@ const {
   .pricing-cta {
     margin-top: auto;
     padding-top: 12px;
+    display: flex;
   }
 
-  .pricing-cta button {
+  .pricing-cta > .button {
+    flex: 1 1 auto;
+    width: 100%;
+    /* the Free plan's CTA is an <a> and the rest are <button>: one size for
+       all four, or the first card's label sits a pixel larger than its row */
+    font-size: 14px;
+  }
+
+  .pricing-cta button,
+  .pricing-cta > a.button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -621,7 +638,7 @@ const {
     border-radius: var(--radius-panel);
     border: none;
     font-weight: 600;
-    font-size: 15px;
+    font-size: 14px;
     cursor: pointer;
     transition: all 0.2s;
   }
@@ -748,4 +765,6 @@ const {
       gap: 12px;
     }
   }
+
+
 </style>

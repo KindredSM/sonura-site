@@ -190,7 +190,6 @@ const jsonLd = [
       margin: 0;
       font-size: 15px;
       color: var(--muted);
-      text-transform: lowercase;
       letter-spacing: 0.022em;
       line-height: 1.8;
       word-spacing: 0.04em;
@@ -252,7 +251,7 @@ const jsonLd = [
   </section>
 
   <section class="usecase-section" aria-labelledby="problem-solution-title">
-    <p class="section-kicker">01 / Problem / Solution</p>
+    <p class="section-kicker">Problem / Solution</p>
     <div class="problem-solution">
       <div class="problem-card reveal">
         <h2 class="ps-title">{problemTitle}</h2>
@@ -266,7 +265,7 @@ const jsonLd = [
   </section>
 
   <section class="usecase-section" aria-labelledby="benefits-title">
-    <p class="section-kicker">02 / Benefits</p>
+    <p class="section-kicker">Benefits</p>
     <h2 id="benefits-title" class="workflow-title reveal">Why Sonura for {useCase}</h2>
     <div class="benefit-grid">
       {benefits.map((benefit, index) => (
@@ -279,7 +278,7 @@ const jsonLd = [
   </section>
 
   <section class="usecase-section" aria-labelledby="examples-title">
-    <p class="section-kicker">03 / Examples</p>
+    <p class="section-kicker">Examples</p>
     <h2 id="examples-title" class="workflow-title reveal">{examplesTitle || 'Example Prompts'}</h2>
     <div class="example-grid">
       {examples.map((example, index) => (
@@ -296,7 +295,7 @@ const jsonLd = [
 
   <section class="faq" id="faq" aria-labelledby="faq-title">
     <div class="faq-inner">
-      <p class="section-kicker">04 / FAQ</p>
+      <p class="section-kicker">FAQ</p>
       <h2 id="faq-title" class="faq-title">{useCase} FAQ</h2>
       <div class="faq-list">
         {faqs.map((faq, index) => (

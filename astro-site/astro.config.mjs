@@ -29,6 +29,8 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
+      // /v2/ is an internal landing experiment: noindex, and kept out of the sitemap.
+      filter: (page) => !page.includes('/v2/'),
       changefreq: 'weekly',
       priority: 0.7,
       lastmod: new Date(),

@@ -95,13 +95,17 @@ body {
 }
 
 .page { min-height: 100vh; display: flex; flex-direction: column; }
-.nav { position: sticky; top: 0; z-index: 100; width: 100%; padding: 0 var(--page-pad); background: rgba(5, 5, 5, 0.92); backdrop-filter: blur(14px); border-bottom: 1px solid var(--hairline); }
-.nav.scrolled { background: rgba(5, 5, 5, 0.92); backdrop-filter: blur(14px); border-bottom: 1px solid var(--hairline); }
+/* No rule under the nav: the blur and the darker fill are what separate it
+   from the page, the way the homepage has done since the v2 redesign. */
+/* Transparent over the hero, filling in once the page moves under it. The
+   `scrolled` class is toggled in the layout script. */
+.nav { position: sticky; top: 0; z-index: 100; width: 100%; padding: 0 var(--page-pad); background: transparent; backdrop-filter: none; border-bottom: 0; transition: background-color 0.25s ease, backdrop-filter 0.25s ease; }
+.nav.scrolled { background: rgba(5, 5, 5, 0.92); backdrop-filter: blur(14px); border-bottom: 0; }
 .nav-inner { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; max-width: none; margin: 0 auto; width: 100%; position: relative; border: 0; border-radius: 0; background: transparent; backdrop-filter: none; box-shadow: none; }
 .nav.scrolled .nav-inner { max-width: none; padding: 12px 0; border-radius: 0; background: transparent; backdrop-filter: none; box-shadow: none; }
 .nav-actions { display: flex; align-items: center; gap: 16px; }
 .nav-links { display: flex; align-items: center; gap: 8px; }
-.nav-link { display: inline-flex; align-items: center; gap: 10px; padding: 8px 12px; color: var(--fg); text-decoration: none; font-weight: 500; font-size: 14px; text-transform: lowercase; opacity: 0.86; transition: all 0.2s ease; border-radius: var(--radius-ui); }
+.nav-link { display: inline-flex; align-items: center; gap: 10px; padding: 8px 12px; color: var(--fg); text-decoration: none; font-weight: 500; font-size: 14px;opacity: 0.86; transition: all 0.2s ease; border-radius: var(--radius-ui); }
 .nav-link:hover { opacity: 1; background: rgba(255, 255, 255, 0.04); color: var(--fg); }
 .nav-link i { width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .nav-separator { width: 1px; height: 24px; background: var(--border); }
@@ -161,21 +165,21 @@ body {
 .mobile-menu-btn i { width: 22px; height: 22px; }
 .mobile-menu { display: none; position: absolute; top: calc(100% + 10px); right: 0; background: #050505; border: 1px solid var(--border); border-radius: var(--radius-ui); padding: 10px; margin: 0; min-width: 210px; opacity: 0; transform: translateY(-8px) scale(0.98); transform-origin: top right; pointer-events: none; transition: opacity 0.18s ease, transform 0.18s ease; box-shadow: 0 18px 54px rgba(0,0,0,0.34), inset 0 1px 0 rgba(255,255,255,0.05); overflow: hidden; }
 .mobile-menu.active { opacity: 1; transform: translateY(0); pointer-events: all; }
-.mobile-menu-item { display: flex; align-items: center; gap: 10px; padding: 13px 16px; color: var(--fg); text-decoration: none; font-weight: 600; font-size: 16px; text-transform: lowercase; border-radius: var(--radius-ui); transition: background 0.18s ease, opacity 0.18s ease; opacity: 0.88; position: relative; z-index: 1; }
+.mobile-menu-item { display: flex; align-items: center; gap: 10px; padding: 13px 16px; color: var(--fg); text-decoration: none; font-weight: 600; font-size: 16px;border-radius: var(--radius-ui); transition: background 0.18s ease, opacity 0.18s ease; opacity: 0.88; position: relative; z-index: 1; }
 .mobile-menu-item:hover { opacity: 1; background: rgba(255, 255, 255, 0.07); }
 .mobile-menu-item svg, .mobile-menu-item i { opacity: 0.8; }
 @media (max-width: 768px) { .nav-links { display: none !important; } .nav-separator { display: none !important; } .mobile-menu-btn { display: inline-flex; } .mobile-menu { display: block; } }
 
 .brand { font-family: var(--font-body); font-weight: 400; text-transform: uppercase; letter-spacing: 0.12em; color: var(--fg) !important; text-decoration: none !important; cursor: pointer; transition: opacity 0.2s ease; border: none; outline: none; background: none; display: flex; align-items: center;  }
-.brand p { font-size: 19px; margin: 0; }
+.brand p { font-size: 14px; margin: 0; }
 .brand:hover { opacity: 0.8; color: var(--fg) !important; text-decoration: none !important; }
 .brand:visited { color: var(--fg) !important; text-decoration: none !important; }
 .brand:active { color: var(--fg) !important; text-decoration: none !important; }
 .brand:focus { color: var(--fg) !important; text-decoration: none !important; outline: none; }
 .nav-cta { color: var(--fg); text-decoration: none; opacity: 0.9; }
 .nav-cta:hover { opacity: 1; }
-.nav .button.primary { padding: 14px 24px; border-radius: var(--radius-ui); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; transition: all 0.2s ease; border: 1px solid var(--fg); background: var(--fg); color: var(--bg); font-weight: 600; }
-.nav .button.primary:hover { border-color: var(--fg); background: var(--fg); color: var(--bg); }
+.nav .button.primary { padding: 14px 24px; border-radius: var(--radius-ui); font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; transition: all 0.2s ease; border: 1px solid var(--fg); background: var(--fg); color: var(--bg); font-weight: 600; }
+.nav .button.primary:hover { border-color: var(--fg); color: var(--bg); }
 
 .hero { 
   flex: 1; 
@@ -347,7 +351,6 @@ body {
 }
 
 .underground-home .cta .button.primary:hover {
-  background: var(--fg);
   color: var(--bg);
   border-color: var(--fg);
 }
@@ -655,7 +658,6 @@ body {
   transform: translateY(-2px); 
   box-shadow: none;
   filter: none;
-  background: var(--fg);
   color: var(--bg);
   border-color: var(--fg);
 }
@@ -761,11 +763,11 @@ body {
     margin-right: 8px !important;
   }
   .brand p {
-    font-size: 16px !important;
+    font-size: 14px !important;
   }
   .nav .button.primary {
     padding: 9px 16px;
-    font-size: 15px;
+    font-size: 13px;
   }
   .mobile-menu-btn {
     padding: 7px 0 7px 4px;
@@ -1678,7 +1680,7 @@ body {
 .footer-actions { display: flex; gap: 12px; align-items: center; }
 .footer-button { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 24px; border-radius: var(--radius-ui); font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); white-space: nowrap; }
 .footer-button.primary { background: var(--fg); color: var(--bg); border: 1px solid transparent; }
-.footer-button.primary:hover { box-shadow: none; filter: none; background: var(--fg); color: var(--bg); }
+.footer-button.primary:hover { box-shadow: none; filter: none; }
 .footer-button.secondary { background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--fg); }
 .footer-button.secondary:hover { background: rgba(255,255,255,0.1); border-color: var(--border-light); }
 .footer-button svg { width: 16px; height: 16px; }
@@ -1950,7 +1952,6 @@ body {
 }
 
 .subhead {
-  text-transform: lowercase;
   letter-spacing: 0.022em;
   line-height: 1.8;
   word-spacing: 0.04em;
@@ -2041,7 +2042,6 @@ body {
 .faq p {
   padding: 0 0 24px;
   max-width: 760px;
-  text-transform: lowercase;
   letter-spacing: 0.022em;
   line-height: 1.8;
   word-spacing: 0.04em;
@@ -2093,7 +2093,7 @@ body {
   border: 1px solid var(--fg);
   color: var(--bg);
 }
-.final-cta-form .button.primary:hover { background: var(--fg); color: var(--bg); transform: none; }
+.final-cta-form .button.primary:hover { transform: none; }
 .final-cta-trust { justify-content: flex-start; gap: 0; margin-top: 28px; flex-wrap: wrap; row-gap: 10px; }
 .final-cta-trust .trust-item {
   font-size: 11px;
@@ -2223,7 +2223,6 @@ details > p {
   margin: 0;
   max-width: 760px;
   color: var(--muted);
-  text-transform: lowercase;
   letter-spacing: 0.022em;
   line-height: 1.8;
   word-spacing: 0.04em;
@@ -2246,5 +2245,77 @@ html.lenis, html.lenis body { height: auto; }
   .final-cta-trust .trust-item:not(:first-child)::before {
     content: none;
     margin: 0;
+  }
+}
+
+
+/* ==========================================================================
+   CTA wipe.
+
+   Two selectors. The variant classes are the only hook: `.button.primary` and
+   `.button.secondary`. Size classes (`.large`) and one-off names
+   (`.switcher-cta`, `.plugin-cta`, `.release-positioning-button`) are NOT
+   listed, because every one of those elements already carries its variant
+   class. Listing `.large` here is what made a secondary-large button match
+   the primary rule as well and fight itself on hover.
+
+   !important because per-page <style> blocks are scoped with data-astro-cid
+   attributes, putting them at (0,5,0) against this file's (0,2,0).
+   ========================================================================== */
+
+.button.primary {
+  border: 1px solid var(--fg) !important;
+  background-color: transparent !important;
+  background-image: linear-gradient(to right, transparent 0 50%, var(--fg) 50% 100%) !important;
+  background-size: 220% 100% !important;
+  background-position: 100% 0% !important;
+  background-repeat: no-repeat !important;
+  color: var(--bg) !important;
+  transition:
+    background-position 0.34s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0s linear 0.17s;
+}
+
+.button.primary:hover {
+  background-position: 0% 0% !important;
+  color: var(--fg) !important;
+}
+
+.button.secondary {
+  border: 1px solid var(--hairline) !important;
+  background-color: transparent !important;
+  background-image: linear-gradient(to right, var(--fg) 0 50%, transparent 50% 100%) !important;
+  background-size: 220% 100% !important;
+  background-position: 100% 0% !important;
+  background-repeat: no-repeat !important;
+  color: var(--fg) !important;
+  transition:
+    background-position 0.34s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.2s ease,
+    color 0s linear 0.17s;
+}
+
+.button.secondary:hover {
+  background-position: 0% 0% !important;
+  border-color: var(--fg) !important;
+  color: var(--bg) !important;
+}
+
+/* Held state: the wipe has landed, so stop and darken rather than bounce */
+.button.primary:active,
+.button.secondary:active {
+  background-position: 0% 0% !important;
+  filter: brightness(0.86);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button.primary,
+  .button.secondary {
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
 }

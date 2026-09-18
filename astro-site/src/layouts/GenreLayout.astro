@@ -2,7 +2,7 @@
 import BaseLayout from './BaseLayout.astro';
 
 interface WorkflowItem {
-  /* asset base path, e.g. '/assets/workflow-design-final' (needs -768/-1280 avif+webp variants) */
+  /* asset base path, e.g. '/assets/studio-create' (needs -768/-1280 webp variants) */
   image: string;
   imageAlt: string;
   title: string;
@@ -68,18 +68,15 @@ const {
 const canonical = `https://sonurastudio.com/genre/${genreSlug}/`;
 const stripHtml = (value: string) => value.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
 
-/* Numbered section kickers. Prose and demo sections are optional, so numbering
-   is computed from whichever sections are actually present. */
+/* Section kickers. The label alone: the numerals were decoration. */
 const hasProse = Boolean(proseTitle && proseBody);
 const hasDemo = demoTracks.length > 0;
-let sectionNo = 0;
-const nextKicker = (label: string) => `${String(++sectionNo).padStart(2, '0')} / ${label}`;
 const kickers = {
-  workflow: nextKicker('Workflow'),
-  prose: hasProse ? nextKicker('Why Sonura') : '',
-  demo: hasDemo ? nextKicker('Demos') : '',
-  next: nextKicker('Next steps'),
-  faq: nextKicker('FAQ'),
+  workflow: 'Workflow',
+  prose: hasProse ? 'Why Sonura' : '',
+  demo: hasDemo ? 'Demos' : '',
+  next: 'Next steps',
+  faq: 'FAQ',
 };
 
 const jsonLd = [
@@ -204,12 +201,7 @@ const jsonLd = [
       text-decoration: none;
       transition: color 0.2s;
     }
-    .genre-next-link::before {
-      content: counter(genre-next, decimal-leading-zero);
-      font-size: 13px;
-      font-variant-numeric: tabular-nums;
-      color: var(--faint);
-    }
+    .genre-next-link::before { content: none; }
     .genre-next-link strong {
       display: block;
       font-size: 13px;
@@ -223,7 +215,6 @@ const jsonLd = [
       display: block;
       color: var(--muted);
       font-size: 14px;
-      text-transform: lowercase;
       letter-spacing: 0.022em;
       word-spacing: 0.04em;
       line-height: 1.8;
@@ -267,11 +258,6 @@ const jsonLd = [
           <div class={`workflow-item ${index % 2 === 1 ? 'workflow-item-reverse' : ''} reveal`} data-reveal-delay={`${0.04 * (index + 1)}s`}>
             <div class="workflow-image">
               <picture>
-                <source
-                  type="image/avif"
-                  srcset={`${item.image}-768.avif 768w, ${item.image}-1280.avif 1280w`}
-                  sizes="(max-width: 900px) 100vw, 50vw"
-                />
                 <source
                   type="image/webp"
                   srcset={`${item.image}-768.webp 768w, ${item.image}-1280.webp 1280w`}

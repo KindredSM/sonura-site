@@ -113,7 +113,6 @@ const tools = [
       color: var(--muted);
       font-size: 17px;
       max-width: 560px;
-      text-transform: lowercase;
       letter-spacing: 0.022em;
       word-spacing: 0.04em;
       line-height: 1.8;
@@ -141,12 +140,7 @@ const tools = [
       text-decoration: none;
       color: inherit;
     }
-    .ti-card::before {
-      content: counter(ti-tool, decimal-leading-zero);
-      font-size: 13px;
-      font-variant-numeric: tabular-nums;
-      color: var(--faint);
-    }
+    .ti-card::before { content: none; }
     .ti-card h2 {
       margin: 0;
       font-size: 13px;
@@ -160,7 +154,6 @@ const tools = [
       margin: 0;
       font-size: 14px;
       color: var(--muted);
-      text-transform: lowercase;
       letter-spacing: 0.022em;
       word-spacing: 0.04em;
       line-height: 1.8;
@@ -188,7 +181,7 @@ const tools = [
   </div>
 
   <div class="ti-grid-wrap">
-    <p class="section-kicker">01 / Tools</p>
+    <p class="section-kicker">Tools</p>
     <div class="ti-grid">
       {tools.map((t) => (
         <a class="ti-card" href={t.href}>

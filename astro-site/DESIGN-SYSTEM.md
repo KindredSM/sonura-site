@@ -41,11 +41,17 @@ Four text roles. Every piece of text on a page is one of these:
 |---|---|---|---|
 | **Display** (h1, section h2, statement h3) | `var(--font-display)` | `text-transform: uppercase` | weight 400, `line-height: 1` (0.94–0.98 for multi-line h1), `letter-spacing: 0.01em`. Sizes: h1 `clamp(52px, 7.7vw, 115px)`; section h2 `clamp(38px, 4.8vw, 68px)`; sub-heads (h3) `clamp(24px, 2.8vw, 38px)` |
 | **Metadata** (kickers, buttons, labels, names, durations) | `var(--font-body)` | `text-transform: uppercase` | 11–13px, weight 500–700, `letter-spacing: 0.1em–0.16em`, color `--muted` (or `--fg` for emphasis) |
-| **Support** (subheads, one-line descriptions, card blurbs, FAQ answers) | `var(--font-body)` | `text-transform: lowercase` | 14–17px, weight 400, color `--muted`, `letter-spacing: 0.022em`, `line-height: 1.8`, `word-spacing: 0.04em` |
+| **Support** (subheads, one-line descriptions, card blurbs, FAQ answers) | `var(--font-body)` | sentence case (normal) | 14–17px, weight 400, color `--muted`, `letter-spacing: 0.022em`, `line-height: 1.8`, `word-spacing: 0.04em` |
 | **Long-form** (blog articles, terms/privacy prose) | `var(--font-body)` | sentence case (normal) | readable body settings; do NOT lowercase multi-paragraph articles |
 
-Slash metadata pattern for kickers: `01 / COMMUNITY`, `WEDNESDAY / 29 JULY / 6PM`.
-Section kickers use the global `.section-kicker` class and are numbered per page.
+Support text is written in sentence case. The site used a `text-transform: lowercase`
+rule here until the 2026-09 landing pass; it was removed because it fought proper
+nouns (Suno, Vertex AI, WAV, MIDI), which rendered inconsistently once any of them
+needed their real casing. Write the source in sentence case, no transform.
+
+Slash metadata pattern for kickers: `WEDNESDAY / 29 JULY / 6PM`.
+Section kickers use the global `.section-kicker` class and carry the label alone;
+the leading numerals were dropped in the same pass.
 
 ## 3. Layout
 
@@ -92,9 +98,9 @@ Section kickers use the global `.section-kicker` class and are numbered per page
   ~0.14 (see `--grain` in `home-editorial.css`). Optional per-tile grain at ~0.22.
 - **Pull quotes**: no card chrome — hairline-ruled columns/rows, quote in Support
   style at 16–19px, author as Metadata ("ERIK WESSLEN / ENGINEER"), square grayscale avatar. Quotes are verbatim customer speech: they keep their original
-  capitalization (no lowercase transform), like the em-dash exemption.
+  capitalization, like the em-dash exemption.
 - **FAQ**: `<details>` list with border-top rule per item, uppercase Metadata
-  question, `+`/`−` indicator, lowercase Support answer.
+  question, `+`/`−` indicator, sentence-case Support answer.
 - **Media**: square corners, hairline border, images desaturated
   (`filter: grayscale(.5) contrast(1.08)`) until hover restores color.
 - **Inline text links**: ONE style everywhere — use the global `.text-link` class

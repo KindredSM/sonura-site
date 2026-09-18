@@ -2,8 +2,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PricingSection from '../components/PricingSection.astro';
 import MadeWithSonura from '../components/MadeWithSonura.astro';
+import { DAW_LOGOS } from '../data/dawLogos';
 import BrandIcon from '../components/icons/BrandIcon.astro';
 import '../styles/home-editorial.css';
+import '../styles/home-v2.css';
 
 const jsonLd = [
   {
@@ -116,13 +118,30 @@ const creatorVideos = [
   ogTitle="Create Royalty-Free Beats, Loops & Vocals | Sonura"
   ogDescription="Royalty-free beats, loops, vocals, stems, one-shots, and full tracks, all in one place."
   jsonLd={[...jsonLd, faqSchema]}
-  bodyClass="editorial-home"
+  bodyClass="editorial-home home-v2"
 >
   <meta slot="head" property="og:video" content="https://www.youtube.com/watch?v=xUuqIAWetXk" />
   <meta slot="head" property="og:video:type" content="text/html" />
   <meta slot="head" property="og:video:width" content="1920" />
   <meta slot="head" property="og:video:height" content="1080" />
   <section class="hero">
+    <div class="hero-media" id="hero-video-container" aria-hidden="true">
+      <video
+        class="hero-video-element hero-video-thumbnail"
+        id="video-thumbnail"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        poster="/videos/hero-bg-poster.jpg"
+      >
+        <source src="/videos/hero-bg.webm" type="video/webm" />
+        <source src="/videos/hero-bg.mp4" type="video/mp4" />
+      </video>
+      <span class="hero-scrim"></span>
+    </div>
+
     <div class="hero-content">
       <p class="hero-kicker reveal" data-reveal-delay="0.02s">
         <span class="hero-avatars">
@@ -132,152 +151,156 @@ const creatorVideos = [
         </span>
         <span>Loved by 15,000+ producers</span>
       </p>
-      <h1 class="headline reveal" data-reveal-delay="0.04s">Produce music <strong>like no one else.</strong></h1>
-      <p class="subhead reveal" data-reveal-delay="0.06s">Describe the one-shot, loop, or vocal in your head, then chop, stack, and mix it in the studio. Zero splits, 100% yours.</p>
+      <h1 class="headline reveal" data-reveal-delay="0.04s">Make the sound <strong>in your head<span class="stop">.</span></strong></h1>
+      <p class="subhead reveal" data-reveal-delay="0.06s">The ethical AI music studio, on the web or in your DAW.</p>
 
       <div class="cta reveal" data-reveal-delay="0.08s" id="signup">
         <div class="cta-buttons">
-          <a id="cta-button" class="button primary" href="https://app.sonurastudio.com/">Open Studio</a>
-          <a class="button secondary" href="/plugin/">Download Plugin</a>
+          <a id="cta-button" class="button primary" href="https://app.sonurastudio.com/">Try for free</a>
         </div>
       </div>
     </div>
-    <div class="hero-media reveal" data-reveal-delay="0.12s" id="hero-video-container">
-      <div class="hero-media-clip">
-        <video
-          class="hero-video-element hero-video-thumbnail"
-          id="video-thumbnail"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="metadata"
-          poster="/videos/hero-bg-poster.jpg"
-          aria-label="Sonura music creation interface preview"
-        >
-          <source src="/videos/hero-bg.webm" type="video/webm" />
-          <source src="/videos/hero-bg.mp4" type="video/mp4" />
-        </video>
-      </div>
-      <span class="hero-media-edge" aria-hidden="true"></span>
-    </div>
   </section>
 
-  <MadeWithSonura />
+  <MadeWithSonura kicker="" subtitle="" />
 
   <section class="workflow" aria-labelledby="workflow-title">
     <div class="workflow-inner">
       <div class="workflow-head">
-        <p class="section-kicker reveal">02 / Workflow</p>
-        <h2 id="workflow-title" class="workflow-title reveal">From one idea to a finished track</h2>
+        <h2 id="workflow-title" class="workflow-title reveal" data-reveal-delay="0.06s">A full studio in your browser</h2>
       </div>
-      <div class="workflow-index">
-        <article class="workflow-row reveal" data-reveal-delay="0.04s">
-          <span class="workflow-num" aria-hidden="true">01</span>
-          <div class="workflow-copy">
-            <h3>Create Original Sounds</h3>
-            <p>Stop using the same packs as everyone else. Our <a href="/features/ai-loops/">AI Sample Generator</a> makes one-shots, vocals, loops, and FX to your exact vision, every sound unique, yours, and production-ready out of the box.</p>
-          </div>
-          <div class="workflow-media">
+      <div class="switcher">
+        <div class="switcher-list" role="tablist" aria-label="What you can do in Sonura">
+          <button class="switcher-item is-active" type="button" role="tab" aria-selected="true" aria-controls="switch-panel-0" id="switch-tab-0" data-switch="0">
+            <span class="switcher-head">
+              <span class="switcher-name">Create</span>
+            </span>
+            <span class="switcher-copy"><span class="switcher-copy-inner">One-shots, vocals, loops and FX made to your exact spec</span></span>
+          </button>
+          <button class="switcher-item" type="button" role="tab" aria-selected="false" aria-controls="switch-panel-1" id="switch-tab-1" data-switch="1">
+            <span class="switcher-head">
+              <span class="switcher-name">Compose</span>
+            </span>
+            <span class="switcher-copy"><span class="switcher-copy-inner">Layer your sounds into a finished arrangement</span></span>
+          </button>
+          <button class="switcher-item" type="button" role="tab" aria-selected="false" aria-controls="switch-panel-2" id="switch-tab-2" data-switch="2">
+            <span class="switcher-head">
+              <span class="switcher-name">Collaborate</span>
+            </span>
+            <span class="switcher-copy"><span class="switcher-copy-inner">Invite people into the same session and work in real time</span></span>
+          </button>
+          <button class="switcher-item" type="button" role="tab" aria-selected="false" aria-controls="switch-panel-3" id="switch-tab-3" data-switch="3">
+            <span class="switcher-head">
+              <span class="switcher-name">Publish</span>
+            </span>
+            <span class="switcher-copy"><span class="switcher-copy-inner">Send it anywhere, with no royalty splits</span></span>
+          </button>
+        </div>
+
+        <div class="switcher-dots" role="tablist" aria-label="Choose a step">
+          {['Create', 'Compose', 'Collaborate', 'Publish'].map((label, i) => (
+            <button
+              class={`switcher-dot${i === 0 ? ' is-active' : ''}`}
+              type="button"
+              role="tab"
+              aria-selected={i === 0 ? 'true' : 'false'}
+              aria-label={label}
+              data-switch={i}
+            >{String(i + 1).padStart(2, '0')}</button>
+          ))}
+        </div>
+
+        <a class="button primary switcher-cta" href="https://app.sonurastudio.com/">Try for free</a>
+
+        <h3 class="switcher-badge" aria-hidden="true">Create</h3>
+
+        <div class="switcher-stage">
+          <div class="switcher-panel is-active" id="switch-panel-0" role="tabpanel" aria-labelledby="switch-tab-0" data-panel="0">
             <picture>
-              <source
-                type="image/avif"
-                srcset="/assets/workflow-design-final-768.avif 768w, /assets/workflow-design-final-1280.avif 1280w"
-                sizes="(max-width: 900px) 100vw, 40vw"
-              />
-              <source
-                type="image/webp"
-                srcset="/assets/workflow-design-final-768.webp 768w, /assets/workflow-design-final-1280.webp 1280w"
-                sizes="(max-width: 900px) 100vw, 40vw"
-              />
-              <img src="/assets/workflow-design-final-1280.webp" alt="Unique created sounds in Sonura" loading="lazy" decoding="async" width="1280" height="800" />
+              <source type="image/webp" srcset="/assets/studio-create-768.webp 768w, /assets/studio-create-1280.webp 1280w" sizes="(max-width: 900px) 100vw, 52vw" />
+              <img src="/assets/studio-create-1280.webp" alt="Created loops listed in the Sonura library with waveforms, key and BPM" loading="lazy" decoding="async" width="1280" height="960" />
             </picture>
           </div>
-        </article>
-        <article class="workflow-row reveal" data-reveal-delay="0.08s">
-          <span class="workflow-num" aria-hidden="true">02</span>
-          <div class="workflow-copy">
-            <h3>Compose Full Arrangements</h3>
-            <p>Beat the blank project. Layer your sounds into full arrangements and build a finished track from a single idea, piece by piece.</p>
-          </div>
-          <div class="workflow-media">
+          <div class="switcher-panel" id="switch-panel-1" role="tabpanel" aria-labelledby="switch-tab-1" data-panel="1">
             <picture>
-              <source
-                type="image/avif"
-                srcset="/assets/workflow-compose-final-768.avif 768w, /assets/workflow-compose-final-1280.avif 1280w"
-                sizes="(max-width: 900px) 100vw, 40vw"
-              />
-              <source
-                type="image/webp"
-                srcset="/assets/workflow-compose-final-768.webp 768w, /assets/workflow-compose-final-1280.webp 1280w"
-                sizes="(max-width: 900px) 100vw, 40vw"
-              />
-              <img src="/assets/workflow-compose-final-1280.webp" alt="A layered multi-track arrangement in Sonura" loading="lazy" decoding="async" width="1280" height="800" />
+              <source type="image/webp" srcset="/assets/studio-compose-768.webp 768w, /assets/studio-compose-1280.webp 1280w" sizes="(max-width: 900px) 100vw, 52vw" />
+              <img src="/assets/studio-compose-1280.webp" alt="A layered arrangement in Sonura with drum, bass, pad and vocal clips" loading="lazy" decoding="async" width="1280" height="960" />
             </picture>
           </div>
-        </article>
-        <article class="workflow-row reveal" data-reveal-delay="0.12s">
-          <span class="workflow-num" aria-hidden="true">03</span>
-          <div class="workflow-copy">
-            <h3>Collaborate in Real Time</h3>
-            <p>Stop emailing bounces back and forth. Invite collaborators into the same session, assign roles, and keep the track moving in real time, arranging parts and sharing ideas together.</p>
-          </div>
-          <div class="workflow-media">
+          <div class="switcher-panel" id="switch-panel-2" role="tabpanel" aria-labelledby="switch-tab-2" data-panel="2">
             <picture>
-              <source
-                type="image/avif"
-                srcset="/assets/workflow-collab-uncropped-768.avif 768w, /assets/workflow-collab-uncropped-1280.avif 1280w"
-                sizes="(max-width: 900px) 100vw, 40vw"
-              />
-              <source
-                type="image/webp"
-                srcset="/assets/workflow-collab-uncropped-768.webp 768w, /assets/workflow-collab-uncropped-1280.webp 1280w"
-                sizes="(max-width: 900px) 100vw, 40vw"
-              />
-              <img src="/assets/workflow-collab-uncropped-1280.webp" alt="Collaborators sharing a Sonura project" loading="lazy" decoding="async" width="1280" height="800" />
+              <source type="image/webp" srcset="/assets/studio-collab-768.webp 768w, /assets/studio-collab-1280.webp 1280w" sizes="(max-width: 900px) 100vw, 52vw" />
+              <img src="/assets/studio-collab-1280.webp" alt="Inviting a collaborator to a Sonura project as an editor" loading="lazy" decoding="async" width="1280" height="960" />
             </picture>
           </div>
-        </article>
-        <article class="workflow-row reveal" data-reveal-delay="0.16s">
-          <span class="workflow-num" aria-hidden="true">04</span>
-          <div class="workflow-copy">
-            <h3>Publish Anywhere</h3>
-            <p>Release to Spotify, Apple Music, YouTube, SoundCloud, Deezer, Bandcamp, or any platform. Exclusive commercial rights on paid plans. No royalty splits. 100% yours.</p>
+          <div class="switcher-panel" id="switch-panel-3" role="tabpanel" aria-labelledby="switch-tab-3" data-panel="3">
+            <picture>
+              <source type="image/webp" srcset="/assets/studio-publish-768.webp 768w, /assets/studio-publish-1280.webp 1280w" sizes="(max-width: 900px) 100vw, 52vw" />
+              <img src="/assets/studio-publish-1280.webp" alt="A finished Sonura master alongside Spotify, YouTube, SoundCloud and Bandcamp" loading="lazy" decoding="async" width="1280" height="960" />
+            </picture>
           </div>
-          <div class="workflow-media" aria-hidden="true">
-            <div class="publish-gradient-art">
-              <div class="publish-logo publish-logo-one"><BrandIcon name="spotify" /></div>
-              <div class="publish-logo publish-logo-two"><BrandIcon name="youtube" /></div>
-              <div class="publish-logo publish-logo-three"><BrandIcon name="soundcloud" /></div>
-              <div class="publish-logo publish-logo-four">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" aria-hidden="true" focusable="false">
-                  <defs>
-                    <linearGradient id="publish-logo-itunes-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="10%" stop-color="#fa243c" />
-                      <stop offset="52%" stop-color="#fb5bc5" />
-                      <stop offset="100%" stop-color="#7a5cff" />
-                    </linearGradient>
-                  </defs>
-                  <path fill="url(#publish-logo-itunes-gradient)" d="M381.9 388.2c-6.4 27.4-27.2 42.8-55.1 48-24.5 4.5-44.9 5.6-64.5-10.2-23.9-20.1-24.2-53.4-2.7-74.4 17-16.2 40.9-19.5 76.8-25.8 6-1.1 11.2-2.5 15.6-7.4 6.4-7.2 4.4-4.1 4.4-163.2 0-11.2-5.5-14.3-17-12.3-8.2 1.4-185.7 34.6-185.7 34.6-10.2 2.2-13.4 5.2-13.4 16.7 0 234.7 1.1 223.9-2.5 239.5-4.2 18.2-15.4 31.9-30.2 39.5-16.8 9.3-47.2 13.4-63.4 10.4-43.2-8.1-58.4-58-29.1-86.6 17-16.2 40.9-19.5 76.8-25.8 6-1.1 11.2-2.5 15.6-7.4 10.1-11.5 1.8-256.6 5.2-270.2.8-5.2 3-9.6 7.1-12.9 4.2-3.5 11.8-5.5 13.4-5.5 204-38.2 228.9-43.1 232.4-43.1 11.5-.8 18.1 6 18.1 17.6.2 344.5 1.1 326-1.8 338.5z" />
-                </svg>
-              </div>
-              <div class="publish-logo publish-logo-five"><BrandIcon name="deezer" /></div>
-              <div class="publish-logo publish-logo-six"><BrandIcon name="bandcamp" /></div>
-            </div>
-          </div>
-        </article>
-      </div>
-      <div class="release-positioning reveal" data-reveal-delay="0.22s">
-        <h3 class="release-positioning-title">Built for human artistry.</h3>
-        <p class="release-positioning-text">Sonura is for those crafting original arrangements and sound. Built on licensed music, not scraped catalogs. It's important to us to stay on the right side of consent. <a href="/how-we-work-with-artists/" class="text-link">Here is how we work with artists</a>.</p>
-        <a class="button primary release-positioning-button" href="https://app.sonurastudio.com/"><span class="btn-label-full">Start Creating for Free</span><span class="btn-label-short">Start free</span></a>
+        </div>
+
+        <p class="switcher-mobile-copy">One-shots, vocals, loops and FX made to your exact spec</p>
       </div>
     </div>
   </section>
+
+  <section class="plugin-section" aria-labelledby="plugin-title">
+    <div class="plugin-inner">
+      <h2 id="plugin-title" class="plugin-heading reveal">Bring Sonura into your DAW</h2>
+
+      <div class="plugin-panel reveal" data-reveal-delay="0.06s">
+        <div class="plugin-copy">
+          <h3 class="plugin-name">Plugin</h3>
+          <p class="plugin-sub">Create sounds without leaving the track</p>
+
+          <ul class="plugin-list">
+            <li>Make high-quality drums</li>
+            <li>Create vocal stems</li>
+            <li>Create multiple stems at once</li>
+            <li>Own your library, everything stays yours</li>
+          </ul>
+
+          <div class="plugin-daws">
+            {DAW_LOGOS.map((logo) => (
+              <span class="daw-cell" title={logo.name}>
+                <img src={logo.src} alt={logo.name} class={logo.mono ? 'is-mono' : undefined} loading="lazy" />
+              </span>
+            ))}
+            <span class="daw-cell daw-cell-more">+100</span>
+          </div>
+
+          <a class="button primary plugin-cta" href="/plugin/">Get the plugin</a>
+        </div>
+
+        <div class="plugin-shot">
+          <picture>
+            <source
+              type="image/webp"
+              srcset="/images/plugin-flow-768.webp 768w, /images/plugin-flow-1024.webp 1024w"
+              sizes="(max-width: 900px) 100vw, 52vw"
+            />
+            <img src="/images/plugin-flow-1024.webp" alt="Sonura Flow running inside a DAW" loading="lazy" decoding="async" width="1024" height="768" />
+          </picture>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="artistry" aria-labelledby="artistry-title">
+    <div class="artistry-inner">
+  <div class="release-positioning reveal" data-reveal-delay="0.22s">
+  <h3 id="artistry-title" class="release-positioning-title">Built for human artistry<span class="stop">.</span></h3>
+  <p class="release-positioning-text">Sonura is for those crafting original arrangements and sound. Built on licensed music, not scraped catalogs. It's important to us to stay on the right side of consent. <a href="/how-we-work-with-artists/" class="text-link">Here is how we work with artists</a>.</p>
+  <a class="button primary release-positioning-button" href="https://app.sonurastudio.com/">Try for free</a>
+  </div>
+    </div>
+  </section>
+
   <section class="creator-videos" id="creator-videos" aria-labelledby="creator-videos-title">
     <div class="creator-videos-inner">
       <div class="creator-videos-header">
-        <p class="section-kicker reveal">03 / Creators</p>
         <h2 id="creator-videos-title" class="creator-videos-title reveal">Creators using Sonura</h2>
         <p class="creator-videos-subtitle reveal" data-reveal-delay="0.04s">Short product demos from producers putting Sonura into real workflows.</p>
       </div>
@@ -334,8 +357,7 @@ const creatorVideos = [
   <section class="testimonials" aria-labelledby="testimonials-title">
     <div class="testimonials-inner">
       <div class="testimonials-head">
-        <p class="section-kicker reveal">04 / Reviews</p>
-        <h2 id="testimonials-title" class="testimonials-title reveal">Trusted by Producers Worldwide</h2>
+        <h2 id="testimonials-title" class="testimonials-title reveal">Trusted by producers worldwide</h2>
       </div>
       <div class="testimonials-grid">
         <div class="testimonial-card reveal" data-reveal-delay="0.04s">
@@ -389,16 +411,14 @@ const creatorVideos = [
   <section class="pricing" id="pricing" aria-labelledby="pricing-title">
     <div class="pricing-inner">
       <div class="pricing-head">
-        <p class="section-kicker">05 / Pricing</p>
         <h2 id="pricing-title" class="pricing-heading">Pick your plan</h2>
       </div>
-      <PricingSection showHeader={true} showTrust={true} />
+      <PricingSection showHeader={true} showTrust={false} />
     </div>
   </section>
   
   <section class="faq" id="faq" aria-labelledby="faq-title">
     <div class="faq-inner">
-      <p class="section-kicker">06 / FAQ</p>
       <h2 id="faq-title" class="faq-title">Frequently asked questions</h2>
       <div class="faq-list">
         <details class="reveal">
@@ -451,16 +471,112 @@ const creatorVideos = [
 
   <section class="final-cta" aria-labelledby="final-cta-title">
     <div class="final-cta-inner">
-      <h2 id="final-cta-title" class="final-cta-title reveal">Own your sound.</h2>
+      <h2 id="final-cta-title" class="final-cta-title reveal">Own your sound<span class="stop">.</span></h2>
       <p class="final-cta-subtitle reveal" data-reveal-delay="0.06s">Free to start / No credit card / No setup</p>
       <div class="final-cta-form reveal" data-reveal-delay="0.12s">
-        <a class="button primary large" href="https://app.sonurastudio.com/">Get Started Free</a>
-      </div>
-      <div class="final-cta-trust reveal" data-reveal-delay="0.18s">
-        <div class="trust-item"><span>Cancel anytime</span></div>
-        <div class="trust-item"><span>exclusive commercial rights on paid plans</span></div>
+        <a class="button primary large" href="https://app.sonurastudio.com/">Try for free</a>
       </div>
     </div>
   </section>
+
+<script>
+  // Workflow switcher: one item lit at a time, its panel shown on the stage.
+  // One behaviour, applied to every .switcher on the page (studio + plugin).
+  document.querySelectorAll('.switcher').forEach((root) => {
+    const list = root.querySelector('.switcher-list');
+    if (!list) return;
+    const items = [...list.querySelectorAll('.switcher-item')];
+    const panels = [...root.querySelectorAll('.switcher-panel')];
+    const dots = [...root.querySelectorAll('.switcher-dot')];
+    const badge = root.querySelector('.switcher-badge');
+    const mobileCopy = root.querySelector('.switcher-mobile-copy');
+    const stage = root.querySelector('.switcher-stage');
+    let current = 0;
+
+    const show = (i) => {
+      items.forEach((el, n) => {
+        const on = n === i;
+        el.classList.toggle('is-active', on);
+        el.setAttribute('aria-selected', String(on));
+      });
+      panels.forEach((el, n) => {
+        const on = n === i;
+        el.classList.toggle('is-active', on);
+        // aria-hidden, not [hidden]: display:none would cancel the cross-fade
+        el.setAttribute('aria-hidden', String(!on));
+      });
+
+      // Mobile chrome: dots, the label over the stage, and the copy below it.
+      dots.forEach((d, n) => {
+        const on = n === i;
+        d.classList.toggle('is-active', on);
+        d.setAttribute('aria-selected', String(on));
+      });
+      if (badge) badge.textContent = items[i].querySelector('.switcher-name').textContent;
+      if (mobileCopy) mobileCopy.textContent = items[i].querySelector('.switcher-copy-inner').textContent;
+      current = i;
+    };
+
+    items.forEach((el, i) => {
+      el.addEventListener('click', () => show(i));
+      el.addEventListener('keydown', (e) => {
+        if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+        e.preventDefault();
+        const next = (i + (e.key === 'ArrowDown' ? 1 : -1) + items.length) % items.length;
+        items[next].focus();
+        show(next);
+      });
+    });
+
+    dots.forEach((d, i) => d.addEventListener('click', () => show(i)));
+
+    const step = (delta) => show((current + delta + items.length) % items.length);
+    // Swipe on the stage. Horizontal intent only, so a vertical scroll that
+    // starts on the image is never hijacked.
+    if (stage) {
+      let startX = 0;
+      let startY = 0;
+      let tracking = false;
+      stage.addEventListener('pointerdown', (e) => {
+        startX = e.clientX;
+        startY = e.clientY;
+        tracking = true;
+      });
+      stage.addEventListener('pointerup', (e) => {
+        if (!tracking) return;
+        tracking = false;
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        if (Math.abs(dx) > 44 && Math.abs(dx) > Math.abs(dy)) step(dx < 0 ? 1 : -1);
+      });
+      stage.addEventListener('pointercancel', () => { tracking = false; });
+    }
+
+    show(0);
+  });
+
+
+  // Loops / one-shots / songs: the bar under the active tab is positioned from
+  // measured geometry, so switching costs no layout and cannot snap.
+  const toggle = document.querySelector('.demo-toggle');
+  if (toggle) {
+    const tabs = [...toggle.querySelectorAll('.demo-toggle-btn')];
+    const place = () => {
+      // the component marks state with aria-selected, not a class
+      const on = toggle.querySelector('.demo-toggle-btn[aria-selected="true"]') || tabs[0];
+      if (!on) return;
+      const a = on.getBoundingClientRect();
+      const b = toggle.getBoundingClientRect();
+      toggle.style.setProperty('--ind-w', Math.round(a.width) + 'px');
+      toggle.style.setProperty('--ind-x', Math.round(a.left - b.left) + 'px');
+    };
+    tabs.forEach((t) => t.addEventListener('click', () => requestAnimationFrame(place)));
+    window.addEventListener('resize', place);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
+    place();
+  }
+
+
+</script>
 </BaseLayout>
 

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { DAW_LOGOS } from '../../data/dawLogos';
 
 const PLUGIN_MANIFEST_URL = 'https://audio.sonurastudio.com/plugin/latest/manifest.json';
 // Browser-facing version source: audio.sonurastudio.com (R2) sends no CORS headers, so the
@@ -21,7 +22,7 @@ try {
   // Keep downloads on stable latest URLs if the manifest is temporarily unavailable at build time.
 }
 
-const PLUGIN_VERSION_LABEL = PLUGIN_VERSION === 'latest' ? 'Latest version' : `Version ${PLUGIN_VERSION}`;
+const PLUGIN_VERSION_LABEL = PLUGIN_VERSION === 'latest' ? '' : `v${PLUGIN_VERSION}`;
 
 const faqs = [
   {
@@ -147,7 +148,7 @@ const jsonLd = [
   <div class="pg">
     <section class="pg-hero">
       <div class="pg-left">
-        <p class="pg-kicker anim">Sonura Flow</p>
+        <p class="pg-kicker anim">Sonura Flow <span class="plugin-version-label">{PLUGIN_VERSION_LABEL}</span></p>
         <h1 class="anim">
           <span class="h1-row">New Sounds</span>
           <span class="h1-row h1-accent">Inside Your DAW</span>
@@ -191,19 +192,12 @@ const jsonLd = [
           </div>
         </div>
 
-        <div class="pg-os anim">
-          <div class="os-badge">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-            <span>macOS 12+</span>
-          </div>
-          <div class="os-badge">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.548l7.065-0.964v6.817H3V5.548zm0 12.904l7.065 0.964V12.6H3v5.852zm7.937 1.048L21 20.936V12.6H10.937v6.9zM10.937 4.5L21 3.064V11.4H10.937V4.5z"/></svg>
-            <span>Windows 10+</span>
-          </div>
-          <div class="os-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10H3"/><path d="M21 6H3"/><path d="M21 14H3"/><path d="M21 18H3"/></svg>
-            <span class="plugin-version-label">{PLUGIN_VERSION_LABEL}</span>
-          </div>
+        <div class="pg-daws anim" aria-label="Works in every major DAW">
+          {DAW_LOGOS.map((logo) => (
+            <span class="pg-daw" title={logo.name}>
+              <img src={logo.src} alt={logo.name} class={logo.mono ? 'is-mono' : undefined} loading="lazy" />
+            </span>
+          ))}
         </div>
       </div>
 
@@ -278,7 +272,7 @@ const jsonLd = [
 
     <section class="pg-showcase anim">
       <header class="showcase-head">
-        <p class="section-kicker">01 / Capabilities</p>
+        <p class="section-kicker">Capabilities</p>
         <h2 class="showcase-title">Your whole studio, inside your DAW.</h2>
         <p class="showcase-sub">Loops, drums, vocals, one-shots. Make them in your session, drag them onto the timeline, keep going.</p>
       </header>
@@ -467,7 +461,7 @@ const jsonLd = [
 
     <section class="pg-faq faq anim" id="faq" aria-labelledby="plugin-faq-title">
       <div class="faq-inner">
-        <p class="section-kicker">02 / FAQ</p>
+        <p class="section-kicker">FAQ</p>
         <h2 id="plugin-faq-title" class="faq-title">Plugin FAQ</h2>
         <div class="faq-list">
           {faqs.map((faq) => (
@@ -481,7 +475,7 @@ const jsonLd = [
     </section>
 
     <section class="pg-cta anim">
-      <p class="section-kicker">03 / Download</p>
+      <p class="section-kicker">Download</p>
       <h2 class="pg-cta-title">Start making sounds in your DAW.</h2>
       <p class="pg-cta-sub">Download Sonura Flow and load it up. Start with free credits, then keep creating with the plan that fits your workflow.</p>
       <div class="pg-download pg-cta-download">
@@ -519,20 +513,6 @@ const jsonLd = [
           </div>
         </div>
       </div>
-      <div class="pg-os pg-cta-os">
-        <div class="os-badge">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-          <span>macOS 12+</span>
-        </div>
-        <div class="os-badge">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.548l7.065-0.964v6.817H3V5.548zm0 12.904l7.065 0.964V12.6H3v5.852zm7.937 1.048L21 20.936V12.6H10.937v6.9zM10.937 4.5L21 3.064V11.4H10.937V4.5z"/></svg>
-          <span>Windows 10+</span>
-        </div>
-        <div class="os-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10H3"/><path d="M21 6H3"/><path d="M21 14H3"/><path d="M21 18H3"/></svg>
-          <span class="plugin-version-label">{PLUGIN_VERSION_LABEL}</span>
-        </div>
-      </div>
     </section>
   </div>
 
@@ -546,7 +526,7 @@ const jsonLd = [
   (async () => {
     const apply = (version) => {
       if (typeof version !== 'string' || !version) return false;
-      const label = 'Version ' + version.replace(/^v/, '');
+      const label = 'v' + version.replace(/^v/, '');
       document.querySelectorAll('.plugin-version-label').forEach((el) => { el.textContent = label; });
       return true;
     };
@@ -926,6 +906,16 @@ const jsonLd = [
     text-transform: uppercase;
   }
 
+  /* The version rides in the hero kicker rather than a badge of its own. It
+     is empty until the manifest resolves, so the space is part of the span. */
+  .pg-kicker .plugin-version-label:not(:empty) {
+    margin-left: 8px;
+    color: var(--faint, var(--muted));
+    font-variant-numeric: tabular-nums;
+    text-transform: none;
+    letter-spacing: 0.1em;
+  }
+
   .pg-left h1 {
     margin: 0;
     font-family: var(--font-display);
@@ -952,7 +942,6 @@ const jsonLd = [
     margin: 0;
     font-size: 17px;
     color: var(--muted);
-    text-transform: lowercase;
     letter-spacing: 0.022em;
     word-spacing: 0.04em;
     line-height: 1.8;
@@ -1108,7 +1097,6 @@ const jsonLd = [
     font-size: 12px;
     line-height: 1.5;
     color: var(--muted);
-    text-transform: lowercase;
     letter-spacing: 0.022em;
   }
 
@@ -1140,6 +1128,42 @@ const jsonLd = [
     height: 16px;
     opacity: 0.6;
   }
+
+  /* The same eight marks the app shows on its onboarding install screen, in
+     the same order. Ableton ships as a flat black glyph, so it is inverted to
+     white and sits shorter, the way the app's row does. */
+  .pg-daws {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 22px;
+    margin-top: 26px;
+  }
+
+  .pg-daw {
+    display: grid;
+    place-items: center;
+    height: 26px;
+  }
+
+  .pg-daws img {
+    display: block;
+    height: 26px;
+    width: auto;
+    max-width: 88px;
+    object-fit: contain;
+    opacity: 0.72;
+    transition: opacity 0.2s ease;
+  }
+
+  .pg-daws img.is-mono {
+    height: 18px;
+    filter: brightness(0) invert(1);
+  }
+
+  .pg-daw:hover img { opacity: 1; }
 
   .pg-right {
     display: flex;
@@ -1257,7 +1281,6 @@ const jsonLd = [
     margin: 0;
     color: var(--muted);
     font-size: 16px;
-    text-transform: lowercase;
     letter-spacing: 0.022em;
     word-spacing: 0.04em;
     line-height: 1.8;
@@ -1310,7 +1333,6 @@ const jsonLd = [
     margin: 0;
     color: var(--muted);
     font-size: 16px;
-    text-transform: lowercase;
     letter-spacing: 0.022em;
     word-spacing: 0.04em;
     line-height: 1.8;
@@ -1352,7 +1374,6 @@ const jsonLd = [
   .card-body p {
     margin: 0;
     font-size: 15px;
-    text-transform: lowercase;
     letter-spacing: 0.022em;
     word-spacing: 0.04em;
     line-height: 1.8;
@@ -1413,7 +1434,6 @@ const jsonLd = [
   .multi-body p {
     margin: 0;
     font-size: 15px;
-    text-transform: lowercase;
     letter-spacing: 0.022em;
     word-spacing: 0.04em;
     line-height: 1.8;
@@ -1494,7 +1514,6 @@ const jsonLd = [
     margin: 0;
     font-size: 15px;
     color: var(--muted);
-    text-transform: lowercase;
     letter-spacing: 0.022em;
     word-spacing: 0.04em;
     line-height: 1.8;
@@ -1537,7 +1556,6 @@ const jsonLd = [
     margin: 0;
     color: var(--muted);
     font-size: 16px;
-    text-transform: lowercase;
     letter-spacing: 0.022em;
     word-spacing: 0.04em;
     line-height: 1.8;
@@ -1572,7 +1590,6 @@ const jsonLd = [
     margin: 0;
     padding-left: 20px;
     color: var(--muted);
-    text-transform: lowercase;
     letter-spacing: 0.022em;
     line-height: 1.8;
   }
@@ -1772,7 +1789,6 @@ const jsonLd = [
     max-width: 760px;
     font-size: 15px;
     color: var(--muted);
-    text-transform: lowercase;
     letter-spacing: 0.022em;
     word-spacing: 0.04em;
     line-height: 1.8;
@@ -1823,7 +1839,6 @@ const jsonLd = [
     margin: 0 0 36px;
     font-size: 16px;
     color: var(--muted);
-    text-transform: lowercase;
     letter-spacing: 0.022em;
     word-spacing: 0.04em;
     line-height: 1.8;
@@ -1833,11 +1848,6 @@ const jsonLd = [
   .pg-cta-download {
     margin-top: 0;
     justify-content: flex-start;
-  }
-
-  .pg-cta-os {
-    justify-content: flex-start;
-    margin-top: 24px;
   }
 
   .anim {

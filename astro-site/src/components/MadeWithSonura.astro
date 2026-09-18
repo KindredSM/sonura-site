@@ -55,9 +55,9 @@ const demoSongs = [
 ];
 
 const demoTabs = [
-  { id: 'loops', label: 'Loops', tracks: demoLoops },
-  { id: 'oneshots', label: 'One-shots', tracks: demoOneShots },
-  { id: 'songs', label: 'Songs', tracks: demoSongs }
+  { id: 'loops', label: 'Loops', tracks: demoLoops, cta: 'Make loops' },
+  { id: 'oneshots', label: 'One-shots', tracks: demoOneShots, cta: 'Make one-shots' },
+  { id: 'songs', label: 'Songs', tracks: demoSongs, cta: 'Make songs' }
 ];
 ---
 
@@ -67,7 +67,7 @@ const demoTabs = [
       <div class="demo-header-content">
         <p class="section-kicker">{kicker}</p>
         <h2 id="demo-title" class="demo-title">{title}</h2>
-        <p class="demo-subtitle">{subtitle}</p>
+        {subtitle && <p class="demo-subtitle">{subtitle}</p>}
       </div>
     </div>
     <div class="demo-toggle" role="tablist" aria-label="Preview type">
@@ -120,7 +120,14 @@ const demoTabs = [
         ))}
       </div>
     ))}
-    <a class="demo-explore" href="https://app.sonurastudio.com/">Explore community sounds</a>
+    <a
+      class="demo-explore"
+      href="https://app.sonurastudio.com/"
+      data-demo-cta
+      data-cta-loops={demoTabs[0].cta}
+      data-cta-oneshots={demoTabs[1].cta}
+      data-cta-songs={demoTabs[2].cta}
+    ><span class="demo-explore-label">{demoTabs[0].cta}</span></a>
   </div>
 </section>
 
@@ -155,7 +162,6 @@ const demoTabs = [
   .demo-subtitle {
     font-size: 14px;
     color: var(--muted);
-    text-transform: lowercase;
     letter-spacing: 0.022em;
     line-height: 1.8;
     word-spacing: 0.04em;
@@ -373,6 +379,39 @@ const demoTabs = [
       const id = button.dataset.demoTab;
       tabButtons.forEach((b) => b.setAttribute('aria-selected', String(b === button)));
       tabGroups.forEach((group) => { group.hidden = group.dataset.demoGroup !== id; });
+
+      // the CTA names whatever the visible tab actually makes. Fade the label
+      // through the swap: writing textContent directly made it snap, and the
+      // button's width changes with it.
+      const demoCta = document.querySelector<HTMLAnchorElement>('[data-demo-cta]');
+      const demoLabel = demoCta?.querySelector<HTMLElement>('.demo-explore-label');
+      if (demoCta && demoLabel) {
+        const next = demoCta.dataset['cta' + id.charAt(0).toUpperCase() + id.slice(1)];
+        if (next && next !== demoLabel.textContent) {
+          const from = demoLabel.getBoundingClientRect().width;
+          demoLabel.style.opacity = '0';
+          window.setTimeout(() => {
+            demoLabel.textContent = next;
+
+            // Measure the new label before pinning a width. scrollWidth is the
+            // content width, so it is not capped by the overflow:hidden box the
+            // way getBoundingClientRect would be.
+            demoLabel.style.width = 'auto';
+            const to = demoLabel.scrollWidth;
+            demoLabel.style.width = to + 'px';
+
+            // Web Animations, not a CSS transition: the text write and the
+            // width write land in the same frame, so a transition has no old
+            // value to ease from and simply jumps.
+            demoLabel.animate(
+              [{ width: from + 'px' }, { width: to + 'px' }],
+              { duration: 380, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' }
+            );
+
+            demoLabel.style.opacity = '1';
+          }, 150);
+        }
+      }
     });
   });
 

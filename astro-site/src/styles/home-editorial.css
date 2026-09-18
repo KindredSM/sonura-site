@@ -152,7 +152,6 @@ body.editorial-home .subhead {
   font-size: 17px;
   line-height: 1.6;
   color: var(--muted);
-  text-transform: lowercase;
 }
 
 body.editorial-home .cta {
@@ -186,14 +185,11 @@ body.editorial-home .cta .button.secondary {
 }
 
 body.editorial-home .cta .button.primary {
-  background: var(--fg);
   border: 1px solid var(--fg);
-  color: var(--bg);
   box-shadow: none;
 }
 
 body.editorial-home .cta .button.primary:hover {
-  background: var(--fg);
   border-color: var(--fg);
   color: var(--bg);
   transform: none;
@@ -403,7 +399,6 @@ body.editorial-home .workflow-copy p {
   font-size: 16px;
   line-height: 1.7;
   color: var(--muted);
-  text-transform: lowercase;
 }
 
 body.editorial-home .workflow-media {
@@ -499,7 +494,6 @@ body.editorial-home .release-positioning-text {
   max-width: 640px;
   font-size: 16px;
   line-height: 1.7;
-  text-transform: lowercase;
 }
 
 body.editorial-home .release-positioning-button {
@@ -537,7 +531,6 @@ body.editorial-home .creator-videos-header {
 
 body.editorial-home .creator-videos-subtitle {
   font-size: 14px;
-  text-transform: lowercase;
 }
 
 body.editorial-home .creator-video-tile:hover {
@@ -817,13 +810,10 @@ body.editorial-home .pricing .pricing-cta button:hover {
 }
 
 body.editorial-home .pricing-cta .button.primary {
-  background: var(--fg);
-  color: var(--bg);
   border: 1px solid var(--fg);
 }
 
 body.editorial-home .pricing-cta .button.primary:hover {
-  background: var(--fg);
   border-color: var(--fg);
   color: var(--bg);
 }
@@ -911,7 +901,6 @@ body.editorial-home .faq summary::after {
 body.editorial-home .faq p {
   padding: 0 0 24px;
   max-width: 760px;
-  text-transform: lowercase;
 }
 
 /* Final CTA poster styles come from the global editorial base */

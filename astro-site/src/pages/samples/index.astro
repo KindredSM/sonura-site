@@ -76,7 +76,6 @@ const jsonLd = [
       color: var(--muted);
       max-width: 560px;
       margin: 0;
-      text-transform: lowercase;
       letter-spacing: 0.022em;
       word-spacing: 0.04em;
       line-height: 1.8;
@@ -133,7 +132,6 @@ const jsonLd = [
 
     .sample-card-desc {
       color: var(--muted);
-      text-transform: lowercase;
       letter-spacing: 0.022em;
       word-spacing: 0.04em;
       line-height: 1.8;
@@ -174,7 +172,6 @@ const jsonLd = [
       color: var(--muted);
       margin: 0 0 36px;
       max-width: 560px;
-      text-transform: lowercase;
       letter-spacing: 0.022em;
       word-spacing: 0.04em;
       line-height: 1.8;
@@ -188,7 +185,7 @@ const jsonLd = [
       <p>Stop digging through the same packs everyone else uses. Create unique loops, one-shots, vocals, and FX on demand. Original sounds you own outright, ready for any release.</p>
     </header>
 
-    <p class="section-kicker">01 / Samples</p>
+    <p class="section-kicker">Samples</p>
     <div class="sample-hub-grid">
       {sampleTypes.map((type) => (
         <a href={`/samples/${type.slug}/`} class="sample-card">
@@ -201,7 +198,7 @@ const jsonLd = [
     </div>
 
     <div class="sample-hub-cta">
-      <p class="section-kicker">02 / Get started</p>
+      <p class="section-kicker">Get started</p>
       <h2>Original Sounds, Full Rights</h2>
       <p>Every sample is created for you and yours to release commercially. Free to start, no credit card required.</p>
       <a href="https://app.sonurastudio.com/" class="button primary large"><span class="btn-label-full">Start Creating Free</span><span class="btn-label-short">Start free</span></a>
