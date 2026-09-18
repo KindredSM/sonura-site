@@ -109,9 +109,25 @@ body {
    the nav lags behind momentum scrolling and lands detached from the top with
    page content showing above it. Phones get a solid fill and no blur, plus its
    own compositing layer so the browser is not re-rasterising it every frame. */
+/* iOS will not keep this bar stuck. `position: sticky` here has to resolve
+   against a body that is also an overflow-clip container, and WebKit repaints
+   it late during momentum scrolling: the nav lands part-way down the screen
+   with page content painted above it. Phones get `position: fixed` instead,
+   which iOS composites reliably, and `.page` gives the height back as padding
+   so nothing slides under the bar. The blur goes too, since a backdrop-filter
+   on a permanently composited bar is the other half of the same repaint cost. */
 @media (max-width: 768px) {
-  .nav { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; transform: translateZ(0); will-change: transform; }
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
   .nav.scrolled { background: #000; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+  .page { padding-top: var(--nav-h); }
 }
 .nav-actions { display: flex; align-items: center; gap: 16px; }
 .nav-links { display: flex; align-items: center; gap: 8px; }
