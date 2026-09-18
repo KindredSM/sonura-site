@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import ToolLayout from '../../../layouts/ToolLayout.astro';
 
-const appUrl = 'https://app.sonurastudio.com/tools/stem-separator';
+const appUrl = 'https://app.sonurastudio.com/tools';
 
 /* ------------------------------------------------------------------
    Separation console (hero illustration)
@@ -113,7 +113,7 @@ const features = [
   },
   {
     title: 'Sonura Split',
-    description: 'Sonura Split does the separating, tuned for both two stem and six stem output. Nothing to configure: upload, pick the split, download.',
+    description: 'Sonura Split is the stem splitter behind both modes, tuned for two stem and six stem output. Nothing to configure: upload, pick the split, download.',
   },
   {
     title: 'WAV or MP3 out',
@@ -131,7 +131,7 @@ const features = [
 
 const howItWorksSteps = [
   'Upload a mixed WAV or MP3.',
-  'Choose two stems (vocals and instrumental) or six (vocals, drums, bass, guitar, piano, other).',
+  'Choose two stems (vocals and instrumental) or six (vocals, drums, bass, guitar, piano, other). The splitter handles the rest.',
   'Give it about a minute while the model pulls the mix apart.',
   'Download the parts you need as WAV or MP3 and drop them into your DAW.',
 ];
@@ -168,6 +168,11 @@ const faqs = [
     question: 'What is stem separation?',
     answer:
       'Stem separation splits a finished, mixed audio file back into its parts: vocals, drums, bass, guitar, piano, and everything else. A separation model estimates what each source contributed to the mix and writes each one out as its own file, which lets you isolate, mute, or rebuild around individual elements of a song you only have as a stereo bounce.',
+  },
+  {
+    question: 'Is a stem splitter the same as a stem separator?',
+    answer:
+      'Same job, two names. A stem splitter and a stem separator both take one mixed file and write each part out separately. Sonura Split does two stem and six stem splits from the same upload, so whichever term you searched for, this is the tool.',
   },
   {
     question: 'What formats are supported?',
@@ -209,11 +214,17 @@ const faqs = [
     answer:
       'The real differences between tools are stem count, output format, speed, and what happens after the download. Sonura Split does two and six stem splits, exports WAV or MP3, and sits next to the tools you would actually use the stems in, so a separated part can go straight into new work. <a href="/blog/best-stem-separation-tools/" class="text-link">Full comparison here</a>.',
   },
+  {
+    question: 'What is the best free AI stem splitter?',
+    answer:
+      'Judge a free splitter on four things: how many stems it returns, whether it exports lossless WAV or only MP3, how long a track takes, and what you can do with the parts once they land. Sonura is free to start, splits into two or six stems, exports WAV or MP3, and puts the stems next to the tools that make new parts. <a href="/blog/best-stem-separation-tools/" class="text-link">We compared the main options here</a>.',
+  },
 ];
 
 const relatedTools = [
   { title: 'Vocal Remover', href: '/tools/vocal-remover/', description: 'The two stem version: vocals out, instrumental left behind.' },
   { title: 'Stem Export', href: '/features/stem-export/', description: 'Generated tracks come out as separate parts from the start.' },
+  { title: 'Acapella Extractor', href: '/tools/acapella-extractor/', description: 'Keep the vocal, drop everything else.' },
   { title: 'Beat Maker', href: '/tools/ai-beat-maker/', description: 'Build something new under the stem you just pulled.' },
 ];
 
@@ -222,18 +233,17 @@ const relatedBlogPosts = [
   { title: 'How to separate drums from a song', href: '/blog/how-to-separate-drums/' },
   { title: 'How to split stems in Logic Pro', href: '/blog/split-stems-logic-pro/' },
   { title: 'Exporting stems in FL Studio and Ableton', href: '/blog/export-stems-fl-studio-ableton/' },
-  { title: 'How to extract an acapella from any track', href: '/blog/acapella-extractor/' },
 ];
 ---
 
 <ToolLayout
   toolName="Stem Separator"
   toolSlug="stem-separator"
-  title="AI Stem Separator | Extract Vocals & Instruments - Sonura"
-  description="Free AI stem separator tool. Extract vocals, drums, bass, and instruments from any audio file. Separate stems in seconds with advanced AI technology."
-  keywords="stem separator, vocal remover, isolate vocals, extract instrumentals, ai stem separation, music stem splitter, separate tracks, acapella extractor, backing track remover"
-  headline="Split a song into its parts"
-  subhead="Upload a mixed track and get the vocals, drums, bass, guitar, piano, and everything else back as separate files. Two stems or six, ready for your DAW."
+  title="AI Stem Splitter | Free Stem Separator Online - Sonura"
+  description="Free AI stem splitter. Split any song into vocals, drums, bass, guitar, and piano as separate WAV or MP3 files. Two stems or six, straight into your DAW."
+  keywords="stem separator, ai stem splitter, stem splitter, free stem splitter, song stem splitter, music stem splitter online, split song into stems, vocal remover, isolate vocals, extract instrumentals, ai stem separation, separate tracks, acapella extractor, backing track remover"
+  headline="Split any song into stems"
+  subhead="Upload a mixed track and the stem splitter returns vocals, drums, bass, guitar, piano, and everything else as separate files. Two stems or six, ready for your DAW."
   features={features}
   howItWorksTitle="How separation works"
   howItWorksSteps={howItWorksSteps}
@@ -314,7 +324,7 @@ const relatedBlogPosts = [
       <div class="stemc-foot">
         <p class="stemc-caption">
           {hasAudio
-            ? `"${STEM_TITLE}", separated by sonura. press play, then mute or solo a lane to hear the split.`
+            ? `"${STEM_TITLE}", separated by Sonura. Press play, then mute or solo a lane to hear the split.`
             : 'an illustration of a stem split, not audio playback. mute or solo a lane to take it out of the mix.'}
         </p>
         <a class="stemc-link" href={appUrl}>Run it on your own track</a>

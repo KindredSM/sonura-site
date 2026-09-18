@@ -1,84 +1,119 @@
 ---
-import AlternativeLayout from '../../../layouts/AlternativeLayout.astro';
-import MadeWithSonura from '../../../components/MadeWithSonura.astro';
+import AlternativesListLayout from '../../../layouts/AlternativesListLayout.astro';
+import { SUNO_ALTERNATIVES, CRITERIA } from '../../../data/alternatives';
 
-const quickStats = [
-  { value: 'Free', label: 'To Start - No Card' },
-  { value: 'Stems', label: 'Export Every Part' },
-  { value: '100%', label: 'Yours to Release' },
-];
+/**
+ * Rewritten from the two-column AlternativeLayout to a ranked list, because the
+ * top 10 for "suno alternative" is entirely listicles, down to DR 6 sites.
+ * The old shape could not satisfy that intent no matter how good the copy was.
+ * Verified 14 September 2026: 350/mo US, 2,500 global, KD 0, $1.30 CPC.
+ */
 
-const comparisons = [
-  { feature: 'What you get', sonura: 'Editable beats, loops, vocals & stems', competitor: 'A finished, mixed song' },
-  { feature: 'Commercial use on the free tier', sonura: 'Yes - release what you make', competitor: 'Non-commercial only, with attribution' },
-  { feature: 'Stem export', sonura: 'Core to every plan', competitor: 'Paid plans only' },
-  { feature: 'Locked tempo & grid', sonura: 'Yes - quantize and layer in your DAW', competitor: 'Producers report tempo drift' },
-  { feature: 'Genre & BPM control', sonura: 'Precise', competitor: 'Prompt-based' },
-  { feature: 'Best for', sonura: 'Producers finishing tracks in a DAW', competitor: 'Full AI songs with vocals & lyrics', competitorHighlight: true },
-  { feature: 'AI vocals & lyrics', sonura: 'Vocal chops, hooks & ad-libs', competitor: 'Full AI singing + written lyrics', competitorHighlight: true },
-  { feature: 'Free tier', sonura: 'Yes, no card', competitor: 'Yes (older model)', competitorHighlight: true },
-  { feature: 'Audio quality', sonura: 'Studio-grade', competitor: 'High quality', competitorHighlight: true },
-];
+const quickAnswer = `
+  <p><strong>If you want editable parts rather than a finished mix, Sonura is the pick here:</strong>
+  stems on every plan including free, and an AU and VST3 plugin so the parts land in the DAW you
+  already use. if you want a finished song with vocals and written lyrics in one pass, Suno is still
+  the strongest thing on this page and nothing below changes that.</p>
+  <p>The seven below are ranked on what you can actually leave with. Every spec is dated, every
+  competitive claim links its source, and every entry says who should skip it, ours included.</p>
+`;
 
-const advantages = [
-  { title: 'Editable Parts, Not a Locked Song', description: "Suno hands you a finished, mixed track. Sonura gives you the building blocks - <a href='/tools/ai-beat-maker/'>beats</a>, loops, vocals, and stems - that you keep shaping in your DAW. You stay the producer instead of accepting whatever the model rendered. Want the whole track? The <a href='/tools/ai-song-maker/'>AI song maker</a> generates full songs as editable stems." },
-  { title: 'Stems on Every Plan', description: 'Export individual stems - drums, bass, melody, FX - for mixing, edits, and client delivery. On Suno, stem export and WAV downloads are reserved for paid plans; Sonura keeps stems central to the workflow from the start.' },
-  { title: 'Releasable Output, Even Free', description: "Make beats, loops, samples, and stems you can actually release. Sonura's free creations go out under CC0, so nothing blocks you commercially, while Suno's free plan is positioned for non-commercial use with attribution. A paid Sonura plan keeps the work private and exclusively yours." },
-  { title: 'Locked Tempo You Can Build On', description: 'To finish a track you need a stable grid: quantize, chop, and layer your own instruments against it. Producers report that fully-generated songs can drift in tempo, which makes remixing awkward. Sonura is designed to drop cleanly into your session.' },
-  { title: 'Precise Genre & BPM Control', description: "Specify exactly what you want - \"trap beat, 140 BPM, heavy 808s\" - and Sonura's <a href=\"/tools/text-to-music/\">text to music</a> speaks production terms, not just moods. Dial in the sound instead of re-rolling a whole song." },
-  { title: 'Use Both - They Do Different Jobs', description: 'This isn\'t all-or-nothing. Many producers use Suno for a quick full-song sketch with AI vocals, then use Sonura for the editable beats, loops, and stems they finish and release. Right tool for each job.' },
-];
-
-const sonuraUseCases = [
-  { text: 'Need beats or instrumentals for production' },
-  { text: 'Want to export stems for mixing' },
-  { text: 'Need fast iteration while producing' },
-  { text: 'Sell beats or use commercially' },
-  { text: 'Want precise genre and BPM control' },
-  { text: 'Create type beats or backing tracks' },
-];
-
-const competitorUseCases = [
-  { text: 'Want complete songs with vocals and lyrics' },
-  { text: 'Need AI to write lyrics for you' },
-  { text: 'Prefer singer-songwriter style outputs' },
-  { text: 'Want a song-first generator' },
-  { text: 'Want experimental genre combinations' },
-];
+const stillRightBody = `
+  <p>If the job is a finished song, with vocals and written lyrics, in one pass, Suno is still the
+  strongest option on this page and the honest recommendation. v5.5 exports wav, per-clip wav, and
+  midi out of Suno Studio, and it passed two million paid subscribers and $300m in annual recurring
+  revenue in February 2026, so it is not a product that is going anywhere. up to 12 stems are
+  available, though only inside Suno Studio on the top plan.</p>
+  <p>What Suno does not hand you is a settled answer on training data. There is a licensing deal with
+  Warner Music, and litigation with labels it has not signed is still unresolved. that is not a reason
+  to avoid it if what you want is a song. it is a reason to know what you are getting before you
+  build a release around it.</p>
+  <p>Plenty of producers use both, and that is a reasonable answer rather than a diplomatic one:
+  sketch the idea as a full song in Suno, then build the releasable version out of parts you can
+  open up. they are doing different jobs.</p>
+`;
 
 const faqs = [
-  { question: 'What is the best Suno alternative for producers?', answer: 'Sonura is the better Suno alternative when you care about production workflow: fast beat creation, stem export on every plan, loops, vocal chops, samples, and commercial-ready output you finish in your DAW. Suno is stronger when you want a complete AI-sung song with lyrics in one click.' },
-  { question: 'Is Suno free for commercial use?', answer: "Suno's free plan is positioned for personal, non-commercial use and asks you to credit Suno; commercial rights come with its paid tiers. Sonura's free creations are released under CC0, so you can put them out with no attribution owed, though they are public domain rather than exclusively yours. Any paid plan keeps your work private and solely yours." },
-  { question: 'Can I get stems from Suno?', answer: 'On Suno, stem separation and WAV downloads are paid features - the free plan cannot export stems. Sonura keeps stems central to every plan, so you can export drums, bass, melody, and FX and finish the mix in your DAW.' },
-  { question: 'Why are Suno songs hard to edit or remix?', answer: 'Because Suno outputs a finished, mixed song rather than editable parts. Producers also report tempo drift in fully-generated tracks, which makes quantizing and layering your own instruments awkward. Sonura gives you editable building blocks on a stable grid instead.' },
-  { question: 'Is Sonura a free Suno alternative?', answer: 'Yes. Sonura is free to start with no credit card required, and its free tier is built for commercial output. It is especially useful if you want a Suno alternative for beats, loops, samples, and stems rather than full AI singing.' },
-  { question: 'Does Sonura create vocals like Suno?', answer: 'Sonura creates vocal chops, ad-libs, hooks, and samples for producers to layer into a track. Suno generates full AI singing with written lyrics for complete songs. Different tools for different jobs.' },
-  { question: 'Can I use both Suno and Sonura?', answer: 'Absolutely. Many producers sketch a full-song idea in Suno, then build the releasable version in Sonura with editable beats, loops, and stems. Use the right tool for each stage.' },
+  {
+    question: 'What is the best Suno alternative?',
+    answer:
+      'It depends on what you need to leave with, which is why the list above is ranked that way. For editable parts and stems you finish in a DAW, Sonura. For the deepest post-generation toolkit on a song platform, Mureka, which does 5-stem and 12-stem separation. For the cleanest rights story on a model you can actually export from, ElevenLabs Music v2. For running a song model on your own hardware, MiniMax Music 3.0.',
+  },
+  {
+    question: 'Is there a free Suno alternative?',
+    answer:
+      'Yes. Sonura is free to start with no credit card, and free output is released under CC0, so nothing blocks you commercially, though it is public domain rather than exclusively yours. MiniMax Music 3.0 publishes its weights on Hugging Face, so it is free to run if you have the GPU for it. Paid Sonura plans keep your work private and exclusively yours with no royalty splits.',
+  },
+  {
+    question: 'Which Suno alternative gives you stems?',
+    answer:
+      'Three of the seven. Sonura splits any track into stems on every plan including free. Mureka O2 does 5-stem and 12-stem separation. Udio supports stems in principle but has download switched off during the UMG transition, so you cannot currently retrieve them. ElevenLabs, Lyria, MiniMax, and Stable Audio 3 all return a finished mix instead.',
+  },
+  {
+    question: 'Why can I not download from Udio anymore?',
+    answer:
+      'Udio settled with Universal Music Group and became a closed platform during the transition. Audio, stem, and video download are all disabled, per <a href="https://help.udio.com/en/articles/12683565-changes-associated-with-the-universal-music-group-umg-partnership" target="_blank" rel="noopener" class="text-link">Udio\'s own help centre</a>. Its licensing is the best in the category, which is exactly what makes the situation frustrating rather than simple.',
+  },
+  {
+    question: 'Which AI music tool has the cleanest training data?',
+    answer:
+      'Stable Audio 3 is trained on fully licensed data plus creative commons material, which is the clearest position of anything here. Udio is licensed through Universal, Warner, Merlin, and Kobalt, opt-in for the artists and songwriters at each, which is the best story among the song platforms. ElevenLabs is licensed through Merlin and Kobalt on a 50/50 royalty split. Mureka, MiniMax, and Lyria have not disclosed in detail.',
+  },
+  {
+    question: 'Can I use a Suno alternative commercially?',
+    answer:
+      'Check each one, because the answer genuinely differs. Sonura gives exclusive rights on every paid plan with no royalty splits. ElevenLabs allows it but its self-serve plans carve out film, tv, and games. MiniMax ships a custom community licence you should read against your use. Stable Audio 3 offers an enterprise licence with legal indemnification above $1m revenue. Lyria is covered by Google Cloud terms rather than a music licence.',
+  },
+  {
+    question: 'Do I have to switch away from Suno completely?',
+    answer:
+      'No, and most people should not. Suno is the strongest option here for a finished song with vocals in one pass. The common pattern is to sketch in Suno and build the releasable version out of editable parts, which is the job Sonura is built for. Using both is a legitimate answer, not a hedge.',
+  },
+];
+
+const sources = [
+  {
+    label: 'Udio Help Center — changes associated with the Universal Music Group partnership (audio, video and stem downloads disabled)',
+    url: 'https://help.udio.com/en/articles/12683565-changes-associated-with-the-universal-music-group-umg-partnership',
+  },
+  {
+    label: 'Music Business Worldwide — Udio licensing deals with Universal, Warner, Merlin and Kobalt',
+    url: 'https://www.musicbusinessworldwide.com/after-universal-warner-and-merlin-deals-now-udio-inks-licensing-agreement-with-kobalt/',
+  },
+  {
+    label: 'Suno — v5.5 release notes, 26 March 2026',
+    url: 'https://suno.com/blog/v5-5',
+  },
+  {
+    label: 'TechCrunch — Suno hits 2 million paid subscribers and $300M ARR, February 2026',
+    url: 'https://techcrunch.com/2026/02/27/ai-music-generator-suno-hits-2-million-paid-subscribers-and-300m-in-annual-recurring-revenue/',
+  },
+  {
+    label: 'Music Business Worldwide — UMG and Sony still litigating against Suno',
+    url: 'https://www.musicbusinessworldwide.com/suno-fights-to-keep-warner-music-settlement-terms-away-from-umg-and-sony/',
+  },
+  {
+    label: 'Warner Music Group and Suno partnership announcement, November 2025',
+    url: 'https://www.prnewswire.com/news-releases/warner-music-group-and-suno-forge-groundbreaking-partnership-302626017.html',
+  },
 ];
 ---
 
-<AlternativeLayout
+<AlternativesListLayout
   competitor="Suno"
   competitorSlug="suno-alternative"
-  title="Suno Alternative for Producers - Beats, Loops & Stems | Sonura"
-  description="Suno hands you a finished song you can't edit. Sonura gives you editable beats, loops, vocals, and stems you finish in your DAW - 100% yours. Free to start."
-  keywords="suno alternative, suno ai alternative, better than suno, suno vs sonura, suno competitor, ai music generator alternative"
-  headline="Best Suno AI Alternative for Producers"
-  subhead="Unlike Suno, which hands you a finished song you can't open up, Sonura gives you editable beats, loops, vocals, and stems, shaped in your DAW and 100% yours. Compare speed, stems, and pricing below."
-  quickStats={quickStats}
-  comparisons={comparisons}
-  advantages={advantages}
-  sonuraUseCases={sonuraUseCases}
-  competitorUseCases={competitorUseCases}
+  title="7 Best Suno Alternatives in 2026, Ranked and Dated | Sonura"
+  description="The best Suno alternatives, ranked on what you can actually export. Stems, licensing, and commercial rights compared across seven tools, with sources and dates."
+  keywords="suno alternative, suno ai alternative, best suno alternatives, better than suno, suno competitor, free suno alternative, suno alternative with stems, ai music generator alternative"
+  headline="Best Suno Alternatives in 2026"
+  quickAnswer={quickAnswer}
+  entries={SUNO_ALTERNATIVES}
+  criteria={CRITERIA}
+  stillRightTitle="When Suno is still the right call"
+  stillRightBody={stillRightBody}
   faqs={faqs}
-  finalCtaTitle="Try the Best Suno Alternative"
-  finalCtaSubtitle="Create producer-ready beats, loops, vocals, and stems with precise genre control. Free to start, no credit card required."
-  finalCtaFooter="No credit card required • Producer workflow • Export stems"
->
-  <MadeWithSonura
-    slot="demos"
-    flush
-    kicker="Sounds"
-    subtitle="Real Sonura output you can edit and export - loops, one-shots, and full songs. Hit play."
-  />
-</AlternativeLayout>
+  sources={sources}
+  finalCtaTitle="Parts you can open up"
+  finalCtaSubtitle="Beats, loops, vocals, and stems that drop into your DAW, with stem export on every plan. Free to start, no credit card."
+  finalCtaButtonText="Start free"
+/>

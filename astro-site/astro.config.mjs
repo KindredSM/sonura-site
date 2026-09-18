@@ -26,6 +26,10 @@ export default defineConfig({
     // now Flow Music running Lyria 3.5 — so the live comparison is the Lyria
     // one. Verified 2026-08-19 via riffusion.com -> producer.ai -> flowmusic.app.
     '/compare/riffusion-vs-suno': '/compare/lyria-vs-suno/',
+    // Promoted from a blog post to a tool page: same content, the page type the
+    // SERP actually ranks. Every result above us for "acapella extractor" is a
+    // tool page, including sites at DR 3, 13 and 16. Verified 2026-09-14.
+    '/blog/acapella-extractor': '/tools/acapella-extractor/',
   },
   integrations: [
     sitemap({
