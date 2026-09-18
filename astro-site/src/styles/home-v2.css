@@ -149,9 +149,13 @@ body.home-v2 .hero-proof-logo svg {
     min-height: 0;
   }
 
+  /* Centring a ~300px block inside a full-screen hero drops it past the
+     middle of a phone, leaving a dead band under the nav. Anchor it to the
+     upper third instead and let the video hold the space below. */
   body.home-v2 .hero-content {
     max-width: none;
-    padding: 0 0 clamp(16px, 4vh, 40px) !important;
+    justify-content: flex-start;
+    padding: clamp(28px, 8vh, 76px) 0 clamp(16px, 4vh, 40px) !important;
     gap: clamp(20px, 2.6vh, 30px);
   }
 
