@@ -1,0 +1,655 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const cards = [
+  { title: 'Content Creators', text: 'YouTube, TikTok and Instagram channels covering production, gear and workflow.' },
+  { title: 'Producers and Beatmakers', text: 'Producers whose followers want to know what is in their toolkit.' },
+  { title: 'Educators', text: 'Course creators, music schools and tutors teaching production.' },
+  { title: 'Studios', text: 'Recording and production studios working with artists every week.' },
+  { title: 'Sound Engineers', text: 'Mixing, mastering and sound design pros who get asked for recommendations.' },
+  { title: 'Community Builders', text: 'Discord servers, newsletters and producer collectives.' },
+];
+
+const steps = [
+  { n: '01', title: 'Apply', text: 'Apply with your email. Once you are in, you get a partner dashboard and a tracking link that is yours.' },
+  { n: '02', title: 'Share everywhere', text: 'Put your link in videos, tutorials, pack descriptions or your Discord. The more targeted, the better.' },
+  { n: '03', title: 'Earn every month', text: 'Earn recurring commission on every paying customer you bring in, paid monthly once you clear the minimum payout.' },
+];
+
+const earnCards = [
+  { title: 'Real-time conversions', text: 'See every signup and paying customer as it happens.' },
+  { title: 'A link that is yours', text: 'No promo codes. One link you can embed anywhere.' },
+  { title: 'Double-sided rewards', text: 'Your referrals get 20 free credits when they sign up.' },
+];
+
+const faqs = [
+  { q: 'What is the Sonura Partner Program?', a: 'A way to earn recurring commission by recommending Sonura to producers, artists and creators in your audience. Some people call this an affiliate program or an ambassador program. At Sonura it works the same way: apply, get a tracking link, and get paid every month for the customers you bring in.' },
+  { q: 'Who can apply?', a: 'Anyone with an audience or network of music makers: creators, educators, studios, engineers, newsletter writers and community builders.' },
+  { q: 'How much can I earn?', a: 'You earn a commission every month for each paying customer you refer, based on <a href="/pricing/" class="text-link">Sonura\'s paying plans</a>. Rates, payout schedule and promotion rules are set out in the <a href="/partner-terms/" class="text-link">partner program terms</a>. Your own rate is shown in your partner dashboard once you are in.' },
+  { q: 'Is this different from the referral program?', a: 'Yes. Every Sonura user can already give friends 20 credits and earn free months. The partner program is for people who want to earn cash.' },
+  { q: 'Does it cost anything to join?', a: 'No.' },
+  { q: 'What do my referrals get?', a: '20 free credits when they sign up through your link.' },
+  { q: 'When will I hear back?', a: 'We are opening the program in stages. Apply and we will be in touch.' },
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map((item) => ({
+      "@type": "Question",
+      "name": item.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.a.replace(/<[^>]+>/g, ''),
+      },
+    })),
+  },
+];
+---
+
+<BaseLayout
+  title="Sonura Partner Program | Earn Recurring Commission"
+  description="Recommend Sonura and earn recurring commission every month for each paying customer you refer. Apply to the partner program."
+  keywords="sonura partner program, sonura affiliate program, music affiliate program, ambassador program, creator affiliate program, recurring commission affiliate program"
+  canonical="https://sonurastudio.com/partners/"
+  ogTitle="Sonura Partner Program | Earn Recurring Commission"
+  ogDescription="Recommend Sonura and earn recurring commission every month for each paying customer you refer."
+  jsonLd={jsonLd}
+>
+  <section class="partners-hero">
+    <div class="partners-hero-inner">
+      <h1 class="partners-headline reveal">
+        Recommend Sonura<br />
+        <span class="accent-line">Get paid every month</span>
+      </h1>
+      <p class="partners-subhead reveal" data-reveal-delay="0.04s">Refer creators to Sonura and earn commission every month for each paying customer you bring in.</p>
+
+      <div class="apply-form-wrap reveal" data-reveal-delay="0.08s" id="apply">
+        <div class="hero-cta-row">
+          <button type="button" class="button primary apply-trigger" data-apply-trigger data-cta-location="partners-hero">
+            <span class="btn-label-full">Apply Now</span><span class="btn-label-short">Apply</span>
+          </button>
+          <a href="#how-it-works" class="button secondary" data-apply-scroll-only>
+            <span class="btn-label-full">See how it works</span><span class="btn-label-short">How it works</span>
+          </a>
+        </div>
+
+        <form id="partner-apply-form" class="apply-form" novalidate hidden>
+          <div class="apply-field">
+            <input type="email" name="email" id="partner-email" placeholder="you@email.com" required aria-label="Email address" />
+            <label class="honeypot" aria-hidden="true">
+              Leave this field empty
+              <input type="text" name="company_website" tabindex="-1" autocomplete="off" />
+            </label>
+            <button type="submit" class="button primary apply-submit">
+              <span class="btn-label-full">Apply Now</span><span class="btn-label-short">Apply</span>
+            </button>
+          </div>
+          <p class="apply-error" role="alert" hidden>Something went wrong. Please try again.</p>
+        </form>
+        <p class="apply-thanks" hidden>Thank you. We will be in touch.</p>
+      </div>
+
+      <p class="hero-terms reveal" data-reveal-delay="0.12s">By applying you agree to the <a href="/partner-terms/" class="text-link">partner program terms</a>.</p>
+      <p class="hero-login reveal" data-reveal-delay="0.16s">Already a partner? <a href="https://app.sonurastudio.com/" class="text-link">Log in</a>.</p>
+    </div>
+  </section>
+
+  <section class="partners-section works-section">
+    <div class="partners-section-inner works-grid">
+      <div class="works-copy reveal">
+        <p class="section-kicker">01 / Who it's for</p>
+        <h2 class="section-title">A program that works for everyone</h2>
+        <p class="section-text">The Sonura partner program works differently depending on how you work. Whether you are a creator recommending tools to your audience or a studio bringing new artists into your workflow, there is a version of this that fits. Read <a href="/how-we-work-with-artists/" class="text-link">how we work with artists</a> to see the terms behind it.</p>
+      </div>
+      <div class="works-cards">
+        {cards.map((card, i) => (
+          <div class="works-card reveal" data-reveal-delay={`${0.04 * (i + 1)}s`}>
+            <h3 class="works-card-title">{card.title}</h3>
+            <p class="works-card-text">{card.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="partners-section steps-section" id="how-it-works">
+    <div class="partners-section-inner">
+      <p class="section-kicker">02 / How it works</p>
+      <h2 class="section-title">Three steps to real revenue</h2>
+
+      <div class="steps-rows">
+        {steps.map((step, i) => (
+          <div class="step-row reveal" data-reveal-delay={`${0.04 * (i + 1)}s`}>
+            <span class="step-number">{step.n}</span>
+            <div class="step-body">
+              <h3 class="step-title">{step.title}</h3>
+              <p class="step-text">{step.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <a href="#apply" class="button primary steps-apply-button" data-apply-scroll data-cta-location="partners-steps">
+        <span class="btn-label-full">Apply Now</span><span class="btn-label-short">Apply</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="partners-section earn-section">
+    <div class="partners-section-inner">
+      <p class="section-kicker">03 / Why partners stay</p>
+      <h2 class="section-title">We make it easy to earn</h2>
+
+      <div class="earn-grid">
+        {earnCards.map((card, i) => (
+          <div class="earn-card reveal" data-reveal-delay={`${0.04 * (i + 1)}s`}>
+            <h3 class="earn-card-title">{card.title}</h3>
+            <p class="earn-card-text">{card.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="partners-section faq-section">
+    <div class="partners-section-inner">
+      <p class="section-kicker">04 / FAQ</p>
+      <h2 class="section-title">Frequently asked questions</h2>
+
+      <div class="faq-list">
+        {faqs.map((item) => (
+          <details class="reveal">
+            <summary>{item.q}</summary>
+            <p set:html={item.a} />
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="partners-section final-cta-section">
+    <div class="partners-section-inner final-cta-inner">
+      <h2 class="section-title final-cta-title reveal">Ready to earn?</h2>
+      <p class="section-text final-cta-text reveal" data-reveal-delay="0.04s">Turn the recommendations you are already making into recurring revenue.</p>
+      <a href="#apply" class="button primary final-cta-button reveal" data-reveal-delay="0.08s" data-apply-scroll data-cta-location="partners-bottom">
+        <span class="btn-label-full">Apply Now</span><span class="btn-label-short">Apply</span>
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const SUPABASE_URL = 'https://nnbszdopvyychoayfctc.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5uYnN6ZG9wdnl5Y2hvYXlmY3RjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTczNDc2ODgsImV4cCI6MjA3MjkyMzY4OH0.E6OZSuhtAZ3wPU6eJwZ4Am0SF0xT4gy58lGwXnaTMDQ';
+
+  let lastClickedLocation = 'hero';
+
+  function trackClick(location: string) {
+    lastClickedLocation = location;
+    if (typeof (window as any).sonuraSeoTrack === 'function') {
+      (window as any).sonuraSeoTrack('partner_apply_clicked', { button_location: location });
+    }
+  }
+
+  const ctaRow = document.querySelector('.hero-cta-row') as HTMLElement | null;
+  const form = document.getElementById('partner-apply-form') as HTMLFormElement | null;
+
+  function revealApplyForm(location: string) {
+    trackClick(location);
+    if (ctaRow) ctaRow.hidden = true;
+    if (form) form.hidden = false;
+    const emailInput = document.getElementById('partner-email') as HTMLInputElement | null;
+    window.setTimeout(() => emailInput?.focus(), 400);
+  }
+
+  document.querySelectorAll<HTMLButtonElement>('[data-apply-trigger]').forEach((el) => {
+    el.addEventListener('click', () => revealApplyForm('hero'));
+  });
+
+  document.querySelectorAll<HTMLAnchorElement>('[data-apply-scroll]').forEach((el) => {
+    el.addEventListener('click', () => {
+      const location = (el.getAttribute('data-cta-location') || 'hero').replace('partners-', '');
+      revealApplyForm(location);
+    });
+  });
+
+  document.querySelectorAll<HTMLAnchorElement>('[data-apply-scroll-only]').forEach((el) => {
+    el.addEventListener('click', () => {
+      trackClick('steps-link');
+    });
+  });
+
+  const wrap = document.querySelector('.apply-form-wrap');
+  const errorEl = document.querySelector('.apply-error') as HTMLElement | null;
+  const thanksEl = document.querySelector('.apply-thanks') as HTMLElement | null;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (errorEl) errorEl.hidden = true;
+
+    const data = new FormData(form);
+    // Lowercased so "Someone@Gmail.com" and "someone@gmail.com" are treated
+    // as the same applicant by the email unique constraint.
+    const email = String(data.get('email') || '').trim().toLowerCase();
+    const honeypot = String(data.get('company_website') || '').trim();
+
+    if (honeypot) {
+      // Bot filled the trap field. Pretend it worked, save nothing.
+      form.hidden = true;
+      if (thanksEl) thanksEl.hidden = false;
+      return;
+    }
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      if (errorEl) {
+        errorEl.textContent = 'Please enter a valid email.';
+        errorEl.hidden = false;
+      }
+      return;
+    }
+
+    const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+    if (submitButton) submitButton.disabled = true;
+
+    try {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/partner_applications`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          apikey: SUPABASE_ANON_KEY,
+          Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+          Prefer: 'return=minimal',
+        },
+        body: JSON.stringify({ email, button_clicked: lastClickedLocation }),
+      });
+
+      // 409 means this email already applied (unique constraint) - treat as success, not an error.
+      if (!res.ok && res.status !== 409) throw new Error(`Supabase insert failed: ${res.status}`);
+
+      // Email goes to PostHog directly (identify + capture), not through
+      // sonuraSeoTrack: that helper also forwards event params to
+      // gtag/dataLayer (GA4/GTM), which must never receive raw PII.
+      if (typeof (window as any).posthog?.identify === 'function') {
+        (window as any).posthog.identify(email, { email });
+      }
+      if (typeof (window as any).posthog?.capture === 'function') {
+        (window as any).posthog.capture('partner_apply_submitted', { email, button_location: lastClickedLocation });
+      }
+
+      form.hidden = true;
+      if (thanksEl) thanksEl.hidden = false;
+    } catch (err) {
+      if (errorEl) {
+        errorEl.textContent = 'Something went wrong. Please try again.';
+        errorEl.hidden = false;
+      }
+      if (submitButton) submitButton.disabled = false;
+    }
+  });
+</script>
+
+<style>
+  .partners-hero {
+    padding: clamp(96px, 14vh, 180px) var(--page-pad) clamp(72px, 9vw, 120px);
+    text-align: left;
+  }
+
+  .partners-hero-inner {
+    max-width: 780px;
+    margin: 0;
+  }
+
+  .partners-headline {
+    font-family: var(--font-display);
+    font-size: clamp(48px, 7vw, 104px);
+    line-height: 0.98;
+    margin: 0 0 28px;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--fg);
+  }
+
+  .partners-headline .accent-line {
+    color: var(--accent);
+  }
+
+  .partners-subhead {
+    font-size: 17px;
+    color: var(--muted);
+    line-height: 1.8;
+    letter-spacing: 0.022em;
+    word-spacing: 0.04em;
+    text-transform: lowercase;
+    margin: 0 0 40px;
+    max-width: 560px;
+    font-weight: 400;
+  }
+
+  .apply-form-wrap {
+    max-width: 520px;
+    margin-bottom: 24px;
+  }
+
+  .apply-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .apply-form[hidden],
+  .hero-cta-row[hidden] {
+    display: none;
+  }
+
+  .apply-field {
+    display: flex;
+    gap: 12px;
+  }
+
+  .apply-field input[type="email"] {
+    flex: 1;
+    min-width: 0;
+    background: transparent;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-ui);
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-size: 15px;
+    padding: 0 18px;
+    height: 56px;
+  }
+
+  .apply-field input[type="email"]::placeholder {
+    color: var(--faint);
+  }
+
+  .apply-field input[type="email"]:focus {
+    outline: none;
+    border-color: var(--fg);
+  }
+
+  .apply-submit {
+    height: 56px;
+    padding: 0 28px;
+  }
+
+  .honeypot {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .apply-error {
+    color: var(--accent);
+    font-size: 13px;
+    text-transform: lowercase;
+    letter-spacing: 0.022em;
+    margin: 0;
+  }
+
+  .apply-thanks {
+    font-family: var(--font-display);
+    font-size: clamp(22px, 2.6vw, 30px);
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    color: var(--fg);
+    margin: 0;
+  }
+
+  .partners-hero .button,
+  .partners-section .button {
+    text-align: center;
+  }
+
+  .hero-cta-row {
+    display: flex;
+    gap: 16px;
+  }
+
+  .apply-trigger {
+    height: 56px;
+    padding: 0 32px;
+  }
+
+  .hero-terms,
+  .hero-login {
+    font-size: 14px;
+    color: var(--muted);
+    text-transform: lowercase;
+    letter-spacing: 0.022em;
+    margin: 0;
+  }
+
+  .hero-terms {
+    margin-bottom: 8px;
+  }
+
+  .partners-section {
+    padding: clamp(72px, 9vw, 110px) var(--page-pad);
+    border-top: 1px solid var(--hairline);
+  }
+
+  .partners-section-inner {
+    max-width: none;
+    margin: 0;
+  }
+
+  .section-kicker {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    margin: 0 0 16px;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(38px, 4.8vw, 68px);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    line-height: 1;
+    margin: 0 0 24px;
+    font-weight: 400;
+    color: var(--fg);
+  }
+
+  .section-text {
+    font-size: clamp(16px, 2vw, 18px);
+    color: var(--muted);
+    line-height: 1.8;
+    letter-spacing: 0.022em;
+    word-spacing: 0.04em;
+    text-transform: lowercase;
+    margin: 0;
+    max-width: 560px;
+  }
+
+  .works-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .works-copy .section-text {
+    max-width: none;
+  }
+
+  .works-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border-light);
+    border: 1px solid var(--border-light);
+  }
+
+  .works-card {
+    background: var(--bg);
+    padding: 32px;
+  }
+
+  .works-card-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--fg);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 0 0 12px;
+  }
+
+  .works-card-text {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+    letter-spacing: 0.022em;
+    text-transform: lowercase;
+    margin: 0;
+  }
+
+  .steps-rows {
+    max-width: 780px;
+    margin-bottom: 56px;
+  }
+
+  .step-row {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 32px;
+    padding: 32px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .step-row:last-child {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .step-number {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 4vw, 44px);
+    color: var(--faint);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .step-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--fg);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 0 0 10px;
+  }
+
+  .step-text {
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.8;
+    letter-spacing: 0.022em;
+    text-transform: lowercase;
+    margin: 0;
+    max-width: 560px;
+  }
+
+  .earn-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border-light);
+    border: 1px solid var(--border-light);
+  }
+
+  .earn-card {
+    background: var(--bg);
+    padding: 40px 32px;
+  }
+
+  .earn-card-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--fg);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 0 0 14px;
+  }
+
+  .earn-card-text {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.7;
+    letter-spacing: 0.022em;
+    text-transform: lowercase;
+    margin: 0;
+  }
+
+  .faq-list {
+    max-width: 780px;
+  }
+
+  .final-cta-section {
+    text-align: left;
+  }
+
+  .final-cta-inner {
+    max-width: 640px;
+  }
+
+  .final-cta-title {
+    margin-bottom: 20px;
+  }
+
+  .final-cta-text {
+    margin-bottom: 36px;
+    max-width: none;
+  }
+
+  @media (max-width: 900px) {
+    .works-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .works-cards,
+    .earn-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .step-row {
+      grid-template-columns: 56px 1fr;
+      gap: 20px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .partners-hero {
+      padding: 96px var(--page-pad) 72px;
+    }
+
+    .partners-section {
+      padding: 64px var(--page-pad);
+    }
+
+    .hero-cta-row {
+      flex-direction: column;
+    }
+
+    .apply-trigger,
+    .hero-cta-row .button.secondary {
+      width: 100%;
+    }
+
+    .apply-field {
+      flex-direction: column;
+    }
+
+    .apply-submit {
+      width: 100%;
+    }
+  }
+</style>
