@@ -10,6 +10,21 @@ const toc = [
   { id: 'core-difference', label: 'Editable stems vs flat audio' },
   { id: 'faq', label: 'Technical production FAQ' },
 ];
+
+const faqs = [
+  {
+    question: "What file formats do these tools typically export?",
+    answer: "Most export WAV for full quality and MP3 for quick previews. Sonura exports individual stems (drums, bass, melody, FX, vocals) as WAV, available on every plan including free.",
+  },
+  {
+    question: "Which tool integrates best with a DAW workflow?",
+    answer: "Tools that export true multi-track stems (rather than a single mixed file) integrate best, since you can drag individual layers straight into Ableton Live, FL Studio, or Logic Pro sessions.",
+  },
+  {
+    question: "Can I use AI-generated samples commercially without clearing rights?",
+    answer: "Check each tool's specific licensing terms. They differ. Sonura's outputs are 100% royalty-free with exclusive commercial usage rights on every paid plan and ethically licensed training data.",
+  },
+];
 ---
 
 <BlogLayout
@@ -20,6 +35,7 @@ const toc = [
   publishedDate="2026-07-05"
   readTime="3 min read"
   toc={toc}
+  faqs={faqs}
 >
   <div style="line-height: 1.8;">
     <p style="margin-bottom: 24px;">Sample digging used to mean going through Splice or paying for a pack you never fully use. AI sample generators changed that, from local sound-design plugins to full browser-based instrument generators. Here's how the main options actually compare for a working producer.</p>

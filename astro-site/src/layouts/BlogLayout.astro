@@ -14,6 +14,10 @@ interface Props {
   ogTitle?: string;
   h1?: string;
   toc?: { id: string; label: string }[];
+  /* Q&A pairs mirroring the visible FAQ section, emitted as FAQPage schema.
+     Questions must match the on-page wording: schema that disagrees with the
+     rendered content is a structured-data violation, not a shortcut. */
+  faqs?: { question: string; answer: string }[];
 }
 
 const {
@@ -29,9 +33,11 @@ const {
   ogTitle,
   h1 = title,
   toc = [],
+  faqs = [],
 } = Astro.props;
 
 const canonical = `https://sonurastudio.com/blog/${slug}/`;
+const stripHtml = (value: string) => value.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
 
 const jsonLd = [
   {
@@ -57,7 +63,19 @@ const jsonLd = [
       { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://sonurastudio.com/blog/" },
       { "@type": "ListItem", "position": 3, "name": h1, "item": canonical }
     ]
-  }
+  },
+  ...(faqs.length > 0 ? [{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": stripHtml(faq.answer)
+      }
+    }))
+  }] : [])
 ];
 
 const formattedDate = new Date(publishedDate).toLocaleDateString('en-US', {

@@ -10,6 +10,25 @@ const toc = [
   { id: 'regenerate', label: 'Step 6: Regenerate' },
   { id: 'faq', label: 'Technical production FAQ' },
 ];
+
+const faqs = [
+  {
+    question: "What file format do exported samples come in?",
+    answer: "WAV for full-resolution stems, suitable for professional mixing. MP3 previews are available for quick reference before committing to a download.",
+  },
+  {
+    question: "Do I need to pay royalties on samples I use commercially?",
+    answer: "No. All Sonura generations are 100% royalty-free with exclusive commercial usage rights and zero producer splits on every paid plan.",
+  },
+  {
+    question: "Will imported stems match my project's BPM automatically?",
+    answer: "Generations lock to the BPM you set with the tempo control at generation time. If your project runs at a different tempo, you'll need to warp/stretch in your DAW as you would with any external audio. Setting the correct BPM upfront avoids this in most cases.",
+  },
+  {
+    question: "Can I chop a generated one-shot into smaller pieces?",
+    answer: "Yes. Treat exported stems like any other WAV file. Load into your DAW's sampler or slicer (e.g. FL Studio's Slicex, Ableton's Simpler) to chop and rearrange as needed.",
+  },
+];
 ---
 
 <BlogLayout
@@ -20,6 +39,7 @@ const toc = [
   publishedDate="2026-07-09"
   readTime="3 min read"
   toc={toc}
+  faqs={faqs}
 >
   <div style="line-height: 1.8;">
     <p style="margin-bottom: 24px;">Generating an AI sample is the easy part. Getting it into your session cleanly, in tempo, and ready to build around is where the actual workflow lives. Here's the process, start to finish.</p>

@@ -8,6 +8,25 @@ const toc = [
   { id: 'ai-workflow', label: 'How AI changes the workflow' },
   { id: 'faq', label: 'FAQ' },
 ];
+
+const faqs = [
+  {
+    question: "What are stems in music production?",
+    answer: "Stems are the individual layers of a track (drums, bass, melody, vocals, effects) exported as separate audio files, rather than one flattened stereo mix. Separating them lets you mix, remix, and rearrange each part on its own.",
+  },
+  {
+    question: "What is the difference between stems and a mix?",
+    answer: "A mix is the final track summed into one (usually stereo) file. Stems are that same track split back into its component parts. A mix is for listening; stems are for editing.",
+  },
+  {
+    question: "Are AI-generated stems royalty-free?",
+    answer: "Sonura's generations are royalty-free with exclusive commercial rights on every paid plan, with no producer splits.",
+  },
+  {
+    question: "Can I split an existing song into stems?",
+    answer: "Yes, but that is stem separation rather than generation. Use an AI <a href=\"/tools/stem-separator/\" class=\"text-link\">stem separator</a> or <a href=\"/tools/vocal-remover/\" class=\"text-link\">vocal remover</a> to extract parts from a finished mix.",
+  },
+];
 ---
 
 <BlogLayout
@@ -18,6 +37,7 @@ const toc = [
   publishedDate="2026-07-14"
   readTime="5 min read"
   toc={toc}
+  faqs={faqs}
 >
   <div style="line-height: 1.8;">
     <p style="margin-bottom: 24px;">Stems are the backbone of modern music production, but the word gets used loosely. This guide covers what stems actually are, why they matter in a real session, and how AI generation changes the way producers get them compared to sample packs or recording every part by hand.</p>

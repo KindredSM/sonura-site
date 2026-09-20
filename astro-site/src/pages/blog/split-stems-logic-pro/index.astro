@@ -7,6 +7,25 @@ const toc = [
   { id: 'where-flow-fits', label: 'Where Sonura Flow fits in' },
   { id: 'faq', label: 'FAQ' },
 ];
+
+const faqs = [
+  {
+    question: "Doesn't Logic Pro already have a stem splitter built in?",
+    answer: "On Apple Silicon Macs, yes, Logic Pro includes a built-in stem splitter. It's limited to a fixed set of stems and isn't available on Intel Macs. For a full six-stem breakdown or a cross-platform workflow, separating externally first is the more flexible option.",
+  },
+  {
+    question: "Will imported stems be perfectly in time with each other?",
+    answer: "Yes. All the stems came from one separation pass on the same source file, so they share the same timing as the original track.",
+  },
+  {
+    question: "Does it matter if I export stems as MP3 instead of WAV?",
+    answer: "WAV is lossless and generally the better choice for further production work. MP3 is smaller and fine for quick reference, but it's already been compressed once before it even reaches Logic.",
+  },
+  {
+    question: "Can I use Sonura Flow to separate stems too, or only to create new audio?",
+    answer: "Sonura Flow is built for creating new audio inside the session. Stem separation happens through Sonura's separator online, then the resulting files get imported into Logic as usual.",
+  },
+];
 ---
 
 <BlogLayout
@@ -20,6 +39,7 @@ const toc = [
   author="Blue Bookhard"
   authorRole="Co-founder & COO, Sonura"
   toc={toc}
+  faqs={faqs}
 >
   <div style="line-height: 1.8;">
     <p style="margin-bottom: 24px;">Logic Pro's built-in stem splitter only works on Apple Silicon Macs, and it splits into a fixed set of stems rather than the full breakdown most mixing work actually needs. If you're on an Intel Mac, or the session calls for a full six-stem split rather than whatever Logic's version gives you, separating the track externally first is the more reliable path. Getting the import right matters just as much as the separation itself. Get it wrong and things drift out of time or lose quality before you've even started mixing.</p>

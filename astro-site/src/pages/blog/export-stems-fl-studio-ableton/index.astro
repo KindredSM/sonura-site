@@ -7,6 +7,21 @@ const toc = [
   { id: 'faster-path', label: 'Start from separated stems' },
   { id: 'faq', label: 'FAQ' },
 ];
+
+const faqs = [
+  {
+    question: "What bit depth should I export stems at?",
+    answer: "24-bit WAV is the standard for stems you plan to mix or send to an engineer. It preserves headroom and detail better than 16-bit.",
+  },
+  {
+    question: "Do exported stems stay in sync when I import them?",
+    answer: "Yes. In both FL Studio (Split mixer tracks) and Ableton (All Individual Tracks), every file starts at the same point and shares the same length, so dropping them onto aligned tracks lines them up.",
+  },
+  {
+    question: "Can I get stems without exporting from a DAW at all?",
+    answer: "Yes. If you generate with Sonura, the stems come out already separated via stem export, so you can skip the DAW export step. If you need to split an existing finished song instead, that is stem separation: run it through the <a href=\"/tools/stem-separator/\" class=\"text-link\">stem splitter</a>, and see our <a href=\"/blog/ai-music-production-stems/\" class=\"text-link\">stems guide</a> for the wider workflow.",
+  },
+];
 ---
 
 <BlogLayout
@@ -17,6 +32,7 @@ const toc = [
   publishedDate="2026-07-18"
   readTime="4 min read"
   toc={toc}
+  faqs={faqs}
 >
   <div style="line-height: 1.8;">
     <p style="margin-bottom: 24px;">Exporting stems means bouncing each part of your track (drums, bass, melody, vocals) out as its own audio file instead of one mixed-down file. You need them for mixing, collaboration, remixing, and delivery. If you are not sure what stems are or why they matter, start with our guide to <a href="/blog/ai-music-production-stems/" class="text-link">AI music production and stems</a>. This walks through exporting stems in FL Studio and Ableton Live, plus a faster path when your source is generated rather than tracked by hand.</p>

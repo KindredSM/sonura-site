@@ -7,6 +7,25 @@ const toc = [
   { id: 'what-producers-do', label: 'What producers do with it' },
   { id: 'faq', label: 'FAQ' },
 ];
+
+const faqs = [
+  {
+    question: "Do I need the six-stem split just to get drums, or is there a drums-only option?",
+    answer: "Six-stem is currently how drums come out. It separates all six sources in the same pass, and you keep the one you need.",
+  },
+  {
+    question: "Will the drum stem have bleed from other instruments?",
+    answer: "Some bleed is possible on any separator, most often when a bassline sits close in frequency to the kick. Sonura's separator is built to keep this to a minimum, producing noticeably less bleed than older tools.",
+  },
+  {
+    question: "Does track genre affect how clean the drum separation is?",
+    answer: "Denser mixes with a lot of overlapping low end are harder for any separator to untangle than sparser arrangements. Results vary by track, not just by tool.",
+  },
+  {
+    question: "Can I use this on a live recording instead of a studio track?",
+    answer: "Yes. Separation quality depends on the source recording's clarity in general, not on whether it's live or studio.",
+  },
+];
 ---
 
 <BlogLayout
@@ -20,6 +39,7 @@ const toc = [
   author="Blue Bookhard"
   authorRole="Co-founder & COO, Sonura"
   toc={toc}
+  faqs={faqs}
 >
   <div style="line-height: 1.8;">
     <p style="margin-bottom: 24px;">Pulling a clean drum stem out of a finished track used to require the multitrack session, or a producer who'd kept their stems around. Now it's a separation job. Upload a mixed song to a <a href="/tools/stem-separator/" class="text-link">stem separator</a>, run the six-stem split, and download just the drum part.</p>

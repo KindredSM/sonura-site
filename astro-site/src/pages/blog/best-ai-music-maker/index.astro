@@ -7,6 +7,21 @@ const toc = [
   { id: 'where-sonura', label: 'Where Sonura fits' },
   { id: 'faq', label: 'Technical production FAQ' },
 ];
+
+const faqs = [
+  {
+    question: "What file formats should I expect from a production-grade AI music maker?",
+    answer: "WAV for full-resolution, editable output. Tools that only offer MP3 downloads are not built for serious mixing work.",
+  },
+  {
+    question: "Does BPM specification actually work reliably across these tools?",
+    answer: "Quality varies. Tools built around production terminology (as opposed to purely mood-based prompting) tend to hit specified BPM and genre parameters more precisely.",
+  },
+  {
+    question: "Is there one single \"best\" AI music maker for everyone?",
+    answer: "No. The honest answer depends on whether you need a full AI-sung song, background scoring, or editable production material. Match the tool to the actual deliverable.",
+  },
+];
 ---
 
 <BlogLayout
@@ -17,6 +32,7 @@ const toc = [
   publishedDate="2026-07-07"
   readTime="3 min read"
   toc={toc}
+  faqs={faqs}
 >
   <div style="line-height: 1.8;">
     <p style="margin-bottom: 24px;">"Best AI music maker" covers a range of tools solving different problems: full AI-sung songs, background scoring, sound design, and production-focused generation. The right answer depends on what you are actually trying to finish.</p>

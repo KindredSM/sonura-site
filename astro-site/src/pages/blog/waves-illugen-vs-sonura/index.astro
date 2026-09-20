@@ -7,6 +7,21 @@ const toc = [
   { id: 'use-both', label: 'Use both' },
   { id: 'faq', label: 'Technical production FAQ' },
 ];
+
+const faqs = [
+  {
+    question: "Can I export stems from ILLUGEN the way I can from Sonura?",
+    answer: "ILLUGEN generates individual samples (one-shots, loops, and SFX), so there is no full arrangement to split into parts. Sonura makes both individual samples and full multi-layer stems (drums, bass, melody, FX, vocals), exported as separate WAV files on every plan, which is what lets you rebalance a mix in your DAW.",
+  },
+  {
+    question: "Does either tool need an internet connection?",
+    answer: "Both are credit-based and generate over an internet connection. With Sonura you make sounds in the browser and download them, or drag them straight into your DAW with Sonura Flow. ILLUGEN generates in its standalone app; the samples are then stored locally and stay in your Waves account for around six months.",
+  },
+  {
+    question: "How do licensing and commercial use compare?",
+    answer: "Both train on documented, licensed material. ILLUGEN runs on a credit-based subscription, with commercial use under Waves' license terms. Sonura's outputs are royalty-free with exclusive commercial rights on every paid plan, with no splits owed.",
+  },
+];
 ---
 
 <BlogLayout
@@ -17,6 +32,7 @@ const toc = [
   publishedDate="2026-07-03"
   readTime="4 min read"
   toc={toc}
+  faqs={faqs}
 >
   <div style="line-height: 1.8;">
     <p style="margin-bottom: 24px;">Waves ILLUGEN 2.0 and Sonura are both AI text-to-sound generators: you type a prompt and get original audio back, no sample-pack digging required. They are built for different points in a session, though. ILLUGEN is a standalone app that generates individual samples (one-shots, loops, and SFX) from a prompt, three WAV files at a time, which you then drag into your DAW. Sonura generates individual samples (one-shots, loops, and vocals) as well as full multi-layer stems and arrangements (drums, bass, melody, and vocals) from a prompt. You make them in the browser and download, or use <a href="/plugin/" class="text-link">Sonura Flow</a> to drag generations straight into your DAW project. Both tools are credit-based and generate over an internet connection.</p>

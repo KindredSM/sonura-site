@@ -9,6 +9,25 @@ const toc = [
   { id: 'step-4-daw', label: 'Step 4: Finish in your DAW' },
   { id: 'faq', label: 'Technical production FAQ' },
 ];
+
+const faqs = [
+  {
+    question: "Can I release a cover made this way commercially?",
+    answer: "Cover songs carry their own mechanical licensing requirements around the original composition, separate from anything Sonura generates. Sonura's generated backing tracks are royalty-free, with exclusive commercial rights on every paid plan, but check cover licensing requirements (e.g. via a service like Songfile/Harry Fox) for the underlying song itself before distributing.",
+  },
+  {
+    question: "What file format does the vocal isolation export in?",
+    answer: "WAV, for clean quality suitable for further mixing. MP3 preview available for quick reference.",
+  },
+  {
+    question: "Will an isolated vocal have artifacts from the removal process?",
+    answer: "Some isolation artifacts are possible depending on the source recording's mix density. This is a known limitation of any vocal-isolation technology, not unique to one tool.",
+  },
+  {
+    question: "Is there a single-click way to generate a full cover version?",
+    answer: "Not currently. This workflow combines vocal isolation with a separately generated backing track, giving you more control over the result than a one-click black-box output would.",
+  },
+];
 ---
 
 <BlogLayout
@@ -19,6 +38,7 @@ const toc = [
   publishedDate="2026-07-11"
   readTime="3 min read"
   toc={toc}
+  faqs={faqs}
 >
   <div style="line-height: 1.8;">
     <section id="overview" style="margin-bottom: 48px;">
