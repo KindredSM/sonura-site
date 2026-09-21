@@ -202,7 +202,7 @@ const jsonLd = [
     if (ctaRow) ctaRow.hidden = true;
     if (form) form.hidden = false;
     const emailInput = document.getElementById('partner-email') as HTMLInputElement | null;
-    window.setTimeout(() => emailInput?.focus(), 400);
+    emailInput?.focus({ preventScroll: true });
   }
 
   document.querySelectorAll<HTMLButtonElement>('[data-apply-trigger]').forEach((el) => {
@@ -210,9 +210,15 @@ const jsonLd = [
   });
 
   document.querySelectorAll<HTMLAnchorElement>('[data-apply-scroll]').forEach((el) => {
-    el.addEventListener('click', () => {
+    el.addEventListener('click', (event) => {
+      event.preventDefault();
       const location = (el.getAttribute('data-cta-location') || 'hero').replace('partners-', '');
       revealApplyForm(location);
+      document.getElementById('apply')?.scrollIntoView({
+        behavior: 'instant',
+        block: 'start',
+      });
+      if (window.location.hash !== '#apply') history.pushState(null, '', '#apply');
     });
   });
 
@@ -301,7 +307,8 @@ const jsonLd = [
     text-align: left;
     position: relative;
     isolation: isolate;
-    overflow: hidden;
+    /* Keep anchor navigation from scrolling the hero's background layers. */
+    overflow: clip;
   }
 
   .partners-hero::before {
@@ -364,6 +371,7 @@ const jsonLd = [
   .apply-form-wrap {
     max-width: 520px;
     margin-bottom: 24px;
+    scroll-margin-top: calc(var(--nav-h) + 24px);
   }
 
   .apply-form {
