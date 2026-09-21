@@ -12,14 +12,14 @@ const cards = [
 
 const steps = [
   { n: '01', title: 'Apply', text: 'Apply with your email. Once you are in, you get a partner dashboard and a tracking link that is yours.' },
-  { n: '02', title: 'Share everywhere', text: 'Put your link in videos, tutorials, pack descriptions or your Discord. The more targeted, the better.' },
-  { n: '03', title: 'Earn every month', text: 'Earn recurring commission on every paying customer you bring in, paid monthly once you clear the minimum payout.' },
+  { n: '02', title: 'Share Everywhere', text: 'Put your link in videos, tutorials, pack descriptions or your Discord. The more targeted, the better.' },
+  { n: '03', title: 'Earn Every Month', text: 'Earn recurring commission on every paying customer you bring in, paid monthly once you clear the minimum payout.' },
 ];
 
 const earnCards = [
-  { title: 'Real-time conversions', text: 'See every signup and paying customer as it happens.' },
-  { title: 'A link that is yours', text: 'No promo codes. One link you can embed anywhere.' },
-  { title: 'Double-sided rewards', text: 'Your referrals get 20 free credits when they sign up.' },
+  { title: 'Real-Time Conversions', text: 'See every signup and paying customer as it happens.' },
+  { title: 'A Link That Is Yours', text: 'No promo codes. One link you can embed anywhere.' },
+  { title: 'Double-Sided Rewards', text: 'Your referrals get 20 free credits when they sign up.' },
 ];
 
 const faqs = [
@@ -298,7 +298,7 @@ const jsonLd = [
   }
 
   .partners-hero-inner {
-    max-width: 780px;
+    max-width: none;
     margin: 0;
   }
 
@@ -319,7 +319,6 @@ const jsonLd = [
     line-height: 1.8;
     letter-spacing: 0.022em;
     word-spacing: 0.04em;
-    text-transform: lowercase;
     margin: 0 0 40px;
     max-width: 560px;
     font-weight: 400;
@@ -380,7 +379,6 @@ const jsonLd = [
   .apply-error {
     color: var(--fg);
     font-size: 13px;
-    text-transform: lowercase;
     letter-spacing: 0.022em;
     margin: 0;
   }
@@ -415,7 +413,6 @@ const jsonLd = [
   .hero-login {
     font-size: 14px;
     color: var(--muted);
-    text-transform: lowercase;
     letter-spacing: 0.022em;
     margin: 0;
   }
@@ -432,6 +429,12 @@ const jsonLd = [
   .partners-section-inner {
     max-width: none;
     margin: 0;
+  }
+
+  .section-kicker {
+    text-transform: none;
+    letter-spacing: 0.08em;
+    font-size: 13px;
   }
 
   .section-title {
@@ -451,7 +454,6 @@ const jsonLd = [
     line-height: 1.8;
     letter-spacing: 0.022em;
     word-spacing: 0.04em;
-    text-transform: lowercase;
     margin: 0;
     max-width: 560px;
   }
@@ -482,11 +484,10 @@ const jsonLd = [
   }
 
   .works-card-title {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 700;
     color: var(--fg);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.01em;
     margin: 0 0 12px;
   }
 
@@ -495,12 +496,11 @@ const jsonLd = [
     color: var(--muted);
     line-height: 1.7;
     letter-spacing: 0.022em;
-    text-transform: lowercase;
     margin: 0;
   }
 
   .steps-rows {
-    max-width: 780px;
+    max-width: none;
     margin-bottom: 56px;
   }
 
@@ -525,11 +525,10 @@ const jsonLd = [
   }
 
   .step-title {
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 700;
     color: var(--fg);
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.01em;
     margin: 0 0 10px;
   }
 
@@ -538,9 +537,8 @@ const jsonLd = [
     color: var(--muted);
     line-height: 1.8;
     letter-spacing: 0.022em;
-    text-transform: lowercase;
     margin: 0;
-    max-width: 560px;
+    max-width: 760px;
   }
 
   .earn-grid {
@@ -558,11 +556,10 @@ const jsonLd = [
   }
 
   .earn-card-title {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
     color: var(--fg);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.01em;
     margin: 0 0 14px;
   }
 
@@ -571,12 +568,23 @@ const jsonLd = [
     color: var(--muted);
     line-height: 1.7;
     letter-spacing: 0.022em;
-    text-transform: lowercase;
     margin: 0;
   }
 
   .faq-list {
-    max-width: 780px;
+    max-width: none;
+  }
+
+  /* Global `details > p` lowercases FAQ answers; this page writes them in
+     sentence case instead. */
+  .faq-list details > p {
+    text-transform: none;
+  }
+
+  .faq-list summary {
+    text-transform: none;
+    letter-spacing: 0.01em;
+    font-size: 16px;
   }
 
   /* Support copy inside the poster frame; the frame, title size and grain band
@@ -587,7 +595,6 @@ const jsonLd = [
     line-height: 1.8;
     letter-spacing: 0.022em;
     word-spacing: 0.04em;
-    text-transform: lowercase;
     margin: 0 0 36px;
     max-width: 560px;
   }
