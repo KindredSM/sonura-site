@@ -96,7 +96,6 @@ Those customers get 20% off their first 3 months. Joining is free. This is separ
 give friends 20 credits and earn free months.
 
 - Apply / program details: https://sonurastudio.com/partners/
-- Program terms: https://sonurastudio.com/partner-terms/
 
 ## Full Documentation
 
@@ -110,4 +109,3 @@ For detailed feature descriptions, use case guides, FAQ answers, and comprehensi
 - Sitemap: https://sonurastudio.com/sitemap-index.xml
 - Full LLM docs: https://sonurastudio.com/llms-full.txt
 - Partner program: https://sonurastudio.com/partners/
-- Partner program terms: https://sonurastudio.com/partner-terms/
