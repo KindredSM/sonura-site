@@ -116,7 +116,7 @@ the leading numerals were dropped in the same pass.
 
 - Headlines lead with the outcome verb; the word "AI" never appears in headings or
   hero copy (SEO `<title>`/meta keeps its keywords — that's Tier A and untouched).
-- Social proof: "Loved by 15,000+ producers".
+- Social proof: "Loved by 17,000+ producers".
 - Trust rows as slash metadata: `FREE TO START / NO CREDIT CARD / NO SETUP`.
 - **No em dashes (—) anywhere** in copy, meta descriptions, or titles. Use a colon
   for elaboration, a period for a new sentence, a comma for a clause, or `|` in
