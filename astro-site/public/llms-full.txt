@@ -540,14 +540,14 @@ A partner program (some people call it an affiliate or ambassador program) for a
 or network of music makers: content creators, producers and beatmakers, educators, studios, sound
 engineers, and community builders.
 
-- How it works: apply with an email, get a partner dashboard and a personal tracking link, share the
-  link, and earn recurring commission every month on each paying customer referred.
+- How it works: apply with an email, get a partner dashboard and a unique partner code, share the
+  code, and earn recurring commission when new customers start paid subscriptions using it at checkout.
 - Commission: recurring, paid monthly once the minimum payout is cleared. Rates, payout schedule, and
   promotion rules are set out in the partner program terms; a partner's own rate is shown in their
   dashboard.
-- Referral reward: people who sign up through a partner link get 20 free credits.
+- Customer discount: new customers who use a partner code at checkout get 20% off their first 3 months.
 - Cost to join: free.
-- Tracking: one link, no promo codes, with real-time conversion reporting in the dashboard.
+- Tracking: paid subscriptions are attributed to the partner code used at checkout.
 - Status: opening in stages, so applications are reviewed rather than auto-approved.
 - Not the same as the referral program: every Sonura user can already give friends 20 credits and earn
   free months. The partner program is for people who want to earn cash.

@@ -90,9 +90,9 @@ Neutral, dated, model-against-model comparisons (not Sonura-against-competitor p
 
 Sonura runs a partner program (also called an affiliate or ambassador program) for people with an
 audience of music makers: creators, educators, studios, engineers, newsletter writers, and community
-builders. Partners apply with their email, get a tracking link and a partner dashboard, and earn
-recurring commission every month on each paying customer they refer. Referrals get 20 free credits on
-signup. Joining is free. This is separate from the built-in referral program, where any Sonura user can
+builders. Partners apply with their email, get a unique partner code and a partner dashboard, and earn
+recurring commission when new customers start paid subscriptions using their code at checkout.
+Those customers get 20% off their first 3 months. Joining is free. This is separate from the built-in referral program, where any Sonura user can
 give friends 20 credits and earn free months.
 
 - Apply / program details: https://sonurastudio.com/partners/
