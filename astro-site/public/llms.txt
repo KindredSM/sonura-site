@@ -91,11 +91,15 @@ Neutral, dated, model-against-model comparisons (not Sonura-against-competitor p
 Sonura runs a partner program (also called an affiliate or ambassador program) for people with an
 audience of music makers: creators, educators, studios, engineers, newsletter writers, and community
 builders. Partners apply with their email, get a unique partner code and a partner dashboard, and earn
-recurring commission when new customers start paid subscriptions using their code at checkout.
-Those customers get 20% off their first 3 months. Joining is free. This is separate from the built-in referral program, where any Sonura user can
+25% commission on subscription revenue actually charged and received after discounts, excluding VAT,
+for the first 12 billing months from the first successful payment. New customers must use the partner
+code at checkout. Annual plans earn commission on the first payment only, not renewals. Refunds and
+chargebacks reverse the commission on the affected amount.
+Those customers get 20% off the list price for their first 3 months. Joining is free. This is separate from the built-in referral program, where any Sonura user can
 give friends 20 credits and earn free months.
 
 - Apply / program details: https://sonurastudio.com/partners/
+- Program terms: https://sonurastudio.com/partner-terms/
 
 ## Full Documentation
 

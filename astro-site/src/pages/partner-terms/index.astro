@@ -1,0 +1,230 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const lastUpdated = "September 21, 2026";
+---
+
+<BaseLayout
+  title="Partner Program Terms | Sonura"
+  description="The terms of the Sonura Partner Program. Covers commission rates, conversion tracking, payout schedule, and promotion rules."
+  keywords="sonura partner program, sonura affiliate terms, sonura commission, sonura affiliate payouts"
+  canonical="https://sonurastudio.com/partner-terms/"
+  ogTitle="Partner Program Terms | Sonura"
+  ogDescription="Commission rates, payouts, and promotion rules for the Sonura Partner Program."
+>
+  <section class="legal-hero">
+    <div class="legal-hero-inner">
+      <p class="section-kicker">Legal</p>
+      <h1 class="legal-headline">Partner Program Terms</h1>
+      <p class="legal-subhead">Last updated: {lastUpdated}</p>
+    </div>
+  </section>
+
+  <section class="legal-content">
+    <div class="legal-content-inner">
+      <div class="legal-section">
+        <h2>1. Overview</h2>
+        <p>This section explains how the Sonura Partner Program works. By joining, you agree to refer new customers to Sonura in exchange for commission on their subscription payments, under the terms below.</p>
+      </div>
+
+      <div class="legal-section">
+        <h2>2. Eligibility</h2>
+        <p>You must be 18 or older and have an active Sonura account to apply. We may decline or remove any partner at our discretion, including for fraudulent, misleading, or spammy promotion.</p>
+      </div>
+
+      <div class="legal-section" id="commissions">
+        <h2>3. How Commissions Work</h2>
+
+        <h3>3.1 Commission rate and basis</h3>
+        <p>Partners earn a flat <strong>25% commission on net subscription revenue received</strong> from each qualifying referred customer during the commission period below. Net subscription revenue means the amount actually charged and received after discounts, excluding VAT. Commission is not calculated on the list price or the VAT-inclusive total.</p>
+        <p>Payment processing fees and service delivery costs are not deducted from this commission basis.</p>
+        <ul>
+          <li>For a $20 monthly plan before VAT, a month with the 20% customer discount is charged at $16 before VAT. Your commission is $4.</li>
+          <li>For the same plan at full price, the charge is $20 before VAT. Your commission is $5.</li>
+        </ul>
+
+        <h3>3.2 Commission duration</h3>
+        <p>The commission period starts with the referred customer's first successful subscription payment and ends after 12 billing months. For monthly plans, qualifying payments during those first 12 billing months earn commission. No commission is earned from billing month 13 onward.</p>
+        <p>For annual plans, commission is earned on the first successful annual subscription payment only. Annual renewals do not earn commission.</p>
+
+        <h3>3.3 What counts as a conversion</h3>
+        <p>A conversion occurs when a new customer starts a paid subscription using your unique partner code at checkout and their first payment succeeds.</p>
+
+        <h3>3.4 Referred customer discount</h3>
+        <p>New customers who use your partner code at checkout get <strong>20% off the list price for their first 3 months</strong>. This customer discount is separate from your 25% partner commission. Commission during the discount period is calculated on the discounted amount actually charged and received, excluding VAT.</p>
+      </div>
+
+      <div class="legal-section" id="payment">
+        <h2>4. Payment</h2>
+        <ul>
+          <li>Commissions are paid monthly via PayPal, within 30 days of the end of the month in which they were earned.</li>
+          <li>The minimum payout threshold is £25. Amounts below this roll over to the following month.</li>
+          <li>Refunds and chargebacks reverse the commission attributable to the refunded or charged-back amount on that payment. Any such commission already paid is deducted from future commission payments.</li>
+        </ul>
+      </div>
+
+      <div class="legal-section">
+        <h2>5. Restrictions</h2>
+
+        <h3>5.1 Self-referral</h3>
+        <p>You may not use your own partner code to purchase Sonura for yourself.</p>
+
+        <h3>5.2 Paid search</h3>
+        <p>You may run paid traffic to promote Sonura, but you may not bid on "Sonura" or close misspellings/variants in paid search campaigns.</p>
+
+        <h3>5.3 No stacking</h3>
+        <p>The partner code provides the customer discount and partner commission described above. It cannot be combined with additional Sonura discounts, promotions, or the separate referral program.</p>
+
+        <h3>5.4 Prohibited promotion</h3>
+        <p>No spam, deceptive claims, or impersonation of Sonura.</p>
+      </div>
+
+      <div class="legal-section">
+        <h2>6. Program Changes</h2>
+        <p>We may update commission rates or these terms at any time. Continued participation after changes means you accept the updated terms.</p>
+      </div>
+
+      <div class="legal-section">
+        <h2>7. Termination</h2>
+        <p>Either party may end participation at any time. Commissions earned before termination will still be paid out on schedule; no new commissions accrue after termination.</p>
+      </div>
+
+      <div class="legal-section">
+        <h2>8. Contact</h2>
+        <p>Questions about the program go to:</p>
+        <p><a href="mailto:kindred@sonurastudio.com">kindred@sonurastudio.com</a></p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal-hero {
+    padding: clamp(96px, 14vh, 180px) var(--page-pad) 80px;
+    text-align: left;
+    position: relative;
+  }
+
+  .legal-hero-inner {
+    max-width: 900px;
+    margin: 0;
+  }
+
+  .legal-headline {
+    font-family: var(--font-display);
+    font-size: clamp(44px, 6.5vw, 88px);
+    line-height: 0.98;
+    margin: 0 0 24px;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--fg);
+  }
+
+  .legal-subhead {
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .legal-content {
+    padding: 0 var(--page-pad) 120px;
+  }
+
+  .legal-content-inner { /* centered prose column */
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .legal-section {
+    margin-bottom: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .legal-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .legal-section h2 {
+    font-family: var(--font-display);
+    font-size: clamp(22px, 2.6vw, 30px);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    line-height: 1;
+    margin: 0 0 24px;
+    color: var(--fg);
+  }
+
+  .legal-section h3 {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 32px 0 16px;
+    color: var(--fg);
+  }
+
+  .legal-section p {
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin: 0 0 16px;
+  }
+
+  .legal-section p:last-child {
+    margin-bottom: 0;
+  }
+
+  .legal-section ul {
+    margin: 0 0 16px;
+    padding-left: 24px;
+    color: var(--muted);
+  }
+
+  .legal-section li {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 8px;
+  }
+
+  .legal-section li:last-child {
+    margin-bottom: 0;
+  }
+
+  .legal-section a {
+    color: var(--fg);
+    text-decoration: underline;
+    text-underline-offset: 7px;
+  }
+
+  .legal-section a:hover {
+    color: var(--fg);
+  }
+
+  .legal-section strong {
+    color: var(--fg);
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    .legal-hero {
+      padding: 96px var(--page-pad) 60px;
+    }
+
+    .legal-content {
+      padding: 0 var(--page-pad) 80px;
+    }
+
+    .legal-section {
+      margin-bottom: 32px;
+      padding-bottom: 32px;
+    }
+  }
+</style>

@@ -13,22 +13,22 @@ const cards = [
 const steps = [
   { n: '01', title: 'Apply', text: 'Apply with your email. Once you are in, you get a partner dashboard and your own partner code.' },
   { n: '02', title: 'Share Everywhere', text: 'Share your code in videos, tutorials, pack descriptions or your Discord. New customers enter it at checkout.' },
-  { n: '03', title: 'Earn Every Month', text: 'Earn recurring commission when a new customer starts a paid subscription using your code, paid monthly once you clear the minimum payout.' },
+  { n: '03', title: 'Earn Every Month', text: 'Earn 25% of subscription revenue received after discounts, excluding VAT, for the first 12 billing months. Annual plans earn commission on the first payment only. Payouts are monthly once you clear the minimum payout.' },
 ];
 
 const earnCards = [
   { title: 'Track Your Conversions', text: 'See the paid subscriptions attributed to your partner code.' },
   { title: 'A Code That Is Yours', text: 'One unique partner code to share with your audience.' },
-  { title: 'Double-Sided Rewards', text: 'New customers who use your code get 20% off their first 3 months.' },
+  { title: 'Double-Sided Rewards', text: 'New customers who use your code get 20% off the list price for their first 3 months.' },
 ];
 
 const faqs = [
   { q: 'What is the Sonura Partner Program?', a: 'A way to earn recurring commission by recommending Sonura to producers, artists and creators in your audience. Some people call this an affiliate program or an ambassador program. At Sonura it works the same way: apply, get a partner code, and earn recurring commission when new customers start paid subscriptions using your code.' },
   { q: 'Who can apply?', a: 'Anyone with an audience or network of music makers: creators, educators, studios, engineers, newsletter writers and community builders.' },
-  { q: 'How much can I earn?', a: 'You earn a commission every month for each paying customer you refer, based on <a href="/pricing/" class="text-link">Sonura\'s paying plans</a>. Your own rate is shown in your partner dashboard once you are in.' },
+  { q: 'How much can I earn?', a: 'You earn a flat 25% of the subscription amount actually charged and received after discounts, excluding VAT. The commission period starts with the first successful payment and lasts 12 billing months. Annual plans earn commission on the first payment only, with nothing on renewal. Refunds and chargebacks reverse the commission on the affected amount. See the <a href="/partner-terms/" class="text-link">partner program terms</a> for details and payout rules.' },
   { q: 'Is this different from the referral program?', a: 'Yes. Every Sonura user can already give friends 20 credits and earn free months. The partner program is for people who want to earn cash.' },
   { q: 'Does it cost anything to join?', a: 'No.' },
-  { q: 'What do my referrals get?', a: 'New customers who use your partner code at checkout get 20% off their first 3 months.' },
+  { q: 'What do my referrals get?', a: 'New customers who use your partner code at checkout get 20% off the list price for their first 3 months.' },
   { q: 'When will I hear back?', a: 'We are opening the program in stages. Apply and we will be in touch.' },
 ];
 
@@ -50,11 +50,11 @@ const jsonLd = [
 
 <BaseLayout
   title="Sonura Partner Program | Earn Recurring Commission"
-  description="Recommend Sonura and earn recurring commission every month for each paying customer you refer. Apply to the partner program."
+  description="Recommend Sonura and earn 25% commission for the first 12 billing months of each qualifying referral. Apply to the partner program."
   keywords="sonura partner program, sonura affiliate program, music affiliate program, ambassador program, creator affiliate program, recurring commission affiliate program"
   canonical="https://sonurastudio.com/partners/"
   ogTitle="Sonura Partner Program | Earn Recurring Commission"
-  ogDescription="Recommend Sonura and earn recurring commission every month for each paying customer you refer."
+  ogDescription="Recommend Sonura and earn 25% commission for the first 12 billing months of each qualifying referral."
   jsonLd={jsonLd}
 >
   <section class="partners-hero">
@@ -63,7 +63,7 @@ const jsonLd = [
         Recommend Sonura<br />
         Get paid every month
       </h1>
-      <p class="partners-subhead reveal" data-reveal-delay="0.04s">Refer creators to Sonura and earn commission every month for each paying customer you bring in.</p>
+      <p class="partners-subhead reveal" data-reveal-delay="0.04s">Refer creators to Sonura and earn 25% of subscription revenue received after discounts, excluding VAT, for their first 12 billing months.</p>
 
       <div class="apply-form-wrap reveal" data-reveal-delay="0.08s" id="apply">
         <div class="hero-cta-row">
@@ -90,6 +90,8 @@ const jsonLd = [
         </form>
         <p class="apply-thanks" hidden>Thank you. We will be in touch.</p>
       </div>
+
+      <p class="hero-terms reveal" data-reveal-delay="0.12s">By applying you agree to the <a href="/partner-terms/" class="text-link">partner program terms</a>.</p>
 
     </div>
   </section>
