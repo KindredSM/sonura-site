@@ -251,7 +251,7 @@ const jsonLd = [
     </section>
 
     <section class="plugin-section" id="how-we-build">
-        <div class="story story-top">
+        <div class="story">
             <div class="story-text">
                 <h2 class="plugin-heading reveal">How we build</h2>
                 <p class="section-text reveal">
@@ -731,10 +731,6 @@ const jsonLd = [
         text-underline-offset: 5px;
     }
 
-    .story-top {
-        align-items: start;
-    }
-
     .about-affiliations {
         display: flex;
         flex-direction: column;
@@ -745,12 +741,19 @@ const jsonLd = [
         align-items: center;
         gap: 24px;
         padding: 24px 0;
-        border-top: 1px solid var(--hairline);
         text-decoration: none;
     }
 
+    .affiliation:first-child {
+        padding-top: 0;
+    }
+
     .affiliation:last-child {
-        border-bottom: 1px solid var(--hairline);
+        padding-bottom: 0;
+    }
+
+    .affiliation + .affiliation {
+        border-top: 1px solid var(--hairline);
     }
 
     .affiliation-info {
