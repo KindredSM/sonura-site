@@ -8,62 +8,53 @@ import newThumbnail from '../../assets/images/new-thumbnail.jpg';
 const faqs = [
   {
     q: 'What is Sonura?',
-    a: 'Sonura is an AI music studio that generates royalty-free loops, vocals, one-shots, sound effects, stems, and full tracks. It runs in the browser and as the Sonura Flow VST3 and AU plugin inside your DAW. It returns parts you can edit, not finished songs you can only play.',
+    a: 'An ethical AI music studio. It makes royalty-free loops, vocals, one-shots, sound effects, stems, and full tracks from a text prompt, in your browser or inside your DAW.',
   },
   {
     q: 'Who founded Sonura?',
-    a: 'Sonura was founded by Kindred Salway and Blue Bookhard. Kindred is a musician turned software builder; Blue has worked with artists at TIDAL and Snapchat and writes the No Skips music newsletter.',
-  },
-  {
-    q: 'Where is Sonura based?',
-    a: 'Sonura is based in London, United Kingdom. It is a member of Music Technology UK and a supporter of the AI For Music principles for music creation with AI.',
+    a: 'Kindred Salway and Blue Bookhard, in London.',
   },
   {
     q: 'Is Sonura free?',
-    a: 'Yes. The free plan gives you 20 credits on signup plus a daily allowance, with the full studio and no credit card. Three paid plans (Starter, Pro, and Max) add more monthly credits and keep your work exclusively yours.',
+    a: 'Yes. You get 20 credits when you sign up and more each day, with no card needed. Starter, Pro, and Max add more credits.',
   },
   {
-    q: 'Do I own what I make with Sonura?',
-    a: 'You own what you create. On paid plans your work stays private and exclusively yours to sell, license, and release, with no royalty splits. Anything shared publicly is released under CC0, and free plan creations are public by default, so a paid plan is what keeps your work solely yours.',
+    q: 'Do I own what I make?',
+    a: 'On paid plans, yes. Your work stays private and yours to sell and release, with no royalty splits. Free plan work is public by default and released under CC0.',
   },
   {
-    q: 'Is Sonura trained on licensed music?',
-    a: 'Yes. Sonura is trained on licensed music data, not scraped catalogs. That keeps what you make on solid commercial ground when you release or sell it.',
+    q: 'What makes Sonura ethical?',
+    a: 'It is built on licensed music, not scraped catalogs, and it gives you editable parts rather than a finished song, so the creative decisions stay with you.',
   },
   {
-    q: 'Does Sonura work inside my DAW?',
-    a: 'Yes. Sonura Flow is a free VST3 and AU plugin for Ableton Live, Logic Pro, FL Studio, Studio One, Bitwig, Cubase, Reaper, and GarageBand on macOS and Windows. Generations use the same credits as your Sonura account.',
+    q: 'Does Sonura work in my DAW?',
+    a: 'Yes. Sonura Flow is a free VST3 and AU plugin for Ableton Live, Logic Pro, FL Studio, Studio One, Bitwig, Cubase, Reaper, and GarageBand, on Mac and Windows.',
   },
   {
     q: 'How is Sonura different from Suno?',
-    a: 'Suno is built to produce finished songs, and its stem export (up to 12 stems) sits inside Suno Studio on its top plan. Sonura is built around parts: stem splitting is on every plan including free, and everything drops straight into your DAW through the plugin.',
+    a: 'Suno makes finished songs. Sonura makes parts you can edit, with stems on every plan and a plugin that puts them straight into your DAW.',
   },
   {
-    q: 'Can I cancel my Sonura subscription anytime?',
-    a: 'Yes. Every plan is month-to-month with no contract. Cancel from your account settings and you keep access until the end of the billing period.',
+    q: 'Can I cancel anytime?',
+    a: 'Yes. Plans are month to month. Cancel in settings and you keep access until the billing period ends.',
   },
 ];
 
 // Key facts, rendered as a real <table> so crawlers and AI answer engines
 // can read each row as a labelled fact. Values may carry inline links.
 const keyFacts = [
-  { label: 'Company name', value: 'Sonura (operated as Sonura Studio)' },
-  { label: 'Type', value: 'AI music studio: web app and VST3/AU DAW plugin' },
-  { label: 'Founders', value: 'Kindred Salway and Blue Bookhard (co-founders)' },
-  { label: 'Headquarters', value: 'London, United Kingdom' },
-  { label: 'Website', value: '<a href="https://sonurastudio.com/">sonurastudio.com</a>' },
-  { label: 'Core offering', value: 'Royalty-free loops, vocals, one-shots, sound effects, stems, and full tracks, generated from a text prompt in under 10 seconds on average' },
-  { label: 'Pricing', value: 'A free plan plus three paid plans (Starter, Pro, and Max), each with a different monthly credit allowance. <a href="/pricing/">See current pricing</a>' },
-  { label: 'Contract terms', value: 'Month-to-month, no contracts, cancel anytime. Access continues to the end of the billing period' },
-  { label: 'Rights', value: 'You own what you make. Private work on paid plans is exclusively yours, with no royalty splits. Anything shared publicly is CC0, and free plan creations are public by default' },
-  { label: 'Training data', value: 'Licensed music data, not scraped catalogs. <a href="/how-we-work-with-artists/">How we work with artists</a>' },
-  { label: 'Products and services', value: 'Sonura web studio, <a href="/plugin/">Sonura Flow plugin</a> (VST3/AU), Sonura Split stem separator, <a href="/tools/">free tools</a> (beat maker, vocal remover, acapella extractor, BPM tap tempo, and more)' },
-  { label: 'Supported DAWs', value: 'Ableton Live, Logic Pro, FL Studio, Studio One, Bitwig, Cubase, Reaper, GarageBand' },
-  { label: 'Communication', value: 'Email (replies within 24 hours) and the Discord community' },
-  { label: 'Customers served', value: '17,000+ producers, artists, and creators' },
+  { label: 'Company', value: 'Sonura (Sonura Studio)' },
+  { label: 'Founders', value: 'Kindred Salway and Blue Bookhard' },
+  { label: 'Based in', value: 'London, UK' },
+  { label: 'What it makes', value: 'Loops, vocals, one-shots, sound effects, stems, and full tracks' },
+  { label: 'Products', value: 'Web studio, <a href="/plugin/">Sonura Flow plugin</a>, Sonura Split, <a href="/tools/">free tools</a>' },
+  { label: 'Works with', value: 'Ableton Live, Logic Pro, FL Studio, Studio One, Bitwig, Cubase, Reaper, GarageBand' },
+  { label: 'Pricing', value: 'Free plan, plus Starter, Pro, and Max. <a href="/pricing/">See pricing</a>' },
+  { label: 'Rights', value: 'Paid plans: private and yours, no royalty splits. Free plan and public work: CC0' },
+  { label: 'Training data', value: 'Licensed, not scraped. <a href="/how-we-work-with-artists/">How we work with artists</a>' },
+  { label: 'Users', value: '17,000+' },
   { label: 'Affiliations', value: 'Member, Music Technology UK. Supporter, AI For Music principles' },
-  { label: 'Competitors', value: '<a href="/alternatives/suno-alternative/">Suno</a>, <a href="/alternatives/udio-alternative/">Udio</a>, <a href="/compare/elevenlabs-vs-suno/">ElevenLabs Music</a>, <a href="/compare/mureka-vs-suno/">Mureka</a>, <a href="/compare/lyria-vs-suno/">Google Lyria</a>, <a href="/alternatives/splice-alternative/">Splice</a>, <a href="/alternatives/soundraw-alternative/">Soundraw</a>, <a href="/alternatives/beatoven-alternative/">Beatoven.ai</a>, <a href="/alternatives/aiva-alternative/">AIVA</a>, Mozart AI, Native Instruments Kontakt' },
-  { label: 'Social', value: '<a href="https://twitter.com/sonurastudio" target="_blank" rel="noopener">X (@sonurastudio)</a>, <a href="https://www.instagram.com/sonurastudio/" target="_blank" rel="noopener">Instagram</a>, <a href="https://discord.com/invite/Yk8RD3Nmyh" target="_blank" rel="noopener">Discord</a>' },
+  { label: 'Alternatives to', value: '<a href="/alternatives/suno-alternative/">Suno</a>, <a href="/alternatives/udio-alternative/">Udio</a>, <a href="/alternatives/splice-alternative/">Splice</a>, <a href="/alternatives/soundraw-alternative/">Soundraw</a>, <a href="/alternatives/aiva-alternative/">AIVA</a>' },
 ];
 
 const orgId = 'https://sonurastudio.com/#organization';
@@ -77,7 +68,7 @@ const jsonLd = [
     "alternateName": "Sonura Studio",
     "url": "https://sonurastudio.com/",
     "logo": "https://sonurastudio.com/demo-image.jpeg",
-    "description": "Sonura is an AI music studio that generates royalty-free loops, vocals, one-shots, sound effects, stems, and full tracks for music producers, artists, and creators, on the web or inside their DAW.",
+    "description": "Sonura is an ethical AI music studio. It makes royalty-free loops, vocals, one-shots, sound effects, stems, and full tracks from licensed music, in the browser or inside your DAW.",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "London",
@@ -123,7 +114,7 @@ const jsonLd = [
     "@type": "AboutPage",
     "name": "About Sonura",
     "url": "https://sonurastudio.com/about/",
-    "description": "What Sonura is, what it does, what makes it different, who uses it, the team behind it, and the key facts about the company.",
+    "description": "What Sonura is, who makes it, and the key facts about the company.",
     "mainEntity": { "@id": orgId }
   },
   {
@@ -139,20 +130,20 @@ const jsonLd = [
 ---
 
 <BaseLayout
-  title="About Sonura | The AI Music Studio for Producers"
-  description="Sonura is an AI music studio for producers: royalty-free loops, vocals, stems, and full tracks, on the web or in your DAW."
-  keywords="about sonura, sonura studio, ai music studio, ai music company, kindred salway, blue bookhard, sonura founders"
+  title="About Sonura | The Ethical AI Music Studio"
+  description="Sonura is an ethical AI music studio: royalty-free loops, vocals, stems, and full tracks from licensed music, in your DAW."
+  keywords="about sonura, sonura studio, ethical ai music studio, ai music company, kindred salway, blue bookhard, sonura founders"
   canonical="https://sonurastudio.com/about/"
-  ogTitle="About Sonura - The AI Music Studio for Producers"
-  ogDescription="What Sonura does, what makes it different, and the team behind it."
+  ogTitle="About Sonura - The Ethical AI Music Studio"
+  ogDescription="Who makes Sonura, and why."
   jsonLd={jsonLd}
 >
   <section class="about-hero">
     <div class="about-hero-inner">
       <p class="section-kicker reveal">About Sonura</p>
       <h1 class="about-headline reveal">Sounds that don't exist yet</h1>
-      <p class="about-subhead about-valueprop reveal" data-reveal-delay="0.04s">Sonura is an AI music studio that generates royalty-free loops, vocals, one-shots, stems, and full tracks for music producers, artists, and creators, on the web or inside their DAW.</p>
-      <p class="about-subhead reveal" data-reveal-delay="0.06s">Everyone pulls from the same packs. Sonura makes new sounds instead: original audio you can shape in seconds, while every creative decision stays yours.</p>
+      <p class="about-subhead about-valueprop reveal" data-reveal-delay="0.04s">Sonura is an ethical AI music studio. It makes royalty-free loops, vocals, one-shots, stems, and full tracks, in your browser or inside your DAW.</p>
+      <p class="about-subhead reveal" data-reveal-delay="0.06s">Everyone digs through the same sample packs. With Sonura you make sounds nobody else has, and every decision stays yours.</p>
     </div>
   </section>
 
@@ -170,27 +161,27 @@ const jsonLd = [
         <div class="card-list reveal" data-reveal-delay="0.08s">
           <div class="card-item">
             <h3>Loops, beats, and one-shots</h3>
-            <p>Describe a sound and get drum, bass, and melody loops, full beats, or one-shots back in seconds. Every result is generated for your prompt, so it isn't sitting in anyone else's sample folder. <a href="/features/ai-loops/" class="text-link">AI loops</a></p>
+            <p>Type what you hear and get drum, bass, and melody loops back in seconds, made for your prompt and nobody else's. <a href="/features/ai-loops/" class="text-link">AI loops</a></p>
           </div>
           <div class="card-item">
             <h3>Vocals</h3>
-            <p>Generate vocal chops, hooks, ad-libs, and sung phrases that fit your track. Useful when a record needs a topline idea and there's no singer in the room. <a href="/features/ai-vocals/" class="text-link">AI vocals</a></p>
+            <p>Hooks, chops, and ad-libs for when a track needs a topline idea. <a href="/features/ai-vocals/" class="text-link">AI vocals</a></p>
           </div>
           <div class="card-item">
             <h3>Sound effects</h3>
-            <p>Risers, impacts, drops, textures, and atmospheres for transitions, game audio, and video. You build a custom FX library instead of recycling the same stock hits. <a href="/features/ai-sound-effects/" class="text-link">AI sound effects</a></p>
+            <p>Risers, impacts, and textures for transitions, games, and video. <a href="/features/ai-sound-effects/" class="text-link">AI sound effects</a></p>
           </div>
           <div class="card-item">
-            <h3>Stem export and Sonura Split</h3>
-            <p>Export drums, bass, melody, FX, and vocals as separate stems, or split any existing track with Sonura Split. You mix and arrange the parts in your DAW with full control. <a href="/tools/stem-separator/" class="text-link">Stem separator</a></p>
+            <h3>Stems and Sonura Split</h3>
+            <p>Export every part as its own stem, or split a track you already have. <a href="/tools/stem-separator/" class="text-link">Stem separator</a></p>
           </div>
           <div class="card-item">
-            <h3>Sonura Flow, the DAW plugin</h3>
-            <p>A free VST3 and AU plugin that brings generation inside Ableton Live, Logic Pro, FL Studio, and five more DAWs. You prompt, audition up to four variations, and drag the one you want onto a track without leaving the session. <a href="/plugin/" class="text-link">Sonura Flow</a></p>
+            <h3>Sonura Flow plugin</h3>
+            <p>Our free VST3 and AU plugin. Generate inside Ableton, Logic, FL Studio, and five more DAWs, then drag the take onto a track. <a href="/plugin/" class="text-link">Sonura Flow</a></p>
           </div>
           <div class="card-item">
             <h3>Full tracks</h3>
-            <p>When you need a complete reference or a finished bed, songs mode generates full tracks and lets you pick from models including ElevenLabs, Stable Audio, and Google Lyria. Any result can still be split into stems for your mix. <a href="/tools/ai-song-maker/" class="text-link">AI song maker</a></p>
+            <p>Need a whole song? Pick ElevenLabs, Stable Audio, or Google Lyria in songs mode, then split the result into stems. <a href="/tools/ai-song-maker/" class="text-link">AI song maker</a></p>
           </div>
         </div>
       </div>
@@ -202,24 +193,24 @@ const jsonLd = [
       <h2 class="section-title reveal">What makes Sonura different</h2>
       <div class="diff-grid">
         <div class="diff-item reveal">
-          <h3>Stems on every plan, including free</h3>
-          <p>Sonura splits tracks into stems on every plan, free included. Suno keeps its stem export (up to 12 stems) inside Suno Studio on its top plan, and Google Lyria, MiniMax, and ElevenLabs Music don't export stems at all.</p>
+          <h3>Licensed, not scraped</h3>
+          <p>We build on licensed music. Suno is still in court with Universal and Sony over its training data.</p>
         </div>
         <div class="diff-item reveal" data-reveal-delay="0.04s">
-          <h3>Trained on licensed music, not scraped catalogs</h3>
-          <p>Sonura's models are trained on licensed music data. Suno has a licensing deal with Warner Music while other label litigation is unresolved, and Mureka and MiniMax don't disclose their training data at all. What you make here is cleared to release and sell.</p>
+          <h3>Stems on every plan</h3>
+          <p>Free included. Suno keeps stem export for its top plan.</p>
         </div>
         <div class="diff-item reveal" data-reveal-delay="0.08s">
-          <h3>Parts you own, not songs you can only play</h3>
-          <p>On every paid plan your private work is exclusively yours, with no royalty splits. Boomy runs on a revenue-share model, and Udio has switched off audio, stem, and video downloads entirely. On Sonura you download the file and it's yours.</p>
+          <h3>Yours to keep</h3>
+          <p>Paid plans keep your work private and yours, with no royalty splits. Udio won't even let you download.</p>
         </div>
         <div class="diff-item reveal" data-reveal-delay="0.04s">
-          <h3>Built for your DAW, not a browser tab</h3>
-          <p>Sonura Flow runs as a VST3 and AU plugin in eight DAWs, so generation happens where the track is. Suno is a web and mobile app, and Google Lyria lives in Vertex AI and Google Flow, which suits products more than sessions.</p>
+          <h3>Inside your DAW</h3>
+          <p>Sonura Flow generates where the track is, not in another browser tab.</p>
         </div>
         <div class="diff-item reveal" data-reveal-delay="0.08s">
-          <h3>New sounds in under 10 seconds, month to month</h3>
-          <p>Generations take under 10 seconds on average, where Udio takes 30 to 60 seconds and Beatoven.ai 1 to 3 minutes. Every plan is month-to-month, and instead of Splice's shared sample catalog or Kontakt's pre-recorded libraries, you get sounds generated for your prompt alone.</p>
+          <h3>Fast, no contract</h3>
+          <p>Most sounds arrive in under 10 seconds. Every plan is month to month.</p>
         </div>
       </div>
     </div>
@@ -228,15 +219,14 @@ const jsonLd = [
   <section class="about-section" id="who-uses-sonura">
     <div class="about-section-inner">
       <h2 class="section-title reveal">Who uses Sonura</h2>
-      <p class="section-text reveal">More than 17,000 producers, artists, and creators use Sonura. Most of them fall into one of these groups:</p>
+      <p class="section-text reveal">More than 17,000 people make music with Sonura, mostly:</p>
       <ul class="icp-list reveal" data-reveal-delay="0.04s">
-        <li>Independent producers and beatmakers working in Ableton Live, Logic Pro, or FL Studio who want new loops and one-shots without digging through sample packs</li>
-        <li>Type beat producers who lease and sell instrumentals and need exclusive rights with no royalty splits</li>
-        <li>Independent artists and songwriters who need vocal hooks, chops, and ad-libs to sketch toplines</li>
-        <li>Sound designers and sample pack makers building original libraries from generated one-shots and FX</li>
-        <li>Content creators, podcasters, and video editors who need royalty-free music beds and sound effects</li>
-        <li>Indie game developers and filmmakers scoring projects without a composer budget</li>
-        <li>Small studios and production teams on the Max plan who need volume, priority support, and one-to-one calls</li>
+        <li>Producers and beatmakers tired of the same packs</li>
+        <li>Type beat producers who need exclusive rights</li>
+        <li>Artists and songwriters sketching toplines</li>
+        <li>Sound designers building their own libraries</li>
+        <li>Content creators who need cleared music and sound effects</li>
+        <li>Game developers and filmmakers without a composer budget</li>
       </ul>
     </div>
   </section>
@@ -244,7 +234,7 @@ const jsonLd = [
   <section class="about-section team-section" id="founders">
     <div class="about-section-inner">
       <h2 class="section-title reveal">The team behind Sonura</h2>
-      <p class="section-text reveal">Sonura started because both founders kept hitting the same wall: the sound in your head is hours of digging away from the track, and the tools that promise to close that gap mostly take the creative decisions away from you. It's a small, founder-led team in London.</p>
+      <p class="section-text reveal">We're a small team in London. We started Sonura because finding the sound in your head took hours, and the tools that promised to fix that took the creative decisions away.</p>
 
       <div class="team-grid">
         <div class="founder-card reveal" data-reveal-delay="0.04s">
@@ -256,7 +246,7 @@ const jsonLd = [
               <h3 class="founder-name">Kindred Salway</h3>
               <span class="founder-role">Co-founder</span>
               <div class="founder-bio">
-                <p>Kindred has been making music since long before he was writing software, and kept running into the same wall: the sound in his head was always three hours of digging away from the track. He built Sonura so that gap closes to seconds, and so the decisions that actually matter stay with the person making the record.</p>
+                <p>Kindred made music for years before writing software, and kept losing hours digging for sounds. Sonura turns those hours into seconds, and leaves every decision with the person making the record.</p>
               </div>
 
               <div class="founder-links">
@@ -285,7 +275,7 @@ const jsonLd = [
               <h3 class="founder-name">Blue Bookhard</h3>
               <span class="founder-role">Co-founder</span>
               <div class="founder-bio">
-                <p>Blue has spent his career around artists, at TIDAL, at Snapchat, and writing about music every week at No Skips. He kept meeting people with real ideas and no route to finishing them. Sonura is the tool he wanted to hand those people: everything you need to make the thing, and none of the gatekeeping.</p>
+                <p>Blue has worked with artists at TIDAL and Snapchat and writes the No Skips newsletter. Blue kept meeting people with good ideas and no way to finish them. Sonura is the tool for them.</p>
               </div>
 
               <div class="founder-links">
@@ -330,20 +320,16 @@ const jsonLd = [
       <h2 class="section-title reveal">How Sonura works</h2>
       <div class="diff-grid">
         <div class="diff-item reveal">
-          <h3>Onboarding</h3>
-          <p>Sign up free with no credit card and get 20 credits plus a daily allowance. Open the studio in your browser, or install Sonura Flow and sign in from inside your DAW. The <a href="https://youtu.be/hTa_ysLlG9M" target="_blank" rel="noopener" class="text-link">plugin walkthrough</a> runs under seven minutes.</p>
+          <h3>Getting started</h3>
+          <p>Sign up free with no card. Use the studio in your browser, or install the plugin and sign in from your DAW. <a href="https://youtu.be/hTa_ysLlG9M" target="_blank" rel="noopener" class="text-link">Watch the walkthrough</a></p>
         </div>
         <div class="diff-item reveal" data-reveal-delay="0.04s">
-          <h3>Turnaround</h3>
-          <p>Generations take under 10 seconds on average, with no queue.</p>
+          <h3>Support</h3>
+          <p>Email <a href="mailto:kindred@sonurastudio.com" class="text-link">kindred@sonurastudio.com</a> and hear back within a day, or ask in <a href="https://discord.com/invite/Yk8RD3Nmyh" target="_blank" rel="noopener" class="text-link">Discord</a>.</p>
         </div>
         <div class="diff-item reveal" data-reveal-delay="0.08s">
-          <h3>Communication</h3>
-          <p>Email <a href="mailto:kindred@sonurastudio.com" class="text-link">kindred@sonurastudio.com</a> and expect a reply within 24 hours, or ask in the <a href="https://discord.com/invite/Yk8RD3Nmyh" target="_blank" rel="noopener" class="text-link">Discord community</a>.</p>
-        </div>
-        <div class="diff-item reveal" data-reveal-delay="0.04s">
           <h3>Billing</h3>
-          <p>Plans are month-to-month and you can cancel from your account settings at any time. Access continues until the end of the billing period.</p>
+          <p>Month to month. Cancel in settings and keep access until the period ends.</p>
         </div>
       </div>
     </div>
@@ -351,7 +337,7 @@ const jsonLd = [
 
   <section class="about-section" id="key-facts">
     <div class="about-section-inner">
-      <h2 class="section-title reveal">Key facts about Sonura</h2>
+      <h2 class="section-title reveal">Key facts</h2>
       <div class="facts-wrap reveal" data-reveal-delay="0.04s">
         <table class="facts-table">
           <caption class="visually-hidden">Key facts about Sonura</caption>
@@ -370,7 +356,7 @@ const jsonLd = [
 
   <section class="about-section contact-section" id="faq">
     <div class="about-section-inner">
-      <h2 class="section-title reveal">Frequently asked questions</h2>
+      <h2 class="section-title reveal">FAQ</h2>
       <div class="faq-grid">
         {faqs.map((f, i) => (
           <div class="faq-item reveal" data-reveal-delay={`${0.03 * (i % 3)}s`}>
