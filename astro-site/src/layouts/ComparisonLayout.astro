@@ -1,6 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import { MODELS, SPEC_ROWS, specValue, COMPARISONS, LAST_VERIFIED } from '../data/music-models';
+import { MODELS, SPEC_ROWS, specValue, COMPARISONS, LAST_VERIFIED, LAST_VERIFIED_ISO } from '../data/music-models';
 
 interface VerdictCard {
   /** Metadata-role label, e.g. "Best for release-ready songs" */
@@ -127,7 +127,7 @@ const jsonLd = [
     name: title,
     description,
     url: canonical,
-    dateModified: '2026-08-18',
+    dateModified: LAST_VERIFIED_ISO,
     about: [
       { '@type': 'Thing', name: A.name },
       { '@type': 'Thing', name: B.name },

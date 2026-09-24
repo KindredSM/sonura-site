@@ -250,4 +250,10 @@ export const COMPARISONS: { slug: string; a: string; b: string; angle: string }[
   { slug: 'lyria-vs-suno', a: 'lyria', b: 'suno', angle: 'A cloud building block against a consumer studio' },
 ];
 
+/* Human-readable form, shown in the hero and sources rows on /compare/ pages. */
 export const LAST_VERIFIED = '19 August 2026';
+
+/* Same date in ISO form for schema.org dateModified. Keep the two in step:
+   structured data that disagrees with the visible date is a trust signal lost
+   for no reason. */
+export const LAST_VERIFIED_ISO = '2026-08-19';
