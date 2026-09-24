@@ -72,9 +72,10 @@ Plugin pages:
 ## Models In Sonura Songs Mode
 
 Sonura songs mode is model-agnostic: users pick which generation model runs their prompt, then keep the
-stems. As of 18 August 2026 the selectable models are MiniMax Music 3.0, Stable Audio 3,
-ElevenLabs Music v2, and Google Lyria. Suno, Udio, and Mureka are closed platforms whose
-models only run inside their own products, so Sonura does not offer them.
+stems. As of 24 September 2026 the selectable models are Stable Audio 3, ElevenLabs Music v2,
+and Google Lyria. Suno, Udio, and Mureka are closed platforms whose models only run inside
+their own products, and MiniMax Music 3.0 runs through its own api or your hardware, so
+Sonura does not offer them.
 
 ## Music Model Comparisons
 

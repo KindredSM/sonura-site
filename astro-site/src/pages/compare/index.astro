@@ -66,7 +66,7 @@ const jsonLd = [
         <a href="#matchups" class="button secondary large">See the matchups</a>
       </div>
       <p class="hub-hero-trust">
-        MiniMax Music 3.0 / Stable Audio 3 / ElevenLabs Music v2 / Google Lyria, in one studio
+        Stable Audio 3 / ElevenLabs Music v2 / Google Lyria, in one studio
       </p>
     </header>
 
@@ -87,7 +87,7 @@ const jsonLd = [
               <div class="hub-model-body">
                 <p class="hub-support hub-model-line">{m.oneLiner}</p>
                 <span class={`hub-tag${m.inSonura ? ' is-in' : ''}`}>
-                  {m.inSonura ? 'In Sonura songs mode' : `Only inside ${m.short}`}
+                  {m.inSonura ? 'In Sonura songs mode' : m.specs.weights.startsWith('Open') ? 'Open weights' : `Only inside ${m.short}`}
                 </span>
               </div>
             </div>
@@ -124,7 +124,7 @@ const jsonLd = [
           </p>
           <p class="hub-support">
             So <strong>Sonura songs mode lets you pick the model</strong>. Run the same prompt through
-            MiniMax Music 3.0, Stable Audio 3, ElevenLabs Music v2, and Google Lyria, keep the take that
+            Stable Audio 3, ElevenLabs Music v2, and Google Lyria, keep the take that
             wins, then split it into stems and finish it inside Ableton, Logic, or FL Studio through the
             AU and VST3 plugin. Exclusive commercial rights on every paid plan, with no royalty splits,
             whichever model made it.
