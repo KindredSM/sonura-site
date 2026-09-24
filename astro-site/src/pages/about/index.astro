@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import '../../styles/home-editorial.css';
+import '../../styles/home-v2.css';
 import { Image } from 'astro:assets';
 import newThumbnail from '../../assets/images/new-thumbnail.jpg';
 
@@ -138,6 +140,7 @@ const jsonLd = [
   ogTitle="About Sonura - The Ethical AI Music Studio"
   ogDescription="Who makes Sonura, and why."
   jsonLd={jsonLd}
+  bodyClass="editorial-home home-v2"
 >
   <section class="about-hero">
     <div class="about-hero-inner">
@@ -147,92 +150,60 @@ const jsonLd = [
     </div>
   </section>
 
-  <section class="about-section" id="about">
-    <div class="container narrow center">
-      <h2 class="section-title reveal">About Sonura</h2>
-      <p class="section-text reveal">Sonura is an ethical AI music studio for producers, artists, and creators. Describe a sound and get loops, vocals, one-shots, sound effects, stems, or full tracks back in seconds, ready to edit.</p>
-      <p class="section-text reveal">Kindred Salway and Blue Bookhard started Sonura in London. It runs in your browser and inside your DAW.</p>
-    </div>
-  </section>
+  <section class="plugin-section" id="what-sonura-does">
+    <div>
+      <h2 class="plugin-heading reveal">What Sonura does</h2>
 
-  <section class="about-section" id="what-sonura-does">
-    <div class="container">
-      <h2 class="visually-hidden">What Sonura does</h2>
-      <div class="split reveal">
-        <div class="split-text">
-          <h3 class="split-title">The studio</h3>
-          <p>Type what you hear and get loops, vocals, one-shots, and sound effects back in seconds, made for your prompt and nobody else's. Need a whole song? Pick ElevenLabs, Stable Audio, or Google Lyria in songs mode, then split it into stems.</p>
-          <p class="split-links">
-            <a href="/features/ai-loops/" class="text-link">AI loops</a>
-            <a href="/features/ai-vocals/" class="text-link">AI vocals</a>
-            <a href="/features/ai-sound-effects/" class="text-link">AI sound effects</a>
-            <a href="/tools/stem-separator/" class="text-link">Stem separator</a>
-            <a href="/tools/ai-song-maker/" class="text-link">AI song maker</a>
-          </p>
+      <div class="plugin-panel reveal" data-reveal-delay="0.06s">
+        <div class="plugin-copy">
+          <h3 class="plugin-name">Studio</h3>
+          <p class="plugin-sub">Describe a sound and get it back in seconds</p>
+          <ul class="plugin-list">
+            <li><a href="/features/ai-loops/">Loops, beats, and one-shots</a></li>
+            <li><a href="/features/ai-vocals/">Vocal hooks, chops, and ad-libs</a></li>
+            <li><a href="/features/ai-sound-effects/">Sound effects</a></li>
+            <li><a href="/tools/stem-separator/">Stems for every part, or split any track</a></li>
+            <li><a href="/tools/ai-song-maker/">Full songs from ElevenLabs, Stable Audio, or Google Lyria</a></li>
+          </ul>
+          <a class="button primary plugin-cta" href="https://app.sonurastudio.com/">Try for free</a>
         </div>
-        <div class="split-media">
+        <div class="plugin-shot">
           <Image src={newThumbnail} alt="The Sonura studio interface generating loops and stems" />
         </div>
       </div>
 
-      <div class="split split-reverse reveal">
-        <div class="split-text">
-          <h3 class="split-title">Sonura Flow</h3>
-          <p>Our free VST3 and AU plugin puts Sonura inside Ableton, Logic, FL Studio, and five more DAWs. Generate, audition, and drag the take onto a track without leaving the session.</p>
-          <p class="split-links">
-            <a href="/plugin/" class="text-link">Get the plugin</a>
-          </p>
+      <div class="plugin-panel reveal" data-reveal-delay="0.06s">
+        <div class="plugin-copy">
+          <h3 class="plugin-name">Plugin</h3>
+          <p class="plugin-sub">Create sounds without leaving the track</p>
+          <ul class="plugin-list">
+            <li>Works in Ableton, Logic, FL Studio, and five more DAWs</li>
+            <li>Audition up to four takes</li>
+            <li>Drag the one you want onto a track</li>
+            <li>Free with your Sonura account</li>
+          </ul>
+          <a class="button primary plugin-cta" href="/plugin/">Get the plugin</a>
         </div>
-        <div class="split-media">
+        <div class="plugin-shot">
           <img src="/images/plugin-flow-1024.webp" alt="The Sonura Flow plugin creating a loop from a prompt" width="1024" height="768" loading="lazy" />
         </div>
       </div>
     </div>
   </section>
 
-  <section class="about-section" id="users">
-    <div class="container">
-      <div class="stat-card reveal">
-        <p class="stat-num">17,000+</p>
-        <p class="stat-sub">producers, artists, and creators make music with Sonura</p>
+  <section class="artistry" id="our-ethical-approach">
+    <div class="artistry-inner">
+      <div class="release-positioning reveal">
+        <h2 class="release-positioning-title">Our ethical approach<span class="stop">.</span></h2>
+        <p class="release-positioning-text">A lot of AI music was trained on songs nobody agreed to share. Sonura is built on licensed music instead. It's made to help musicians, not replace them, and paid plans keep your work private and yours. More than 17,000 producers, artists, and creators use it today. <a href="/how-we-work-with-artists/" class="text-link">Here is how we work with artists</a>.</p>
       </div>
     </div>
   </section>
 
-  <section class="about-section" id="our-ethical-approach">
-    <div class="container split split-top">
-      <div class="split-text reveal">
-        <h2 class="section-title">Our ethical approach</h2>
-        <p>A lot of AI music was trained on songs nobody agreed to share. Sonura is built on licensed music instead, and it's made to help musicians, not replace them.</p>
-        <p class="split-links">
-          <a href="/how-we-work-with-artists/" class="text-link">How we work with artists</a>
-        </p>
-      </div>
-      <div class="principles">
-        <div class="principle reveal">
-          <h3>Licensed, not scraped</h3>
-          <p>We build on licensed music. Suno is still in court with Universal and Sony over its training data.</p>
-        </div>
-        <div class="principle reveal" data-reveal-delay="0.04s">
-          <h3>Tools, not replacements</h3>
-          <p>You get parts to edit, not a finished song. Every creative decision stays yours.</p>
-        </div>
-        <div class="principle reveal" data-reveal-delay="0.08s">
-          <h3>Yours to keep</h3>
-          <p>Paid plans keep your work private and yours, with no royalty splits.</p>
-        </div>
-        <div class="principle reveal" data-reveal-delay="0.12s">
-          <h3>Stems on every plan</h3>
-          <p>Free included. Suno keeps stem export for its top plan.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="about-section team-section" id="founders">
-    <div class="container">
-      <h2 class="section-title center reveal">The team behind Sonura</h2>
-      <p class="section-text center reveal">We're a small team in London. We started Sonura because finding the sound in your head took hours, and the tools that promised to fix that took the creative decisions away.</p>
+  <section class="plugin-section team-section" id="founders">
+    <div>
+      <h2 class="plugin-heading reveal">The team behind Sonura</h2>
+      <p class="section-text reveal">We're a small team in London. We started Sonura because finding the sound in your head took hours, and the tools that promised to fix that took the creative decisions away.</p>
 
       <div class="team-grid">
         <div class="founder-card reveal" data-reveal-delay="0.04s">
@@ -290,7 +261,7 @@ const jsonLd = [
         </div>
       </div>
 
-      <div class="about-affiliations center reveal">
+      <div class="about-affiliations reveal">
         <a href="https://aiformusic.info/" target="_blank" rel="noopener" class="affiliation">
           <span class="affiliation-chip affiliation-chip-dark">
             <img src="/images/affiliations/aiformusic-wh.png" alt="AI For Music affiliation logo" loading="lazy" width="264" height="178" />
@@ -309,9 +280,9 @@ const jsonLd = [
     </div>
   </section>
 
-  <section class="about-section" id="key-facts">
-    <div class="container narrow">
-      <h2 class="section-title center reveal">Key facts</h2>
+  <section class="plugin-section" id="key-facts">
+    <div>
+      <h2 class="plugin-heading reveal">Key facts</h2>
       <div class="facts-wrap reveal" data-reveal-delay="0.04s">
         <table class="facts-table">
           <caption class="visually-hidden">Key facts about Sonura</caption>
@@ -328,9 +299,9 @@ const jsonLd = [
     </div>
   </section>
 
-  <section class="about-section contact-section" id="faq">
-    <div class="container narrow">
-      <h2 class="section-title center reveal">FAQ</h2>
+  <section class="faq" id="faq" aria-labelledby="faq-title">
+    <div class="faq-inner">
+      <h2 id="faq-title" class="faq-title">Frequently asked questions</h2>
       <div class="faq-list">
         {faqs.map((f) => (
           <details class="reveal">
@@ -440,172 +411,27 @@ const jsonLd = [
     margin-bottom: 20px;
   }
 
-  .about-section {
-    padding: clamp(56px, 7vw, 96px) var(--page-pad);
-  }
-
-  .container {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .narrow {
-    max-width: 820px;
-  }
-
-  .section-title {
-    font-family: var(--font-display);
-    font-size: clamp(32px, 3.4vw, 48px);
-    letter-spacing: 0.01em;
-    text-transform: uppercase;
-    line-height: 1;
-    margin: 0 0 32px;
-    font-weight: 400;
-    color: var(--fg);
-  }
-
   .section-text {
-    font-size: clamp(16px, 2vw, 18px);
-    color: var(--muted);
-    line-height: 1.8;
-    letter-spacing: 0.022em;
-    margin: 0 0 20px;
-    max-width: 680px;
-  }
-
-  .center,
-  .section-text.center {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .team-section .section-text {
-    margin-bottom: 56px;
-  }
-
-  #users {
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-
-  /* Text beside media, alternating sides */
-  .split {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-    align-items: center;
-  }
-
-  .split + .split {
-    margin-top: clamp(64px, 8vw, 112px);
-  }
-
-  .split-reverse .split-text {
-    order: 2;
-  }
-
-  .split-top {
-    align-items: start;
-  }
-
-  .split-title {
-    font-family: var(--font-display);
-    font-size: clamp(26px, 2.6vw, 36px);
-    font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: 0.01em;
-    line-height: 1;
-    margin: 0 0 20px;
-    color: var(--fg);
-  }
-
-  .split-text p {
-    margin: 0 0 20px;
-    font-size: 16px;
-    color: var(--muted);
-    line-height: 1.8;
-    letter-spacing: 0.022em;
-  }
-
-  .split-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px 20px;
-  }
-
-  .split-media {
-    border: 1px solid var(--hairline);
-    border-radius: var(--radius-panel);
-    overflow: hidden;
-  }
-
-  .split-media img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-
-  .stat-card {
-    max-width: 640px;
-    margin: 0 auto;
-    padding: 40px 32px;
-    text-align: center;
-    border: 1px solid var(--hairline);
-    border-radius: var(--radius-panel);
-    background: var(--panel-bg);
-  }
-
-  .stat-num {
-    margin: 0 0 8px;
-    font-family: var(--font-display);
-    font-size: clamp(48px, 6vw, 80px);
-    line-height: 1;
-    color: var(--fg);
-  }
-
-  .stat-sub {
-    margin: 0;
-    font-size: 16px;
-    color: var(--muted);
-    letter-spacing: 0.022em;
-  }
-
-  .principles {
-    display: grid;
-    gap: 12px;
-  }
-
-  .principle {
-    padding: 20px 24px;
-    border: 1px solid var(--hairline);
-    border-radius: var(--radius-panel);
-    background: var(--panel-bg);
-  }
-
-  .principle h3 {
-    margin: 0 0 8px;
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--fg);
-    letter-spacing: 0.02em;
-  }
-
-  .principle p,
-  .faq-list p {
-    margin: 0;
-    font-size: 15px;
+    font-size: 18px;
     color: var(--muted);
     line-height: 1.7;
     letter-spacing: 0.022em;
+    margin: 0 0 56px;
+    max-width: 720px;
   }
 
-  .about-affiliations.center {
-    justify-content: center;
+  .plugin-panel + .plugin-panel {
+    margin-top: 32px;
   }
 
-  .about-affiliations.center .affiliation {
-    align-items: center;
+  .plugin-list a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .plugin-list a:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
   }
 
   /* Founders side by side */
@@ -793,53 +619,7 @@ const jsonLd = [
     text-underline-offset: 4px;
   }
 
-  /* FAQ as an accordion, like the homepage */
-  .faq-list details {
-    border-top: 1px solid var(--hairline);
-  }
-
-  .faq-list details:last-child {
-    border-bottom: 1px solid var(--hairline);
-  }
-
-  .faq-list summary {
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    gap: 24px;
-    padding: 20px 0;
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--fg);
-    letter-spacing: 0.02em;
-    text-transform: none;
-    cursor: pointer;
-  }
-
-  .faq-list summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .faq-list summary::after {
-    content: '+';
-    color: var(--muted);
-  }
-
-  .faq-list details[open] summary::after {
-    content: '\2212';
-  }
-
-  .faq-list p {
-    padding: 0 0 20px;
-    max-width: 760px;
-  }
-
-  .contact-section {
-    padding-bottom: 160px;
-  }
-
   @media (max-width: 900px) {
-    .split,
     .team-grid {
       grid-template-columns: 1fr;
       gap: 48px;
@@ -851,19 +631,14 @@ const jsonLd = [
       padding: 96px var(--page-pad) 72px;
     }
 
-    .about-section {
-      padding: 56px var(--page-pad);
-    }
-
     .founder-content {
       grid-template-columns: 1fr;
-      gap: 8px 32px;
+      gap: 24px;
     }
 
     .founder-image {
       width: 160px;
     }
-
 
     /* Stack label over value so long rows never force a sideways scroll */
     .facts-table th,
