@@ -53,6 +53,7 @@ const keyFacts = [
   { label: 'Rights', value: 'Paid plans: private and yours, no royalty splits. Free plan and public work: CC0' },
   { label: 'Training data', value: 'Licensed, not scraped. <a href="/how-we-work-with-artists/">How we work with artists</a>' },
   { label: 'Users', value: '17,000+' },
+  { label: 'Support', value: 'Email <a href="mailto:kindred@sonurastudio.com">kindred@sonurastudio.com</a> or ask in <a href="https://discord.com/invite/Yk8RD3Nmyh" target="_blank" rel="noopener">Discord</a>' },
   { label: 'Affiliations', value: 'Member, Music Technology UK. Supporter, AI For Music principles' },
   { label: 'Alternatives to', value: '<a href="/alternatives/suno-alternative/">Suno</a>, <a href="/alternatives/udio-alternative/">Udio</a>, <a href="/alternatives/splice-alternative/">Splice</a>, <a href="/alternatives/soundraw-alternative/">Soundraw</a>, <a href="/alternatives/aiva-alternative/">AIVA</a>' },
 ];
@@ -146,251 +147,197 @@ const jsonLd = [
     </div>
   </section>
 
+  <section class="about-section" id="about">
+    <div class="container narrow center">
+      <h2 class="section-title reveal">About Sonura</h2>
+      <p class="section-text reveal">Sonura is an ethical AI music studio for producers, artists, and creators. Describe a sound and get loops, vocals, one-shots, sound effects, stems, or full tracks back in seconds, ready to edit.</p>
+      <p class="section-text reveal">Kindred Salway and Blue Bookhard started Sonura in London. It runs in your browser and inside your DAW.</p>
+    </div>
+  </section>
+
   <section class="about-section" id="what-sonura-does">
-    <div class="about-section-inner about-split">
-      <div class="about-split-head">
-        <h2 class="section-title reveal">What Sonura does</h2>
+    <div class="container">
+      <h2 class="visually-hidden">What Sonura does</h2>
+      <div class="split reveal">
+        <div class="split-text">
+          <h3 class="split-title">The studio</h3>
+          <p>Type what you hear and get loops, vocals, one-shots, and sound effects back in seconds, made for your prompt and nobody else's. Need a whole song? Pick ElevenLabs, Stable Audio, or Google Lyria in songs mode, then split it into stems.</p>
+          <p class="split-links">
+            <a href="/features/ai-loops/" class="text-link">AI loops</a>
+            <a href="/features/ai-vocals/" class="text-link">AI vocals</a>
+            <a href="/features/ai-sound-effects/" class="text-link">AI sound effects</a>
+            <a href="/tools/stem-separator/" class="text-link">Stem separator</a>
+            <a href="/tools/ai-song-maker/" class="text-link">AI song maker</a>
+          </p>
+        </div>
+        <div class="split-media">
+          <Image src={newThumbnail} alt="The Sonura studio interface generating loops and stems" />
+        </div>
       </div>
-      <div class="about-split-body">
-        <div class="product-grid">
-          <div class="product-image synth-panel reveal" data-reveal-delay="0.04s">
-            <Image
-              src={newThumbnail}
-              alt="The Sonura studio interface generating loops and stems"
-              style="width: 100%; height: auto; display: block;"
-            />
-          </div>
-          <div class="card-list reveal" data-reveal-delay="0.08s">
-            <div class="card-item">
-              <h3>Loops, beats, and one-shots</h3>
-              <p>Type what you hear and get drum, bass, and melody loops back in seconds, made for your prompt and nobody else's. <a href="/features/ai-loops/" class="text-link">AI loops</a></p>
-            </div>
-            <div class="card-item">
-              <h3>Vocals</h3>
-              <p>Hooks, chops, and ad-libs for when a track needs a topline idea. <a href="/features/ai-vocals/" class="text-link">AI vocals</a></p>
-            </div>
-            <div class="card-item">
-              <h3>Sound effects</h3>
-              <p>Risers, impacts, and textures for transitions, games, and video. <a href="/features/ai-sound-effects/" class="text-link">AI sound effects</a></p>
-            </div>
-            <div class="card-item">
-              <h3>Stems and Sonura Split</h3>
-              <p>Export every part as its own stem, or split a track you already have. <a href="/tools/stem-separator/" class="text-link">Stem separator</a></p>
-            </div>
-            <div class="card-item">
-              <h3>Sonura Flow plugin</h3>
-              <p>Our free VST3 and AU plugin. Generate inside Ableton, Logic, FL Studio, and five more DAWs, then drag the take onto a track. <a href="/plugin/" class="text-link">Sonura Flow</a></p>
-            </div>
-            <div class="card-item">
-              <h3>Full tracks</h3>
-              <p>Need a whole song? Pick ElevenLabs, Stable Audio, or Google Lyria in songs mode, then split the result into stems. <a href="/tools/ai-song-maker/" class="text-link">AI song maker</a></p>
-            </div>
-          </div>
+
+      <div class="split split-reverse reveal">
+        <div class="split-text">
+          <h3 class="split-title">Sonura Flow</h3>
+          <p>Our free VST3 and AU plugin puts Sonura inside Ableton, Logic, FL Studio, and five more DAWs. Generate, audition, and drag the take onto a track without leaving the session.</p>
+          <p class="split-links">
+            <a href="/plugin/" class="text-link">Get the plugin</a>
+          </p>
+        </div>
+        <div class="split-media">
+          <img src="/images/plugin-flow-1024.webp" alt="The Sonura Flow plugin creating a loop from a prompt" width="1024" height="768" loading="lazy" />
         </div>
       </div>
     </div>
   </section>
 
-  <section class="about-section" id="what-makes-sonura-different">
-    <div class="about-section-inner about-split">
-      <div class="about-split-head">
-        <h2 class="section-title reveal">What makes Sonura different</h2>
-      </div>
-      <div class="about-split-body">
-        <div class="diff-grid">
-          <div class="diff-item reveal">
-            <h3>Licensed, not scraped</h3>
-            <p>We build on licensed music. Suno is still in court with Universal and Sony over its training data.</p>
-          </div>
-          <div class="diff-item reveal" data-reveal-delay="0.04s">
-            <h3>Stems on every plan</h3>
-            <p>Free included. Suno keeps stem export for its top plan.</p>
-          </div>
-          <div class="diff-item reveal" data-reveal-delay="0.08s">
-            <h3>Yours to keep</h3>
-            <p>Paid plans keep your work private and yours, with no royalty splits. Udio won't even let you download.</p>
-          </div>
-          <div class="diff-item reveal" data-reveal-delay="0.04s">
-            <h3>Inside your DAW</h3>
-            <p>Sonura Flow generates where the track is, not in another browser tab.</p>
-          </div>
-          <div class="diff-item reveal" data-reveal-delay="0.08s">
-            <h3>Fast, no contract</h3>
-            <p>Most sounds arrive in under 10 seconds. Every plan is month to month.</p>
-          </div>
-        </div>
+  <section class="about-section" id="users">
+    <div class="container">
+      <div class="stat-card reveal">
+        <p class="stat-num">17,000+</p>
+        <p class="stat-sub">producers, artists, and creators make music with Sonura</p>
       </div>
     </div>
   </section>
 
-  <section class="about-section" id="who-uses-sonura">
-    <div class="about-section-inner about-split">
-      <div class="about-split-head">
-        <h2 class="section-title reveal">Who uses Sonura</h2>
+  <section class="about-section" id="our-ethical-approach">
+    <div class="container split split-top">
+      <div class="split-text reveal">
+        <h2 class="section-title">Our ethical approach</h2>
+        <p>A lot of AI music was trained on songs nobody agreed to share. Sonura is built on licensed music instead, and it's made to help musicians, not replace them.</p>
+        <p class="split-links">
+          <a href="/how-we-work-with-artists/" class="text-link">How we work with artists</a>
+        </p>
       </div>
-      <div class="about-split-body">
-        <p class="section-text reveal">More than 17,000 people make music with Sonura, mostly:</p>
-        <ul class="icp-list reveal" data-reveal-delay="0.04s">
-          <li>Producers and beatmakers tired of the same packs</li>
-          <li>Type beat producers who need exclusive rights</li>
-          <li>Artists and songwriters sketching toplines</li>
-          <li>Sound designers building their own libraries</li>
-          <li>Content creators who need cleared music and sound effects</li>
-          <li>Game developers and filmmakers without a composer budget</li>
-        </ul>
+      <div class="principles">
+        <div class="principle reveal">
+          <h3>Licensed, not scraped</h3>
+          <p>We build on licensed music. Suno is still in court with Universal and Sony over its training data.</p>
+        </div>
+        <div class="principle reveal" data-reveal-delay="0.04s">
+          <h3>Tools, not replacements</h3>
+          <p>You get parts to edit, not a finished song. Every creative decision stays yours.</p>
+        </div>
+        <div class="principle reveal" data-reveal-delay="0.08s">
+          <h3>Yours to keep</h3>
+          <p>Paid plans keep your work private and yours, with no royalty splits.</p>
+        </div>
+        <div class="principle reveal" data-reveal-delay="0.12s">
+          <h3>Stems on every plan</h3>
+          <p>Free included. Suno keeps stem export for its top plan.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="about-section team-section" id="founders">
-    <div class="about-section-inner about-split">
-      <div class="about-split-head">
-        <h2 class="section-title reveal">The team behind Sonura</h2>
-      </div>
-      <div class="about-split-body">
-        <p class="section-text reveal">We're a small team in London. We started Sonura because finding the sound in your head took hours, and the tools that promised to fix that took the creative decisions away.</p>
+    <div class="container">
+      <h2 class="section-title center reveal">The team behind Sonura</h2>
+      <p class="section-text center reveal">We're a small team in London. We started Sonura because finding the sound in your head took hours, and the tools that promised to fix that took the creative decisions away.</p>
 
-        <div class="team-grid">
-          <div class="founder-card reveal" data-reveal-delay="0.04s">
-            <div class="founder-content">
-              <div class="founder-image">
-                <img src="/images/kindred.jpg" alt="Kindred Salway, co-founder of Sonura" />
-              </div>
-              <div class="founder-info">
-                <h3 class="founder-name">Kindred Salway</h3>
-                <span class="founder-role">Co-founder</span>
-                <div class="founder-bio">
-                  <p>Kindred made music for years before writing software, and kept losing hours digging for sounds. Sonura turns those hours into seconds, and leaves every decision with the person making the record.</p>
-                </div>
-
-                <div class="founder-links">
-                  <a href="mailto:kindred@sonurastudio.com" class="linkedin-link">
-                    kindred@sonurastudio.com
-                  </a>
-                  <span class="separator">|</span>
-                  <a href="https://x.com/kindredsalway" target="_blank" rel="noopener" class="linkedin-link">
-                    Follow on X (Twitter)
-                  </a>
-                  <span class="separator">|</span>
-                  <a href="https://www.linkedin.com/in/kindred-salway-8a05b6240/" target="_blank" rel="noopener" class="linkedin-link">
-                    Connect on LinkedIn
-                  </a>
-                </div>
-              </div>
+      <div class="team-grid">
+        <div class="founder-card reveal" data-reveal-delay="0.04s">
+          <div class="founder-content">
+            <div class="founder-image">
+              <img src="/images/kindred.jpg" alt="Kindred Salway, co-founder of Sonura" />
             </div>
-          </div>
-
-          <div class="founder-card reveal" data-reveal-delay="0.08s">
-            <div class="founder-content">
-              <div class="founder-image founder-image-static">
-                <img src="/images/blue.jpg" alt="Blue Bookhard, co-founder of Sonura" />
+            <div class="founder-info">
+              <h3 class="founder-name">Kindred Salway</h3>
+              <span class="founder-role">Co-founder</span>
+              <div class="founder-bio">
+                <p>Kindred made music for years before writing software, and kept losing hours digging for sounds. Sonura turns those hours into seconds, and leaves every decision with the person making the record.</p>
               </div>
-              <div class="founder-info">
-                <h3 class="founder-name">Blue Bookhard</h3>
-                <span class="founder-role">Co-founder</span>
-                <div class="founder-bio">
-                  <p>Blue has worked with artists at TIDAL and Snapchat and writes the No Skips newsletter. Blue kept meeting people with good ideas and no way to finish them. Sonura is the tool for them.</p>
-                </div>
 
-                <div class="founder-links">
-                  <a href="mailto:blue@sonurastudio.com" class="linkedin-link">
-                    blue@sonurastudio.com
-                  </a>
-                  <span class="separator">|</span>
-                  <a href="https://www.instagram.com/iambluetyler/" target="_blank" rel="noopener" class="linkedin-link">
-                    Follow on Instagram
-                  </a>
-                  <span class="separator">|</span>
-                  <a href="https://www.linkedin.com/in/bluebookhard/" target="_blank" rel="noopener" class="linkedin-link">
-                    Connect on LinkedIn
-                  </a>
-                </div>
+              <div class="founder-links">
+                <a href="mailto:kindred@sonurastudio.com" class="linkedin-link">
+                  kindred@sonurastudio.com
+                </a>
+                <a href="https://x.com/kindredsalway" target="_blank" rel="noopener" class="linkedin-link">
+                  Follow on X (Twitter)
+                </a>
+                <a href="https://www.linkedin.com/in/kindred-salway-8a05b6240/" target="_blank" rel="noopener" class="linkedin-link">
+                  Connect on LinkedIn
+                </a>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="about-affiliations reveal">
-          <a href="https://aiformusic.info/" target="_blank" rel="noopener" class="affiliation">
-            <span class="affiliation-chip affiliation-chip-dark">
-              <img src="/images/affiliations/aiformusic-wh.png" alt="AI For Music affiliation logo" loading="lazy" width="264" height="178" />
-            </span>
-            <span class="affiliation-name">AI For Music</span>
-            <span class="affiliation-role">Supporter, Principles for Music Creation with AI</span>
-          </a>
-          <a href="https://musictechnology.uk/" target="_blank" rel="noopener" class="affiliation">
-            <span class="affiliation-chip affiliation-chip-light">
-              <img src="/images/affiliations/mtuk.png" alt="Music Technology UK affiliation logo" loading="lazy" width="264" height="190" />
-            </span>
-            <span class="affiliation-name">Music Technology UK</span>
-            <span class="affiliation-role">Member</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
+        <div class="founder-card reveal" data-reveal-delay="0.08s">
+          <div class="founder-content">
+            <div class="founder-image founder-image-static">
+              <img src="/images/blue.jpg" alt="Blue Bookhard, co-founder of Sonura" />
+            </div>
+            <div class="founder-info">
+              <h3 class="founder-name">Blue Bookhard</h3>
+              <span class="founder-role">Co-founder</span>
+              <div class="founder-bio">
+                <p>Blue has worked with artists at TIDAL and Snapchat and writes the No Skips newsletter. Blue kept meeting people with good ideas and no way to finish them. Sonura is the tool for them.</p>
+              </div>
 
-  <section class="about-section" id="how-sonura-works">
-    <div class="about-section-inner about-split">
-      <div class="about-split-head">
-        <h2 class="section-title reveal">How Sonura works</h2>
-      </div>
-      <div class="about-split-body">
-        <div class="diff-grid">
-          <div class="diff-item reveal">
-            <h3>Getting started</h3>
-            <p>Sign up free with no card. Use the studio in your browser, or install the plugin and sign in from your DAW. <a href="https://youtu.be/hTa_ysLlG9M" target="_blank" rel="noopener" class="text-link">Watch the walkthrough</a></p>
-          </div>
-          <div class="diff-item reveal" data-reveal-delay="0.04s">
-            <h3>Support</h3>
-            <p>Email <a href="mailto:kindred@sonurastudio.com" class="text-link">kindred@sonurastudio.com</a> and hear back within a day, or ask in <a href="https://discord.com/invite/Yk8RD3Nmyh" target="_blank" rel="noopener" class="text-link">Discord</a>.</p>
-          </div>
-          <div class="diff-item reveal" data-reveal-delay="0.08s">
-            <h3>Billing</h3>
-            <p>Month to month. Cancel in settings and keep access until the period ends.</p>
+              <div class="founder-links">
+                <a href="mailto:blue@sonurastudio.com" class="linkedin-link">
+                  blue@sonurastudio.com
+                </a>
+                <a href="https://www.instagram.com/iambluetyler/" target="_blank" rel="noopener" class="linkedin-link">
+                  Follow on Instagram
+                </a>
+                <a href="https://www.linkedin.com/in/bluebookhard/" target="_blank" rel="noopener" class="linkedin-link">
+                  Connect on LinkedIn
+                </a>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
+
+      <div class="about-affiliations center reveal">
+        <a href="https://aiformusic.info/" target="_blank" rel="noopener" class="affiliation">
+          <span class="affiliation-chip affiliation-chip-dark">
+            <img src="/images/affiliations/aiformusic-wh.png" alt="AI For Music affiliation logo" loading="lazy" width="264" height="178" />
+          </span>
+          <span class="affiliation-name">AI For Music</span>
+          <span class="affiliation-role">Supporter, Principles for Music Creation with AI</span>
+        </a>
+        <a href="https://musictechnology.uk/" target="_blank" rel="noopener" class="affiliation">
+          <span class="affiliation-chip affiliation-chip-light">
+            <img src="/images/affiliations/mtuk.png" alt="Music Technology UK affiliation logo" loading="lazy" width="264" height="190" />
+          </span>
+          <span class="affiliation-name">Music Technology UK</span>
+          <span class="affiliation-role">Member</span>
+        </a>
       </div>
     </div>
   </section>
 
   <section class="about-section" id="key-facts">
-    <div class="about-section-inner about-split">
-      <div class="about-split-head">
-        <h2 class="section-title reveal">Key facts</h2>
-      </div>
-      <div class="about-split-body">
-        <div class="facts-wrap reveal" data-reveal-delay="0.04s">
-          <table class="facts-table">
-            <caption class="visually-hidden">Key facts about Sonura</caption>
-            <tbody>
-              {keyFacts.map((row) => (
-                <tr>
-                  <th scope="row">{row.label}</th>
-                  <td set:html={row.value} />
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+    <div class="container narrow">
+      <h2 class="section-title center reveal">Key facts</h2>
+      <div class="facts-wrap reveal" data-reveal-delay="0.04s">
+        <table class="facts-table">
+          <caption class="visually-hidden">Key facts about Sonura</caption>
+          <tbody>
+            {keyFacts.map((row) => (
+              <tr>
+                <th scope="row">{row.label}</th>
+                <td set:html={row.value} />
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
 
   <section class="about-section contact-section" id="faq">
-    <div class="about-section-inner about-split">
-      <div class="about-split-head">
-        <h2 class="section-title reveal">FAQ</h2>
-      </div>
-      <div class="about-split-body">
-        <div class="faq-grid">
-          {faqs.map((f, i) => (
-            <div class="faq-item reveal" data-reveal-delay={`${0.03 * (i % 3)}s`}>
-              <h3>{f.q}</h3>
-              <p>{f.a}</p>
-            </div>
-          ))}
-        </div>
+    <div class="container narrow">
+      <h2 class="section-title center reveal">FAQ</h2>
+      <div class="faq-list">
+        {faqs.map((f) => (
+          <details class="reveal">
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
       </div>
     </div>
   </section>
@@ -488,38 +435,31 @@ const jsonLd = [
     text-align: left;
   }
 
-  /* No rules between sections: spacing separates them, the way the rest of
-     the site does since the v2 pass. */
+  .about-valueprop {
+    color: var(--fg);
+    margin-bottom: 20px;
+  }
+
   .about-section {
     padding: clamp(56px, 7vw, 96px) var(--page-pad);
   }
 
-  /* Editorial split: heading pinned left, content right, so no
-     section leaves half the page empty. */
-  .about-split {
-    display: grid;
-    grid-template-columns: minmax(240px, 1fr) 2fr;
-    gap: 64px;
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
   }
 
-  .about-split-head {
-    position: sticky;
-    top: calc(var(--nav-h, 70px) + 32px);
-    align-self: start;
-  }
-
-  .about-section-inner {
-    max-width: none;
-    margin: 0;
+  .narrow {
+    max-width: 820px;
   }
 
   .section-title {
     font-family: var(--font-display);
-    font-size: clamp(32px, 3.4vw, 52px);
+    font-size: clamp(32px, 3.4vw, 48px);
     letter-spacing: 0.01em;
     text-transform: uppercase;
     line-height: 1;
-    margin: 0;
+    margin: 0 0 32px;
     font-weight: 400;
     color: var(--fg);
   }
@@ -529,51 +469,160 @@ const jsonLd = [
     color: var(--muted);
     line-height: 1.8;
     letter-spacing: 0.022em;
-    word-spacing: 0.04em;
-    margin: 0 0 24px;
-    max-width: 760px;
+    margin: 0 0 20px;
+    max-width: 680px;
   }
 
-  .section-text:last-of-type {
-    margin-bottom: 0;
+  .center,
+  .section-text.center {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  .product-image {
-    position: relative;
-    background: var(--panel-bg);
+  .team-section .section-text {
+    margin-bottom: 56px;
+  }
+
+  #users {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  /* Text beside media, alternating sides */
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .split + .split {
+    margin-top: clamp(64px, 8vw, 112px);
+  }
+
+  .split-reverse .split-text {
+    order: 2;
+  }
+
+  .split-top {
+    align-items: start;
+  }
+
+  .split-title {
+    font-family: var(--font-display);
+    font-size: clamp(26px, 2.6vw, 36px);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    line-height: 1;
+    margin: 0 0 20px;
+    color: var(--fg);
+  }
+
+  .split-text p {
+    margin: 0 0 20px;
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.8;
+    letter-spacing: 0.022em;
+  }
+
+  .split-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+  }
+
+  .split-media {
     border: 1px solid var(--hairline);
     border-radius: var(--radius-panel);
-    padding: 12px; /* Inner frame padding */
+    overflow: hidden;
   }
 
-  .product-image img {
+  .split-media img {
     display: block;
     width: 100%;
     height: auto;
-    filter: contrast(1.05);
   }
 
-  .team-grid {
+  .stat-card {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 40px 32px;
+    text-align: center;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-panel);
+    background: var(--panel-bg);
+  }
+
+  .stat-num {
+    margin: 0 0 8px;
+    font-family: var(--font-display);
+    font-size: clamp(48px, 6vw, 80px);
+    line-height: 1;
+    color: var(--fg);
+  }
+
+  .stat-sub {
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 64px;
+    font-size: 16px;
+    color: var(--muted);
+    letter-spacing: 0.022em;
   }
 
-  .founder-card {
-    background: transparent; /* Removed panel bg */
-    padding: 0; /* Removed padding */
+  .principles {
+    display: grid;
+    gap: 12px;
+  }
+
+  .principle {
+    padding: 20px 24px;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-panel);
+    background: var(--panel-bg);
+  }
+
+  .principle h3 {
+    margin: 0 0 8px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--fg);
+    letter-spacing: 0.02em;
+  }
+
+  .principle p,
+  .faq-list p {
+    margin: 0;
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.7;
+    letter-spacing: 0.022em;
+  }
+
+  .about-affiliations.center {
+    justify-content: center;
+  }
+
+  .about-affiliations.center .affiliation {
+    align-items: center;
+  }
+
+  /* Founders side by side */
+  .team-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px 64px;
   }
 
   .founder-content {
     display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 40px;
+    grid-template-columns: 160px 1fr;
+    gap: 32px;
     align-items: start;
   }
 
   .founder-image {
-    width: 100%;
     aspect-ratio: 1;
     border-radius: var(--radius-panel);
     border: 1px solid var(--hairline);
@@ -581,7 +630,7 @@ const jsonLd = [
     filter: grayscale(100%);
     transition: filter 0.5s ease;
   }
-  
+
   .founder-image:hover {
     filter: grayscale(0%);
   }
@@ -597,15 +646,11 @@ const jsonLd = [
     display: block;
   }
 
-  .founder-info {
-    padding-top: 12px;
-  }
-
   .founder-name {
     font-family: var(--font-display);
-    font-size: clamp(24px, 2.8vw, 38px);
+    font-size: clamp(22px, 2.2vw, 30px);
     font-weight: 400;
-    margin: 0 0 8px;
+    margin: 0 0 6px;
     letter-spacing: 0.01em;
     text-transform: uppercase;
     line-height: 1;
@@ -616,62 +661,42 @@ const jsonLd = [
     display: block;
     font-size: 12px;
     color: var(--muted);
-    margin-bottom: 32px;
+    margin-bottom: 16px;
     text-transform: uppercase;
     letter-spacing: 0.12em;
     font-weight: 500;
   }
 
-  .founder-bio {
-    text-align: left;
-  }
-
   .founder-bio p {
-    font-size: 16px;
-    color: var(--fg);
+    font-size: 15px;
+    color: var(--muted);
     line-height: 1.7;
     letter-spacing: 0.022em;
-    margin: 0 0 18px;
-  }
-
-  .founder-bio p:last-child {
-    margin-bottom: 0;
+    margin: 0;
   }
 
   .founder-links {
-    margin-top: 24px;
+    margin-top: 16px;
     display: flex;
-    gap: 16px;
+    flex-wrap: wrap;
+    gap: 8px 16px;
     align-items: center;
-    justify-content: flex-start;
   }
 
   .linkedin-link {
-    display: inline-block;
     color: var(--fg);
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     text-decoration: underline;
     text-decoration-thickness: 1px;
-    text-underline-offset: 7px;
-    text-decoration-color: currentColor;
+    text-underline-offset: 5px;
   }
 
-  .contact-section {
-    padding-bottom: 160px;
-  }
-
-  .separator {
-    color: var(--faint);
-  }
-
-  /* Quiet affiliations strip (no heading, not part of the numbered sections).
-     Per-logo chip backgrounds chosen for contrast: AI For Music logo is white
-     (dark chip), MTUK logo is black (light chip). */
   .about-affiliations {
     display: flex;
     flex-wrap: wrap;
     gap: 40px;
+    margin-top: 56px;
   }
 
   .affiliation {
@@ -693,14 +718,13 @@ const jsonLd = [
     border: 1px solid var(--hairline);
   }
 
+  /* AI For Music logo is white, MTUK is black */
   .affiliation-chip-dark { background: #101010; }
   .affiliation-chip-light { background: #ffffff; }
 
   .affiliation-chip img {
     max-width: 100%;
     max-height: 100%;
-    width: auto;
-    height: auto;
     object-fit: contain;
     display: block;
   }
@@ -722,95 +746,6 @@ const jsonLd = [
     color: var(--muted);
     line-height: 1.5;
     letter-spacing: 0.022em;
-  }
-
-  .about-valueprop {
-    color: var(--fg);
-    margin-bottom: 20px;
-  }
-
-  .product-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 48px;
-  }
-
-  /* H3 + short paragraph blocks, shared by "What Sonura does", "What makes
-     Sonura different", "How Sonura works" and the FAQ. */
-  .card-list,
-  .faq-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px 48px;
-  }
-
-  /* Label left, line right, ruled like the facts table */
-  .diff-item {
-    display: grid;
-    grid-template-columns: minmax(160px, 1fr) 2fr;
-    gap: 32px;
-    padding: 20px 0;
-    border-top: 1px solid var(--hairline);
-  }
-
-  .diff-item:last-child {
-    border-bottom: 1px solid var(--hairline);
-  }
-
-  .diff-item h3 {
-    margin: 0;
-  }
-
-  .card-item h3,
-  .diff-item h3,
-  .faq-item h3 {
-    margin: 0 0 12px;
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--fg);
-    letter-spacing: 0.02em;
-    line-height: 1.4;
-  }
-
-  .card-item p,
-  .diff-item p,
-  .faq-item p {
-    margin: 0;
-    font-size: 15px;
-    color: var(--muted);
-    line-height: 1.7;
-    letter-spacing: 0.022em;
-  }
-
-  .icp-list {
-    margin: 32px 0 0;
-    padding: 0 0 0 20px;
-    columns: 2;
-    column-gap: 48px;
-  }
-
-  .icp-list li {
-    break-inside: avoid;
-    margin-bottom: 14px;
-  }
-
-  .icp-list li {
-    font-size: clamp(15px, 1.8vw, 17px);
-    color: var(--muted);
-    line-height: 1.7;
-    letter-spacing: 0.022em;
-  }
-
-  .icp-list li::marker {
-    color: var(--faint);
-  }
-
-  .team-section .section-text {
-    margin-bottom: 56px;
-  }
-
-  .team-section .about-affiliations {
-    margin-top: 64px;
   }
 
   .facts-wrap {
@@ -841,7 +776,7 @@ const jsonLd = [
   }
 
   .facts-table th {
-    width: 32%;
+    width: 28%;
     font-weight: 600;
     color: var(--fg);
     background: var(--panel-bg);
@@ -858,24 +793,56 @@ const jsonLd = [
     text-underline-offset: 4px;
   }
 
+  /* FAQ as an accordion, like the homepage */
+  .faq-list details {
+    border-top: 1px solid var(--hairline);
+  }
+
+  .faq-list details:last-child {
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .faq-list summary {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 20px 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--fg);
+    letter-spacing: 0.02em;
+    text-transform: none;
+    cursor: pointer;
+  }
+
+  .faq-list summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-list summary::after {
+    content: '+';
+    color: var(--muted);
+  }
+
+  .faq-list details[open] summary::after {
+    content: '\2212';
+  }
+
+  .faq-list p {
+    padding: 0 0 20px;
+    max-width: 760px;
+  }
+
+  .contact-section {
+    padding-bottom: 160px;
+  }
+
   @media (max-width: 900px) {
-    .about-split {
+    .split,
+    .team-grid {
       grid-template-columns: 1fr;
-      gap: 32px;
-    }
-
-    .about-split-head {
-      position: static;
-    }
-
-    .founder-content {
-      grid-template-columns: 1fr;
-      gap: 40px;
-    }
-
-    .founder-image {
-      width: 200px;
-      margin: 0;
+      gap: 48px;
     }
   }
 
@@ -885,19 +852,18 @@ const jsonLd = [
     }
 
     .about-section {
-      padding: 64px var(--page-pad);
+      padding: 56px var(--page-pad);
     }
 
-    .card-list,
-    .faq-grid,
-    .diff-item {
+    .founder-content {
       grid-template-columns: 1fr;
-      gap: 12px 36px;
+      gap: 8px 32px;
     }
 
-    .icp-list {
-      columns: 1;
+    .founder-image {
+      width: 160px;
     }
+
 
     /* Stack label over value so long rows never force a sideways scroll */
     .facts-table th,
@@ -911,13 +877,5 @@ const jsonLd = [
       border-bottom: none;
       padding-bottom: 4px;
     }
-
-    .founder-links {
-      flex-direction: column;
-      gap: 20px;
-      align-items: flex-start;
-    }
-
-    .separator { display: none; }
   }
 </style>
