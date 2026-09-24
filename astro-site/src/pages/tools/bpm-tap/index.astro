@@ -462,8 +462,14 @@ const jsonLd = [
     tapBtn.addEventListener('touchstart', (e) => { e.preventDefault(); handleTap(); });
     resetBtn.addEventListener('click', reset);
     document.addEventListener('keydown', (e) => {
-      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      // Held keys auto-repeat, and shortcuts or Tab navigation are not taps.
+      if (e.repeat || e.ctrlKey || e.metaKey || e.altKey) return;
+      if (e.key === 'Tab' || e.key === 'Shift') return;
       if (e.key === 'Escape') { reset(); return; }
+      // Focused links and buttons handle Space/Enter natively (the tap button
+      // fires its own click), so counting them here would double the tap.
+      if (e.target.closest('a, button, input, textarea, select, [contenteditable]')) return;
+      if (e.key === ' ') e.preventDefault();
       handleTap();
     });
   </script>
