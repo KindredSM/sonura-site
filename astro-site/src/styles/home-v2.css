@@ -12,9 +12,9 @@ body.home-v2 .hero {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: clamp(56px, 8vh, 104px) var(--page-pad) 0;
-  /* the proof strip is part of the fold, so the hero ends exactly on it */
-  min-height: calc(100svh - var(--nav-h));
+  margin-top: calc(-1 * var(--nav-h));
+  padding: calc(var(--nav-h) + clamp(56px, 8vh, 104px)) var(--page-pad) 0;
+  min-height: 100svh;
 }
 
 /* Video fills the section instead of sitting in a clipped right-hand panel */
@@ -42,7 +42,7 @@ body.home-v2 .hero-scrim {
   inset: 0;
   background:
     radial-gradient(78% 60% at 50% 32%, rgba(5, 5, 5, 0.86) 0%, rgba(5, 5, 5, 0.6) 55%, rgba(5, 5, 5, 0.18) 100%),
-    linear-gradient(180deg, var(--bg) 0%, rgba(5, 5, 5, 0.1) 22%, rgba(5, 5, 5, 0.45) 72%, var(--bg) 100%);
+    linear-gradient(180deg, rgba(5, 5, 5, 0.55) 0%, rgba(5, 5, 5, 0.1) 22%, rgba(5, 5, 5, 0.45) 72%, var(--bg) 100%);
 }
 
 body.home-v2 .hero-content {
@@ -138,7 +138,7 @@ body.home-v2 .hero-proof-logo svg {
 @media (max-width: 1023px) {
   body.home-v2 .hero {
     align-items: center;
-    padding: 40px 24px 0;
+    padding: calc(var(--nav-h) + 40px) 24px 0;
   }
 
   body.home-v2 .hero-media {
