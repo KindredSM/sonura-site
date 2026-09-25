@@ -79,29 +79,6 @@ const kickers = {
   faq: 'FAQ',
 };
 
-/* Typical tempo band per genre. Feeds the BPM tool link in Next steps so that
-   row reads as genre-specific copy rather than the same line on all 18 pages. */
-const genreBpmRanges: Record<string, string> = {
-  afrobeats: '100-120',
-  ambient: '60-90',
-  cinematic: '60-110',
-  country: '90-130',
-  drill: '140-150',
-  edm: '120-140',
-  'hip-hop': '80-100',
-  house: '120-130',
-  jazz: '110-160',
-  lofi: '70-90',
-  phonk: '130-170',
-  pop: '100-130',
-  reggaeton: '85-100',
-  rnb: '65-90',
-  rock: '100-140',
-  techno: '125-150',
-  trap: '130-160',
-};
-const bpmRange = genreBpmRanges[genreSlug];
-
 const jsonLd = [
   {
     "@context": "https://schema.org",
@@ -389,12 +366,6 @@ const jsonLd = [
           <strong>Compare Suno</strong>
           <span>See why producers use Sonura for faster iteration and stem control.</span>
         </a>
-        {bpmRange && (
-          <a class="genre-next-link" href="/tools/bpm-tap/">
-            <strong>Find the BPM</strong>
-            <span>{genre} usually sits around {bpmRange} BPM. Tap along to any track to read its exact tempo.</span>
-          </a>
-        )}
       </div>
     </div>
   </section>
