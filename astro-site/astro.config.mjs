@@ -2,6 +2,9 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import llmsFiles from './src/integrations/llmsFiles.ts';
+import { gitLastmod } from './src/integrations/gitLastmod.ts';
+
+const lastmodFor = gitLastmod('https://sonurastudio.com');
 
 // https://astro.build/config
 export default defineConfig({
@@ -38,7 +41,10 @@ export default defineConfig({
       filter: (page) => !page.includes('/v2/'),
       changefreq: 'weekly',
       priority: 0.7,
-      lastmod: new Date(),
+      serialize(item) {
+        const lastmod = lastmodFor(item.url);
+        return lastmod ? { ...item, lastmod } : item;
+      },
     }),
     llmsFiles(),
   ],
