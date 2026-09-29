@@ -10,6 +10,39 @@ const toc = [
   { id: 'effects', label: 'Effects plugins' },
   { id: 'recommendations', label: 'Essential starter pack' },
   { id: 'conclusion', label: 'Conclusion' },
+  { id: 'faq', label: 'FAQ' },
+];
+
+const picks = [
+  ['Making new sounds', 'Sonura Flow', 'AI sample generator', 'Windows, Mac'],
+  ['Synth', 'Vital', 'Wavetable synth', 'Windows, Mac, Linux'],
+  ['Synth, second pick', 'Surge XT', 'Hybrid synth', 'Windows, Mac, Linux'],
+  ['Drums', 'MT Power Drum Kit 2', 'Acoustic drum sampler', 'Windows, Mac'],
+  ['Instruments', 'Spitfire LABS', 'Sample library', 'Windows, Mac'],
+  ['EQ', 'TDR Nova', 'Dynamic EQ', 'Windows, Mac'],
+  ['Bus compression', 'TDR Kotelnikov', 'Bus compressor', 'Windows, Mac'],
+  ['Metering', 'Youlean Loudness Meter', 'LUFS meter', 'Windows, Mac'],
+  ['Reverb', 'Valhalla Supermassive', 'Reverb and delay', 'Windows, Mac'],
+  ['Multiband', 'OTT', 'Multiband compressor', 'Windows, Mac'],
+];
+
+const faqs = [
+  {
+    question: 'What is the best free VST plugin in 2026?',
+    answer: 'It depends on the job. Vital is the best free synth, Valhalla Supermassive the best free reverb, TDR Nova the best free EQ, and Spitfire LABS the best free instrument library. For creating new drums, loops and vocals from a text description inside your DAW, <a href="/plugin/">Sonura Flow</a> is free to download and starts with free credits.',
+  },
+  {
+    question: 'Are free VST plugins good enough for professional music?',
+    answer: 'Yes. Plugins like Vital, Surge XT, TDR Kotelnikov and Valhalla Supermassive are used on released records. Mixing skill matters far more than whether a plugin was paid for.',
+  },
+  {
+    question: 'Is there a free AI VST plugin?',
+    answer: 'Sonura Flow is a free-to-download AI plugin in VST3 and AU formats for Ableton Live, FL Studio, Logic Pro and other DAWs. New accounts get free credits, and paid Sonura plans from $10 a month add more credits and make every sound exclusively yours.',
+  },
+  {
+    question: 'Do free VST plugins work in FL Studio, Ableton and Logic?',
+    answer: 'Most do. FL Studio and Ableton Live load VST3 on Windows and Mac. Logic Pro and GarageBand need the AU version, which most plugins on this list, including Sonura Flow, also ship.',
+  },
 ];
 ---
 
@@ -19,9 +52,10 @@ const toc = [
   keywords="free vst plugins, best free vst, free vst synth, free vst effects, free plugins music production, free vst download, best free plugins 2026, vst plugins free"
   slug="best-free-vst-plugins"
   publishedDate="2025-10-23"
-  modifiedDate="2026-07-02"
-  readTime="6 min read"
+  modifiedDate="2026-09-29"
+  readTime="7 min read"
   toc={toc}
+  faqs={faqs}
 >
   <style>
     .plugin-box { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 24px; margin-bottom: 24px; }
@@ -34,6 +68,29 @@ const toc = [
 
   <div class="blog-body">
     <p>You do not need to spend a cent to build a professional plugin collection. The free tools below are the same ones working producers actually keep in their templates - modern synths, real drum samplers, studio-grade effects, and accurate metering. Every plugin here is genuinely free to download (we removed a few that quietly went paid), and where a tool has a paid tier, the free version is fully usable on its own.</p>
+
+    <div style="overflow-x: auto; margin-bottom: 32px;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 15px; line-height: 1.6;">
+        <thead>
+          <tr style="text-align: left; border-bottom: 1px solid var(--hairline);">
+            <th style="padding: 10px 12px 10px 0;">Job</th>
+            <th style="padding: 10px 12px;">Best free pick</th>
+            <th style="padding: 10px 12px;">Type</th>
+            <th style="padding: 10px 0 10px 12px;">Platforms</th>
+          </tr>
+        </thead>
+        <tbody style="color: var(--muted);">
+          {picks.map(([job, name, type, platforms]) => (
+            <tr style="border-bottom: 1px solid var(--border-light);">
+              <td style="padding: 10px 12px 10px 0;">{job}</td>
+              <td style="padding: 10px 12px; color: var(--fg);">{name}</td>
+              <td style="padding: 10px 12px;">{type}</td>
+              <td style="padding: 10px 0 10px 12px;">{platforms}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
 
     <section id="flow-plugin" style="margin-bottom: 48px;">
       <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Best Free Plugin for Making New Sounds</h2>
