@@ -37,11 +37,11 @@ const faqs = [
   },
   {
     question: 'Is there a free AI VST plugin?',
-    answer: 'Sonura Flow is a free-to-download AI plugin in VST3 and AU formats for Ableton Live, FL Studio, Logic Pro and other DAWs. New accounts get free credits, and paid Sonura plans from $10 a month add more credits and make every sound exclusively yours.',
+    answer: '<a href="/plugin/">Sonura Flow</a> is a free-to-download AI plugin in VST3 and AU formats for Ableton Live, FL Studio, Logic Pro and other DAWs. New accounts get free credits, and paid Sonura plans from $10 a month add more credits and make every sound exclusively yours.',
   },
   {
     question: 'Do free VST plugins work in FL Studio, Ableton and Logic?',
-    answer: 'Most do. FL Studio and Ableton Live load VST3 on Windows and Mac. Logic Pro and GarageBand need the AU version, which most plugins on this list, including Sonura Flow, also ship.',
+    answer: 'Most do. FL Studio and Ableton Live load VST3 on Windows and Mac. Logic Pro and GarageBand need the AU version, which most plugins on this list, including <a href="/plugin/">Sonura Flow</a>, also ship.',
   },
 ];
 ---
@@ -83,7 +83,7 @@ const faqs = [
           {picks.map(([job, name, type, platforms]) => (
             <tr style="border-bottom: 1px solid var(--border-light);">
               <td style="padding: 10px 12px 10px 0;">{job}</td>
-              <td style="padding: 10px 12px; color: var(--fg);">{name}</td>
+              <td style="padding: 10px 12px; color: var(--fg);">{name === 'Sonura Flow' ? <a href="/plugin/" style="color: inherit;">{name}</a> : name}</td>
               <td style="padding: 10px 12px;">{type}</td>
               <td style="padding: 10px 0 10px 12px;">{platforms}</td>
             </tr>
@@ -96,7 +96,7 @@ const faqs = [
       <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Best Free Plugin for Making New Sounds</h2>
 
       <div class="plugin-box">
-        <h4>Sonura Flow</h4>
+        <h4><a href="/plugin/" style="color: inherit;">Sonura Flow</a></h4>
         <div class="plugin-meta"><span class="plugin-type">sample generator</span><span class="plugin-platform">windows / mac</span></div>
         <p style="margin-bottom: 12px;">Sonura Flow is free to download and starts with free credits for creating original drums, vocals, loops, one-shots, FX, and textures inside your DAW - sounds no one else has, instead of the same shared packs.</p>
         <p style="margin-bottom: 12px;">It runs in Ableton Live, Logic Pro, FL Studio, Studio One, Bitwig, Cubase, Reaper, GarageBand, and other hosts that support VST3 or AU.</p>
