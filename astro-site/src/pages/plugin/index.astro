@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { DAW_LOGOS } from '../../data/dawLogos';
+import { RIGHTS } from '../../data/facts';
 
 const PLUGIN_MANIFEST_URL = 'https://audio.sonurastudio.com/plugin/latest/manifest.json';
 // Browser-facing version source: audio.sonurastudio.com (R2) sends no CORS headers, so the
@@ -39,7 +40,7 @@ const faqs = [
   },
   {
     question: 'Do I own the sounds I create?',
-    answer: 'Yes. Every sound you create with Sonura Flow is fully royalty-free and yours to use forever, including in commercial releases, sync placements, streaming, and client work. No attribution required.'
+    answer: 'Yes. Every sound is royalty-free with no attribution required. On the free plan your creations are public domain (CC0). On any paid plan they are exclusively yours.'
   },
   {
     question: 'How do I get the sounds into my project?',
@@ -63,7 +64,7 @@ const faqs = [
   },
   {
     question: 'Can I use Sonura Flow in commercial releases?',
-    answer: 'Yes. Exclusive commercial rights on paid plans are included on every free and paid plan. Release on Spotify, Apple Music, YouTube, sync to video, sell beats, use in client work, the sounds are yours.'
+    answer: RIGHTS.commercial
   }
 ];
 
@@ -91,7 +92,7 @@ const jsonLd = [
       "VST3 and AU plugin for Mac and Windows",
       "Created drums, loops, vocals, one-shots",
       "Runs inside Ableton Live, Logic Pro, FL Studio, Studio One, Bitwig, Cubase, Reaper, and GarageBand",
-      "Royalty-free commercial rights",
+      "Royalty-free commercial use, exclusive rights on paid plans",
       "Personal sound library",
       "Up to 4 variations per prompt"
     ]
@@ -333,7 +334,7 @@ const jsonLd = [
           <span class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
           <div>
             <strong>Own everything you make</strong>
-            <p>Exclusive commercial rights on every sound you create.</p>
+            <p>Royalty-free on every plan. Exclusively yours on any paid plan.</p>
           </div>
         </li>
         <li>
