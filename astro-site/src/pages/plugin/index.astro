@@ -221,26 +221,6 @@ const jsonLd = [
       </div>
     </section>
 
-    <section class="pg-seo anim" aria-labelledby="glance-title">
-      <div class="seo-head">
-        <p class="pg-kicker">At a glance</p>
-        <h2 id="glance-title">Sonura Flow in one table.</h2>
-      </div>
-      <table class="glance-table">
-        <tbody>
-          <tr><th scope="row">What it is</th><td>A free-to-download AI plugin that creates new sounds from a text description inside your DAW</td></tr>
-          <tr><th scope="row">Creates</th><td>{PLUGIN.creates}</td></tr>
-          <tr><th scope="row">Formats</th><td>{PLUGIN.formats.join(' and ')}</td></tr>
-          <tr><th scope="row">Mac</th><td>{PLUGIN.mac}</td></tr>
-          <tr><th scope="row">Windows</th><td>{PLUGIN.windows}</td></tr>
-          <tr><th scope="row">DAWs</th><td>{PLUGIN.daws.join(', ')}</td></tr>
-          <tr><th scope="row">Price</th><td>{PLUGIN.price} Paid plans from ${PLANS[1].monthlyPrice}/month.</td></tr>
-          <tr><th scope="row">Rights</th><td>{RIGHTS.summary}</td></tr>
-          <tr><th scope="row">Needs internet</th><td>Yes, sounds are created on Sonura's servers</td></tr>
-        </tbody>
-      </table>
-    </section>
-
     <section class="pg-demo anim" aria-labelledby="demo-title">
       <div class="demo-copy">
         <p class="pg-kicker">In session</p>
@@ -537,6 +517,23 @@ const jsonLd = [
         </div>
       </div>
     </section>
+
+    <aside class="pg-glance" aria-labelledby="glance-title">
+      <h2 id="glance-title">Sonura Flow specs</h2>
+      <table class="glance-table">
+        <tbody>
+          <tr><th scope="row">What it is</th><td>A free-to-download AI plugin that creates new sounds from a text description inside your DAW</td></tr>
+          <tr><th scope="row">Creates</th><td>{PLUGIN.creates}</td></tr>
+          <tr><th scope="row">Formats</th><td>{PLUGIN.formats.join(' and ')}</td></tr>
+          <tr><th scope="row">Mac</th><td>{PLUGIN.mac}</td></tr>
+          <tr><th scope="row">Windows</th><td>{PLUGIN.windows}</td></tr>
+          <tr><th scope="row">DAWs</th><td>{PLUGIN.daws.join(', ')}</td></tr>
+          <tr><th scope="row">Price</th><td>{PLUGIN.price} Paid plans from ${PLANS[1].monthlyPrice}/month.</td></tr>
+          <tr><th scope="row">Rights</th><td>{RIGHTS.summary}</td></tr>
+          <tr><th scope="row">Needs internet</th><td>Yes, sounds are created on Sonura's servers</td></tr>
+        </tbody>
+      </table>
+    </aside>
   </div>
 
 </BaseLayout>
@@ -1552,48 +1549,49 @@ const jsonLd = [
     text-align: left;
   }
 
+  .pg-glance {
+    box-sizing: content-box;
+    max-width: 440px;
+    margin: 0 var(--page-pad) 48px auto;
+  }
+
+  @media (max-width: 640px) {
+    .pg-glance {
+      margin: 0 var(--page-pad) 40px;
+    }
+  }
+
+  .pg-glance h2 {
+    margin: 0 0 8px;
+    color: var(--faint);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
   .glance-table {
     width: 100%;
-    max-width: 960px;
     border-collapse: collapse;
-    font-size: 16px;
-    letter-spacing: 0.022em;
-    line-height: 1.7;
+    font-size: 12px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
   }
 
   .glance-table th,
   .glance-table td {
-    padding: 14px 0;
-    border-top: 1px solid var(--border-light);
+    padding: 6px 0;
+    border-top: 1px solid var(--border);
     text-align: left;
     vertical-align: top;
+    color: var(--faint);
+    font-weight: 400;
   }
 
   .glance-table th {
-    width: 180px;
-    padding-right: 24px;
-    color: var(--fg);
-    font-weight: 600;
-  }
-
-  .glance-table td {
+    width: 96px;
+    padding-right: 12px;
     color: var(--muted);
-  }
-
-  @media (max-width: 640px) {
-    .glance-table tr {
-      display: block;
-      padding: 12px 0;
-      border-top: 1px solid var(--border-light);
-    }
-
-    .glance-table th,
-    .glance-table td {
-      display: block;
-      width: auto;
-      padding: 0;
-      border: 0;
-    }
   }
 
   .pg-seo {

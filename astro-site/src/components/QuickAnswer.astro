@@ -6,32 +6,43 @@ interface Props {
 const { text } = Astro.props;
 ---
 
-<p class="quick-answer" set:html={text} />
+<aside class="quick-answer" aria-label="In short">
+  <p class="quick-answer-label">In short</p>
+  <p set:html={text} />
+</aside>
 
 <style>
   .quick-answer {
-    margin: 20px 0 0;
-    padding-left: 20px;
-    border-left: 1px solid var(--hairline);
-    max-width: 660px;
-    color: var(--fg);
-    font-size: 17px;
-    letter-spacing: 0.022em;
-    word-spacing: 0.04em;
-    line-height: 1.8;
-    text-align: left;
+    max-width: 440px;
+    margin: 0 var(--page-pad) 48px auto;
+    color: var(--faint);
+    font-size: 12px;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+  }
+
+  .quick-answer p {
+    margin: 0;
+  }
+
+  .quick-answer .quick-answer-label {
+    margin-bottom: 6px;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
   }
 
   .quick-answer :global(a) {
     color: inherit;
     text-decoration: underline;
-    text-underline-offset: 3px;
+    text-underline-offset: 2px;
   }
 
   @media (max-width: 640px) {
     .quick-answer {
-      font-size: 16px;
-      padding-left: 16px;
+      margin: 0 var(--page-pad) 40px;
     }
   }
 </style>

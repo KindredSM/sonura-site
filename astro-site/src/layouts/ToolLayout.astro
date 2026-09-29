@@ -474,7 +474,6 @@ const jsonLd = [
   <div class="tp-hero">
     <h1 class="tp-h1">{displayHeadline}</h1>
     <p class="tp-sub">{subhead}</p>
-    {quickAnswer && <QuickAnswer text={quickAnswer} />}
     <div class="tp-cta-row">
       <a href={appUrl} class="tp-cta-btn">{ctaPrimaryText}</a>
       <div class="tp-pills">
@@ -628,4 +627,5 @@ const jsonLd = [
       </div>
     </div>
   </section>
+  {quickAnswer && <QuickAnswer text={quickAnswer} />}
 </BaseLayout>
