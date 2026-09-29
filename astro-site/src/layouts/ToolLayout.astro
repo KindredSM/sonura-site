@@ -1,5 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import QuickAnswer from '../components/QuickAnswer.astro';
 
 interface Feature {
   title: string;
@@ -28,6 +29,7 @@ interface RelatedBlogPost {
 }
 
 interface Props {
+  quickAnswer?: string;
   toolName: string;
   toolSlug: string;
   title: string;
@@ -50,6 +52,7 @@ interface Props {
 }
 
 const {
+  quickAnswer,
   toolName,
   toolSlug,
   title,
@@ -469,6 +472,7 @@ const jsonLd = [
   <div class="tp-hero">
     <h1 class="tp-h1">{displayHeadline}</h1>
     <p class="tp-sub">{subhead}</p>
+    {quickAnswer && <QuickAnswer text={quickAnswer} />}
     <div class="tp-cta-row">
       <a href={appUrl} class="tp-cta-btn">{ctaPrimaryText}</a>
       <div class="tp-pills">
