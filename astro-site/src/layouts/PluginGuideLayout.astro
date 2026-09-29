@@ -1,6 +1,7 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import QuickAnswer from '../components/QuickAnswer.astro';
+import { ORG_ID } from '../data/facts';
 
 interface GuideSection {
   title: string;
@@ -65,9 +66,10 @@ const jsonLd = [
     "headline": headline,
     "description": description,
     "datePublished": publishedDate,
-    "author": { "@type": "Organization", "name": "Sonura" },
+    "author": { "@type": "Organization", "@id": ORG_ID, "name": "Sonura" },
     "publisher": {
       "@type": "Organization",
+      "@id": ORG_ID,
       "name": "Sonura",
       "logo": { "@type": "ImageObject", "url": "https://sonurastudio.com/demo-image.jpeg" }
     },

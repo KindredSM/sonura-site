@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PricingSection from '../../components/PricingSection.astro';
-import { PLANS, planAllowance } from '../../data/facts';
+import { ORG_ID, PLANS, planAllowance } from '../../data/facts';
 // The same two layers the landing loads, so the shared PricingSection renders
 // identically here instead of being re-approximated in global.css.
 import '../../styles/home-editorial.css';
@@ -27,6 +27,7 @@ const jsonLd = [
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "Sonura",
+    "publisher": { "@id": ORG_ID },
     "applicationCategory": "MusicApplication",
     "operatingSystem": "Web Browser",
     "offers": PLANS.map((plan) => ({

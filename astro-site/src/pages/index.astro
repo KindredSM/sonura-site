@@ -6,6 +6,7 @@ import { DAW_LOGOS } from '../data/dawLogos';
 import BrandIcon from '../components/icons/BrandIcon.astro';
 import '../styles/home-editorial.css';
 import '../styles/home-v2.css';
+import { ORG_ID } from '../data/facts';
 
 const jsonLd = [
   {
@@ -23,6 +24,7 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": ORG_ID,
     "name": "Sonura",
     "alternateName": "Sonura",
     "url": "https://sonurastudio.com/",
@@ -33,6 +35,7 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
+    "publisher": { "@id": ORG_ID },
     "name": "Sonura",
     "alternateName": "Sonura",
     "applicationCategory": "MusicApplication",

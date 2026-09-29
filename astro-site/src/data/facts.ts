@@ -50,4 +50,4 @@ export const PLUGIN = {
   creates: 'Drums, one-shots, melodic loops, basslines, vocal chops, hooks and ad-libs, FX and textures, in any key and BPM',
 };
 
-export const ORG_ID = `${SITE_URL}/about/#organization`;
+export const ORG_ID = `${SITE_URL}/#organization`;

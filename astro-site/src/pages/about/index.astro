@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import "../../styles/home-editorial.css";
 import "../../styles/home-v2.css";
+import { ORG_ID } from '../../data/facts';
 
 const faqs = [
     {
@@ -83,7 +84,7 @@ const keyFacts = [
     },
 ];
 
-const orgId = "https://sonurastudio.com/#organization";
+const orgId = ORG_ID;
 
 const jsonLd = [
     {
@@ -105,7 +106,7 @@ const jsonLd = [
             {
                 "@type": "Person",
                 name: "Kindred Salway",
-                jobTitle: "Co-founder",
+                jobTitle: "Co-founder & CEO",
                 sameAs: [
                     "https://www.linkedin.com/in/kindred-salway-8a05b6240/",
                     "https://x.com/kindredsalway",

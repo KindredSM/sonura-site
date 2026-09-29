@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { DAW_LOGOS } from '../../data/dawLogos';
-import { PLANS, PLUGIN, RIGHTS } from '../../data/facts';
+import { ORG_ID, PLANS, PLUGIN, RIGHTS } from '../../data/facts';
 
 const PLUGIN_MANIFEST_URL = 'https://audio.sonurastudio.com/plugin/latest/manifest.json';
 // Browser-facing version source: audio.sonurastudio.com (R2) sends no CORS headers, so the
@@ -73,6 +73,7 @@ const jsonLd = [
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "Sonura Flow",
+    "publisher": { "@id": ORG_ID },
     "url": "https://sonurastudio.com/plugin/",
     "downloadUrl": [MAC_URL, WIN_URL, WIN_ZIP_URL],
     "installUrl": "https://sonurastudio.com/plugin/",
@@ -109,6 +110,7 @@ const jsonLd = [
     "contentUrl": TUTORIAL_URL,
     "publisher": {
       "@type": "Organization",
+      "@id": ORG_ID,
       "name": "Sonura Studio",
       "url": "https://sonurastudio.com/"
     }

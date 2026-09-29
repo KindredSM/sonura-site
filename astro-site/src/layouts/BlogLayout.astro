@@ -1,5 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import { ORG_ID } from '../data/facts';
 
 interface Props {
   title: string;
@@ -44,6 +45,7 @@ const jsonLd = [
     "author": { "@type": "Person", "name": author, "url": "https://sonurastudio.com/about/" },
     "publisher": {
       "@type": "Organization",
+      "@id": ORG_ID,
       "name": "Sonura",
       "logo": { "@type": "ImageObject", "url": "https://sonurastudio.com/demo-image.jpeg" }
     },
