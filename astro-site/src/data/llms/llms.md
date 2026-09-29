@@ -2,6 +2,8 @@
 
 > The AI studio for music production. Royalty-free beats, loops, vocals, stems, one-shots, and full tracks, all in one place.
 
+Last updated: {{updated}}
+
 ## Overview
 
 Sonura (https://sonurastudio.com) is the AI studio for music production. Users describe music in natural language and Sonura generates studio-quality output for producer workflows, including beats, loops, samples, vocals, stems, and full tracks.
@@ -33,12 +35,7 @@ Sonura (https://sonurastudio.com) is the AI studio for music production. Users d
 
 ## Pricing
 
-Monthly prices below; annual billing saves 20% (Starter $8/mo, Pro $15/mo, Max $35/mo).
-
-- Free: $0, no credit card. 20 creation credits on signup plus daily free credits: around 10 4-bar loops, 20 one-shots and fx, or 2 full tracks. Free creations are released as public domain (CC0); upgrade to a paid plan to keep them exclusively yours.
-- Starter: $10/month - 400 creation credits/month: around 200 4-bar loops, 400 one-shots and fx, or 55 full tracks. Makes your creations exclusively yours rather than public domain, and upgrades downloads to high quality.
-- Pro: $20/month - 1,000 creation credits/month: around 500 4-bar loops, 1,000 one-shots and fx, or 140 full tracks. Adds priority 24/7 support and early access to new features. Most popular plan.
-- Max: $45/month - 2,500 creation credits/month: around 1,250 4-bar loops, 2,500 one-shots and fx, or 355 full tracks. Adds one-to-one support calls, early access to new features, and custom feature requests.
+{{pricing}}
 
 Stem export, one-click mixing, and the DAW plugin are on every plan including free. What paid plans add is EXCLUSIVITY: free-tier creations are public domain (CC0), paid-tier creations are exclusively yours. Paid plans also upgrade download quality from standard to high. No royalty splits on any plan, your content stays private, and there are no contracts.
 
