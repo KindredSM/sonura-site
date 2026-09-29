@@ -1,0 +1,299 @@
+---
+import BlogLayout from '../../../layouts/BlogLayout.astro';
+
+const VERIFIED = '29 September 2026';
+
+interface Plugin {
+  id: string;
+  name: string;
+  vendor: string;
+  does: string;
+  formats: string;
+  price: string;
+  textToAudio: boolean;
+  bestFor: string;
+  body: string;
+  source: string;
+}
+
+const groups: { id: string; title: string; intro: string; plugins: Plugin[] }[] = [
+  {
+    id: 'create-audio',
+    title: 'Create new audio from a text prompt',
+    intro: 'The newest category: describe a sound and get new audio back, rather than searching a library for something close.',
+    plugins: [
+      {
+        id: 'sonura-flow',
+        name: 'Sonura Flow',
+        vendor: 'Sonura',
+        does: 'Creates drums, one-shots, loops, basslines, vocal chops and FX from a text description, inside the DAW',
+        formats: 'VST3, AU. Mac and Windows',
+        price: 'Free to download with free credits. Plans from $10/month',
+        textToAudio: true,
+        bestFor: 'Producers who want new, original sounds without leaving the session',
+        body: 'Sonura Flow sits on a track in Ableton Live, FL Studio, Logic Pro, Studio One, Bitwig, Cubase or Reaper. Type what you need, such as a dusty 90 BPM drum loop or a breathy vocal chop in F minor, and drag the result onto the timeline. The same account works in the Sonura browser studio, where full tracks come back as separate stems. Free-plan creations are public domain (CC0), and any paid plan makes them exclusively yours. We make Sonura, so weigh this pick accordingly.',
+        source: 'https://sonurastudio.com/plugin/',
+      },
+      {
+        id: 'text-to-sample',
+        name: 'Text-to-Sample',
+        vendor: 'Text-to-Sample',
+        does: 'Turns a text prompt into 5 to 30 second samples',
+        formats: 'VST3, AU, standalone. Cloud mode on Mac and Windows, offline mode on Apple Silicon only',
+        price: 'Cloud credit packs from $12.99. Offline version $79.99 launch price',
+        textToAudio: true,
+        bestFor: 'Mac producers who want an offline option',
+        body: 'Text-to-Sample focuses on short samples rather than full loops or stems. Its offline mode runs on Apple Silicon Macs without an internet connection, which is rare in this category. Windows users get the cloud version, which runs on credits.',
+        source: 'https://www.text-to-sample.com/',
+      },
+      {
+        id: 'waves-illugen',
+        name: 'Waves ILLUGEN 2.0',
+        vendor: 'Waves',
+        does: 'Creates one-shots, loops and SFX from a text prompt on Waves servers',
+        formats: 'Standalone desktop app, not a DAW plugin',
+        price: 'Credit-based subscription, 1 to 7 credits per prompt',
+        textToAudio: true,
+        bestFor: 'Single samples with Lock to Key and loop-length controls',
+        body: 'ILLUGEN is not a plugin, so you create in its own app and drag files into your DAW. Version 2.0 added Lock to Key, loop length and stereo controls. It creates individual samples, not multi-layer arrangements. Our <a href="/blog/waves-illugen-vs-sonura/" class="text-link">ILLUGEN vs Sonura comparison</a> goes deeper.',
+        source: 'https://www.waves.com/illugen/faq',
+      },
+    ],
+  },
+  {
+    id: 'find-samples',
+    title: 'Find and reshape existing samples',
+    intro: 'These use AI to search or vary a catalog of recorded sounds. The sounds are shared with every other user of the service.',
+    plugins: [
+      {
+        id: 'splice',
+        name: 'Splice Sounds Plugin and INSTRUMENT',
+        vendor: 'Splice',
+        does: 'Browses the Splice catalog in your DAW, with Variations to create new versions of a sample. INSTRUMENT turns samples into playable instruments',
+        formats: 'AU, VST3, AAX. INSTRUMENT also standalone. Mac and Windows',
+        price: 'Sounds from $4.99/month plus credits. INSTRUMENT $12.99/month or free tier',
+        textToAudio: false,
+        bestFor: 'Producers who want curated, recorded sounds',
+        body: 'The Sounds Plugin is in beta and brings the Splice library into the session, matched to your project. Splice describes its AI as a way to shape human-made sounds rather than replace them, so you are still choosing from a shared catalog. See our <a href="/alternatives/splice-alternative/" class="text-link">Splice alternative breakdown</a>.',
+        source: 'https://splice.com/tools/sounds-plugin',
+      },
+      {
+        id: 'output-co-producer',
+        name: 'Output Co-Producer',
+        vendor: 'Output',
+        does: 'Finds royalty-free samples that match your track, with a Re-imagine feature for variations',
+        formats: 'Plugin for Mac and Windows',
+        price: 'Subscription, also part of Output One',
+        textToAudio: false,
+        bestFor: 'Finding a sample that already fits your key and tempo',
+        body: 'Co-Producer listens to your track and suggests samples that fit it. It is a finder, not a creator, but it is fast at getting a matching sound into the session.',
+        source: 'https://output.com/products/co-producer',
+      },
+    ],
+  },
+  {
+    id: 'mix-master',
+    title: 'Mixing and mastering assistants',
+    intro: 'Plugins that listen to your audio and suggest settings. They do not create sounds.',
+    plugins: [
+      {
+        id: 'ozone',
+        name: 'iZotope Ozone 12 Advanced',
+        vendor: 'iZotope',
+        does: 'Master Assistant builds a custom mastering chain for your track',
+        formats: 'VST3, AU, AAX, standalone. Mac and Windows',
+        price: '$499, or in the iZotope subscription',
+        textToAudio: false,
+        bestFor: 'A strong mastering starting point',
+        body: 'The Master Assistant analyses the mix and sets EQ, dynamics, imaging and loudness as a starting chain you then adjust.',
+        source: 'https://www.izotope.com/en/products/ozone.html',
+      },
+      {
+        id: 'neutron',
+        name: 'iZotope Neutron 5',
+        vendor: 'iZotope',
+        does: 'Mix Assistant builds a custom signal chain for a track',
+        formats: 'VST3, AU, AAX. Mac and Windows',
+        price: '$299, Elements edition $55',
+        textToAudio: false,
+        bestFor: 'Getting individual tracks balanced quickly',
+        body: 'Neutron applies the same assistant idea to single tracks and buses, with EQ, compression and masking tools.',
+        source: 'https://www.izotope.com/en/products/neutron.html',
+      },
+      {
+        id: 'smart-eq',
+        name: 'sonible smart:EQ 4',
+        vendor: 'sonible',
+        does: 'Corrects spectral problems and balances tone, across several channels at once',
+        formats: 'VST, VST3, AAX. AU on Mac',
+        price: '$109 list',
+        textToAudio: false,
+        bestFor: 'Fast corrective EQ across a group of tracks',
+        body: 'smart:EQ learns the track and applies a corrective curve, and its group mode balances several channels against each other.',
+        source: 'https://www.sonible.com/smarteq4/',
+      },
+    ],
+  },
+  {
+    id: 'midi-ideas',
+    title: 'MIDI and patch ideas',
+    intro: 'Tools that write notes or synth patches for you to play through your own instruments.',
+    plugins: [
+      {
+        id: 'synplant',
+        name: 'Sonic Charge Synplant 2',
+        vendor: 'Sonic Charge',
+        does: 'Genopatch builds a synth patch that recreates an audio sample',
+        formats: 'Mac: VST, VST3, AU, standalone. Windows: VST, VST3',
+        price: '€149',
+        textToAudio: false,
+        bestFor: 'Turning a sound you like into a playable synth patch',
+        body: 'Synplant runs offline and is built for sound design rather than composition.',
+        source: 'https://soniccharge.com/synplant',
+      },
+      {
+        id: 'magenta',
+        name: 'Magenta Studio 2.0',
+        vendor: 'Google',
+        does: 'Five MIDI tools: Continue, Generate, Interpolate, Groove and Drumify',
+        formats: 'Max for Live, needs Ableton Live 10.1 Suite or later',
+        price: 'Free',
+        textToAudio: false,
+        bestFor: 'Ableton Suite users who want free MIDI ideas',
+        body: 'Magenta works on MIDI clips inside Ableton, so it suits sketching drum grooves and melodic variations.',
+        source: 'https://magenta.tensorflow.org/studio',
+      },
+      {
+        id: 'captain',
+        name: 'Captain Plugins Epic 7',
+        vendor: 'Mixed In Key',
+        does: 'Five linked plugins that write chords, melodies, basslines and drums',
+        formats: 'Plugin for Mac and Windows',
+        price: 'One-time payment',
+        textToAudio: false,
+        bestFor: 'Songwriting help with chord progressions',
+        body: 'Captain writes MIDI you then play through your own instruments, which keeps full control over sound choice.',
+        source: 'https://mixedinkey.com/captain-plugins/version-7/',
+      },
+      {
+        id: 'landr-composer',
+        name: 'LANDR Composer',
+        vendor: 'LANDR',
+        does: 'Creates chords, melodies, basslines and arpeggios as MIDI. Replaces the discontinued Orb Producer Suite',
+        formats: 'VST3, AU, AAX. Mac and Windows',
+        price: 'Standalone purchase or LANDR Studio from $8.25/month',
+        textToAudio: false,
+        bestFor: 'Former Orb users and quick MIDI sketches',
+        body: 'Orb Producer Suite is no longer updated, and its site now points to LANDR Composer.',
+        source: 'https://www.landr.com/plugins/producer-suite-3',
+      },
+    ],
+  },
+];
+
+const all = groups.flatMap((g) => g.plugins);
+
+const toc = [
+  { id: 'quick-picks', label: 'Quick picks' },
+  ...groups.map((g) => ({ id: g.id, label: g.title })),
+  { id: 'sources', label: 'Sources' },
+  { id: 'faq', label: 'FAQ' },
+];
+
+const faqs = [
+  {
+    question: 'What is the best AI plugin for music production in 2026?',
+    answer: 'It depends on the job. To create new sounds from a text prompt inside a DAW, Sonura Flow is free to download and works as VST3 and AU in Ableton Live, FL Studio and Logic Pro. For mastering, iZotope Ozone Master Assistant is the standard. For free MIDI ideas in Ableton, Google Magenta Studio.',
+  },
+  {
+    question: 'Is there an AI plugin that creates sounds from text inside my DAW?',
+    answer: 'Yes. Sonura Flow and Text-to-Sample both run as VST3 and AU plugins and turn a text prompt into new audio. Waves ILLUGEN also creates audio from text, but it is a standalone app rather than a plugin.',
+  },
+  {
+    question: 'What is the best AI plugin for FL Studio?',
+    answer: 'For creating new drums, loops and vocals, Sonura Flow loads as a VST3 in FL Studio on Mac and Windows. For mixing, iZotope Neutron and sonible smart:EQ both run in FL Studio.',
+  },
+  {
+    question: 'Are there free AI plugins for producers?',
+    answer: 'Sonura Flow is free to download and starts with free credits. Google Magenta Studio is free for Ableton Live Suite users. Splice INSTRUMENT has a free tier.',
+  },
+  {
+    question: 'Can I use sounds from AI plugins commercially?',
+    answer: 'Check each license. Sonura Flow sounds are royalty-free on every plan: public domain (CC0) on the free plan, exclusively yours on any paid plan. Catalog tools like Splice license shared sounds under their own terms.',
+  },
+];
+---
+
+<BlogLayout
+  title="Best AI Plugins for Music Producers (2026): FL Studio, Ableton & Logic"
+  description={`The best AI plugins for producers in 2026, grouped by job: creating sounds from text, finding samples, mixing and mastering, and MIDI ideas. Formats and prices checked ${VERIFIED}.`}
+  keywords="best ai plugins, ai vst plugin, ai plugin fl studio, ai plugin ableton, ai plugin logic pro, text to sample plugin, ai music plugin, best ai plugins for producers"
+  slug="best-ai-plugins-for-producers"
+  publishedDate="2026-09-29"
+  readTime="7 min read"
+  h1="Best AI Plugins for Music Producers in 2026"
+  toc={toc}
+  faqs={faqs}
+>
+  <div style="line-height: 1.8;">
+    <p style="margin-bottom: 24px;">AI plugins now do four different jobs: create new audio from a prompt, find samples in a catalog, suggest mix and master settings, and write MIDI. Most roundups mix these together. This one groups them by job, so you can pick the right tool for the part of the session you are stuck on. Formats and prices were checked on {VERIFIED}.</p>
+
+    <section id="quick-picks" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Quick picks</h2>
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 15px; line-height: 1.6;">
+          <thead>
+            <tr style="text-align: left; border-bottom: 1px solid var(--hairline);">
+              <th style="padding: 10px 12px 10px 0;">Plugin</th>
+              <th style="padding: 10px 12px;">What it does</th>
+              <th style="padding: 10px 12px;">Formats</th>
+              <th style="padding: 10px 12px;">Price</th>
+              <th style="padding: 10px 0 10px 12px;">Text to audio</th>
+            </tr>
+          </thead>
+          <tbody style="color: var(--muted);">
+            {all.map((p) => (
+              <tr style="border-bottom: 1px solid var(--border-light); vertical-align: top;">
+                <td style="padding: 10px 12px 10px 0; color: var(--fg);"><a href={`#${p.id}`} style="color: inherit;">{p.name}</a></td>
+                <td style="padding: 10px 12px;">{p.does}</td>
+                <td style="padding: 10px 12px;">{p.formats}</td>
+                <td style="padding: 10px 12px;">{p.price}</td>
+                <td style="padding: 10px 0 10px 12px;">{p.textToAudio ? 'Yes' : 'No'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    {groups.map((group) => (
+      <section id={group.id} style="margin-bottom: 48px;">
+        <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 16px; margin-top: 48px;">{group.title}</h2>
+        <p style="margin-bottom: 24px; color: var(--muted);">{group.intro}</p>
+        {group.plugins.map((p) => (
+          <div id={p.id} style="margin-bottom: 32px;">
+            <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 8px;">{p.name} <span style="color: var(--muted); font-weight: 500; font-size: 16px;">by {p.vendor}</span></h3>
+            <p style="margin-bottom: 12px;" set:html={p.body} />
+            <p style="margin-bottom: 0; color: var(--muted);"><strong style="color: var(--fg);">Best for:</strong> {p.bestFor}. <strong style="color: var(--fg);">Price:</strong> {p.price}.</p>
+          </div>
+        ))}
+      </section>
+    ))}
+
+    <section id="sources" style="margin-bottom: 48px;">
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 16px; margin-top: 48px;">Sources</h2>
+      <p style="margin-bottom: 16px; color: var(--muted);">Checked on {VERIFIED}. Prices change often, so confirm on the vendor page before buying.</p>
+      <ul style="padding-left: 20px; color: var(--muted);">
+        {all.map((p) => (
+          <li><a href={p.source} rel="nofollow noopener" target="_blank" style="color: var(--muted);">{p.name}</a></li>
+        ))}
+      </ul>
+    </section>
+
+    <div style="padding: 32px; margin-top: 48px; text-align: center;">
+      <h3 style="font-size: 24px; font-weight: 700; line-height: 1.3; margin: 0 0 16px;">Create New Sounds Inside Your DAW</h3>
+      <p style="margin-bottom: 24px; color: var(--muted);">Sonura Flow is free to download for Mac and Windows, with free credits to start.</p>
+      <a href="/plugin/" class="button primary large"><span class="btn-label-full">Get Sonura Flow</span><span class="btn-label-short">Get the plugin</span></a>
+    </div>
+  </div>
+</BlogLayout>
