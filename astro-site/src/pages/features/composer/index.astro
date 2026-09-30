@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import QuickAnswer from '../../../components/QuickAnswer.astro';
 import { ORG_ID, PLANS, RIGHTS, SITE_URL } from '../../../data/facts';
 
 // Every capability on this page maps to an action Composer can take in the app
@@ -11,27 +10,25 @@ const canonical = `${SITE_URL}/features/composer/`;
 const title = 'Composer | AI Co-Producer for Music Production - Sonura';
 const description = 'Composer is the AI co-producer in your Sonura session. Ask it to set the key, write a melody or add a section, and it edits the track.';
 
-const quickAnswer = 'Composer is the agent inside every Sonura session. Ask for a change in plain language, such as putting the track in F minor, writing a bell melody over the drums or adding an 8-bar breakdown, and it edits the project. Chat is free. The parts it creates use your Sonura credits.';
-
 const showcase = [
   {
     id: 'key',
     title: 'Set the key.',
-    copy: 'Type the key and every new part follows it. Move one part by an interval, or only the bars you name.',
+    copy: 'Type the key and every new part follows it. One line instead of retuning each part by hand.',
     image: '/images/composer-key.webp',
     alt: 'Composer panel: "Put it in F minor" and the reply "Set the key to F minor."',
   },
   {
     id: 'melody',
     title: 'Write the missing part.',
-    copy: 'Say what is missing and Composer writes it in, styled to the track. Not right? Redo just that section.',
+    copy: 'Say what is missing and Composer writes it in, styled to what is already playing. Redo it in one line if it is not the one.',
     image: '/images/composer-melody.webp',
     alt: 'Composer panel proposing a haunting bell melody and reverse bell swells, with a Build 2 parts button',
   },
   {
     id: 'structure',
     title: 'Rework the structure.',
-    copy: 'Add a section and everything after it moves. Lengthen the intro, shorten the drop, delete the verse.',
+    copy: 'Add a breakdown before the last chorus and everything after it shifts to make room. No dragging clips around.',
     image: '/images/composer-structure.webp',
     alt: 'Composer panel: "Add an 8-bar breakdown before the last chorus" and the reply "Added an 8-bar Breakdown."',
   },
@@ -516,12 +513,9 @@ const jsonLd = [
       <p class="final-cta-subtitle reveal" data-reveal-delay="0.06s">Free to start. Free-plan creations are CC0, and every paid plan makes them exclusively yours.</p>
       <div class="final-cta-form reveal" data-reveal-delay="0.12s">
         <a class="button primary large" href={appUrl} data-composer-cta="final">Open a session</a>
-        <a class="button secondary large" href="/plugin/"><span class="btn-label-full">Make sounds inside your DAW</span><span class="btn-label-short">Get the plugin</span></a>
       </div>
     </div>
   </section>
-
-  <QuickAnswer text={quickAnswer} />
 
   <script>
     // The demo is silent, so it may autoplay. Browsers that defer autoplay
