@@ -143,6 +143,48 @@ const jsonLd = [
       word-spacing: 0.04em;
     }
 
+    /* in-session demo, same shape as the plugin page */
+    .cp-demo {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
+      gap: 48px;
+      align-items: center;
+    }
+
+    .demo-copy { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+
+    .demo-copy h2 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(32px, 4.8vw, 60px);
+      line-height: 1;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--fg);
+    }
+
+    .demo-copy p:last-child {
+      margin: 0;
+      max-width: 410px;
+      font-size: 16px;
+      color: var(--muted);
+      letter-spacing: 0.022em;
+      word-spacing: 0.04em;
+      line-height: 1.8;
+    }
+
+    .demo-frame {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--hairline);
+      aspect-ratio: 1440 / 900;
+      max-width: 100%;
+      background: var(--bg);
+    }
+
+    .demo-frame video { display: block; width: 100%; height: 100%; object-fit: cover; }
+
     /* showcase, same grid as the plugin page bento */
     .bento {
       display: grid;
@@ -396,6 +438,11 @@ const jsonLd = [
       .related-grid { grid-template-columns: repeat(3, 1fr); }
     }
 
+    @media (max-width: 900px) {
+      .cp-demo { grid-template-columns: 1fr; gap: 32px; }
+      .demo-copy p:last-child { max-width: 560px; }
+    }
+
     @media (max-width: 1100px) {
       .bento { grid-template-columns: 1fr 1fr; gap: 48px 32px; }
       .card-shot { height: 280px; }
@@ -420,6 +467,28 @@ const jsonLd = [
     <div class="cp-actions reveal" data-reveal-delay="0.12s">
       <a class="button primary" href={appUrl} data-composer-cta="hero">Open a session</a>
       <a class="hero-beta-link" href="/features/">All Features →</a>
+    </div>
+  </section>
+
+  <section class="feature-section cp-demo" aria-labelledby="demo-title">
+    <div class="demo-copy">
+      <p class="section-kicker">In session</p>
+      <h2 id="demo-title" class="reveal">Ask, then hear it.</h2>
+      <p class="reveal" data-reveal-delay="0.06s">Three asks in one take: a new key, a bell melody, an 8-bar breakdown. Composer replies and the timeline changes behind it.</p>
+    </div>
+    <div class="demo-frame reveal" data-reveal-delay="0.1s">
+      <video
+        aria-label="Composer changing the key, writing a melody and adding a breakdown in a Sonura session"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        width="1440"
+        height="900"
+      >
+        <source src="/videos/composer-demo.mp4" type="video/mp4" />
+      </video>
     </div>
   </section>
 
