@@ -57,7 +57,7 @@ const related = [
 ];
 
 const faqs = [
-  { question: 'What is an AI co-producer?', answer: 'An AI co-producer is an agent that works inside your session rather than handing you a finished file. Composer reads the tracks, sections, key and tempo in your Sonura project and makes the change you ask for: setting the key, writing a part, inserting a section or adjusting the mix. It speeds up the process. The decisions about what the track should be stay with you.' },
+  { question: 'What is an AI co-producer?', answer: 'An AI co-producer is AI for music production that works inside your session rather than handing you a finished file. Composer reads the tracks, sections, key and tempo in your Sonura project and makes the change you ask for: setting the key, writing a part, inserting a section or adjusting the mix. It speeds up the process. The decisions about what the track should be stay with you.' },
   { question: 'Can Composer change the key of my song?', answer: 'Yes. Ask for a key and Composer sets it for the project, so every part written after that follows it. To move a part you already have, name it and the interval: "drop the vocal a third" or "octave up the bass". You can limit that to a bar range, such as the second half of the drop.' },
   { question: 'Do I need a DAW?', answer: 'No. Composer works in the Sonura browser studio, which has its own timeline, sections and mixer, so it behaves like an AI DAW without the setup. If you already produce in a DAW, export the stems with <a href="/features/stem-export/">stem export</a>, or create sounds inside your session with the <a href="/plugin/">Sonura Flow</a> plugin.' },
   { question: 'Do I own the result?', answer: RIGHTS.commercial },
@@ -407,7 +407,7 @@ const jsonLd = [
       <span class="h1-row">Make music</span>
       <span class="h1-row">by asking for it</span>
     </h1>
-    <p class="cp-sub reveal" data-reveal-delay="0.08s">Start with a prompt or your own track. Ask for a new key, a melody or the next section. Royalty-free.</p>
+    <p class="cp-sub reveal" data-reveal-delay="0.08s">Start with a prompt. Ask for a new key, a melody or the next section. Move from idea to track faster.</p>
     <div class="cp-actions reveal" data-reveal-delay="0.12s">
       <a class="button primary" href={appUrl} data-composer-cta="hero">Open a session</a>
       <a class="hero-beta-link" href="/features/">All Features →</a>
@@ -418,19 +418,22 @@ const jsonLd = [
     <div class="demo-copy">
       <p class="section-kicker">In session</p>
       <h2 id="demo-title" class="reveal">Ask, then hear it.</h2>
-      <p class="reveal" data-reveal-delay="0.06s">Three asks in one take: a new key, a bell melody, an 8-bar breakdown. Composer replies and the timeline changes behind it.</p>
+      <p class="reveal" data-reveal-delay="0.06s">Every ask lands in context, because Composer reads what is already on the timeline. No menus to learn, no exports, and undo if you change your mind.</p>
     </div>
     <div class="demo-frame reveal" data-reveal-delay="0.1s">
       <video
+        id="composer-demo"
         aria-label="Composer changing the key, writing a melody and adding a breakdown in a Sonura session"
         autoplay
         muted
         loop
         playsinline
         preload="metadata"
+        poster="/videos/composer-demo-poster.jpg"
         width="1440"
         height="900"
       >
+        <source src="/videos/composer-demo.webm" type="video/webm" />
         <source src="/videos/composer-demo.mp4" type="video/mp4" />
       </video>
     </div>
@@ -439,7 +442,7 @@ const jsonLd = [
   <section class="feature-section" aria-labelledby="showcase-title">
     <p class="section-kicker">Capabilities</p>
     <h2 id="showcase-title" class="workflow-title reveal">Your co-producer, inside the session</h2>
-    <p class="section-sub">Composer reads what is already in the project and makes the change you asked for.</p>
+    <p class="section-sub">Three of the things producers ask for most.</p>
     <div class="bento">
       {showcase.map((card, index) => (
         <article class="bento-card reveal" data-reveal-delay={`${0.06 * index}s`} data-showcase={card.id}>
@@ -457,8 +460,8 @@ const jsonLd = [
 
   <section class="feature-section" aria-labelledby="how-title">
     <p class="section-kicker">How it works</p>
-    <h2 id="how-title" class="workflow-title reveal">AI for music production, inside one session</h2>
-    <p class="section-sub">Composer and the timeline share one project. A change in chat is a change on the track.</p>
+    <h2 id="how-title" class="workflow-title reveal">Say what you hear in your head</h2>
+    <p class="section-sub">No theory required and nothing to export. Describe the change, keep listening, and open the timeline whenever you want to take over.</p>
     <div class="steps-list">
       {steps.map((step, index) => (
         <div class="step-row reveal" data-reveal-delay={`${0.08 * index}s`}>
@@ -522,6 +525,21 @@ const jsonLd = [
   <QuickAnswer text={quickAnswer} />
 
   <script>
+    // The demo is silent, so it may autoplay. Browsers that defer autoplay
+    // (data saver, some mobile settings) get a play() call once it is in view.
+    const demo = document.getElementById('composer-demo') as HTMLVideoElement | null;
+    if (demo) {
+      demo.muted = true;
+      const tryPlay = () => { demo.play().catch(() => {}); };
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver((entries, io) => {
+          if (entries.some((e) => e.isIntersecting)) { tryPlay(); io.disconnect(); }
+        }, { threshold: 0.25 }).observe(demo);
+      } else {
+        tryPlay();
+      }
+    }
+
     // PostHog gets a direct capture, matching plugin_download on /plugin/.
     // source identifies the page; cta_location tells the two buttons apart.
     document.querySelectorAll<HTMLAnchorElement>('[data-composer-cta]').forEach((link) => {
