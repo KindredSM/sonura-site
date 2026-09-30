@@ -13,38 +13,27 @@ const description = 'Composer is the AI co-producer in your Sonura session. Ask 
 
 const quickAnswer = 'Composer is the agent inside every Sonura session. Ask for a change in plain language, such as putting the track in F minor, writing a bell melody over the drums or adding an 8-bar breakdown, and it edits the project. Chat is free. The parts it creates use your Sonura credits.';
 
-// TODO(blue): swap each placeholder mock for the supplied panel image.
-// Expected files: /public/images/composer-key.webp, composer-melody.webp, composer-structure.webp
 const showcase = [
   {
     id: 'key',
     title: 'Set the key.',
     copy: 'Type "put it in F minor" and every new part follows. Ask for "drop the vocal an octave in the second half" and only those bars move.',
-    prompt: 'put it in F minor',
-    reply: 'Done. Set the key to F minor.',
-    outcome: 'Project key changed. New parts will be written in F minor.',
     image: '/images/composer-key.webp',
-    alt: 'Composer setting a Sonura project to F minor from a chat message',
+    alt: 'Composer panel: "Put it in F minor" and the reply "Set the key to F minor."',
   },
   {
     id: 'melody',
     title: 'Write the missing part.',
     copy: 'Say "a haunting bell melody over the drums" and Composer writes it into the arrangement. Not right? "Redo the melody in the drop" replaces just that range.',
-    prompt: 'a haunting bell melody over the drums',
-    reply: 'Adding a bell melody that sits above the kit.',
-    outcome: 'Melody, 4 bars, loop. Ready to generate.',
     image: '/images/composer-melody.webp',
-    alt: 'Composer proposing a bell melody as a new part in a Sonura session',
+    alt: 'Composer panel proposing a haunting bell melody and reverse bell swells, with a Build 2 parts button',
   },
   {
     id: 'structure',
     title: 'Rework the structure.',
     copy: '"Add an 8-bar breakdown before the last chorus" inserts a section and moves everything after it. "Make the intro 16 bars" stretches it.',
-    prompt: 'add an 8-bar breakdown before the last chorus',
-    reply: 'Done. Breakdown added before the final chorus.',
-    outcome: 'Intro / Verse / Chorus / Breakdown / Chorus',
     image: '/images/composer-structure.webp',
-    alt: 'Composer inserting a breakdown section into a Sonura arrangement',
+    alt: 'Composer panel: "Add an 8-bar breakdown before the last chorus" and the reply "Added an 8-bar Breakdown."',
   },
 ];
 
@@ -219,7 +208,7 @@ const jsonLd = [
 
     .card-shot {
       position: relative;
-      height: 320px;
+      aspect-ratio: 1136 / 646;
       overflow: hidden;
       margin-top: auto;
       border: 1px solid var(--hairline);
@@ -229,57 +218,14 @@ const jsonLd = [
     .card-shot img {
       display: block;
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
       filter: grayscale(0.5) contrast(1.08);
       transition: filter 0.3s ease;
     }
 
     .bento-card:hover .card-shot img { filter: none; }
-
-    /* placeholder chat mock, shown until the panel images land */
-    .chat-mock {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      height: 100%;
-      padding: 22px;
-      font-size: 13px;
-      line-height: 1.6;
-      letter-spacing: 0.02em;
-    }
-
-    .chat-mock-label {
-      margin: 0 0 4px;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--faint);
-    }
-
-    .chat-bubble {
-      margin: 0;
-      max-width: 88%;
-      padding: 10px 14px;
-      border: 1px solid var(--border-light);
-      color: var(--fg);
-    }
-
-    .chat-bubble.user {
-      align-self: flex-end;
-      border-color: var(--primary);
-      color: var(--fg);
-    }
-
-    .chat-bubble.ai { align-self: flex-start; color: var(--muted); }
-
-    .chat-outcome {
-      margin: auto 0 0;
-      padding-top: 12px;
-      border-top: 1px solid var(--border);
-      color: var(--faint);
-      font-size: 12px;
-    }
 
     /* how it works */
     .steps-list { display: flex; flex-direction: column; border-bottom: 1px solid var(--hairline); }
@@ -445,12 +391,10 @@ const jsonLd = [
 
     @media (max-width: 1100px) {
       .bento { grid-template-columns: 1fr 1fr; gap: 48px 32px; }
-      .card-shot { height: 280px; }
     }
 
     @media (max-width: 640px) {
       .bento { grid-template-columns: 1fr; gap: 44px; }
-      .card-shot { height: 300px; }
       .step-row { grid-template-columns: 1fr; gap: 8px; }
       .step-index { margin-bottom: 4px; }
       .usecase-card, .related-card { padding: 24px; }
@@ -504,13 +448,7 @@ const jsonLd = [
             <p>{card.copy}</p>
           </div>
           <div class="card-shot">
-            {/* TODO(blue): replace the mock below with <img src={card.image} alt={card.alt} width="800" height="1189" loading="lazy" /> */}
-            <div class="chat-mock" aria-label={card.alt}>
-              <p class="chat-mock-label">Composer</p>
-              <p class="chat-bubble user">{card.prompt}</p>
-              <p class="chat-bubble ai">{card.reply}</p>
-              <p class="chat-outcome">{card.outcome}</p>
-            </div>
+            <img src={card.image} alt={card.alt} width="1136" height="646" loading="lazy" />
           </div>
         </article>
       ))}
