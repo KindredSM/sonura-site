@@ -4,7 +4,6 @@ import QuickAnswer from '../../../components/QuickAnswer.astro';
 import { RIGHTS, PLUGIN } from '../../../data/facts';
 
 const toc = [
-  { id: 'before-you-start', label: 'Before you start' },
   { id: 'style-and-mood', label: '1. Pick a style and mood' },
   { id: 'tempo-and-key', label: '2. Choose a tempo and key' },
   { id: 'build-a-beat', label: '3. Build a beat' },
@@ -19,27 +18,27 @@ const toc = [
 ];
 
 const examplePrompts = [
-  { prompt: 'upbeat pop 120 bpm bright synths catchy chorus female vocal', description: 'A radio-style pop song with a sung hook. Good for a first try because the structure is familiar.' },
-  { prompt: 'lofi chill 80 bpm warm piano soft drums rainy night instrumental', description: 'A slow, relaxed instrumental. No vocals, so there is less to edit afterwards.' },
-  { prompt: 'trap dark 140 bpm heavy 808 bass minor key atmospheric', description: 'A modern hip-hop beat with deep bass. Leaves space if you want to rap or sing over it later.' },
+  { prompt: 'upbeat pop 120 bpm bright synths catchy chorus female vocal', description: 'A radio-style pop song with a sung hook.' },
+  { prompt: 'lofi chill 80 bpm warm piano soft drums rainy night instrumental', description: 'A slow, relaxed instrumental with no vocals.' },
+  { prompt: 'trap dark 140 bpm heavy 808 bass minor key atmospheric', description: 'A modern hip-hop beat with space to rap or sing over.' },
 ];
 
 const faqs = [
   {
     question: 'Can I make a song with no experience?',
-    answer: 'Yes. If you describe the song in plain words to an AI song maker, you get a finished track back with the parts separated, and you can learn by changing them. If you would rather build it yourself, start with a drum loop and a four-chord progression and add one thing at a time.',
+    answer: 'Yes. Describe the song in plain words to an AI song maker and you get a finished track back with the parts separated. If you would rather build it yourself, start with a drum loop and four chords and add one thing at a time.',
   },
   {
     question: 'Do I need to know music theory?',
-    answer: 'No. Music theory is the set of rules that explains why notes sound good together, and it helps, but most songs use a handful of common chord patterns you can copy by ear. AI tools let you describe a mood instead of naming a key.',
+    answer: 'No. Music theory explains why notes sound good together, and it helps, but most songs use a few common chord patterns you can copy by ear. AI tools let you describe a mood instead of naming a key.',
   },
   {
     question: 'How long does it take to make a song?',
-    answer: 'With an AI song maker, a first draft takes a few minutes and editing takes as long as you want to spend. Building a song by hand in a DAW usually takes a few hours for a rough version, and longer for a polished one. Your first song will take longer than your tenth.',
+    answer: 'With an AI song maker, a first draft takes minutes. Building a song by hand in a DAW usually takes a few hours for a rough version. Your first song will take longer than your tenth.',
   },
   {
     question: 'Can I make a song for free?',
-    answer: 'Yes. Sonura has a free plan with no credit card, and free DAWs like GarageBand and the free trial of most paid DAWs are enough to start. On the free plan, songs are released as public domain (CC0), which means anyone can use them. Paid plans make your songs exclusively yours.',
+    answer: 'Yes. Sonura has a free plan with no credit card, and GarageBand or the free trial of most DAWs is enough to start. On the free plan, songs are released as public domain (CC0), which means anyone can use them. Paid plans make your songs exclusively yours.',
   },
   {
     question: 'Can I sell a song I make with AI?',
@@ -59,70 +58,69 @@ const faqs = [
   slug="how-to-make-a-song"
   publishedDate="2026-09-30"
   modifiedDate="2026-09-30"
-  readTime="8 min read"
+  readTime="6 min read"
+  author="Blue Bookhard"
+  authorRole="Co-founder & COO, Sonura"
   toc={toc}
   faqs={faqs}
 >
-  <QuickAnswer text="To make a song, pick a style and mood, choose a tempo and key, build a beat, add chords and a melody, add vocals if you want them, arrange the parts into verses and a chorus, then mix and export. You can do all of it in a browser with an AI song maker, or step by step in a DAW." />
+  <div class="post-quick-answer">
+    <QuickAnswer text="To make a song, pick a style and mood, choose a tempo and key, build a beat, add chords and a melody, add vocals if you want them, arrange the parts into verses and a chorus, then mix and export. You can do all of it in a browser with an AI song maker, or step by step in a DAW." />
+  </div>
 
   <div style="line-height: 1.8;">
-    <p style="margin-bottom: 24px;">You do not need an instrument, a studio or any training to make a song. Every song is the same handful of parts put in order: a beat, some chords, a melody, maybe a voice, and a structure that repeats the good bits. This guide walks through those parts in the order you will actually build them.</p>
-    <p style="margin-bottom: 24px;">There are two ways to follow along. You can describe the song in plain words to an <a href="/tools/ai-song-maker/">AI song maker</a> and edit what comes back, or you can build each part yourself in music software. Both routes use the same seven steps, so read the steps first and then pick the route that suits you.</p>
-
-    <section id="before-you-start" style="margin-bottom: 48px;">
-      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Before you start: what a song is made of</h2>
-      <p style="margin-bottom: 24px;">A few words come up again and again, so here they are once. A <strong>beat</strong> is the drum pattern that keeps time. <strong>Chords</strong> are groups of notes played together that set the mood, and a <strong>melody</strong> is the single line of notes you would hum.</p>
-      <p style="margin-bottom: 24px;">A <strong>DAW</strong> (digital audio workstation) is the software people use to record and arrange music, such as Ableton Live, FL Studio or Logic Pro. <strong>Stems</strong> are the separate parts of a finished song, like drums, bass and vocals, each saved as its own audio file. If you know those five words, you can follow everything below.</p>
-    </section>
+    <p style="margin-bottom: 24px;">You don't need an instrument, a studio or formal training to make a great song. All you need is a creative vision and a unique take on the world. The rest is a handful of parts put in order, and this guide walks through them one at a time.</p>
+    <p style="margin-bottom: 24px;">There are two ways to follow along. You can describe the song in plain words to an <a href="/tools/ai-song-maker/">AI song maker</a> and edit what comes back, or you can build each part yourself in a DAW (digital audio workstation), the software people use to record and arrange music. Both routes use the same seven steps.</p>
 
     <section id="style-and-mood" style="margin-bottom: 48px;">
       <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Step 1: Pick a style and mood</h2>
-      <p style="margin-bottom: 24px;">Start with a decision, not a sound. Choose one genre, such as pop, lo-fi, trap, house or acoustic, and one feeling, such as happy, sad, calm or angry. Those two words will guide every choice that follows.</p>
-      <p style="margin-bottom: 24px;">A good shortcut is to name one existing song you want yours to feel like. You are not copying it. You are borrowing its energy so you have something to aim at when you are not sure what to do next.</p>
+      <p style="margin-bottom: 24px;">Start with a feeling, not a sound. It can be a colour, an emotion, a memory, a place. Music needs to come from something close to your heart, and that one idea will guide every choice that follows.</p>
+      <p style="margin-bottom: 24px;">Then pick a genre to carry it: pop, lo-fi, trap, house, acoustic, whatever fits. Naming one song you want yours to feel like helps too. You're not copying it, you're borrowing its energy.</p>
     </section>
 
     <section id="tempo-and-key" style="margin-bottom: 48px;">
       <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Step 2: Choose a tempo and key</h2>
-      <p style="margin-bottom: 24px;"><strong>Tempo</strong> is how fast the song goes, measured in beats per minute (BPM). Slow and relaxed songs sit around 70 to 90 BPM, most pop lands around 100 to 130, and dance music and trap run faster. If you named a reference song in step 1, <a href="/tools/bpm-tap/">tap along to find its tempo</a> and start there.</p>
-      <p style="margin-bottom: 24px;">The <strong>key</strong> is the family of notes the song uses. The only thing a beginner needs to know is that a <strong>major</strong> key tends to sound bright and a <strong>minor</strong> key tends to sound moody. Pick major or minor to match your mood word, and let the software or the AI handle the rest.</p>
+      <p style="margin-bottom: 24px;"><strong>Tempo</strong> is how fast the song goes, measured in beats per minute (BPM). Slow, relaxed songs sit around 70 to 90 BPM, most pop lands around 100 to 130, and dance music and trap run faster. If you have a reference song, <a href="/tools/bpm-tap/">tap along to find its tempo</a> and start there.</p>
+      <p style="margin-bottom: 24px;">The <strong>key</strong> is the family of notes the song uses. A major key sounds bright and a minor key sounds moody. Pick the one that matches your mood and let the software handle the rest.</p>
     </section>
 
     <section id="build-a-beat" style="margin-bottom: 48px;">
       <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Step 3: Build a beat or drum loop</h2>
-      <p style="margin-bottom: 24px;">The beat is the foundation, so most people build it first. The simplest pattern in the world is a kick drum on beats 1 and 3, a snare on beats 2 and 4, and a hi-hat ticking in between. Count "one, two, three, four" out loud and you already have it.</p>
-      <p style="margin-bottom: 24px;">A <strong>loop</strong> is a short section, usually two or four bars, that repeats. You only need one good loop to begin, because you will vary it later when you arrange the song. If you would rather not program drums by hand, an <a href="/tools/ai-beat-maker/">AI beat maker</a> can build the loop from a description like "punchy pop drums 120 bpm" and you can change it from there.</p>
+      <p style="margin-bottom: 24px;">The <strong>beat</strong> is the drum pattern that keeps time, and most people build it first. The simplest one is a kick on beats 1 and 3, a snare on 2 and 4, and a hi-hat ticking in between. Count "one, two, three, four" out loud and you already have it.</p>
+      <p style="margin-bottom: 24px;">A <strong>loop</strong> is a short section, usually two or four bars, that repeats. One good loop is enough to begin. If you'd rather not program drums by hand, an <a href="/tools/ai-beat-maker/">AI beat maker</a> can build one from a description like "punchy pop drums 120 bpm".</p>
     </section>
 
     <section id="chords-and-melody" style="margin-bottom: 48px;">
       <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Step 4: Add chords and a melody</h2>
-      <p style="margin-bottom: 24px;">Chords set the emotional tone. A huge share of popular songs use the same four-chord loop, so you can start there without feeling like a fraud. Play one chord per bar, repeat the four, and you have a progression that works under almost any melody.</p>
-      <p style="margin-bottom: 24px;">The melody is the part people remember, and the easiest way to find one is to hum over your chords and record your phone. Do not judge the first idea. Hum five, keep the one you are still humming an hour later, and play it back on any instrument sound in your software.</p>
-      <p style="margin-bottom: 24px;">A <strong>bass</strong> line usually just follows the lowest note of each chord. Keep it simple and let it lock in with the kick drum.</p>
+      <p style="margin-bottom: 24px;"><strong>Chords</strong> are notes played together that give a song its mood. A <strong>chord progression</strong> is a series of chords that gives the song life. Many songs use the same four-chord loop, so play one chord per bar, repeat the four, and you have a progression that works.</p>
+      <p style="margin-bottom: 24px;">A <strong>melody</strong> is the line of single notes that go together, the part you'd hum. The easiest way to find one is to hum over your chords and record it on your phone. Hum five, keep the one you're still humming an hour later.</p>
+      <p style="margin-bottom: 24px;">A <strong>bass line</strong> is the low part that usually follows the root note of each chord. Keep it simple and let it lock in with the kick drum.</p>
     </section>
 
     <section id="vocals-and-lyrics" style="margin-bottom: 48px;">
-      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Step 5: Add vocals or lyrics (optional)</h2>
-      <p style="margin-bottom: 24px;">Plenty of songs are instrumental, so you can skip this step. If you want words, write the chorus first. The chorus is the part that repeats, so it should say the one thing the song is about in the plainest language you can find.</p>
-      <p style="margin-bottom: 24px;">You do not need to be a singer. You can record a rough take on a phone to hear how the words sit on the melody, or use an <a href="/tools/ai-vocal-generator/">AI vocal generator</a> to create a hook or a sung line from text. Either way, keep the vocal in the same key as your chords.</p>
+      <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Step 5: Add vocals or lyrics</h2>
+      <p style="margin-bottom: 24px;">If you want to add words, write the chorus first. The chorus is the emotional peak of the song and the part people sing back the most. Everything else builds toward it and sits around it, so it should say the one thing the song is about in the plainest words you can find.</p>
+      <p style="margin-bottom: 24px;">You don't need to be a singer. Record a rough take on your phone to hear how the words sit on the melody, or use an <a href="/tools/ai-vocal-generator/">AI vocal generator</a> to create a hook or a sung line from text. Either way, keep the vocal in the same key as your chords.</p>
     </section>
 
     <section id="arrange" style="margin-bottom: 48px;">
       <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Step 6: Arrange the parts into intro, verse and chorus</h2>
-      <p style="margin-bottom: 24px;"><strong>Arrangement</strong> is the order the sections play in. A structure that works for most beginners is intro, verse, chorus, verse, chorus, bridge, chorus. The verses tell the story and the choruses repeat the hook, which is the catchiest line.</p>
-      <p style="margin-bottom: 24px;">The trick is to take things away, not add them. Play the intro with just chords, bring the drums in for the verse, add the bass and vocals for the chorus, then drop the drums out for the bridge so the last chorus feels bigger. Same loop, different layers, and it suddenly sounds like a song.</p>
+      <p style="margin-bottom: 24px;"><strong>Arrangement</strong> is the order the sections play in. A structure that works for most songs is intro, verse, chorus, verse, chorus, bridge, chorus. The verses tell the story and the choruses repeat the hook.</p>
+      <p style="margin-bottom: 24px;">The trick is to take things away, not add them. Play the intro with just chords, bring the drums in for the verse, add the bass and vocals for the chorus, then drop the drums for the bridge so the last chorus feels bigger. Same loop, different layers.</p>
     </section>
 
     <section id="mix-and-export" style="margin-bottom: 48px;">
       <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Step 7: Mix and export</h2>
-      <p style="margin-bottom: 24px;"><strong>Mixing</strong> is balancing the volume of each part so nothing drowns anything else. For a first song, do three things: make the vocal the loudest element, keep the kick and bass a little below it, and turn everything else down until it fits behind them.</p>
-      <p style="margin-bottom: 24px;"><strong>Exporting</strong> is saving the finished song as one audio file, usually WAV for quality or MP3 for sharing. Every DAW and the Sonura studio can do this. Once it is exported, you have made a song.</p>
+      <p style="margin-bottom: 24px;"><strong>Mixing</strong> is balancing the volume of each part so nothing drowns anything else. For a first song: make the vocal the loudest element, keep the kick and bass a little below it, and turn everything else down until it fits behind them.</p>
+      <p style="margin-bottom: 24px;"><strong>Exporting</strong> is saving the finished song as one audio file, WAV for quality or MP3 for sharing. Once it's exported, you've made a song.</p>
     </section>
 
     <section id="without-a-daw" style="margin-bottom: 48px;">
       <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Make a song without a DAW: the AI route</h2>
-      <p style="margin-bottom: 24px;">This is the quickest way to make a song with AI, and the one we recommend if you have never opened music software. You write a short description covering the style, mood, tempo and whether you want vocals. Sonura's <a href="/tools/ai-song-maker/">song maker</a> turns that into a full track in a browser, and it works on the free plan.</p>
-      <p style="margin-bottom: 24px;">The difference from a tool that hands you one finished file is that the song comes back as stems. Drums, bass, melody and vocals each arrive as a separate layer, so you can turn one down, regenerate just the vocal, or pull the whole thing into a DAW later with <a href="/features/stem-export/">stem export</a>.</p>
-      <p style="margin-bottom: 16px;">A good prompt reads like the steps above squashed into one line. Some examples:</p>
+      <p style="margin-bottom: 24px;">This is the quickest way to make a song with AI, and the one we recommend if you've never opened music software. Describe the style, mood, tempo and whether you want vocals, and Sonura's <a href="/tools/ai-song-maker/">song maker</a> turns that into a full track in your browser. It works on the free plan.</p>
+      <p style="margin-bottom: 24px;">If you struggle with knowing what goes where, use <strong>Composer</strong>. You explain the full song you want in natural text, and it helps you build the chords, the melodies and the arrangement, so the structure from step 6 is handled for you.</p>
+      <p style="margin-bottom: 24px;">Either way, the song comes back as <strong>stems</strong>: drums, bass, melody and vocals each arrive as a separate layer. Turn one down, regenerate just the vocal, or pull the whole thing into a DAW later with <a href="/features/stem-export/">stem export</a>.</p>
+      <p style="margin-bottom: 16px;">A good prompt reads like the steps above squashed into one line:</p>
       <div style="margin-bottom: 24px;">
         {examplePrompts.map((p) => (
           <div style="padding: 16px 0; border-top: 1px solid var(--border-light);">
@@ -131,20 +129,18 @@ const faqs = [
           </div>
         ))}
       </div>
-      <p style="margin-bottom: 24px;">Then edit. Listen to the result, decide what you would change, and either regenerate one stem or rewrite the prompt. Two or three passes usually get you to something you are happy to share, and you have learned what each word in the prompt does along the way.</p>
+      <p style="margin-bottom: 24px;">Then listen, decide what you'd change, and either regenerate one stem or rewrite the prompt. Two or three passes usually gets you to something you're happy to share.</p>
     </section>
 
     <section id="with-a-daw" style="margin-bottom: 48px;">
       <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Make a song with a DAW</h2>
-      <p style="margin-bottom: 24px;">If you already have Ableton Live, FL Studio, Logic Pro or GarageBand, follow the seven steps inside it. Set the tempo in the top bar, make a drum track first, add an instrument track for chords, another for the melody, and a fourth for bass. Copy the loop across the timeline and mute layers to build the arrangement.</p>
-      <p style="margin-bottom: 24px;">The slow part for beginners is finding sounds. The <a href="/plugin/">{PLUGIN.name} plugin</a> runs inside the DAW and creates {PLUGIN.creates.toLowerCase()} from a text description, so you can type what you need for the track you are on instead of searching a sample library. It is free to download and works in {PLUGIN.daws.slice(0, 3).join(', ')} and more.</p>
-      <p style="margin-bottom: 24px;">When you are ready to go further, our roundup of the <a href="/blog/best-ai-plugins-for-producers/">best AI plugins for producers</a> covers tools for mixing, mastering and writing MIDI as well.</p>
+      <p style="margin-bottom: 24px;">If you already have Ableton Live, FL Studio, Logic Pro or GarageBand, follow the seven steps inside it. Set the tempo, make a drum track first, add a track each for chords, melody and bass, then copy the loop across the timeline and mute layers to build the arrangement.</p>
+      <p style="margin-bottom: 24px;">The slow part for beginners is finding sounds. The <a href="/plugin/">{PLUGIN.name} plugin</a> runs inside the DAW and creates {PLUGIN.creates.toLowerCase()} from a text description, so you type what you need instead of searching a sample library. It's free to download and works in {PLUGIN.daws.slice(0, 3).join(', ')} and more. When you're ready to go further, our roundup of the <a href="/blog/best-ai-plugins-for-producers/">best AI plugins for producers</a> covers mixing, mastering and MIDI tools too.</p>
     </section>
 
     <section id="licensing" style="margin-bottom: 48px;">
       <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; margin-top: 48px;">Who owns the song you make</h2>
-      <p style="margin-bottom: 24px;">If you build every part yourself, the song is yours. If you make a song with AI, read the terms of the tool you use, because they differ a lot.</p>
-      <p style="margin-bottom: 24px;">For Sonura the rule is simple. {RIGHTS.summary} See the <a href="/pricing/">pricing page</a> for current plans.</p>
+      <p style="margin-bottom: 24px;">If you build every part yourself, the song is yours. If you make a song with AI, read the terms of the tool you use, because they differ a lot. For Sonura the rule is simple. {RIGHTS.summary} See the <a href="/pricing/">pricing page</a> for current plans.</p>
     </section>
 
     <div style="padding: 32px; margin-top: 48px; text-align: center;">
@@ -154,3 +150,14 @@ const faqs = [
     </div>
   </div>
 </BlogLayout>
+
+<style>
+  .post-quick-answer :global(.quick-answer) {
+    max-width: none;
+    margin: 0 0 40px;
+    padding: 20px 24px;
+    border-left: 2px solid var(--border-light);
+    font-size: 15px;
+    color: var(--muted);
+  }
+</style>
