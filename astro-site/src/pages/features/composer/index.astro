@@ -17,21 +17,21 @@ const showcase = [
   {
     id: 'key',
     title: 'Set the key.',
-    copy: 'Type "put it in F minor" and every new part follows. Ask for "drop the vocal an octave in the second half" and only those bars move.',
+    copy: 'Type the key and every new part follows it. Move one part by an interval, or only the bars you name.',
     image: '/images/composer-key.webp',
     alt: 'Composer panel: "Put it in F minor" and the reply "Set the key to F minor."',
   },
   {
     id: 'melody',
     title: 'Write the missing part.',
-    copy: 'Say "a haunting bell melody over the drums" and Composer writes it into the arrangement. Not right? "Redo the melody in the drop" replaces just that range.',
+    copy: 'Say what is missing and Composer writes it in, styled to the track. Not right? Redo just that section.',
     image: '/images/composer-melody.webp',
     alt: 'Composer panel proposing a haunting bell melody and reverse bell swells, with a Build 2 parts button',
   },
   {
     id: 'structure',
     title: 'Rework the structure.',
-    copy: '"Add an 8-bar breakdown before the last chorus" inserts a section and moves everything after it. "Make the intro 16 bars" stretches it.',
+    copy: 'Add a section and everything after it moves. Lengthen the intro, shorten the drop, delete the verse.',
     image: '/images/composer-structure.webp',
     alt: 'Composer panel: "Add an 8-bar breakdown before the last chorus" and the reply "Added an 8-bar Breakdown."',
   },
@@ -418,7 +418,7 @@ const jsonLd = [
     <div class="demo-copy">
       <p class="section-kicker">In session</p>
       <h2 id="demo-title" class="reveal">Ask, then hear it.</h2>
-      <p class="reveal" data-reveal-delay="0.06s">Every ask lands in context, because Composer reads what is already on the timeline. No menus to learn, no exports, and undo if you change your mind.</p>
+      <p class="reveal" data-reveal-delay="0.06s">Composer reads what is already on the timeline, so each request lands in context. Nothing to export, and undo if you change your mind.</p>
     </div>
     <div class="demo-frame reveal" data-reveal-delay="0.1s">
       <video
@@ -442,7 +442,6 @@ const jsonLd = [
   <section class="feature-section" aria-labelledby="showcase-title">
     <p class="section-kicker">Capabilities</p>
     <h2 id="showcase-title" class="workflow-title reveal">Your co-producer, inside the session</h2>
-    <p class="section-sub">Three of the things producers ask for most.</p>
     <div class="bento">
       {showcase.map((card, index) => (
         <article class="bento-card reveal" data-reveal-delay={`${0.06 * index}s`} data-showcase={card.id}>
@@ -461,7 +460,7 @@ const jsonLd = [
   <section class="feature-section" aria-labelledby="how-title">
     <p class="section-kicker">How it works</p>
     <h2 id="how-title" class="workflow-title reveal">Say what you hear in your head</h2>
-    <p class="section-sub">No theory required and nothing to export. Describe the change, keep listening, and open the timeline whenever you want to take over.</p>
+    <p class="section-sub">No theory required. Describe the change, keep listening, and open the timeline whenever you want to take over.</p>
     <div class="steps-list">
       {steps.map((step, index) => (
         <div class="step-row reveal" data-reveal-delay={`${0.08 * index}s`}>
