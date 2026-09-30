@@ -527,7 +527,13 @@ const jsonLd = [
     // The demo is silent, so it may autoplay. Browsers that defer autoplay
     // (data saver, some mobile settings) get a play() call once it is in view.
     const demo = document.getElementById('composer-demo') as HTMLVideoElement | null;
-    if (demo) {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (demo && reduceMotion) {
+      // respect the viewer's setting: no autoplay, show the controls instead
+      demo.removeAttribute('autoplay');
+      demo.pause();
+      demo.controls = true;
+    } else if (demo) {
       demo.muted = true;
       const tryPlay = () => { demo.play().catch(() => {}); };
       if ('IntersectionObserver' in window) {
