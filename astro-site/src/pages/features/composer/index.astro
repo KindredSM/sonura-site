@@ -48,34 +48,23 @@ const showcase = [
   },
 ];
 
-const prompts = [
-  { ask: 'Put this in F minor', result: 'Sets the project key. Every part you ask for next is written in F minor.' },
-  { ask: 'Drop the vocal an octave in the second half of the drop', result: 'Transposes only the vocal clips in that bar range, by twelve semitones.' },
-  { ask: 'Write a haunting bell melody over the drums', result: 'Adds a melody part to the arrangement, styled to the track you already have.' },
-  { ask: 'Redo the drums in the drop, harder', result: 'Regenerates the drums for that section only and leaves the rest of the track alone.' },
-  { ask: 'Add an 8-bar breakdown before the last chorus', result: 'Inserts a new section, with new parts or the sounds you already have, and moves everything after it.' },
-  { ask: 'Make the intro 16 bars', result: 'Resizes the section. Later sections ripple to fit.' },
-  { ask: 'Sidechain the bass to the kick', result: 'Applies the mixer move on the bass lane with the drums as the trigger.' },
-  { ask: 'Split this take into stems', result: 'Separates the lane into vocals, drums, bass and other as new lanes. The original stays untouched.' },
-];
-
 const steps = [
-  { title: 'Open a session', text: 'Start from an empty project and ask for a full track, or open something you are already working on. Composer reads the tracks, sections, key and tempo that are there.' },
-  { title: 'Ask for the change', text: 'Plain language works. Name a part, a section or a bar range and Composer scopes the edit to it. If the request is ambiguous, it asks one question before touching anything.' },
-  { title: 'Check it, keep it or undo it', text: 'Composer reports what it changed, and the app appends what actually happened. Say "undo" and the previous state comes back exactly.' },
+  { title: 'Open a session', text: 'Start empty and ask for a full track, or open something you are already working on.' },
+  { title: 'Ask for the change', text: 'Name a part, a section or a bar range and the edit stays inside it. If the ask is unclear, Composer asks first.' },
+  { title: 'Keep it or undo it', text: 'Composer reports what changed. Say "undo" and the previous state comes back exactly.' },
 ];
 
 const audiences = [
-  { title: 'Starting out', description: 'You do not need to learn a DAW to make a track. Describe what you want, hear it, then ask for the next change. Every move is undoable, and the timeline is there when you want to open it up.' },
-  { title: 'DJs and producers', description: 'Fast variations without rebuilding by hand. A different drop, a longer intro, a key that sits with the next track in the set. Then pull the stems into Ableton Live, FL Studio or Logic Pro with <a href="/features/stem-export/">stem export</a>.' },
+  { title: 'Starting out', description: 'No DAW to learn. Describe what you want, hear it, ask for the next change. The timeline is there when you want it.' },
+  { title: 'DJs and producers', description: 'Fast variations without rebuilding by hand. A different drop, a longer intro, a key that sits with the next track. Then pull the stems into your DAW with <a href="/features/stem-export/">stem export</a>.' },
 ];
 
 const related = [
-  { href: '/tools/ai-song-maker/', title: 'AI song maker', description: 'A full track from one description, delivered as separate stems.' },
-  { href: '/features/stem-export/', title: 'Stem export', description: 'Drums, bass, melody and vocals as separate WAV files, on every plan.' },
-  { href: '/tools/bpm-tap/', title: 'BPM tap', description: 'Find the tempo of a reference before you ask Composer to match it.' },
-  { href: '/plugin/', title: 'Sonura Flow plugin', description: 'Create sounds inside your DAW as VST3 or AU.' },
-  { href: '/blog/best-ai-plugins-for-producers/', title: 'Best AI plugins for producers', description: 'Where Sonura sits next to the other tools in a session.' },
+  { href: '/tools/ai-song-maker/', title: 'AI song maker' },
+  { href: '/features/stem-export/', title: 'Stem export' },
+  { href: '/tools/bpm-tap/', title: 'BPM tap' },
+  { href: '/plugin/', title: 'Sonura Flow plugin' },
+  { href: '/blog/best-ai-plugins-for-producers/', title: 'Best AI plugins for producers' },
 ];
 
 const faqs = [
@@ -250,38 +239,6 @@ const jsonLd = [
       font-size: 12px;
     }
 
-    /* ask composer rows */
-    .prompt-list { display: flex; flex-direction: column; border-bottom: 1px solid var(--hairline); }
-
-    .prompt-row {
-      display: grid;
-      grid-template-columns: minmax(200px, 0.9fr) minmax(0, 1.4fr);
-      gap: 32px;
-      padding: 22px 0;
-      border-top: 1px solid var(--hairline);
-      align-items: baseline;
-    }
-
-    .prompt-ask {
-      margin: 0;
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--fg);
-      letter-spacing: 0.02em;
-    }
-
-    .prompt-ask::before { content: '"'; color: var(--faint); }
-    .prompt-ask::after { content: '"'; color: var(--faint); }
-
-    .prompt-result {
-      margin: 0;
-      font-size: 15px;
-      color: var(--muted);
-      letter-spacing: 0.022em;
-      line-height: 1.8;
-      word-spacing: 0.04em;
-    }
-
     /* how it works */
     .steps-list { display: flex; flex-direction: column; border-bottom: 1px solid var(--hairline); }
 
@@ -355,7 +312,7 @@ const jsonLd = [
       word-spacing: 0.04em;
     }
 
-    .card-desc :global(a), .rights-copy :global(a) {
+    .card-desc :global(a) {
       color: var(--fg);
       text-decoration: underline;
       text-underline-offset: 3px;
@@ -363,19 +320,72 @@ const jsonLd = [
 
     .related-card .card-title::after { content: ' →'; color: var(--muted); }
 
-    .rights-copy {
-      margin: 0;
-      max-width: 760px;
-      font-size: 16px;
-      color: var(--muted);
-      letter-spacing: 0.022em;
-      line-height: 1.8;
-      word-spacing: 0.04em;
+    /* hero, same shape as the plugin page */
+    .cp-hero {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 22px;
+      padding: clamp(48px, 8vh, 96px) var(--page-pad) clamp(72px, 9vw, 110px);
     }
 
-    .rights-copy + .rights-copy { margin-top: 20px; }
+    .cp-kicker {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
 
-    .cta .hero-beta-link { align-self: flex-start; }
+    .cp-kicker-note { margin-left: 8px; color: var(--faint); letter-spacing: 0.1em; }
+
+    .cp-hero h1 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(48px, 7vw, 104px);
+      line-height: 0.98;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--fg);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cp-sub {
+      margin: 0;
+      max-width: 520px;
+      font-size: 17px;
+      color: var(--muted);
+      letter-spacing: 0.022em;
+      word-spacing: 0.04em;
+      line-height: 1.8;
+    }
+
+    .cp-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; margin-top: 8px; }
+
+    .link-row {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 32px;
+    }
+
+    .link-row a {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--fg);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 7px;
+    }
+
+    .link-row a::after { content: ' →'; color: var(--muted); }
 
     @media (min-width: 640px) {
       .usecase-grid { grid-template-columns: repeat(2, 1fr); }
@@ -394,32 +404,29 @@ const jsonLd = [
     @media (max-width: 640px) {
       .bento { grid-template-columns: 1fr; gap: 44px; }
       .card-shot { height: 300px; }
-      .prompt-row { grid-template-columns: 1fr; gap: 8px; }
       .step-row { grid-template-columns: 1fr; gap: 8px; }
       .step-index { margin-bottom: 4px; }
       .usecase-card, .related-card { padding: 24px; }
     }
   </style>
 
-  <section class="hero">
-    <div class="hero-background">
-      <div class="hero-gradient"></div>
-      <div class="hero-noise"></div>
-    </div>
-    <div class="hero-content">
-      <h1 class="headline reveal">Composer, the AI co-producer in your session</h1>
-      <p class="subhead reveal" data-reveal-delay="0.06s">Type what you want changed. Composer sets the key, writes the missing part, adds a section and mixes the stems, inside the Sonura session you already have open. Built to speed up your process, not to make your decisions.</p>
-      <div class="cta">
-        <a class="button primary" href={appUrl} data-composer-cta="hero">Open a session</a>
-        <a class="hero-beta-link" href="/features/">All Features →</a>
-      </div>
+  <section class="cp-hero">
+    <p class="cp-kicker reveal">Composer <span class="cp-kicker-note">In every session</span></p>
+    <h1 class="reveal" data-reveal-delay="0.04s">
+      <span class="h1-row">Make music</span>
+      <span class="h1-row">by asking for it</span>
+    </h1>
+    <p class="cp-sub reveal" data-reveal-delay="0.08s">Start with a prompt or your own track. Ask for a new key, a melody or the next section. Royalty-free.</p>
+    <div class="cp-actions reveal" data-reveal-delay="0.12s">
+      <a class="button primary" href={appUrl} data-composer-cta="hero">Open a session</a>
+      <a class="hero-beta-link" href="/features/">All Features →</a>
     </div>
   </section>
 
   <section class="feature-section" aria-labelledby="showcase-title">
     <p class="section-kicker">Capabilities</p>
     <h2 id="showcase-title" class="workflow-title reveal">Your co-producer, inside the session</h2>
-    <p class="section-sub">Composer reads the tracks, sections, key and tempo already in the project, then makes the change you asked for. Three of the things it does most.</p>
+    <p class="section-sub">Composer reads what is already in the project and makes the change you asked for.</p>
     <div class="bento">
       {showcase.map((card, index) => (
         <article class="bento-card reveal" data-reveal-delay={`${0.06 * index}s`} data-showcase={card.id}>
@@ -441,24 +448,10 @@ const jsonLd = [
     </div>
   </section>
 
-  <section class="feature-section" aria-labelledby="prompts-title">
-    <p class="section-kicker">Ask Composer</p>
-    <h2 id="prompts-title" class="workflow-title reveal">Things you can ask, and what happens</h2>
-    <p class="section-sub">Each of these is a request Composer handles today. Name a part, a section or a bar range and the edit stays inside it.</p>
-    <div class="prompt-list">
-      {prompts.map((p, index) => (
-        <div class="prompt-row reveal" data-reveal-delay={`${0.04 * index}s`}>
-          <p class="prompt-ask">{p.ask}</p>
-          <p class="prompt-result">{p.result}</p>
-        </div>
-      ))}
-    </div>
-  </section>
-
   <section class="feature-section" aria-labelledby="how-title">
     <p class="section-kicker">How it works</p>
     <h2 id="how-title" class="workflow-title reveal">AI for music production, inside one session</h2>
-    <p class="section-sub">No exports, no file juggling. Composer and the timeline share the same project, so a change in chat is a change on the track.</p>
+    <p class="section-sub">Composer and the timeline share one project. A change in chat is a change on the track.</p>
     <div class="steps-list">
       {steps.map((step, index) => (
         <div class="step-row reveal" data-reveal-delay={`${0.08 * index}s`}>
@@ -483,24 +476,14 @@ const jsonLd = [
     </div>
   </section>
 
-  <section class="feature-section" aria-labelledby="rights-title">
-    <p class="section-kicker">Rights</p>
-    <h2 id="rights-title" class="workflow-title reveal">What you own</h2>
-    <p class="rights-copy">{RIGHTS.summary}</p>
-    <p class="rights-copy">The same rule covers everything Composer helps you make, on the <a href="/pricing/">plan you are on</a>.</p>
-  </section>
-
-  <section class="feature-section" aria-labelledby="related-title">
+  <section class="feature-section cp-links" aria-labelledby="related-title">
     <p class="section-kicker">Next steps</p>
     <h2 id="related-title" class="workflow-title reveal">More AI music production tools</h2>
-    <div class="related-grid">
-      {related.map((r, index) => (
-        <a class="related-card reveal" href={r.href} data-reveal-delay={`${0.05 * index}s`}>
-          <h3 class="card-title">{r.title}</h3>
-          <p class="card-desc">{r.description}</p>
-        </a>
+    <ul class="link-row">
+      {related.map((r) => (
+        <li><a href={r.href}>{r.title}</a></li>
       ))}
-    </div>
+    </ul>
   </section>
 
   <section class="faq" id="faq" aria-labelledby="faq-title">
@@ -521,7 +504,7 @@ const jsonLd = [
   <section class="final-cta" aria-labelledby="final-cta-title">
     <div class="final-cta-inner">
       <h2 id="final-cta-title" class="final-cta-title reveal">Start a session with Composer</h2>
-      <p class="final-cta-subtitle reveal" data-reveal-delay="0.06s">Free to start. No credit card required.</p>
+      <p class="final-cta-subtitle reveal" data-reveal-delay="0.06s">Free to start. Free-plan creations are CC0, and every paid plan makes them exclusively yours.</p>
       <div class="final-cta-form reveal" data-reveal-delay="0.12s">
         <a class="button primary large" href={appUrl} data-composer-cta="final">Open a session</a>
         <a class="button secondary large" href="/plugin/"><span class="btn-label-full">Make sounds inside your DAW</span><span class="btn-label-short">Get the plugin</span></a>
