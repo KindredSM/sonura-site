@@ -15,7 +15,7 @@
  * Unlike AlternativeLayout, this emits ItemList JSON-LD for the ranking.
  */
 import BaseLayout from './BaseLayout.astro';
-import { resolveAlternatives, type AlternativeEntry, LAST_VERIFIED } from '../data/alternatives';
+import type { ListedAlternative, SpecColumn } from '../data/alternatives';
 
 interface FAQ {
   question: string;
@@ -36,7 +36,10 @@ interface Props {
   headline: string;
   /** the direct answer block: 2 to 3 sentences, above the fold, lifted verbatim by answer engines */
   quickAnswer: string;
-  entries: AlternativeEntry[];
+  items: ListedAlternative[];
+  columns: SpecColumn[];
+  verifiedOn: string;
+  methodNote: string;
   criteria: string[];
   /** the non-negotiable block: when the competitor is still the right call */
   stillRightTitle: string;
@@ -57,7 +60,10 @@ const {
   keywords,
   headline,
   quickAnswer,
-  entries,
+  items: ranked,
+  columns,
+  verifiedOn,
+  methodNote,
   criteria,
   stillRightTitle,
   stillRightBody,
@@ -69,7 +75,6 @@ const {
   appUrl = 'https://app.sonurastudio.com/',
 } = Astro.props;
 
-const ranked = resolveAlternatives(entries);
 const canonical = `https://sonurastudio.com/alternatives/${competitorSlug}/`;
 const stripHtml = (value: string) => value.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
 
@@ -115,12 +120,8 @@ const jsonLd = [
   },
 ];
 
-const cols = [
-  { key: 'stems', label: 'Stems' },
-  { key: 'filesOut', label: 'Files out' },
-  { key: 'commercial', label: 'Commercial use' },
-  { key: 'training', label: 'Training data' },
-] as const;
+const cardCols = columns.filter((c) => c.inCard);
+const cols = columns.filter((c) => c.inTable);
 ---
 
 <BaseLayout
@@ -135,7 +136,7 @@ const cols = [
   <div class="alx">
     <!-- 1 / headline + 2 / direct answer -->
     <header class="alx-hero">
-      <p class="section-kicker">Alternatives / Verified {LAST_VERIFIED}</p>
+      <p class="section-kicker">Alternatives / Verified {verifiedOn}</p>
       <h1 class="alx-h1">{headline}</h1>
       <div class="alx-answer" set:html={quickAnswer} />
       <div class="alx-cta-row">
@@ -151,12 +152,7 @@ const cols = [
       <ul class="alx-criteria">
         {criteria.map((c) => <li>{c}</li>)}
       </ul>
-      <p class="alx-note">
-        Every spec below is pulled from the same dated sheet that drives our
-        <a href="/compare/" class="text-link">model comparisons</a>, so it cannot drift between pages.
-        pricing is given as a shape rather than a figure: competitor pricing moves, and a stale number
-        helps nobody. the links go to their own sites so you can check us.
-      </p>
+      <p class="alx-note" set:html={methodNote} />
     </section>
 
     <!-- 3 / the ranked list -->
@@ -188,9 +184,7 @@ const cols = [
             </dl>
 
             <dl class="alx-specs">
-              <div><dt>Stems</dt><dd>{item.stems}</dd></div>
-              <div><dt>Files out</dt><dd>{item.filesOut}</dd></div>
-              <div><dt>Commercial use</dt><dd>{item.commercial}</dd></div>
+              {cardCols.map((c) => <div><dt>{c.label}</dt><dd>{item.specs[c.key]}</dd></div>)}
               <div><dt>Pricing</dt><dd>{item.pricing}</dd></div>
             </dl>
 
@@ -223,7 +217,7 @@ const cols = [
             {ranked.map((item) => (
               <tr class:list={[{ 'is-sonura': item.isSonura }]}>
                 <th scope="row">{item.short}</th>
-                {cols.map((c) => <td>{item[c.key]}</td>)}
+                {cols.map((c) => <td>{item.specs[c.key]}</td>)}
               </tr>
             ))}
           </tbody>
@@ -253,7 +247,7 @@ const cols = [
 
     {sources.length > 0 && (
       <section class="alx-section alx-sources">
-        <p class="section-kicker">Sources / Verified {LAST_VERIFIED}</p>
+        <p class="section-kicker">Sources / Verified {verifiedOn}</p>
         <ul class="alx-sources-list">
           {sources.map((src) => (
             <li><a href={src.url} target="_blank" rel="noopener">{src.label}</a></li>
