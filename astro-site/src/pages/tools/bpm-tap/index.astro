@@ -1,6 +1,25 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 
+/* Tempo bands shown under the tool. Each links to its genre page where one
+   exists, so the table doubles as a route into the genre cluster. */
+const genreBpms = [
+  { name: 'Hip-Hop', range: '80-100', href: '/genre/hip-hop/' },
+  { name: 'R&B', range: '65-90', href: '/genre/rnb/' },
+  { name: 'Lo-Fi', range: '70-90', href: '/genre/lofi/' },
+  { name: 'Pop', range: '100-130', href: '/genre/pop/' },
+  { name: 'House', range: '120-130', href: '/genre/house/' },
+  { name: 'Techno', range: '125-150', href: '/genre/techno/' },
+  { name: 'Trap', range: '130-160', href: '/genre/trap/' },
+  { name: 'Drill', range: '140-150', href: '/genre/drill/' },
+  { name: 'Phonk', range: '130-170', href: '/genre/phonk/' },
+  { name: 'Drum & Bass', range: '160-180', href: null },
+  { name: 'Reggaeton', range: '85-100', href: '/genre/reggaeton/' },
+  { name: 'Afrobeats', range: '100-120', href: '/genre/afrobeats/' },
+  { name: 'Country', range: '90-130', href: '/genre/country/' },
+  { name: 'Ambient', range: '60-90', href: '/genre/ambient/' },
+];
+
 const jsonLd = [
   {
     "@context": "https://schema.org",
@@ -34,6 +53,36 @@ const jsonLd = [
         "@type": "Question",
         "name": "What is BPM?",
         "acceptedAnswer": { "@type": "Answer", "text": "BPM stands for Beats Per Minute. It measures the tempo of music. Common BPMs: Hip-hop 80-100, House 120-130, Trap 130-160, Drum & Bass 160-180." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why do I need to know the BPM?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Knowing the BPM helps with DJing (matching tempos), music production (setting your DAW tempo), remixing, sampling, and syncing music to video. It is essential for any music workflow." }
+      },
+      {
+        "@type": "Question",
+        "name": "How many taps do I need for an accurate BPM?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Three taps gives you a rough reading. Eight to sixteen taps across a full bar or two is where it settles down. This tool averages every tap in the current run, so the number stops drifting the longer you tap. If you pause for more than three seconds the count resets and starts a fresh average." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does the tool show double or half the BPM I expected?",
+        "acceptedAnswer": { "@type": "Answer", "text": "You are almost certainly tapping a different subdivision than the one the track is counted in. Tapping every eighth note instead of every quarter note doubles the reading, and tapping every other beat halves it. A 140 BPM trap beat is frequently written as 70 BPM half-time because the snare lands on every other count. Both numbers describe the same groove, so pick whichever matches how you want to sequence it and halve or double the reading to match." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I find the BPM of a song without tapping?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Streaming catalogues and DJ databases list tempo for most commercially released tracks, and DJ software such as Rekordbox, Serato, and Traktor detects BPM automatically on import. Most DAWs also have a tempo detection function for audio you drag in. Tapping stays useful for unreleased music, live recordings, rehearsal room takes, and anything not in a database." }
+      },
+      {
+        "@type": "Question",
+        "name": "What BPM should I use for my genre?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Lo-fi sits around 70-90 BPM, hip-hop around 80-100, reggaeton 85-100, pop 100-130, house 120-130, techno 125-150, trap 130-160, drill 140-150, and drum and bass 160-180. These are conventions rather than rules, and producers break them constantly, but they are a reliable starting point." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this BPM tapper free, and does it work on mobile?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes to both. The tool is free with no signup and no limit on how many times you use it. It runs in the browser on phone, tablet, and desktop. On desktop you can tap the button, click anywhere on it, or press any key on the keyboard, which is usually more accurate than clicking." }
       }
     ]
   }
@@ -164,6 +213,58 @@ const jsonLd = [
     .genre-bpm-name { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
     .genre-bpm-range { color: var(--muted); font-size: 13px; }
 
+    a.genre-bpm-item {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      border: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    a.genre-bpm-item:hover { border-color: var(--hairline); }
+
+    .genre-bpm-note {
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+      letter-spacing: 0.022em;
+    }
+
+    .bpm-prose {
+      margin-top: 64px;
+      text-align: left;
+    }
+
+    .bpm-prose h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .bpm-prose h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin: 28px 0 8px;
+    }
+
+    .bpm-prose p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+      letter-spacing: 0.022em;
+      margin-bottom: 14px;
+    }
+
+    .bpm-prose a {
+      color: var(--fg);
+      font-weight: 600;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 7px;
+      text-decoration-color: currentColor;
+    }
+
     .sonura-cta {
       margin-top: 64px;
       padding: 48px;
@@ -189,20 +290,93 @@ const jsonLd = [
     <div class="genre-bpm">
       <h2>Common BPM Ranges by Genre</h2>
       <div class="genre-bpm-grid">
-        <div class="genre-bpm-item"><div class="genre-bpm-name">Hip-Hop</div><div class="genre-bpm-range">80-100</div></div>
-        <div class="genre-bpm-item"><div class="genre-bpm-name">R&B</div><div class="genre-bpm-range">65-90</div></div>
-        <div class="genre-bpm-item"><div class="genre-bpm-name">Lo-Fi</div><div class="genre-bpm-range">70-90</div></div>
-        <div class="genre-bpm-item"><div class="genre-bpm-name">Pop</div><div class="genre-bpm-range">100-130</div></div>
-        <div class="genre-bpm-item"><div class="genre-bpm-name">House</div><div class="genre-bpm-range">120-130</div></div>
-        <div class="genre-bpm-item"><div class="genre-bpm-name">Techno</div><div class="genre-bpm-range">125-150</div></div>
-        <div class="genre-bpm-item"><div class="genre-bpm-name">Trap</div><div class="genre-bpm-range">130-160</div></div>
-        <div class="genre-bpm-item"><div class="genre-bpm-name">Drill</div><div class="genre-bpm-range">140-150</div></div>
-        <div class="genre-bpm-item"><div class="genre-bpm-name">Drum & Bass</div><div class="genre-bpm-range">160-180</div></div>
-        <div class="genre-bpm-item"><div class="genre-bpm-name">Reggaeton</div><div class="genre-bpm-range">85-100</div></div>
-        <div class="genre-bpm-item"><div class="genre-bpm-name">Afrobeats</div><div class="genre-bpm-range">100-120</div></div>
-        <div class="genre-bpm-item"><div class="genre-bpm-name">Country</div><div class="genre-bpm-range">90-130</div></div>
+        {genreBpms.map((g) => (
+          g.href
+            ? <a class="genre-bpm-item" href={g.href}>
+                <div class="genre-bpm-name">{g.name}</div>
+                <div class="genre-bpm-range">{g.range}</div>
+              </a>
+            : <div class="genre-bpm-item">
+                <div class="genre-bpm-name">{g.name}</div>
+                <div class="genre-bpm-range">{g.range}</div>
+              </div>
+        ))}
       </div>
+      <p class="genre-bpm-note">
+        Treat these as starting points, not rules. They are the bands most tracks in
+        each genre fall into, which makes them a useful sanity check when a tapped
+        reading looks off.
+      </p>
     </div>
+
+    <section class="bpm-prose">
+      <h2>How to tap tempo accurately</h2>
+      <p>
+        Tap tempo works by measuring the gap between your taps and converting the
+        average into beats per minute. Because it averages, the reading gets steadier
+        the longer you go: three taps gives you a ballpark, and eight to sixteen taps
+        across a bar or two is where the number stops moving.
+      </p>
+      <p>
+        A few things make a noticeable difference. Tap on the kick or the snare rather
+        than whatever the melody is doing, since the drums are what the tempo is
+        actually built on. Use the keyboard instead of the mouse on desktop, because
+        keypress timing is more consistent than clicking. And let the track play for a
+        few bars before you start, so you are locked to the groove rather than chasing
+        it. If you stop for more than three seconds the counter resets and begins a
+        fresh average, so you can simply pause and start again rather than hitting
+        reset.
+      </p>
+
+      <h2>Half-time, double-time, and why the number can look wrong</h2>
+      <p>
+        The most common source of confusion is not the tool, it is which subdivision
+        you are tapping. Tap every eighth note instead of every quarter note and you
+        will read double the expected tempo. Tap every other beat and you will read
+        half.
+      </p>
+      <p>
+        This is not really an error, because both numbers describe the same groove. A
+        trap beat with a snare on every other count is usually written as 140 BPM, but
+        it is equally valid to count it as 70 BPM in half-time, and plenty of producers
+        do. The same applies to drum and bass at 174 BPM, which is often felt as 87.
+        What matters is that the number matches how you intend to sequence it. If the
+        reading is exactly double or exactly half what you expected, you have found the
+        subdivision, not a bug: halve or double it and carry on.
+      </p>
+
+      <h2>Finding BPM without tapping</h2>
+      <p>
+        For commercially released music you usually do not need to tap at all.
+        Streaming catalogues and DJ databases list tempo for most tracks, and DJ
+        software such as Rekordbox, Serato, and Traktor detects BPM automatically when
+        you import a file. Most DAWs will also analyse the tempo of audio you drag into
+        a session.
+      </p>
+      <p>
+        Tapping earns its place everywhere those fall short: unreleased demos, live
+        recordings, rehearsal takes, a loop a collaborator sent you, or anything with
+        live drums where the tempo drifts and an automatic reading averages out
+        something that was never steady in the first place. It is also just faster than
+        opening a DAW when you want one number.
+      </p>
+
+      <h2>What to do once you have the tempo</h2>
+      <p>
+        Knowing the BPM is the setup, not the point. It is what lets you match two
+        tracks in a mix, set a session tempo before you record, chop a sample so it
+        lands on the grid, or line music up against a video edit.
+      </p>
+      <p>
+        If you are building something at that tempo, you can generate a beat locked to
+        it: put the number straight into your prompt and every generation follows it.
+        The <a href="/genre/lofi/">lo-fi</a>, <a href="/genre/trap/">trap</a>, and
+        <a href="/genre/drill/">drill</a> pages cover the tempo conventions for those
+        styles in more depth, and the <a href="/tools/stem-separator/">stem separator</a>
+        is the one to reach for when you want to pull a clean drum or vocal part out of
+        the track you just tapped.
+      </p>
+    </section>
 
     <div class="sonura-cta">
       <h2 style="font-size: 28px; font-weight: 700; margin-bottom: 12px;">Know Your BPM? Create a Beat</h2>
@@ -223,6 +397,26 @@ const jsonLd = [
       <details style="padding: 20px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 12px;">
         <summary style="font-weight: 700;">Why do I need to know the BPM?</summary>
         <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">Knowing the BPM helps with DJing (matching tempos), music production (setting your DAW tempo), remixing, sampling, and syncing music to video. It's essential for any music workflow.</p>
+      </details>
+      <details style="padding: 20px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 12px;">
+        <summary style="font-weight: 700;">How many taps do I need for an accurate BPM?</summary>
+        <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">Three taps gives you a rough reading. Eight to sixteen taps across a full bar or two is where it settles down. This tool averages every tap in the current run, so the number stops drifting the longer you tap. If you pause for more than three seconds the count resets and starts a fresh average.</p>
+      </details>
+      <details style="padding: 20px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 12px;">
+        <summary style="font-weight: 700;">Why does the tool show double or half the BPM I expected?</summary>
+        <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">You are almost certainly tapping a different subdivision than the one the track is counted in. Tapping every eighth note instead of every quarter note doubles the reading, and tapping every other beat halves it. A 140 BPM trap beat is frequently written as 70 BPM half-time because the snare lands on every other count. Both numbers describe the same groove, so pick whichever matches how you want to sequence it and halve or double the reading to match.</p>
+      </details>
+      <details style="padding: 20px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 12px;">
+        <summary style="font-weight: 700;">How do I find the BPM of a song without tapping?</summary>
+        <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">Streaming catalogues and DJ databases list tempo for most commercially released tracks, and DJ software such as Rekordbox, Serato, and Traktor detects BPM automatically on import. Most DAWs also have a tempo detection function for audio you drag in. Tapping stays useful for unreleased music, live recordings, rehearsal room takes, and anything not in a database.</p>
+      </details>
+      <details style="padding: 20px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 12px;">
+        <summary style="font-weight: 700;">What BPM should I use for my genre?</summary>
+        <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">Lo-fi sits around 70-90 BPM, hip-hop around 80-100, reggaeton 85-100, pop 100-130, house 120-130, techno 125-150, trap 130-160, drill 140-150, and drum and bass 160-180. These are conventions rather than rules, and producers break them constantly, but they are a reliable starting point.</p>
+      </details>
+      <details style="padding: 20px; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; margin-bottom: 12px;">
+        <summary style="font-weight: 700;">Is this BPM tapper free, and does it work on mobile?</summary>
+        <p style="color: var(--muted); line-height: 1.6; margin-top: 12px;">Yes to both. The tool is free with no signup and no limit on how many times you use it. It runs in the browser on phone, tablet, and desktop. On desktop you can tap the button, click anywhere on it, or press any key on the keyboard, which is usually more accurate than clicking.</p>
       </details>
     </section>
   </div>
@@ -268,8 +462,14 @@ const jsonLd = [
     tapBtn.addEventListener('touchstart', (e) => { e.preventDefault(); handleTap(); });
     resetBtn.addEventListener('click', reset);
     document.addEventListener('keydown', (e) => {
-      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      // Held keys auto-repeat, and shortcuts or Tab navigation are not taps.
+      if (e.repeat || e.ctrlKey || e.metaKey || e.altKey) return;
+      if (e.key === 'Tab' || e.key === 'Shift') return;
       if (e.key === 'Escape') { reset(); return; }
+      // Focused links and buttons handle Space/Enter natively (the tap button
+      // fires its own click), so counting them here would double the tap.
+      if (e.target.closest('a, button, input, textarea, select, [contenteditable]')) return;
+      if (e.key === ' ') e.preventDefault();
       handleTap();
     });
   </script>
