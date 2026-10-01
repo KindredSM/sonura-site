@@ -1,6 +1,6 @@
 ---
 import AlternativesListLayout from '../../../layouts/AlternativesListLayout.astro';
-import { SUNO_ALTERNATIVES, CRITERIA } from '../../../data/alternatives';
+import { SUNO_ALTERNATIVES, CRITERIA, MODEL_COLUMNS, LAST_VERIFIED, resolveAlternatives } from '../../../data/alternatives';
 
 /**
  * Rewritten from the two-column AlternativeLayout to a ranked list, because the
@@ -17,6 +17,13 @@ const quickAnswer = `
   <p>The seven below are ranked on what you can actually leave with. Every spec is dated, every
   competitive claim links its source, and every entry says who should skip it, ours included.</p>
 `;
+
+const methodNote = `
+        Every spec below is pulled from the same dated sheet that drives our
+        <a href="/compare/" class="text-link">model comparisons</a>, so it cannot drift between pages.
+        pricing is given as a shape rather than a figure: competitor pricing moves, and a stale number
+        helps nobody. the links go to their own sites so you can check us.
+      `;
 
 const stillRightBody = `
   <p>If the job is a finished song, with vocals and written lyrics, in one pass, Suno is still the
@@ -107,7 +114,10 @@ const sources = [
   keywords="suno alternative, suno ai alternative, best suno alternatives, better than suno, suno competitor, free suno alternative, suno alternative with stems, ai music generator alternative"
   headline="Best Suno Alternatives in 2026"
   quickAnswer={quickAnswer}
-  entries={SUNO_ALTERNATIVES}
+  items={resolveAlternatives(SUNO_ALTERNATIVES)}
+  columns={MODEL_COLUMNS}
+  verifiedOn={LAST_VERIFIED}
+  methodNote={methodNote}
   criteria={CRITERIA}
   stillRightTitle="When Suno is still the right call"
   stillRightBody={stillRightBody}

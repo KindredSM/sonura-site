@@ -37,30 +37,49 @@ export interface AlternativeEntry {
   isSonura?: boolean;
 }
 
-export interface ResolvedAlternative extends AlternativeEntry {
+export interface SpecColumn {
+  key: string;
+  label: string;
+  inCard: boolean;
+  inTable: boolean;
+}
+
+export interface ListedAlternative {
   rank: number;
   name: string;
   short: string;
-  stems: string;
-  filesOut: string;
-  commercial: string;
-  training: string;
+  href: string;
+  verdict: string;
+  bestFor: string;
+  skipIf: string;
+  pricing: string;
+  isSonura?: boolean;
+  specs: Record<string, string>;
 }
 
+export const MODEL_COLUMNS: SpecColumn[] = [
+  { key: 'stems', label: 'Stems', inCard: true, inTable: true },
+  { key: 'filesOut', label: 'Files out', inCard: true, inTable: true },
+  { key: 'commercial', label: 'Commercial use', inCard: true, inTable: true },
+  { key: 'training', label: 'Training data', inCard: false, inTable: true },
+];
+
 /** Pulls the hard specs off MODELS so they cannot drift from the comparison pages. */
-export function resolveAlternatives(entries: AlternativeEntry[]): ResolvedAlternative[] {
-  return entries.map((entry, i) => {
-    const model: MusicModel | undefined = MODELS[entry.model];
-    if (!model) throw new Error(`alternatives.ts: no MODELS entry for "${entry.model}"`);
+export function resolveAlternatives(entries: AlternativeEntry[]): ListedAlternative[] {
+  return entries.map(({ model: key, ...entry }, i) => {
+    const model: MusicModel | undefined = MODELS[key];
+    if (!model) throw new Error(`alternatives.ts: no MODELS entry for "${key}"`);
     return {
       ...entry,
       rank: i + 1,
       name: model.name,
       short: model.short,
-      stems: model.specs.stems,
-      filesOut: model.specs.download,
-      commercial: model.specs.commercial,
-      training: model.specs.training,
+      specs: {
+        stems: model.specs.stems,
+        filesOut: model.specs.download,
+        commercial: model.specs.commercial,
+        training: model.specs.training,
+      },
     };
   });
 }
