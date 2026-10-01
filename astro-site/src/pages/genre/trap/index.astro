@@ -5,22 +5,29 @@ const workflowItems = [
   {
     image: '/assets/studio-create',
     imageAlt: 'Design trap beats in Sonura',
-    title: 'Describe your trap beat',
-    description: 'Type what you want: "dark trap beat 140 bpm with heavy 808s and rolling hi-hats" or "melodic trap with piano". Sonura\'s AI understands trap production.'
+    title: 'Prompt the 808 first',
+    description: 'The 808 decides the beat, so describe it: "dark trap, 140 BPM, F minor, long sliding 808s, triplet hi-hat rolls, bell melody" or "melodic trap, 150 BPM, distorted 808 with short notes, piano, half-time". Name the key so the 808 lands in tune with the melody, which is the first thing a producer notices when it does not.'
   },
   {
     image: '/assets/studio-compose',
     imageAlt: 'Create trap beats instantly',
-    title: 'Instant creation',
-    description: 'Get your trap beat in under 10 seconds. Sonura\'s <a href="/features/ai-beats/">AI beat maker</a> builds the complete arrangement: 808 bass, snappy snares, rolling hi-hats, and atmospheric melodies. Studio-quality, royalty-free.'
+    title: 'Get 808s, drums and melody as separate stems',
+    description: 'In under 10 seconds the <a href="/features/ai-beats/">AI beat maker</a> returns the 808, the drums, the melody and the FX as their own tracks. Solo the 808 to check the glides, mute the melody for an 8-bar drum break, or pull the hats out to re-program your own rolls on top. The half-time snare on 3 and the 808 pattern are yours to edit note by note.'
   },
   {
     image: '/assets/studio-collab',
     imageAlt: 'Export trap beat stems',
-    title: 'Export stems & use commercially',
-    description: 'Download individual stems (drums, 808s, melody, fx) or the full mix. Use in your DAW, sell as type beats, release on Spotify. 100% yours. If you came from Suno, our <a href="/alternatives/suno-alternative/">Suno alternative for producers</a> is built around editable parts, not a finished AI song. Flipping a reference track instead? Run it through our <a href="/tools/stem-separator/">stem separator</a> first to pull a clean vocal or drum stem before you build the beat around it.'
+    title: 'Mix, tag and sell',
+    description: 'Export the stems to your DAW, sidechain the 808 to the kick, layer your own clap on the snare, add your producer tag and list it. Beats are royalty-free on every plan with no splits: public domain (CC0) on the free plan, exclusively yours on paid. Flipping a reference instead? Run it through the <a href="/tools/stem-separator/">stem separator</a> first for a clean vocal or drum stem. Coming from Suno? Our <a href="/alternatives/suno-alternative/">Suno alternative for producers</a> explains what changes when you get parts instead of a finished song.'
   }
 ];
+
+const proseTitle = 'The 808 is the instrument, not the bass';
+const proseBody = `
+  <p>Trap is built from the low end up. The 808 carries the melody as much as the keys do, which is why out-of-tune 808s are the first beginner mistake and why glides between notes matter more than the drum pattern. Most trap sits between 130 and 160 BPM counted in half time, with the snare or clap landing on beat 3 rather than 2 and 4, so a 140 BPM beat still feels slow and heavy. The hi-hats do the opposite job: straight 8ths or 16ths as the floor, with triplet rolls and the odd 32nd burst as the movement.</p>
+  <p>Sonura generates those parts as <strong>separate stems</strong>: the <strong>808</strong>, the <strong>drums</strong>, the <strong>melody</strong> and the <strong>FX</strong>, each on its own track. That is the difference from a flat-file generator in practice. You can retune a single 808 note, shorten the notes for more bounce, swap the clap, or keep the bell melody and drop everything else for the intro. Export the stems through <a href="/features/stem-export/">stem export</a> and finish in FL Studio, Ableton or Logic the way you would with your own drums, or build the drum layer first with the free <a href="/tools/ai-beat-maker/">beat maker</a>.</p>
+  <p>The sound palette follows the Atlanta template that Lex Luger and Metro Boomin set: a long, saturated 808 tuned to the key, a tight snare layered with a clap, crisp hats panned for width, and a dark minor melody on piano, bells, strings or pads with plenty of space in it. The models are trained on ethically licensed data, so a beat you sell on BeatStars or lease to an artist is clear from the first generation. Want straight boom bap drums instead of the half-time feel? Switch to the <a href="/genre/hip-hop/">rap beat maker</a>. Want the London version with sliding 808s and a swung hat? Try the <a href="/genre/drill/">drill beat maker</a>.</p>
+`;
 
 const demoTracks = [
   {
@@ -40,31 +47,31 @@ const demoTracks = [
 const faqs = [
   {
     question: 'What is a trap beat?',
-    answer: 'Trap beats are characterized by rolling hi-hats, heavy 808 bass, crisp snares, and dark atmospheric melodies. Originated in Atlanta hip-hop, trap has become one of the most popular genres in modern music. Typical tempo is 130-160 bpm with half-time feel.'
+    answer: 'A trap beat is a half-time hip hop beat built on a tuned 808 bass, a snare or clap on beat 3, rolling hi-hats with triplet fills, and a dark minor-key melody. It came out of Atlanta in the early 2000s and became the default sound of rap production by the mid 2010s. Typical tempo is 130 to 160 BPM, with 140 the most common.'
   },
   {
     question: 'How do I make trap beats with Sonura?',
-    answer: 'Simply describe your trap beat in text: "dark trap beat 140 bpm with heavy 808s" or "melodic trap with piano and strings". Sonura\'s free <a href="/tools/ai-beat-maker/">beat maker</a> creates complete trap beats in seconds with all the essential elements: 808s, hi-hats, snares, and melody.'
+    answer: 'Describe the beat with its tempo, key and 808 character: "dark trap, 140 BPM, F minor, sliding 808s, triplet hats, bell melody". The free <a href="/tools/ai-beat-maker/">beat maker</a> returns the 808, drums, melody and FX as separate stems in seconds, so you can retune a note or re-program the hats before you export.'
   },
   {
     question: 'Can I use Sonura trap beats commercially?',
-    answer: 'Yes! 100% commercial use. Sell as type beats on BeatStars, lease to artists, release on Spotify, use in client work. You own everything you create with full rights. No royalty splits or attribution required.'
+    answer: 'Yes. Sell them as type beats on BeatStars, lease them to artists, release them on Spotify or use them in client work, with no royalty splits or attribution on any plan. On the free plan creations are public domain (CC0), so they are not exclusively yours. On any paid plan they are.'
   },
   {
     question: 'What BPM should trap beats be?',
-    answer: 'Trap beats typically range from 130-160 BPM, with 140 BPM being the most common. Sonura understands BPM specifications - just include it in your prompt like "trap beat 140 bpm" and the AI will match it.'
+    answer: 'Between 130 and 160 BPM, with 140 as the classic. The slower end (130 to 140) feels heavier, the faster end (150 to 160) adds energy. Because trap is counted in half time, the snare lands once per bar on beat 3, so even 150 BPM feels laid back. Put the tempo in your prompt, "trap beat 140 BPM", and the generation locks to it.'
   },
   {
     question: 'Can I export trap beat stems?',
-    answer: 'Yes! Export individual stems: 808 bass, drums (snares/hi-hats), melody, fx, and more. Perfect for mixing in your DAW or letting artists record over clean instrumentals.'
+    answer: 'Yes. Each generation exports as separate stems: 808, drums (kick, snare, hats), melody and FX. Sidechain the 808 to the kick, layer a clap on the snare, or hand an artist the clean instrumental without the melody to record over.'
   },
   {
     question: 'Is this better than using trap sample packs?',
-    answer: 'Sample packs are generic and used by thousands of producers. Sonura\'s <a href="/features/ai-loops/">AI sample generator</a> and <a href="/tools/ai-loop-maker/">loop maker</a> create completely original trap patterns tailored to your exact specifications. Every beat is unique, fresh, and perfectly matched to your vision.'
+    answer: 'A pack gives you the same 808s and melody loops as thousands of other producers, in a fixed key. Sonura generates an 808 pattern and melody in the key and tempo you ask for, as stems you can retune and re-arrange. The <a href="/features/ai-loops/">AI sample generator</a> and <a href="/tools/ai-loop-maker/">loop maker</a> cover one-shots and loops when you only need a piece.'
   },
   {
     question: 'Can I make type beats with Sonura?',
-    answer: 'Absolutely! Sonura is perfect for type beat producers. Create trap beats in any style, export stems, add your tag, and sell. Much faster than traditional production methods. Want straight rap drums instead of the half-time trap feel? Try our <a href="/genre/hip-hop/">rap beat maker</a>.'
+    answer: 'Yes. Generate in the style you are targeting, export the stems, add your tag and list it. Because the 808, drums and melody are separate, you can offer stems with the lease without re-bouncing anything. Our <a href="/use-cases/type-beats/">type beat maker</a> page covers the workflow end to end. Want straight rap drums instead of the half-time feel? Try the <a href="/genre/hip-hop/">rap beat maker</a>.'
   }
 ];
 ---
@@ -76,14 +83,14 @@ const faqs = [
   description="Create hard trap beats in seconds: booming 808s, rolling hi-hats, and dark melodies. Free trap beat maker with royalty-free commercial use for producers."
   keywords="trap beat maker, trap beat generator, ai trap beats, free trap beats, 808 beat maker, trap music generator, dark trap beats, make trap beats online, trap beat maker free, hip hop beat maker"
   headline="Free Trap Beat Maker"
-  subhead="Create hard-hitting trap beats with 808s, rolling hi-hats, and dark melodies. Built for producers."
+  subhead="Tuned sliding 808s, half-time snares, triplet hat rolls and dark minor melodies, delivered as separate stems. Built for producers who sell beats."
   ctaText="Create Trap Beats"
-  workflowTitle="How to make trap beats with AI"
+  workflowTitle="How to make trap beats with stems"
   workflowItems={workflowItems}
   demoTitle="Hear Trap Beats Made with Sonura"
   demoTracks={demoTracks}
   faqs={faqs}
   finalCtaTitle="Start making trap beats now"
   finalCtaButtonText="Create Trap Beats Free"
-  trustItems={['Royalty-free 808s', 'Export stems', 'Commercial use']}
+  trustItems={['Tuned 808s', 'Export stems', 'No royalty splits']}
 />
