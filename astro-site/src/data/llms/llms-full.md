@@ -24,6 +24,18 @@ Sonura is built for producers, beat makers, artists, and creators who need fast,
 
 ## Feature Capabilities
 
+### Composer (AI co-producer)
+Composer is the chat agent inside every Sonura session (https://sonurastudio.com/features/composer/). It reads the project's tracks, sections, key and tempo and acts on plain-language requests. Verified capabilities:
+- Set the project key ("put it in F minor") and tempo (60 to 200 BPM)
+- Transpose an existing part by an interval, optionally for a bar range ("drop the vocal an octave in the second half of the drop")
+- Write new parts: drums, bass, melody, pads, vocals, effects. On an empty project it builds a full arrangement with sections, parts, BPM and key
+- Regenerate an existing part in place, whole or for a bar range ("redo the drums in the drop")
+- Add a section after a named one, resize a section, delete a section or a bar range. It cannot yet move a section to a new position
+- Mix moves per stem: level, mute, solo, reverb, EQ, punch, width, sidechain to a named source
+- Split a lane into stems, isolate or remove one sound from a recorded take
+- Playback, loop region, master level, track names, undo and redo
+Chat and structural edits are free. Parts Composer generates use the account's creation credits. It requires a signed-in account and works on the free plan.
+
 ### AI Vocals
 - Generate AI vocal samples and vocal chops from text descriptions
 - Create harmonies, ad-libs, vocal hooks, and chants
