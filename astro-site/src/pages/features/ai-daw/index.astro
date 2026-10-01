@@ -1,0 +1,58 @@
+---
+import FeatureLayout from '../../../layouts/FeatureLayout.astro';
+
+const howItWorksSteps = [
+  'Start a project and describe the first part: "dusty boom bap drums at 90 BPM"',
+  'Add more parts the same way, or record MIDI and audio straight onto the timeline',
+  'Arrange sections, then mix with effects, sidechain and one-click mixing',
+  'Export the full mix as WAV or MP3, or every track as its own stem',
+];
+
+const benefits = [
+  { title: 'Every track can start from a prompt', description: 'Describe a drum groove, bassline, melody or vocal and it lands on the timeline at the project tempo, ready to cut, loop and arrange.' },
+  { title: 'Composer, the co-producer in your session', description: 'Ask in plain language and <a href="/features/composer/">Composer</a> sets the key or tempo, writes new parts, redoes a part for a bar range, adds or resizes sections, and applies mix moves. Chat is free.' },
+  { title: 'Piano roll and recording', description: 'Edit MIDI in a piano roll, record notes with a one-bar count-in, or record audio into a track.' },
+  { title: 'A mixer with real effects', description: 'EQ, compression, reverb, delay, chorus, distortion and filters on every channel, sidechain for the pumping feel, and one-click mixing when you want a balanced start.' },
+  { title: 'Stems on every plan', description: 'Split any track into stems or export each track on its own, on every plan including free. See <a href="/features/stem-export/">stem export</a>.' },
+  { title: 'Finish in the DAW you already use', description: 'Take stems into Ableton, Logic or FL Studio, or create sounds inside them with the free <a href="/plugin/">Sonura Flow plugin</a>.' },
+];
+
+const useCases = [
+  { title: 'Beat makers', description: 'Go from an empty project to an arranged beat without leaving one window, then export stems to sell or mix.' },
+  { title: 'Songwriters', description: 'Sketch the instrumental behind a song idea fast, record a melody over it, and keep every part editable.' },
+  { title: 'Producers on another DAW', description: 'Use Sonura for the ideas and the first arrangement, then move the stems into your main session to finish.' },
+  { title: 'Beginners', description: 'Learn arrangement and mixing on real parts. Describe what you want instead of programming every note first.' },
+];
+
+const faqs = [
+  { question: 'What is an AI DAW?', answer: 'A digital audio workstation where AI creates and edits parts inside the session, instead of a separate tool you export from. In Sonura you describe a part and it lands on the timeline, then you edit, record, mix and export like in any DAW.' },
+  { question: 'Is Sonura a free AI DAW?', answer: 'Yes. The full studio is free with no time limit and no credit card. Creating parts uses credits, and Composer chat is free. Free-plan creations are public domain (CC0), and every paid plan makes them exclusively yours with no royalty splits.' },
+  { question: 'Does it run in the browser?', answer: 'Yes, on desktop and iPad, with nothing to install. If you would rather create sounds inside Ableton, Logic or FL Studio, use the free <a href="/plugin/">Sonura Flow plugin</a>.' },
+  { question: 'Can I record into Sonura?', answer: 'Yes. Record MIDI with a one-bar count-in and edit it in the piano roll, or record audio into a track.' },
+  { question: 'Can I move my project into another DAW?', answer: 'Yes. Export the full mix as WAV or MP3, or every track as its own stem, and drop them into any DAW.' },
+  { question: 'Can I work on a project with someone else?', answer: 'Yes. Invite a collaborator to a project as an editor and build the track together.' },
+  { question: 'How is Sonura different from RipX DAW or ACE Studio?', answer: 'RipX DAW is built around separating and editing audio you already have. ACE Studio is built around AI singing voices. Sonura is built around creating new parts from a description and arranging them into a track, with stem separation and <a href="/features/ai-vocals/">vocals</a> there when you need them.' },
+];
+
+const trustItems = ['Free to start', 'Runs in your browser', 'Stems on every plan'];
+---
+
+<FeatureLayout
+  feature="AI DAW"
+  featureSlug="ai-daw"
+  title="Free AI DAW | Create, Arrange and Mix in Your Browser - Sonura"
+  description="Create parts from a prompt, arrange them on a timeline, record MIDI and audio, then mix and export stems. A free AI DAW that runs in your browser."
+  keywords="ai daw, free ai daw, ai music daw, daw with ai, browser daw, online daw, ai music studio"
+  headline="Free AI DAW"
+  subhead="A full studio in your browser where any track can start from a description. Arrange, record, mix and export stems, with Composer working alongside you."
+  quickAnswer="Sonura is an AI DAW that runs in your browser on desktop and iPad. Describe a part and it lands on the timeline as audio you can cut, loop and redo for any bar range. Record MIDI and audio, mix with EQ, compression, reverb and sidechain, and export WAV, MP3 or stems. Free to start, and paid plans make everything you create exclusively yours."
+  ctaText="Open the studio free"
+  howItWorksTitle="How the AI DAW works"
+  howItWorksSteps={howItWorksSteps}
+  benefits={benefits}
+  useCases={useCases}
+  faqs={faqs}
+  trustItems={trustItems}
+  finalCtaTitle="Open the studio"
+  finalCtaButtonText="Start free"
+/>

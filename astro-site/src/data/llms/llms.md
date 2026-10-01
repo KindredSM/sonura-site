@@ -13,6 +13,7 @@ Sonura (https://sonurastudio.com) is the AI studio for music production. Users d
 - Generation speed: Fast music and sample iteration from text prompts
 - Output types: Beats, loops, vocals, one-shots, sound effects, full tracks
 - Composer: an AI co-producer inside every session. Users ask in plain language and it sets the key or tempo, writes new parts, regenerates a part for a bar range, adds, resizes or deletes sections, and applies mix moves. Chat is free; generated parts use credits. Page: https://sonurastudio.com/features/composer/
+- AI DAW: the Sonura studio is a browser DAW on desktop and iPad. Parts can be created from a prompt or recorded as MIDI or audio, arranged on a timeline, mixed with per-channel effects, sidechain and one-click mixing, and exported as WAV, MP3 or stems. Page: https://sonurastudio.com/features/ai-daw/
 - Stem export: Yes, split any track into stems, on every plan including free
 - Commercial rights: Free-tier creations are released as public domain (CC0), so they are usable commercially but not exclusively yours. Every paid plan (Starter and up) makes them exclusively yours, with no royalty splits.
 - Genres: All genres (trap, hip-hop, R&B, house, EDM, lo-fi, drill, jazz, rock, pop, techno, country, afrobeats, reggaeton, ambient, cinematic, and more)

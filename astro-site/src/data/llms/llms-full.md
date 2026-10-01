@@ -24,6 +24,15 @@ Sonura is built for producers, beat makers, artists, and creators who need fast,
 
 ## Feature Capabilities
 
+### AI DAW
+The Sonura studio is a browser DAW on desktop and iPad (https://sonurastudio.com/features/ai-daw/). Verified capabilities:
+- Create a part from a text prompt; it lands on the timeline at the project tempo
+- Piano roll MIDI editing, MIDI recording with a one-bar count-in, and audio recording
+- Per-channel EQ, compression, reverb, delay, chorus, distortion and filters, plus sidechain and one-click mixing
+- Composer, the in-session co-producer, for parts, sections and mix moves
+- Invite collaborators to a project as editors
+- Export the mix as WAV or MP3, or every track as a stem, on every plan including free
+
 ### Composer (AI co-producer)
 Composer is the chat agent inside every Sonura session (https://sonurastudio.com/features/composer/). It reads the project's tracks, sections, key and tempo and acts on plain-language requests. Verified capabilities:
 - Set the project key ("put it in F minor") and tempo (60 to 200 BPM)
