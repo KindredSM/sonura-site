@@ -1,0 +1,557 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { ORG_ID, PLANS, RIGHTS, SITE_URL } from '../../../data/facts';
+
+// Every capability on this page maps to an action Composer can take in the app
+// (backend/src/lib/composerActions in the app repo). Nothing here is aspirational.
+
+const appUrl = 'https://app.sonurastudio.com/';
+const canonical = `${SITE_URL}/features/composer/`;
+const title = 'Composer | AI Co-Producer for Music Production - Sonura';
+const description = 'Composer is the AI co-producer in your Sonura session. Ask it to set the key, write a melody or add a section, and it edits the track.';
+
+const showcase = [
+  {
+    id: 'key',
+    title: 'Set the key.',
+    copy: 'Type the key and every new part follows it. One line instead of retuning each part by hand.',
+    image: '/images/composer-key.webp',
+    alt: 'Composer panel: "Put it in F minor" and the reply "Set the key to F minor."',
+  },
+  {
+    id: 'melody',
+    title: 'Write the missing part.',
+    copy: 'Say what is missing and Composer writes it in, styled to what is already playing. Redo it in one line if it is not the one.',
+    image: '/images/composer-melody.webp',
+    alt: 'Composer panel proposing a haunting bell melody and reverse bell swells, with a Build 2 parts button',
+  },
+  {
+    id: 'structure',
+    title: 'Rework the structure.',
+    copy: 'Add a breakdown before the last chorus and everything after it shifts to make room. No dragging clips around.',
+    image: '/images/composer-structure.webp',
+    alt: 'Composer panel: "Add an 8-bar breakdown before the last chorus" and the reply "Added an 8-bar Breakdown."',
+  },
+];
+
+const steps = [
+  { title: 'Open a session', text: 'Start empty and ask for a full track, or open something you are already working on.' },
+  { title: 'Ask for the change', text: 'Name a part, a section or a bar range and the edit stays inside it. If the ask is unclear, Composer asks first.' },
+  { title: 'Keep it or undo it', text: 'Composer reports what changed. Say "undo" and the previous state comes back exactly.' },
+];
+
+const audiences = [
+  { title: 'Starting out', description: 'No DAW to learn. Describe what you want, hear it, ask for the next change. The timeline is there when you want it.' },
+  { title: 'DJs and producers', description: 'Fast variations without rebuilding by hand. A different drop, a longer intro, a key that sits with the next track. Then pull the stems into your DAW with <a href="/features/stem-export/">stem export</a>.' },
+];
+
+const related = [
+  { href: '/tools/ai-song-maker/', title: 'AI song maker' },
+  { href: '/features/stem-export/', title: 'Stem export' },
+  { href: '/tools/bpm-tap/', title: 'BPM tap' },
+  { href: '/plugin/', title: 'Sonura Flow plugin' },
+  { href: '/blog/best-ai-plugins-for-producers/', title: 'Best AI plugins for producers' },
+];
+
+const faqs = [
+  { question: 'What is an AI co-producer?', answer: 'An AI co-producer is AI for music production that works inside your session rather than handing you a finished file. Composer reads the tracks, sections, key and tempo in your Sonura project and makes the change you ask for: setting the key, writing a part, inserting a section or adjusting the mix. It speeds up the process. The decisions about what the track should be stay with you.' },
+  { question: 'Can Composer change the key of my song?', answer: 'Yes. Ask for a key and Composer sets it for the project, so every part written after that follows it. To move a part you already have, name it and the interval: "drop the vocal a third" or "octave up the bass". You can limit that to a bar range, such as the second half of the drop.' },
+  { question: 'Do I need a DAW?', answer: 'No. Composer works in the Sonura browser studio, which has its own timeline, sections and mixer, so it behaves like an AI DAW without the setup. If you already produce in a DAW, export the stems with <a href="/features/stem-export/">stem export</a>, or create sounds inside your session with the <a href="/plugin/">Sonura Flow</a> plugin.' },
+  { question: 'Do I own the result?', answer: RIGHTS.commercial },
+  { question: 'Is Composer free?', answer: 'Talking to Composer is free on every plan, including the free plan, and you need a Sonura account. Chat, planning and structural edits do not use credits. Parts that Composer generates, such as a new melody or replacement drums, use the same creation credits as anything else you make in Sonura. See <a href="/pricing/">pricing</a> for what each plan includes.' },
+  { question: 'What can I ask it to change?', answer: 'Key and tempo. New parts in any category: drums, bass, melody, pads, vocals or effects. A regenerated version of a part, whole or for a bar range. Sections: add, lengthen, shorten or delete. Mix moves: level, mute, solo, reverb, EQ, sidechain. Stem tools: split a lane into stems, or isolate one sound in a take. Playback, the loop region, track names, undo and redo. It does not move a section to a new position yet.' },
+];
+
+const stripHtml = (value: string) => value.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Sonura Composer",
+    "publisher": { "@id": ORG_ID },
+    "url": canonical,
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Web Browser",
+    "description": description,
+    "offers": {
+      "@type": "Offer",
+      "price": String(PLANS[0].monthlyPrice),
+      "priceCurrency": "USD"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": `${SITE_URL}/` },
+      { "@type": "ListItem", "position": 2, "name": "Features", "item": `${SITE_URL}/features/` },
+      { "@type": "ListItem", "position": 3, "name": "Composer", "item": canonical }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": { "@type": "Answer", "text": stripHtml(faq.answer) }
+    }))
+  }
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  keywords="ai music production tools, ai for music production, ai daw, ai music studio, ai music editor, ai co-producer, change the key of a song"
+  canonical={canonical}
+  ogTitle={title}
+  ogDescription={description}
+  jsonLd={jsonLd}
+  bodyClass="feature-page"
+>
+  <style>
+    .feature-section {
+      border-top: 1px solid var(--hairline);
+      padding: clamp(72px, 9vw, 110px) var(--page-pad);
+    }
+
+    .feature-section .workflow-title { margin: 0 0 48px; }
+
+    .section-sub {
+      margin: -28px 0 48px;
+      max-width: 620px;
+      font-size: 16px;
+      color: var(--muted);
+      letter-spacing: 0.022em;
+      line-height: 1.8;
+      word-spacing: 0.04em;
+    }
+
+    /* in-session demo, same shape as the plugin page */
+    .cp-demo {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
+      gap: 48px;
+      align-items: center;
+    }
+
+    .demo-copy { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+
+    .demo-copy h2 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(32px, 4.8vw, 60px);
+      line-height: 1;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--fg);
+    }
+
+    .demo-copy p:last-child {
+      margin: 0;
+      max-width: 410px;
+      font-size: 16px;
+      color: var(--muted);
+      letter-spacing: 0.022em;
+      word-spacing: 0.04em;
+      line-height: 1.8;
+    }
+
+    .demo-frame {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--hairline);
+      aspect-ratio: 1440 / 900;
+      max-width: 100%;
+      background: var(--bg);
+    }
+
+    .demo-frame video { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+    /* showcase, same grid as the plugin page bento */
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 56px 40px;
+      width: 100%;
+    }
+
+    .bento-card { position: relative; display: flex; flex-direction: column; }
+
+    .card-body { padding: 0 0 20px; display: flex; flex-direction: column; gap: 12px; }
+
+    .bento-card h3 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(20px, 1.9vw, 26px);
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--fg);
+    }
+
+    .card-body p {
+      margin: 0;
+      font-size: 15px;
+      letter-spacing: 0.022em;
+      word-spacing: 0.04em;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .card-shot {
+      position: relative;
+      aspect-ratio: 1136 / 646;
+      overflow: hidden;
+      margin-top: auto;
+      border: 1px solid var(--hairline);
+      background: var(--bg);
+    }
+
+    .card-shot img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      filter: grayscale(0.5) contrast(1.08);
+      transition: filter 0.3s ease;
+    }
+
+    .bento-card:hover .card-shot img { filter: none; }
+
+    /* how it works */
+    .steps-list { display: flex; flex-direction: column; border-bottom: 1px solid var(--hairline); }
+
+    .step-row {
+      display: grid;
+      grid-template-columns: 48px minmax(160px, 0.6fr) minmax(0, 1.6fr);
+      align-items: baseline;
+      gap: 28px;
+      padding: 22px 0;
+      border-top: 1px solid var(--hairline);
+    }
+
+    .step-index {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      font-variant-numeric: tabular-nums;
+      color: var(--faint);
+    }
+
+    .step-title {
+      margin: 0;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--fg);
+    }
+
+    .step-text {
+      margin: 0;
+      max-width: 760px;
+      font-size: 16px;
+      color: var(--muted);
+      letter-spacing: 0.022em;
+      line-height: 1.8;
+      word-spacing: 0.04em;
+    }
+
+    /* cards */
+    .usecase-grid, .related-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+
+    .usecase-card, .related-card {
+      display: block;
+      padding: 32px;
+      background: transparent;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-panel);
+      color: inherit;
+      text-decoration: none;
+      transition: border-color 0.2s;
+    }
+
+    .usecase-card:hover, .related-card:hover { border-color: var(--fg); }
+
+    .card-title {
+      margin: 0 0 14px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--fg);
+    }
+
+    .card-desc {
+      margin: 0;
+      font-size: 15px;
+      color: var(--muted);
+      letter-spacing: 0.022em;
+      line-height: 1.8;
+      word-spacing: 0.04em;
+    }
+
+    .card-desc :global(a) {
+      color: var(--fg);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .related-card .card-title::after { content: ' →'; color: var(--muted); }
+
+    /* hero, same shape as the plugin page */
+    .cp-hero {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 22px;
+      padding: clamp(48px, 8vh, 96px) var(--page-pad) clamp(72px, 9vw, 110px);
+    }
+
+    .cp-kicker {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .cp-kicker-note { margin-left: 8px; color: var(--faint); letter-spacing: 0.1em; }
+
+    .cp-hero h1 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(48px, 7vw, 104px);
+      line-height: 0.98;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--fg);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cp-sub {
+      margin: 0;
+      max-width: 520px;
+      font-size: 17px;
+      color: var(--muted);
+      letter-spacing: 0.022em;
+      word-spacing: 0.04em;
+      line-height: 1.8;
+    }
+
+    .cp-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; margin-top: 8px; }
+
+    .link-row {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 32px;
+    }
+
+    .link-row a {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--fg);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 7px;
+    }
+
+    .link-row a::after { content: ' →'; color: var(--muted); }
+
+    @media (min-width: 640px) {
+      .usecase-grid { grid-template-columns: repeat(2, 1fr); }
+      .related-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 1024px) {
+      .related-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 900px) {
+      .cp-demo { grid-template-columns: 1fr; gap: 32px; }
+      .demo-copy p:last-child { max-width: 560px; }
+    }
+
+    @media (max-width: 1100px) {
+      .bento { grid-template-columns: 1fr 1fr; gap: 48px 32px; }
+    }
+
+    @media (max-width: 640px) {
+      .bento { grid-template-columns: 1fr; gap: 44px; }
+      .step-row { grid-template-columns: 1fr; gap: 8px; }
+      .step-index { margin-bottom: 4px; }
+      .usecase-card, .related-card { padding: 24px; }
+    }
+  </style>
+
+  <section class="cp-hero">
+    <p class="cp-kicker reveal">Composer <span class="cp-kicker-note">In every session</span></p>
+    <h1 class="reveal" data-reveal-delay="0.04s">
+      <span class="h1-row">Make music</span>
+      <span class="h1-row">by asking for it</span>
+    </h1>
+    <p class="cp-sub reveal" data-reveal-delay="0.08s">Start with a prompt. Ask for a new key, a melody or the next section. Move from idea to track faster.</p>
+    <div class="cp-actions reveal" data-reveal-delay="0.12s">
+      <a class="button primary" href={appUrl} data-composer-cta="hero">Open a session</a>
+      <a class="hero-beta-link" href="/features/">All Features →</a>
+    </div>
+  </section>
+
+  <section class="feature-section cp-demo" aria-labelledby="demo-title">
+    <div class="demo-copy">
+      <p class="section-kicker">In session</p>
+      <h2 id="demo-title" class="reveal">Ask, then hear it.</h2>
+      <p class="reveal" data-reveal-delay="0.06s">Composer reads what is already on the timeline, so each request lands in context. Nothing to export, and undo if you change your mind.</p>
+    </div>
+    <div class="demo-frame reveal" data-reveal-delay="0.1s">
+      <video
+        id="composer-demo"
+        aria-label="Composer changing the key, writing a melody and adding a breakdown in a Sonura session"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        poster="/videos/composer-demo-poster.jpg"
+        width="1440"
+        height="900"
+      >
+        <source src="/videos/composer-demo.webm" type="video/webm" />
+        <source src="/videos/composer-demo.mp4" type="video/mp4" />
+      </video>
+    </div>
+  </section>
+
+  <section class="feature-section" aria-labelledby="showcase-title">
+    <p class="section-kicker">Capabilities</p>
+    <h2 id="showcase-title" class="workflow-title reveal">Your co-producer, inside the session</h2>
+    <div class="bento">
+      {showcase.map((card, index) => (
+        <article class="bento-card reveal" data-reveal-delay={`${0.06 * index}s`} data-showcase={card.id}>
+          <div class="card-body">
+            <h3>{card.title}</h3>
+            <p>{card.copy}</p>
+          </div>
+          <div class="card-shot">
+            <img src={card.image} alt={card.alt} width="1136" height="646" loading="lazy" />
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="feature-section" aria-labelledby="how-title">
+    <p class="section-kicker">How it works</p>
+    <h2 id="how-title" class="workflow-title reveal">Say what you hear in your head</h2>
+    <p class="section-sub">No theory required. Describe the change, keep listening, and open the timeline whenever you want to take over.</p>
+    <div class="steps-list">
+      {steps.map((step, index) => (
+        <div class="step-row reveal" data-reveal-delay={`${0.08 * index}s`}>
+          <span class="step-index">{String(index + 1).padStart(2, '0')}</span>
+          <h3 class="step-title">{step.title}</h3>
+          <p class="step-text">{step.text}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="feature-section" aria-labelledby="who-title">
+    <p class="section-kicker">Who it is for</p>
+    <h2 id="who-title" class="workflow-title reveal">Guidance for beginners, speed for producers</h2>
+    <div class="usecase-grid">
+      {audiences.map((a, index) => (
+        <div class="usecase-card reveal" data-reveal-delay={`${0.06 * index}s`}>
+          <h3 class="card-title">{a.title}</h3>
+          <p class="card-desc" set:html={a.description}></p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="feature-section cp-links" aria-labelledby="related-title">
+    <p class="section-kicker">Next steps</p>
+    <h2 id="related-title" class="workflow-title reveal">More AI music production tools</h2>
+    <ul class="link-row">
+      {related.map((r) => (
+        <li><a href={r.href}>{r.title}</a></li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="faq" id="faq" aria-labelledby="faq-title">
+    <div class="faq-inner">
+      <p class="section-kicker">FAQ</p>
+      <h2 id="faq-title" class="faq-title">Composer FAQ</h2>
+      <div class="faq-list">
+        {faqs.map((faq, index) => (
+          <details class="reveal" data-reveal-delay={`${0.03 * index}s`}>
+            <summary>{faq.question}</summary>
+            <p set:html={faq.answer}></p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="final-cta" aria-labelledby="final-cta-title">
+    <div class="final-cta-inner">
+      <h2 id="final-cta-title" class="final-cta-title reveal">Start a session with Composer</h2>
+      <p class="final-cta-subtitle reveal" data-reveal-delay="0.06s">Free to start. Free-plan creations are CC0, and every paid plan makes them exclusively yours.</p>
+      <div class="final-cta-form reveal" data-reveal-delay="0.12s">
+        <a class="button primary large" href={appUrl} data-composer-cta="final">Open a session</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // The demo is silent, so it may autoplay. Browsers that defer autoplay
+    // (data saver, some mobile settings) get a play() call once it is in view.
+    const demo = document.getElementById('composer-demo') as HTMLVideoElement | null;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (demo && reduceMotion) {
+      // respect the viewer's setting: no autoplay, show the controls instead
+      demo.removeAttribute('autoplay');
+      demo.pause();
+      demo.controls = true;
+    } else if (demo) {
+      demo.muted = true;
+      const tryPlay = () => { demo.play().catch(() => {}); };
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver((entries, io) => {
+          if (entries.some((e) => e.isIntersecting)) { tryPlay(); io.disconnect(); }
+        }, { threshold: 0.25 }).observe(demo);
+      } else {
+        tryPlay();
+      }
+    }
+
+    // PostHog gets a direct capture, matching plugin_download on /plugin/.
+    // source identifies the page; cta_location tells the two buttons apart.
+    document.querySelectorAll<HTMLAnchorElement>('[data-composer-cta]').forEach((link) => {
+      link.addEventListener('click', () => {
+        const ph = (window as any).posthog;
+        if (ph && typeof ph.capture === 'function') {
+          ph.capture('composer_cta_click', {
+            source: 'composer_page',
+            cta_location: link.dataset.composerCta,
+            link_url: link.href,
+          });
+        }
+      });
+    });
+  </script>
+</BaseLayout>
