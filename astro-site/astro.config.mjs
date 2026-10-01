@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import llmsFiles from './src/integrations/llmsFiles.ts';
+import ogImages from './src/integrations/ogImages.ts';
 import { gitLastmod } from './src/integrations/gitLastmod.ts';
 
 const lastmodFor = gitLastmod('https://sonurastudio.com');
@@ -47,5 +48,6 @@ export default defineConfig({
       },
     }),
     llmsFiles(),
+    ogImages(),
   ],
 });
