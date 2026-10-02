@@ -7,17 +7,16 @@ const img = (name: string) => `/images/guides/dj-remix/${name}.webp`;
 
 <BaseLayout
   title="Remix any track in Sonura | Step by step guide"
-  description="The full remix workflow from the video: bring in a whole track, lock it to the grid, pull the vocal, build a new track under it and take it to your next set."
+  description="The remix from the video, step by step. Whole track in, vocal out, new beat under it."
   canonical="https://sonurastudio.com/guides/dj-remix/"
   noindex={true}
 >
   <article class="guide">
     <header class="guide-head">
-      <p class="guide-kicker">Guide / DJ remixes / 5 min</p>
+      <p class="guide-kicker">Guide / DJ remixes / 2 min</p>
       <h1>Remix any track in Sonura</h1>
       <p class="guide-lede">
-        The workflow from the video, step by step. Bring in the whole track, lock it to the grid, pull out
-        the vocal, build something new under it and take it to your next set.
+        The remix from the video, step by step. Whole track in, vocal out, new beat under it.
       </p>
     </header>
 
@@ -25,14 +24,8 @@ const img = (name: string) => `/images/guides/dj-remix/${name}.webp`;
       <div class="step-text">
         <p class="step-num">01</p>
         <h2>Drop in the whole track</h2>
-        <p>
-          Drag the full song onto the timeline, not just the acapella. You'll pull the vocal out of it
-          yourself in step 4.
-        </p>
-        <p>
-          Sonura asks for its tempo and key. Put in what you know. The first file sets the project's tempo
-          and key, so everything you add later is built to match it.
-        </p>
+        <p>Drag in the full song, not just the acapella.</p>
+        <p>Sonura asks for the BPM and key. Fill them in and the project locks to them.</p>
       </div>
       <div class="step-media">
         <figure><img src={img('tempo-prompt')} alt="The tempo prompt asking for the BPM and key of a dropped track" width="1200" height="600" loading="lazy" /></figure>
@@ -43,17 +36,14 @@ const img = (name: string) => `/images/guides/dj-remix/${name}.webp`;
       <div class="step-text">
         <p class="step-num">02</p>
         <h2>Trim the start</h2>
-        <p>
-          Downloaded tracks and older masters often start with a sliver of uneven silence, so the first
-          beat never lands on bar 1. Right click the clip, then <strong>Timing</strong> and
-          <strong>Trim the start</strong>. It cuts straight to the first hit.
-        </p>
+        <p>Most downloads start with a bit of dead air, so the kick misses bar 1.</p>
+        <p>Right click &rarr; <strong>Timing</strong> &rarr; <strong>Trim the start</strong>. Now it starts on the first hit.</p>
       </div>
       <div class="step-media">
         <figure>
           <img src={img('trim-before')} alt="Before: silence pushes the first beat past bar 1" width="1520" height="350" loading="lazy" />
           <img src={img('trim-after')} alt="After: the first hit sits on bar 1" width="1520" height="350" loading="lazy" />
-          <figcaption>Before and after. The first kick now sits on bar 1.</figcaption>
+          <figcaption>Before and after.</figcaption>
         </figure>
       </div>
     </section>
@@ -62,20 +52,10 @@ const img = (name: string) => `/images/guides/dj-remix/${name}.webp`;
       <div class="step-text">
         <p class="step-num">03</p>
         <h2>Warp it to the grid</h2>
-        <p>
-          Plenty of records aren't a round number. The track in the video runs at 120.27 BPM, which sounds
-          fine for a few bars and drifts half a beat every two minutes.
-        </p>
-        <p>
-          Right click, <strong>Timing</strong>, <strong>Match clip to project tempo</strong>. Sonura
-          measures the track's real tempo and warps it to the project's without moving it. Turn on the
-          metronome (the clock in the transport) and listen through. If it still feels a hair late,
-          <strong>Shift a 16th</strong> nudges it.
-        </p>
-        <p class="aside">
-          Rather keep the original tempo? <strong>Match project to clip tempo</strong> sets the project to
-          the track instead.
-        </p>
+        <p>Loads of tunes aren't a round BPM. The one in the video is 120.27, so it slowly drifts.</p>
+        <p>Right click &rarr; <strong>Timing</strong> &rarr; <strong>Match clip to project tempo</strong>. Sonura finds the real tempo and locks it to yours.</p>
+        <p>Metronome on, have a listen. Still a hair off? <strong>Shift a 16th</strong>.</p>
+        <p class="aside">Want the original tempo instead? <strong>Match project to clip tempo</strong>.</p>
       </div>
       <div class="step-media">
         <figure><img src={img('timing-menu')} alt="The clip menu's Timing options: match tempo, trim the start, trim silence and shift a 16th" width="1520" height="1040" loading="lazy" /></figure>
@@ -86,14 +66,9 @@ const img = (name: string) => `/images/guides/dj-remix/${name}.webp`;
       <div class="step-text">
         <p class="step-num">04</p>
         <h2>Split the stems</h2>
-        <p>
-          Right click, <strong>Split stems</strong>. Two stems gives you vocals and instrumental, which is
-          all a remix needs. Six stems also separates drums, bass, guitar and piano if you want to keep a
-          piece of the original.
-        </p>
-        <p>
-          The stems land on new lanes under the track, already in time, and the original is muted.
-        </p>
+        <p>Right click &rarr; <strong>Split stems</strong> &rarr; <strong>Two stems</strong>.</p>
+        <p>Vocals and instrumental land on their own lanes, in time. The original gets muted.</p>
+        <p class="aside">Want the drums or bass too? Pick six stems.</p>
       </div>
       <div class="step-media">
         <figure><img src={img('split-stems')} alt="The split stems panel set to two stems" width="1380" height="740" loading="lazy" /></figure>
@@ -105,12 +80,8 @@ const img = (name: string) => `/images/guides/dj-remix/${name}.webp`;
       <div class="step-text">
         <p class="step-num">05</p>
         <h2>Keep the vocal, build around it</h2>
-        <p>
-          Mute or delete the Instrumental lane. Then open the Composer and say what you want under the
-          vocal, like <em>build a house track around the vocal</em>. It creates a loop for each part in the
-          project's key and tempo and leaves the vocal alone. Swap any part you don't like, or drag in your
-          own loops.
-        </p>
+        <p>Mute the instrumental. Open the Composer and ask for what you want: <em>build a house track around the vocal</em>.</p>
+        <p>It builds the parts in your key and tempo and leaves the vocal alone. Don't like a part? Swap it.</p>
       </div>
       <div class="step-media">
         <figure><img src={img('build-around-vocal')} alt="The vocal on its own lane with the Composer open" width="1520" height="1049" loading="lazy" /></figure>
@@ -121,10 +92,7 @@ const img = (name: string) => `/images/guides/dj-remix/${name}.webp`;
       <div class="step-text">
         <p class="step-num">06</p>
         <h2>Take it to the gig</h2>
-        <p>
-          Hit <strong>Download</strong>. Take the track as WAV for the decks, or the stems if you'd rather
-          finish the edit in your own software.
-        </p>
+        <p><strong>Download</strong> &rarr; <strong>WAV</strong>. Or grab the stems and finish it in your DJ software.</p>
       </div>
       <div class="step-media">
         <figure><img src={img('download')} alt="The download menu with track and stems in WAV or MP3" width="1120" height="400" loading="lazy" /></figure>
