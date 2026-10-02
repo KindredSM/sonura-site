@@ -37,8 +37,8 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
-      // /v2/ is an internal landing experiment: noindex, and kept out of the sitemap.
-      filter: (page) => !page.includes('/v2/'),
+      // /v2/ and /guides/ are noindex and shared by link only, so they stay out of the sitemap.
+      filter: (page) => !page.includes('/v2/') && !page.includes('/guides/'),
       changefreq: 'weekly',
       priority: 0.7,
       serialize(item) {

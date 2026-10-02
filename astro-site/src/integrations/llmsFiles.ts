@@ -19,7 +19,7 @@ const SECTIONS: [string, string][] = [
   ['blog', 'Blog'],
 ];
 
-const SKIP = new Set(['privacy', 'terms', 'partner-terms', 'v2', '404']);
+const SKIP = new Set(['privacy', 'terms', 'partner-terms', 'v2', 'guides', '404']);
 
 interface Page {
   url: string;

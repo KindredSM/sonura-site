@@ -1,0 +1,176 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const appUrl = 'https://app.sonurastudio.com/studio';
+const img = (name: string) => `/images/guides/dj-remix/${name}.webp`;
+---
+
+<BaseLayout
+  title="Remix any track in Sonura | Step by step guide"
+  description="The full remix workflow from the video: bring in a whole track, lock it to the grid, pull the vocal, build a new track under it and take it to your next set."
+  canonical="https://sonurastudio.com/guides/dj-remix/"
+  noindex={true}
+>
+  <article class="guide">
+    <header class="guide-head">
+      <p class="guide-kicker">Guide / DJ remixes / 5 min</p>
+      <h1>Remix any track in Sonura</h1>
+      <p class="guide-lede">
+        The workflow from the video, step by step. Bring in the whole track, lock it to the grid, pull out
+        the vocal, build something new under it and take it to your next set.
+      </p>
+    </header>
+
+    <section class="step" id="import">
+      <p class="step-num">01</p>
+      <h2>Drop in the whole track</h2>
+      <p>
+        Drag the full song onto the timeline, not just the acapella. You'll pull the vocal out of it
+        yourself in step 4.
+      </p>
+      <p>
+        Sonura asks for its tempo and key. Put in what you know. The first file sets the project's tempo
+        and key, so everything you add later is built to match it.
+      </p>
+      <figure><img src={img('tempo-prompt')} alt="The tempo prompt asking for the BPM and key of a dropped track" width="1200" height="600" loading="lazy" /></figure>
+    </section>
+
+    <section class="step" id="trim">
+      <p class="step-num">02</p>
+      <h2>Trim the start</h2>
+      <p>
+        Downloaded tracks and older masters often start with a sliver of uneven silence, so the first
+        beat never lands on bar 1. Right click the clip, then <strong>Timing</strong> and
+        <strong>Trim the start</strong>. It cuts straight to the first hit.
+      </p>
+      <figure>
+        <img src={img('trim-before')} alt="Before: silence pushes the first beat past bar 1" width="1520" height="350" loading="lazy" />
+        <img src={img('trim-after')} alt="After: the first hit sits on bar 1" width="1520" height="350" loading="lazy" />
+        <figcaption>Before and after. The first kick now sits on bar 1.</figcaption>
+      </figure>
+    </section>
+
+    <section class="step" id="warp">
+      <p class="step-num">03</p>
+      <h2>Warp it to the grid</h2>
+      <p>
+        Plenty of records aren't a round number. The track in the video runs at 120.27 BPM, which sounds
+        fine for a few bars and drifts half a beat every two minutes.
+      </p>
+      <p>
+        Right click, <strong>Timing</strong>, <strong>Match clip to project tempo</strong>. Sonura
+        measures the track's real tempo and warps it to the project's without moving it. Turn on the
+        metronome (the clock in the transport) and listen through. If it still feels a hair late,
+        <strong>Shift a 16th</strong> nudges it.
+      </p>
+      <figure><img src={img('timing-menu')} alt="The clip menu's Timing options: match tempo, trim the start, trim silence and shift a 16th" width="1520" height="1040" loading="lazy" /></figure>
+      <p class="aside">
+        Rather keep the original tempo? <strong>Match project to clip tempo</strong> sets the project to
+        the track instead.
+      </p>
+    </section>
+
+    <section class="step" id="stems">
+      <p class="step-num">04</p>
+      <h2>Split the stems</h2>
+      <p>
+        Right click, <strong>Split stems</strong>. Two stems gives you vocals and instrumental, which is
+        all a remix needs. Six stems also separates drums, bass, guitar and piano if you want to keep a
+        piece of the original.
+      </p>
+      <figure><img src={img('split-stems')} alt="The split stems panel set to two stems" width="1380" height="740" loading="lazy" /></figure>
+      <p>
+        The stems land on new lanes under the track, already in time, and the original is muted.
+      </p>
+      <figure><img src={img('stems-landed')} alt="Vocals and Instrumental lanes under the muted original" width="1520" height="795" loading="lazy" /></figure>
+    </section>
+
+    <section class="step" id="build">
+      <p class="step-num">05</p>
+      <h2>Keep the vocal, build around it</h2>
+      <p>
+        Mute or delete the Instrumental lane. Then open the Composer and say what you want under the
+        vocal, like <em>build a house track around the vocal</em>. It creates a loop for each part in the
+        project's key and tempo and leaves the vocal alone. Swap any part you don't like, or drag in your
+        own loops.
+      </p>
+      <figure><img src={img('build-around-vocal')} alt="The vocal on its own lane with the Composer open" width="1520" height="1049" loading="lazy" /></figure>
+    </section>
+
+    <section class="step" id="export">
+      <p class="step-num">06</p>
+      <h2>Take it to the gig</h2>
+      <p>
+        Hit <strong>Download</strong>. Take the track as WAV for the decks, or the stems if you'd rather
+        finish the edit in your own software.
+      </p>
+      <figure><img src={img('download')} alt="The download menu with track and stems in WAV or MP3" width="1120" height="400" loading="lazy" /></figure>
+    </section>
+
+    <footer class="guide-cta">
+      <a class="button primary large" href={appUrl}>Open the studio</a>
+    </footer>
+  </article>
+</BaseLayout>
+
+<style>
+  .guide {
+    max-width: 760px;
+    margin: 80px 0 120px;
+    padding: 0 var(--page-pad);
+    color: var(--fg);
+  }
+  .guide-kicker,
+  .step-num {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 16px;
+  }
+  .step-num { color: var(--faint); font-variant-numeric: tabular-nums; }
+  .guide h1 {
+    font-family: var(--font-display);
+    font-size: clamp(44px, 6vw, 80px);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    line-height: 0.96;
+    margin: 0 0 24px;
+  }
+  .guide h2 {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3.4vw, 42px);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    line-height: 1;
+    margin: 0 0 20px;
+  }
+  .guide p {
+    font-size: 16px;
+    line-height: 1.8;
+    letter-spacing: 0.022em;
+    color: var(--muted);
+    margin: 0 0 16px;
+  }
+  .guide p.guide-lede { font-size: 18px; }
+  .guide strong { color: var(--fg); font-weight: 600; }
+  .guide em { color: var(--fg); }
+  .step {
+    border-top: 1px solid var(--hairline);
+    padding-top: 40px;
+    margin-top: 56px;
+  }
+  .guide figure { margin: 24px 0; display: flex; flex-direction: column; gap: 8px; }
+  .guide figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--border-light);
+  }
+  .guide figcaption { font-size: 13px; color: var(--faint); }
+  .guide p.aside { font-size: 14px; }
+  .guide-cta { margin-top: 64px; padding-top: 40px; border-top: 1px solid var(--hairline); }
+</style>
