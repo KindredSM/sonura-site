@@ -3,6 +3,7 @@ import { readFile, writeFile, readdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { PLANS, planAllowance, SITE_URL } from '../data/facts';
+import { isNoindexHtml } from './noindex';
 
 const TEMPLATES = fileURLToPath(new URL('../data/llms/', import.meta.url));
 
@@ -19,7 +20,7 @@ const SECTIONS: [string, string][] = [
   ['blog', 'Blog'],
 ];
 
-const SKIP = new Set(['privacy', 'terms', 'partner-terms', 'v2', 'guides', '404']);
+const SKIP = new Set(['privacy', 'terms', 'partner-terms', 'v2', '404']);
 
 interface Page {
   url: string;
@@ -47,7 +48,7 @@ async function htmlFiles(dir: string): Promise<string[]> {
 
 async function readPage(dist: string, file: string): Promise<Page | null> {
   const html = await readFile(file, 'utf8');
-  if (/http-equiv="refresh"/.test(html) || /name="robots" content="[^"]*noindex/.test(html)) return null;
+  if (/http-equiv="refresh"/.test(html) || isNoindexHtml(html)) return null;
   const route = path.relative(dist, path.dirname(file)).split(path.sep).join('/');
   const section = route.split('/')[0];
   if (SKIP.has(section)) return null;

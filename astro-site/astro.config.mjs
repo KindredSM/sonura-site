@@ -3,8 +3,10 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import llmsFiles from './src/integrations/llmsFiles.ts';
 import { gitLastmod } from './src/integrations/gitLastmod.ts';
+import { noindexPages } from './src/integrations/noindex.ts';
 
 const lastmodFor = gitLastmod('https://sonurastudio.com');
+const isNoindex = noindexPages(new URL('./dist/', import.meta.url));
 
 // https://astro.build/config
 export default defineConfig({
@@ -37,8 +39,7 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
-      // /v2/ and /guides/ are noindex and shared by link only, so they stay out of the sitemap.
-      filter: (page) => !page.includes('/v2/') && !page.includes('/guides/'),
+      filter: (page) => !isNoindex(page),
       changefreq: 'weekly',
       priority: 0.7,
       serialize(item) {
