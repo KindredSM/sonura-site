@@ -67,20 +67,30 @@ const img = (name: string) => `/images/guides/dj-remix/${name}.webp`;
         <p class="step-num">04</p>
         <h2>Split the stems</h2>
         <p>Right click &rarr; <strong>Split stems</strong> &rarr; <strong>Two stems</strong>.</p>
-        <p>Vocals and instrumental land on their own lanes, in time. The original gets muted.</p>
         <p class="aside">Want the drums or bass too? Pick six stems.</p>
       </div>
       <div class="step-media">
         <figure><img src={img('split-stems')} alt="The split stems panel set to two stems" width="1380" height="740" loading="lazy" /></figure>
+      </div>
+    </section>
+
+    <section class="step" id="vocal">
+      <div class="step-text">
+        <p class="step-num">05</p>
+        <h2>Keep the vocal</h2>
+        <p>Vocals and instrumental land on their own lanes, in time. The original gets muted.</p>
+        <p>Mute the instrumental too. Now it's just the vocal.</p>
+      </div>
+      <div class="step-media">
         <figure><img src={img('stems-landed')} alt="Vocals and Instrumental lanes under the muted original" width="1520" height="795" loading="lazy" /></figure>
       </div>
     </section>
 
     <section class="step" id="build">
       <div class="step-text">
-        <p class="step-num">05</p>
-        <h2>Keep the vocal, build around it</h2>
-        <p>Mute the instrumental. Open the Composer and ask for what you want: <em>build a house track around the vocal</em>.</p>
+        <p class="step-num">06</p>
+        <h2>Build around it</h2>
+        <p>Open the Composer and ask for what you want: <em>build a house track around the vocal</em>.</p>
         <p>It builds the parts in your key and tempo and leaves the vocal alone. Don't like a part? Swap it.</p>
       </div>
       <div class="step-media">
@@ -90,7 +100,7 @@ const img = (name: string) => `/images/guides/dj-remix/${name}.webp`;
 
     <section class="step" id="export">
       <div class="step-text">
-        <p class="step-num">06</p>
+        <p class="step-num">07</p>
         <h2>Take it to the gig</h2>
         <p><strong>Download</strong> &rarr; <strong>WAV</strong>. Or grab the stems and finish it in your DJ software.</p>
       </div>
@@ -159,13 +169,11 @@ const img = (name: string) => `/images/guides/dj-remix/${name}.webp`;
     display: grid;
     grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
     gap: 64px;
-    align-items: start;
+    align-items: center;
   }
-  .step-text { position: sticky; top: calc(var(--nav-h) + 32px); }
   .step-media { display: flex; flex-direction: column; gap: 24px; }
   @media (max-width: 900px) {
     .step { grid-template-columns: minmax(0, 1fr); gap: 8px; }
-    .step-text { position: static; }
   }
   .guide figure { margin: 0; display: flex; flex-direction: column; gap: 8px; }
   .guide figure img {
