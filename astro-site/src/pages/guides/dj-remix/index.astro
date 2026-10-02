@@ -114,7 +114,7 @@ const img = (name: string) => `/images/guides/dj-remix/${name}.webp`;
   }
   .guide-kicker,
   .step-num {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -124,7 +124,7 @@ const img = (name: string) => `/images/guides/dj-remix/${name}.webp`;
   .step-num { color: var(--faint); font-variant-numeric: tabular-nums; }
   .guide h1 {
     font-family: var(--font-display);
-    font-size: clamp(44px, 6vw, 80px);
+    font-size: clamp(52px, 7.7vw, 115px);
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.01em;
@@ -133,24 +133,25 @@ const img = (name: string) => `/images/guides/dj-remix/${name}.webp`;
   }
   .guide h2 {
     font-family: var(--font-display);
-    font-size: clamp(28px, 3.4vw, 42px);
+    font-size: clamp(36px, 4.6vw, 68px);
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.01em;
     line-height: 1;
-    margin: 0 0 20px;
+    margin: 0 0 28px;
   }
   .guide p {
-    font-size: 16px;
-    line-height: 1.8;
+    font-size: clamp(17px, 1.6vw, 22px);
+    line-height: 1.6;
     letter-spacing: 0.022em;
     color: var(--muted);
     margin: 0 0 16px;
   }
-  .guide p.guide-lede { font-size: 18px; }
+  .guide p.guide-lede { font-size: clamp(20px, 2vw, 26px); }
   .guide strong { color: var(--fg); font-weight: 600; }
   .guide em { color: var(--fg); }
-  .guide-head { max-width: 760px; }
+  .guide-head { max-width: 1100px; }
+  .guide-head .guide-lede { max-width: 760px; }
   .step {
     border-top: 1px solid var(--hairline);
     padding-top: 40px;
@@ -173,7 +174,7 @@ const img = (name: string) => `/images/guides/dj-remix/${name}.webp`;
     height: auto;
     border: 1px solid var(--border-light);
   }
-  .guide figcaption { font-size: 13px; color: var(--faint); }
-  .guide p.aside { font-size: 14px; }
+  .guide figcaption { font-size: 14px; color: var(--faint); }
+  .guide p.aside { font-size: clamp(15px, 1.25vw, 17px); }
   .guide-cta { margin-top: 64px; padding-top: 40px; border-top: 1px solid var(--hairline); }
 </style>
