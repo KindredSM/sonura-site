@@ -22,89 +22,113 @@ const img = (name: string) => `/images/guides/dj-remix/${name}.webp`;
     </header>
 
     <section class="step" id="import">
-      <p class="step-num">01</p>
-      <h2>Drop in the whole track</h2>
-      <p>
-        Drag the full song onto the timeline, not just the acapella. You'll pull the vocal out of it
-        yourself in step 4.
-      </p>
-      <p>
-        Sonura asks for its tempo and key. Put in what you know. The first file sets the project's tempo
-        and key, so everything you add later is built to match it.
-      </p>
-      <figure><img src={img('tempo-prompt')} alt="The tempo prompt asking for the BPM and key of a dropped track" width="1200" height="600" loading="lazy" /></figure>
+      <div class="step-text">
+        <p class="step-num">01</p>
+        <h2>Drop in the whole track</h2>
+        <p>
+          Drag the full song onto the timeline, not just the acapella. You'll pull the vocal out of it
+          yourself in step 4.
+        </p>
+        <p>
+          Sonura asks for its tempo and key. Put in what you know. The first file sets the project's tempo
+          and key, so everything you add later is built to match it.
+        </p>
+      </div>
+      <div class="step-media">
+        <figure><img src={img('tempo-prompt')} alt="The tempo prompt asking for the BPM and key of a dropped track" width="1200" height="600" loading="lazy" /></figure>
+      </div>
     </section>
 
     <section class="step" id="trim">
-      <p class="step-num">02</p>
-      <h2>Trim the start</h2>
-      <p>
-        Downloaded tracks and older masters often start with a sliver of uneven silence, so the first
-        beat never lands on bar 1. Right click the clip, then <strong>Timing</strong> and
-        <strong>Trim the start</strong>. It cuts straight to the first hit.
-      </p>
-      <figure>
-        <img src={img('trim-before')} alt="Before: silence pushes the first beat past bar 1" width="1520" height="350" loading="lazy" />
-        <img src={img('trim-after')} alt="After: the first hit sits on bar 1" width="1520" height="350" loading="lazy" />
-        <figcaption>Before and after. The first kick now sits on bar 1.</figcaption>
-      </figure>
+      <div class="step-text">
+        <p class="step-num">02</p>
+        <h2>Trim the start</h2>
+        <p>
+          Downloaded tracks and older masters often start with a sliver of uneven silence, so the first
+          beat never lands on bar 1. Right click the clip, then <strong>Timing</strong> and
+          <strong>Trim the start</strong>. It cuts straight to the first hit.
+        </p>
+      </div>
+      <div class="step-media">
+        <figure>
+          <img src={img('trim-before')} alt="Before: silence pushes the first beat past bar 1" width="1520" height="350" loading="lazy" />
+          <img src={img('trim-after')} alt="After: the first hit sits on bar 1" width="1520" height="350" loading="lazy" />
+          <figcaption>Before and after. The first kick now sits on bar 1.</figcaption>
+        </figure>
+      </div>
     </section>
 
     <section class="step" id="warp">
-      <p class="step-num">03</p>
-      <h2>Warp it to the grid</h2>
-      <p>
-        Plenty of records aren't a round number. The track in the video runs at 120.27 BPM, which sounds
-        fine for a few bars and drifts half a beat every two minutes.
-      </p>
-      <p>
-        Right click, <strong>Timing</strong>, <strong>Match clip to project tempo</strong>. Sonura
-        measures the track's real tempo and warps it to the project's without moving it. Turn on the
-        metronome (the clock in the transport) and listen through. If it still feels a hair late,
-        <strong>Shift a 16th</strong> nudges it.
-      </p>
-      <figure><img src={img('timing-menu')} alt="The clip menu's Timing options: match tempo, trim the start, trim silence and shift a 16th" width="1520" height="1040" loading="lazy" /></figure>
-      <p class="aside">
-        Rather keep the original tempo? <strong>Match project to clip tempo</strong> sets the project to
-        the track instead.
-      </p>
+      <div class="step-text">
+        <p class="step-num">03</p>
+        <h2>Warp it to the grid</h2>
+        <p>
+          Plenty of records aren't a round number. The track in the video runs at 120.27 BPM, which sounds
+          fine for a few bars and drifts half a beat every two minutes.
+        </p>
+        <p>
+          Right click, <strong>Timing</strong>, <strong>Match clip to project tempo</strong>. Sonura
+          measures the track's real tempo and warps it to the project's without moving it. Turn on the
+          metronome (the clock in the transport) and listen through. If it still feels a hair late,
+          <strong>Shift a 16th</strong> nudges it.
+        </p>
+        <p class="aside">
+          Rather keep the original tempo? <strong>Match project to clip tempo</strong> sets the project to
+          the track instead.
+        </p>
+      </div>
+      <div class="step-media">
+        <figure><img src={img('timing-menu')} alt="The clip menu's Timing options: match tempo, trim the start, trim silence and shift a 16th" width="1520" height="1040" loading="lazy" /></figure>
+      </div>
     </section>
 
     <section class="step" id="stems">
-      <p class="step-num">04</p>
-      <h2>Split the stems</h2>
-      <p>
-        Right click, <strong>Split stems</strong>. Two stems gives you vocals and instrumental, which is
-        all a remix needs. Six stems also separates drums, bass, guitar and piano if you want to keep a
-        piece of the original.
-      </p>
-      <figure><img src={img('split-stems')} alt="The split stems panel set to two stems" width="1380" height="740" loading="lazy" /></figure>
-      <p>
-        The stems land on new lanes under the track, already in time, and the original is muted.
-      </p>
-      <figure><img src={img('stems-landed')} alt="Vocals and Instrumental lanes under the muted original" width="1520" height="795" loading="lazy" /></figure>
+      <div class="step-text">
+        <p class="step-num">04</p>
+        <h2>Split the stems</h2>
+        <p>
+          Right click, <strong>Split stems</strong>. Two stems gives you vocals and instrumental, which is
+          all a remix needs. Six stems also separates drums, bass, guitar and piano if you want to keep a
+          piece of the original.
+        </p>
+        <p>
+          The stems land on new lanes under the track, already in time, and the original is muted.
+        </p>
+      </div>
+      <div class="step-media">
+        <figure><img src={img('split-stems')} alt="The split stems panel set to two stems" width="1380" height="740" loading="lazy" /></figure>
+        <figure><img src={img('stems-landed')} alt="Vocals and Instrumental lanes under the muted original" width="1520" height="795" loading="lazy" /></figure>
+      </div>
     </section>
 
     <section class="step" id="build">
-      <p class="step-num">05</p>
-      <h2>Keep the vocal, build around it</h2>
-      <p>
-        Mute or delete the Instrumental lane. Then open the Composer and say what you want under the
-        vocal, like <em>build a house track around the vocal</em>. It creates a loop for each part in the
-        project's key and tempo and leaves the vocal alone. Swap any part you don't like, or drag in your
-        own loops.
-      </p>
-      <figure><img src={img('build-around-vocal')} alt="The vocal on its own lane with the Composer open" width="1520" height="1049" loading="lazy" /></figure>
+      <div class="step-text">
+        <p class="step-num">05</p>
+        <h2>Keep the vocal, build around it</h2>
+        <p>
+          Mute or delete the Instrumental lane. Then open the Composer and say what you want under the
+          vocal, like <em>build a house track around the vocal</em>. It creates a loop for each part in the
+          project's key and tempo and leaves the vocal alone. Swap any part you don't like, or drag in your
+          own loops.
+        </p>
+      </div>
+      <div class="step-media">
+        <figure><img src={img('build-around-vocal')} alt="The vocal on its own lane with the Composer open" width="1520" height="1049" loading="lazy" /></figure>
+      </div>
     </section>
 
     <section class="step" id="export">
-      <p class="step-num">06</p>
-      <h2>Take it to the gig</h2>
-      <p>
-        Hit <strong>Download</strong>. Take the track as WAV for the decks, or the stems if you'd rather
-        finish the edit in your own software.
-      </p>
-      <figure><img src={img('download')} alt="The download menu with track and stems in WAV or MP3" width="1120" height="400" loading="lazy" /></figure>
+      <div class="step-text">
+        <p class="step-num">06</p>
+        <h2>Take it to the gig</h2>
+        <p>
+          Hit <strong>Download</strong>. Take the track as WAV for the decks, or the stems if you'd rather
+          finish the edit in your own software.
+        </p>
+      </div>
+      <div class="step-media">
+        <figure><img src={img('download')} alt="The download menu with track and stems in WAV or MP3" width="1120" height="400" loading="lazy" /></figure>
+      </div>
     </section>
 
     <footer class="guide-cta">
@@ -113,9 +137,9 @@ const img = (name: string) => `/images/guides/dj-remix/${name}.webp`;
   </article>
 </BaseLayout>
 
+
 <style>
   .guide {
-    max-width: 760px;
     margin: 80px 0 120px;
     padding: 0 var(--page-pad);
     color: var(--fg);
@@ -158,12 +182,23 @@ const img = (name: string) => `/images/guides/dj-remix/${name}.webp`;
   .guide p.guide-lede { font-size: 18px; }
   .guide strong { color: var(--fg); font-weight: 600; }
   .guide em { color: var(--fg); }
+  .guide-head { max-width: 760px; }
   .step {
     border-top: 1px solid var(--hairline);
     padding-top: 40px;
     margin-top: 56px;
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 64px;
+    align-items: start;
   }
-  .guide figure { margin: 24px 0; display: flex; flex-direction: column; gap: 8px; }
+  .step-text { position: sticky; top: calc(var(--nav-h) + 32px); }
+  .step-media { display: flex; flex-direction: column; gap: 24px; }
+  @media (max-width: 900px) {
+    .step { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+    .step-text { position: static; }
+  }
+  .guide figure { margin: 0; display: flex; flex-direction: column; gap: 8px; }
   .guide figure img {
     display: block;
     width: 100%;
