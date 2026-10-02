@@ -1931,7 +1931,8 @@ body {
 .faq-title,
 .creator-videos-title,
 .rights-title,
-.final-cta-title {
+.final-cta-title,
+.section-title {
   font-family: var(--font-display);
   font-weight: 400;
   text-transform: uppercase;
@@ -1940,7 +1941,7 @@ body {
   text-align: left;
 }
 
-.demo-title, .workflow-title, .testimonials-title, .pricing-title, .faq-title, .creator-videos-title {
+.demo-title, .workflow-title, .testimonials-title, .pricing-title, .faq-title, .creator-videos-title, .section-title {
   font-size: clamp(38px, 4.8vw, 68px);
 }
 
