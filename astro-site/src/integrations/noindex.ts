@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 
 const NOINDEX_META = /name="robots" content="[^"]*noindex/;
 
@@ -10,10 +10,8 @@ export function isNoindexHtml(html: string): boolean {
 export function noindexPages(distDir: URL): (pageUrl: string) => boolean {
   return (pageUrl) => {
     const route = new URL(pageUrl).pathname.replace(/^\/|\/$/g, '');
-    try {
-      return isNoindexHtml(readFileSync(new URL(`${route ? `${route}/` : ''}index.html`, distDir), 'utf8'));
-    } catch {
-      return false;
-    }
+    const file = new URL(`${route ? `${route}/` : ''}index.html`, distDir);
+    if (!existsSync(file)) throw new Error(`noindex: no built page at ${file.pathname} for ${pageUrl}`);
+    return isNoindexHtml(readFileSync(file, 'utf8'));
   };
 }

@@ -6,11 +6,13 @@ import { gitLastmod } from './src/integrations/gitLastmod.ts';
 import { noindexPages } from './src/integrations/noindex.ts';
 
 const lastmodFor = gitLastmod('https://sonurastudio.com');
-const isNoindex = noindexPages(new URL('./dist/', import.meta.url));
+const outDir = './dist';
+const isNoindex = noindexPages(new URL(`${outDir}/`, import.meta.url));
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://sonurastudio.com',
+  outDir,
   trailingSlash: 'ignore',
   devToolbar: { enabled: false },
   build: {
@@ -36,6 +38,7 @@ export default defineConfig({
     // SERP actually ranks. Every result above us for "acapella extractor" is a
     // tool page, including sites at DR 3, 13 and 16. Verified 2026-09-14.
     '/blog/acapella-extractor': '/tools/acapella-extractor/',
+    '/guides': '/',
   },
   integrations: [
     sitemap({
