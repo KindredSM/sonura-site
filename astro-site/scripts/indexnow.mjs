@@ -29,7 +29,9 @@ function pageUrl(file) {
 
 const files = changedFiles();
 const sharedChange = files.some((f) => /src\/(layouts|components|data|styles|integrations)\//.test(f));
-const urls = new Set(sharedChange ? await sitemapUrls() : files.map(pageUrl).filter(Boolean));
+// the live sitemap already leaves out noindex pages, so a changed page must be in it to be sent
+const live = new Set(await sitemapUrls());
+const urls = new Set(sharedChange ? live : files.map(pageUrl).filter((url) => url && live.has(url)));
 if (files.length) {
   urls.add(`${SITE}/llms.txt`);
   urls.add(`${SITE}/llms-full.txt`);
