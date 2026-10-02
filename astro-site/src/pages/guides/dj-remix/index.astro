@@ -97,15 +97,27 @@ const description = 'Whole track in, vocal out, new beat under it. A DJ remix in
       <figure><img src={img('download')} alt="The download menu with track and stems in WAV or MP3" width="1120" height="400" loading="lazy" /></figure>
     </section>
 
-    <footer class="guide-cta">
-      <a class="button primary large" href={appUrl}>Open the studio</a>
-    </footer>
   </article>
+
+  <section class="final-cta" aria-labelledby="final-cta-title">
+    <div class="final-cta-inner">
+      <h2 id="final-cta-title" class="final-cta-title">Bring a track.<br />Leave with a remix.</h2>
+      <p class="final-cta-subtitle">Your next set starts here</p>
+      <div class="final-cta-form">
+        <a class="button primary large" href={appUrl}>Start your remix</a>
+      </div>
+      <div class="final-cta-trust">
+        <div class="trust-item">Free to start</div>
+        <div class="trust-item">No credit card</div>
+        <div class="trust-item">WAV and stems</div>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
   .guide {
-    margin: clamp(48px, 7vw, 80px) 0 clamp(72px, 9vw, 120px);
+    margin: clamp(48px, 7vw, 80px) 0 clamp(56px, 7vw, 96px);
     padding: 0 var(--page-pad);
     color: var(--fg);
   }
@@ -149,7 +161,6 @@ const description = 'Whole track in, vocal out, new beat under it. A DJ remix in
     border: 1px solid var(--border-light);
   }
   .step figcaption { font-size: 14px; color: var(--faint); }
-  .guide-cta { margin-top: 64px; padding-top: 40px; border-top: 1px solid var(--hairline); }
   @media (max-width: 960px) {
     .step { grid-template-columns: minmax(0, 1fr); gap: 16px; }
   }
