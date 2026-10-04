@@ -17,24 +17,17 @@ const description = 'Whole track in, vocal out, new beat under it. A DJ remix in
 >
   <article class="guide">
     <header class="guide-head">
-      <p class="section-kicker">Guide / DJ remixes / 2 min</p>
-      <h1 class="headline">Remix any track in Sonura</h1>
-      <p class="guide-lede">Making a remix without a DAW, a pile of plugins and ten years of producing is a pain in the ass. Here's a better way.</p>
-    </header>
-
-    <section class="step" id="watch">
-      <div class="step-text">
-        <p class="step-num">0:28</p>
-        <h2 class="section-title">Watch it first</h2>
-        <p>The whole edit, start to finish. Then copy it step by step below.</p>
+      <div class="guide-head-text">
+        <p class="section-kicker">Guide / DJ remixes / 2 min</p>
+        <h1 class="headline">Remix any track in Sonura</h1>
+        <p class="guide-lede">Making a remix without a DAW, a pile of plugins and ten years of producing is a pain in the ass. Here's a better way.</p>
+        <p class="guide-watch">Watch the 28 second edit, then follow the steps.</p>
       </div>
-      <figure>
-        <video controls playsinline preload="metadata" poster="/videos/dj-remix-reel-poster.jpg" width="720" height="1280" aria-label="A tech house edit made in Sonura: stems split, then drums, bass and piano added with the Composer">
-          <source src="/videos/dj-remix-reel.webm" type="video/webm" />
-          <source src="/videos/dj-remix-reel.mp4" type="video/mp4" />
-        </video>
-      </figure>
-    </section>
+      <video controls playsinline preload="metadata" poster="/videos/dj-remix-reel-poster.jpg" width="720" height="1280" aria-label="A tech house edit made in Sonura: stems split, then drums, bass and piano added with the Composer">
+        <source src="/videos/dj-remix-reel.webm" type="video/webm" />
+        <source src="/videos/dj-remix-reel.mp4" type="video/mp4" />
+      </video>
+    </header>
 
     <section class="step" id="import">
       <div class="step-text">
@@ -135,7 +128,28 @@ const description = 'Whole track in, vocal out, new beat under it. A DJ remix in
     padding: 0 var(--page-pad);
     color: var(--fg);
   }
-  .guide-head { max-width: 1100px; }
+  .guide-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: clamp(32px, 5vw, 80px);
+    align-items: center;
+  }
+  .guide-head video {
+    display: block;
+    width: clamp(260px, 24vw, 360px);
+    height: auto;
+    aspect-ratio: 9 / 16;
+    background: var(--panel-bg);
+    border: 1px solid var(--border-light);
+  }
+  .guide .guide-watch {
+    margin: 32px 0 0;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--fg);
+  }
   .guide .headline { margin: 0 0 24px; }
   .guide .section-title { margin: 0 0 28px; }
   .step-text p,
@@ -166,14 +180,6 @@ const description = 'Whole track in, vocal out, new beat under it. A DJ remix in
     margin-top: clamp(72px, 10vw, 128px);
   }
   .step figure { margin: 0; display: flex; flex-direction: column; gap: 8px; }
-  #watch video {
-    display: block;
-    width: clamp(280px, 26vw, 380px);
-    height: auto;
-    aspect-ratio: 9 / 16;
-    background: var(--panel-bg);
-    border: 1px solid var(--border-light);
-  }
   .step img {
     display: block;
     width: 100%;
@@ -184,6 +190,8 @@ const description = 'Whole track in, vocal out, new beat under it. A DJ remix in
   .final-cta { border-top: none; }
   @media (max-width: 960px) {
     .step { grid-template-columns: minmax(0, 1fr); gap: 16px; }
-    #watch video { width: min(100%, 420px); }
+    .guide-head { grid-template-columns: minmax(0, 1fr); }
+    .guide-head video { width: min(100%, 420px); }
+    .guide .guide-watch { margin-top: 24px; }
   }
 </style>
