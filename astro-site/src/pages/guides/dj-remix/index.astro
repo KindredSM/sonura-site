@@ -22,6 +22,20 @@ const description = 'Whole track in, vocal out, new beat under it. A DJ remix in
       <p class="guide-lede">Making a remix without a DAW, a pile of plugins and ten years of producing is a pain in the ass. Here's a better way.</p>
     </header>
 
+    <section class="step" id="watch">
+      <div class="step-text">
+        <p class="step-num">0:28</p>
+        <h2 class="section-title">Watch it first</h2>
+        <p>The whole edit, start to finish. Then copy it step by step below.</p>
+      </div>
+      <figure>
+        <video controls playsinline preload="metadata" poster="/videos/dj-remix-reel-poster.jpg" width="720" height="1280" aria-label="A tech house edit made in Sonura: stems split, then drums, bass and piano added with the Composer">
+          <source src="/videos/dj-remix-reel.webm" type="video/webm" />
+          <source src="/videos/dj-remix-reel.mp4" type="video/mp4" />
+        </video>
+      </figure>
+    </section>
+
     <section class="step" id="import">
       <div class="step-text">
         <p class="step-num">01</p>
@@ -152,6 +166,14 @@ const description = 'Whole track in, vocal out, new beat under it. A DJ remix in
     margin-top: clamp(72px, 10vw, 128px);
   }
   .step figure { margin: 0; display: flex; flex-direction: column; gap: 8px; }
+  #watch video {
+    display: block;
+    width: clamp(280px, 26vw, 380px);
+    height: auto;
+    aspect-ratio: 9 / 16;
+    background: var(--panel-bg);
+    border: 1px solid var(--border-light);
+  }
   .step img {
     display: block;
     width: 100%;
@@ -162,5 +184,6 @@ const description = 'Whole track in, vocal out, new beat under it. A DJ remix in
   .final-cta { border-top: none; }
   @media (max-width: 960px) {
     .step { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+    #watch video { width: min(100%, 420px); }
   }
 </style>
