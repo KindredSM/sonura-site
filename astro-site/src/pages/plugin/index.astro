@@ -208,7 +208,7 @@ const jsonLd = [
         <div class="pg-stage">
           <div class="pg-device">
             <div class="pg-device-bezel">
-              <img src="/images/plugin-ui.webp?v=2" alt="Sonura Flow plugin interface showing loop and sound creation" width="800" height="1244" loading="eager" />
+              <img src="/images/plugin-ui.webp?v=3" alt="Sonura Flow plugin interface showing loop and sound creation" width="830" height="1292" loading="eager" />
             </div>
           </div>
           <div class="pg-chip pg-chip-1">
@@ -287,7 +287,7 @@ const jsonLd = [
             <p>Type "hard dubstep snare" and get four clean, session-ready hits in seconds. Beats digging through sample packs for an hour.</p>
           </div>
           <div class="card-shot">
-            <img src="/images/dubstep-snare.webp" alt="Four dubstep snare variations created in Sonura Flow" width="1090" height="1180" loading="lazy" />
+            <img src="/images/dubstep-snare.webp?v=3" alt="Four dubstep snare variations created in Sonura Flow" width="1468" height="1174" loading="lazy" />
           </div>
         </article>
 
@@ -297,7 +297,7 @@ const jsonLd = [
             <p>Describe what you want. Ethereal pads, chopped hooks, ad-libs, runs. You get usable vocal stems in seconds.</p>
           </div>
           <div class="card-shot">
-            <img src="/images/make-vocals.webp" alt="Creating gospel choir vocals from a text prompt" width="760" height="968" loading="lazy" />
+            <img src="/images/make-vocals.webp?v=3" alt="Creating gospel choir vocals from a text prompt" width="790" height="632" loading="lazy" />
           </div>
         </article>
 
@@ -307,7 +307,7 @@ const jsonLd = [
             <p>Every sound you create lands in your library. Searchable, organized, and royalty-free forever.</p>
           </div>
           <div class="card-shot">
-            <img src="/images/library.webp" alt="Personal library of created loops and one-shots" width="1020" height="1584" loading="lazy" />
+            <img src="/images/library.webp?v=3" alt="Personal library of created loops and one-shots" width="1050" height="840" loading="lazy" />
           </div>
         </article>
 
@@ -317,7 +317,7 @@ const jsonLd = [
             <p>Hit create and get up to four variations in one go. Pick the one that works, drag it in, keep writing.</p>
           </div>
           <div class="multi-shot">
-            <img src="/images/multiple-outputs.webp" alt="Sonura Flow creating four pad variations at once" width="1910" height="1236" loading="lazy" />
+            <img src="/images/multiple-outputs.webp?v=3" alt="Sonura Flow creating four pad variations at once" width="1938" height="1308" loading="lazy" />
           </div>
         </article>
       </div>
@@ -1212,11 +1212,6 @@ const jsonLd = [
 
   .pg-device-bezel {
     position: relative;
-    border-radius: var(--radius-panel);
-    overflow: hidden;
-    background: var(--bg);
-    border: 1px solid var(--hairline);
-    box-shadow: none;
   }
 
   .pg-device-bezel img {
@@ -1402,16 +1397,16 @@ const jsonLd = [
 
   .card-shot {
     position: relative;
-    height: 320px;
+    aspect-ratio: 5 / 4;
     overflow: hidden;
     margin-top: auto;
-    border: 1px solid var(--hairline);
   }
 
   .card-shot img {
     display: block;
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     filter: grayscale(0.5) contrast(1.08);
     transition: filter 0.3s ease;
   }
@@ -1463,9 +1458,8 @@ const jsonLd = [
 
   .multi-shot {
     position: relative;
-    flex: 1;
-    overflow: hidden;
-    border: 1px solid var(--hairline);
+    flex: 0 1 500px;
+    margin-left: auto;
   }
 
   .multi-shot img {
@@ -1992,10 +1986,8 @@ const jsonLd = [
 
     .multi-shot {
       width: 100%;
-    }
-
-    .card-shot {
-      height: 280px;
+      max-width: 500px;
+      margin-left: 0;
     }
 
     .seo-grid {
@@ -2084,9 +2076,6 @@ const jsonLd = [
       padding: 0 0 14px;
     }
 
-    .card-shot {
-      height: 300px;
-    }
 
     .pg > .pg-cta {
       padding: 40px 22px clamp(130px, 34vw, 180px);
