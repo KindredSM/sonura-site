@@ -1,0 +1,111 @@
+---
+interface Props {
+  images: { src: string; alt: string }[];
+  href?: string;
+  eager?: boolean;
+}
+
+const { images, href, eager = false } = Astro.props;
+const multi = images.length > 1;
+---
+
+<div class="sc" data-carousel>
+  <div class="sc-track">
+    {images.map((img, i) => {
+      const Tag = href ? 'a' : 'div';
+      const attrs = href
+        ? { href, tabindex: i ? -1 : undefined }
+        : multi ? { role: 'button', tabindex: 0, 'aria-label': 'Next image', 'data-next': '' } : {};
+      return (
+        <Tag class="sc-slide" {...attrs}>
+          <picture>
+            <source srcset={`${img.src}.webp`} type="image/webp" />
+            <img src={`${img.src}.jpg`} alt={img.alt} width="1024" height="1024" loading={eager && i === 0 ? 'eager' : 'lazy'} />
+          </picture>
+        </Tag>
+      );
+    })}
+  </div>
+  {multi && (
+    <div class="sc-dots">
+      {images.map((_, i) => (
+        <button type="button" class="sc-dot" aria-label={`Show image ${i + 1}`} aria-current={i === 0 ? 'true' : 'false'}></button>
+      ))}
+    </div>
+  )}
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-carousel]').forEach((root) => {
+    const track = root.querySelector<HTMLElement>('.sc-track')!;
+    const dots = [...root.querySelectorAll<HTMLButtonElement>('.sc-dot')];
+    if (!dots.length) return;
+
+    const count = dots.length;
+    const index = () => Math.round(track.scrollLeft / track.clientWidth);
+    const go = (i: number) => track.scrollTo({ left: ((i + count) % count) * track.clientWidth, behavior: 'smooth' });
+
+    track.addEventListener('scroll', () => {
+      const i = index();
+      dots.forEach((d, j) => d.setAttribute('aria-current', String(i === j)));
+    }, { passive: true });
+
+    dots.forEach((d, i) => d.addEventListener('click', () => go(i)));
+
+    root.querySelectorAll<HTMLElement>('[data-next]').forEach((slide) => {
+      slide.addEventListener('click', () => go(index() + 1));
+      slide.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(index() + 1); }
+      });
+    });
+  });
+</script>
+
+<style>
+  .sc { position: relative; overflow: hidden; }
+  .sc-track {
+    display: flex;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .sc-slide { flex: 0 0 100%; scroll-snap-align: start; display: block; overflow: hidden; }
+  .sc-slide picture { display: block; }
+  .sc-slide img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .sc-dots {
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 4px;
+  }
+  .sc-dot {
+    appearance: none;
+    border: 0;
+    margin: 0;
+    padding: 8px;
+    background: transparent;
+  }
+  .sc-dot::before {
+    content: '';
+    display: block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--faint);
+    transition: background-color 0.2s ease;
+  }
+  .sc-dot:hover::before { background: var(--muted); }
+  .sc-dot[aria-current='true']::before { background: var(--fg); }
+  .sc-dot:focus-visible { outline: 1px solid var(--fg); outline-offset: -2px; }
+</style>

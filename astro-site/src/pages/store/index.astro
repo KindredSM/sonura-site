@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import StoreCarousel from '../../components/StoreCarousel.astro';
 import { products, RUN } from '../../data/store';
 ---
 
@@ -19,40 +20,24 @@ import { products, RUN } from '../../data/store';
   </header>
 
   <ul class="sg-grid">
-    {products.map((p) => {
-      const [main, alt] = p.images;
-      return (
-        <li>
-          <a href={`/store/${p.id}/`} class="sg-tile" data-store-tile={p.cat}>
-            <span class="sg-media">
-              <picture>
-                <source srcset={`${main.src}.webp`} type="image/webp" />
-                <img src={`${main.src}.jpg`} alt={main.alt} width="1024" height="1024" loading="eager" />
-              </picture>
-              {alt && (
-                <picture class="sg-alt">
-                  <source srcset={`${alt.src}.webp`} type="image/webp" />
-                  <img src={`${alt.src}.jpg`} alt="" width="1024" height="1024" loading="lazy" />
-                </picture>
-              )}
-            </span>
-            <span class="sg-cap">
-              <span class="sg-name">{p.name}</span>
-              <span class="sg-price">${p.price}</span>
-            </span>
-          </a>
-        </li>
-      );
-    })}
+    {products.map((p) => (
+      <li class="sg-item" data-store-tile={p.cat}>
+        <StoreCarousel images={p.images} href={`/store/${p.id}/`} eager />
+        <a href={`/store/${p.id}/`} class="sg-cap">
+          <span class="sg-name">{p.name}</span>
+          <span class="sg-price">${p.price}</span>
+        </a>
+      </li>
+    ))}
   </ul>
 </BaseLayout>
 
 <script>
   const w = window as Window & { posthog?: { capture: (e: string, p?: object, o?: object) => void } };
-  document.querySelectorAll<HTMLAnchorElement>('[data-store-tile]').forEach((a) => {
-    a.addEventListener('click', () => {
-      try { w.posthog?.capture('store_product_opened', { cat: a.dataset.storeTile }, { transport: 'sendBeacon' }); } catch {}
-    });
+  document.querySelectorAll<HTMLElement>('[data-store-tile]').forEach((tile) => {
+    tile.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => {
+      try { w.posthog?.capture('store_product_opened', { cat: tile.dataset.storeTile }, { transport: 'sendBeacon' }); } catch {}
+    }));
   });
 </script>
 
@@ -81,32 +66,39 @@ import { products, RUN } from '../../data/store';
     grid-template-columns: repeat(2, 1fr);
     border-top: 1px solid var(--hairline);
   }
-  .sg-grid li + li { border-left: 1px solid var(--hairline); }
-
-  .sg-tile { display: block; color: var(--fg); text-decoration: none; }
-  .sg-media { display: block; position: relative; aspect-ratio: 1; overflow: hidden; }
-  .sg-media picture { position: absolute; inset: 0; }
-  .sg-media img { display: block; width: 100%; height: 100%; object-fit: cover; }
-  .sg-alt { opacity: 0; transition: opacity 0.35s ease; }
-
-  @media (hover: hover) {
-    .sg-tile:hover .sg-alt { opacity: 1; }
-  }
+  .sg-item + .sg-item { border-left: 1px solid var(--hairline); }
 
   .sg-cap {
     display: flex;
     justify-content: space-between;
     gap: 16px;
-    padding: 16px clamp(16px, 2vw, 28px) 40px;
+    padding: 18px clamp(16px, 2vw, 28px) 44px;
     border-top: 1px solid var(--hairline);
+    color: var(--fg);
+    text-decoration: none;
     font-size: 13px;
     font-weight: 600;
     letter-spacing: 0.06em;
   }
-  .sg-price { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .sg-name {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 6px;
+    text-decoration-color: transparent;
+    transition: text-decoration-color 0.2s ease;
+  }
+  .sg-price { color: var(--muted); font-variant-numeric: tabular-nums; transition: color 0.2s ease; }
+
+  @media (hover: hover) {
+    .sg-item:hover :global(.sc-slide img) { transform: scale(1.035); }
+    .sg-item:hover .sg-name { text-decoration-color: currentColor; }
+    .sg-item:hover .sg-price { color: var(--fg); }
+  }
+
+  :global(body.store-page .footer) { border-top-color: var(--hairline); }
 
   @media (max-width: 640px) {
     .sg-grid { grid-template-columns: 1fr; }
-    .sg-grid li + li { border-left: 0; border-top: 1px solid var(--hairline); }
+    .sg-item + .sg-item { border-left: 0; border-top: 1px solid var(--hairline); }
   }
 </style>
