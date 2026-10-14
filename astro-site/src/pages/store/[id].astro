@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import StoreCarousel from '../../components/StoreCarousel.astro';
 import { products, RUN, type Product } from '../../data/store';
 
 export function getStaticPaths() {
@@ -35,12 +36,7 @@ const url = `https://sonurastudio.com/store/${p.id}/`;
 
   <section class="sp">
     <div class="sp-gallery">
-      {p.images.map((img, i) => (
-        <picture>
-          <source srcset={`${img.src}.webp`} type="image/webp" />
-          <img src={`${img.src}.jpg`} alt={img.alt} width="1024" height="1024" loading={i === 0 ? 'eager' : 'lazy'} />
-        </picture>
-      ))}
+      <StoreCarousel images={p.images} eager />
     </div>
 
     <div class="sp-info">
@@ -205,9 +201,8 @@ const url = `https://sonurastudio.com/store/${p.id}/`;
     border-top: 1px solid var(--hairline);
   }
 
-  .sp-gallery picture { display: block; }
-  .sp-gallery picture + picture { border-top: 1px solid var(--hairline); }
-  .sp-gallery img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; }
+
+  .sp-gallery :global(.sc-slide img) { max-height: calc(100svh - var(--nav-h) - 54px); }
 
   .sp-info { border-left: 1px solid var(--hairline); padding: clamp(28px, 3vw, 48px) var(--page-pad) 64px clamp(24px, 3vw, 48px); }
   .sp-panel { position: sticky; top: calc(var(--nav-h) + 28px); max-width: 440px; }
@@ -290,6 +285,8 @@ const url = `https://sonurastudio.com/store/${p.id}/`;
 
   [hidden] { display: none !important; }
 
+  :global(body.store-page .footer) { border-top-color: var(--hairline); }
+
   .sp-specs { margin: 32px 0 0; }
   .sp-specs div {
     display: grid;
@@ -311,10 +308,8 @@ const url = `https://sonurastudio.com/store/${p.id}/`;
   .sp-specs dd { margin: 0; color: var(--fg); }
 
   @media (max-width: 900px) {
+    .sp-gallery :global(.sc-slide img) { max-height: none; }
     .sp { grid-template-columns: 1fr; }
-    .sp-gallery { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; }
-    .sp-gallery picture { flex: 0 0 100%; scroll-snap-align: start; }
-    .sp-gallery picture + picture { border-top: 0; border-left: 1px solid var(--hairline); }
     .sp-info { border-left: 0; border-top: 1px solid var(--hairline); padding: 24px var(--page-pad) 56px; }
     .sp-panel { position: static; max-width: none; }
   }
