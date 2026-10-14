@@ -66,7 +66,18 @@ import { products, RUN } from '../../data/store';
     grid-template-columns: repeat(2, 1fr);
     border-top: 1px solid var(--hairline);
   }
-  .sg-item + .sg-item { border-left: 1px solid var(--hairline); }
+  .sg-item { position: relative; }
+  .sg-item + .sg-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -0.5px;
+    width: 1px;
+    background: var(--hairline);
+    z-index: 2;
+    pointer-events: none;
+  }
 
   .sg-cap {
     display: flex;
@@ -90,7 +101,7 @@ import { products, RUN } from '../../data/store';
   .sg-price { color: var(--muted); font-variant-numeric: tabular-nums; transition: color 0.2s ease; }
 
   @media (hover: hover) {
-    .sg-item:hover :global(.sc-slide img) { transform: scale(1.035); }
+    .sg-item:hover :global(.sc-slide img) { transform: scale(1.06); }
     .sg-item:hover .sg-name { text-decoration-color: currentColor; }
     .sg-item:hover .sg-price { color: var(--fg); }
   }
@@ -99,6 +110,7 @@ import { products, RUN } from '../../data/store';
 
   @media (max-width: 640px) {
     .sg-grid { grid-template-columns: 1fr; }
-    .sg-item + .sg-item { border-left: 0; border-top: 1px solid var(--hairline); }
+    .sg-item + .sg-item::before { display: none; }
+    .sg-item + .sg-item { border-top: 1px solid var(--hairline); }
   }
 </style>
