@@ -1,2 +1,2 @@
 export const SUPABASE_URL = 'https://nnbszdopvyychoayfctc.supabase.co';
-export const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5uYnN6ZG9wdnl5Y2hvYXlmY3RjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTczNDc2ODgsImV4cCI6MjA3MjkyMzY4OH0.E6OZSuhtAZ3wPU6eJwZ4Am0SF0xT4gy58lGwXnaTMDQ';
+export const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_fEaMcjkx9zag_ILj8-lZHQ_dtocParx';

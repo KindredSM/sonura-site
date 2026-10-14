@@ -92,7 +92,7 @@ const url = `https://sonurastudio.com/store/${p.id}/`;
 </BaseLayout>
 
 <script>
-  import { SUPABASE_URL, SUPABASE_ANON_KEY } from '../../data/supabase';
+  import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from '../../data/supabase';
 
   type Win = Window & {
     posthog?: { capture: (e: string, p?: object, o?: object) => void; get_distinct_id?: () => string };
@@ -115,8 +115,7 @@ const url = `https://sonurastudio.com/store/${p.id}/`;
       keepalive: true,
       headers: {
         'Content-Type': 'application/json',
-        apikey: SUPABASE_ANON_KEY,
-        Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+        apikey: SUPABASE_PUBLISHABLE_KEY,
         Prefer: 'return=minimal',
       },
       body: JSON.stringify(row),
