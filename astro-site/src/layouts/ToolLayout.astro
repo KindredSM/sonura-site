@@ -428,7 +428,7 @@ const jsonLd = [
     .tp-money-link {
       counter-increment: money-link;
       display: grid;
-      grid-template-columns: 64px minmax(0, 300px) 1fr;
+      grid-template-columns: minmax(0, 300px) 1fr;
       gap: 24px;
       align-items: baseline;
       padding: 22px 0;
@@ -462,11 +462,8 @@ const jsonLd = [
     }
     @media (max-width: 768px) {
       .tp-money-link {
-        grid-template-columns: 40px 1fr;
-        gap: 8px 16px;
-      }
-      .tp-money-link span {
-        grid-column: 2;
+        grid-template-columns: 1fr;
+        gap: 8px;
       }
     }
   </style>

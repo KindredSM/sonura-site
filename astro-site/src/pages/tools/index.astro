@@ -32,7 +32,7 @@ const tools = [
     description: 'Full instrumentals from text. Drums, bass, and melody for trap, house, lo-fi, and more.',
   },
   {
-    title: 'Loop Maker',
+    title: 'Loop Generator',
     href: '/tools/ai-loop-maker/',
     description: 'Seamless loopable phrases for hooks, beds, and production starting points.',
   },
@@ -135,7 +135,7 @@ const tools = [
     .ti-card {
       counter-increment: ti-tool;
       display: grid;
-      grid-template-columns: 64px minmax(0, 300px) 1fr;
+      grid-template-columns: minmax(0, 300px) 1fr;
       gap: 24px;
       align-items: baseline;
       padding: 22px 0;
@@ -169,11 +169,8 @@ const tools = [
     }
     @media (max-width: 768px) {
       .ti-card {
-        grid-template-columns: 40px 1fr;
-        gap: 8px 16px;
-      }
-      .ti-card p {
-        grid-column: 2;
+        grid-template-columns: 1fr;
+        gap: 8px;
       }
     }
   </style>

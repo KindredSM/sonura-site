@@ -4,6 +4,21 @@
 // Self-contained: carries its own styles (de-scoped from body.editorial-home so
 // they work on any page; --rule is redefined locally since it is homepage-only)
 // and its own player script.
+export interface DemoTrack {
+  title: string;
+  meta: string;
+  src: string;
+  duration: string;
+  peaks: number[];
+}
+
+export interface DemoTab {
+  id: string;
+  label: string;
+  tracks: DemoTrack[];
+  cta: string;
+}
+
 interface Props {
   kicker?: string;
   title?: string;
@@ -12,12 +27,16 @@ interface Props {
   // already-gutter-padded container (e.g. AlternativeLayout's .alt-page slot),
   // so it aligns with the surrounding sections instead of double-insetting.
   flush?: boolean;
+  tabs?: DemoTab[];
+  ctaHref?: string;
 }
 const {
   kicker = '01 / Sounds',
   title = 'Made with Sonura',
   subtitle = 'Release-ready sounds you can use commercially, straight from the suite. Hit play.',
   flush = false,
+  tabs,
+  ctaHref = 'https://app.sonurastudio.com/',
 } = Astro.props;
 
 // Waveform peaks precomputed from the audio files (140 buckets, normalized 0.1-1)
@@ -54,11 +73,14 @@ const demoSongs = [
     peaks: [0.61,0.47,0.45,0.93,0.95,0.91,0.91,0.9,0.93,0.93,0.93,0.94,0.94,0.91,0.92,0.91,0.95,0.92,0.88,0.92,0.92,0.94,0.94,0.94,0.94,0.94,0.9,0.92,0.84,0.92,0.88,0.94,0.88,0.93,0.94,0.91,0.85,0.91,0.89,0.86,0.92,0.94,0.89,0.91,0.88,0.85,0.9,0.9,0.8,0.83,0.77,0.6,0.8,0.94,0.91,0.95,0.9,0.89,0.93,0.93,0.87,0.92,0.91,0.89,0.94,0.93,0.86,0.93,0.92,0.89,0.89,0.92,0.87,0.89,0.93,0.93,0.91,0.94,1,0.88,0.84,0.8,0.65,0.78,0.87,0.79,0.81,0.86,1,0.74,0.78,0.88,0.78,0.7,0.9,0.63,0.77,0.8,0.62,0.73,0.76,0.88,0.76,0.85,0.88,0.72,0.9,0.92,0.9,0.92,0.92,0.97,0.87,0.94,0.93,0.86,0.91,0.93,0.87,0.94,0.84,0.92,0.93,0.86,0.93,0.91,0.94,0.94,0.86,0.93,0.94,0.89,0.83,0.13,0.1,0.1,0.1,0.1,0.1,0.1] }
 ];
 
-const demoTabs = [
+const demoTabs: DemoTab[] = tabs ?? [
   { id: 'loops', label: 'Loops', tracks: demoLoops, cta: 'Make loops' },
   { id: 'oneshots', label: 'One-shots', tracks: demoOneShots, cta: 'Make one-shots' },
   { id: 'songs', label: 'Songs', tracks: demoSongs, cta: 'Make songs' }
 ];
+const ctaData = Object.fromEntries(
+  demoTabs.map((tab) => [`data-cta-${tab.id}`, tab.cta])
+);
 ---
 
 <section class:list={['demo', { flush }]} aria-labelledby="demo-title">
@@ -70,7 +92,7 @@ const demoTabs = [
         {subtitle && <p class="demo-subtitle">{subtitle}</p>}
       </div>
     </div>
-    <div class="demo-toggle" role="tablist" aria-label="Preview type">
+    {demoTabs.length > 1 && <div class="demo-toggle" role="tablist" aria-label="Preview type">
       {demoTabs.map((tab, tabIndex) => (
         <button
           class="demo-toggle-btn"
@@ -82,13 +104,13 @@ const demoTabs = [
           data-demo-tab={tab.id}
         >{tab.label}</button>
       ))}
-    </div>
+    </div>}
     {demoTabs.map((tab, tabIndex) => (
       <div
         class="demo-tracks-list"
         id={`demo-panel-${tab.id}`}
-        role="tabpanel"
-        aria-labelledby={`demo-tab-${tab.id}`}
+        role={demoTabs.length > 1 ? 'tabpanel' : undefined}
+        aria-labelledby={demoTabs.length > 1 ? `demo-tab-${tab.id}` : undefined}
         data-demo-group={tab.id}
         hidden={tabIndex !== 0}
       >
@@ -122,11 +144,9 @@ const demoTabs = [
     ))}
     <a
       class="demo-explore"
-      href="https://app.sonurastudio.com/"
+      href={ctaHref}
       data-demo-cta
-      data-cta-loops={demoTabs[0].cta}
-      data-cta-oneshots={demoTabs[1].cta}
-      data-cta-songs={demoTabs[2].cta}
+      {...ctaData}
     ><span class="demo-explore-label">{demoTabs[0].cta}</span></a>
   </div>
 </section>

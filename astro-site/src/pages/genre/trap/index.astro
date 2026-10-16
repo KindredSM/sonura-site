@@ -1,5 +1,6 @@
 ---
 import GenreLayout from '../../../layouts/GenreLayout.astro';
+import { GENRE_DEMOS } from '../../../data/genreDemos';
 
 const workflowItems = [
   {
@@ -22,20 +23,7 @@ const workflowItems = [
   }
 ];
 
-const demoTracks = [
-  {
-    title: 'Spanish Trap Reggaeton',
-    tags: ['Trap', 'Reggaeton'],
-    useCase: '140 bpm • hard 808s • latin melody',
-    audioSrc: '/music/trap reggaeton.mp3'
-  },
-  {
-    title: 'Dark Emotional Trap',
-    tags: ['Trap', 'Emo Rap'],
-    useCase: 'ambient • sad melody • type beat',
-    audioSrc: '/music/dark emotional ambient sad trap beat.mp3'
-  }
-];
+const demoTracks = GENRE_DEMOS.trap;
 
 const faqs = [
   {
@@ -60,7 +48,7 @@ const faqs = [
   },
   {
     question: 'Is this better than using trap sample packs?',
-    answer: 'Sample packs are generic and used by thousands of producers. Sonura\'s <a href="/tools/ai-sample-generator/">AI sample generator</a> and <a href="/tools/ai-loop-maker/">loop maker</a> create completely original trap patterns tailored to your exact specifications. Every beat is unique, fresh, and perfectly matched to your vision.'
+    answer: 'Sample packs are generic and used by thousands of producers. Sonura\'s <a href="/tools/ai-sample-generator/">AI sample generator</a> and <a href="/features/ai-loops/">loop maker</a> create completely original trap patterns tailored to your exact specifications. Every beat is unique, fresh, and perfectly matched to your vision.'
   },
   {
     question: 'Can I make type beats with Sonura?',
