@@ -1,4 +1,5 @@
 ---
+import { withAppPrompt } from '../data/appLinks';
 import BaseLayout from './BaseLayout.astro';
 import QuickAnswer from '../components/QuickAnswer.astro';
 import { ORG_ID } from '../data/facts';
@@ -44,6 +45,7 @@ interface Props {
   useCases: UseCase[];
   faqs: FAQ[];
   appUrl?: string;
+  appPrompt?: string;
   ctaPrimaryText?: string;
   trustPills?: string[];
   finalCtaTitle?: string;
@@ -67,6 +69,7 @@ const {
   useCases,
   faqs,
   appUrl = 'https://app.sonurastudio.com/',
+  appPrompt,
   ctaPrimaryText = 'Try it free',
   trustPills = ['free to start', 'no credit card', 'commercial rights'],
   finalCtaTitle,
@@ -74,6 +77,8 @@ const {
   relatedTools = [],
   relatedBlogPosts = [],
 } = Astro.props;
+
+const ctaUrl = withAppPrompt(appUrl, appPrompt);
 
 const displayHeadline = headline ?? toolName;
 const canonical = `https://sonurastudio.com/tools/${toolSlug}/`;
@@ -472,7 +477,7 @@ const jsonLd = [
     <h1 class="tp-h1">{displayHeadline}</h1>
     <p class="tp-sub">{subhead}</p>
     <div class="tp-cta-row">
-      <a href={appUrl} class="tp-cta-btn">{ctaPrimaryText}</a>
+      <a href={ctaUrl} class="tp-cta-btn">{ctaPrimaryText}</a>
       <div class="tp-pills">
         {trustPills.map((pill) => (
           <span class="tp-pill">{pill}</span>
@@ -519,7 +524,7 @@ const jsonLd = [
 
   <div class="tp-mid-cta">
     <p>Ready to try it?</p>
-    <a href={appUrl} class="tp-cta-btn">{ctaPrimaryText}</a>
+    <a href={ctaUrl} class="tp-cta-btn">{ctaPrimaryText}</a>
   </div>
 
   <section class="tp-section alt" aria-labelledby="tool-paid-path-title">
@@ -619,7 +624,7 @@ const jsonLd = [
       <h2 id="tool-final-cta-title" class="final-cta-title">{finalCtaTitle ?? `Start using ${toolName.toLowerCase()}`}</h2>
       <p class="final-cta-subtitle">Free to start. No credit card required.</p>
       <div class="final-cta-form">
-        <a class="button primary large" href={appUrl}>{finalCtaButtonText ?? 'Try it free'}</a>
+        <a class="button primary large" href={ctaUrl}>{finalCtaButtonText ?? 'Try it free'}</a>
         <a class="button secondary large" href="/plugin/"><span class="btn-label-full">Make sounds inside your DAW</span><span class="btn-label-short">Get the plugin</span></a>
       </div>
     </div>

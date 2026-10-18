@@ -1,4 +1,5 @@
 ---
+import { withAppPrompt } from '../data/appLinks';
 import BaseLayout from './BaseLayout.astro';
 import QuickAnswer from '../components/QuickAnswer.astro';
 
@@ -39,6 +40,7 @@ interface Props {
   finalCtaTitle?: string;
   finalCtaButtonText?: string;
   appUrl?: string;
+  appPrompt?: string;
   canonicalOverride?: string;
 }
 
@@ -64,8 +66,11 @@ const {
   finalCtaTitle,
   finalCtaButtonText,
   appUrl = 'https://app.sonurastudio.com/',
+  appPrompt,
   canonicalOverride,
 } = Astro.props;
+
+const ctaUrl = withAppPrompt(appUrl, appPrompt);
 
 // The /use-cases/ twin is the canonical version by default; pages whose twin
 // was retired (redirected) must point at the redirect target instead, so the
@@ -247,7 +252,7 @@ const jsonLd = [
       <h1 class="headline reveal">{headline}</h1>
       <p class="subhead reveal" data-reveal-delay="0.06s">{subhead}</p>
       <div class="cta">
-        <a class="button primary" href={appUrl}>{ctaText}</a>
+        <a class="button primary" href={ctaUrl}>{ctaText}</a>
         <a class="hero-beta-link" href="/use-cases/">All Use Cases →</a>
       </div>
     </div>
@@ -316,7 +321,7 @@ const jsonLd = [
       <h2 id="final-cta-title" class="final-cta-title reveal">{finalCtaTitle || `Start Creating ${useCase}`}</h2>
       <p class="final-cta-subtitle reveal" data-reveal-delay="0.06s">Free to start. No credit card required.</p>
       <div class="final-cta-form reveal" data-reveal-delay="0.12s">
-        <a class="button primary large" href={appUrl}>{finalCtaButtonText || 'get started free'}</a>
+        <a class="button primary large" href={ctaUrl}>{finalCtaButtonText || 'get started free'}</a>
       </div>
       {trustItems.length > 0 && (
         <div class="final-cta-trust reveal" data-reveal-delay="0.18s">
